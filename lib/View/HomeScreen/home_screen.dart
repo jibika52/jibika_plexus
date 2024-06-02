@@ -14,7 +14,7 @@ class _HomeScreenState extends State<HomeScreen> {
         appBar: AppBar(),
       body: Container(
         child: Center(
-          child: Text("Jibica",style: TextStyle(fontSize: 30),),
+          child: Text("JIBIKA",style: TextStyle(fontSize: 35,fontWeight: FontWeight.bold,letterSpacing: 0.2),),
         ),
       ),
     );
