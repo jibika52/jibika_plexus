@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../Model/CustomWidget/CustomText/custom_text.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -14,7 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
         appBar: AppBar(),
       body: Container(
         child: Center(
-          child: Text("JIBIKA",style: TextStyle(fontSize: 35,fontWeight: FontWeight.bold,letterSpacing: 0.2),),
+          child: CustomText(fontSize: 25, fontWeight: FontWeight.w900, text: "JIBIKA", letterSpacing: 0.1),
         ),
       ),
     );
