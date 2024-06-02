@@ -21,62 +21,86 @@ class _SplashScreen1State extends State<SplashScreen1> {
         height: double.infinity,
         width: double.infinity,
         color: Main_Theme_SplashScreenColor,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            SizedBox(height: 69,),
-            CustomImageSction(height: 98, width: 100, radius: 11, image: "Assets/Logo/jibikalogo.png"),
-
-            SizedBox(height: 20,),
-            CustomText(fontSize: 18, fontWeight: FontWeight.w500, text: "Welcome to Jibika Plexus, HRM", letterSpacing: 0.1),
-
-           Stack(
-           children: [
-             CustomImageSction(height: 340, width: 935, radius: 11, image: "Assets/Gif/112.gif"),
-             Positioned(
-               top:25, child: Container(
-               padding: const EdgeInsets.only(left: 80.0,right: 64),
-               alignment: Alignment.center,
-               child: Column(
-                 crossAxisAlignment: CrossAxisAlignment.center,
-                 mainAxisAlignment: MainAxisAlignment.center,
-                 children: [
-                   CustomText(fontSize: 16, fontWeight: FontWeight.w400,textAlign: TextAlign.center, text: "Next Generation HR & Payroll", letterSpacing: 0.1),
-                   CustomText(fontSize: 16, fontWeight: FontWeight.w400,textAlign: TextAlign.center, text: "Software On your hand", letterSpacing: 0.1),
-                 ],
-               ),
-             ), ),
-
-             Positioned(
-               bottom:0,left: 0,right: 0, child: Container(
-               padding: const EdgeInsets.only(left: 20.0,right: 20),
-               alignment: Alignment.center,
-               child: CustomSplashMenue(image1: "Assets/Frame 34613.png", text1: "Employee Profile", image2: "Assets/Frame 34613 (1).png", text2: "Notice & Notifications")
-             ), ),
-           ],
-         ),
-            SizedBox(height: 15,),
-            Container(
-                padding: const EdgeInsets.only(left: 20.0,right: 20),
-                alignment: Alignment.center,
-                child: CustomSplashMenue(image1: "Assets/Frame 34613 (2).png", text1: "Leave & Holiday", image2: "Assets/Frame 34613 (3).png", text2: "Incentive & Payroll")
-
-            ),
-            SizedBox(height: 15,),
-            Container(
-                padding: const EdgeInsets.only(left: 20.0,right: 20),
-                alignment: Alignment.center,
-                child: CustomSplashMenue(image1: "Assets/Frame 34613 (4).png", text1: "Performance Appraisal", image2: "Assets/Frame 34613 (5).png", text2: "Promotion & Increment")
-
-            ),
-            SizedBox(height: 15,),
-            Container(
-                padding: const EdgeInsets.only(left: 20.0,right: 20),
-                alignment: Alignment.center,
-                child: CustomSplashMenue(image1: "Assets/Frame 34613 (6).png", text1: "Allowance & Deduction", image2: "Assets/Frame 34613 (7).png", text2: "Loan & Arrear")
-            ),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SizedBox(height: 69,),
+              CustomImageSction(height: 98, width: 100, radius: 11, image: "Assets/Logo/jibikalogo.png"),
+          
+              SizedBox(height: 20,),
+              CustomText(fontSize: 18, fontWeight: FontWeight.w500, text: "Welcome to Jibika Plexus, HRM", letterSpacing: 0.1),
+          
+             Stack(
+             children: [
+               CustomImageSction(height: 340, width: 935, radius: 11, image: "Assets/Gif/112.gif"),
+               Positioned(
+                 top:25, child: Container(
+                 padding: const EdgeInsets.only(left: 80.0,right: 64),
+                 alignment: Alignment.center,
+                 child: Column(
+                   crossAxisAlignment: CrossAxisAlignment.center,
+                   mainAxisAlignment: MainAxisAlignment.center,
+                   children: [
+                     CustomText(fontSize: 16, fontWeight: FontWeight.w400,textAlign: TextAlign.center, text: "Next Generation HR & Payroll", letterSpacing: 0.1),
+                     CustomText(fontSize: 16, fontWeight: FontWeight.w400,textAlign: TextAlign.center, text: "Software On your hand", letterSpacing: 0.1),
+                   ],
+                 ),
+               ), ),
+          
+               Positioned(
+                 bottom:0,left: 0,right: 0, child: Container(
+                 padding: const EdgeInsets.only(left: 20.0,right: 20),
+                 alignment: Alignment.center,
+                 child: CustomSplashMenue(image1: "Assets/Frame 34613.png", text1: "Employee Profile", image2: "Assets/Frame 34613 (1).png", text2: "Notice & Notifications")
+               ), ),
+             ],
+           ),
+              SizedBox(height: 15,),
+              Container(
+                  padding: const EdgeInsets.only(left: 20.0,right: 20),
+                  alignment: Alignment.center,
+                  child: CustomSplashMenue(image1: "Assets/Frame 34613 (2).png", text1: "Leave & Holiday", image2: "Assets/Frame 34613 (3).png", text2: "Incentive & Payroll")
+          
+              ),
+              SizedBox(height: 15,),
+              Container(
+                  padding: const EdgeInsets.only(left: 20.0,right: 20),
+                  alignment: Alignment.center,
+                  child: CustomSplashMenue(image1: "Assets/Frame 34613 (4).png", text1: "Performance Appraisal", image2: "Assets/Frame 34613 (5).png", text2: "Promotion & Increment")
+          
+              ),
+              SizedBox(height: 15,),
+              Container(
+                  padding: const EdgeInsets.only(left: 20.0,right: 20),
+                  alignment: Alignment.center,
+                  child: CustomSplashMenue(image1: "Assets/Frame 34613 (6).png", text1: "Allowance & Deduction", image2: "Assets/Frame 34613 (7).png", text2: "Loan & Arrear")
+              ),
+          
+              SizedBox(height: 20,),
+             Container(
+                 height: 30,
+                 width: double.infinity,
+          alignment: Alignment.center,
+                 child: Padding(
+                   padding: const EdgeInsets.only(left: 20.0,right: 30),
+                   child: Center(child: CustomImageSction(height: 25, width: 93, radius: 1, image: "Assets/Gif/Frame 2609025.png")),
+                 )),
+              SizedBox(height: 20,),
+              CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "By proceeding further you are agreeing with our", letterSpacing: 0.2),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Terms & Conditions", letterSpacing: 0.2, textColor: Main_Theme_textColor_tir_Condition,),
+                   CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: " and ", letterSpacing: 0.2,),
+                  ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Privacy Policy", letterSpacing: 0.2, textColor: Main_Theme_textColor_tir_Condition,),
+                ],
+              ),
+          
+            ],
+          ),
         ),
       ),
     );
