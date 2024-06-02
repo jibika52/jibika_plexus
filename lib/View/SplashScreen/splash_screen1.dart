@@ -33,7 +33,7 @@ class _SplashScreen1State extends State<SplashScreen1> {
 
            Stack(
            children: [
-             CustomImageSction(height: 340, width: 935, radius: 11, image: "Assets/SplashImage/splash1screen.png"),
+             CustomImageSction(height: 340, width: 935, radius: 11, image: "Assets/Gif/112.gif"),
              Positioned(
                top:25, child: Container(
                padding: const EdgeInsets.only(left: 80.0,right: 64),
