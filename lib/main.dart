@@ -22,8 +22,8 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       //  home:HomeScreen(),
-      //    home:SplashScreen1(),
-       home:SplashScreen3(),
+      home:SplashScreen1(),
+      //     home:SplashScreen3(),
     );
   }
 }

@@ -57,12 +57,11 @@ class _SplashScreen3State extends State<SplashScreen3> {
                 children: [
                   Container(
                     height: 400,
-                    width: 1050,
+                    width: 500,
                     child: Container(
                         height: 400,
-                        width: 1050,
+                        width: 500,
                         decoration: BoxDecoration(
-                            color: Colors.red,
                             image: DecorationImage(
                                 image: AssetImage(
                                     "Assets/SplashImage/splash_splash_sahdo.jpeg"),
