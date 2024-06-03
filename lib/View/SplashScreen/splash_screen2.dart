@@ -3,6 +3,7 @@ import 'package:jibica_pleuxs/Model/CustomWidget/CustomImage/custom_image.dart';
 import 'package:jibica_pleuxs/Model/CustomWidget/CustomSplashMenue/custom_splash_menue.dart';
 import 'package:jibica_pleuxs/Model/CustomWidget/CustomText/custom_text.dart';
 import 'package:jibica_pleuxs/Utils/constants.dart';
+import 'package:jibica_pleuxs/View/SplashScreen/splash_screen1.dart';
 import 'package:jibica_pleuxs/View/SplashScreen/splash_screen3.dart';
 
 class SplashScreen2 extends StatefulWidget {
@@ -167,11 +168,19 @@ alignment: Alignment.center,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    CustomImageSction(height: 27, width: 22, radius: 1, image: "Assets/Icons/arrowleft.png"),
+                    GestureDetector(
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => SplashScreen1(),));
+                        },
+                        child: CustomImageSction(height: 27, width: 22, radius: 1, image: "Assets/Icons/arrowleft.png")),
                     SizedBox(width: 20,),
                     CustomImageSction(height: 12, width: 10, radius: 1, image: "Assets/Icons/count2.png"),
                     SizedBox(width: 20,),
-                    CustomImageSction(height: 27, width: 22, radius: 1, image: "Assets/Icons/arrowright.png"),
+                    GestureDetector(
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => SplashScreen3(),));
+                        },
+                        child: CustomImageSction(height: 27, width: 22, radius: 1, image: "Assets/Icons/arrowright.png")),
                   ],
                 ),
               

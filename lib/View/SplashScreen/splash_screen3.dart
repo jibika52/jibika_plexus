@@ -3,6 +3,7 @@ import 'package:jibica_pleuxs/Model/CustomWidget/CustomImage/custom_image.dart';
 import 'package:jibica_pleuxs/Model/CustomWidget/CustomSplashMenue/custom_splash_menue.dart';
 import 'package:jibica_pleuxs/Model/CustomWidget/CustomText/custom_text.dart';
 import 'package:jibica_pleuxs/Utils/constants.dart';
+import 'package:jibica_pleuxs/View/SplashScreen/splash_screen2.dart';
 
 class SplashScreen3 extends StatefulWidget {
   const SplashScreen3({super.key});
@@ -140,32 +141,30 @@ alignment: Alignment.center,
                 height: c_h * 0.035,
               ),
               Container(
-                  height: 30,
-                  width: double.infinity,
-                  alignment: Alignment.center,
-                  // child: Padding(
-                  //   padding: const EdgeInsets.only(left: 20.0, right: 30),
-                  //   child: Center(
-                  //       child: CustomImageSction(
-                  //           height: 25,
-                  //           width: double.infinity,
-                  //           radius: 1,
-                  //           image:
-                  //               "Assets/buttonIcon/second_direction_splash_button.png")),
-                  // )
+                height: 30,
+                width: double.infinity,
+                alignment: Alignment.center,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    CustomImageSction(height: 27, width: 22, radius: 1, image: "Assets/Icons/arrowleft.png"),
+                    GestureDetector(
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => SplashScreen2(),));
+                        },
+                        child: CustomImageSction(height: 27, width: 22, radius: 1, image: "Assets/Icons/arrowleft.png")),
                     SizedBox(width: 20,),
                     CustomImageSction(height: 12, width: 10, radius: 1, image: "Assets/Icons/count2.png"),
                     SizedBox(width: 20,),
-                    CustomImageSction(height: 27, width: 22, radius: 1, image: "Assets/Icons/arrowright.png"),
+                    GestureDetector(
+                        onTap: () {
+                      //    Navigator.push(context, MaterialPageRoute(builder: (context) => SplashScreen3(),));
+                        },
+                        child: CustomImageSction(height: 27, width: 22, radius: 1, image: "Assets/Icons/arrowright.png")),
                   ],
                 ),
-              
-              
-              
+
+
+
               ),
               SizedBox(
                 height: c_h * 0.035,
