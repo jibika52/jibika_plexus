@@ -1,4 +1,7 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:jibica_pleuxs/Model/CustomWidget/CustomButton/custom_button.dart';
 import 'package:jibica_pleuxs/Model/CustomWidget/CustomImage/custom_image.dart';
 import 'package:jibica_pleuxs/Model/CustomWidget/CustomSplashMenue/custom_splash_menue.dart';
 import 'package:jibica_pleuxs/Model/CustomWidget/CustomText/custom_text.dart';
@@ -21,6 +24,7 @@ class _SplashScreen3State extends State<SplashScreen3> {
       body: Container(
         height: double.infinity,
         width: double.infinity,
+        //  color: Main_3Theme_SplashScreenColor,
         color: Main_Theme_SplashScreenColor,
         child: SingleChildScrollView(
           child: Column(
@@ -49,99 +53,77 @@ class _SplashScreen3State extends State<SplashScreen3> {
                 height: c_h * 0.025,
               ),
               Stack(
-alignment: Alignment.center,
+                alignment: Alignment.center,
                 children: [
                   Container(
-                    height: 500,
-                      width: 500,
-                      alignment: Alignment.center,
-                      child: Image.asset("Assets/Gif/second_splashcsreen.gif",height: 300,width: 400,fit: BoxFit.fill,)),
+                    height: 400,
+                    width: 1050,
+                    child: Container(
+                        height: 400,
+                        width: 1050,
+                        decoration: BoxDecoration(
+                            color: Colors.red,
+                            image: DecorationImage(
+                                image: AssetImage(
+                                    "Assets/SplashImage/splash_splash_sahdo.jpeg"),
+                                fit: BoxFit.fill)),
+                        padding: EdgeInsets.all(60),
+                        child: Container(
+                          padding: EdgeInsets.only(top: 50),
+                          child: Image.asset(
+                            "Assets/Gif/third_splashcsreen.gif",
+                            height: 240,
+                            width: 278,
+                            fit: BoxFit.fill,
+                          ),
+                        )),
+                  ),
                   Positioned(
                     top: 0,
                     left: 0,
                     right: 0,
-                    child: Column(
-                      children: [
-                        Container(
-                            padding: const EdgeInsets.only(left: 20.0, right: 20),
-                            alignment: Alignment.center,
-                            child: CustomSplashMenue(
-                                image1: "Assets/circle_count1.png",
-                                text1: "Auto Data Pulling",
-                                image2: "Assets/circle_count2.png",
-                                text2: "Auto Roster")),
-                        SizedBox(height: 10,),
-                        Container(
-                            padding: const EdgeInsets.only(left: 20.0, right: 20),
-                            alignment: Alignment.center,
-                            child: CustomSplashMenue(
-                                image1: "Assets/circle_count3.png",
-                                text1: "Auto Process",
-                                image2: "Assets/circle_count4.png",
-                                text2: "Auto Shift Change")),
-                      ],
-                    ),
-                  ), 
-                  
-                  Positioned(
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                         Container(
-                           width: 80,
-                           child: Column(
-                             children: [
-                               CustomImageSction(height: 55, width: 80, radius: 7, image: "Assets/Icons/fingerprint.png"),
-                               SizedBox(height: 5,),
-                               CustomText(fontSize: 12, fontWeight: FontWeight.w300, text: "Device", letterSpacing: 0.1)
-                             ],
-                           ),
-                         ),
-                         Container(
-                           width: 80,
-                           child: Column(
-                             children: [
-                               CustomImageSction(height: 55, width: 80, radius: 7, image: "Assets/Icons/mobileselfe.png"),
-                               SizedBox(height: 5,),
-                               CustomText(fontSize: 12, fontWeight: FontWeight.w300, text: "Mobile Selfie", letterSpacing: 0.1)
-                             ],
-                           ),
-                         ),
-                         Container(
-                           width: 80,
-                           child: Column(
-                             children: [
-                               CustomImageSction(height: 55, width: 80, radius: 7, image: "Assets/Icons/wificonnect.png"),
-                               SizedBox(height: 5,),
-                               CustomText(fontSize: 12, fontWeight: FontWeight.w300, text: "Wifi Connect", letterSpacing: 0.1)
-                             ],
-                           ),
-                         ),
-                         Container(
-                           width: 80,
-                           child: Column(
-                             children: [
-                               CustomImageSction(height: 55, width: 80, radius: 7, image: "Assets/Icons/gprstrackng.png"),
-                               SizedBox(height: 5,),
-                               CustomText(fontSize: 12, fontWeight: FontWeight.w300, text: "GPS Track", letterSpacing: 0.1)
-                             ],
-                           ),
-                         ),
-                      ],
-                    ),
+                    child: Container(
+                        width: 369,
+                        padding: EdgeInsets.only(left: 20, right: 20),
+                        child: CustomText(
+                            fontSize: 14,
+                            textAlign: TextAlign.center,
+                            fontWeight: FontWeight.w400,
+                            text:
+                                "Mobile apps for small enterprises, web applications & mobile apps for large enterprises.",
+                            letterSpacing: 0.2)),
                   ),
                 ],
               ),
 
-
               SizedBox(
-                height: c_h * 0.035,
+                height: 13,
               ),
               Container(
-                height: 30,
+                  padding: const EdgeInsets.only(left: 20.0, right: 20),
+                  alignment: Alignment.center,
+                  child: CustomSplashMenue(
+                      image1: "Assets/circle_count1.png",
+                      text1: "Location Tracking",
+                      image2: "Assets/circle_count2.png",
+                      text2: "Tracking Notification")),
+              SizedBox(
+                height: 13,
+              ),
+              Container(
+                  padding: const EdgeInsets.only(left: 20.0, right: 20),
+                  alignment: Alignment.center,
+                  child: CustomSplashMenue(
+                      image1: "Assets/circle_count3.png",
+                      text1: "GEO Fence",
+                      image2: "Assets/circle_count4.png",
+                      text2: "Conveyance Tracking")),
+
+              SizedBox(
+                height: c_h * 0.075,
+              ),
+              Container(
+                height: 32,
                 width: double.infinity,
                 alignment: Alignment.center,
                 child: Row(
@@ -149,22 +131,45 @@ alignment: Alignment.center,
                   children: [
                     GestureDetector(
                         onTap: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => SplashScreen2(),));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SplashScreen2(),
+                              ));
                         },
-                        child: CustomImageSction(height: 27, width: 22, radius: 1, image: "Assets/Icons/arrowleft.png")),
-                    SizedBox(width: 20,),
-                    CustomImageSction(height: 12, width: 10, radius: 1, image: "Assets/Icons/count2.png"),
-                    SizedBox(width: 20,),
-                    GestureDetector(
-                        onTap: () {
-                      //    Navigator.push(context, MaterialPageRoute(builder: (context) => SplashScreen3(),));
-                        },
-                        child: CustomImageSction(height: 27, width: 22, radius: 1, image: "Assets/Icons/arrowright.png")),
+                        child: CustomImageSction(
+                            height: 27,
+                            width: 22,
+                            radius: 1,
+                            image: "Assets/Icons/arrowleft.png")),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    CustomImageSction(
+                        height: 12,
+                        width: 10,
+                        radius: 1,
+                        image: "Assets/Icons/count2.png"),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Container(
+                      height: 100,
+                      width: 110,
+                      child: CustomButton(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          text: "Get Started",
+                          button_text_fontSize: 13,
+                          fontWeight: FontWeight.w500,
+                          button_height: 55,
+                          custom_button_collor: th3_splash_button_color,
+                          button_text_color: th3_splash_button_Text_color,
+                          borderRadius: 20),
+                    )
                   ],
                 ),
-
-
-
               ),
               SizedBox(
                 height: c_h * 0.035,
