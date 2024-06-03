@@ -37,7 +37,7 @@ class CustomSplashMenue extends StatelessWidget {
             children: [
               CustomImageSction(height: 14, width: 14, radius: 1, image: "$image2"),
               SizedBox(width: 5,),
-              CustomText(fontSize: 11, fontWeight: FontWeight.w300,textAlign: TextAlign.center, text: "$text2", letterSpacing: 0.1),
+              CustomText(fontSize: 13, fontWeight: FontWeight.w300,textAlign: TextAlign.center, text: "$text2", letterSpacing: 0.1),
               "$text1"=="Allowance & Deduction"?  SizedBox(width: 20,):Container(),
               "$text1"=="Allowance & Deduction"?  CustomImageSction(height: 8, width: 8, radius: 1, image: "Assets/Frame 34613 (8).png"):Container(),
               "$text1"=="Allowance & Deduction"?  SizedBox(width: 5,):Container(),

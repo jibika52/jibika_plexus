@@ -24,19 +24,20 @@ class _SplashScreen1State extends State<SplashScreen1> {
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(height: 69,),
+             // SizedBox(height: 69,),
+              SizedBox(height: c_h*0.084,),
               CustomImageSction(height: 98, width: 100, radius: 11, image: "Assets/Logo/jibikalogo.png"),
-          
-              SizedBox(height: 20,),
+              SizedBox(height: c_h*0.025,),
+              // SizedBox(height: 20,),
               CustomText(fontSize: 18, fontWeight: FontWeight.w500, text: "Welcome to Jibika Plexus, HRM", letterSpacing: 0.1),
-          
+              SizedBox(height: c_h*0.024,),
              Stack(
              children: [
                CustomImageSction(height: 340, width: 935, radius: 11, image: "Assets/Gif/112.gif"),
                Positioned(
-                 top:25, child: Container(
+                 top:0, child: Container(
                  padding: const EdgeInsets.only(left: 80.0,right: 64),
                  alignment: Alignment.center,
                  child: Column(
@@ -57,7 +58,7 @@ class _SplashScreen1State extends State<SplashScreen1> {
                ), ),
              ],
            ),
-              SizedBox(height: 15,),
+            SizedBox(height: 15,),
               Container(
                   padding: const EdgeInsets.only(left: 20.0,right: 20),
                   alignment: Alignment.center,
@@ -77,8 +78,8 @@ class _SplashScreen1State extends State<SplashScreen1> {
                   alignment: Alignment.center,
                   child: CustomSplashMenue(image1: "Assets/Frame 34613 (6).png", text1: "Allowance & Deduction", image2: "Assets/Frame 34613 (7).png", text2: "Loan & Arrear")
               ),
-          
-              SizedBox(height: 20,),
+
+              SizedBox(height: c_h*0.025,),
              Container(
                  height: 30,
                  width: double.infinity,
@@ -87,15 +88,15 @@ class _SplashScreen1State extends State<SplashScreen1> {
                    padding: const EdgeInsets.only(left: 20.0,right: 30),
                    child: Center(child: CustomImageSction(height: 25, width: 93, radius: 1, image: "Assets/Gif/Frame 2609025.png")),
                  )),
-              SizedBox(height: 20,),
-              CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "By proceeding further you are agreeing with our", letterSpacing: 0.2),
+              SizedBox(height: c_h*0.025,),
+              CustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "By proceeding further you are agreeing with our", letterSpacing: 0.2),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Terms & Conditions", letterSpacing: 0.2, textColor: Main_Theme_textColor_tir_Condition,),
-                   CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: " and ", letterSpacing: 0.2,),
-                  ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Privacy Policy", letterSpacing: 0.2, textColor: Main_Theme_textColor_tir_Condition,),
+                  ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "Terms & Conditions", letterSpacing: 0.2, textColor: Main_Theme_textColor_tir_Condition,),
+                   CustomText(fontSize: 14, fontWeight: FontWeight.w400, text: " and ", letterSpacing: 0.2,),
+                  ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "Privacy Policy", letterSpacing: 0.2, textColor: Main_Theme_textColor_tir_Condition,),
                 ],
               ),
           
