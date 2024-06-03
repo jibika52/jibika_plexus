@@ -3,26 +3,15 @@ import 'package:jibica_pleuxs/Model/CustomWidget/CustomImage/custom_image.dart';
 import 'package:jibica_pleuxs/Model/CustomWidget/CustomSplashMenue/custom_splash_menue.dart';
 import 'package:jibica_pleuxs/Model/CustomWidget/CustomText/custom_text.dart';
 import 'package:jibica_pleuxs/Utils/constants.dart';
-import 'package:jibica_pleuxs/View/SplashScreen/splash_screen3.dart';
 
-class SplashScreen2 extends StatefulWidget {
-  const SplashScreen2({super.key});
+class SplashScreen3 extends StatefulWidget {
+  const SplashScreen3({super.key});
 
   @override
-  State<SplashScreen2> createState() => _SplashScreen2State();
+  State<SplashScreen3> createState() => _SplashScreen3State();
 }
 
-class _SplashScreen2State extends State<SplashScreen2> {
-  @override
-  void initState() {
-    Future.delayed(Duration(
-      seconds: 3
-    ),() {
-      Navigator.push(context, MaterialPageRoute(builder: (context) => SplashScreen3(),));
-    },);
-    // TODO: implement initState
-    super.initState();
-  }
+class _SplashScreen3State extends State<SplashScreen3> {
   @override
   Widget build(BuildContext context) {
     double c_h = MediaQuery.of(context).size.height;
