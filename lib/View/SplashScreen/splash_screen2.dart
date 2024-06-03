@@ -40,95 +40,61 @@ class _SplashScreen2State extends State<SplashScreen2> {
               ),
               // SizedBox(height: 20,),
               CustomText(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
-                  text: "Welcome to Jibika Plexus, HRM",
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                  text: "Auto Attendance Process",
                   letterSpacing: 0.1),
               SizedBox(
-                height: c_h * 0.024,
+                height: c_h * 0.025,
               ),
               Stack(
+alignment: Alignment.center,
                 children: [
-                  CustomImageSction(
-                      height: 390,
+                  Container(
+                    height: 500,
                       width: 400,
-                      radius: 11,
-                      image: "Assets/Gif/first_splashcsreen.gif"),
-                  Positioned(
-                    left: 10,
-                    right: 10,
-                    top: 0,
-                    child: Container(
-                      padding: const EdgeInsets.only(left: 80.0, right: 64),
                       alignment: Alignment.center,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          CustomText(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w400,
-                              textAlign: TextAlign.center,
-                              text: "Next Generation HR & Payroll",
-                              letterSpacing: 0.1),
-                          CustomText(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w400,
-                              textAlign: TextAlign.center,
-                              text: "Software On your hand",
-                              letterSpacing: 0.1),
-                        ],
-                      ),
+                      child: Image.asset("Assets/Gif/second_splashcsreen.gif",height: 300,width: 400,fit: BoxFit.fill,)),
+                  Positioned(
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    child: Column(
+                      children: [
+                        Container(
+                            padding: const EdgeInsets.only(left: 20.0, right: 20),
+                            alignment: Alignment.center,
+                            child: CustomSplashMenue(
+                                image1: "Assets/circle_count1.png",
+                                text1: "Auto Data Pulling",
+                                image2: "Assets/circle_count2.png",
+                                text2: "Auto Roster")),
+                        SizedBox(height: 10,),
+                        Container(
+                            padding: const EdgeInsets.only(left: 20.0, right: 20),
+                            alignment: Alignment.center,
+                            child: CustomSplashMenue(
+                                image1: "Assets/circle_count3.png",
+                                text1: "Auto Process",
+                                image2: "Assets/circle_count4.png",
+                                text2: "Auto Shift Change")),
+                      ],
                     ),
-                  ),
+                  ), 
+                  
                   Positioned(
                     bottom: 0,
                     left: 0,
                     right: 0,
-                    child: Container(
-                        padding: const EdgeInsets.only(left: 20.0, right: 20),
-                        alignment: Alignment.center,
-                        child: CustomSplashMenue(
-                            image1: "Assets/circle_count1.png",
-                            text1: "Employee Profile",
-                            image2: "Assets/circle_count1.png",
-                            text2: "Notice & Notifications")),
+                    child: Row(
+                      children: [
+                    //     CustomImageSction(height: height, width: width, radius: radius, image: image)
+                      ],
+                    ),
                   ),
                 ],
               ),
-              SizedBox(
-                height: 15,
-              ),
-              Container(
-                  padding: const EdgeInsets.only(left: 20.0, right: 20),
-                  alignment: Alignment.center,
-                  child: CustomSplashMenue(
-                      image1: "Assets/circle_count3.png",
-                      text1: "Leave & Holiday",
-                      image2: "Assets/circle_count4.png",
-                      text2: "Incentive & Payroll")),
-              SizedBox(
-                height: 15,
-              ),
-              Container(
-                  padding: const EdgeInsets.only(left: 20.0, right: 20),
-                  alignment: Alignment.center,
-                  child: CustomSplashMenue(
-                      image1: "Assets/circle_count5.png",
-                      text1: "Performance Appraisal",
-                      image2: "Assets/circle_count6.png",
-                      text2: "Promotion & Increment")),
-              SizedBox(
-                height: 15,
-              ),
-              Container(
-                  padding: const EdgeInsets.only(left: 20.0, right: 20),
-                  alignment: Alignment.center,
-                  child: CustomSplashMenue(
-                      image1: "Assets/circle_count7.png",
-                      text1: "Allowance & Deduction",
-                      image2: "Assets/circle_count8.png",
-                      text2: "Loan & Arrear")),
+
 
               SizedBox(
                 height: c_h * 0.035,
@@ -142,10 +108,10 @@ class _SplashScreen2State extends State<SplashScreen2> {
                     child: Center(
                         child: CustomImageSction(
                             height: 25,
-                            width: 93,
+                            width: double.infinity,
                             radius: 1,
                             image:
-                                "Assets/Gif/first_direction_splash_button.png")),
+                                "Assets/buttonIcon/second_direction_splash_button.png")),
                   )),
               SizedBox(
                 height: c_h * 0.035,
