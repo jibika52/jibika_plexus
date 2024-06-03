@@ -52,7 +52,7 @@ alignment: Alignment.center,
                 children: [
                   Container(
                     height: 500,
-                      width: 400,
+                      width: 500,
                       alignment: Alignment.center,
                       child: Image.asset("Assets/Gif/second_splashcsreen.gif",height: 300,width: 400,fit: BoxFit.fill,)),
                   Positioned(
@@ -87,8 +87,48 @@ alignment: Alignment.center,
                     left: 0,
                     right: 0,
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                    //     CustomImageSction(height: height, width: width, radius: radius, image: image)
+                         Container(
+                           width: 80,
+                           child: Column(
+                             children: [
+                               CustomImageSction(height: 55, width: 80, radius: 7, image: "Assets/Icons/fingerprint.png"),
+                               SizedBox(height: 5,),
+                               CustomText(fontSize: 12, fontWeight: FontWeight.w300, text: "Device", letterSpacing: 0.1)
+                             ],
+                           ),
+                         ),
+                         Container(
+                           width: 80,
+                           child: Column(
+                             children: [
+                               CustomImageSction(height: 55, width: 80, radius: 7, image: "Assets/Icons/mobileselfe.png"),
+                               SizedBox(height: 5,),
+                               CustomText(fontSize: 12, fontWeight: FontWeight.w300, text: "Mobile Selfie", letterSpacing: 0.1)
+                             ],
+                           ),
+                         ),
+                         Container(
+                           width: 80,
+                           child: Column(
+                             children: [
+                               CustomImageSction(height: 55, width: 80, radius: 7, image: "Assets/Icons/wificonnect.png"),
+                               SizedBox(height: 5,),
+                               CustomText(fontSize: 12, fontWeight: FontWeight.w300, text: "Wifi Connect", letterSpacing: 0.1)
+                             ],
+                           ),
+                         ),
+                         Container(
+                           width: 80,
+                           child: Column(
+                             children: [
+                               CustomImageSction(height: 55, width: 80, radius: 7, image: "Assets/Icons/gprstrackng.png"),
+                               SizedBox(height: 5,),
+                               CustomText(fontSize: 12, fontWeight: FontWeight.w300, text: "GPS Track", letterSpacing: 0.1)
+                             ],
+                           ),
+                         ),
                       ],
                     ),
                   ),
@@ -103,16 +143,30 @@ alignment: Alignment.center,
                   height: 30,
                   width: double.infinity,
                   alignment: Alignment.center,
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 20.0, right: 30),
-                    child: Center(
-                        child: CustomImageSction(
-                            height: 25,
-                            width: double.infinity,
-                            radius: 1,
-                            image:
-                                "Assets/buttonIcon/second_direction_splash_button.png")),
-                  )),
+                  // child: Padding(
+                  //   padding: const EdgeInsets.only(left: 20.0, right: 30),
+                  //   child: Center(
+                  //       child: CustomImageSction(
+                  //           height: 25,
+                  //           width: double.infinity,
+                  //           radius: 1,
+                  //           image:
+                  //               "Assets/buttonIcon/second_direction_splash_button.png")),
+                  // )
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CustomImageSction(height: 27, width: 22, radius: 1, image: "Assets/Icons/arrowleft.png"),
+                    SizedBox(width: 20,),
+                    CustomImageSction(height: 12, width: 10, radius: 1, image: "Assets/Icons/count2.png"),
+                    SizedBox(width: 20,),
+                    CustomImageSction(height: 27, width: 22, radius: 1, image: "Assets/Icons/arrowright.png"),
+                  ],
+                ),
+              
+              
+              
+              ),
               SizedBox(
                 height: c_h * 0.035,
               ),
