@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:jibika_plexus/Model/CustomWidget/CustomImage/custom_image.dart';
-import 'package:jibika_plexus/Model/CustomWidget/CustomSplashMenue/custom_splash_menue.dart';
-import 'package:jibika_plexus/Model/CustomWidget/CustomText/custom_text.dart';
+import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
+import 'package:jibika_plexus/CustomWidget/CustomSplashMenue/custom_splash_menue.dart';
+import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
 import 'package:jibika_plexus/View/SplashScreen/splash_screen1.dart';
 import 'package:jibika_plexus/View/SplashScreen/splash_screen3.dart';

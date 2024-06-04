@@ -1,11 +1,12 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:jibika_plexus/Model/CustomWidget/CustomButton/custom_button.dart';
-import 'package:jibika_plexus/Model/CustomWidget/CustomImage/custom_image.dart';
-import 'package:jibika_plexus/Model/CustomWidget/CustomSplashMenue/custom_splash_menue.dart';
-import 'package:jibika_plexus/Model/CustomWidget/CustomText/custom_text.dart';
+import 'package:jibika_plexus/CustomWidget/CustomButton/custom_button.dart';
+import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
+import 'package:jibika_plexus/CustomWidget/CustomSplashMenue/custom_splash_menue.dart';
+import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
+import 'package:jibika_plexus/View/LoginScreen/login_screen.dart';
 import 'package:jibika_plexus/View/SplashScreen/splash_screen2.dart';
 
 class SplashScreen3 extends StatefulWidget {
@@ -157,7 +158,7 @@ class _SplashScreen3State extends State<SplashScreen3> {
                       width: 110,
                       child: CustomButton(
                           onTap: () {
-                            Navigator.pop(context);
+                       Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen(),));
                           },
                           text: "Get Started",
                           button_text_fontSize: 13,

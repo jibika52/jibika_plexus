@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'View/LoginScreen/login_screen.dart';
 import 'View/SplashScreen/splash_screen1.dart';
 
 void main() {
@@ -16,8 +17,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      //    home:FunkyNotification(),
-       home:SplashScreen1(),
+      //   home:LoginScreen(),
+        home:SplashScreen1(),
        //     home:SplashScreen3(),
     );
   }

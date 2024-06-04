@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.4.0 <4.0.0'
+  sdk: '>=3.2.2 <4.0.0'
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -34,10 +34,34 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.6
-  google_fonts: ^6.2.1
+  cupertino_icons: ^1.0.2
+  # GEt Google fonts  from this package
+  google_fonts: ^5.1.0
+  # For SVG in=mage Image from this package
+  flutter_svg: ^2.0.10+1
+  # Slide Shado from this package
+  carousel_slider: ^4.2.1
+  # State managed  from this package
+  provider: ^6.1.2
+  # Get Custom Notification from this package
+  another_flushbar: ^1.12.30
+  # get http request from this package
+  http: ^1.2.0
+  # Local Database get  from this package
+  get_storage: ^2.1.1
+  # Check NetworkStatus  from this package
+  connectivity_plus: ^5.0.2
+  # formte date from this package
+  # intl: ^0.19.0
+  # GEt Image from this package
+  image_picker: ^1.0.7
+  # Slide image from this package
   marquee: ^2.2.3
-  align_positioned: ^4.0.1
+  # Share text or link from this package
+  share_plus: ^7.2.2
+  # Country Code get from this package
+  country_picker: ^2.0.26
+  flutter_localization: ^0.2.0
 
 dev_dependencies:
   flutter_test:
@@ -48,7 +72,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^3.0.0
+  flutter_lints: ^2.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -71,6 +95,7 @@ flutter:
     - Assets/Gif/
     - Assets/buttonIcon/
     - Assets/LoginScreenIMG/
+  #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

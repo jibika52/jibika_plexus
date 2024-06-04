@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../Model/CustomWidget/CustomText/custom_text.dart';
+import '../../CustomWidget/CustomText/custom_text.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
