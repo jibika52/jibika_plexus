@@ -40,9 +40,8 @@ class _LoginScreenState extends State<LoginScreen> {
               /// Text Slide
               CustomSlideTExt(text: "Revolutionize Your Workforce Management with Our Jibika payscale Mobile App"),
               SizedBox(
-                height: h*0.3,
+                height: h*0.28,
               ),
-
               /// Login Section
               Container(
                 margin: EdgeInsets.only(left: w*0.090,right: w*0.09),
@@ -242,15 +241,15 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                      SizedBox(height: h*0.05,),
                     CustomButton(onTap: () {
-
                     }, text: "Login", button_text_fontSize: 17, fontWeight: FontWeight.bold,button_height: 50, custom_button_collor: Main_Theme_buttontextcolor, button_text_color:Main_Theme_SplashScreenColor, borderRadius: 50)
-
                   ],
                 ),
               ),
-
-
-
+              SizedBox(height: h*0.04,),
+             /// Forget Password section
+             Center(
+               child: CustomText(fontSize: 17, fontWeight: FontWeight.w500, text: "Forget Password", letterSpacing: 0.2),
+             )
             ],
           ),
         ),
