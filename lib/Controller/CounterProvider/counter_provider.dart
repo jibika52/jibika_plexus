@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:landport/CustomHttp/custom_http.dart';
 
 class CounterProvider with ChangeNotifier{
   bool _islogin = false;
@@ -38,5 +37,6 @@ class CounterProvider with ChangeNotifier{
     _isOpenCloseSlider=false;
     notifyListeners();
   }
+
 
 }
