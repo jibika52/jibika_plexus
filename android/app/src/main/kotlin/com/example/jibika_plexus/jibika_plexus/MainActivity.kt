@@ -1,4 +1,4 @@
-package com.jibica_pleuxs.ltd.jibica_pleuxs
+package com.example.jibika_plexus.jibika_plexus
 
 import io.flutter.embedding.android.FlutterActivity
 

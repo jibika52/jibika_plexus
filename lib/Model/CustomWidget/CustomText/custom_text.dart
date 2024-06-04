@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:jibica_pleuxs/Utils/constants.dart';
+import 'package:jibika_plexus/Utils/constants.dart';
 
 class CustomText extends StatelessWidget {
   CustomText({super.key,

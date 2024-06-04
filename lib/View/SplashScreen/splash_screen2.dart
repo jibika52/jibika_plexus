@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:jibica_pleuxs/Model/CustomWidget/CustomImage/custom_image.dart';
-import 'package:jibica_pleuxs/Model/CustomWidget/CustomSplashMenue/custom_splash_menue.dart';
-import 'package:jibica_pleuxs/Model/CustomWidget/CustomText/custom_text.dart';
-import 'package:jibica_pleuxs/Utils/constants.dart';
-import 'package:jibica_pleuxs/View/SplashScreen/splash_screen1.dart';
-import 'package:jibica_pleuxs/View/SplashScreen/splash_screen3.dart';
+import 'package:jibika_plexus/Model/CustomWidget/CustomImage/custom_image.dart';
+import 'package:jibika_plexus/Model/CustomWidget/CustomSplashMenue/custom_splash_menue.dart';
+import 'package:jibika_plexus/Model/CustomWidget/CustomText/custom_text.dart';
+import 'package:jibika_plexus/Utils/constants.dart';
+import 'package:jibika_plexus/View/SplashScreen/splash_screen1.dart';
+import 'package:jibika_plexus/View/SplashScreen/splash_screen3.dart';
 
 class SplashScreen2 extends StatefulWidget {
   const SplashScreen2({super.key});

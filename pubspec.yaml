@@ -1,4 +1,4 @@
-name: jibica_pleuxs
+name: jibika_plexus
 description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.6
   google_fonts: ^6.2.1
   marquee: ^2.2.3
+  align_positioned: ^4.0.1
 
 dev_dependencies:
   flutter_test:
@@ -69,7 +70,8 @@ flutter:
     - Assets/svgImage/
     - Assets/Gif/
     - Assets/buttonIcon/
-    - Assets/SplashImage/
+    - Assets/LoginScreenIMG/
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

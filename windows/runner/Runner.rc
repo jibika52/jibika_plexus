@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.jibica_pleuxs.ltd" "\0"
-            VALUE "FileDescription", "jibica_pleuxs" "\0"
+            VALUE "CompanyName", "com.example.jibika_plexus" "\0"
+            VALUE "FileDescription", "jibika_plexus" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "jibica_pleuxs" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2024 com.jibica_pleuxs.ltd. All rights reserved." "\0"
-            VALUE "OriginalFilename", "jibica_pleuxs.exe" "\0"
-            VALUE "ProductName", "jibica_pleuxs" "\0"
+            VALUE "InternalName", "jibika_plexus" "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2024 com.example.jibika_plexus. All rights reserved." "\0"
+            VALUE "OriginalFilename", "jibika_plexus.exe" "\0"
+            VALUE "ProductName", "jibika_plexus" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END
