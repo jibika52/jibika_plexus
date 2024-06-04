@@ -95,7 +95,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               },
             
                               child: Padding(
-                                padding: const EdgeInsets.only(top: 10,right: 10.0),
+                                padding: const EdgeInsets.only(top: 18,right: 10.0),
                                 child: Container(
                                   height: 60,
                                   width: 124,
@@ -108,11 +108,12 @@ class _LoginScreenState extends State<LoginScreen> {
                                   alignment: Alignment.center,
                                   child: Row(
                                     children: [
-                                      Image.asset("Assets/Icons/call.png",height: 27,width: 27,fit: BoxFit.fill,),
+                                      Image.asset("Assets/Icons/call.png",height: 20,width: 25,fit: BoxFit.fill,),
                                       SizedBox(width: 20,),
                                       Image.asset("Assets/Icons/bdflaf.png",height: 20,width: 28,fit: BoxFit.fill,),
                                       SizedBox(width: 5,),
-                                      CustomText(fontSize: 16, fontWeight: FontWeight.w500, text: "$countruyCode", letterSpacing: 0.2)
+                                      CustomText(
+                                          fontSize: 16, fontWeight: FontWeight.w500, text: "$countruyCode", letterSpacing: 0.2)
             
                                     ],
                                   ),
@@ -121,6 +122,12 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             Expanded(
                               child: TextFormField(
+                                style: GoogleFonts.poppins(
+                                    color: Main_Theme_textColor,
+                                    fontSize: 16,fontWeight: FontWeight.w500
+                                    ,letterSpacing: 0.2
+
+                                ),
                                 controller: _phoneController,
                                 validator: (value) {
                                   if (value!.isEmpty) {
@@ -139,14 +146,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   errorStyle: TextStyle(
                                     fontSize: 0.1,
                                   ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                    borderSide: BorderSide(
-                                        width: 2,
-                                        color: icons_green_color
-                                    ),
-                                  ),
-                                  hintText: 'Mobile Number',
+                                  labelText: "Mobile Number",
                                   contentPadding: EdgeInsets.symmetric(
                                       horizontal: 15, vertical: 5),
                                   /// prefix icon ///
@@ -164,7 +164,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: Row(
                           children: [
                             Padding(
-                              padding: const EdgeInsets.only(top: 10,right: 10.0),
+                              padding: const EdgeInsets.only(top: 18,right: 10.0),
                               child: Container(
                                 height: 60,
                                 width: 36,
@@ -177,7 +177,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 alignment: Alignment.center,
                                 child: Row(
                                   children: [
-                                    Image.asset("Assets/Icons/lock.png",height: 28,width: 24,fit: BoxFit.fill,),
+                                    Image.asset("Assets/Icons/lock.png",height: 22,width: 19,fit: BoxFit.fill,),
             
             
                                   ],
@@ -186,6 +186,12 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             Expanded(
                               child: TextFormField(
+                                style: GoogleFonts.poppins(
+                                    color: Main_Theme_textColor,
+                                    fontSize: 16,fontWeight: FontWeight.w500
+                                    ,letterSpacing: 0.2
+
+                                ),
                                 controller: _passwordController,
                                 validator: (value) {
                                   if (value!.isEmpty) {
@@ -203,13 +209,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ),
                                   errorStyle: TextStyle(
                                     fontSize: 0.1,
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                    borderSide: BorderSide(
-                                        width: 2,
-                                        color: icons_green_color
-                                    ),
                                   ),
                                   hintText: 'Password',
                                   contentPadding: EdgeInsets.symmetric(
@@ -240,9 +239,13 @@ class _LoginScreenState extends State<LoginScreen> {
                           ],
                         ),
                       ),
+
+
                        SizedBox(height: h*0.05,),
+                      /// Login
+
                       CustomButton(onTap: () {
-                      }, text: "Login", button_text_fontSize: 17, fontWeight: FontWeight.bold,button_height: 50, custom_button_collor: Main_Theme_buttontextcolor, button_text_color:Main_Theme_SplashScreenColor, borderRadius: 50)
+                      }, text: "Login", button_text_fontSize: 17, fontWeight: FontWeight.bold,button_height: 50, custom_button_collor: CustomButtomColor, button_text_color:Main_Theme_SplashScreenColor, borderRadius: 50)
                     ],
                   ),
                 ),
@@ -254,7 +257,24 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(height: h*0.01,),
                 Center(
                  child: CustomText(fontSize: 17, fontWeight: FontWeight.w500, text: "Register as a User", letterSpacing: 0.2),
-               )
+               ),
+                SizedBox(height: h*0.118,),
+                Container(
+                  height: 50,
+                  width: double.infinity,
+                  color: CustomButtomColor,
+                  padding: EdgeInsets.only(
+                    left: 20,right: 20
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      ColorCustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "Help", letterSpacing: 0.2,textColor: Main_Theme_SplashScreenColor),
+                      ColorCustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "Our client", letterSpacing: 0.2,textColor: Main_Theme_SplashScreenColor),
+                      ColorCustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "Privacy", letterSpacing: 0.2,textColor: Main_Theme_SplashScreenColor),
+                    ],
+                  ),
+                )
               ],
             ),
           ),

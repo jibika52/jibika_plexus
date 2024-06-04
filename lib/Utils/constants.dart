@@ -16,6 +16,7 @@ import 'dart:ui';
  //   const Main_Theme_SplashScreenColor=Color(0xfff2f2f2);
 
     const Main_3Theme_SplashScreenColor=Color(0xff59DBEB);
+    /// All text white color
   const Main_Theme_SplashScreenColor=Color(0xffffffff);
 const Main_Theme_custombuttoncollor=Color(0xff333333);
 const Main_Theme_buttontextcolor=Color(0xff333333);
@@ -30,6 +31,9 @@ const textFieldBoarderColorC=Color(0xffeb59a2);
 
 /// Splash Button color ///
 const  splash_button_color=Color(0xff267862);
+
+/// CustomButton Color
+const  CustomButtomColor=Color(0xff267862);
 
 
 
