@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
 import 'package:jibika_plexus/CustomWidget/CustomSplashMenue/custom_splash_menue.dart';
 import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
+import 'package:jibika_plexus/CustomWidget/TermsAndCondition/terms_and_condition_part.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
 import 'package:jibika_plexus/View/SplashScreen/splash_screen2.dart';
 
@@ -16,7 +17,7 @@ class _SplashScreen1State extends State<SplashScreen1> {
   @override
   void initState() {
     Future.delayed(Duration(
-      seconds: 3
+      seconds: 5
     ),() {
       Navigator.push(context, MaterialPageRoute(builder: (context) => SplashScreen2(),));
     },);
@@ -162,40 +163,7 @@ class _SplashScreen1State extends State<SplashScreen1> {
                 height: c_h * 0.035,
               ),
 
-              Padding(
-                padding: const EdgeInsets.only(left: 20.0, right: 20.0),
-                child: CustomText(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
-                    text: "By proceeding further you are agreeing with our",
-                    letterSpacing: 0.2),
-              ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ColorCustomText(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
-                    text: "Terms & Conditions",
-                    letterSpacing: 0.2,
-                    textColor: Main_Theme_textColor_tir_Condition,
-                  ),
-                  CustomText(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
-                    text: " and ",
-                    letterSpacing: 0.2,
-                  ),
-                  ColorCustomText(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
-                    text: "Privacy Policy",
-                    letterSpacing: 0.2,
-                    textColor: Main_Theme_textColor_tir_Condition,
-                  ),
-                ],
-              ),
+             CustomTermsAndConditionPart(),
               SizedBox(
                 height: c_h * 0.035,
               ),

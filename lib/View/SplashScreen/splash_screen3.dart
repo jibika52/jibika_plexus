@@ -9,6 +9,9 @@ import 'package:jibika_plexus/Utils/constants.dart';
 import 'package:jibika_plexus/View/LoginScreen/login_screen.dart';
 import 'package:jibika_plexus/View/SplashScreen/splash_screen2.dart';
 
+import '../../CustomWidget/TermsAndCondition/terms_and_condition_part.dart';
+import '../LoginScreen/login_screen_screen2.dart';
+
 class SplashScreen3 extends StatefulWidget {
   const SplashScreen3({super.key});
 
@@ -158,7 +161,7 @@ class _SplashScreen3State extends State<SplashScreen3> {
                       width: 110,
                       child: CustomButton(
                           onTap: () {
-                       Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen(),));
+                       Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreenSlide(),));
                           },
                           text: "Get Started",
                           button_text_fontSize: 13,
@@ -175,40 +178,7 @@ class _SplashScreen3State extends State<SplashScreen3> {
                 height: c_h * 0.035,
               ),
 
-              Padding(
-                padding: const EdgeInsets.only(left: 20.0, right: 20.0),
-                child: CustomText(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
-                    text: "By proceeding further you are agreeing with our",
-                    letterSpacing: 0.2),
-              ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ColorCustomText(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
-                    text: "Terms & Conditions",
-                    letterSpacing: 0.2,
-                    textColor: Main_Theme_textColor_tir_Condition,
-                  ),
-                  CustomText(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
-                    text: " and ",
-                    letterSpacing: 0.2,
-                  ),
-                  ColorCustomText(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
-                    text: "Privacy Policy",
-                    letterSpacing: 0.2,
-                    textColor: Main_Theme_textColor_tir_Condition,
-                  ),
-                ],
-              ),
+              CustomTermsAndConditionPart(),
               SizedBox(
                 height: c_h * 0.035,
               ),

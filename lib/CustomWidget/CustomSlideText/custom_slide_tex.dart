@@ -49,7 +49,11 @@ class CustomSlideTExt extends StatelessWidget {
               ),
             ),
           ),
-          CircleAvatar(radius: 18,backgroundColor: splash_button_color,backgroundImage: AssetImage("Assets/Icons/i_icon.png"),)
+          InkWell(
+              onTap: () {
+                
+              },
+              child: CircleAvatar(radius: 18,backgroundColor: splash_button_color,backgroundImage: AssetImage("Assets/Icons/i_icon.png"),))
         ],
       ),
     );
