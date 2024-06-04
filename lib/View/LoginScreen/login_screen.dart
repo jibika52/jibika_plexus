@@ -39,7 +39,10 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 SizedBox(height: h*0.050),
                 /// Text Slide
-                CustomSlideTExt(text: "Revolutionize Your Workforce Management with Our Jibika payscale Mobile App"),
+                CustomSlideTExt(text: "Revolutionize Your Workforce Management with Our Jibika payscale Mobile App"
+                  , onTap: () {
+
+                  },),
                 SizedBox(
                   height: h*0.28,
                 ),
@@ -229,7 +232,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Expanded(child: CustomSaveInfoSection()),
+                            Expanded(
+
+                                child: CustomSaveInfoSection()),
                             Text("Forgot Password",
                               style: GoogleFonts.poppins(
                                 decoration: TextDecoration.underline,

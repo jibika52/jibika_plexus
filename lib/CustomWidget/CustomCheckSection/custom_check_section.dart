@@ -25,14 +25,15 @@ class _CustomSaveInfoSectionState extends State<CustomSaveInfoSection> {
           Container(
             height: 22,
             width: 22,
-
+padding: EdgeInsets.all(3),
             decoration: BoxDecoration(
                 color: Main_Theme_SplashScreenColor,
                 border: Border.all(
                     color: Main_Theme_textColor
                 ),
-                image: DecorationImage(image: AssetImage(is_check?"Assets/Icons/check 1.png":""),fit: BoxFit.fill)
+               // image: DecorationImage(image: AssetImage(is_check?"Assets/Icons/check 1.png":""),fit: BoxFit.fill)
             ),
+            child: Image.asset(is_check?"Assets/Icons/check 1.png":"",height: 20,width: 20,fit: BoxFit.fill,),
           ),
           const  SizedBox(width: 10,),
           Expanded(child: ColorCustomText(text: "Remember Me,",fontSize:16 ,fontWeight: FontWeight.w400,letterSpacing: 0.2, textColor:Main_Theme_textColor.withOpacity(0.5),))

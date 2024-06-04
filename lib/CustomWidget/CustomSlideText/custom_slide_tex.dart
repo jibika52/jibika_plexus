@@ -5,8 +5,9 @@ import 'package:marquee/marquee.dart';
 import '../../Utils/constants.dart';
 
 class CustomSlideTExt extends StatelessWidget {
-  CustomSlideTExt({super.key,required this.text});
+  CustomSlideTExt({super.key,required this.text,required this.onTap});
   String ? text;
+  final GestureTapCallback? onTap;
   @override
   Widget build(BuildContext context) {
     return   Container(
@@ -50,9 +51,7 @@ class CustomSlideTExt extends StatelessWidget {
             ),
           ),
           InkWell(
-              onTap: () {
-                
-              },
+              onTap: onTap,
               child: CircleAvatar(radius: 18,backgroundColor: splash_button_color,backgroundImage: AssetImage("Assets/Icons/i_icon.png"),))
         ],
       ),
