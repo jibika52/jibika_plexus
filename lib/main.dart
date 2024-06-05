@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       ),
 
       //     home:SplashScreen1(),
-      home:OTPScreen(),
+      home:LoginScreenSlide(),
 
     );
   }

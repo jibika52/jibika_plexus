@@ -33,6 +33,7 @@ class LoginScreenSlideState extends State<LoginScreenSlide>
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: Main_Theme_SplashScreenColor,
         body: Container(
           decoration: BoxDecoration(
