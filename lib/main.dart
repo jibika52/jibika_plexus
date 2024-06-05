@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'View/Auth/CompanyRegistrationFormScreen/company_registration_form_screen.dart';
 import 'View/Auth/OtpScreen/otp_screen.dart';
 import 'View/Auth/SplashScreen/splash_screen1.dart';
 import 'View/LoginScreen/login_screen.dart';
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       ),
 
       //     home:SplashScreen1(),
-      home:LoginScreenSlide(),
+      home:CompanyRegistrationScreen(),
 
     );
   }
