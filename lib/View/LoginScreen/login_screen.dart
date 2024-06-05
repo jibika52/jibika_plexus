@@ -8,6 +8,7 @@ import 'package:jibika_plexus/CustomWidget/CustomSlideText/custom_slide_tex.dart
 import 'package:jibika_plexus/CustomWidget/CustomTExtFormField/Jibika_custom_text_from_field.dart';
 import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
+import 'package:jibika_plexus/View/Auth/CompanyRegistrationFormScreen/company_registration_form_screen.dart';
 import 'package:jibika_plexus/View/Auth/OtpScreen/otp_screen.dart';
 import 'package:marquee/marquee.dart';
 
@@ -262,7 +263,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(height: h*0.061,),
                 /// Forget Password section
                 Center(
-                  child: CustomText(fontSize: 17, fontWeight: FontWeight.w500, text: "Register as a Company", letterSpacing: 0.2),
+                  child: InkWell(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => CompanyRegistrationScreen(),));
+                      },
+                      child: CustomText(fontSize: 17, fontWeight: FontWeight.w500, text: "Register as a Company", letterSpacing: 0.2)),
                 )   ,
 
 
