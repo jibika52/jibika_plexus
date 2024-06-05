@@ -63,6 +63,7 @@ dependencies:
   country_picker: ^2.0.26
   flutter_localization: ^0.2.0
   ## OTP
+
   pinput: ^3.0.1
 
 dev_dependencies:
