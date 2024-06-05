@@ -1,6 +1,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:jibika_plexus/CustomWidget/CustomBootomSplashBar/custom_bootom_splash_bar.dart';
 import 'package:jibika_plexus/View/LoginScreen/login_screen.dart';
 import 'package:marquee/marquee.dart';
 
@@ -43,22 +44,8 @@ class LoginScreenSlideState extends State<LoginScreenSlide>
              child: LoginScreen(),
            ),
         ),
-          bottomNavigationBar:  Container(
-            height: 50,
-            width: double.infinity,
-            color: CustomButtomColor,
-            padding: EdgeInsets.only(
-                left: 20,right: 20
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                ColorCustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "Help", letterSpacing: 0.2,textColor: Main_Theme_SplashScreenColor),
-                ColorCustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "Our client", letterSpacing: 0.2,textColor: Main_Theme_SplashScreenColor),
-                ColorCustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "Privacy", letterSpacing: 0.2,textColor: Main_Theme_SplashScreenColor),
-              ],
-            ),
-          )
+          /// Splash Bootom Bar
+          bottomNavigationBar:  CustomBootomSplashBar()
       ),
     );
   }
