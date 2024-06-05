@@ -62,6 +62,7 @@ dependencies:
   # Country Code get from this package
   country_picker: ^2.0.26
   flutter_localization: ^0.2.0
+  #SVG picture
   ## OTP
   pinput: ^3.0.1
 

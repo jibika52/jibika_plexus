@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:jibika_plexus/CustomWidget/CustomButton/custom_button.dart';
 import 'package:jibika_plexus/CustomWidget/CustomCheckSection/custom_check_section.dart';
 import 'package:jibika_plexus/CustomWidget/CustomSlideText/custom_slide_tex.dart';
+import 'package:jibika_plexus/CustomWidget/CustomTExtFormField/Jibika_custom_text_from_field.dart';
 import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
 import 'package:jibika_plexus/View/Auth/OtpScreen/otp_screen.dart';
@@ -159,69 +160,73 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       SizedBox(height: h*0.03,),
+                      JibikaCustomTextFromField(controller: _passwordController, height: 40, img: "Assets/Icons/lock.png", hinttext: "Password", keyboardType: TextInputType.text, obscureText: false),
+                      //
+                      // Container(
+                      //   height: 40,
+                      //   width: double.infinity,
+                      //   child: Row(
+                      //     children: [
+                      //       Padding(
+                      //         padding: const EdgeInsets.only(top: 18,right: 10.0),
+                      //         child: Container(
+                      //           height: 60,
+                      //           width: 36,
+                      //           decoration: BoxDecoration(
+                      //             borderRadius: BorderRadius.only(
+                      //               topLeft: Radius.circular(11),
+                      //               bottomLeft: Radius.circular(11),
+                      //             ),
+                      //           ),
+                      //           alignment: Alignment.center,
+                      //           child: Row(
+                      //             children: [
+                      //               Image.asset("Assets/Icons/lock.png",height: 22,width: 19,fit: BoxFit.fill,),
+                      //
+                      //
+                      //             ],
+                      //           ),
+                      //         ),
+                      //       ),
+                      //       Expanded(
+                      //         child: TextFormField(
+                      //           style: GoogleFonts.poppins(
+                      //               color: Main_Theme_textColor,
+                      //               fontSize: 16,fontWeight: FontWeight.w500
+                      //               ,letterSpacing: 0.2
+                      //
+                      //           ),
+                      //           controller: _passwordController,
+                      //           validator: (value) {
+                      //             if (value!.isEmpty) {
+                      //               return "please enter  numbers only";
+                      //             } else {
+                      //               return null;
+                      //             }
+                      //           },
+                      //           decoration: InputDecoration(
+                      //             hintStyle: GoogleFonts.poppins(
+                      //                 color: Main_Theme_textColor.withOpacity(0.5),
+                      //                 fontSize: 16,
+                      //                 fontWeight: FontWeight.w400,
+                      //                 letterSpacing: 0.2
+                      //             ),
+                      //             errorStyle: TextStyle(
+                      //               fontSize: 0.1,
+                      //             ),
+                      //             hintText: 'Password',
+                      //             contentPadding: EdgeInsets.symmetric(
+                      //                 horizontal: 15, vertical: 5),
+                      //             /// prefix icon ///
+                      //           ),
+                      //         ),
+                      //       ),
+                      //     ],
+                      //   ),
+                      // ),
+                      //
 
-                      Container(
-                        height: 40,
-                        width: double.infinity,
-                        child: Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(top: 18,right: 10.0),
-                              child: Container(
-                                height: 60,
-                                width: 36,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(11),
-                                    bottomLeft: Radius.circular(11),
-                                  ),
-                                ),
-                                alignment: Alignment.center,
-                                child: Row(
-                                  children: [
-                                    Image.asset("Assets/Icons/lock.png",height: 22,width: 19,fit: BoxFit.fill,),
 
-
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              child: TextFormField(
-                                style: GoogleFonts.poppins(
-                                    color: Main_Theme_textColor,
-                                    fontSize: 16,fontWeight: FontWeight.w500
-                                    ,letterSpacing: 0.2
-
-                                ),
-                                controller: _passwordController,
-                                validator: (value) {
-                                  if (value!.isEmpty) {
-                                    return "please enter  numbers only";
-                                  } else {
-                                    return null;
-                                  }
-                                },
-                                decoration: InputDecoration(
-                                  hintStyle: GoogleFonts.poppins(
-                                      color: Main_Theme_textColor.withOpacity(0.5),
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w400,
-                                      letterSpacing: 0.2
-                                  ),
-                                  errorStyle: TextStyle(
-                                    fontSize: 0.1,
-                                  ),
-                                  hintText: 'Password',
-                                  contentPadding: EdgeInsets.symmetric(
-                                      horizontal: 15, vertical: 5),
-                                  /// prefix icon ///
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
                       SizedBox(height: h*0.05,),
                       /// Save information section & Forget Password section
                       Container(

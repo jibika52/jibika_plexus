@@ -35,6 +35,9 @@ const  splash_button_color=Color(0xff267862);
 /// CustomButton Color
 const  CustomButtomColor=Color(0xff267862);
 
+/// Company Profile default Color
+
+const CompanyProfileDefaultColor=Color(0xffE6E6E6);
 
 
 
