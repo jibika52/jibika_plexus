@@ -22,7 +22,7 @@ class LoginScreenSlideState extends State<LoginScreenSlide>
     super.initState();
 
     controller =
-        AnimationController(vsync: this, duration: Duration(milliseconds:1200 ));
+        AnimationController(vsync: this, duration: Duration(milliseconds:2000 ));
         position = Tween<Offset>(begin: Offset(-0.0, 4.0), end: Offset.zero)
         .animate(CurvedAnimation(parent: controller, curve: Curves.decelerate));
     controller.forward();
