@@ -34,7 +34,7 @@ class CustomSplashMenue extends StatelessWidget {
             ],
           ),
         ),
-SizedBox(width: 20,),
+SizedBox(width: MediaQuery.of(context).size.width*0.020,),
         Expanded(
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,

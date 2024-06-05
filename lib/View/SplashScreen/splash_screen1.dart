@@ -98,7 +98,7 @@ class _SplashScreen1State extends State<SplashScreen1> {
                     left: 0,
                     right: 0,
                     child: Container(
-                        padding: const EdgeInsets.only(left: 20.0, right: 20),
+                        padding: const EdgeInsets.only(left:15, right: 15),
                         alignment: Alignment.center,
                         child: CustomSplashMenue(
                             image1: "Assets/circle_count1.png",
@@ -112,7 +112,7 @@ class _SplashScreen1State extends State<SplashScreen1> {
                 height: 15,
               ),
               Container(
-                  padding: const EdgeInsets.only(left: 20.0, right: 20),
+                  padding: const EdgeInsets.only(left:15, right: 15),
                   alignment: Alignment.center,
                   child: CustomSplashMenue(
                       image1: "Assets/circle_count3.png",
@@ -123,7 +123,7 @@ class _SplashScreen1State extends State<SplashScreen1> {
                 height: 15,
               ),
               Container(
-                  padding: const EdgeInsets.only(left: 20.0, right: 20),
+                  padding: const EdgeInsets.only(left:15, right: 15),
                   alignment: Alignment.center,
                   child: CustomSplashMenue(
                       image1: "Assets/circle_count5.png",
@@ -134,7 +134,7 @@ class _SplashScreen1State extends State<SplashScreen1> {
                 height: 15,
               ),
               Container(
-                  padding: const EdgeInsets.only(left: 20.0, right: 20),
+                  padding: const EdgeInsets.only(left:15, right: 15),
                   alignment: Alignment.center,
                   child: CustomSplashMenue(
                       image1: "Assets/circle_count7.png",

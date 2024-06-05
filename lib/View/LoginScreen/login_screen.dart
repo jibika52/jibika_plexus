@@ -28,16 +28,18 @@ class _LoginScreenState extends State<LoginScreen> {
     double w=MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.red.withOpacity(0.0),
         body: Container(
           height: double.infinity,
           width: double.infinity,
           decoration: BoxDecoration(
-            image: DecorationImage(image: AssetImage("Assets/LoginScreenIMG/loginbackground.jpg"),fit:BoxFit.fill)
+          //  color: Colors.red.withOpacity(0.0)
+          //  image: DecorationImage(image: AssetImage("Assets/LoginScreenIMG/loginbackground.jpg"),fit:BoxFit.fill)
           ),
           child: SingleChildScrollView(
             child: Column(
               children: [
-                SizedBox(height: h*0.050),
+                SizedBox(height: h*0.030),
                 /// Text Slide
                 CustomSlideTExt(text: "Revolutionize Your Workforce Management with Our Jibika payscale Mobile App"
                   , onTap: () {
@@ -58,7 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: Row(
                           children: [
                             InkWell(
-            
+
                               onTap: () {
                                 showCountryPicker(
                                     context: context,
@@ -84,19 +86,19 @@ class _LoginScreenState extends State<LoginScreen> {
                                         ),
                                       ),
                                     ),
-            
+
                                     onSelect: (Country country) {
-            
+
                                       print('Select country: ${country.displayName}');
                                       print('Select flagEmoji: ${country.flagEmoji}');
-            
+
                                       setState(() {
                                         countruyCode =
                                         '+${country.phoneCode}';
                                       });
                                     });
                               },
-            
+
                               child: Padding(
                                 padding: const EdgeInsets.only(top: 18,right: 10.0),
                                 child: Container(
@@ -117,7 +119,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       SizedBox(width: 5,),
                                       CustomText(
                                           fontSize: 16, fontWeight: FontWeight.w500, text: "$countruyCode", letterSpacing: 0.2)
-            
+
                                     ],
                                   ),
                                 ),
@@ -160,7 +162,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       SizedBox(height: h*0.03,),
-            
+
                       Container(
                         height: 40,
                         width: double.infinity,
@@ -181,8 +183,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                 child: Row(
                                   children: [
                                     Image.asset("Assets/Icons/lock.png",height: 22,width: 19,fit: BoxFit.fill,),
-            
-            
+
+
                                   ],
                                 ),
                               ),
@@ -238,15 +240,15 @@ class _LoginScreenState extends State<LoginScreen> {
                             Text("Forgot Password",
                               style: GoogleFonts.poppins(
                                 decoration: TextDecoration.underline,
-                              fontSize: 16,fontWeight: FontWeight.w500,
-                              color: Main_Theme_textColor.withOpacity(0.5),
-                            ),)
+                                fontSize: 16,fontWeight: FontWeight.w500,
+                                color: Main_Theme_textColor.withOpacity(0.5),
+                              ),)
                           ],
                         ),
                       ),
 
 
-                       SizedBox(height: h*0.05,),
+                      SizedBox(height: h*0.05,),
                       /// Login
 
                       CustomButton(onTap: () {
@@ -254,36 +256,20 @@ class _LoginScreenState extends State<LoginScreen> {
                     ],
                   ),
                 ),
-                SizedBox(height: h*0.02,),
-               /// Forget Password section
-               Center(
-                 child: CustomText(fontSize: 17, fontWeight: FontWeight.w500, text: "Register as a Company", letterSpacing: 0.2),
-               )   ,
-                SizedBox(height: h*0.01,),
+                SizedBox(height: h*0.061,),
+                /// Forget Password section
                 Center(
-                 child: CustomText(fontSize: 17, fontWeight: FontWeight.w500, text: "Register as a User", letterSpacing: 0.2),
-               ),
+                  child: CustomText(fontSize: 17, fontWeight: FontWeight.w500, text: "Register as a Company", letterSpacing: 0.2),
+                )   ,
+
+
                 SizedBox(height: h*0.118,),
-                Container(
-                  height: 50,
-                  width: double.infinity,
-                  color: CustomButtomColor,
-                  padding: EdgeInsets.only(
-                    left: 20,right: 20
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      ColorCustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "Help", letterSpacing: 0.2,textColor: Main_Theme_SplashScreenColor),
-                      ColorCustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "Our client", letterSpacing: 0.2,textColor: Main_Theme_SplashScreenColor),
-                      ColorCustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "Privacy", letterSpacing: 0.2,textColor: Main_Theme_SplashScreenColor),
-                    ],
-                  ),
-                )
+
               ],
             ),
           ),
         ),
+
       ),
     );
   }

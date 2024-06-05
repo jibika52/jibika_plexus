@@ -21,6 +21,11 @@ class SplashScreen3 extends StatefulWidget {
 
 class _SplashScreen3State extends State<SplashScreen3> {
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
     double c_h = MediaQuery.of(context).size.height;
     double c_w = MediaQuery.of(context).size.width;
