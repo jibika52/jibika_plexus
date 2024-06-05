@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jibika_plexus/CustomWidget/CustomAppBar/CustomDefaultAppBar/custom_default_app_bar.dart';
+import 'package:jibika_plexus/CustomWidget/CustomButton/custom_button.dart';
 import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
 import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
@@ -276,7 +277,10 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
           
               SizedBox(height:h*0.02),
               JibikaCustomTextFromField(controller: _passwordController, height: 60, img: "Assets/Icons/lock.png", hinttext: "Confirm Password", keyboardType: TextInputType.text, obscureText: false),
-          
+              SizedBox(height:h*0.02),
+              CustomButton(onTap: () {
+
+              }, text: "Registration", button_text_fontSize: 16, button_height: 55, custom_button_collor: CustomButtomColor, button_text_color: Colors.white, borderRadius: 50)
           
             ],
           ),
