@@ -3,10 +3,10 @@ import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
 import 'package:jibika_plexus/CustomWidget/CustomSplashMenue/custom_splash_menue.dart';
 import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
-import 'package:jibika_plexus/View/SplashScreen/splash_screen1.dart';
-import 'package:jibika_plexus/View/SplashScreen/splash_screen3.dart';
+import 'package:jibika_plexus/View/Auth/SplashScreen/splash_screen1.dart';
+import 'package:jibika_plexus/View/Auth/SplashScreen/splash_screen3.dart';
 
-import '../../CustomWidget/TermsAndCondition/terms_and_condition_part.dart';
+import '../../../CustomWidget/TermsAndCondition/terms_and_condition_part.dart';
 
 class SplashScreen2 extends StatefulWidget {
   const SplashScreen2({super.key});
@@ -16,21 +16,7 @@ class SplashScreen2 extends StatefulWidget {
 }
 
 class _SplashScreen2State extends State<SplashScreen2> {
-  @override
-  void initState() {
-    Future.delayed(
-      Duration(seconds: 4),
-      () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => SplashScreen3(),
-            ));
-      },
-    );
-    // TODO: implement initState
-    super.initState();
-  }
+
 
   @override
   Widget build(BuildContext context) {

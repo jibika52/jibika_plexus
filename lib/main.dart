@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'View/Auth/OtpScreen/otp_screen.dart';
+import 'View/Auth/SplashScreen/splash_screen1.dart';
 import 'View/LoginScreen/login_screen.dart';
 import 'View/LoginScreen/login_screen_screen2.dart';
-import 'View/SplashScreen/splash_screen1.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,9 +19,10 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-        home:LoginScreenSlide(),
-      //    home:SplashScreen1(),
-       //     home:SplashScreen3(),
+
+      //     home:SplashScreen1(),
+      home:OTPScreen(),
+
     );
   }
 }

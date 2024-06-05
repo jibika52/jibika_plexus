@@ -7,6 +7,7 @@ import 'package:jibika_plexus/CustomWidget/CustomCheckSection/custom_check_secti
 import 'package:jibika_plexus/CustomWidget/CustomSlideText/custom_slide_tex.dart';
 import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
+import 'package:jibika_plexus/View/Auth/OtpScreen/otp_screen.dart';
 import 'package:marquee/marquee.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -32,10 +33,6 @@ class _LoginScreenState extends State<LoginScreen> {
         body: Container(
           height: double.infinity,
           width: double.infinity,
-          decoration: BoxDecoration(
-          //  color: Colors.red.withOpacity(0.0)
-          //  image: DecorationImage(image: AssetImage("Assets/LoginScreenIMG/loginbackground.jpg"),fit:BoxFit.fill)
-          ),
           child: SingleChildScrollView(
             child: Column(
               children: [
@@ -252,6 +249,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       /// Login
 
                       CustomButton(onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => OTPScreen(),));
                       }, text: "Login", button_text_fontSize: 17, fontWeight: FontWeight.bold,button_height: 50, custom_button_collor: CustomButtomColor, button_text_color:Main_Theme_SplashScreenColor, borderRadius: 50)
                     ],
                   ),
@@ -268,6 +266,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ],
             ),
           ),
+
         ),
 
       ),

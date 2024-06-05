@@ -4,7 +4,7 @@ import 'package:jibika_plexus/CustomWidget/CustomSplashMenue/custom_splash_menue
 import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 import 'package:jibika_plexus/CustomWidget/TermsAndCondition/terms_and_condition_part.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
-import 'package:jibika_plexus/View/SplashScreen/splash_screen2.dart';
+import 'package:jibika_plexus/View/Auth/SplashScreen/splash_screen2.dart';
 
 class SplashScreen1 extends StatefulWidget {
   const SplashScreen1({super.key});
@@ -14,16 +14,6 @@ class SplashScreen1 extends StatefulWidget {
 }
 
 class _SplashScreen1State extends State<SplashScreen1> {
-  @override
-  void initState() {
-    Future.delayed(Duration(
-      seconds: 5
-    ),() {
-      Navigator.push(context, MaterialPageRoute(builder: (context) => SplashScreen2(),));
-    },);
-    // TODO: implement initState
-    super.initState();
-  }
   @override
   Widget build(BuildContext context) {
     double c_h = MediaQuery.of(context).size.height;
@@ -145,20 +135,25 @@ class _SplashScreen1State extends State<SplashScreen1> {
               SizedBox(
                 height: c_h * 0.035,
               ),
-              Container(
-                  height: 30,
-                  width: double.infinity,
-                  alignment: Alignment.center,
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 20.0, right: 30),
-                    child: Center(
-                        child: CustomImageSction(
-                            height: 25,
-                            width: 93,
-                            radius: 1,
-                            image:
-                                "Assets/Gif/first_direction_splash_button.png")),
-                  )),
+              InkWell(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => SplashScreen2(),));
+                },
+                child: Container(
+                    height: 30,
+                    width: double.infinity,
+                    alignment: Alignment.center,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 20.0, right: 30),
+                      child: Center(
+                          child: CustomImageSction(
+                              height: 25,
+                              width: 93,
+                              radius: 1,
+                              image:
+                                  "Assets/Gif/first_direction_splash_button.png")),
+                    )),
+              ),
               SizedBox(
                 height: c_h * 0.035,
               ),

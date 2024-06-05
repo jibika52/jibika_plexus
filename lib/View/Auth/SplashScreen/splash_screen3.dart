@@ -6,12 +6,10 @@ import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
 import 'package:jibika_plexus/CustomWidget/CustomSplashMenue/custom_splash_menue.dart';
 import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
-import 'package:jibika_plexus/View/LoginScreen/login_screen.dart';
-import 'package:jibika_plexus/View/SplashScreen/splash_screen2.dart';
+import 'package:jibika_plexus/View/Auth/SplashScreen/splash_screen2.dart';
 
-import '../../CustomWidget/TermsAndCondition/terms_and_condition_part.dart';
-import '../LoginScreen/login_screen_screen2.dart';
-
+import '../../../CustomWidget/TermsAndCondition/terms_and_condition_part.dart';
+import '../../LoginScreen/login_screen_screen2.dart';
 class SplashScreen3 extends StatefulWidget {
   const SplashScreen3({super.key});
 
@@ -20,11 +18,6 @@ class SplashScreen3 extends StatefulWidget {
 }
 
 class _SplashScreen3State extends State<SplashScreen3> {
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
   @override
   Widget build(BuildContext context) {
     double c_h = MediaQuery.of(context).size.height;
