@@ -10,6 +10,7 @@ import 'package:jibika_plexus/Utils/constants.dart';
 
 import '../../../CustomWidget/CustomTExtFormField/Jibika_custom_text_from_field.dart';
 
+
 class CompanyRegistrationScreen extends StatefulWidget {
   const CompanyRegistrationScreen({super.key});
 
@@ -21,10 +22,7 @@ class CompanyRegistrationScreen extends StatefulWidget {
 class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
   @override
   Widget build(BuildContext context) {
-    final _formKey = GlobalKey<FormState>();
     String countruyCode = '+88';
-    bool is_check=true;
-
     TextEditingController _passwordController=TextEditingController();
     TextEditingController _con_passwordController=TextEditingController();
     TextEditingController _phoneController=TextEditingController();
@@ -111,7 +109,7 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                   children: [
                     Container(
                       padding: const EdgeInsets.only(right: 8.0,top: 7),
-                      child: Image.asset("Assets/Icons/crbuisness.png",height: 22,width: 19,fit: BoxFit.fill,),
+                      child: Image.asset("Assets/Icons/crbuisness.png",height: 21,width: 21,fit: BoxFit.fill,color: Main_Theme_textColor.withOpacity(0.6),),
                     ),
 
                     Expanded(
@@ -131,7 +129,7 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                             autofocus: false,
                             isExpanded: true,
                             hint: InkWell(
-                                onTap: () {}, child: ColorCustomText(fontSize: 16, fontWeight: FontWeight.w500, text: "Business Type", letterSpacing: 0.2,textColor:Main_Theme_textColor.withOpacity(0.4))),
+                                onTap: () {}, child: ColorCustomText(fontSize: 16, fontWeight: FontWeight.w500, text: "  Business Type", letterSpacing: 0.2,textColor:Main_Theme_textColor.withOpacity(0.4))),
                             // Not necessary for Option 1
                             value: busnessid,
                             onChanged: (newValue) {
@@ -153,95 +151,25 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                 ),
               ),
               SizedBox(height:h*0.01),
-              JibikaCustomTextFromField(controller: _companyNumberController, height: 50, img: "Assets/Icons/lock.png", hinttext: "Number of Employee", keyboardType: TextInputType.text, obscureText: false),
+              JibikaCustomTextFromField(controller: _companyNumberController, height: 50, img: "Assets/Icons/crppol.png", hinttext: "Number of Employee", keyboardType: TextInputType.text, obscureText: false),
               SizedBox(height:h*0.01),
-              Container(
-                height: 50,
-                width: double.infinity,
-                child: Row(
-                  children: [
-                    InkWell(
-
-                      onTap: () {
-                        showCountryPicker(
-                            context: context,
-                            countryListTheme: CountryListThemeData(
-                              flagSize: 25,
-                              backgroundColor: Colors.white,
-                              textStyle: TextStyle(
-                                  fontSize: 16, color: Colors.blueGrey),
-                              bottomSheetHeight: 500,
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(20.0),
-                                topRight: Radius.circular(20.0),
-                              ),
-                              inputDecoration: InputDecoration(
-                                labelText: 'Search',
-                                hintText: 'Start typing to search',
-                                prefixIcon: const Icon(Icons.search),
-                                border: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: icons_green_color
-                                        .withOpacity(0.2),
-                                  ),
-                                ),
-                              ),
-                            ),
-
-                            onSelect: (Country country) {
-
-                              print('Select country: ${country.displayName}');
-
-                              setState(() {
-                                countruyCode = '+${country.phoneCode}';
-                              });
-                            });
-                      },
-
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 18,right: 10.0),
-                        child: Container(
-                          height: 60,
-                          width: 124,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(11),
-                              bottomLeft: Radius.circular(11),
-                            ),
-                          ),
-                          alignment: Alignment.center,
-                          child: Row(
-                            children: [
-                              Image.asset("Assets/Icons/call.png",height: 20,width: 25,fit: BoxFit.fill,),
-                              SizedBox(width: 20,),
-                              Image.asset("Assets/Icons/bdflaf.png",height: 20,width: 28,fit: BoxFit.fill,),
-                              SizedBox(width: 5,),
-                              ColorCustomText(
-                                textColor: Main_Theme_textColor.withOpacity(0.4),
-                                  fontSize: 16, fontWeight: FontWeight.w500, text: "$countruyCode", letterSpacing: 0.2)
-
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    Expanded(child: Text("data"))
-                  ],
-                ),
-              ),
-
+              JibikaCustomTextFromField2(controller: _phoneController, height: 50, img: "Assets/Icons/call.png", hinttext: "Phone", keyboardType: TextInputType.text, obscureText: false),
               SizedBox(height:h*0.02),
-              JibikaCustomTextFromField(controller: _companyEmailController, height: 50, img: "Assets/Icons/lock.png", hinttext: "Email", keyboardType: TextInputType.text, obscureText: false),
+              JibikaCustomTextFromField(controller: _companyEmailController, height: 50, img: "Assets/Icons/cr_email.png", hinttext: "Email", keyboardType: TextInputType.text, obscureText: false),
           
               SizedBox(height:h*0.02),
-              JibikaCustomTextFromField(controller: _passwordController, height: 50, img: "Assets/Icons/lock.png", hinttext: "New Password", keyboardType: TextInputType.text, obscureText: false),
+              JibikaCustomTextFromField(suffixIcon: IconButton(onPressed: () {
+
+              }, icon: Icon(Icons.visibility_off,color: Main_Theme_textColor.withOpacity(0.5),)),controller: _passwordController, height: 50, img: "Assets/Icons/cr_lock.png", hinttext: "New Password", keyboardType: TextInputType.text, obscureText: false),
           
               SizedBox(height:h*0.02),
-              JibikaCustomTextFromField(controller: _con_passwordController, height: 50, img: "Assets/Icons/lock.png", hinttext: "Confirm Password", keyboardType: TextInputType.text, obscureText: false),
+              JibikaCustomTextFromField(suffixIcon: IconButton(onPressed: () {
+
+              }, icon: Icon(Icons.visibility_off,color: Main_Theme_textColor.withOpacity(0.5),)),controller: _con_passwordController, height: 50, img: "Assets/Icons/cr_lock.png", hinttext: "Confirm Password", keyboardType: TextInputType.text, obscureText: false),
               SizedBox(height:h*0.03),
               CustomButton(onTap: () {
 
-              }, text: "Registration", button_text_fontSize: 16, button_height: 50, custom_button_collor: CustomButtomColor, button_text_color: Colors.white, borderRadius: 50)
+              }, text: "Next", button_text_fontSize: 16, button_height: 50, custom_button_collor: CustomButtomColor, button_text_color: Colors.white, borderRadius: 50)
 
             ],
           ),

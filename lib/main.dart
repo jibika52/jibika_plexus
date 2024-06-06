@@ -23,9 +23,8 @@ class MyApp extends StatelessWidget {
       ),
 
       //    home:SplashScreen1(),
-      //  home:CompanyRegistrationScreen(),
-         home:LoginScreenSlide(),
-
+       home:CompanyRegistrationScreen(),
+      //    home:LoginScreenSlide(),
     );
   }
 }
