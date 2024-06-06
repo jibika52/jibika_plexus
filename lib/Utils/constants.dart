@@ -15,7 +15,7 @@ const Main_Theme_textColor = Color(0xff333333);
 const Main_Theme_textColor_tir_Condition = Color(0xffACC027);
 
 /// All text white color
-const Main_Theme_SplashScreenColor = Color(0xffffffff);
+const Main_Theme_WhiteCollor = Color(0xffffffff);
 const th3_CustomButtomColor = Color(0xffD4EDE7);
 
 /// for TextFormField //

@@ -26,7 +26,11 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
     bool is_check=true;
 
     TextEditingController _passwordController=TextEditingController();
+    TextEditingController _con_passwordController=TextEditingController();
     TextEditingController _phoneController=TextEditingController();
+    TextEditingController _companyNameController=TextEditingController();
+    TextEditingController _companyNumberController=TextEditingController();
+    TextEditingController _companyEmailController=TextEditingController();
     double h=MediaQuery.of(context).size.height;
     double w=MediaQuery.of(context).size.width;
     return Scaffold(
@@ -57,7 +61,7 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                       color: CompanyProfileDefaultColor,
                       padding: EdgeInsets.all(20),
                       child: SvgPicture.asset(
-                        'Assets/svgImage/company_image.svg',
+                        'Assets/Logo/Jibika.svg',
                         height: 67.0,
                         width: 67.0,
                         allowDrawingOutsideViewBox: true,
@@ -97,7 +101,7 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                 ],
               ),
               SizedBox(height:h*0.02),
-              JibikaCustomTextFromField(controller: _passwordController, height: 60, img: "Assets/Icons/lock.png", hinttext: "Company Name", keyboardType: TextInputType.text, obscureText: false),
+              JibikaCustomTextFromField(controller: _companyNameController, height: 50, img: "Assets/Icons/lock.png", hinttext: "Company Name", keyboardType: TextInputType.text, obscureText: false),
           
               SizedBox(height:h*0.02),
               Container(
@@ -150,7 +154,7 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                 ),
               ),
               SizedBox(height:h*0.01),
-              JibikaCustomTextFromField(controller: _passwordController, height: 60, img: "Assets/Icons/lock.png", hinttext: "Number of Employee", keyboardType: TextInputType.text, obscureText: false),
+              JibikaCustomTextFromField(controller: _companyNumberController, height: 50, img: "Assets/Icons/lock.png", hinttext: "Number of Employee", keyboardType: TextInputType.text, obscureText: false),
               SizedBox(height:h*0.01),
               Container(
                 height: 50,
@@ -188,11 +192,9 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                             onSelect: (Country country) {
 
                               print('Select country: ${country.displayName}');
-                              print('Select flagEmoji: ${country.flagEmoji}');
 
                               setState(() {
-                                countruyCode =
-                                '+${country.phoneCode}';
+                                countruyCode = '+${country.phoneCode}';
                               });
                             });
                       },
@@ -224,62 +226,24 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                         ),
                       ),
                     ),
-                    Expanded(
-                      child: TextFormField(
-                        style: GoogleFonts.poppins(
-                            color: Main_Theme_textColor,
-                            fontSize: 16,fontWeight: FontWeight.w500
-                            ,letterSpacing: 0.2
-
-                        ),
-                        controller: _phoneController,
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return "please enter  numbers only";
-                          } else {
-                            return null;
-                          }
-                        },
-                        keyboardType: TextInputType.number,
-                        decoration: InputDecoration(
-                          labelStyle: GoogleFonts.poppins(
-                              color: Main_Theme_textColor.withOpacity(0.4),
-                              fontSize: 16,
-                              fontWeight: FontWeight.w400,
-                              letterSpacing: 0.2
-                          ),
-                          hintStyle: GoogleFonts.poppins(
-                              color: Main_Theme_textColor.withOpacity(0.4),
-                              fontSize: 16,fontWeight: FontWeight.w400
-                              ,letterSpacing: 0.2
-                          ),
-                          errorStyle: TextStyle(
-                            fontSize: 0.1,
-                          ),
-                          labelText: "Mobile Number",
-                          contentPadding: EdgeInsets.symmetric(
-                              horizontal: 15, vertical: 5),
-                          /// prefix icon ///
-                        ),
-                      ),
-                    ),
+                    Expanded(child: Text("data"))
                   ],
                 ),
               ),
 
               SizedBox(height:h*0.02),
-              JibikaCustomTextFromField(controller: _passwordController, height: 60, img: "Assets/Icons/lock.png", hinttext: "Email", keyboardType: TextInputType.text, obscureText: false),
+              JibikaCustomTextFromField(controller: _companyEmailController, height: 50, img: "Assets/Icons/lock.png", hinttext: "Email", keyboardType: TextInputType.text, obscureText: false),
           
               SizedBox(height:h*0.02),
-              JibikaCustomTextFromField(controller: _passwordController, height: 60, img: "Assets/Icons/lock.png", hinttext: "New Password", keyboardType: TextInputType.text, obscureText: false),
+              JibikaCustomTextFromField(controller: _passwordController, height: 50, img: "Assets/Icons/lock.png", hinttext: "New Password", keyboardType: TextInputType.text, obscureText: false),
           
               SizedBox(height:h*0.02),
-              JibikaCustomTextFromField(controller: _passwordController, height: 60, img: "Assets/Icons/lock.png", hinttext: "Confirm Password", keyboardType: TextInputType.text, obscureText: false),
-              SizedBox(height:h*0.02),
+              JibikaCustomTextFromField(controller: _con_passwordController, height: 50, img: "Assets/Icons/lock.png", hinttext: "Confirm Password", keyboardType: TextInputType.text, obscureText: false),
+              SizedBox(height:h*0.03),
               CustomButton(onTap: () {
 
-              }, text: "Registration", button_text_fontSize: 16, button_height: 55, custom_button_collor: CustomButtomColor, button_text_color: Colors.white, borderRadius: 50)
-          
+              }, text: "Registration", button_text_fontSize: 16, button_height: 50, custom_button_collor: CustomButtomColor, button_text_color: Colors.white, borderRadius: 50)
+
             ],
           ),
         ),

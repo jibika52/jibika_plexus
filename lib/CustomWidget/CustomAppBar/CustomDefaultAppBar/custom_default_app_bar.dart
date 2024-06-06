@@ -13,7 +13,7 @@ class CustomDefaultAppBar extends StatelessWidget {
       padding: EdgeInsets.only(top: 10),
       child: AppBar(
         centerTitle: true,
-        backgroundColor:Main_Theme_SplashScreenColor,
+        backgroundColor:Main_Theme_WhiteCollor,
         leading: InkWell(
           onTap: onTap,
           child: Padding(

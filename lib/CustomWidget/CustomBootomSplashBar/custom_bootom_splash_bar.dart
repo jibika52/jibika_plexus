@@ -18,9 +18,9 @@ class CustomBootomSplashBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          ColorCustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "Help", letterSpacing: 0.2,textColor: Main_Theme_SplashScreenColor),
-          ColorCustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "Our client", letterSpacing: 0.2,textColor: Main_Theme_SplashScreenColor),
-          ColorCustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "Privacy", letterSpacing: 0.2,textColor: Main_Theme_SplashScreenColor),
+          ColorCustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "Help", letterSpacing: 0.2,textColor: Main_Theme_WhiteCollor),
+          ColorCustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "Our client", letterSpacing: 0.2,textColor: Main_Theme_WhiteCollor),
+          ColorCustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "Privacy", letterSpacing: 0.2,textColor: Main_Theme_WhiteCollor),
         ],
       ),
     );

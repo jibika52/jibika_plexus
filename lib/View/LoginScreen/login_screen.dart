@@ -1,6 +1,7 @@
 
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jibika_plexus/CustomWidget/CustomButton/custom_button.dart';
 import 'package:jibika_plexus/CustomWidget/CustomCheckSection/custom_check_section.dart';
@@ -19,12 +20,54 @@ class LoginScreen extends StatefulWidget {
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStateMixin {
+  late AnimationController controller;
+  late Animation<Offset> position;
+  late Animation logosize;
+  late Animation logoanimation;
+  late Animation logo_text_move;
+
+  @override
+  void initState() {
+  super.initState();
+
+Future.delayed(Duration(
+  seconds: 5
+),() {
+  setState(() {
+    GetStorage().write("val", "true");
+    print("AAAAAAAAAAAAAAAAAAAAAAAAA");
+  });
+  controller =
+      AnimationController(vsync: this, duration: Duration(milliseconds:2000 ));
+  position = Tween<Offset>(begin: Offset(-0.0, 4.0), end: Offset.zero)
+      .animate(CurvedAnimation(parent: controller, curve: Curves.decelerate));
+  logosize = Tween(begin: 60.0, end: 500.0)
+      .animate(CurvedAnimation(parent: controller, curve: Curves.decelerate));
+
+  logo_text_move = Tween(begin: 10.0, end:500.0)
+      .animate(CurvedAnimation(parent: controller, curve: Curves.decelerate));
+  controller.forward();
+
+  controller.addListener(() {
+    setState(() {
+      print("DDDDDDDDDDDDDDDD  ${logosize.value}");
+    });
+  });
+},);
+
+  }
+
+
+
+
+
   TextEditingController _phoneController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   String countruyCode = '+88';
   bool is_check=true;
+  bool is_iconClick=false;
   @override
   Widget build(BuildContext context) {
     double h=MediaQuery.of(context).size.height;
@@ -40,10 +83,88 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 SizedBox(height: h*0.030),
                 /// Text Slide
-                CustomSlideTExt(text: "Revolutionize Your Workforce Management with Our Jibika payscale Mobile App"
-                  , onTap: () {
+                // CustomSlideTExt(text: "Revolutionize Your Workforce Management with Our Jibika payscale Mobile App"
+                //   , onTap: () {
+                //
+                //   },),
+              GetStorage().read("val")=="false"?Container():  Container(
+                  width: logosize.value,
+                  height: 35,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(
+                    right: 10,
+                    left: 10,
+                  ),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(
+                        Radius.circular(20)
+                    ),
+                    color:is_iconClick==false? Color(0xffE6E6E6):
+                    Main_Theme_WhiteCollor
+                    ,
+                  ),
+                  //    padding: EdgeInsets.only(top: 5),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child:is_iconClick==false? Padding(
+                          padding: const EdgeInsets.only(top:4.0),
+                          child: Marquee(
+                            text: 'Revolutionize Your Workforce Management with Our Jibika payscale Mobile App',
+                            style: GoogleFonts.poppins(
+                                fontStyle: FontStyle.italic,
+                                fontWeight: FontWeight.w400,fontSize: 17,
+                                color: Main_Theme_textColor
+                            ),
+                            scrollAxis: Axis.horizontal,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            blankSpace: 20.0,
+                            velocity: 100.0,
+                            pauseAfterRound: Duration(seconds: 1),
+                            startPadding: 10.0,
+                            accelerationDuration: Duration(seconds: 1),
+                            accelerationCurve: Curves.linear,
+                            decelerationDuration: Duration(milliseconds: 2),
+                            decelerationCurve: Curves.easeOut,
+                          ),
+                        ) :
+                        Container(margin: EdgeInsets.symmetric(horizontal: 7),
+                          height: 35,
+                          width: double.infinity,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Container(
+                                width: 100,
+                                child: CustomButton(onTap: () {
 
-                  },),
+                                }, text: "Info", button_text_fontSize: 15, button_height: 35, custom_button_collor: CustomButtomColor, button_text_color: Main_Theme_WhiteCollor, borderRadius: 50),
+                              ),
+                              SizedBox(width: 7,),
+                              Container(
+                                width: 120,
+                                child: CustomButton(onTap: () {
+
+                                }, text: "Contact Us", button_text_fontSize: 15, button_height: 35, custom_button_collor: CustomButtomColor, button_text_color: Main_Theme_WhiteCollor, borderRadius: 50),
+                              )
+
+
+                            ],
+                          ),
+                        )
+                        ,
+                      ),
+                      InkWell(
+                          onTap: () {
+                            setState(() {
+                              is_iconClick=!is_iconClick;
+                            });
+                          },
+                          child: CircleAvatar(radius: 18,backgroundColor: CustomButtomColor,backgroundImage: AssetImage("Assets/Icons/i_icon.png"),))
+                    ],
+                  ),
+                ),
+
                 SizedBox(
                   height: h*0.28,
                 ),
@@ -256,7 +377,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                       CustomButton(onTap: () {
                         Navigator.push(context, MaterialPageRoute(builder: (context) => OTPScreen(),));
-                      }, text: "Login", button_text_fontSize: 17, fontWeight: FontWeight.bold,button_height: 50, custom_button_collor: CustomButtomColor, button_text_color:Main_Theme_SplashScreenColor, borderRadius: 50)
+                      }, text: "Login", button_text_fontSize: 17, fontWeight: FontWeight.bold,button_height: 50, custom_button_collor: CustomButtomColor, button_text_color:Main_Theme_WhiteCollor, borderRadius: 50)
                     ],
                   ),
                 ),

@@ -35,7 +35,7 @@ class JibikaCustomTextFromField extends StatelessWidget {
               alignment: Alignment.center,
               child: Row(
                 children: [
-                  Image.asset("$img",height: 22,width: 19,fit: BoxFit.fill,color: Main_Theme_textColor,),
+                  Image.asset("$img",height: 22,width: 19,fit: BoxFit.fill,color: Main_Theme_textColor.withOpacity(0.7),),
 
 
                 ],
@@ -44,38 +44,50 @@ class JibikaCustomTextFromField extends StatelessWidget {
           ),
        //   Assets/Icons/lock.png
           Expanded(
-            child: TextFormField(
-              obscureText: obscureText,
-              keyboardType: keyboardType,
-              style: GoogleFonts.poppins(
-                  color: Main_Theme_textColor,
-                  fontSize: 15,fontWeight: FontWeight.w500
-                  ,letterSpacing: 0.2
-
+            child: Container(
+              decoration: BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(
+                    color: Main_Theme_textColor.withOpacity(0.3),
+                    width: 1
+                  )
+                )
               ),
-              controller: controller,
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return "please enter  numbers only";
-                } else {
-                  return null;
-                }
-              },
-              decoration: InputDecoration(
-              //  label:CustomText(fontSize: 10, fontWeight: FontWeight.w500, text: '$hinttext', letterSpacing: 0.2),
-                labelStyle: GoogleFonts.poppins(
-                    color: Main_Theme_textColor.withOpacity(0.4),
-                    fontSize: 16,
-                    fontWeight: FontWeight.w400,
-                    letterSpacing: 0.2
+              padding: EdgeInsets.only(top: 10),
+              child: TextFormField(
+                obscureText: obscureText,
+                keyboardType: keyboardType,
+                style: GoogleFonts.poppins(
+                    color: Main_Theme_textColor,
+                    fontSize: 15,fontWeight: FontWeight.w500
+                    ,letterSpacing: 0.2
+
                 ),
-                errorStyle: TextStyle(
-                  fontSize: 0.1,
+                controller: controller,
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return "please enter  numbers only";
+                  } else {
+                    return null;
+                  }
+                },
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                //  label:CustomText(fontSize: 10, fontWeight: FontWeight.w500, text: '$hinttext', letterSpacing: 0.2),
+                  labelStyle: GoogleFonts.poppins(
+                      color: Main_Theme_textColor.withOpacity(0.4),
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400,
+                      letterSpacing: 0.2
+                  ),
+                  errorStyle: TextStyle(
+                    fontSize: 0.1,
+                  ),
+                 labelText: '$hinttext',
+                  contentPadding: EdgeInsets.only(
+                      bottom: 10, top: 0,left: 10),
+                  /// prefix icon ///
                 ),
-               labelText: '$hinttext',
-                contentPadding: EdgeInsets.only(
-                    bottom: 10, top: 5,left: 10),
-                /// prefix icon ///
               ),
             ),
           ),

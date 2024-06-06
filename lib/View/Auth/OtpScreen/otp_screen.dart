@@ -99,7 +99,7 @@ class _OTPScreenState extends State<OTPScreen> {
                                    _fieldThree.text +
                                    _fieldFour.text;
                              });
-                           }, text: "Verify", button_text_fontSize: 16, button_height: 50, custom_button_collor: CustomButtomColor, button_text_color: Main_Theme_SplashScreenColor, borderRadius: 50),
+                           }, text: "Verify", button_text_fontSize: 16, button_height: 50, custom_button_collor: CustomButtomColor, button_text_color: Main_Theme_WhiteCollor, borderRadius: 50),
                          ),
                          const SizedBox(
                            height: 30,
@@ -223,7 +223,7 @@ class _OTPScreenState extends State<OTPScreen> {
 //                padding: const EdgeInsets.all(28.0),
 //                child: CustomButton(onTap: () {
 //
-//                }, text: "Confirm", button_text_fontSize: 16, button_height: 50, custom_button_collor: CustomButtomColor, button_text_color: Main_Theme_SplashScreenColor, borderRadius: 50),
+//                }, text: "Confirm", button_text_fontSize: 16, button_height: 50, custom_button_collor: CustomButtomColor, button_text_color: Main_Theme_WhiteCollor, borderRadius: 50),
 //              )
 //             ],
 //           ),

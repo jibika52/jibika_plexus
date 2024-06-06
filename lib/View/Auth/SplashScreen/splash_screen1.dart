@@ -22,7 +22,7 @@ class _SplashScreen1State extends State<SplashScreen1> {
       body: Container(
         height: double.infinity,
         width: double.infinity,
-        color: Main_Theme_SplashScreenColor,
+        color: Main_Theme_WhiteCollor,
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,

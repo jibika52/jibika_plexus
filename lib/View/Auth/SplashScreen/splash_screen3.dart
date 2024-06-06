@@ -27,7 +27,7 @@ class _SplashScreen3State extends State<SplashScreen3> {
         height: double.infinity,
         width: double.infinity,
         //  color: Main_3Theme_SplashScreenColor,
-        color: Main_Theme_SplashScreenColor,
+        color: Main_Theme_WhiteCollor,
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,

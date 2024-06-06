@@ -27,7 +27,7 @@ class _CustomSaveInfoSectionState extends State<CustomSaveInfoSection> {
             width: 22,
 padding: EdgeInsets.all(3),
             decoration: BoxDecoration(
-                color: Main_Theme_SplashScreenColor,
+                color: Main_Theme_WhiteCollor,
                 border: Border.all(
                     color: Main_Theme_textColor
                 ),
