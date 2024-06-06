@@ -61,7 +61,7 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                       color: CompanyProfileDefaultColor,
                       padding: EdgeInsets.all(20),
                       child: SvgPicture.asset(
-                        'Assets/Logo/Jibika.svg',
+                        'Assets/svgImage/company_image.svg',
                         height: 67.0,
                         width: 67.0,
                         allowDrawingOutsideViewBox: true,
@@ -101,7 +101,7 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                 ],
               ),
               SizedBox(height:h*0.02),
-              JibikaCustomTextFromField(controller: _companyNameController, height: 50, img: "Assets/Icons/lock.png", hinttext: "Company Name", keyboardType: TextInputType.text, obscureText: false),
+              JibikaCustomTextFromField(controller: _companyNameController, height: 50, img: "Assets/Icons/crppol.png", hinttext: "Company Name", keyboardType: TextInputType.text, obscureText: false),
           
               SizedBox(height:h*0.02),
               Container(
@@ -111,10 +111,9 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                   children: [
                     Container(
                       padding: const EdgeInsets.only(right: 8.0,top: 7),
-                      child: Image.asset("Assets/Icons/buisnesstype.png",height: 22,width: 19,fit: BoxFit.fill,),
+                      child: Image.asset("Assets/Icons/crbuisness.png",height: 22,width: 19,fit: BoxFit.fill,),
                     ),
 
-                    
                     Expanded(
                       child: Container(
                         margin: EdgeInsets.only(top: 10),
