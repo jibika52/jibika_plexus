@@ -85,7 +85,7 @@ class _OTPScreenState extends State<OTPScreen> {
                                children: [
                                  CustomText(fontSize: 16, fontWeight: FontWeight.w400, text: "If you didn’t receive a code!", letterSpacing: 0.2),
                                  SizedBox(width: 8,),
-                                 ColorCustomText(fontSize: 16, fontWeight: FontWeight.w400, text: "Resend", letterSpacing: 0.2,textColor:splash_button_color),
+                                 ColorCustomText(fontSize: 16, fontWeight: FontWeight.w400, text: "Resend", letterSpacing: 0.2,textColor:CustomButtomColor),
                                ],
                              )),
                          SizedBox(
@@ -99,7 +99,7 @@ class _OTPScreenState extends State<OTPScreen> {
                                    _fieldThree.text +
                                    _fieldFour.text;
                              });
-                           }, text: "Verify", button_text_fontSize: 16, button_height: 50, custom_button_collor: splash_button_color, button_text_color: Main_Theme_SplashScreenColor, borderRadius: 50),
+                           }, text: "Verify", button_text_fontSize: 16, button_height: 50, custom_button_collor: CustomButtomColor, button_text_color: Main_Theme_SplashScreenColor, borderRadius: 50),
                          ),
                          const SizedBox(
                            height: 30,

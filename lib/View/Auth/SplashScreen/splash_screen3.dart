@@ -165,8 +165,8 @@ class _SplashScreen3State extends State<SplashScreen3> {
                           button_text_fontSize: 13,
                           fontWeight: FontWeight.w500,
                           button_height: 55,
-                          custom_button_collor: th3_splash_button_color,
-                          button_text_color: th3_splash_button_Text_color,
+                          custom_button_collor: th3_CustomButtomColor,
+                          button_text_color: CustomButtomColor,
                           borderRadius: 20),
                     )
                   ],

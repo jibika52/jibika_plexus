@@ -82,8 +82,8 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                   ),
                   Positioned(
                     bottom: 9,
-                    left: 21.5,
-                    right: 21.5,
+                    left: 24.5,
+                    right: 24.5,
                     child: Container(
                       margin:  EdgeInsets.only(bottom: 5,left:20.0,right: 20.0),
                       decoration: BoxDecoration(
@@ -128,14 +128,12 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                             autofocus: false,
                             isExpanded: true,
                             hint: InkWell(
-                                onTap: () {}, child: Text('Business Type')),
+                                onTap: () {}, child: ColorCustomText(fontSize: 16, fontWeight: FontWeight.w500, text: "Business Type", letterSpacing: 0.2,textColor:Main_Theme_textColor.withOpacity(0.4))),
                             // Not necessary for Option 1
                             value: busnessid,
                             onChanged: (newValue) {
                               setState(() {
-                      
                                 busnessid = newValue.toString();
-                      
                               });
                             },
                             items: busnessidlist.map((location) {
