@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:jibika_plexus/View/Auth/CompanyRegistrationFormScreen/company_registration_form_screen.dart';
 import 'View/LoginScreen/login_screen_screen2.dart';
 
 
@@ -22,8 +23,8 @@ class MyApp extends StatelessWidget {
       ),
 
       //    home:SplashScreen1(),
-      //   home:CompanyRegistrationScreen(),
-     home:LoginScreenSlide(),
+      //    home:CompanyRegistrationScreen(),
+      home:LoginScreenSlide(),
 
     );
   }

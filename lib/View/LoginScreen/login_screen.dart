@@ -29,10 +29,11 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
 
   @override
   void initState() {
+
   super.initState();
 
 Future.delayed(Duration(
-  seconds: 5
+  seconds: 3
 ),() {
   setState(() {
     GetStorage().write("val", "true");
@@ -42,10 +43,10 @@ Future.delayed(Duration(
       AnimationController(vsync: this, duration: Duration(milliseconds:2000 ));
   position = Tween<Offset>(begin: Offset(-0.0, 4.0), end: Offset.zero)
       .animate(CurvedAnimation(parent: controller, curve: Curves.decelerate));
-  logosize = Tween(begin: 60.0, end: 500.0)
+  logosize = Tween(begin: 60.0, end: 700.0)
       .animate(CurvedAnimation(parent: controller, curve: Curves.decelerate));
 
-  logo_text_move = Tween(begin: 10.0, end:500.0)
+  logo_text_move = Tween(begin: 10.0, end:700.0)
       .animate(CurvedAnimation(parent: controller, curve: Curves.decelerate));
   controller.forward();
 

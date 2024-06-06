@@ -111,7 +111,7 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                   children: [
                     Container(
                       padding: const EdgeInsets.only(right: 8.0,top: 7),
-                      child: Image.asset("Assets/Icons/lock.png",height: 22,width: 19,fit: BoxFit.fill,),
+                      child: Image.asset("Assets/Icons/buisnesstype.png",height: 22,width: 19,fit: BoxFit.fill,),
                     ),
 
                     
