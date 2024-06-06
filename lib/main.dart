@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:jibika_plexus/View/Auth/CompanyRegistrationFormScreen/company_registration_form_screen.dart';
+import 'View/Auth/SplashScreen/splash_screen1.dart';
 import 'View/LoginScreen/login_screen_screen2.dart';
+import 'View/PrivacyPolicy/privacy_policy.dart';
 
 
 void main() async {
@@ -22,8 +24,9 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
 
-      //    home:SplashScreen1(),
-       home:CompanyRegistrationScreen(),
+    // home:SplashScreen1(),
+     home:PrivacyPolicyScreen(),
+      //    home:CompanyRegistrationScreen(),
       //    home:LoginScreenSlide(),
     );
   }
