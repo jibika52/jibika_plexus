@@ -31,10 +31,10 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-        home:ForgetPasswordScreen(
-          phone: "017777777",
-        ),
-       // home:MainSplashPageViewScreen(),
+      //  home:ForgetPasswordScreen(
+      //    phone: "017777777",
+    //   ),
+      home:MainSplashPageViewScreen(),
       //   home:PrivacyPolicyScreen(
       //  phone_or_email: "01889173335",
       // ),

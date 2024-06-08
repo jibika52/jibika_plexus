@@ -67,7 +67,7 @@ Future.delayed(Duration(
   TextEditingController _phoneController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-  String countruyCode = '+88';
+  String countruyCode = '+880';
   String ? countryFlag;
   bool is_check=true;
   bool is_iconClick=false;
@@ -291,7 +291,7 @@ Future.delayed(Duration(
                             InkWell(
                               onTap: () {
                                 if(_phoneController.text.isEmpty){
-                                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: CustomText(fontSize: 16, fontWeight: FontWeight.w500, text: "Please Enter Your Phone Number", letterSpacing: 0.3)));
+                                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: ColorCustomText(fontSize: 16,textColor: Main_Theme_WhiteCollor,fontWeight: FontWeight.w500, text: "Please Enter Your Phone Number", letterSpacing: 0.3)));
                                 }else{
 
                                 Navigator.push(context, MaterialPageRoute(builder: (context) => ForgetPasswordScreen(
