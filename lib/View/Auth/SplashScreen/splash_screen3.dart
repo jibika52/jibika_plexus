@@ -129,19 +129,10 @@ class _SplashScreen3State extends State<SplashScreen3> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => SplashScreen2(),
-                              ));
-                        },
-                        child: CustomImageSction(
-                            height: 27,
-                            width: 22,
-                            radius: 1,
-                            image: "Assets/Icons/arrowleft.png")),
+                  Align(
+                  alignment: Alignment.center,
+                  child:    Container(height: 20,width: 25,child: Image.asset("Assets/Gif/480px-Orange_animated_left_arrow.gif",fit: BoxFit.fill,),),
+                ),
                     SizedBox(
                       width: 20,
                     ),

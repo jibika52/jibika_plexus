@@ -30,10 +30,10 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-     home:MainSplashPageViewScreen(),
-      //   home:PrivacyPolicyScreen(
-      //  phone_or_email: "01889173335",
-     // ),
+      // home:MainSplashPageViewScreen(),
+        home:PrivacyPolicyScreen(
+       phone_or_email: "01889173335",
+      ),
     ),
     );
   }
