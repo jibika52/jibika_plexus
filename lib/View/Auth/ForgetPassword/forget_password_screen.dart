@@ -7,6 +7,8 @@ import 'package:jibika_plexus/CustomWidget/CustomTExtFormField/Jibika_custom_tex
 import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
 import 'package:jibika_plexus/View/Auth/OtpScreen/otp_screen.dart';
+
+import '../../../CustomWidget/CustomBootomSplashBar/custom_bootom_splash_bar.dart';
 class ForgetPasswordScreen extends StatefulWidget {
   ForgetPasswordScreen({super.key,required this.phone});
   String phone;
@@ -123,7 +125,7 @@ void initState() {
         )
 
       ),
-
+      bottomNavigationBar: CustomBootomSplashBar(),
     );
   }
 }
