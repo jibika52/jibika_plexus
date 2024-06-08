@@ -7,6 +7,8 @@ import 'package:jibika_plexus/CustomWidget/CustomButton/custom_button.dart';
 import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
 import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
+import 'package:jibika_plexus/View/Auth/LoginScreen/login_screen.dart';
+import 'package:jibika_plexus/View/Auth/LoginScreen/login_screen_screen2.dart';
 import 'package:jibika_plexus/View/Auth/SplashScreen/splash_screen1.dart';
 import 'package:pinput/pinput.dart';
 
@@ -119,6 +121,9 @@ class _OTPScreenState extends State<OTPScreen> {
                                    _fieldThree.text +
                                    _fieldFour.text;
                              });
+                             Future.delayed(Duration(seconds: 1),() {
+                               Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen(),));
+                             },);
                            }, text: "Verify", button_text_fontSize: 16, button_height: 50, custom_button_collor: CustomButtomColor, button_text_color: Main_Theme_WhiteCollor, borderRadius: 50),
                          ),
                          const SizedBox(
