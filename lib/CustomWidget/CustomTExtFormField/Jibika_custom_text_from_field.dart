@@ -6,7 +6,7 @@ import '../../Utils/constants.dart';
 
 class JibikaCustomTextFromField extends StatelessWidget {
  JibikaCustomTextFromField({super.key,
- required this.controller,required this.height,required this.img,required this.hinttext, required this.keyboardType , required this.obscureText,this.suffixIcon
+ required this.controller, required this.height,required this.img,required this.hinttext, required this.keyboardType , required this.obscureText,this.suffixIcon,this.is_phone
  });
   String img;
   String hinttext;
@@ -15,6 +15,7 @@ class JibikaCustomTextFromField extends StatelessWidget {
   TextEditingController controller;
   bool obscureText;
  final Widget? suffixIcon;
+ String ? is_phone;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,7 +23,7 @@ class JibikaCustomTextFromField extends StatelessWidget {
       width: double.infinity,
       child: Row(
         children: [
-          Padding(
+          is_phone=="login"? Container():  Padding(
             padding: const EdgeInsets.only(top: 16,right: 5.0),
             child: Container(
               height: 60,
@@ -36,7 +37,7 @@ class JibikaCustomTextFromField extends StatelessWidget {
               alignment: Alignment.center,
               child: Row(
                 children: [
-                  Image.asset("$img",height: 25,width: 25,fit: BoxFit.fill,color: Main_Theme_textColor.withOpacity(0.7),),
+                  Image.asset("$img",height: 25,width:"$img"=="Assets/Icons/lock.png"?20: 25,fit: BoxFit.fill,color: Main_Theme_textColor.withOpacity(0.7),),
 
 
                 ],

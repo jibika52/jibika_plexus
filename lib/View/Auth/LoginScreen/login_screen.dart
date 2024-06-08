@@ -70,6 +70,7 @@ Future.delayed(Duration(
   String ? countryFlag;
   bool is_check=true;
   bool is_iconClick=false;
+  bool obscureText=true;
   @override
   Widget build(BuildContext context) {
     double h=MediaQuery.of(context).size.height;
@@ -219,7 +220,7 @@ Future.delayed(Duration(
                               },
 
                               child: Padding(
-                                padding: const EdgeInsets.only(top: 18,right: 10.0),
+                                padding: const EdgeInsets.only(top: 18),
                                 child: Container(
                                   height: 60,
                                   width: 124,
@@ -247,43 +248,32 @@ Future.delayed(Duration(
                               ),
                             ),
                             Expanded(
-                              child: TextFormField(
-                                style: GoogleFonts.poppins(
-                                    color: Main_Theme_textColor,
-                                    fontSize: 16,fontWeight: FontWeight.w500
-                                    ,letterSpacing: 0.2
-
-                                ),
-                                controller: _phoneController,
-                                validator: (value) {
-                                  if (value!.isEmpty) {
-                                    return "please enter  numbers only";
-                                  } else {
-                                    return null;
-                                  }
-                                },
-                                keyboardType: TextInputType.number,
-                                decoration: InputDecoration(
-                                  hintStyle: GoogleFonts.poppins(
-                                      color: Main_Theme_textColor.withOpacity(0.5),
-                                      fontSize: 16,fontWeight: FontWeight.w400
-                                      ,letterSpacing: 0.2
-                                  ),
-                                  errorStyle: TextStyle(
-                                    fontSize: 0.1,
-                                  ),
-                                  labelText: "Mobile Number",
-                                  contentPadding: EdgeInsets.symmetric(
-                                      horizontal: 15, vertical: 5),
-                                  /// prefix icon ///
-                                ),
-                              ),
+                              child: JibikaCustomTextFromField(is_phone: "login",controller: _phoneController, height: 50, img: " ", hinttext: "Mobile number", keyboardType: TextInputType.number, obscureText: false),
                             ),
                           ],
                         ),
                       ),
                       SizedBox(height: h*0.03,),
-                      JibikaCustomTextFromField(controller: _passwordController, height: 40, img: "Assets/Icons/lock.png", hinttext: "Password", keyboardType: TextInputType.text, obscureText: false),
+                      JibikaCustomTextFromField(
+                          suffixIcon: IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  obscureText = !obscureText;
+                                });
+                              },
+                              icon: Icon(
+                                obscureText == true
+                                    ? Icons.visibility_off
+                                    : Icons.visibility,
+                                color: Main_Theme_textColor.withOpacity(0.5),
+                              )),
+                          controller: _passwordController,
+                          height: 50,
+                          img: "Assets/Icons/lock.png",
+                          hinttext: "Confirm Password",
+                          keyboardType: TextInputType.text,
+                          obscureText: obscureText),
+                   //   JibikaCustomTextFromField(controller: _passwordController, height: 40, img: "Assets/Icons/lock.png", hinttext: "Password", keyboardType: TextInputType.text, obscureText: false),
                       //
                       // Container(
                       //   height: 40,
@@ -365,8 +355,9 @@ Future.delayed(Duration(
                             Text("Forgot Password",
                               style: GoogleFonts.poppins(
                                 decoration: TextDecoration.underline,
-                                fontSize: 16,fontWeight: FontWeight.w500,
-                                color: Main_Theme_textColor.withOpacity(0.5),
+                                fontSize: 16,fontWeight: FontWeight.w700,
+                                color: Main_Theme_textColor.withOpacity(0.8),
+                                letterSpacing: 0.3
                               ),)
                           ],
                         ),
