@@ -67,12 +67,14 @@ Future.delayed(Duration(
   TextEditingController _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   String countruyCode = '+88';
+  String ? countryFlag;
   bool is_check=true;
   bool is_iconClick=false;
   @override
   Widget build(BuildContext context) {
     double h=MediaQuery.of(context).size.height;
     double w=MediaQuery.of(context).size.width;
+    print("cccccccccccccccccccccccccccccccc $countryFlag");
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.red.withOpacity(0.0),
@@ -83,11 +85,6 @@ Future.delayed(Duration(
             child: Column(
               children: [
                 SizedBox(height: h*0.030),
-                /// Text Slide
-                // CustomSlideTExt(text: "Revolutionize Your Workforce Management with Our Jibika payscale Mobile App"
-                //   , onTap: () {
-                //
-                //   },),
               GetStorage().read("val")=="false"?Container():  Container(
                   width: logosize.value,
                   height: 35,
@@ -216,6 +213,7 @@ Future.delayed(Duration(
                                       setState(() {
                                         countruyCode =
                                         '+${country.phoneCode}';
+                                        countryFlag=country.flagEmoji;
                                       });
                                     });
                               },
@@ -234,9 +232,11 @@ Future.delayed(Duration(
                                   alignment: Alignment.center,
                                   child: Row(
                                     children: [
-                                      Image.asset("Assets/Icons/call.png",height: 20,width: 25,fit: BoxFit.fill,),
+                                      Image.asset("Assets/Icons/call.png",height: 22,width: 27,fit: BoxFit.fill,),
                                       SizedBox(width: 20,),
-                                      Image.asset("Assets/Icons/bdflaf.png",height: 20,width: 28,fit: BoxFit.fill,),
+                                      countryFlag!=null?    CustomText(
+                                          fontSize: 20, fontWeight: FontWeight.w500, text: "$countryFlag", letterSpacing: 0.2):
+                                      Image.asset("Assets/Icons/bdflaf.png",height: 16,width: 22,fit: BoxFit.fill,),
                                       SizedBox(width: 5,),
                                       CustomText(
                                           fontSize: 16, fontWeight: FontWeight.w500, text: "$countruyCode", letterSpacing: 0.2)

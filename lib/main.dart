@@ -5,6 +5,7 @@ import 'package:jibika_plexus/View/Auth/CompanyRegistrationFormScreen/company_re
 import 'package:provider/provider.dart';
 
 import 'Controller/HomeController/home_controller.dart';
+import 'View/Auth/SplashScreen/main_splash_pageview_screen.dart';
 import 'View/Auth/SplashScreen/splash_screen1.dart';
 import 'View/PrivacyPolicy/privacy_policy.dart';
 
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-     home:SplashScreen1(),
+     home:MainSplashPageViewScreen(),
       //   home:PrivacyPolicyScreen(
       //  phone_or_email: "01889173335",
      // ),

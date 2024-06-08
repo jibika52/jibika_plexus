@@ -53,7 +53,7 @@ class _SplashScreen1State extends State<SplashScreen1> {
                 children: [
                   CustomImageSction(
                       height: 390,
-                      width: 400,
+                      width: 430,
                       radius: 11,
                       image: "Assets/Gif/first_splashcsreen.gif"),
                   Positioned(
