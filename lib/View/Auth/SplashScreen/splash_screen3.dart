@@ -7,9 +7,8 @@ import 'package:jibika_plexus/CustomWidget/CustomSplashMenue/custom_splash_menue
 import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
 import 'package:jibika_plexus/View/Auth/SplashScreen/splash_screen2.dart';
-
 import '../../../CustomWidget/TermsAndCondition/terms_and_condition_part.dart';
-import '../../LoginScreen/login_screen_screen2.dart';
+import '../LoginScreen/login_screen_screen2.dart';
 class SplashScreen3 extends StatefulWidget {
   const SplashScreen3({super.key});
 

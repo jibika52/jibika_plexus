@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jibika_plexus/CustomWidget/CustomButton/custom_button.dart';
 import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
+import 'package:jibika_plexus/CustomWidget/CustomTExtFormField/CustomTextFromField/custom_text_from_fild.dart';
+import 'package:jibika_plexus/CustomWidget/CustomTExtFormField/Jibika_custom_text_from_field.dart';
 import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
+import 'package:jibika_plexus/View/Auth/OtpScreen/otp_screen.dart';
 
 import '../../CustomWidget/CustomAppBar/CustomDefaultAppBar/custom_default_app_bar.dart';
 
@@ -15,7 +18,13 @@ class PrivacyPolicyScreen extends StatefulWidget {
 }
 
 class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
+  TextEditingController _a=TextEditingController();
+  TextEditingController _b=TextEditingController();
+  TextEditingController _c=TextEditingController();
+  TextEditingController _d=TextEditingController();
+  TextEditingController _e=TextEditingController();
   bool is_agree=false;
+  bool obscureText=false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,11 +38,15 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
             text: "PRIVACY POLICY",
           )),
       bottomNavigationBar: Container(
-        padding: EdgeInsets.only(
+        margin: EdgeInsets.only(
         left: 15,right: 15
-      ),
-        height: 130,
+      ),    padding: EdgeInsets.all(10),
+        height:is_agree==false?90: 140,
         width: double.infinity,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(11),
+          color: Main_Theme_textColor.withOpacity(0.1),
+        ),
         child: Column(
           children: [
             InkWell(
@@ -43,11 +56,12 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
                 });
               },
               child: Container(
+                color: Colors.white.withOpacity(0.0),
                 height: 60,
                 width: double.infinity,
                 child: Row(
                   children: [
-                    is_agree==true?    Container(
+                    is_agree==false?    Container(
                      height: 20,
                      width: 20,
                      decoration: BoxDecoration(
@@ -68,8 +82,9 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
               ),
             ),
             SizedBox(height: 10,),
-            is_agree==false?Container() :  CustomButton(onTap: () {
-            }, text: "Finish", button_text_fontSize: 14, fontWeight: FontWeight.w500,button_height: 50, custom_button_collor: CustomButtomColor, button_text_color: Main_Theme_WhiteCollor, borderRadius: 50),
+             is_agree==false?Container() :  CustomButton(onTap: () {
+               Navigator.push(context, MaterialPageRoute(builder: (context) => OTPScreen(),));
+             }, text: "Finish", button_text_fontSize: 14, fontWeight: FontWeight.w500,button_height: 50, custom_button_collor: CustomButtomColor, button_text_color: Main_Theme_WhiteCollor, borderRadius: 50),
           ],
         ),
       ),

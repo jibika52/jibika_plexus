@@ -7,12 +7,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jibika_plexus/CustomWidget/CustomBootomSplashBar/custom_bootom_splash_bar.dart';
-import 'package:jibika_plexus/View/LoginScreen/login_screen.dart';
-import 'package:marquee/marquee.dart';
-
-import '../../CustomWidget/CustomButton/custom_button.dart';
-import '../../CustomWidget/CustomText/custom_text.dart';
-import '../../Utils/constants.dart';
+import '../../../Utils/constants.dart';
+import 'login_screen.dart';
 
 class LoginScreenSlide extends StatefulWidget {
   @override

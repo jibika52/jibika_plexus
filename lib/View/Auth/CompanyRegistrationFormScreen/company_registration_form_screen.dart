@@ -7,36 +7,37 @@ import 'package:jibika_plexus/CustomWidget/CustomButton/custom_button.dart';
 import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
 import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
+import 'package:jibika_plexus/View/PrivacyPolicy/privacy_policy.dart';
 
 import '../../../CustomWidget/CustomTExtFormField/Jibika_custom_text_from_field.dart';
-
-
 
 class CompanyRegistrationScreen extends StatefulWidget {
   const CompanyRegistrationScreen({super.key});
 
   @override
-  State<CompanyRegistrationScreen> createState() => _CompanyRegistrationScreenState();
+  State<CompanyRegistrationScreen> createState() =>
+      _CompanyRegistrationScreenState();
 }
 
 class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
-  bool obscureText=true;
-  bool obscureText2=true;
+  bool obscureText = true;
+  bool obscureText2 = true;
+  TextEditingController _passwordController = TextEditingController();
+  TextEditingController _con_passwordController = TextEditingController();
+  TextEditingController _phoneController = TextEditingController();
+  TextEditingController _companyNameController = TextEditingController();
+  TextEditingController _companyNumberController = TextEditingController();
+  TextEditingController _companyEmailController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController _passwordController=TextEditingController();
-    TextEditingController _con_passwordController=TextEditingController();
-    TextEditingController _phoneController=TextEditingController();
-    TextEditingController _companyNameController=TextEditingController();
-    TextEditingController _companyNumberController=TextEditingController();
-    TextEditingController _companyEmailController=TextEditingController();
-    double h=MediaQuery.of(context).size.height;
-    double w=MediaQuery.of(context).size.width;
+    double h = MediaQuery.of(context).size.height;
+    double w = MediaQuery.of(context).size.width;
 
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(60),
+
           /// Custom Default App BAr
           child: CustomDefaultAppBar(
             onTap: () {
@@ -47,13 +48,11 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
       body: Container(
         height: double.infinity,
         width: double.infinity,
-        padding: EdgeInsets.only(
-            left: 25,right: 20
-        ),
+        padding: EdgeInsets.only(left: 25, right: 20),
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height:h*0.04),
+              SizedBox(height: h * 0.04),
               Stack(
                 children: [
                   ClipRRect(
@@ -76,14 +75,16 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                     left: 0,
                     right: 0,
                     child: Padding(
-                      padding:  EdgeInsets.only(bottom: 1,left: 0.0,right: 0.0),
+                      padding:
+                          EdgeInsets.only(bottom: 1, left: 0.0, right: 0.0),
                       child: Container(
                         decoration: BoxDecoration(
-                          image: DecorationImage(image: AssetImage("Assets/Icons/subtract.png"),fit: BoxFit.fill),
+                          image: DecorationImage(
+                              image: AssetImage("Assets/Icons/subtract.png"),
+                              fit: BoxFit.fill),
                         ),
                         height: 40,
                         width: 50,
-
                       ),
                     ),
                   ),
@@ -92,30 +93,44 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                     left: 24.5,
                     right: 24.5,
                     child: Container(
-                      margin:  EdgeInsets.only(bottom: 5,left:20.0,right: 20.0),
+                      margin:
+                          EdgeInsets.only(bottom: 5, left: 20.0, right: 20.0),
                       decoration: BoxDecoration(
-                        image: DecorationImage(image: AssetImage("Assets/Icons/regisrration_camer.png"),fit: BoxFit.fill),
+                        image: DecorationImage(
+                            image: AssetImage(
+                                "Assets/Icons/regisrration_camer.png"),
+                            fit: BoxFit.fill),
                       ),
                       height: 15,
                       width: 10,
-
                     ),
                   ),
                 ],
               ),
-              SizedBox(height:h*0.02),
-              JibikaCustomTextFromField(controller: _companyNameController, height: 50, img: "Assets/Icons/crppol.png", hinttext: "Company Name", keyboardType: TextInputType.text, obscureText: false),
-              SizedBox(height:h*0.02),
+              SizedBox(height: h * 0.02),
+              JibikaCustomTextFromField(
+                  controller: _companyNameController,
+                  height: 50,
+                  img: "Assets/Icons/crppol.png",
+                  hinttext: "Company Name",
+                  keyboardType: TextInputType.text,
+                  obscureText: false),
+              SizedBox(height: h * 0.02),
               Container(
                 height: 60,
                 width: double.infinity,
                 child: Row(
                   children: [
                     Container(
-                      padding: const EdgeInsets.only(right: 8.0,top: 7),
-                      child: Image.asset("Assets/Icons/crbuisness.png",height: 21,width: 21,fit: BoxFit.fill,color: Main_Theme_textColor.withOpacity(0.6),),
+                      padding: const EdgeInsets.only(right: 8.0, top: 7),
+                      child: Image.asset(
+                        "Assets/Icons/crbuisness.png",
+                        height: 21,
+                        width: 21,
+                        fit: BoxFit.fill,
+                        color: Main_Theme_textColor.withOpacity(0.6),
+                      ),
                     ),
-
                     Expanded(
                       child: Container(
                         margin: EdgeInsets.only(top: 10),
@@ -133,7 +148,14 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                             autofocus: false,
                             isExpanded: true,
                             hint: InkWell(
-                                onTap: () {}, child: ColorCustomText(fontSize: 16, fontWeight: FontWeight.w500, text: "  Business Type", letterSpacing: 0.2,textColor:Main_Theme_textColor.withOpacity(0.4))),
+                                onTap: () {},
+                                child: ColorCustomText(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                    text: "  Business Type",
+                                    letterSpacing: 0.2,
+                                    textColor:
+                                        Main_Theme_textColor.withOpacity(0.4))),
                             // Not necessary for Option 1
                             value: busnessid,
                             onChanged: (newValue) {
@@ -143,7 +165,7 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                             },
                             items: busnessidlist.map((location) {
                               return DropdownMenuItem(
-                                child: Text("${location ??""}"),
+                                child: Text("${location ?? ""}"),
                                 value: "${location}",
                               );
                             }).toList(),
@@ -154,42 +176,94 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                   ],
                 ),
               ),
-              SizedBox(height:h*0.01),
-              JibikaCustomTextFromField(controller: _companyNumberController, height: 50, img: "Assets/Icons/crppol.png", hinttext: "Number of Employee", keyboardType: TextInputType.text, obscureText: false),
-              SizedBox(height:h*0.01),
-              JibikaCustomTextFromField2(controller: _phoneController, height: 50, img: "Assets/Icons/call.png", hinttext: "Phone", keyboardType: TextInputType.text, obscureText: false),
-              SizedBox(height:h*0.02),
-              JibikaCustomTextFromField(controller: _companyEmailController, height: 50, img: "Assets/Icons/cr_email.png", hinttext: "Email", keyboardType: TextInputType.text, obscureText: false),
-
-              SizedBox(height:h*0.02),
-              JibikaCustomTextFromField(suffixIcon: IconButton(onPressed: () {
-                setState(() {
-                  obscureText=!obscureText;
-                });
-              }, icon: Icon(obscureText==true?Icons.visibility_off:Icons.visibility,color: Main_Theme_textColor.withOpacity(0.5),)),controller: _passwordController, height: 50, img: "Assets/Icons/cr_lock.png", hinttext: "New Password", keyboardType: TextInputType.text, obscureText: obscureText),
-
-              SizedBox(height:h*0.02),
-              JibikaCustomTextFromField(suffixIcon: IconButton(onPressed: () {
-                setState(() {
-                  obscureText2=!obscureText2;
-                });
-              }, icon: Icon(obscureText==true?Icons.visibility_off:Icons.visibility,color: Main_Theme_textColor.withOpacity(0.5),)),controller: _con_passwordController, height: 50, img: "Assets/Icons/cr_lock.png", hinttext: "Confirm Password", keyboardType: TextInputType.text, obscureText: obscureText2),
-              SizedBox(height:h*0.05),
-              CustomButton(onTap: () {
-
-              }, text: "Next", button_text_fontSize: 18, button_height: 50, custom_button_collor: CustomButtomColor, button_text_color: Main_Theme_WhiteCollor, borderRadius: 50,fontWeight: FontWeight.w600,)
-
+              SizedBox(height: h * 0.01),
+              JibikaCustomTextFromField(
+                  controller: _companyNumberController,
+                  height: 50,
+                  img: "Assets/Icons/crppol.png",
+                  hinttext: "Number of Employee",
+                  keyboardType: TextInputType.text,
+                  obscureText: false),
+              SizedBox(height: h * 0.01),
+              JibikaCustomTextFromField2(
+                  controller: _phoneController,
+                  height: 50,
+                  img: "Assets/Icons/call.png",
+                  hinttext: "Phone",
+                  keyboardType: TextInputType.text,
+                  obscureText: false),
+              SizedBox(height: h * 0.02),
+              JibikaCustomTextFromField(
+                  controller: _companyEmailController,
+                  height: 50,
+                  img: "Assets/Icons/cr_email.png",
+                  hinttext: "Email",
+                  keyboardType: TextInputType.text,
+                  obscureText: false),
+              SizedBox(height: h * 0.02),
+              JibikaCustomTextFromField(
+                  suffixIcon: IconButton(
+                      onPressed: () {
+                        setState(() {
+                          obscureText = !obscureText;
+                        });
+                      },
+                      icon: Icon(
+                        obscureText == true
+                            ? Icons.visibility_off
+                            : Icons.visibility,
+                        color: Main_Theme_textColor.withOpacity(0.5),
+                      )),
+                  controller: _passwordController,
+                  height: 50,
+                  img: "Assets/Icons/cr_lock.png",
+                  hinttext: "New Password",
+                  keyboardType: TextInputType.text,
+                  obscureText: obscureText),
+              SizedBox(height: h * 0.02),
+              JibikaCustomTextFromField(
+                  suffixIcon: IconButton(
+                      onPressed: () {
+                        setState(() {
+                          obscureText2 = !obscureText2;
+                        });
+                      },
+                      icon: Icon(
+                        obscureText == true
+                            ? Icons.visibility_off
+                            : Icons.visibility,
+                        color: Main_Theme_textColor.withOpacity(0.5),
+                      )),
+                  controller: _con_passwordController,
+                  height: 50,
+                  img: "Assets/Icons/cr_lock.png",
+                  hinttext: "Confirm Password",
+                  keyboardType: TextInputType.text,
+                  obscureText: obscureText2),
+              SizedBox(height: h * 0.05),
+              CustomButton(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PrivacyPolicyScreen(),
+                      ));
+                },
+                text: "Next",
+                button_text_fontSize: 18,
+                button_height: 50,
+                custom_button_collor: CustomButtomColor,
+                button_text_color: Main_Theme_WhiteCollor,
+                borderRadius: 50,
+                fontWeight: FontWeight.w600,
+              )
             ],
           ),
         ),
-
       ),
     );
   }
-  String ? busnessid;
-  List busnessidlist=[
-    "A",
-    "B",
-    "C"
-  ];
+
+  String? busnessid;
+  List busnessidlist = ["A", "B", "C"];
 }
