@@ -122,7 +122,7 @@ class _OTPScreenState extends State<OTPScreen> {
                                    _fieldFour.text;
                              });
                              Future.delayed(Duration(seconds: 1),() {
-                               Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen(),));
+                               Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreenSlide(),));
                              },);
                            }, text: "Verify", button_text_fontSize: 16, button_height: 50, custom_button_collor: CustomButtomColor, button_text_color: Main_Theme_WhiteCollor, borderRadius: 50),
                          ),
