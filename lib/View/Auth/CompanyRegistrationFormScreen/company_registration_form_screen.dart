@@ -225,7 +225,7 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                   suffixIcon: IconButton(
                       onPressed: () {
                         setState(() {
-                          obscureText2 = !obscureText2;
+                          obscureText = !obscureText;
                         });
                       },
                       icon: Icon(
@@ -239,7 +239,7 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                   img: "Assets/Icons/cr_lock.png",
                   hinttext: "Confirm Password",
                   keyboardType: TextInputType.text,
-                  obscureText: obscureText2),
+                  obscureText: obscureText),
               SizedBox(height: h * 0.05),
               CustomButton(
                 onTap: () {

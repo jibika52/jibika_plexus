@@ -21,6 +21,13 @@ class PrivacyPolicyScreen extends StatefulWidget {
 class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
   bool is_agree=false;
   bool obscureText=false;
+  ScrollController _ScrollController=ScrollController();
+  @override
+  void initState() {
+
+    // TODO: implement initState
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(

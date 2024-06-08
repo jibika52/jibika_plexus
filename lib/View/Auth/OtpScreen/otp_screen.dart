@@ -105,7 +105,7 @@ class _OTPScreenState extends State<OTPScreen> {
                                children: [
                                  CustomText(fontSize: 16, fontWeight: FontWeight.w400, text:"If you didn’t receive a code!" , letterSpacing: 0.2),
                                  SizedBox(width: 8,),
-                                 ColorCustomText(fontSize: 16, fontWeight: FontWeight.w400, text:count==0? "Resend":"Please wait ...", letterSpacing: 0.2,textColor:CustomButtomColor),
+                                 ColorCustomText(fontSize: 16, fontWeight: FontWeight.w400, text:count==0? "Resend":"", letterSpacing: 0.2,textColor:CustomButtomColor),
                                ],
                              )),
                          SizedBox(
