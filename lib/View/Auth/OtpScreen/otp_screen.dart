@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jibika_plexus/CustomWidget/CustomBootomSplashBar/custom_bootom_splash_bar.dart';
@@ -22,11 +24,29 @@ class _OTPScreenState extends State<OTPScreen> {
   final TextEditingController _fieldThree = TextEditingController();
   final TextEditingController _fieldFour = TextEditingController();
   String? _otp;
+@override
+  void initState() {
+  Timer.periodic(const Duration(seconds: 1), (timer) {
+    print("timeeeee  eee   e eee ${timer.tick}");
+    if(timer.tick==120) {
+      timer.cancel();
+
+    }else{
+      setState(() {
+        count--;
+      });
+    }
+  });
+  // TODO: implement initState
+    super.initState();
+  }
+  int count=119;
 
   @override
   Widget build(BuildContext context) {
     double h=MediaQuery.of(context).size.height;
     double w=MediaQuery.of(context).size.width;
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
          body: Container(
@@ -60,8 +80,10 @@ class _OTPScreenState extends State<OTPScreen> {
                          CustomImageSction(height: 115, width: 115, radius: 7, image: "Assets/Logo/jibikalogo.png"),
                          SizedBox(height: h*0.12,),
                          CustomText(fontSize: 18, fontWeight: FontWeight.w500, text: "Please Enter The 4 Digit Code Sent to", letterSpacing: 0.3),
-                         CustomText(fontSize: 18, fontWeight: FontWeight.w700, text: "your Phone : ${widget.phone_or_email}", letterSpacing: 0.4),
-                         SizedBox(height: h*0.03,),
+                         CustomText(fontSize: 18, fontWeight: FontWeight.w600, text: "your Phone : ${widget.phone_or_email}", letterSpacing: 0.4),
+                         SizedBox(height: h*0.02,),
+                         ColorCustomText(fontSize: 22, fontWeight: FontWeight.w700, text: "Expire Time: $count s", letterSpacing: 0.4,textColor: Main_Theme_textColor_tir_Condition),
+                         SizedBox(height: h*0.01,),
                          ///  CustomPinPut
                          Row(
                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
