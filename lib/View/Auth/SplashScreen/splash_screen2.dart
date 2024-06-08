@@ -192,62 +192,66 @@ class _SplashScreen2State extends State<SplashScreen2> {
               SizedBox(
                 height: c_h * 0.035,
               ),
-              Container(
-                height: 30,
-                width: double.infinity,
+              // Container(
+              //   height: 30,
+              //   width: double.infinity,
+              //   alignment: Alignment.center,
+              //   // child: Padding(
+              //   //   padding: const EdgeInsets.only(left: 20.0, right: 30),
+              //   //   child: Center(
+              //   //       child: CustomImageSction(
+              //   //           height: 25,
+              //   //           width: double.infinity,
+              //   //           radius: 1,
+              //   //           image:
+              //   //               "Assets/buttonIcon/second_direction_splash_button.png")),
+              //   // )
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.center,
+              //     children: [
+              //       GestureDetector(
+              //           onTap: () {
+              //             Navigator.push(
+              //                 context,
+              //                 MaterialPageRoute(
+              //                   builder: (context) => SplashScreen1(),
+              //                 ));
+              //           },
+              //           child: CustomImageSction(
+              //               height: 27,
+              //               width: 22,
+              //               radius: 1,
+              //               image: "Assets/Icons/arrowleft.png")),
+              //       SizedBox(
+              //         width: 20,
+              //       ),
+              //       CustomImageSction(
+              //           height: 12,
+              //           width: 10,
+              //           radius: 1,
+              //           image: "Assets/Icons/count2.png"),
+              //       SizedBox(
+              //         width: 20,
+              //       ),
+              //       GestureDetector(
+              //           onTap: () {
+              //             Navigator.push(
+              //                 context,
+              //                 MaterialPageRoute(
+              //                   builder: (context) => SplashScreen3(),
+              //                 ));
+              //           },
+              //           child: CustomImageSction(
+              //               height: 27,
+              //               width: 22,
+              //               radius: 1,
+              //               image: "Assets/Icons/arrowright.png")),
+              //     ],
+              //   ),
+              // ),
+              Align(
                 alignment: Alignment.center,
-                // child: Padding(
-                //   padding: const EdgeInsets.only(left: 20.0, right: 30),
-                //   child: Center(
-                //       child: CustomImageSction(
-                //           height: 25,
-                //           width: double.infinity,
-                //           radius: 1,
-                //           image:
-                //               "Assets/buttonIcon/second_direction_splash_button.png")),
-                // )
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => SplashScreen1(),
-                              ));
-                        },
-                        child: CustomImageSction(
-                            height: 27,
-                            width: 22,
-                            radius: 1,
-                            image: "Assets/Icons/arrowleft.png")),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    CustomImageSction(
-                        height: 12,
-                        width: 10,
-                        radius: 1,
-                        image: "Assets/Icons/count2.png"),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => SplashScreen3(),
-                              ));
-                        },
-                        child: CustomImageSction(
-                            height: 27,
-                            width: 22,
-                            radius: 1,
-                            image: "Assets/Icons/arrowright.png")),
-                  ],
-                ),
+                child:    Container(height: 20,width: 25,child: Image.asset("Assets/Gif/Orange_animated_right_arrow.gif",fit: BoxFit.fill,),),
               ),
               SizedBox(
                 height: c_h * 0.035,

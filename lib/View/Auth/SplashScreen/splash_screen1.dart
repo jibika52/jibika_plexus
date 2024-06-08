@@ -135,29 +135,38 @@ class _SplashScreen1State extends State<SplashScreen1> {
               SizedBox(
                 height: c_h * 0.035,
               ),
-              InkWell(
-                onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => SplashScreen2(),));
-                },
-                child: Container(
-                    height: 30,
-                    width: double.infinity,
-                    alignment: Alignment.center,
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 20.0, right: 30),
-                      child: Center(
-                          child: CustomImageSction(
-                              height: 25,
-                              width: 93,
-                              radius: 1,
-                              image:
-                                  "Assets/Gif/first_direction_splash_button.png")),
-                    )),
+              // InkWell(
+              //   onTap: () {
+              //     Navigator.push(context, MaterialPageRoute(builder: (context) => SplashScreen2(),));
+              //   },
+              //   child: Container(
+              //       height: 30,
+              //       width: double.infinity,
+              //       alignment: Alignment.center,
+              //       child: Padding(
+              //         padding: const EdgeInsets.only(left: 20.0, right: 30),
+              //         child: Center(
+              //             child: CustomImageSction(
+              //                 height: 25,
+              //                 width: 93,
+              //                 radius: 1,
+              //                 image:
+              //                     "Assets/Gif/first_direction_splash_button.png")),
+              //       )),
+              // ),
+
+
+              Align(
+                alignment: Alignment.center,
+                child:    Container(height: 20,width: 25,child: Image.asset("Assets/Gif/Orange_animated_right_arrow.gif",fit: BoxFit.fill,),),
               ),
+
               SizedBox(
                 height: c_h * 0.035,
               ),
 
+ 
+             
              CustomTermsAndConditionPart(),
               SizedBox(
                 height: c_h * 0.035,
