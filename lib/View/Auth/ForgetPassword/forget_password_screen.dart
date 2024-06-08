@@ -101,7 +101,7 @@ final _foromkey=GlobalKey<FormState>();
                               onPressed: () {
                               },
                               icon: Icon(Icons.visibility,)),
-                          controller: _passwordController,
+                          controller: _con_passwordController,
                           height: 50,
                           img: "Assets/Icons/lock.png",
                           hinttext: "Confirm Password",
