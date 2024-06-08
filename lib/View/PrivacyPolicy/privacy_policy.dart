@@ -11,18 +11,14 @@ import 'package:jibika_plexus/View/Auth/OtpScreen/otp_screen.dart';
 import '../../CustomWidget/CustomAppBar/CustomDefaultAppBar/custom_default_app_bar.dart';
 
 class PrivacyPolicyScreen extends StatefulWidget {
-  const PrivacyPolicyScreen({super.key});
-
+  PrivacyPolicyScreen({super.key,
+    required this.phone_or_email});
+ String ? phone_or_email;
   @override
   State<PrivacyPolicyScreen> createState() => _PrivacyPolicyScreenState();
 }
 
 class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
-  TextEditingController _a=TextEditingController();
-  TextEditingController _b=TextEditingController();
-  TextEditingController _c=TextEditingController();
-  TextEditingController _d=TextEditingController();
-  TextEditingController _e=TextEditingController();
   bool is_agree=false;
   bool obscureText=false;
   @override
@@ -83,7 +79,9 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
             ),
             SizedBox(height: 10,),
              is_agree==false?Container() :  CustomButton(onTap: () {
-               Navigator.push(context, MaterialPageRoute(builder: (context) => OTPScreen(),));
+               Navigator.push(context, MaterialPageRoute(builder: (context) => OTPScreen(
+                 phone_or_email: "${widget.phone_or_email}",
+               ),));
              }, text: "Finish", button_text_fontSize: 14, fontWeight: FontWeight.w500,button_height: 50, custom_button_collor: CustomButtomColor, button_text_color: Main_Theme_WhiteCollor, borderRadius: 50),
           ],
         ),

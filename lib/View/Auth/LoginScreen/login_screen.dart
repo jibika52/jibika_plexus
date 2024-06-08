@@ -377,7 +377,9 @@ Future.delayed(Duration(
                       /// Login
 
                       CustomButton(onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => OTPScreen(),));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => OTPScreen(
+                          phone_or_email: _phoneController.text,
+                        ),));
                       }, text: "Login", button_text_fontSize: 17, fontWeight: FontWeight.bold,button_height: 50, custom_button_collor: CustomButtomColor, button_text_color:Main_Theme_WhiteCollor, borderRadius: 50)
                     ],
                   ),

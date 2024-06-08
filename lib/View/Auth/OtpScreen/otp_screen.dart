@@ -9,8 +9,8 @@ import 'package:jibika_plexus/View/Auth/SplashScreen/splash_screen1.dart';
 import 'package:pinput/pinput.dart';
 
 class OTPScreen extends StatefulWidget {
-  const OTPScreen({super.key});
-
+  OTPScreen({super.key,required this.phone_or_email});
+  String phone_or_email;
   @override
   State<OTPScreen> createState() => _OTPScreenState();
 }
@@ -21,10 +21,8 @@ class _OTPScreenState extends State<OTPScreen> {
   final TextEditingController _fieldTwo = TextEditingController();
   final TextEditingController _fieldThree = TextEditingController();
   final TextEditingController _fieldFour = TextEditingController();
-
-  // This is the entered code
-  // It will be displayed in a Text widget
   String? _otp;
+
   @override
   Widget build(BuildContext context) {
     double h=MediaQuery.of(context).size.height;
@@ -62,7 +60,7 @@ class _OTPScreenState extends State<OTPScreen> {
                          CustomImageSction(height: 115, width: 115, radius: 7, image: "Assets/Logo/jibikalogo.png"),
                          SizedBox(height: h*0.12,),
                          CustomText(fontSize: 18, fontWeight: FontWeight.w500, text: "Please Enter The 4 Digit Code Sent to", letterSpacing: 0.3),
-                         CustomText(fontSize: 18, fontWeight: FontWeight.w700, text: "yourmail@gmail.com", letterSpacing: 0.4),
+                         CustomText(fontSize: 18, fontWeight: FontWeight.w700, text: "your Phone : ${widget.phone_or_email}", letterSpacing: 0.4),
                          SizedBox(height: h*0.03,),
                          ///  CustomPinPut
                          Row(

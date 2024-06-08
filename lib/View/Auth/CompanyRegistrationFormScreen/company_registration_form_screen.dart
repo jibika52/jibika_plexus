@@ -246,7 +246,9 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => PrivacyPolicyScreen(),
+                        builder: (context) => PrivacyPolicyScreen(
+                          phone_or_email: _phoneController.text,
+                        ),
                       ));
                 },
                 text: "Next",
