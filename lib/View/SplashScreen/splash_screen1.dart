@@ -4,7 +4,6 @@ import 'package:jibika_plexus/CustomWidget/CustomSplashMenue/custom_splash_menue
 import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 import 'package:jibika_plexus/CustomWidget/TermsAndCondition/terms_and_condition_part.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
-import 'package:jibika_plexus/View/Auth/SplashScreen/splash_screen2.dart';
 
 class SplashScreen1 extends StatefulWidget {
   const SplashScreen1({super.key});
@@ -56,6 +55,8 @@ class _SplashScreen1State extends State<SplashScreen1> {
                       width: 430,
                       radius: 11,
                       image: "Assets/Gif/first_splashcsreen.gif"),
+
+
                   Positioned(
                     left: 10,
                     right: 10,

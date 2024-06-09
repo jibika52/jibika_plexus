@@ -21,7 +21,6 @@ class PrivacyPolicyScreen extends StatefulWidget {
 class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
   bool is_agree=false;
   bool obscureText=false;
-  ScrollController _ScrollController=ScrollController();
   @override
   void initState() {
 
@@ -123,8 +122,9 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
                   CustomButton(onTap: () {
                     is_agree==false? function():   Navigator.push(context, MaterialPageRoute(builder: (context) => OTPScreen(
                       phone_or_email: "${widget.phone_or_email}",
+                      previous_route_name: "PrivacyPlicy",
                     ),));
-                  }, text: "Finish", button_text_fontSize: 14, fontWeight: FontWeight.w500,button_height: 50, custom_button_collor:is_agree==false?Colors.grey :CustomButtomColor, button_text_color: Main_Theme_WhiteCollor, borderRadius: 50),
+                  }, text: "Finish", button_text_fontSize: 14, fontWeight: FontWeight.w500,button_height: 50, custom_button_collor:is_agree==false?Colors.grey :CustomButtonColor, button_text_color: Main_Theme_WhiteCollor, borderRadius: 50),
                 ],
               ),
             ),

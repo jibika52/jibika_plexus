@@ -6,9 +6,8 @@ import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
 import 'package:jibika_plexus/CustomWidget/CustomSplashMenue/custom_splash_menue.dart';
 import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
-import 'package:jibika_plexus/View/Auth/SplashScreen/splash_screen2.dart';
 import '../../../CustomWidget/TermsAndCondition/terms_and_condition_part.dart';
-import '../LoginScreen/login_screen_screen2.dart';
+import '../Auth/LoginScreen/login_screen_screen2.dart';
 class SplashScreen3 extends StatefulWidget {
   const SplashScreen3({super.key});
 
@@ -155,8 +154,8 @@ class _SplashScreen3State extends State<SplashScreen3> {
                           button_text_fontSize: 13,
                           fontWeight: FontWeight.w500,
                           button_height: 55,
-                          custom_button_collor: th3_CustomButtomColor,
-                          button_text_color: CustomButtomColor,
+                          custom_button_collor: th3_CustomButtonColor,
+                          button_text_color: CustomButtonColor,
                           borderRadius: 20),
                     )
                   ],

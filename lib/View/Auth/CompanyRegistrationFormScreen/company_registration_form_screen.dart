@@ -263,7 +263,7 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                   text: "Next",
                   button_text_fontSize: 18,
                   button_height: 50,
-                  custom_button_collor: CustomButtomColor,
+                  custom_button_collor: CustomButtonColor,
                   button_text_color: Main_Theme_WhiteCollor,
                   borderRadius: 50,
                   fontWeight: FontWeight.w600,

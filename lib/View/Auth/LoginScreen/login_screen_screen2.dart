@@ -148,14 +148,14 @@ bool is_iconClick=false;
                //                     width: 100,
                //                     child: CustomButton(onTap: () {
                //
-               //                     }, text: "Info", button_text_fontSize: 15, button_height: 35, custom_button_collor: CustomButtomColor, button_text_color: Main_Theme_WhiteCollor, borderRadius: 50),
+               //                     }, text: "Info", button_text_fontSize: 15, button_height: 35, custom_button_collor: CustomButtonColor, button_text_color: Main_Theme_WhiteCollor, borderRadius: 50),
                //                   ),
                //                   SizedBox(width: 7,),
                //                   Container(
                //                     width: 120,
                //                     child: CustomButton(onTap: () {
                //
-               //                     }, text: "Contact Us", button_text_fontSize: 15, button_height: 35, custom_button_collor: CustomButtomColor, button_text_color: Main_Theme_WhiteCollor, borderRadius: 50),
+               //                     }, text: "Contact Us", button_text_fontSize: 15, button_height: 35, custom_button_collor: CustomButtonColor, button_text_color: Main_Theme_WhiteCollor, borderRadius: 50),
                //                   )
                //
                //
@@ -170,7 +170,7 @@ bool is_iconClick=false;
                //                   is_iconClick=!is_iconClick;
                //                 });
                //               },
-               //               child: CircleAvatar(radius: 18,backgroundColor: CustomButtomColor,backgroundImage: AssetImage("Assets/Icons/i_icon.png"),))
+               //               child: CircleAvatar(radius: 18,backgroundColor: CustomButtonColor,backgroundImage: AssetImage("Assets/Icons/i_icon.png"),))
                //         ],
                //       ),
                //     ),)

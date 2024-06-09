@@ -112,12 +112,12 @@ final _foromkey=GlobalKey<FormState>();
                       ),
                       CustomButton(onTap: () {
                         if(_foromkey.currentState!.validate()){
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => OTPScreen(phone_or_email: widget.phone),));
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => OTPScreen(phone_or_email: widget.phone,previous_route_name: "ForgetPassword"),));
                         }else{
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: ColorCustomText(fontSize: 16, textColor: Main_Theme_WhiteCollor,fontWeight: FontWeight.w500, text: "Please fill all the field", letterSpacing: 0.3)));
                         }
 
-                      }, text: "Submit", button_text_fontSize: 16, button_height: 50, custom_button_collor: CustomButtomColor, button_text_color: Main_Theme_WhiteCollor,fontWeight: FontWeight.w500, borderRadius: 50),
+                      }, text: "Submit", button_text_fontSize: 16, button_height: 50, custom_button_collor: CustomButtonColor, button_text_color: Main_Theme_WhiteCollor,fontWeight: FontWeight.w500, borderRadius: 50),
                     ],
                   ),
                 ),

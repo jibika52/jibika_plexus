@@ -66,6 +66,7 @@ dependencies:
   flutter_localization: ^0.2.0
   # OTP
   pinput: ^3.0.1
+  percent_indicator: ^4.2.3
 
 dev_dependencies:
   flutter_test:
@@ -99,6 +100,7 @@ flutter:
     - Assets/Gif/
     - Assets/buttonIcon/
     - Assets/LoginScreenIMG/
+    - Assets/DashBoardIcons/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

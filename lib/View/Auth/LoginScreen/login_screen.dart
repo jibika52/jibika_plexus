@@ -12,6 +12,7 @@ import 'package:jibika_plexus/Utils/constants.dart';
 import 'package:jibika_plexus/View/Auth/CompanyRegistrationFormScreen/company_registration_form_screen.dart';
 import 'package:jibika_plexus/View/Auth/ForgetPassword/forget_password_screen.dart';
 import 'package:jibika_plexus/View/Auth/OtpScreen/otp_screen.dart';
+import 'package:jibika_plexus/View/HomeScreen/home_screen.dart';
 import 'package:marquee/marquee.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -140,14 +141,14 @@ Future.delayed(Duration(
                                   width: 100,
                                   child: CustomButton(onTap: () {
 
-                                  }, text: "Info", button_text_fontSize: 15, button_height: 35, custom_button_collor: CustomButtomColor, button_text_color: Main_Theme_WhiteCollor, borderRadius: 50),
+                                  }, text: "Info", button_text_fontSize: 15, button_height: 35, custom_button_collor: CustomButtonColor, button_text_color: Main_Theme_WhiteCollor, borderRadius: 50),
                                 ),
                                 SizedBox(width: 7,),
                                 Container(
                                   width: 120,
                                   child: CustomButton(onTap: () {
 
-                                  }, text: "Contact Us", button_text_fontSize: 15, button_height: 35, custom_button_collor: CustomButtomColor, button_text_color: Main_Theme_WhiteCollor, borderRadius: 50),
+                                  }, text: "Contact Us", button_text_fontSize: 15, button_height: 35, custom_button_collor: CustomButtonColor, button_text_color: Main_Theme_WhiteCollor, borderRadius: 50),
                                 )
 
 
@@ -162,7 +163,7 @@ Future.delayed(Duration(
                                 is_iconClick=!is_iconClick;
                               });
                             },
-                            child: CircleAvatar(radius: 18,backgroundColor: CustomButtomColor,backgroundImage: AssetImage("Assets/Icons/i_icon.png"),))
+                            child: CircleAvatar(radius: 18,backgroundColor: CustomButtonColor,backgroundImage: AssetImage("Assets/Icons/i_icon.png"),))
                       ],
                     ),
                   ),
@@ -320,14 +321,14 @@ Future.delayed(Duration(
 
                         CustomButton(onTap: () {
                           if(_formKey.currentState!.validate()){
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => OTPScreen(
-                              phone_or_email: _phoneController.text,
+                            Navigator.push(context, MaterialPageRoute(builder: (context) =>  HomeScreen(
+
                             ),));
                           }else{
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: ColorCustomText(fontSize: 16, textColor: Main_Theme_WhiteCollor,fontWeight: FontWeight.w500, text: "Please fill all the field", letterSpacing: 0.3)));
                           }
 
-                        }, text: "Login", button_text_fontSize: 17, fontWeight: FontWeight.bold,button_height: 50, custom_button_collor: CustomButtomColor, button_text_color:Main_Theme_WhiteCollor, borderRadius: 50)
+                        }, text: "Login", button_text_fontSize: 17, fontWeight: FontWeight.bold,button_height: 50, custom_button_collor: CustomButtonColor, button_text_color:Main_Theme_WhiteCollor, borderRadius: 50)
                       ],
                     ),
                   ),

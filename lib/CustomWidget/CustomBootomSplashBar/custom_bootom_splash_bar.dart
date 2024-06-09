@@ -11,7 +11,7 @@ class CustomBootomSplashBar extends StatelessWidget {
     return Container(
       height: 50,
       width: double.infinity,
-      color: CustomButtomColor,
+      color: CustomButtonColor,
       padding: EdgeInsets.only(
           left: 20,right: 20
       ),

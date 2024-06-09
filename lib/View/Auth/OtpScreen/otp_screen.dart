@@ -7,14 +7,12 @@ import 'package:jibika_plexus/CustomWidget/CustomButton/custom_button.dart';
 import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
 import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
-import 'package:jibika_plexus/View/Auth/LoginScreen/login_screen.dart';
 import 'package:jibika_plexus/View/Auth/LoginScreen/login_screen_screen2.dart';
-import 'package:jibika_plexus/View/Auth/SplashScreen/splash_screen1.dart';
-import 'package:pinput/pinput.dart';
 
 class OTPScreen extends StatefulWidget {
-  OTPScreen({super.key,required this.phone_or_email});
+  OTPScreen({super.key,required this.phone_or_email,required this.previous_route_name});
   String phone_or_email;
+  String previous_route_name;
   @override
   State<OTPScreen> createState() => _OTPScreenState();
 }
@@ -107,7 +105,7 @@ class _OTPScreenState extends State<OTPScreen> {
                                children: [
                                  CustomText(fontSize: 16, fontWeight: FontWeight.w400, text:"If you didn’t receive a code!" , letterSpacing: 0.2),
                                  SizedBox(width: 8,),
-                                 ColorCustomText(fontSize: 16, fontWeight: FontWeight.w400, text:count==0? "Resend":"", letterSpacing: 0.2,textColor:CustomButtomColor),
+                                 ColorCustomText(fontSize: 16, fontWeight: FontWeight.w400, text:count==0? "Resend":"", letterSpacing: 0.2,textColor:CustomButtonColor),
                                ],
                              )),
                          SizedBox(
@@ -124,7 +122,7 @@ class _OTPScreenState extends State<OTPScreen> {
                              Future.delayed(Duration(seconds: 1),() {
                                Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreenSlide(),));
                              },);
-                           }, text: "Verify", button_text_fontSize: 16, button_height: 50, custom_button_collor: CustomButtomColor, button_text_color: Main_Theme_WhiteCollor, borderRadius: 50),
+                           }, text: "Verify", button_text_fontSize: 16, button_height: 50, custom_button_collor: CustomButtonColor, button_text_color: Main_Theme_WhiteCollor, borderRadius: 50),
                          ),
                          const SizedBox(
                            height: 30,
@@ -248,7 +246,7 @@ class _OTPScreenState extends State<OTPScreen> {
 //                padding: const EdgeInsets.all(28.0),
 //                child: CustomButton(onTap: () {
 //
-//                }, text: "Confirm", button_text_fontSize: 16, button_height: 50, custom_button_collor: CustomButtomColor, button_text_color: Main_Theme_WhiteCollor, borderRadius: 50),
+//                }, text: "Confirm", button_text_fontSize: 16, button_height: 50, custom_button_collor: CustomButtonColor, button_text_color: Main_Theme_WhiteCollor, borderRadius: 50),
 //              )
 //             ],
 //           ),

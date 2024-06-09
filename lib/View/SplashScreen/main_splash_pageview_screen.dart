@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:jibika_plexus/View/Auth/SplashScreen/splash_screen1.dart';
-import 'package:jibika_plexus/View/Auth/SplashScreen/splash_screen2.dart';
-import 'package:jibika_plexus/View/Auth/SplashScreen/splash_screen3.dart';
+import 'package:jibika_plexus/View/SplashScreen/splash_screen1.dart';
+import 'package:jibika_plexus/View/SplashScreen/splash_screen2.dart';
+import 'package:jibika_plexus/View/SplashScreen/splash_screen3.dart';
 
 class MainSplashPageViewScreen extends StatefulWidget {
   const MainSplashPageViewScreen({super.key});
