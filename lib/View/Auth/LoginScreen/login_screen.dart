@@ -339,7 +339,8 @@ Future.delayed(Duration(
                         onTap: () {
                           Navigator.push(context, MaterialPageRoute(builder: (context) => CompanyRegistrationScreen(),));
                         },
-                        child: CustomText(fontSize: 17, fontWeight: FontWeight.w500, text: "Register as a Company", letterSpacing: 0.2)),
+                    //    child: CustomText(fontSize: 17, fontWeight: FontWeight.w500, text: "Register as a Company", letterSpacing: 0.2)),
+                        child: CustomText(fontSize: 17, fontWeight: FontWeight.w500, text: "", letterSpacing: 0.2)),
                   )   ,
 
 

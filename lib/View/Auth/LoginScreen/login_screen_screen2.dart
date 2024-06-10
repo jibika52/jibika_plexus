@@ -7,6 +7,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jibika_plexus/CustomWidget/CustomBootomSplashBar/custom_bootom_splash_bar.dart';
+import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 import '../../../Utils/constants.dart';
 import 'login_screen.dart';
 
@@ -61,6 +62,7 @@ class LoginScreenSlideState extends State<LoginScreenSlide>
 bool is_iconClick=false;
   @override
   Widget build(BuildContext context) {
+    double w=MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
@@ -68,7 +70,7 @@ bool is_iconClick=false;
         body: Container(
           decoration: BoxDecoration(
             //  image: DecorationImage(image: AssetImage("Assets/LoginScreenIMG/loginbackground.jpg"),fit:BoxFit.fill)
-              image: DecorationImage(image: AssetImage("Assets/LoginScreenIMG/loginpage1.jpg"),fit:BoxFit.fill)
+         //   image: DecorationImage(image: AssetImage("Assets/LoginScreenIMG/loginpage1.jpg"),fit:BoxFit.fill)
           ),
           alignment: Alignment.topCenter,
 
@@ -90,6 +92,21 @@ bool is_iconClick=false;
                        width: logosize.value,
                      ),
                    )),
+               Positioned(
+                   bottom: logoanimation.value,
+                   left: 0,
+                   right: 0,
+                   child: Center(child: ColorCustomText(fontSize: 15, fontWeight: FontWeight.w500, text: "Register as a Company", letterSpacing: 0.2, textColor: CustomButtonColor,))),
+               Positioned(
+                   bottom: 0,
+                   child: Container(
+
+                 height: 115,
+                 width:MediaQuery.of(context).size.width,
+                     decoration: BoxDecoration(
+                       image: DecorationImage(image: AssetImage("Assets/Gif/leafmove.gif"),fit: BoxFit.fill)
+                     ),
+               ))
 
                // Positioned(
                //     top: 35,

@@ -82,9 +82,9 @@ class SummaryStatusSecondPart extends StatelessWidget {
                     padding: const EdgeInsets.only(top: 3.0),
                     child: ColorCustomText(
                       text: "$value",
-                      fontSize: 16,
+                      fontSize: 13,
                       fontWeight: FontWeight.w600,
-                      letterSpacing: 0.2,
+                      letterSpacing: 0.3,
                       textColor:CapitaltextColor,
                     ),
                   ),

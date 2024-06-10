@@ -23,13 +23,13 @@ class _HomeThiredPartHeaderState extends State<HomeThiredPartHeader> {
       height: 68 ,child: Row(
       children: [
         BarchatHeaderPart(
-          name: "Payable",
+          name: "Today",
           mony: '${widget.PayableMony}',
           parpose: "Manpower",
         ),
         Container(height: 50,width:1,color: Main_Theme_textColor.withOpacity(0.3),),
         BarchatHeaderPart(
-          name: "Daily",
+          name: "Today",
           mony: '${widget.DailyMony}',
           parpose: "Salary",
         ),
@@ -37,7 +37,7 @@ class _HomeThiredPartHeaderState extends State<HomeThiredPartHeader> {
         BarchatHeaderPart(
           name: "Cumulative",
           mony: '${widget.CumulativeMony}',
-          parpose: "Salary bd",
+          parpose: "Salary",
         ),
         Container(height: 50,width:1,color: Main_Theme_textColor.withOpacity(0.3),),
         SizedBox(width: 5,),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:jibika_plexus/Controller/CounterProvider/counter_provider.dart';
+import 'package:jibika_plexus/View/Auth/LoginScreen/login_screen_screen2.dart';
 import 'package:jibika_plexus/View/HomeScreen/home_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -28,8 +29,9 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      //  home:MainSplashPageViewScreen(),
-       home:HomeScreen(),
+      home:MainSplashPageViewScreen(),
+    //  home:LoginScreenSlide(),
+      //    home:HomeScreen(),
     ),
     );
   }
