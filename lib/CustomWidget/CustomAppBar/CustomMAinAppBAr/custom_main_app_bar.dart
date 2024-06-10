@@ -44,11 +44,11 @@ class CustomMainAppBar extends StatelessWidget {
                       child: CustomImageSction(height: 25, width: 25, radius: 1, image: "Assets/DashBoardIcons/notification_icon.png"),
                     ),
                     Positioned(
-                        top: 0,
-                        left: 10,
+                        top: 5,
+                        left: 9,
                         child: CircleAvatar(
-                          radius: 9,
-                          child: ColorCustomText(fontSize: 12, fontWeight: FontWeight.w700, text: "7", letterSpacing: 1, textColor: notification_color),
+                          radius: 7,
+                          child: ColorCustomText(fontSize: 9, fontWeight: FontWeight.w700, text: "7", letterSpacing: 1, textColor: notification_color),
                         ))
                   ],
                 ),

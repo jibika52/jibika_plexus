@@ -69,7 +69,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           children: [
                              Container(
                                height: 300,
-                             )
+                               width: 100,
+                             ),
+
                           ],
                         ),
                       )
