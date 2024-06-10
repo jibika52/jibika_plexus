@@ -20,7 +20,7 @@ class _SecondhomePartScreenState extends State<SecondhomePartScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200,
+      height: 182,
       width: double.infinity,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10), color: Colors.white),
@@ -33,7 +33,7 @@ class _SecondhomePartScreenState extends State<SecondhomePartScreen> {
                   child: Stack(
                     children: [
                       Container(
-                        height: 200,
+                        height: 182,
                         alignment: Alignment.topCenter,
                         child: Stack(
                           alignment: Alignment.topCenter,
@@ -133,16 +133,16 @@ class _SecondhomePartScreenState extends State<SecondhomePartScreen> {
                         ),
                       ),
                       Positioned(
-                          bottom: 14,
+                          bottom: 7,
                           left: 10,
                           right: 10,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "Active Manpower", textColor: Main_Theme_textColor.withOpacity(0.5),letterSpacing: 0.3),
+                              ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Active Manpower", textColor: Main_Theme_textColor.withOpacity(0.5),letterSpacing: 0.3),
 SizedBox(width: 5,),
-                              ColorCustomText(fontSize: 14, fontWeight: FontWeight.w600, text: "2555", letterSpacing: 0.3,textColor: absent_color),
+                              ColorCustomText(fontSize: 12, fontWeight: FontWeight.w600, text: "2555", letterSpacing: 0.3,textColor: absent_color),
                             ],
                           ))
                     ],
@@ -152,10 +152,11 @@ SizedBox(width: 5,),
               ///Second part start
               Expanded(
                   child: Container(
-                      margin: EdgeInsets.only(top: 5,right: 10),
+                      margin: EdgeInsets.only(right: 10),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(11)),
-                          color: Color(0xffFBFBFB).withOpacity(0.6),
+                       color: Color(0xffFBFBFB).withOpacity(0.6),
+                          //   color: Colors.redAccent,
                           border: Border.all(
                             width: 0.5,
                             style: BorderStyle.solid,
@@ -181,7 +182,7 @@ SizedBox(width: 5,),
                                     fontSize: 13,
                                     fontWeight: FontWeight.w700, letterSpacing: 0.3,),
                                 ),
-                                SizedBox(width: 10,),
+                                SizedBox(width: 7,),
                                 Padding(
                                   padding: const EdgeInsets.only(bottom: 7),
                                   child: CustomImageSction(height: 20, width: 20, radius: 2, image: "Assets/DashBoardIcons/clender.png"),
@@ -190,18 +191,20 @@ SizedBox(width: 5,),
                             ),
                           ),
                           Divider(
+                            height: 3,
                             color: Main_Theme_textColor.withOpacity(0.2),
                             thickness: 0.5,
                           ),
+                          SizedBox(height: 10,),
                           ///---------- Present---------------  ///
                           SummaryStatusSecondPart(CapitalTExt: "P", SmallTExt: "resent", value: "565", backColor: Main_Theme_textColor.withOpacity(0.04), CapitaltextColor: presentsent_color,),
-                          SizedBox(height: 3,),
+                          SizedBox(height: 4,),
                           ///---------- Absent---------------  ///
                           SummaryStatusSecondPart(CapitalTExt: "A", SmallTExt: "sent", value: "565", backColor: Main_Theme_WhiteCollor, CapitaltextColor: absent_color,),
-                          SizedBox(height: 3,),
+                          SizedBox(height: 4,),
                           ///---------- Present---------------  ///
                           SummaryStatusSecondPart(CapitalTExt: "L", SmallTExt: "eave", value: "565", backColor: Main_Theme_textColor.withOpacity(0.04), CapitaltextColor: leave_color,),
-                          SizedBox(height: 3,),
+                          SizedBox(height: 4,),
                           ///---------- Absent---------------  ///
                           SummaryStatusSecondPart(CapitalTExt: "H", SmallTExt: "olyday", value: "565", backColor: Main_Theme_WhiteCollor, CapitaltextColor: holiday_color,),
                           SizedBox(height: 3,),
