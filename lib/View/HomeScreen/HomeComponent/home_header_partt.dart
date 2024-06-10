@@ -19,7 +19,7 @@ class _HomeHederPartState extends State<HomeHederPart> {
     "Promo.",
     "Loan",
     "conv.",
-    "Equip.",
+    "Stat.",
     "Comp.",
   ];
   List listimage=[
@@ -84,7 +84,7 @@ class _HomeHederPartState extends State<HomeHederPart> {
                         child: CircleAvatar(
                           radius: 7,
                           backgroundColor: Main_Theme_textColor.withOpacity(0.1),
-                          child: ColorCustomText(text: "20", fontSize: 9, fontWeight: FontWeight.w600, letterSpacing: 0.5,textColor:  notification_color, ),
+                          child: ColorCustomText(text: "20", fontSize: 10, fontWeight: FontWeight.w600, letterSpacing: 0.5,textColor:  notification_color, ),
                         ))
                   ],
                 ),

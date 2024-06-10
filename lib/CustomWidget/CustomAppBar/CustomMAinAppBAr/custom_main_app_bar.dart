@@ -41,13 +41,13 @@ class CustomMainAppBar extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(left: 10.0,top: 10),
-                      child: CustomImageSction(height: 35, width: 35, radius: 1, image: "Assets/DashBoardIcons/notification_icon.png"),
+                      child: CustomImageSction(height: 25, width: 25, radius: 1, image: "Assets/DashBoardIcons/notification_icon.png"),
                     ),
                     Positioned(
                         top: 0,
                         left: 10,
                         child: CircleAvatar(
-                          radius: 10,
+                          radius: 9,
                           child: ColorCustomText(fontSize: 12, fontWeight: FontWeight.w700, text: "7", letterSpacing: 1, textColor: notification_color),
                         ))
                   ],
