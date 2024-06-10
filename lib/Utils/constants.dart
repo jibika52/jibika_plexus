@@ -46,9 +46,6 @@ Color presentsent_color=Color(0xff88DB2E);
 Color absent_color=Color(0xffEC4F4F);
 Color leave_color=Color(0xffDAAF04);
 Color holiday_color=Color(0xff2C928C);
-double total_present=0.8;
-double total_absent=0.90;
-double total_leave=0.95;
-double total_holiday=1.0;
+
 
 ///--------------------------------------///

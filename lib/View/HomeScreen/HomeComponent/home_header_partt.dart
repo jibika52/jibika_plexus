@@ -13,14 +13,14 @@ class HomeHederPart extends StatefulWidget {
 class _HomeHederPartState extends State<HomeHederPart> {
   int selected_index=0;
   List countList=[
-    "Employee",
-    "attendance",
+    "Join ",
+    "Atten.",
     "Leave",
-    "Promotion",
+    "Promo.",
     "Loan",
-    "conveyance",
-    "Requisition",
-    "Complain",
+    "conv.",
+    "Equip.",
+    "Comp.",
   ];
   List listimage=[
     "Assets/DashBoardIcons/employee_icon.png",
@@ -37,11 +37,11 @@ class _HomeHederPartState extends State<HomeHederPart> {
     return  Card(
       elevation: 2,
       child: Container(
-        height: 90,
+        height: 85,
         width: double.infinity,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(6),
-            color: Main_Theme_WhiteCollor,
+           color: Main_Theme_WhiteCollor,
 
         ),
         child: ListView.builder(
@@ -56,9 +56,10 @@ class _HomeHederPartState extends State<HomeHederPart> {
               },
               child: Container(
                 margin: EdgeInsets.only(left: 5),
-                width: 100,
+                width: 70,
                 decoration: BoxDecoration(
-                  color: Main_Theme_WhiteCollor,
+              color: Main_Theme_WhiteCollor,
+
                   border: Border(
                     bottom: BorderSide(width: 3, color:selected_index==index?Main_Theme_textColor.withOpacity(0.3) :Main_Theme_WhiteCollor,style: BorderStyle.solid),
                   ),
@@ -70,19 +71,18 @@ class _HomeHederPartState extends State<HomeHederPart> {
                     Column(
                       children: [
                         Expanded(
-
-                            child: Padding(
-                              padding: const EdgeInsets.all(5.0),
-                              child: Image.asset("${listimage[index]}",fit: BoxFit.fill,color: CustomAppbarColor,),
+                            child: Container(
+                              padding: const EdgeInsets.all(1.0),
+                              child: Image.asset("${listimage[index]}",fit: BoxFit.fill,color: CustomAppbarColor,height: 70,),
                             )),
-                        ColorCustomText(text: "${countList[index]}", fontSize: 12, fontWeight: FontWeight.w500,letterSpacing: 0.2, textColor: CustomButtonColor.withOpacity(0.8)),
+                        ColorCustomText(text: "${countList[index]}", fontSize: 12, fontWeight: FontWeight.w600,letterSpacing: 0.4, textColor: CustomButtonColor.withOpacity(0.8)),
                       ],
                     ),
                     Positioned(
                         top: 0,
                         right:5,
                         child: CircleAvatar(
-                          radius: 11,
+                          radius: 7,
                           backgroundColor: Main_Theme_textColor.withOpacity(0.1),
                           child: ColorCustomText(text: "20", fontSize: 9, fontWeight: FontWeight.w600, letterSpacing: 0.5,textColor:  notification_color, ),
                         ))

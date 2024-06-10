@@ -1,15 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
 import 'package:jibika_plexus/View/HomeScreen/HomeComponent/summary_status_second_part.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
+import '../../../CustomWidget/CustomCalender/custom_calender.dart';
 import '../../../CustomWidget/CustomText/custom_text.dart';
 
 
 class SecondhomePartScreen extends StatefulWidget {
-  const SecondhomePartScreen({Key? key}) : super(key: key);
+  SecondhomePartScreen({Key? key,
+  required this.presentTExt,
+  required this.PersentCount,
+  required this.AbsentCount,
+  required this.LeaveCount,
+  required this.HolidayCount,
+  required this.ManpowerCount,
+    /// --------------- Create Radius --------------------///
+  required this.total_present,
+  required this.total_absent,
+  required this.total_leave,
+  required this.total_holiday,
+  }) : super(key: key);
+
+  /// --------------- Create All TExt Value --------------------///
+  String presentTExt;
+  String PersentCount;
+  String AbsentCount;
+  String LeaveCount;
+  String HolidayCount;
+  String ManpowerCount;
+  /// --------------- Create Radius --------------------///
+  double total_present;
+  double total_absent;
+  double total_leave;
+  double total_holiday;
 
   @override
   State<SecondhomePartScreen> createState() => _SecondhomePartScreenState();
@@ -63,7 +88,7 @@ class _SecondhomePartScreenState extends State<SecondhomePartScreen> {
                                         crossAxisAlignment: CrossAxisAlignment.center,
                                         children: [
                                           ColorCustomText(
-                                            text: "93%",
+                                            text: "${widget.presentTExt}%",
                                             fontSize: 21,
                                             fontWeight: FontWeight.w700,
                                             letterSpacing:1,
@@ -89,7 +114,7 @@ class _SecondhomePartScreenState extends State<SecondhomePartScreen> {
                               child: CircularPercentIndicator(
                                 radius: 67.0,
                                 lineWidth: 16.0,
-                                percent: total_holiday,
+                                percent: widget.total_holiday,
                                 backgroundColor: Colors.grey.withOpacity(0),
                                 progressColor: holiday_color,
                               ),
@@ -101,7 +126,7 @@ class _SecondhomePartScreenState extends State<SecondhomePartScreen> {
                                 radius: 67.0,
                                 lineWidth: 16.0,
                                 /// ------------------------- increase  holiday -----------------///
-                                percent:total_leave,
+                                percent:widget.total_leave,
                                 backgroundColor: Colors.grey.withOpacity(0),
                                 progressColor: leave_color,
                               ),
@@ -112,7 +137,7 @@ class _SecondhomePartScreenState extends State<SecondhomePartScreen> {
                               child: CircularPercentIndicator(
                                 radius: 67.0,
                                 lineWidth: 16.0,
-                                percent:total_absent,
+                                percent:widget.total_absent,
                                 backgroundColor: Colors.grey.withOpacity(0),
                                 progressColor: absent_color,
                               ),
@@ -122,7 +147,7 @@ class _SecondhomePartScreenState extends State<SecondhomePartScreen> {
                               child: CircularPercentIndicator(
                                 radius: 70.0,
                                 lineWidth: 20.0,
-                                percent: total_present,
+                                percent: widget.total_present,
                                 backgroundColor: Colors.grey.withOpacity(0),
                                 progressColor: presentsent_color,
                               ),
@@ -141,7 +166,7 @@ class _SecondhomePartScreenState extends State<SecondhomePartScreen> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Active Manpower", textColor: Main_Theme_textColor.withOpacity(0.5),letterSpacing: 0.3),
-SizedBox(width: 5,),
+                              SizedBox(width: 5,),
                               ColorCustomText(fontSize: 12, fontWeight: FontWeight.w600, text: "2555", letterSpacing: 0.3,textColor: absent_color),
                             ],
                           ))
@@ -152,11 +177,11 @@ SizedBox(width: 5,),
               ///Second part start
               Expanded(
                   child: Container(
-                      margin: EdgeInsets.only(right: 10),
+                      margin: EdgeInsets.only(right: 10,top: 3,bottom: 3),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(11)),
-                       color: Color(0xffFBFBFB).withOpacity(0.6),
-                          //   color: Colors.redAccent,
+                           color: Color(0xffFBFBFB).withOpacity(0.6),
+                          //      color: Colors.redAccent,
                           border: Border.all(
                             width: 0.5,
                             style: BorderStyle.solid,
@@ -169,44 +194,45 @@ SizedBox(width: 5,),
                         children: [
                           ///---------- Calender---------------  ///
                           Container(
-                            height: 25,
+                            height: 30,
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsets.only(top: 1.0),
+                                  padding: const EdgeInsets.only(top: 1.0,left: 10),
                                   child: ColorCustomText(
                                     text: "${selected2Datee}",
                                     textColor: Main_Theme_textColor.withOpacity(0.6),
-                                    fontSize: 13,
+                                    fontSize: 11,
                                     fontWeight: FontWeight.w700, letterSpacing: 0.3,),
                                 ),
-                                SizedBox(width: 7,),
-                                Padding(
-                                  padding: const EdgeInsets.only(bottom: 7),
-                                  child: CustomImageSction(height: 20, width: 20, radius: 2, image: "Assets/DashBoardIcons/clender.png"),
-                                ),
+
+                                /// ---------- Custom Calender Part --------- ///
+                                CustomCalender(onTap: () {
+                                  _select2Date(context);
+                                },),
                               ],
                             ),
                           ),
+                          SizedBox(height: 5,),
                           Divider(
                             height: 3,
                             color: Main_Theme_textColor.withOpacity(0.2),
                             thickness: 0.5,
                           ),
-                          SizedBox(height: 10,),
+                          SizedBox(height: 5,),
                           ///---------- Present---------------  ///
-                          SummaryStatusSecondPart(CapitalTExt: "P", SmallTExt: "resent", value: "565", backColor: Main_Theme_textColor.withOpacity(0.04), CapitaltextColor: presentsent_color,),
+                          SummaryStatusSecondPart(CapitalTExt: "P", SmallTExt: "resent", value: "${widget.PersentCount}", backColor: Main_Theme_textColor.withOpacity(0.04), CapitaltextColor: presentsent_color,),
                           SizedBox(height: 4,),
                           ///---------- Absent---------------  ///
-                          SummaryStatusSecondPart(CapitalTExt: "A", SmallTExt: "sent", value: "565", backColor: Main_Theme_WhiteCollor, CapitaltextColor: absent_color,),
+                          SummaryStatusSecondPart(CapitalTExt: "A", SmallTExt: "sent", value: "${widget.AbsentCount}", backColor: Main_Theme_WhiteCollor, CapitaltextColor: absent_color,),
                           SizedBox(height: 4,),
                           ///---------- Present---------------  ///
-                          SummaryStatusSecondPart(CapitalTExt: "L", SmallTExt: "eave", value: "565", backColor: Main_Theme_textColor.withOpacity(0.04), CapitaltextColor: leave_color,),
+                          SummaryStatusSecondPart(CapitalTExt: "L", SmallTExt: "eave", value: "${widget.LeaveCount}", backColor: Main_Theme_textColor.withOpacity(0.04), CapitaltextColor: leave_color,),
                           SizedBox(height: 4,),
                           ///---------- Absent---------------  ///
-                          SummaryStatusSecondPart(CapitalTExt: "H", SmallTExt: "olyday", value: "565", backColor: Main_Theme_WhiteCollor, CapitaltextColor: holiday_color,),
+                          SummaryStatusSecondPart(CapitalTExt: "H", SmallTExt: "olyday", value: "${widget.HolidayCount}", backColor: Main_Theme_WhiteCollor, CapitaltextColor: holiday_color,),
                           SizedBox(height: 3,),
 
 
