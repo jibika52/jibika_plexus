@@ -70,7 +70,8 @@ bool is_iconClick=false;
         body: Container(
           decoration: BoxDecoration(
             //  image: DecorationImage(image: AssetImage("Assets/LoginScreenIMG/loginbackground.jpg"),fit:BoxFit.fill)
-         //   image: DecorationImage(image: AssetImage("Assets/LoginScreenIMG/loginpage1.jpg"),fit:BoxFit.fill)
+         //  image: DecorationImage(image: AssetImage("Assets/LoginScreenIMG/customizebackground.png"),fit:BoxFit.fill)
+         //  image: DecorationImage(image: AssetImage("Assets/LoginScreenIMG/customizebackground.png"),fit:BoxFit.fill)
           ),
           alignment: Alignment.topCenter,
 

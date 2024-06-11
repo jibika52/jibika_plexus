@@ -67,6 +67,8 @@ dependencies:
   # OTP
   pinput: ^3.0.1
   percent_indicator: ^4.2.3
+  # For flow chart
+  fl_chart: ^0.68.0
 
 dev_dependencies:
   flutter_test:
