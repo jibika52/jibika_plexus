@@ -30,8 +30,8 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       //   home:MainSplashPageViewScreen(),
-         home:LoginScreenSlide(),
-      //    home:HomeScreen(),
+      //   home:LoginScreenSlide(),
+       home:HomeScreen(),
     ),
     );
   }
