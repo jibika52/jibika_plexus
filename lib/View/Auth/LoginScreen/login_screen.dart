@@ -90,7 +90,7 @@ Future.delayed(Duration(
               child: Column(
                 children: [
                   SizedBox(height: h*0.030),
-                GetStorage().read("val")=="false"?Container():  Container(
+                GetStorage().read("val")=="false"?Container(height: 35):  Container(
                     width: logosize.value,
                     height: 35,
                     alignment: Alignment.center,
