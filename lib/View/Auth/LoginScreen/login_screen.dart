@@ -73,11 +73,19 @@ Future.delayed(Duration(
   bool is_check=true;
   bool is_iconClick=false;
   bool obscureText=true;
+  String phone_number_test="001758098111";
   @override
   Widget build(BuildContext context) {
     double h=MediaQuery.of(context).size.height;
     double w=MediaQuery.of(context).size.width;
-    print("cccccccccccccccccccccccccccccccc $countryFlag");
+
+
+    if(phone_number_test.startsWith("00")){
+
+      print("replesssssssssssss  ${phone_number_test.substring(1)}");
+    }else{
+      print("elseeeeeeeeeeeeeeeeee  $phone_number_test");
+    }
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.red.withOpacity(0.0),
@@ -131,7 +139,8 @@ Future.delayed(Duration(
                               decelerationCurve: Curves.easeOut,
                             ),
                           ) :
-                          Container(margin: EdgeInsets.symmetric(horizontal: 7),
+                          Container(
+                            margin: EdgeInsets.symmetric(horizontal: 7),
                             height: 35,
                             width: double.infinity,
                             child: Row(
@@ -321,13 +330,13 @@ Future.delayed(Duration(
 
                         CustomButton(onTap: () {
                           if(_formKey.currentState!.validate()){
-                            Navigator.push(context, MaterialPageRoute(builder: (context) =>  HomeScreen(
-
-                            ),));
+                            if(countruyCode=="+880"){
+                              Navigator.push(context, MaterialPageRoute(builder: (context) =>  HomeScreen(
+                              ),));
+                            }
                           }else{
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: ColorCustomText(fontSize: 16, textColor: Main_Theme_WhiteCollor,fontWeight: FontWeight.w500, text: "Please fill all the field", letterSpacing: 0.3)));
                           }
-
                         }, text: "Login", button_text_fontSize: 17, fontWeight: FontWeight.bold,button_height: 50, custom_button_collor: CustomButtonColor, button_text_color:Main_Theme_WhiteCollor, borderRadius: 50)
                       ],
                     ),

@@ -6,9 +6,15 @@ class ThirdPartProgressBar extends StatefulWidget {
    ThirdPartProgressBar({super.key,
    required this.presentheight,
    required this.absenttheight,
+   required this.present_width,
+   required this.Absent_width,
+   required this.total_width,
    });
    double presentheight;
    double absenttheight;
+   double present_width;
+   double Absent_width;
+   double total_width;
   @override
   State<ThirdPartProgressBar> createState() => _ThirdPartProgressBarState();
 }
@@ -21,7 +27,7 @@ class _ThirdPartProgressBarState extends State<ThirdPartProgressBar>   with Tick
   void initState() {
     controller = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 5),
+      duration: const Duration(seconds: 3),
     )..addListener(() {
       setState(() {});
     });
@@ -38,14 +44,14 @@ class _ThirdPartProgressBarState extends State<ThirdPartProgressBar>   with Tick
   @override
   Widget build(BuildContext context) {
     return  Container(
-      width: 21,
+      width: widget.total_width,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Container(
             height: widget.presentheight,
-            width: 10,
+            width: widget.present_width,
             child: RotatedBox(
               quarterTurns: -1,
               child: LinearProgressIndicator(
@@ -58,7 +64,7 @@ class _ThirdPartProgressBarState extends State<ThirdPartProgressBar>   with Tick
           Spacer(),
           Container(
             height: widget.absenttheight,
-            width: 10,
+            width: widget.Absent_width,
             child: RotatedBox(
               quarterTurns: -1,
               child: LinearProgressIndicator(

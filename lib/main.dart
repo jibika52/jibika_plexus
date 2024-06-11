@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
       ),
       //   home:MainSplashPageViewScreen(),
       //   home:LoginScreenSlide(),
-       home:HomeScreen(),
+     home:HomeScreen(),
     ),
     );
   }

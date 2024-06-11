@@ -48,4 +48,36 @@ Color leave_color=Color(0xffDAAF04);
 Color holiday_color=Color(0xff2C928C);
 
 
-///--------------------------------------///
+///--------------- Custom TExt font size -----------------------///
+
+
+const font10=10.0;
+const font11=11.0;
+const font12=12.0;
+const font13=13.0;
+const font14=14.0;
+const font15=15.0;
+const font16=16.0;
+const font18=18.0;
+const font19=19.0;
+const font20=20.0;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

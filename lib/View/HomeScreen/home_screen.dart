@@ -4,6 +4,7 @@ import 'package:jibika_plexus/CustomWidget/CustomCalender/custom_calender.dart';
 import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
 import 'package:jibika_plexus/View/HomeScreen/HomeComponent/home_header_partt.dart';
+import 'package:jibika_plexus/View/HomeScreen/HomeComponent/home_third_pard_body_laft_side.dart';
 import 'package:jibika_plexus/View/HomeScreen/HomeComponent/home_third_part_progressbar.dart';
 import 'package:jibika_plexus/View/HomeScreen/HomeComponent/home_thired_part_header.dart';
 import 'package:jibika_plexus/View/HomeScreen/HomeComponent/summary_status.dart';
@@ -56,16 +57,15 @@ class _HomeScreenState extends State<HomeScreen>{
 
             ///---------------- Third Part --------------------///
             Container(
-              height: 170,
+              height: 180,
               width: double.infinity,
               decoration:BoxDecoration(
                   borderRadius: BorderRadius.circular(11),
                   color: Colors.white
               ),
-              margin: EdgeInsets.symmetric(horizontal: 11,vertical: 10),
+              margin: EdgeInsets.symmetric(horizontal: 11,vertical: 15),
               child: Column(
                 children: [
-
                   ///----------- Bar chat Header Part -------///
                   HomeThiredPartHeader(
                     PayableMony: "150", DailyMony: "1500", CumulativeMony: "1222345611",
@@ -74,29 +74,20 @@ class _HomeScreenState extends State<HomeScreen>{
                       child: Container(
                         child: Row(
                           children: [
-                             Container(
-                               height: 170,
-                               width: 50,
-                               child: Column(
-                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                 children: [
-                                   ColorCustomText(fontSize: 11, fontWeight: FontWeight.w500, text: "100%", letterSpacing: 0.1, textColor: Main_Theme_textColor.withOpacity(0.7),),
-                                 //  CustomText(fontSize: 10, fontWeight: FontWeight.w400, text: "80%", letterSpacing: 0.4),
-                                   ColorCustomText(fontSize: 11, fontWeight: FontWeight.w500, text: "70%", letterSpacing: 0.1, textColor: Main_Theme_textColor.withOpacity(0.7),),
-                                  // CustomText(fontSize: 10, fontWeight: FontWeight.w400, text: "40%", letterSpacing: 0.4),
-                                   ColorCustomText(fontSize: 11, fontWeight: FontWeight.w500, text: "30%", letterSpacing: 0.1, textColor: Main_Theme_textColor.withOpacity(0.7),),
-                                   ColorCustomText(fontSize: 11, fontWeight: FontWeight.w500, text: "0%", letterSpacing: 0.1, textColor: Main_Theme_textColor.withOpacity(0.7),),
-                                   SizedBox(height: 20,),
-                                 ],
-                               ),
-                             ),
+                            HomeThirdPartBodyLeftSide(
+                              top1: "100%",
+                              top2: "70%",
+                              top3: "30%",
+                              top4: "0%",
+                              color: presentsent_color,
+                            ),
                             Expanded(
                                 child: Container(
                               width: double.infinity,
                               height: double.infinity,
                               color: Colors.greenAccent.shade100.withOpacity(0.1),
                               child:  Container(
-                                height: 80,
+                                height: 90,
                                 width: 500,
                                 child:Scrollbar(
                                   child: ListView.builder(
@@ -104,11 +95,11 @@ class _HomeScreenState extends State<HomeScreen>{
                                     scrollDirection: Axis.horizontal,
                                     itemBuilder: (context, index) {
                                     return  Container(
-                                      height: 80,
+                                      height: 90,
                                         margin: EdgeInsets.only(right: 10),
                                         child: Column(
                                           children: [
-                                            Expanded(child: ThirdPartProgressBar(  absenttheight: 30+double.parse("$index"), presentheight:70-double.parse("$index"))),
+                                            Expanded(child: ThirdPartProgressBar(  absenttheight: 30+double.parse("$index"), presentheight:70-double.parse("$index"), present_width: 10, Absent_width: 10, total_width: 21,)),
                                             SizedBox(height: 5,),
                                             Container(
                                               height: 20,
@@ -120,7 +111,7 @@ class _HomeScreenState extends State<HomeScreen>{
                                               alignment: Alignment.center,
                                               child: CustomText(fontSize: 10, fontWeight: FontWeight.w400, text: "${index+1}", letterSpacing: 0.2)
                                             ),
-                                            SizedBox(height: 5,),
+                                            SizedBox(height: 10,),
                                           ],
                                         ));
                                   },),
@@ -134,6 +125,98 @@ class _HomeScreenState extends State<HomeScreen>{
                 ],
               ),
             ),
+
+            ///---------------- Fourth Part --------------------///
+            Container(
+              height: 180,
+              width: double.infinity,
+              decoration:BoxDecoration(
+                  borderRadius: BorderRadius.circular(11),
+                  color: Colors.white
+              ),
+              margin: EdgeInsets.symmetric(horizontal: 11),
+              child: Column(
+                children: [
+                  ///----------- Bar chat Header Part -------///
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: CustomText(fontSize: font14, fontWeight: FontWeight.w500, text: "Salary Comparison Chart  Jan-2023", letterSpacing: 0.3),
+                  ),
+                  Expanded(
+                      child: Container(
+                        child: Row(
+                          children: [
+                            HomeThirdPartBodyLeftSide(
+                              top1: "150K",
+                              top2: "120K",
+                              top3: "60",
+                              top4: "K",
+                              color: presentsent_color,
+                            ),
+                            Expanded(
+                                child: Container(
+                              width: double.infinity,
+                              height: double.infinity,
+                              color: Colors.greenAccent.shade100.withOpacity(0.1),
+                              child:  Container(
+                                height: 90,
+                                width: 500,
+                                child:Scrollbar(
+                                  child: ListView.builder(
+                                    itemCount: 12,
+                                    scrollDirection: Axis.horizontal,
+                                    itemBuilder: (context, index) {
+                                    return  Container(
+                                      height: 90,
+                                        margin: EdgeInsets.only(right: 7),
+                                        child: Column(
+                                          children: [
+                                            Expanded(
+                                                child: ThirdPartProgressBar( absenttheight:1, presentheight: 30+double.parse("$index"), present_width: 15, Absent_width: 0.001, total_width: 21,)),
+                                            SizedBox(height: 5,),
+                                            Container(
+                                              height: 27,
+                                              width: 22,
+                                              // decoration: BoxDecoration(
+                                              //     color:DateTime.now().day==index? presentsent_color:Main_Theme_textColor.withOpacity(0.05),
+                                              //   borderRadius: BorderRadius.circular(2)
+                                              // ),
+                                              padding: EdgeInsets.only(right: 5),
+                                              alignment: Alignment.center,
+                                              child:RotatedBox(
+                                                      quarterTurns: 1,
+                                                      child: ColorCustomText(fontSize: font11, fontWeight: FontWeight.w400, text: "${monthList[index]}", letterSpacing: 0.2, textColor: Main_Theme_textColor.withOpacity(0.6),)
+                                                      ),
+
+
+                                            ),
+                                            SizedBox(height: 10,),
+                                          ],
+                                        ));
+                                  },),
+                                )
+                              ),
+                            )),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 8.0),
+                              child: HomeThirdPartBodyLeftSide(
+                                top1: "180K",
+                                top2: "165K",
+                                top3: "80K",
+                                top4: "60K",
+                                color: absent_color,
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
+                  ),
+
+                ],
+              ),
+            ),
+
+            
           ],
         )
       ),
@@ -154,5 +237,21 @@ class _HomeScreenState extends State<HomeScreen>{
       });
     }
   }
+
+ List monthList= [
+   "Jan",
+   "Feb",
+   "Mar",
+   "Apr",
+   "May",
+   "Jun",
+   "Jul",
+   "Aug",
+   "Sep",
+   "Oct",
+   "Nov",
+   "Dec",
+ ];
+
 }
 
