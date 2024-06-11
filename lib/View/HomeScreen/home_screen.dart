@@ -20,9 +20,12 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen>{
 
-
+    int total_Amount=100000000;
+    String value = "K";
   @override
   Widget build(BuildContext context) {
+
+
     return Scaffold(
         appBar: PreferredSize(preferredSize: Size.fromHeight(100),
           /// ------------ Custom Main AppBAr -------------///
@@ -40,19 +43,9 @@ class _HomeScreenState extends State<HomeScreen>{
             ),
             /// ------------- Second Part -------------///
             Container(
-              margin: EdgeInsets.only(top: 5),
-              height: 180,
-              padding: const EdgeInsets.only(top :7, left: 11.0,right: 11),
+              margin: EdgeInsets.only(top: 5), height: 180, padding: const EdgeInsets.only(top :7, left: 11.0,right: 11),
               child:SecondhomePartScreen(
-                  presentTExt: "93",
-                  PersentCount: "565",
-                  AbsentCount: "323",
-                  LeaveCount: "868",
-                  HolidayCount: "696",
-                  ManpowerCount: "255",
-                  ///----------------- Circle ratio part --------------------///
-                  total_present: 0.8, total_absent: 0.90, total_leave: 0.95, total_holiday: 1.0
-              ),
+                  presentTExt: "93", PersentCount: "565", AbsentCount: "323", LeaveCount: "868", HolidayCount: "696", ManpowerCount: "255", total_present: 0.8, total_absent: 0.90, total_leave: 0.95, total_holiday: 1.0),
             ),
 
 
@@ -69,19 +62,15 @@ class _HomeScreenState extends State<HomeScreen>{
                 children: [
                   ///----------- Bar chat Header Part -------///
                   HomeThiredPartHeader(
-                    PayableMony: "150", DailyMony: "1500", CumulativeMony: "1222345611",
+                    PayableMony: "150", DailyMony: "1500", CumulativeMony: "6966",
                   ),
                   Expanded(
                       child: Container(
                         child: Row(
                           children: [
-                            HomeThirdPartBodyLeftSide(
-                              top1: "100%",
-                              top2: "70%",
-                              top3: "30%",
-                              top4: "0%",
-                              color: presentsent_color,
-                            ),
+                            /// Home Third Part  Body Left Side
+                            HomeThirdPartBodyLeftSide(top1: "100%", top2: "70%", top3: "30%", top4: "0%", color: Main_Theme_textColor.withOpacity(0.6),),
+                            /// Home Third Part  Body Right Side
                             Expanded(
                                 child: Container(
                               width: double.infinity,
@@ -141,18 +130,18 @@ class _HomeScreenState extends State<HomeScreen>{
                   ///----------- Bar chat Header Part -------///
                   Padding(
                     padding: const EdgeInsets.all(10.0),
-                    child: CustomText(fontSize: font14, fontWeight: FontWeight.w500, text: "Salary Comparison Chart  Jan-2023", letterSpacing: 0.3),
+                    child: ColorCustomText(fontSize: font12header, fontWeight: FontWeight.w500, text: "Salary Comparison Chart  Jan-2023", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.9),),
                   ),
                   Expanded(
                       child: Container(
                         child: Row(
                           children: [
                             HomeThirdPartBodyLeftSide(
-                              top1: "150K",
-                              top2: "120K",
-                              top3: "60",
-                              top4: "K",
-                              color: presentsent_color,
+                              top1:total_Amount>10000? "1000M": "1000K",
+                              top2: total_Amount>10000? "120M": "120K",
+                              top3: total_Amount>10000? "60M": "600K",
+                              top4: total_Amount>10000? "0M": "0K",
+                              color:Main_Theme_textColor.withOpacity(0.6),
                             ),
                             Expanded(
                                 child: Container(
@@ -173,23 +162,17 @@ class _HomeScreenState extends State<HomeScreen>{
                                         child: Column(
                                           children: [
                                             Expanded(
-                                                child: ThirdPartProgressBar( absenttheight:1, presentheight: 30+double.parse("$index"), present_width: 15, Absent_width: 0.001, total_width: 21,)),
+                                                child: ThirdPartProgressBar( absenttheight:1, presentheight:index.isOdd? 50+double.parse("$index")+20  : 50+double.parse("$index")-20 , present_width: 15, Absent_width: 0.001, total_width: 21,)),
                                             SizedBox(height: 5,),
                                             Container(
                                               height: 27,
-                                              width: 22,
-                                              // decoration: BoxDecoration(
-                                              //     color:DateTime.now().day==index? presentsent_color:Main_Theme_textColor.withOpacity(0.05),
-                                              //   borderRadius: BorderRadius.circular(2)
-                                              // ),
+                                              width: 22, 
                                               padding: EdgeInsets.only(right: 5),
                                               alignment: Alignment.center,
                                               child:RotatedBox(
                                                       quarterTurns: 1,
                                                       child: ColorCustomText(fontSize: font11, fontWeight: FontWeight.w400, text: "${monthList[index]}", letterSpacing: 0.2, textColor: Main_Theme_textColor.withOpacity(0.6),)
                                                       ),
-
-
                                             ),
                                             SizedBox(height: 10,),
                                           ],
@@ -198,16 +181,11 @@ class _HomeScreenState extends State<HomeScreen>{
                                 )
                               ),
                             )),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 8.0),
-                              child: HomeThirdPartBodyLeftSide(
-                                top1: "180K",
-                                top2: "165K",
-                                top3: "80K",
-                                top4: "60K",
-                                color: absent_color,
-                              ),
-                            ),
+                            // Padding(
+                            //   padding: const EdgeInsets.only(top: 8.0),
+                            //   child: HomeThirdPartBodyLeftSide(top1: "180K", top2: "165K", top3: "80K", top4: "60K", color: absent_color,
+                            //   ),
+                            // ),
                           ],
                         ),
                       )

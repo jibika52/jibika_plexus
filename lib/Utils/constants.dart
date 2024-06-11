@@ -53,7 +53,7 @@ Color holiday_color=Color(0xff2C928C);
 
 const font10=10.0;
 const font11=11.0;
-const font12=12.0;
+const font12header=14.0;
 const font13=13.0;
 const font14=14.0;
 const font15=15.0;
@@ -65,8 +65,22 @@ const font20=20.0;
 
 
 
+/// ----------- Custom Month List -----------------------///
 
-
+List monthList= [
+ "Jan",
+ "Feb",
+ "Mar",
+ "Apr",
+ "May",
+ "Jun",
+ "Jul",
+ "Aug",
+ "Sep",
+ "Oct",
+ "Nov",
+ "Dec",
+];
 
 
 

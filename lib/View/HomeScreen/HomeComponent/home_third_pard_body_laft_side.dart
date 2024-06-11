@@ -21,8 +21,10 @@ class HomeThirdPartBodyLeftSide extends StatelessWidget {
     return Container(
       height: 170,
       width: 50,
+      padding: EdgeInsets.only(right: 7),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           ColorCustomText(fontSize: 11, fontWeight: FontWeight.w500, text: "$top1", letterSpacing: 0.1, textColor: color,),
           ColorCustomText(fontSize: 11, fontWeight: FontWeight.w500, text: "$top2", letterSpacing: 0.1, textColor: color,),
