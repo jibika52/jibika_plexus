@@ -40,6 +40,7 @@ class _HomeScreenState extends State<HomeScreen>{
             ),
             /// ------------- Second Part -------------///
             Container(
+              margin: EdgeInsets.only(top: 5),
               height: 180,
               padding: const EdgeInsets.only(top :7, left: 11.0,right: 11),
               child:SecondhomePartScreen(
