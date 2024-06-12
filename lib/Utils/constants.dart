@@ -62,7 +62,8 @@ const font18=18.0;
 const font19=19.0;
 const font20=20.0;
 
-
+///---------------- Tab height --------------------- ///
+   const apps_div_margin=12.0;
 
 
 /// ----------- Custom Month List -----------------------///

@@ -195,8 +195,8 @@ class _SecondhomePartScreenState extends State<SecondhomePartScreen> {
                               child: ColorCustomText(
                                 text: "${selected2Datee}",
                                 textColor: Main_Theme_textColor.withOpacity(0.6),
-                                fontSize: 11,
-                                fontWeight: FontWeight.w700, letterSpacing: 0.3,),
+                                fontSize: font10,
+                                fontWeight: FontWeight.w400, letterSpacing: 0.2,),
                             ),
 
                             /// ---------- Custom Calender Part --------- ///

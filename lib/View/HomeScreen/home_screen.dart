@@ -7,7 +7,9 @@ import 'package:jibika_plexus/CustomWidget/CustomAppBar/CustomMAinAppBAr/custom_
 import 'package:jibika_plexus/CustomWidget/CustomCalender/custom_calender.dart';
 import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
+import 'package:jibika_plexus/View/HomeScreen/HomeComponent/home_five_part_body_section.dart';
 import 'package:jibika_plexus/View/HomeScreen/HomeComponent/home_header_partt.dart';
+import 'package:jibika_plexus/View/HomeScreen/HomeComponent/home_seven_part_body_section.dart';
 import 'package:jibika_plexus/View/HomeScreen/HomeComponent/home_third_pard_body_laft_side.dart';
 import 'package:jibika_plexus/View/HomeScreen/HomeComponent/home_third_part_progressbar.dart';
 import 'package:jibika_plexus/View/HomeScreen/HomeComponent/home_thired_part_header.dart';
@@ -40,20 +42,20 @@ class _HomeScreenState extends State<HomeScreen>{
         child:  SingleChildScrollView(
           child: Column(
             children: [
+              /// ------------- First Part ---------------///
               Padding(
-                padding: const EdgeInsets.only(top :10, left: 10.0,right: 10),
+                padding: const EdgeInsets.only(top :apps_div_margin-2, left: 10.0,right: 10),
                 child: HomeHederPart(
                   permission_list: [],
                 ),
               ),
               /// ------------- Second Part -------------///
               Container(
-                margin: EdgeInsets.only(top: 5), height: 180, padding: const EdgeInsets.only(top :7, left: 11.0,right: 11),
+               height: 180, padding: const EdgeInsets.only(top :7, left: 11.0,right: 11),
                 child:SecondhomePartScreen(
                     presentTExt: "93", PersentCount: "565", AbsentCount: "323", LeaveCount: "868", HolidayCount: "696", ManpowerCount: "255", total_present: 0.8, total_absent: 0.90, total_leave: 0.95, total_holiday: 1.0),
               ),
-          
-          
+
               ///---------------- Third Part --------------------///
               Container(
                 height: 180,
@@ -62,7 +64,8 @@ class _HomeScreenState extends State<HomeScreen>{
                     borderRadius: BorderRadius.circular(11),
                     color: Colors.white
                 ),
-                margin: EdgeInsets.symmetric(horizontal: 11,vertical: 15),
+
+                margin: EdgeInsets.symmetric(horizontal: 11,vertical: apps_div_margin),
                 child: Column(
                   children: [
                     ///----------- Bar chat Header Part -------///
@@ -120,7 +123,7 @@ class _HomeScreenState extends State<HomeScreen>{
                   ],
                 ),
               ),
-          
+
               ///---------------- Fourth Part --------------------///
               Container(
                 height: 180,
@@ -199,11 +202,17 @@ class _HomeScreenState extends State<HomeScreen>{
                   ],
                 ),
               ),
-          
-              /// -----------------  Five Part -------------------///
+
+              /// -----------------  Test Part -------------------///
              Container(
+               margin: EdgeInsets.only(left: 10,right: 10,top: apps_div_margin),
                height: 200,
                width: double.infinity,
+               decoration: BoxDecoration(
+                 color: Main_Theme_WhiteCollor,
+                 borderRadius: BorderRadius.circular(11),
+               ),
+
                child: LineChart(
                  LineChartData(
                    minY: 0,
@@ -234,97 +243,13 @@ class _HomeScreenState extends State<HomeScreen>{
                  ),
                ),
              ),
-              
-              SizedBox(height: 15,),
+              /// ------------------- Five Part Start here ------------------------///
+              SizedBox(height: apps_div_margin,),
+              HomeFivePartBodyScetion(image: "Assets/DashBoardIcons/man_picture.png", name: "Hafizur Rahaman", designation: "Manager, HR, Admin ,", email: "jibikaapps@gmail.com ", phone: "01889173335"),
+              /// ------------------- Six Part Start here ------------------------///
               Container(
-                margin: EdgeInsets.only(left: 10,right: 10),
-                height: 140,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(11),
-                  color: Color(0xffc7ded6),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: CustomText(text: "Today's Selection", fontSize: 15, fontWeight: FontWeight.w600, letterSpacing: 0.3,),
-                    ),
-                    Container(
-                      height: 102,
-                      width: double.infinity,
-                      padding: EdgeInsets.only(bottom: 8),
-                      child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          return Container(
-                            height: 100,
-                            width: 205,
-                            margin: EdgeInsets.only(left: 10),
-                            padding: EdgeInsets.all(2),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(11),
-                              color: Colors.white,
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Stack(
-                                  children: [
-                                    Positioned(
-                                      top: -4,
-                                      left: -4,
-                                      child: Container(
-                                        margin: EdgeInsets.all(10),
-                                        width: 55,
-                                        height: 70,
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(9),
-                                          color: Colors.red.shade300,
-                                        ),
-
-                                      ),),
-
-                                    Positioned(child: Container(
-                                      margin: EdgeInsets.all(10),
-                                      width: 60,
-                                      height: 70,
-                                      decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(9),
-                                          image: DecorationImage(image: AssetImage(" "),fit: BoxFit.fill,)
-                                      ),
-
-                                    ),),
-                                  ],
-                                ),
-                                Expanded(child: Container(
-                                  padding: EdgeInsets.all(4),
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      ColorCustomText(text: "Hafizur Rahaman", fontSize: 14, fontWeight: FontWeight.w700, letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.9),)
-                                      , Text(  "Dummy text of the printing  ", textAlign: TextAlign.justify ,maxLines: 4,style: GoogleFonts.poppins(
-                                        fontSize: 12.2,fontWeight: FontWeight.w500,
-
-                                      ),)
-                                    ],
-                                  ),
-                                ))
-                              ],
-                            ),
-                          );
-                        },),
-                    )
-                  ],
-                ),
-              ),
-              SizedBox(height: 15,),
-              Container(
-                margin: EdgeInsets.only(left: 10,right: 10),
-                height: 160,
+                margin: EdgeInsets.only(left: 10,right: 10,top: apps_div_margin),
+                height: 154,
                 width: double.infinity,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(11),
@@ -333,17 +258,39 @@ class _HomeScreenState extends State<HomeScreen>{
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Spacer(),
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.only(top: 0,bottom: 0,left: 8,right: 8),
                       child: Row(
                         children: [
-                          ColorCustomText(text: "20 ", fontSize: 15, fontWeight: FontWeight.w600,textColor: Colors.red, letterSpacing: 0.3,),
-                          ColorCustomText(text: "Person on leave", fontSize: 12, fontWeight: FontWeight.w600,textColor: Colors.grey, letterSpacing: 0.3,),
+                          ColorCustomText(text: "20 ", fontSize: font12header, fontWeight: FontWeight.w500,textColor: absent_color, letterSpacing: 0.3,),
+                          ColorCustomText(text: "Person on leave", fontSize: font12header, fontWeight: FontWeight.w500,textColor: Main_Theme_textColor.withOpacity(0.9), letterSpacing: 0.3,),
+                          Spacer(),
+                          Container(
+                            height: 22,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                ColorCustomText(
+                                  text: "${selected2Datee}",
+                                  textColor: Main_Theme_textColor.withOpacity(0.6),
+                                  fontSize: font10,
+                                  fontWeight: FontWeight.w700, letterSpacing: 0.3,),
+                                SizedBox(width: 15,),
+                                /// ---------- Custom Calender Part --------- ///
+                                CustomCalender(onTap: () {
+                                  _select2Date(context);
+                                },),
+                              ],
+                            ),
+                          ),
                         ],
                       ),
                     ),
+                    Spacer(),
                     Container(
-                      height: 120,
+                      height: 115,
                       width: double.infinity,
                       padding: EdgeInsets.only(bottom: 8),
                       child: ListView.builder(
@@ -362,7 +309,7 @@ class _HomeScreenState extends State<HomeScreen>{
                                   Expanded(child: Container(
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(8),
-                                        image: DecorationImage(image: AssetImage(" "),fit: BoxFit.fill)
+                                        image: DecorationImage(image: AssetImage("Assets/DashBoardIcons/man_picture.png"),fit: BoxFit.fill)
                                     ),
                                   )),
                                   ColorCustomText(text: "66799", fontSize: 14, textColor: Main_Theme_textColor.withOpacity(0.6),fontWeight: FontWeight.w800,letterSpacing: 0.2,)
@@ -374,47 +321,29 @@ class _HomeScreenState extends State<HomeScreen>{
                   ],
                 ),
               ),
-              SizedBox(height: 15,),
+              /// ------------------- Seven Part Start here ------------------------///
               Container(
-                margin: EdgeInsets.only(left: 10,right: 10),
+                margin: EdgeInsets.only(left: 10,right: 10,top: apps_div_margin),
                   height: 110,
                   width: double.infinity,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(11),
-                    color: Colors.white
                   ),
-                  child: ListView.builder(
+                  child: SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) {
-                      return Container(
-                        margin: EdgeInsets.only(right: 10),
-                        height: 110,
-                        width: 80,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(11),
-                          //  color: Colors.red,
-                          color: Colors.primaries[Random().nextInt(Colors.primaries.length)].withOpacity(0.4),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-                              height: 20,
-                              width: 20,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                  image: DecorationImage(image: AssetImage("Assets/Icons/lock.png"),fit: BoxFit.fill)
-                              ),
-                            ),
-                            SizedBox(height: 5,),
-                            ColorCustomText(text: "455H", fontSize: 14, fontWeight: FontWeight.bold,letterSpacing: 0.2,textColor: Colors.white,  )
-                            ,ColorCustomText(text: "Total Active", fontSize: 11, fontWeight: FontWeight.bold,letterSpacing: 0.2,textColor: Colors.white,)
-                            ,ColorCustomText(text: "Employee", fontSize: 11, fontWeight: FontWeight.bold,letterSpacing: 0.2,textColor: Colors.white,)
-                          ],
-                        ),
-                      );
-                    },)
+                    child: Row(
+                      children: [
+                        HomeSeventhPartBodySection(image: "Assets/DashBoardIcons/male.png", Head_text: "455H", body_text: "Total Active", footer_text: "Employee"),
+                        HomeSeventhPartBodySection(image: "Assets/DashBoardIcons/male.png", Head_text: "455H", body_text: "Total Active", footer_text: "Employee"),
+                        HomeSeventhPartBodySection(image: "Assets/DashBoardIcons/male.png", Head_text: "455H", body_text: "Total Active", footer_text: "Employee"),
+                        HomeSeventhPartBodySection(image: "Assets/DashBoardIcons/male.png", Head_text: "455H", body_text: "Total Active", footer_text: "Employee"),
+                        HomeSeventhPartBodySection(image: "Assets/DashBoardIcons/male.png", Head_text: "455H", body_text: "Total Active", footer_text: "Employee"),
+                        HomeSeventhPartBodySection(image: "Assets/DashBoardIcons/male.png", Head_text: "455H", body_text: "Total Active", footer_text: "Employee"),
+                        HomeSeventhPartBodySection(image: "Assets/DashBoardIcons/male.png", Head_text: "455H", body_text: "Total Active", footer_text: "Employee"),
+
+                      ],
+                    ),
+                  )
               ),
 SizedBox(
   height: 50,
