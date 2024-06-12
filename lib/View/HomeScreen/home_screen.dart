@@ -333,13 +333,12 @@ class _HomeScreenState extends State<HomeScreen>{
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: [
-                        HomeSeventhPartBodySection(image: "Assets/DashBoardIcons/male.png", Head_text: "455H", body_text: "Total Active", footer_text: "Employee"),
-                        HomeSeventhPartBodySection(image: "Assets/DashBoardIcons/male.png", Head_text: "455H", body_text: "Total Active", footer_text: "Employee"),
-                        HomeSeventhPartBodySection(image: "Assets/DashBoardIcons/male.png", Head_text: "455H", body_text: "Total Active", footer_text: "Employee"),
-                        HomeSeventhPartBodySection(image: "Assets/DashBoardIcons/male.png", Head_text: "455H", body_text: "Total Active", footer_text: "Employee"),
-                        HomeSeventhPartBodySection(image: "Assets/DashBoardIcons/male.png", Head_text: "455H", body_text: "Total Active", footer_text: "Employee"),
-                        HomeSeventhPartBodySection(image: "Assets/DashBoardIcons/male.png", Head_text: "455H", body_text: "Total Active", footer_text: "Employee"),
-                        HomeSeventhPartBodySection(image: "Assets/DashBoardIcons/male.png", Head_text: "455H", body_text: "Total Active", footer_text: "Employee"),
+                        HomeSeventhPartBodySection(image: "Assets/DashBoardIcons/employee.png", Head_text: "455H", body_text: "Total Active", footer_text: "Employee"),
+                        HomeSeventhPartBodySection(image: "Assets/DashBoardIcons/male.png", Head_text: "455H", body_text: "Total Active", footer_text: "Male"),
+                        HomeSeventhPartBodySection(image: "Assets/DashBoardIcons/femalee.png", Head_text: "455H", body_text: "Total Active", footer_text: "Female"),
+                        HomeSeventhPartBodySection(image: "Assets/DashBoardIcons/join.png", Head_text: "455H", body_text: "This Month", footer_text: "Join"),
+                        HomeSeventhPartBodySection(image: "Assets/DashBoardIcons/inactive.png", Head_text: "455H", body_text: "This Month", footer_text: "InActive"),
+                        HomeSeventhPartBodySection(image: "Assets/DashBoardIcons/conformation.png", Head_text: "455H", body_text: "This Month", footer_text: "Confirmation"),
 
                       ],
                     ),
