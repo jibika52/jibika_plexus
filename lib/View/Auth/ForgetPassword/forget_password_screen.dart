@@ -57,88 +57,91 @@ final _foromkey=GlobalKey<FormState>();
   Widget build(BuildContext context) {
     double h=MediaQuery.of(context).size.height;
     double w=MediaQuery.of(context).size.width;
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: Container(
-        height: double.infinity,
-        width: double.infinity,
-        decoration: BoxDecoration(
-            image: DecorationImage(image: AssetImage("Assets/LoginScreenIMG/loginpage1.jpg"),fit:BoxFit.fill)
-        ),
+    return WillPopScope(
+      onWillPop: () => Future(() => false),
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        body: Container(
+          height: double.infinity,
+          width: double.infinity,
+          decoration: BoxDecoration(
+              image: DecorationImage(image: AssetImage("Assets/LoginScreenIMG/loginpage1.jpg"),fit:BoxFit.fill)
+          ),
 
-        child: Stack(
-          children: [
-            Container(
-              height: 500,
-              width: double.infinity,
-              margin: EdgeInsets.only(top: h*0.36),
-              padding: EdgeInsets.all(20),
-              child: SingleChildScrollView(
-                child: Form(
-                  key: _foromkey,
-                  child: Column(
-                    children: [
-                      CustomText(fontSize: 18, fontWeight: FontWeight.w500, text: "User mobile : ${widget.phone}", letterSpacing: 0.3),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      JibikaCustomTextFromField(
-                          suffixIcon: IconButton(
-                              onPressed: () {
-                              },
-                              icon: Icon(Icons.visibility,)),
-                          controller: _passwordController,
-                          height: 50,
-                          img: "Assets/Icons/lock.png",
-                          hinttext: "Confirm Password",
-                          keyboardType: TextInputType.text,
-                          obscureText: false),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      JibikaCustomTextFromField(
-                          suffixIcon: IconButton(
-                              onPressed: () {
-                              },
-                              icon: Icon(Icons.visibility,)),
-                          controller: _con_passwordController,
-                          height: 50,
-                          img: "Assets/Icons/lock.png",
-                          hinttext: "Confirm Password",
-                          keyboardType: TextInputType.text,
-                          obscureText: false),
-                      SizedBox(
-                        height: h*0.05,
-                      ),
-                      CustomButton(onTap: () {
-                        if(_foromkey.currentState!.validate()){
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => OTPScreen(phone_or_email: widget.phone,previous_route_name: "ForgetPassword"),));
-                        }else{
-                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: ColorCustomText(fontSize: 16, textColor: Main_Theme_WhiteCollor,fontWeight: FontWeight.w500, text: "Please fill all the field", letterSpacing: 0.3)));
-                        }
+          child: Stack(
+            children: [
+              Container(
+                height: 500,
+                width: double.infinity,
+                margin: EdgeInsets.only(top: h*0.36),
+                padding: EdgeInsets.all(20),
+                child: SingleChildScrollView(
+                  child: Form(
+                    key: _foromkey,
+                    child: Column(
+                      children: [
+                        CustomText(fontSize: 18, fontWeight: FontWeight.w500, text: "User mobile : ${widget.phone}", letterSpacing: 0.3),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        JibikaCustomTextFromField(
+                            suffixIcon: IconButton(
+                                onPressed: () {
+                                },
+                                icon: Icon(Icons.visibility,)),
+                            controller: _passwordController,
+                            height: 50,
+                            img: "Assets/Icons/lock.png",
+                            hinttext: "Confirm Password",
+                            keyboardType: TextInputType.text,
+                            obscureText: false),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        JibikaCustomTextFromField(
+                            suffixIcon: IconButton(
+                                onPressed: () {
+                                },
+                                icon: Icon(Icons.visibility,)),
+                            controller: _con_passwordController,
+                            height: 50,
+                            img: "Assets/Icons/lock.png",
+                            hinttext: "Confirm Password",
+                            keyboardType: TextInputType.text,
+                            obscureText: false),
+                        SizedBox(
+                          height: h*0.05,
+                        ),
+                        CustomButton(onTap: () {
+                          if(_foromkey.currentState!.validate()){
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => OTPScreen(phone_or_email: widget.phone,previous_route_name: "ForgetPassword"),));
+                          }else{
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: ColorCustomText(fontSize: 16, textColor: Main_Theme_WhiteCollor,fontWeight: FontWeight.w500, text: "Please fill all the field", letterSpacing: 0.3)));
+                          }
 
-                      }, text: "Submit", button_text_fontSize: 16, button_height: 50, custom_button_collor: CustomButtonColor, button_text_color: Main_Theme_WhiteCollor,fontWeight: FontWeight.w500, borderRadius: 50),
-                    ],
+                        }, text: "Submit", button_text_fontSize: 16, button_height: 50, custom_button_collor: CustomButtonColor, button_text_color: Main_Theme_WhiteCollor,fontWeight: FontWeight.w500, borderRadius: 50),
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-            Positioned(
-                top: logoanimation.value,
-                left: 0,
-                right: 0,
-                child: Center(
-                  child: Image.asset(
-                    'Assets/Logo/jibikalogo.png',
-                    height: logosize.value,
-                    width: logosize.value,
-                  ),
-                )),
-          ],
-        )
+              Positioned(
+                  top: logoanimation.value,
+                  left: 0,
+                  right: 0,
+                  child: Center(
+                    child: Image.asset(
+                      'Assets/Logo/jibikalogo.png',
+                      height: logosize.value,
+                      width: logosize.value,
+                    ),
+                  )),
+            ],
+          )
 
+        ),
+        bottomNavigationBar: CustomBootomSplashBar(),
       ),
-      bottomNavigationBar: CustomBootomSplashBar(),
     );
   }
 }

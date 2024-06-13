@@ -17,12 +17,15 @@ class _MainSplashPageViewScreenState extends State<MainSplashPageViewScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: PageView(
-        children:[
-          SplashScreen1(),
-          SplashScreen2(),
-          SplashScreen3(),
-        ],
+      body: WillPopScope(
+        onWillPop: () => Future(() => false),
+        child: PageView(
+          children:[
+            SplashScreen1(),
+            SplashScreen2(),
+            SplashScreen3(),
+          ],
+        ),
       ),
     );
   }

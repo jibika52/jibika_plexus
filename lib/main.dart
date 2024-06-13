@@ -6,6 +6,7 @@ import 'package:jibika_plexus/View/HomeScreen/home_screen.dart';
 import 'package:provider/provider.dart';
 
 import 'Controller/HomeController/home_controller.dart';
+import 'View/BootomNatchBar/bootom_bar_screen.dart';
 import 'View/SplashScreen/main_splash_pageview_screen.dart';
 
 void main() async {
@@ -29,13 +30,15 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      //   home:MainSplashPageViewScreen(),
+     home:MainSplashPageViewScreen(),
       //     home:LoginScreenSlide(),
-    home:HomeScreen(),
+      //    home:HomeScreen(),
+      //   home:BootomNatchBarScreen(),
     ),
     );
   }
 }
+
 
 
 

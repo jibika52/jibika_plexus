@@ -6,11 +6,12 @@ import 'package:jibika_plexus/Utils/constants.dart';
 import '../../../CustomWidget/CustomText/custom_text.dart';
 
 class HomeSeventhPartBodySection extends StatelessWidget {
-  HomeSeventhPartBodySection({super.key,required this.image,required this.Head_text,required this.body_text,required this.footer_text});
+  HomeSeventhPartBodySection({super.key,required this.image,required this.Head_text,required this.body_text,required this.footer_text, required this.color});
   String image;
   String Head_text;
   String body_text;
   String footer_text;
+  Color color;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,8 +20,8 @@ class HomeSeventhPartBodySection extends StatelessWidget {
       width: 80,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(11),
-        //  color: Colors.red,
-        color: Colors.primaries[Random().nextInt(Colors.primaries.length)].withOpacity(0.8),
+     color: color,
+        //   color: Colors.primaries[Random().nextInt(Colors.primaries.length)].withOpacity(0.8),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,

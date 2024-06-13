@@ -28,7 +28,14 @@ class CustomMainAppBar extends StatelessWidget {
         children: [
           InkWell(
               onTap:  leading_ontab,
-              child: CustomImageSction(height: 33, width: 35, radius: 2, image: "Assets/DashBoardIcons/appbar_leadin_menu.png")),
+              child: Container(
+                  padding: EdgeInsets.all(3) ,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(40),
+                    color: Main_Theme_WhiteCollor,
+
+                  ),
+                  child: CustomImageSction(height: 33, width: 35, radius: 2, image: "Assets/Logo/jibikalogo3.png"))),
           ColorCustomText(fontSize: 21, fontWeight: FontWeight.w600, text: "$appbar_text", letterSpacing: 1,textColor: Main_Theme_WhiteCollor.withOpacity(0.8), ),
     is_need_trailing==false?Container(): Container(
             height: 100,
