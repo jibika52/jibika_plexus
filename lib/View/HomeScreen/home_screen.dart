@@ -89,33 +89,31 @@ class _HomeScreenState extends State<HomeScreen>{
                                   child:  Container(
                                     height: 90,
                                     width: 500,
-                                    child:Scrollbar(
-                                      child: ListView.builder(
-                                        itemCount: 30,
-                                        scrollDirection: Axis.horizontal,
-                                        itemBuilder: (context, index) {
-                                        return  Container(
-                                          height: 90,
-                                            margin: EdgeInsets.only(right: 10),
-                                            child: Column(
-                                              children: [
-                                                Expanded(child: ThirdPartProgressBar(  absenttheight: 30+double.parse("$index"), presentheight:70-double.parse("$index"), present_width: 10, Absent_width: 10, total_width: 21,)),
-                                                SizedBox(height: 5,),
-                                                Container(
-                                                  height: 20,
-                                                  width: 22,
-                                                  decoration: BoxDecoration(
-                                                      color:DateTime.now().day==index? presentsent_color:Main_Theme_textColor.withOpacity(0.05),
-                                                    borderRadius: BorderRadius.circular(2)
-                                                  ),
-                                                  alignment: Alignment.center,
-                                                  child: CustomText(fontSize: 10, fontWeight: FontWeight.w400, text: "${index+1}", letterSpacing: 0.2)
+                                    child:ListView.builder(
+                                      itemCount: 30,
+                                      scrollDirection: Axis.horizontal,
+                                      itemBuilder: (context, index) {
+                                      return  Container(
+                                        height: 90,
+                                          margin: EdgeInsets.only(right: 10),
+                                          child: Column(
+                                            children: [
+                                              Expanded(child: ThirdPartProgressBar(  absenttheight: 30+double.parse("$index"), presentheight:70-double.parse("$index"), present_width: 10, Absent_width: 10, total_width: 21,)),
+                                              SizedBox(height: 5,),
+                                              Container(
+                                                height: 20,
+                                                width: 22,
+                                                decoration: BoxDecoration(
+                                                    color:DateTime.now().day==index? presentsent_color:Main_Theme_textColor.withOpacity(0.05),
+                                                  borderRadius: BorderRadius.circular(2)
                                                 ),
-                                                SizedBox(height: 10,),
-                                              ],
-                                            ));
-                                      },),
-                                    )
+                                                alignment: Alignment.center,
+                                                child: CustomText(fontSize: 10, fontWeight: FontWeight.w400, text: "${index+1}", letterSpacing: 0.2)
+                                              ),
+                                              SizedBox(height: 10,),
+                                            ],
+                                          ));
+                                    },)
                                   ),
                                 )),
                               ],
