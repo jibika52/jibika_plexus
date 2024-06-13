@@ -17,12 +17,10 @@ class _SplashScreen1State extends State<SplashScreen1> {
   Widget build(BuildContext context) {
     double c_h = MediaQuery.of(context).size.height;
     double c_w = MediaQuery.of(context).size.width;
-    return Scaffold(
-      body: WillPopScope(
-        onWillPop: () {
-          return Future(() => false);
-        },
-        child: Container(
+    return WillPopScope(
+      onWillPop: () => Future(() => false),
+      child: Scaffold(
+        body: Container(
           height: double.infinity,
           width: double.infinity,
           color: Main_Theme_WhiteCollor,
@@ -59,8 +57,8 @@ class _SplashScreen1State extends State<SplashScreen1> {
                         width: 430,
                         radius: 11,
                         image: "Assets/Gif/first_splashcsreen.gif"),
-
-
+        
+        
                     Positioned(
                       left: 10,
                       right: 10,
@@ -136,7 +134,7 @@ class _SplashScreen1State extends State<SplashScreen1> {
                         text1: "Allowance & Deduction",
                         image2: "Assets/circle_count8.png",
                         text2: "Loan & Arrear")),
-
+        
                 SizedBox(
                   height: c_h * 0.035,
                 ),
@@ -159,19 +157,19 @@ class _SplashScreen1State extends State<SplashScreen1> {
                 //                     "Assets/Gif/first_direction_splash_button.png")),
                 //       )),
                 // ),
-
-
+        
+        
                 Align(
                   alignment: Alignment.center,
                   child:    Container(height: 20,width: 25,child: Image.asset("Assets/Gif/Orange_animated_right_arrow.gif",fit: BoxFit.fill,),),
                 ),
-
+        
                 SizedBox(
                   height: c_h * 0.035,
                 ),
-
-
-
+        
+        
+        
                CustomTermsAndConditionPart(),
                 SizedBox(
                   height: c_h * 0.035,

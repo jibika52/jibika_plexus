@@ -16,6 +16,8 @@ import 'package:jibika_plexus/View/Auth/OtpScreen/otp_screen.dart';
 import 'package:jibika_plexus/View/HomeScreen/home_screen.dart';
 import 'package:marquee/marquee.dart';
 
+import '../../SplashScreen/main_splash_pageview_screen.dart';
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -156,7 +158,7 @@ Future.delayed(Duration(
                                     width: 100,
                                     child: CustomButton(onTap: () {
 
-                                       Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreenSlide(),));
+                                       Navigator.push(context, MaterialPageRoute(builder: (context) => MainSplashPageViewScreen(),));
                                     }, text: "Info", button_text_fontSize: 15, button_height: 35, custom_button_collor: CustomButtonColor, button_text_color: Main_Theme_WhiteCollor, borderRadius: 50),
                                   ),
                                   SizedBox(width: 7,),

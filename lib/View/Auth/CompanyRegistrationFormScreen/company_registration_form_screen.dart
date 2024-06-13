@@ -1,7 +1,11 @@
+
+import 'dart:io';
+
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:jibika_plexus/CustomWidget/CustomAppBar/CustomDefaultAppBar/custom_default_app_bar.dart';
 import 'package:jibika_plexus/CustomWidget/CustomButton/custom_button.dart';
 import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
@@ -29,6 +33,18 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
   TextEditingController _companyNumberController = TextEditingController();
   TextEditingController _companyEmailController = TextEditingController();
   final _fromKey=GlobalKey<FormState>();
+  File ? _image;
+
+  final picker = ImagePicker();
+  ///NID font
+  Future getImageFromGallery() async {
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+    setState(() {
+      if (pickedFile != null) {
+        _image = File(pickedFile.path);
+      }
+    });
+  }
   @override
   Widget build(BuildContext context) {
     double h = MediaQuery.of(context).size.height;
@@ -59,18 +75,26 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                   SizedBox(height: h * 0.04),
                   Stack(
                     children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(100),
-                        child: Container(
-                          height: 110,
-                          width: 110,
-                          color: CompanyProfileDefaultColor,
-                          padding: EdgeInsets.all(20),
-                          child: SvgPicture.asset(
-                            'Assets/svgImage/company_image.svg',
-                            height: 67.0,
-                            width: 67.0,
-                            allowDrawingOutsideViewBox: true,
+                      InkWell(
+                        onTap: () {
+                          getImageFromGallery();
+                        },
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(100),
+                          child: Container(
+                            height: 110,
+                            width: 110,
+                            color: CompanyProfileDefaultColor,
+                            padding: EdgeInsets.all(20),
+                            child:_image==null? SvgPicture.asset(
+                              'Assets/svgImage/company_image.svg',
+                              height: 67.0,
+                              width: 67.0,
+                              allowDrawingOutsideViewBox: true,
+                            ):   ClipRRect(
+                                borderRadius: BorderRadius.circular(10),
+                                child: Image.file(_image!.renameSync(_image!.path),
+                                  fit: BoxFit.fill,)),
                           ),
                         ),
                       ),
@@ -112,11 +136,80 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                     ],
                   ),
                   SizedBox(height: h * 0.02),
+                  Container(
+                    height: 60,
+                    width: double.infinity,
+                    child: Row(
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.only(right: 8.0, top: 7),
+                          child: Image.asset(
+                            "Assets/Icons/crbuisness.png",
+                            height: 21,
+                            width: 21,
+                            fit: BoxFit.fill,
+                            color: Main_Theme_textColor.withOpacity(0.6),
+                          ),
+                        ),
+                        Expanded(
+                          child: Container(
+                            margin: EdgeInsets.only(top: 10),
+                            height: 50,
+                            width: double.infinity,
+                            padding: EdgeInsets.only(left: 15, right: 15),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(11),
+                              //   border: Border.all(color:icons_green_color,width: 2),
+                            ),
+                            child: IgnorePointer(
+                              ignoring: false,
+                              child: DropdownButton(
+                                enableFeedback: true,
+                                autofocus: false,
+                                isExpanded: true,
+                                hint: InkWell(
+                                    onTap: () {},
+                                    child: ColorCustomText(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w500,
+                                        text: "  Package Type",
+                                        letterSpacing: 0.2,
+                                        textColor:
+                                        Main_Theme_textColor.withOpacity(0.4))),
+                                // Not necessary for Option 1
+                                value: busnessid,
+                                onChanged: (newValue) {
+                                  setState(() {
+                                    busnessid = newValue.toString();
+                                  });
+                                },
+                                items: busnessidlist.map((location) {
+                                  return DropdownMenuItem(
+                                    child: Text("${location ?? ""}"),
+                                    value: "${location}",
+                                  );
+                                }).toList(),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: h * 0.01),
                   JibikaCustomTextFromField(
                       controller: _companyNameController,
                       height: 50,
                       img: "Assets/Icons/crppol.png",
                       hinttext: "Company Name",
+                      keyboardType: TextInputType.text,
+                      obscureText: false),
+                  SizedBox(height: h * 0.02),
+                  JibikaCustomTextFromField(
+                      controller: _companyNameController,
+                      height: 50,
+                      img: "Assets/DashBoardIcons/location.png",
+                      hinttext: "Company Location",
                       keyboardType: TextInputType.text,
                       obscureText: false),
                   SizedBox(height: h * 0.02),
