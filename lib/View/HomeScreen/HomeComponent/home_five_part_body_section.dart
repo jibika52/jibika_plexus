@@ -93,9 +93,9 @@ class HomeFivePartBodyScetion extends StatelessWidget {
                                 SizedBox(height: 3,),
                                 ColorCustomText(text: "$name", fontSize: font12header, fontWeight: FontWeight.w500, letterSpacing: 0.4, textColor: Main_Theme_textColor )
                                , SizedBox(height: 3,),
-                                 ColorCustomText(fontSize: 10, fontWeight: FontWeight.w400, text: "$designation", letterSpacing: 0.2, textColor:Main_Theme_textColor.withOpacity(0.6))
-                                , ColorCustomText(fontSize: 10, fontWeight: FontWeight.w400, text: "$email", letterSpacing: 0.2, textColor:Main_Theme_textColor.withOpacity(0.6))
-                                , ColorCustomText(fontSize: 10, fontWeight: FontWeight.w400, text: "$phone", letterSpacing: 0.2, textColor:Main_Theme_textColor.withOpacity(0.6))
+                                 ColorCustomText(fontSize: font11, fontWeight: FontWeight.w400, text: "$designation", letterSpacing: 0.2, textColor:Main_Theme_textColor.withOpacity(0.6))
+                                , ColorCustomText(fontSize: font11, fontWeight: FontWeight.w400, text: "$email", letterSpacing: 0.2, textColor:Main_Theme_textColor.withOpacity(0.6))
+                                , ColorCustomText(fontSize: font11, fontWeight: FontWeight.w400, text: "$phone", letterSpacing: 0.2, textColor:Main_Theme_textColor.withOpacity(0.6))
                               ],
                             ),
                           ))

@@ -34,7 +34,7 @@ class _BarchatHeaderPartState extends State<BarchatHeaderPart> {
         children: [
           ColorCustomText(text: "${widget.name}", fontSize:font12header, fontWeight: FontWeight.w500,letterSpacing: 0.3,textColor: Main_Theme_textColor.withOpacity(0.9)),
           ColorCustomText(text: "${widget.mony}", fontSize: 14, fontWeight: FontWeight.w600,letterSpacing: 0.2,textColor: Main_Theme_textColor.withOpacity(0.6) ),
-          ColorCustomText(text: "${widget.parpose}", fontSize: 11, fontWeight: FontWeight.w400,letterSpacing: 0.2,textColor: Main_Theme_textColor.withOpacity(0.6)),
+          ColorCustomText(text: "${widget.parpose}", fontSize: font11, fontWeight: FontWeight.w400,letterSpacing: 0.2,textColor: Main_Theme_textColor.withOpacity(0.6)),
         ],
       ),
     ));

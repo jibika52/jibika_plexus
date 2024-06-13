@@ -156,7 +156,7 @@ class _SecondhomePartScreenState extends State<SecondhomePartScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Active Manpower", textColor: Main_Theme_textColor.withOpacity(0.5),letterSpacing: 0.3),
+                          ColorCustomText(fontSize: font12header, fontWeight: FontWeight.w500, text: "Active Manpower", textColor: Main_Theme_textColor.withOpacity(0.9),letterSpacing: 0.3),
                           SizedBox(width: 5,),
                           ColorCustomText(fontSize: 13, fontWeight: FontWeight.w600, text: "2555", letterSpacing: 0.3,textColor: absent_color),
                         ],
@@ -195,7 +195,7 @@ class _SecondhomePartScreenState extends State<SecondhomePartScreen> {
                               child: ColorCustomText(
                                 text: "${selected2Datee}",
                                 textColor: Main_Theme_textColor.withOpacity(0.6),
-                                fontSize: font10,
+                                fontSize: font11,
                                 fontWeight: FontWeight.w400, letterSpacing: 0.2,),
                             ),
 

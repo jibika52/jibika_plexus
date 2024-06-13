@@ -51,7 +51,6 @@ Color holiday_color=Color(0xff2C928C);
 ///--------------- Custom TExt font size -----------------------///
 
 
-const font10=10.0;
 const font11=11.0;
 const font12header=14.0;
 const font13=13.0;

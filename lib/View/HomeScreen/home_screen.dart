@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jibika_plexus/CustomWidget/CustomAppBar/CustomMAinAppBAr/custom_main_app_bar.dart';
 import 'package:jibika_plexus/CustomWidget/CustomCalender/custom_calender.dart';
+import 'package:jibika_plexus/CustomWidget/CustomDrawer/CustomLeftDrawer/custom_left_drawer.dart';
 import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
 import 'package:jibika_plexus/View/HomeScreen/HomeComponent/home_five_part_body_section.dart';
@@ -24,8 +25,22 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen>{
+class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateMixin{
 
+
+
+
+
+
+  late AnimationController controller;
+
+  late Animation logosize;
+
+
+
+
+
+    final _key=GlobalKey<ScaffoldState>();
     int total_Amount=100000000;
     String value = "K";
   @override
@@ -35,9 +50,13 @@ class _HomeScreenState extends State<HomeScreen>{
     return WillPopScope(
       onWillPop: () => Future(() => false),
       child: Scaffold(
+        drawer:CustomLeftDrawer(),
+          key: _key,
           appBar: PreferredSize(preferredSize: Size.fromHeight(100),
             /// ------------ Custom Main AppBAr -------------///
-            child: CustomMainAppBar(leading_image_route: "Assets/DashBoardIcons/appbar_leadin_menu.png", center_appbar_text: "Jibika Plexus", leading_ontab: () {}, is_need_trailing: true),
+            child: CustomMainAppBar(leading_image_route: "Assets/DashBoardIcons/appbar_leadin_menu.png", center_appbar_text: "Jibika Plexus", leading_ontab: () {
+              _key.currentState!.openDrawer();
+            }, is_need_trailing: true),
           ),
         body: Container(
           color: home_default_color,
@@ -273,7 +292,7 @@ class _HomeScreenState extends State<HomeScreen>{
                             ColorCustomText(text: "Person on leave", fontSize: font12header, fontWeight: FontWeight.w500,textColor: Main_Theme_textColor.withOpacity(0.9), letterSpacing: 0.3,),
                             Spacer(),
                             Container(
-                              height: 22,
+                              height: 27,
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -281,7 +300,7 @@ class _HomeScreenState extends State<HomeScreen>{
                                   ColorCustomText(
                                     text: "${selected2Datee}",
                                     textColor: Main_Theme_textColor.withOpacity(0.6),
-                                    fontSize: font10,
+                                    fontSize: font11,
                                     fontWeight: FontWeight.w700, letterSpacing: 0.3,),
                                   SizedBox(width: 15,),
                                   /// ---------- Custom Calender Part --------- ///
@@ -296,31 +315,98 @@ class _HomeScreenState extends State<HomeScreen>{
                       ),
                       Spacer(),
                       Container(
-                        height: 115,
+                        height: 120,
                         width: double.infinity,
                         padding: EdgeInsets.only(bottom: 8),
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
-                            return Container(
-                                height: 100,
-                                width: 80,
-                                margin: EdgeInsets.only(left: 10),
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(11),
-                                    color: Color(0xedecf1ec)
-                                ),
-                                child: Column(
+                            return InkWell(
+                              onTap: () {
+                                setState(() {
+                                  leave_selected_index=index;
+
+                                });
+                              },
+                              child: Container(
+                                margin: EdgeInsets.only(left: 5),
+                                child: Row(
                                   children: [
-                                    Expanded(child: Container(
-                                      decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(8),
-                                          image: DecorationImage(image: AssetImage("Assets/DashBoardIcons/man_picture.png"),fit: BoxFit.fill)
+                                    Container(
+                                        height: 115,
+                                        width: 100,
+                                        decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(11),
+                                          //  color: Color(0xedecf1ec),
+
+                                        ),
+                                        child: Column(
+                                          children: [
+                                            Expanded(child: Container(
+                                              decoration: BoxDecoration(
+                                                  borderRadius: BorderRadius.circular(8),
+                                                  image: DecorationImage(image: AssetImage("Assets/DashBoardIcons/man_picture.png"),fit: BoxFit.fill)
+                                              ),
+                                            )),
+                                            ColorCustomText(text: "66799", fontSize: 14, textColor: Main_Theme_textColor.withOpacity(0.6),fontWeight: FontWeight.w800,letterSpacing: 0.2,)
+                                          ],
+                                        )
+                                    ),
+                                    leave_selected_index==index? InkWell(
+                                      onTap: () {
+                                       setState(() {
+                                         leave_selected_index=-1;
+                                       });
+                                      },
+                                      child: Container(
+                                          height: 110,
+                                          width: logosize.value,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.only(
+                                              topRight: Radius.circular(11),
+                                              bottomRight: Radius.circular(11),
+                                            ),
+                                            color: Color(0xffACC027).withOpacity(0.2),
+                                          ),
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                            children: [
+                                              Container(
+                                                height: 22,
+                                                width: 95,
+                                                color: Color(0xffACC027).withOpacity(0.6),
+                                                child: CustomText(fontSize: font12header, fontWeight: FontWeight.w400, text: "Abdur romel", letterSpacing: 0.1),
+                                              ),
+                                              SizedBox(height: 3,),
+                                              Container(
+                                                width: 95,
+                                                alignment: Alignment.center,
+                                                child: ColorCustomText(fontSize: font12header, fontWeight: FontWeight.bold, text: "Cl - 03", letterSpacing: 0.5,textColor: Main_Theme_textColor.withOpacity(0.9),),
+                                              ),
+                                              SizedBox(height: 3,),
+                                              Container(
+                                                width: 95,
+                                                alignment: Alignment.center,
+                                                child: ColorCustomText(fontSize: font11, fontWeight: FontWeight.w500, text: "10 jul 2024", letterSpacing: 0.5,textColor: Main_Theme_textColor.withOpacity(0.9),),
+                                              ),
+                                              Container(
+                                                height: 20,
+                                                width: 95,
+                                                alignment: Alignment.center,
+                                                child: ColorCustomText(fontSize: font11, fontWeight: FontWeight.w600, text: "To", letterSpacing: 0.5,textColor: Main_Theme_textColor.withOpacity(0.9),),
+                                              ),
+                                              Container(
+                                                width: 95,
+                                                alignment: Alignment.center,
+                                                child: ColorCustomText(fontSize: font11, fontWeight: FontWeight.w500, text: "10 jul 2024", letterSpacing: 0.5,textColor: Main_Theme_textColor.withOpacity(0.9),),
+                                              ),
+                                            ],
+                                          )
                                       ),
-                                    )),
-                                    ColorCustomText(text: "66799", fontSize: 14, textColor: Main_Theme_textColor.withOpacity(0.6),fontWeight: FontWeight.w800,letterSpacing: 0.2,)
+                                    ):Container(),
                                   ],
-                                )
+                                ),
+                              ),
                             );
                           },),
                       )
@@ -350,6 +436,7 @@ class _HomeScreenState extends State<HomeScreen>{
                       ),
                     )
                 ),
+                SizedBox(height: 100,)
               ],
             ),
           )
@@ -387,6 +474,6 @@ class _HomeScreenState extends State<HomeScreen>{
    "Nov",
    "Dec",
  ];
-
+int leave_selected_index=-1;
 }
 

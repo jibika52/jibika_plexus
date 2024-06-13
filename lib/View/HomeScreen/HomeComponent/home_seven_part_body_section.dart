@@ -34,12 +34,12 @@ class HomeSeventhPartBodySection extends StatelessWidget {
                 image: DecorationImage(image: AssetImage("$image"),fit: BoxFit.fill)
             ),
           ),
-          SizedBox(height: 5,),
+          SizedBox(height: 4,),
           ColorCustomText(text: "$Head_text", fontSize: font12header, fontWeight: FontWeight.w600,letterSpacing: 0.2,textColor: Colors.white,  ),
-          SizedBox(height:1,),
-          ColorCustomText(text: "$body_text", fontSize: font10, fontWeight: FontWeight.w400,letterSpacing: 0.2,textColor: Colors.white,)
-          ,SizedBox(height: 1,),
-          ColorCustomText(text: "$footer_text", fontSize: font10, fontWeight: FontWeight.w400,letterSpacing: 0.2,textColor: Colors.white,)
+          SizedBox(height:0.5,),
+          ColorCustomText(text: "$body_text", fontSize: font11, fontWeight: FontWeight.w400,letterSpacing: 0.2,textColor: Colors.white,)
+          ,SizedBox(height: 0.5,),
+          ColorCustomText(text: "$footer_text", fontSize: font11, fontWeight: FontWeight.w400,letterSpacing: 0.2,textColor: Colors.white,)
         ],
       ),
     );
