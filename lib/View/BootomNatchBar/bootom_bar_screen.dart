@@ -2,6 +2,8 @@
 import 'package:animated_notch_bottom_bar/animated_notch_bottom_bar/animated_notch_bottom_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
 
 import '../HomeScreen/home_screen.dart';
@@ -81,88 +83,35 @@ int Select_index=0;
               bottomBarPages.length, (index) => bottomBarPages[index]),
         ),
         extendBody: true,
-        bottomNavigationBar:
-        // (bottomBarPages.length <= maxCount)
-        //     ? AnimatedNotchBottomBar(
-        //   /// Provide NotchBottomBarController
-        //   notchBottomBarController: _controller,
-        //   //   color: redColor,
-        //   color: CustomButtonColor,
-        //   showLabel: false,
-        //   shadowElevation:9,
-        //   kBottomRadius: 28.0,
-        //   notchColor: CustomButtonColor,
-        //   /// restart app if you change removeMargins
-        //   removeMargins: false,
-        //   bottomBarWidth: double.infinity,
-        //   showShadow: false,
-        //   durationInMilliSeconds: 300,
-        //   elevation: 1,
-        //   bottomBarItems:  [
-        //
-        //     BottomBarItem(
-        //       inActiveItem: Icon(Icons.home_filled,size: 25,color: Colors.white,),
-        //       activeItem:  Icon(Icons.home_filled,size: 25,color: Colors.black,),
-        //       itemLabel: 'Page 1',
-        //     ),
-        //
-        //     BottomBarItem(
-        //       inActiveItem: Icon(Icons.fingerprint,size: 25,color: Colors.white,),
-        //       activeItem:  Icon(Icons.fingerprint,size: 25,color: Colors.white,),
-        //       itemLabel: 'Page 1',
-        //     ),
-        //
-        //
-        //     BottomBarItem(
-        //       itemLabelWidget: Container(
-        //         height: 30,
-        //         width: 35,
-        //     //    color: Colors.red,
-        //       ),
-        //       inActiveItem: Image.asset("Assets/Logo/leaff.png"),
-        //       activeItem: Image.asset("Assets/Logo/leaff.png"),
-        //      // itemLabel: 'Page 2',
-        //     ),
-        //
-        //     BottomBarItem(
-        //       inActiveItem: Icon(Icons.computer_outlined,size: 25,color: Colors.white,),
-        //       activeItem:  Icon(Icons.computer_outlined,size: 25,color: Colors.white,),
-        //       itemLabel: 'Page 1',
-        //     ),
-        //
-        //     BottomBarItem(
-        //       inActiveItem: Icon(Icons.track_changes,size: 25,color: Colors.white,),
-        //       activeItem:  Icon(Icons.track_changes,size: 25,color: Colors.white,),
-        //       itemLabel: 'Page 1',
-        //     ),
-        //
-        //
-        //
-        //
-        //   ],
-        //   onTap: (index) {
-        //     if(index==0 ){
-        //       _pageController.jumpToPage(0);
-        //
-        //     } else if(index==2){
-        //       _pageController.jumpToPage(2);
-        //     }else{
-        //       _pageController.jumpToPage(1);
-        //     }
-        //   },
-        //   kIconSize: 24.0,
-        // )
-        //     :
-
-
-        Container(
-          height: 50,
+        bottomNavigationBar: Container(
+          height: 70,
           width: double.infinity,
-          color: CustomButtonColor,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(11),
+              topRight: Radius.circular(11),
+            ),
+            color: CustomButtonColor,
+          ),
+          padding: EdgeInsets.symmetric(horizontal: 15),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+           CustomImageSction(height: 35, width: 35, radius: 5, image: "Assets/DashBoardIcons/b_bar_home.png"),
+           CustomImageSction(height: 35, width: 35, radius: 5, image: "Assets/DashBoardIcons/b_bar_attendence.png"),
+           Container(
+             width: 35,
+           ),
 
+           CustomImageSction(height: 35, width: 35, radius: 5, image: "Assets/DashBoardIcons/b_bar_payroll.png"),
+           CustomImageSction(height: 35, width: 35, radius: 5, image: "Assets/DashBoardIcons/b_bar_tricker.png"),
+            ],
+          ),
         ),
+
         floatingActionButton: CircleAvatar(
-          radius: 25,
+          radius: 35,
+          backgroundColor: Colors.white,
           child: FloatingActionButton(
            isExtended: false,shape: CircleBorder(
             side: BorderSide(color: Main_Theme_WhiteCollor),
@@ -171,7 +120,10 @@ int Select_index=0;
               backgroundColor: Main_Theme_WhiteCollor,
               onPressed: () {
 
-          }, child: Image.asset("Assets/Logo/leaff.png" ),),
+          }, child: Padding(
+            padding: const EdgeInsets.all(2.0),
+            child: Image.asset("Assets/Logo/leaff.png" ),
+          ),),
         ),
        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
 

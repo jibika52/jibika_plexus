@@ -22,6 +22,7 @@ class LoginScreenSlideState extends State<LoginScreenSlide>
   late AnimationController controller;
   late AnimationController logoanimathion;
   late Animation<Offset> position;
+  late Animation  position2;
   late Animation logosize;
   late Animation logoanimation;
   late Animation logoanimation_text;
@@ -34,6 +35,9 @@ class LoginScreenSlideState extends State<LoginScreenSlide>
     controller =
         AnimationController(vsync: this, duration: Duration(milliseconds:2000 ));
         position = Tween<Offset>(begin: Offset(-0.0, 4.0), end: Offset.zero)
+        .animate(CurvedAnimation(parent: controller, curve: Curves.decelerate));
+
+        position2 = Tween(begin:-110.0, end:0.0)
         .animate(CurvedAnimation(parent: controller, curve: Curves.decelerate));
 
         logosize = Tween(begin: 0.0, end: 150.0)
@@ -97,6 +101,16 @@ bool is_iconClick=false;
                        ),
                      )),
                  Positioned(
+                     bottom: position2.value,
+                     child: Container(
+
+                       height: 110,
+                       width:MediaQuery.of(context).size.width,
+                       decoration: BoxDecoration(
+                           image: DecorationImage(image: AssetImage("Assets/Gif/leafmove.gif"),fit: BoxFit.fill)
+                       ),
+                     )),
+                 Positioned(
                      bottom: logoanimation.value-20.0,
                      left: 0,
                      right: 0,
@@ -105,16 +119,7 @@ bool is_iconClick=false;
                          Navigator.push(context, MaterialPageRoute(builder: (context) => CompanyRegistrationScreen(),));
                        },
                          child: ColorCustomText(fontSize: 15, fontWeight: FontWeight.w500, text: "Register as a Company", letterSpacing: 0.2, textColor: CustomButtonColor,)))),
-                 Positioned(
-                     bottom: 0,
-                     child: Container(
-        
-                   height: 100,
-                   width:MediaQuery.of(context).size.width,
-                       decoration: BoxDecoration(
-                         image: DecorationImage(image: AssetImage("Assets/Gif/leafmove.gif"),fit: BoxFit.fill)
-                       ),
-                 ))
+
         
                  // Positioned(
                  //     top: 35,

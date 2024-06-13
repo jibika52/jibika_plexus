@@ -270,7 +270,9 @@ Future.delayed(Duration(
                                   ),
                                 ),
                                 Expanded(
-                                  child: JibikaCustomTextFromField(is_phone: "login",controller: _phoneController, height: 50, img: " ", hinttext: "Mobile number", keyboardType: TextInputType.number, obscureText: false),
+                                  child: JibikaCustomTextFromField(
+                                      is_phone: "login",controller: _phoneController, height: 50, img: " ",
+                                      hinttext: "Mobile number", keyboardType: TextInputType.number, obscureText: false),
                                 ),
                               ],
                             ),
@@ -292,7 +294,7 @@ Future.delayed(Duration(
                               controller: _passwordController,
                               height: 50,
                               img: "Assets/Icons/lock.png",
-                              hinttext: "Confirm Password",
+                              hinttext: "Password",
                               keyboardType: TextInputType.text,
                               obscureText: obscureText),
 
@@ -324,7 +326,7 @@ Future.delayed(Duration(
                                   child: Text("Forgot Password",
                                     style: GoogleFonts.poppins(
                                       decoration: TextDecoration.underline,
-                                      fontSize: 16,fontWeight: FontWeight.w700,
+                                      fontSize: 14,fontWeight: FontWeight.w500,
                                       color: Main_Theme_textColor.withOpacity(0.8),
                                       letterSpacing: 0.3
                                     ),),

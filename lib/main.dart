@@ -30,10 +30,10 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-     home:MainSplashPageViewScreen(),
-      //     home:LoginScreenSlide(),
+      //    home:MainSplashPageViewScreen(),
+        home:LoginScreenSlide(),
       //    home:HomeScreen(),
-      //   home:BootomNatchBarScreen(),
+      //    home:BootomNatchBarScreen(),
     ),
     );
   }

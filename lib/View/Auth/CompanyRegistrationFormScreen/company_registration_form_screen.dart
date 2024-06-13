@@ -337,7 +337,7 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                       hinttext: "Confirm Password",
                       keyboardType: TextInputType.text,
                       obscureText: obscureText),
-                  SizedBox(height: h * 0.05),
+                  SizedBox(height: h * 0.03),
                   CustomButton(
                     onTap: () {
       
@@ -362,7 +362,8 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                     button_text_color: Main_Theme_WhiteCollor,
                     borderRadius: 50,
                     fontWeight: FontWeight.w600,
-                  )
+                  ),
+                  SizedBox(height: h * 0.05),
                 ],
               ),
             ),
