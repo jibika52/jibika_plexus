@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:jibika_plexus/Controller/CounterProvider/counter_provider.dart';
+import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 import 'package:jibika_plexus/View/Auth/LoginScreen/login_screen_screen2.dart';
 import 'package:jibika_plexus/View/HomeScreen/home_screen.dart';
 import 'package:provider/provider.dart';
@@ -31,8 +32,9 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       //    home:MainSplashPageViewScreen(),
+      //  home:TEstHeroAnimation(),
       //     home:LoginScreenSlide(),
-          home:HomeScreen(),
+        home:HomeScreen(),
       // home:BootomNatchBarScreen(),
     ),
     );
@@ -40,6 +42,36 @@ class MyApp extends StatelessWidget {
 }
 
 
+
+class TEstHeroAnimation extends StatefulWidget {
+  const TEstHeroAnimation({super.key});
+
+  @override
+  State<TEstHeroAnimation> createState() => _TEstHeroAnimationState();
+}
+
+class _TEstHeroAnimationState extends State<TEstHeroAnimation> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: CustomText(fontSize: 15, fontWeight: FontWeight.w400, text: "Add", letterSpacing: 0.3),
+      ),
+      body: Container(
+        height: double.infinity,
+        width: double.infinity,
+        child: Column(
+          children: [
+
+            Container(height: 100,width: 100,color: Colors.red,),
+            SizedBox(height: 50,),
+            Container(height: 100,width: 100,color: Colors.red,),
+          ],
+        ),
+      ),
+    );
+  }
+}
 
 
 

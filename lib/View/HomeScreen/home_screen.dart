@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:fl_chart/fl_chart.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jibika_plexus/CustomWidget/CustomAppBar/CustomMAinAppBAr/custom_main_app_bar.dart';
@@ -25,24 +26,11 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateMixin{
-
-
-
-
-
-
-  late AnimationController controller;
-
-  late Animation logosize;
-
-
-
-
-
+class _HomeScreenState extends State<HomeScreen> {
     final _key=GlobalKey<ScaffoldState>();
     int total_Amount=100000000;
     String value = "K";
+    double animated_leave=0;
   @override
   Widget build(BuildContext context) {
     FocusScope.of(context).requestFocus(new FocusNode());
@@ -324,9 +312,14 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                             return InkWell(
                               onTap: () {
                                 setState(() {
-                                  leave_selected_index=index;
-
+                                  animated_leave=0;
+                                 leave_selected_index=index;
                                 });
+                                Future.delayed(Duration(milliseconds: 200),() {
+                                  setState(() {
+                                    animated_leave=95;
+                                  });
+                                },);
                               },
                               child: Container(
                                 margin: EdgeInsets.only(left: 5),
@@ -352,15 +345,19 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                                           ],
                                         )
                                     ),
-                                    leave_selected_index==index? InkWell(
+
+                                    leave_selected_index==index?
+
+                                    InkWell(
                                       onTap: () {
                                        setState(() {
                                          leave_selected_index=-1;
                                        });
                                       },
-                                      child: Container(
+                                      child: AnimatedContainer(
+                                        duration: Duration(seconds: 1),
                                           height: 110,
-                                          width: logosize.value,
+                                          width: animated_leave,
                                           decoration: BoxDecoration(
                                             borderRadius: BorderRadius.only(
                                               topRight: Radius.circular(11),
@@ -373,32 +370,35 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                                             children: [
                                               Container(
                                                 height: 22,
-                                                width: 95,
+                                                width: animated_leave,
                                                 color: Color(0xffACC027).withOpacity(0.6),
                                                 child: CustomText(fontSize: font12header, fontWeight: FontWeight.w400, text: "Abdur romel", letterSpacing: 0.1),
                                               ),
                                               SizedBox(height: 3,),
                                               Container(
-                                                width: 95,
+                                                height: 17,
+                                                width: animated_leave,
                                                 alignment: Alignment.center,
-                                                child: ColorCustomText(fontSize: font12header, fontWeight: FontWeight.bold, text: "Cl - 03", letterSpacing: 0.5,textColor: Main_Theme_textColor.withOpacity(0.9),),
+                                                child:  CustomText(fontSize: font12header, fontWeight: FontWeight.bold, text: "Cl - 03", letterSpacing: 0.5, ),
                                               ),
                                               SizedBox(height: 3,),
                                               Container(
-                                                width: 95,
+                                                height: 12,
+                                                width: animated_leave,
                                                 alignment: Alignment.center,
-                                                child: ColorCustomText(fontSize: font11, fontWeight: FontWeight.w500, text: "10 jul 2024", letterSpacing: 0.5,textColor: Main_Theme_textColor.withOpacity(0.9),),
+                                                child:  CustomText(fontSize: font11, fontWeight: FontWeight.w500, text: "10 jul 2024", letterSpacing: 0.5, ),
                                               ),
                                               Container(
                                                 height: 20,
-                                                width: 95,
+                                                width: animated_leave,
                                                 alignment: Alignment.center,
-                                                child: ColorCustomText(fontSize: font11, fontWeight: FontWeight.w600, text: "To", letterSpacing: 0.5,textColor: Main_Theme_textColor.withOpacity(0.9),),
+                                                child:  CustomText(fontSize: font11, fontWeight: FontWeight.w600, text: "     To", letterSpacing: 0.5, ),
                                               ),
                                               Container(
-                                                width: 95,
+                                                height: 20,
+                                                width: animated_leave,
                                                 alignment: Alignment.center,
-                                                child: ColorCustomText(fontSize: font11, fontWeight: FontWeight.w500, text: "10 jul 2024", letterSpacing: 0.5,textColor: Main_Theme_textColor.withOpacity(0.9),),
+                                                child:  CustomText(fontSize: font11, fontWeight: FontWeight.w500, text: "10 jul 2024", letterSpacing: 0.5, ),
                                               ),
                                             ],
                                           )
@@ -436,7 +436,22 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                       ),
                     )
                 ),
-                SizedBox(height: 100,)
+                SizedBox(height: 100,),
+
+
+                AnimatedContainer(
+                  duration: Duration(seconds: 2),
+                  height: animated_leave,width: animated_leave,color: Colors.green,),
+                SizedBox(height: 50,),
+                InkWell(
+                    onTap: () {
+                      setState(() {
+                        animated_leave=100;
+                      });
+                    },
+                    child: Container(height: 50,width: 50,color: Colors.red,)),
+
+
               ],
             ),
           )
@@ -444,9 +459,9 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
       ),
     );
   }
+
   int selected_index = 0;
   String selected2Datee = DateFormat.yMMMEd().format(DateTime.now()).toString();
-
   Future<void> _select2Date(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
         context: context,
