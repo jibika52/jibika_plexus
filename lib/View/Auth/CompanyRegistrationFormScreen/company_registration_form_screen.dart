@@ -55,7 +55,6 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
       child: Scaffold(
         appBar: PreferredSize(
             preferredSize: Size.fromHeight(60),
-      
             /// Custom Default App BAr
             child: CustomDefaultAppBar(
               onTap: () {
@@ -180,6 +179,15 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                                 onChanged: (newValue) {
                                   setState(() {
                                     busnessid = newValue.toString();
+                                    if(busnessid!.contains("SME(0-100 Employee)")){
+                                      busnessidlist2=["A","B","c"];
+                                    }
+                                   else if(busnessid!.contains("Corporate(100-500 Employee)")){
+                                      busnessidlist2=["1","2","3"];
+                                    }
+                                   else{
+                                      busnessidlist2=["x","y","z"];
+                                    }
                                   });
                                 },
                                 items: busnessidlist.map((location) {
@@ -236,13 +244,13 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                                         textColor:
                                         Main_Theme_textColor.withOpacity(0.4))),
                                 // Not necessary for Option 1
-                                value: busnessid,
+                                value: busnessid2,
                                 onChanged: (newValue) {
                                   setState(() {
-                                    busnessid = newValue.toString();
+                                    busnessid2 = newValue.toString();
                                   });
                                 },
-                                items: busnessidlist.map((location) {
+                                items: busnessidlist2.map((location) {
                                   return DropdownMenuItem(
                                     child: Text("${location ?? ""}"),
                                     value: "${location}",
@@ -272,7 +280,6 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                       keyboardType: TextInputType.text,
                       obscureText: false),
                   SizedBox(height: h * 0.02),
-
                   JibikaCustomTextFromField(
                       controller: _companyNumberController,
                       height: 50,
@@ -373,5 +380,7 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
   }
 
   String? busnessid;
-  List busnessidlist = ["A", "B", "C"];
+  String? busnessid2;
+  List busnessidlist = ["SME(0-100 Employee)", "Corporate(100-500 Employee)", "Industry(501 - 5000 Employee)","Others(Contact Us)"];
+  List busnessidlist2 = ["SME", "Corporate", "Industry","Others"];
 }
