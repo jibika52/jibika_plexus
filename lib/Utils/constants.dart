@@ -52,7 +52,7 @@ Color holiday_color=Color(0xff2C928C);
 
 
 const font11=11.0;
-const font12header=14.0;
+const font12header=13.5;
 const font13=13.0;
 const font14=14.0;
 const font15=15.0;
@@ -63,7 +63,6 @@ const font20=20.0;
 
 ///---------------- Tab height --------------------- ///
    const apps_div_margin=15.0;
-
 
 /// ----------- Custom Month List -----------------------///
 

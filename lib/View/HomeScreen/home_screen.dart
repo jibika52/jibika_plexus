@@ -42,7 +42,8 @@ class _HomeScreenState extends State<HomeScreen> {
           key: _key,
           appBar: PreferredSize(preferredSize: Size.fromHeight(100),
             /// ------------ Custom Main AppBAr -------------///
-            child: CustomMainAppBar(leading_image_route: "Assets/DashBoardIcons/appbar_leadin_menu.png", center_appbar_text: "Jibika Plexus", leading_ontab: () {
+            child: CustomMainAppBar(
+                leading_image_route: "Assets/DashBoardIcons/appbar_leadin_menu.png", center_appbar_text: "Jibika Plexus", leading_ontab: () {
               _key.currentState!.openDrawer();
             }, is_need_trailing: true),
           ),
@@ -437,20 +438,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     )
                 ),
                 SizedBox(height: 100,),
-
-
-                AnimatedContainer(
-                  duration: Duration(seconds: 2),
-                  height: animated_leave,width: animated_leave,color: Colors.green,),
-                SizedBox(height: 50,),
-                InkWell(
-                    onTap: () {
-                      setState(() {
-                        animated_leave=100;
-                      });
-                    },
-                    child: Container(height: 50,width: 50,color: Colors.red,)),
-
 
               ],
             ),

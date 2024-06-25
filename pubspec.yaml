@@ -71,6 +71,7 @@ dependencies:
   percent_indicator: ^4.2.3
   # For flow chart
   fl_chart: ^0.68.0
+  intl: ^0.18.0
 
   web: 0.5.0
 

@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
+import 'package:jibika_plexus/Controller/PrivacyPolicyController/privacy_policy.dart';
 import 'package:jibika_plexus/CustomWidget/CustomButton/custom_button.dart';
 import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
 import 'package:jibika_plexus/CustomWidget/CustomTExtFormField/CustomTextFromField/custom_text_from_fild.dart';
 import 'package:jibika_plexus/CustomWidget/CustomTExtFormField/Jibika_custom_text_from_field.dart';
 import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
+import 'package:jibika_plexus/Model/PrivacyPolicyModelClass/privacy_policy_model_class.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
 import 'package:jibika_plexus/View/Auth/OtpScreen/otp_screen.dart';
+import 'package:provider/provider.dart';
 
 import '../../CustomWidget/CustomAppBar/CustomDefaultAppBar/custom_default_app_bar.dart';
 
@@ -23,12 +27,14 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
   bool obscureText=false;
   @override
   void initState() {
-
+    Provider.of<PrivacyPolicyProvider>(context,listen: false).getPrivacyPolicyProvider("");
     // TODO: implement initState
     super.initState();
   }
   @override
   Widget build(BuildContext context) {
+    List<Rows> prvacyPolicylist=Provider.of<PrivacyPolicyProvider>(context).prvacyPolicylist;
+    print("${prvacyPolicylist}");
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(60),
@@ -46,27 +52,32 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
             width: double.infinity,
             margin: EdgeInsets.all(15),
             color:Main_Theme_WhiteCollor,
-            child: ListView.builder(
-              itemCount: 5,
-              itemBuilder: (context, index) {
-              return Container(
-                margin: EdgeInsets.only(bottom: 10),
-                padding: EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: Main_Theme_WhiteCollor
-                ),
-                width: double.infinity,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    CustomText(fontSize: 14, fontWeight: FontWeight.w600, text: "Privacy Policy", letterSpacing: 0.32,fontStyle: FontStyle.italic,),
-                    SizedBox(height: 10,),
-                    CustomText(fontSize: 13, fontWeight: FontWeight.w400, textAlign: TextAlign.justify,text: "Jibika Intelligic Ltd. (“us”, “we”, or “our”) operates www.jibikaplexus.com (hereinafter referred to as “Service”). Our Privacy Policy governs your visit to www.jibikaplexus.com, and explains how we collect, safeguard and disclose information that results from your use of our Service. We use your data to provide and improve Service. By using Service, you agree to the collection and use of information in accordance with this policy. Unless otherwise defined in this Privacy Policy, the terms used in this Privacy Policy have the same meanings as in our Terms and Conditions. Our Terms and Conditions (“Terms”) govern all use of our Service and together with the Privacy Policy constitutes your agreement with us (“agreement”).", letterSpacing: 0.3)
-                  ],
-                ),
-              );
-            },),
+            child: Consumer<PrivacyPolicyProvider>(
+              builder: (context, value, child) {
+               return ListView.builder(
+                  itemCount: value.prvacyPolicylist.length,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      margin: EdgeInsets.only(bottom: 10),
+                      padding: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: Main_Theme_WhiteCollor
+                      ),
+                      width: double.infinity,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          CustomText(fontSize: 14, fontWeight: FontWeight.w600, text: "${value.prvacyPolicylist[index].itemName}", letterSpacing: 0.32,fontStyle: FontStyle.italic,),
+                          SizedBox(height: 10,),
+                         // CustomText(fontSize: 13, fontWeight: FontWeight.w400, textAlign: TextAlign.justify,text: "Jibika Intelligic Ltd. (“us”, “we”, or “our”) operates www.jibikaplexus.com (hereinafter referred to as “Service”). Our Privacy Policy governs your visit to www.jibikaplexus.com, and explains how we collect, safeguard and disclose information that results from your use of our Service. We use your data to provide and improve Service. By using Service, you agree to the collection and use of information in accordance with this policy. Unless otherwise defined in this Privacy Policy, the terms used in this Privacy Policy have the same meanings as in our Terms and Conditions. Our Terms and Conditions (“Terms”) govern all use of our Service and together with the Privacy Policy constitutes your agreement with us (“agreement”).", letterSpacing: 0.3)
+                          CustomText(fontSize: 13, fontWeight: FontWeight.w400, textAlign: TextAlign.justify,text: "${Bidi.stripHtmlIfNeeded("${value.prvacyPolicylist[index].itemValue}")}", letterSpacing: 0.3)
+                        ],
+                      ),
+                    );
+                  },);
+              },
+            ),
 
           ),
           Positioned(

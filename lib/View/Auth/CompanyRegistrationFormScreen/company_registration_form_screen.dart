@@ -135,7 +135,66 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                       ),
                     ],
                   ),
-                  SizedBox(height: h * 0.02),
+                  Container(
+                    height: 60,
+                    width: double.infinity,
+                    child: Row(
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.only(right: 8.0, top: 7),
+                          child: Image.asset(
+                            "Assets/Icons/crbuisness.png",
+                            height: 21,
+                            width: 21,
+                            fit: BoxFit.fill,
+                            color: Main_Theme_textColor.withOpacity(0.6),
+                          ),
+                        ),
+                        Expanded(
+                          child: Container(
+                            margin: EdgeInsets.only(top: 10),
+                            height: 50,
+                            width: double.infinity,
+                            padding: EdgeInsets.only(left: 15, right: 15),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(11),
+                              //   border: Border.all(color:icons_green_color,width: 2),
+                            ),
+                            child: IgnorePointer(
+                              ignoring: false,
+                              child: DropdownButton(
+                                enableFeedback: true,
+                                autofocus: false,
+                                isExpanded: true,
+                                hint: InkWell(
+                                    onTap: () {},
+                                    child: ColorCustomText(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w500,
+                                        text: "  Business Type",
+                                        letterSpacing: 0.2,
+                                        textColor:
+                                        Main_Theme_textColor.withOpacity(0.4))),
+                                // Not necessary for Option 1
+                                value: busnessid,
+                                onChanged: (newValue) {
+                                  setState(() {
+                                    busnessid = newValue.toString();
+                                  });
+                                },
+                                items: busnessidlist.map((location) {
+                                  return DropdownMenuItem(
+                                    child: Text("${location ?? ""}"),
+                                    value: "${location}",
+                                  );
+                                }).toList(),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                   Container(
                     height: 60,
                     width: double.infinity,
@@ -213,67 +272,7 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                       keyboardType: TextInputType.text,
                       obscureText: false),
                   SizedBox(height: h * 0.02),
-                  Container(
-                    height: 60,
-                    width: double.infinity,
-                    child: Row(
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.only(right: 8.0, top: 7),
-                          child: Image.asset(
-                            "Assets/Icons/crbuisness.png",
-                            height: 21,
-                            width: 21,
-                            fit: BoxFit.fill,
-                            color: Main_Theme_textColor.withOpacity(0.6),
-                          ),
-                        ),
-                        Expanded(
-                          child: Container(
-                            margin: EdgeInsets.only(top: 10),
-                            height: 50,
-                            width: double.infinity,
-                            padding: EdgeInsets.only(left: 15, right: 15),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(11),
-                              //   border: Border.all(color:icons_green_color,width: 2),
-                            ),
-                            child: IgnorePointer(
-                              ignoring: false,
-                              child: DropdownButton(
-                                enableFeedback: true,
-                                autofocus: false,
-                                isExpanded: true,
-                                hint: InkWell(
-                                    onTap: () {},
-                                    child: ColorCustomText(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w500,
-                                        text: "  Business Type",
-                                        letterSpacing: 0.2,
-                                        textColor:
-                                            Main_Theme_textColor.withOpacity(0.4))),
-                                // Not necessary for Option 1
-                                value: busnessid,
-                                onChanged: (newValue) {
-                                  setState(() {
-                                    busnessid = newValue.toString();
-                                  });
-                                },
-                                items: busnessidlist.map((location) {
-                                  return DropdownMenuItem(
-                                    child: Text("${location ?? ""}"),
-                                    value: "${location}",
-                                  );
-                                }).toList(),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: h * 0.01),
+
                   JibikaCustomTextFromField(
                       controller: _companyNumberController,
                       height: 50,

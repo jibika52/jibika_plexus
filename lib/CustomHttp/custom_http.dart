@@ -6,6 +6,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 import 'package:jibika_plexus/Api/Routes/routes.dart';
+import 'package:jibika_plexus/Model/PrivacyPolicyModelClass/privacy_policy_model_class.dart';
 
 class CustomHttpRequestClass{
 
@@ -19,20 +20,30 @@ class CustomHttpRequestClass{
 
 
   ///--------- PRIVACY POLICY ------------///
-  Future<List> Trancations(int w_valu) async {
-    List trancations=[];
+  prvacyPolicylist(String privacyPolicytype) async {
+    List<Rows>prvacyPolicylist=[];
     try{
-      var response = await http.get(
-        Uri.parse('${BASEURL}/api/transactions?wallet=${w_valu}'),
+      var response = await http.post(
+        Uri.parse('${BASEURL}/${PRIVACY_POLICY}'),
         headers:headers,
       );
-      //  print("Transactionsssssssssssssssss ${response.body}");
-      var data =  jsonDecode(response.body);
-      trancations=data["data"];
+
+
+ //     print("Privacy Policy --------------------->>>>  $data");
+      Rows privacyPolicyModelClass;
+      if(response.statusCode==200){
+        var data =  jsonDecode(response.body);
+        for(var i in data["rows"]){
+           privacyPolicyModelClass = Rows.fromJson(i);
+            prvacyPolicylist.add(privacyPolicyModelClass);
+          print("prvacyPolicylist------------------------------: ${prvacyPolicylist}");
+        }
+      }
+    //+  prvacyPolicylist=data["rows"];
     }catch(e){
-      print("Transection catch error $e");
+      print("privacy Policy Error catch error $e");
     }
-    return trancations;
+    return prvacyPolicylist;
   }
 
 
