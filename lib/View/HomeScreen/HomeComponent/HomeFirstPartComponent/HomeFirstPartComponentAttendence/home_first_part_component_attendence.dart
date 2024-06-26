@@ -29,6 +29,7 @@ class _HomeFirstPartComponentAttendanceState extends State<HomeFirstPartComponen
   String ? getindex;
   @override
   Widget build(BuildContext context) {
+    final isChekin=Provider.of<CounterProvider>(context).isCheckIn;
     double h=MediaQuery.of(context).size.height;
     double w=MediaQuery.of(context).size.width;
     return Scaffold(
@@ -189,7 +190,9 @@ class _HomeFirstPartComponentAttendanceState extends State<HomeFirstPartComponen
                               child: InkWell(
                                 onTap: () {
                                   value.clickout();
-                                  animatedheight=0;
+                                  setState(() {
+                                    animatedheight=0;
+                                  });
                                 },
                                 child: Container(
                                   height: 50,
@@ -239,8 +242,8 @@ class _HomeFirstPartComponentAttendanceState extends State<HomeFirstPartComponen
                        decoration: BoxDecoration(
                            borderRadius: BorderRadius.all( Radius.circular(7)),
                            //  color: Color(0xffF3FCFB)
-                           color: CustomButtonColor.withOpacity(0.05),
-                           border: Border(bottom: BorderSide(color:  CustomButtonColor))
+                           color:isChekin==false?  CheckOutColor.withOpacity(0.08) : CustomButtonColor.withOpacity(0.05),
+                           border: Border(bottom: BorderSide( color:isChekin==false?CheckOutColor:  CustomButtonColor))
                        ),
                        margin: EdgeInsets.only(bottom: 7),
                        child: Column(
@@ -284,7 +287,7 @@ class _HomeFirstPartComponentAttendanceState extends State<HomeFirstPartComponen
                                          child: CustomImageSction(height: 50, width: 50, radius: 1, image: "Assets/DrawerImage/testperson.png")
                                      ),
                                    ),
-                                   Positioned(
+                                   selectedindex==index || getindex==0? Container():  Positioned(
                                        right: 0,
                                        child: CustomImageSction(height: 18, width: 15, radius: 1, image: "Assets/DrawerImage/chat.png"))
 
@@ -326,18 +329,32 @@ class _HomeFirstPartComponentAttendanceState extends State<HomeFirstPartComponen
                                        ),
                                        Row(
                                          children: [
-                                           ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "Check In", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.6),),
+                                           ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text:isChekin==false?"Check Out": "Check In", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.6),),
                                            SizedBox(width: 10,),
                                            CustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "08:25:00", letterSpacing: 0.3, ),
                                          ],
                                        ),
                                        Row(
                                          children: [
-                                           ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "Late", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.6),),
-                                           SizedBox(width: 10,),
+                                           ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text:isChekin==false?"Early" :"Late", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.6),),
+                                           SizedBox(width: 5,),
                                            CustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "25:00", letterSpacing: 0.3, ),
+                                           SizedBox(width: 4,),
+
+                                           isChekin==false?  Container(height: 10,width: 1,color: Main_Theme_textColor,):Container(),
+                                           SizedBox(width: 4,),
+
+                                           isChekin==false? Row(
+                                             children: [
+                                               ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text:"OT", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.6),),
+                                               SizedBox(width: 5,),
+                                               CustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "25:00", letterSpacing: 0.3, ),
+                                             ],
+                                           ):Container(),
+
                                          ],
                                        ),
+
                                      ],
                                    )
                                ),

@@ -40,15 +40,13 @@ class MyApp extends StatelessWidget {
       //  home:TEstHeroAnimation(),
       //     home:CompanyRegistrationScreen(),
       //   home:BootomNatchBarScreen(),
-      // home:HomeFirstPartComponentAttendance(),
-
-
+      //  home:HomeFirstPartComponentAttendance(),
       /// ----------Home---------///
       //    home:HomeScreen(),
       /// ----------Home---------///
 
       /// ----------SplashScreen---------///
-         home:MainSplashPageViewScreen(),
+      home:MainSplashPageViewScreen(),
       /// ----------SplashScreen---------///
 
     ),
