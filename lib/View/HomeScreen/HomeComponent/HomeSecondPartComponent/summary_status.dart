@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
-import 'package:jibika_plexus/View/HomeScreen/HomeComponent/summary_status_second_part.dart';
+import 'package:jibika_plexus/View/HomeScreen/HomeComponent/HomeSecondPartComponent/summary_status_second_part.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
-import '../../../CustomWidget/CustomCalender/custom_calender.dart';
-import '../../../CustomWidget/CustomText/custom_text.dart';
+import '../../../../CustomWidget/CustomCalender/custom_calender.dart';
+import '../../../../CustomWidget/CustomText/custom_text.dart';
 
 
 class SecondhomePartScreen extends StatefulWidget {

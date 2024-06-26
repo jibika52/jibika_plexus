@@ -1,23 +1,20 @@
-import 'dart:math';
 
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:jibika_plexus/CustomWidget/CustomAppBar/CustomMAinAppBAr/custom_main_app_bar.dart';
 import 'package:jibika_plexus/CustomWidget/CustomCalender/custom_calender.dart';
 import 'package:jibika_plexus/CustomWidget/CustomDrawer/CustomLeftDrawer/custom_left_drawer.dart';
-import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
-import 'package:jibika_plexus/View/HomeScreen/HomeComponent/home_five_part_body_section.dart';
-import 'package:jibika_plexus/View/HomeScreen/HomeComponent/home_header_partt.dart';
-import 'package:jibika_plexus/View/HomeScreen/HomeComponent/home_seven_part_body_section.dart';
-import 'package:jibika_plexus/View/HomeScreen/HomeComponent/home_third_pard_body_laft_side.dart';
-import 'package:jibika_plexus/View/HomeScreen/HomeComponent/home_third_part_progressbar.dart';
-import 'package:jibika_plexus/View/HomeScreen/HomeComponent/home_thired_part_header.dart';
-import 'package:jibika_plexus/View/HomeScreen/HomeComponent/summary_status.dart';
+import 'package:jibika_plexus/View/HomeScreen/HomeComponent/HomeFivePartComponent/home_five_part_body_section.dart';
+import 'package:jibika_plexus/View/HomeScreen/HomeComponent/HomeSevenPartComponent/home_seven_part_body_section.dart';
+import 'package:jibika_plexus/View/HomeScreen/HomeComponent/HomeThirdPartComponent/home_third_pard_body_laft_side.dart';
+import 'package:jibika_plexus/View/HomeScreen/HomeComponent/HomeThirdPartComponent/home_third_part_progressbar.dart';
+import 'package:jibika_plexus/View/HomeScreen/HomeComponent/HomeSecondPartComponent/summary_status.dart';
 import 'package:intl/intl.dart';
 import '../../CustomWidget/CustomText/custom_text.dart';
+import 'HomeComponent/HomeFirstPartComponent/home_header_partt.dart';
+import 'HomeComponent/HomeThirdPartComponent/home_thired_part_header.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

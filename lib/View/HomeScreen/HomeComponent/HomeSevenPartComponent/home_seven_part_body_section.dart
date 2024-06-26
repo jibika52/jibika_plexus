@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
 
-import '../../../CustomWidget/CustomText/custom_text.dart';
+import '../../../../CustomWidget/CustomText/custom_text.dart';
 
 class HomeSeventhPartBodySection extends StatelessWidget {
   HomeSeventhPartBodySection({super.key,required this.image,required this.Head_text,required this.body_text,required this.footer_text, required this.color});

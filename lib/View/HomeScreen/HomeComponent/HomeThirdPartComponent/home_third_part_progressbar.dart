@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../Utils/constants.dart';
+import '../../../../Utils/constants.dart';
 
 class ThirdPartProgressBar extends StatefulWidget {
    ThirdPartProgressBar({super.key,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../CustomWidget/CustomText/custom_text.dart';
-import '../../../Utils/constants.dart';
+import '../../../../CustomWidget/CustomText/custom_text.dart';
+import '../../../../Utils/constants.dart';
 
 class HomeThirdPartBodyLeftSide extends StatelessWidget {
   HomeThirdPartBodyLeftSide({super.key,

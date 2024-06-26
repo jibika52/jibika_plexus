@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-
-import '../../../CustomWidget/CustomCalender/custom_calender.dart';
-import '../../../CustomWidget/CustomText/custom_text.dart';
-import '../../../Utils/constants.dart';
+import '../../../../CustomWidget/CustomCalender/custom_calender.dart';
+import '../../../../CustomWidget/CustomText/custom_text.dart';
+import '../../../../Utils/constants.dart';
 import 'barchat_heder_part.dart';
 import 'package:intl/intl.dart';
 
@@ -24,19 +23,19 @@ class _HomeThiredPartHeaderState extends State<HomeThiredPartHeader> {
       children: [
         BarchatHeaderPart(
           name: "Today",
-          mony: '${widget.PayableMony}',
+          money: '${widget.PayableMony}',
           parpose: "Manpower",
         ),
         Container(height: 50,width:1,color: Main_Theme_textColor.withOpacity(0.3),),
         BarchatHeaderPart(
           name: "Today",
-          mony: '${widget.DailyMony}',
+          money: '${widget.DailyMony}',
           parpose: "Salary",
         ),
         Container(height: 50,width:1,color: Main_Theme_textColor.withOpacity(0.3),),
         BarchatHeaderPart(
           name: "Cumulative",
-          mony: '${widget.CumulativeMony}',
+          money: '${widget.CumulativeMony}',
           parpose: "Salary",
         ),
         Container(height: 50,width:1,color: Main_Theme_textColor.withOpacity(0.3),),

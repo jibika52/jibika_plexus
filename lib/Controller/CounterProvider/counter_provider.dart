@@ -39,4 +39,20 @@ class CounterProvider with ChangeNotifier{
   }
 
 
+
+
+  /// For Check-in and Check-Out within attendance
+  bool _isCheckIn = true;
+  bool get isCheckIn => _isCheckIn;
+
+  void clickIn() {
+    _isCheckIn=true;
+    notifyListeners();
+  }
+  void clickout() {
+    _isCheckIn=false;
+    notifyListeners();
+  }
+
+
 }

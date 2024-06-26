@@ -3,12 +3,12 @@
 import 'package:flutter/material.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
 
-import '../../../CustomWidget/CustomText/custom_text.dart';
+import '../../../../CustomWidget/CustomText/custom_text.dart';
 
 class BarchatHeaderPart extends StatefulWidget {
-  BarchatHeaderPart({Key? key,required this.name,required this.mony,required this.parpose}) : super(key: key);
+  BarchatHeaderPart({Key? key,required this.name,required this.money,required this.parpose}) : super(key: key);
   String  name;
-  String mony;
+  String money;
   String  parpose;
   @override
   State<BarchatHeaderPart> createState() => _BarchatHeaderPartState();
@@ -33,7 +33,7 @@ class _BarchatHeaderPartState extends State<BarchatHeaderPart> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           ColorCustomText(text: "${widget.name}", fontSize:font12header, fontWeight: FontWeight.w500,letterSpacing: 0.3,textColor: Main_Theme_textColor.withOpacity(0.9)),
-          ColorCustomText(text: "${widget.mony}", fontSize: 14, fontWeight: FontWeight.w600,letterSpacing: 0.2,textColor: Main_Theme_textColor.withOpacity(0.6) ),
+          ColorCustomText(text: "${widget.money}", fontSize: 14, fontWeight: FontWeight.w600,letterSpacing: 0.2,textColor: Main_Theme_textColor.withOpacity(0.6) ),
           ColorCustomText(text: "${widget.parpose}", fontSize: font11, fontWeight: FontWeight.w400,letterSpacing: 0.2,textColor: Main_Theme_textColor.withOpacity(0.6)),
         ],
       ),

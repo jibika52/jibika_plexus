@@ -11,17 +11,18 @@ class CustomDefaultAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(top: 10),
+      color: CustomButtonColor,
       child: AppBar(
         centerTitle: true,
-        backgroundColor:Main_Theme_WhiteCollor,
+        backgroundColor:CustomButtonColor,
         leading: InkWell(
           onTap: onTap,
           child: Padding(
             padding: const EdgeInsets.all(10.0),
-            child: Image.asset("Assets/Icons/appbarbackbutton.png",height: 8,width: 11,color: Main_Theme_textColor,fit: BoxFit.fill,),
+            child: Image.asset("Assets/Icons/appbarbackbutton.png",height: 8,width: 11,color: Main_Theme_WhiteCollor,fit: BoxFit.fill,),
           ),
         ),
-        title: CustomText(fontSize: 18, fontWeight: FontWeight.w600, text: "$text", letterSpacing: 0.2),
+        title: ColorCustomText(fontSize: 18, fontWeight: FontWeight.w500, text: "$text", letterSpacing: 0.5,textColor: Main_Theme_WhiteCollor,),
       ),
     );
   }

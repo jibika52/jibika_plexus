@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../CustomWidget/CustomText/custom_text.dart';
-import '../../../Utils/constants.dart';
-
+import '../../../../CustomWidget/CustomText/custom_text.dart';
+import '../../../../Utils/constants.dart';
 class SummaryStatusSecondPart extends StatelessWidget {
   SummaryStatusSecondPart({super.key,
     required this.CapitalTExt,

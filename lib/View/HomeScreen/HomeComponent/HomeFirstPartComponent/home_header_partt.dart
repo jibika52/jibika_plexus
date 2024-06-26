@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
+import 'package:jibika_plexus/View/HomeScreen/HomeComponent/HomeFirstPartComponent/HomeFirstPartComponentAttendence/home_first_part_component_attendence.dart';
 
-import '../../../CustomWidget/CustomText/custom_text.dart';
+import '../../../../CustomWidget/CustomText/custom_text.dart';
 
 class HomeHederPart extends StatefulWidget {
    HomeHederPart({Key? key,required this.permission_list}) : super(key: key);
@@ -53,6 +54,9 @@ class _HomeHederPartState extends State<HomeHederPart> {
                 setState(() {
                   selected_index=index;
                 });
+                if(selected_index==1){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => HomeFirstPartComponentAttendance(),));
+                }
               },
               child: Container(
                 margin: EdgeInsets.only(left: 5),

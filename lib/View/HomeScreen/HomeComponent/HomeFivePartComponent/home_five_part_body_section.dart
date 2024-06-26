@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../CustomWidget/CustomText/custom_text.dart';
-import '../../../Utils/constants.dart';
+import '../../../../CustomWidget/CustomText/custom_text.dart';
+import '../../../../Utils/constants.dart';
 
 class HomeFivePartBodyScetion extends StatelessWidget {
   HomeFivePartBodyScetion({super.key,

@@ -10,6 +10,7 @@ import 'package:provider/provider.dart';
 import 'Controller/HomeController/home_controller.dart';
 import 'Controller/PrivacyPolicyController/privacy_policy.dart';
 import 'View/BootomNatchBar/bootom_bar_screen.dart';
+import 'View/HomeScreen/HomeComponent/HomeFirstPartComponent/HomeFirstPartComponentAttendence/home_first_part_component_attendence.dart';
 import 'View/PrivacyPolicy/privacy_policy.dart';
 import 'View/SplashScreen/main_splash_pageview_screen.dart';
 
@@ -35,52 +36,25 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-       home:MainSplashPageViewScreen(),
       // home:PrivacyPolicyScreen(phone_or_email: '01889173335',),
       //  home:TEstHeroAnimation(),
       //     home:CompanyRegistrationScreen(),
-      //   home:HomeScreen(),
       //   home:BootomNatchBarScreen(),
+      // home:HomeFirstPartComponentAttendance(),
+
+
+      /// ----------Home---------///
+      //    home:HomeScreen(),
+      /// ----------Home---------///
+
+      /// ----------SplashScreen---------///
+         home:MainSplashPageViewScreen(),
+      /// ----------SplashScreen---------///
+
     ),
 
     );
   }
 }
-
-
-
-// class TEstHeroAnimation extends StatefulWidget {
-//   const TEstHeroAnimation({super.key});
-//
-//   @override
-//   State<TEstHeroAnimation> createState() => _TEstHeroAnimationState();
-// }
-//
-// class _TEstHeroAnimationState extends State<TEstHeroAnimation> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: CustomText(fontSize: 15, fontWeight: FontWeight.w400, text: "Add", letterSpacing: 0.3),
-//       ),
-//       body: Container(
-//         height: double.infinity,
-//         width: double.infinity,
-//         child: Column(
-//           children: [
-//
-//             Container(height: 100,width: 100,color: Colors.red,),
-//             SizedBox(height: 50,),
-//             Container(height: 100,width: 100,color: Colors.red,),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-
-
-
 
 

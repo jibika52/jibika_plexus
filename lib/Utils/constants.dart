@@ -14,6 +14,12 @@ import 'dart:ui';
 const Main_Theme_textColor = Color(0xff333333);
 const Main_Theme_textColor_tir_Condition = Color(0xffACC027);
 
+
+/// Attendance Check out color
+const CheckOutColor = Color(0xffEEAF61);
+const CheckInColor = CustomButtonColor;
+
+
 /// All text white color
 const Main_Theme_WhiteCollor = Color(0xffffffff);
 const th3_CustomButtonColor = Color(0xffD4EDE7);
@@ -83,7 +89,7 @@ List monthList= [
 
 
 
-
+String Loremtext="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum";
 
 
 
