@@ -51,6 +51,7 @@ const home_default_color = Color(0xffF2F2F2);
 Color presentsent_color=Color(0xff88DB2E);
 Color absent_color=Color(0xffEC4F4F);
 Color leave_color=Color(0xffDAAF04);
+Color leave_approval_button_color=Color(0xffe7edbf);
 Color holiday_color=Color(0xff2C928C);
 
 

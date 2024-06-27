@@ -9,6 +9,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:jibika_plexus/CustomWidget/CustomBootomSplashBar/custom_bootom_splash_bar.dart';
 import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 import 'package:jibika_plexus/View/Auth/CompanyRegistrationFormScreen/company_registration_form_screen.dart';
+import 'package:jibika_plexus/View/ChoosePackageScreen/choose_package_screen.dart';
 import '../../../Utils/constants.dart';
 import 'login_screen.dart';
 
@@ -116,7 +117,7 @@ bool is_iconClick=false;
                      right: 0,
                      child: Center(child:InkWell(
                        onTap: () {
-                         Navigator.push(context, MaterialPageRoute(builder: (context) => CompanyRegistrationScreen(),));
+                         Navigator.push(context, MaterialPageRoute(builder: (context) => ChoosePackageScreen(),));
                        },
                          child: ColorCustomText(fontSize: 15, fontWeight: FontWeight.w500, text: "Register as a Company", letterSpacing: 0.2, textColor: CustomButtonColor,)))),
 

@@ -12,6 +12,7 @@ import 'Controller/HomeController/home_controller.dart';
 import 'Controller/PrivacyPolicyController/privacy_policy.dart';
 import 'View/BootomNatchBar/bootom_bar_screen.dart';
 import 'View/HomeScreen/HomeComponent/HomeFirstPartComponent/HomeFirstPartComponentAttendence/home_first_part_component_attendence.dart';
+import 'View/HomeScreen/HomeComponent/HomeFirstPartComponent/HomeFirstPartComponentLeave/home_first_part_component_leave.dart';
 import 'View/PrivacyPolicy/privacy_policy.dart';
 import 'View/SplashScreen/main_splash_pageview_screen.dart';
 
@@ -50,7 +51,7 @@ class MyApp extends StatelessWidget {
       //  home:MainSplashPageViewScreen(),
 
       /// ----------Working Screen--------
-      home:ChoosePackageScreen(),
+      home:HomeFirstPartComponentLeave(),
 
 
 

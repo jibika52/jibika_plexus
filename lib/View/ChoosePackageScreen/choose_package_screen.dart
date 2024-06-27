@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:jibika_plexus/CustomWidget/CustomAppBar/CustomDefaultAppBar/custom_default_app_bar.dart';
+import 'package:jibika_plexus/CustomWidget/CustomBootomSplashBar/custom_bootom_splash_bar.dart';
 import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
 import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
+import 'package:jibika_plexus/View/Auth/CompanyRegistrationFormScreen/company_registration_form_screen.dart';
 
 class ChoosePackageScreen extends StatefulWidget {
   const ChoosePackageScreen({super.key});
@@ -30,28 +32,50 @@ class _ChoosePackageScreenState extends State<ChoosePackageScreen> {
             onTap: () {
               showDialog(context: context, builder: (context) => AlertDialog(
                 title: ColorCustomText(fontSize: 16, fontWeight: FontWeight.w500, text: "Are you sure to buy...", letterSpacing: 0.3, textColor: CustomButtonColor.withOpacity(0.70),),
-              actions: [
-                Container(
-                  height: 30,
-                  width: 60,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(color: absent_color,width: 1.5),
-                    color: absent_color.withOpacity(0.05),
+                content: Container(
+                  height: 100,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Center(child: CustomText(fontSize: 14, fontWeight: FontWeight.w500, text: "${head_text[index]}", letterSpacing: 0.3)),
+                      SizedBox(height: 5,),
+                      CustomText(fontSize: font11, fontWeight: FontWeight.w500, text: "0-50 Employee can be enroll", letterSpacing: 0.3,textAlign: TextAlign.left,),
+                      CustomText(fontSize: font11, fontWeight: FontWeight.w500, text: "Monthly charge 30K", letterSpacing: 0.3,textAlign: TextAlign.left,),
+                      CustomText(fontSize: font11, fontWeight: FontWeight.w500, text: "Annual Charges  360K", letterSpacing: 0.3,textAlign: TextAlign.left,),
+                    ],
                   ),
-                  alignment: Alignment.center,
-                  child: CustomText(fontSize: 16, fontWeight: FontWeight.w500, text: "No", letterSpacing: 0.3),
                 ),
-                Container(
-                  height: 30,
-                  width: 60,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(color: CustomButtonColor,width: 1.5),
-                    color: CustomButtonColor.withOpacity(0.05),
+                actions: [
+                InkWell(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Container(
+                    height: 30,
+                    width: 60,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(color: absent_color,width: 1.5),
+                      color: absent_color.withOpacity(0.05),
+                    ),
+                    alignment: Alignment.center,
+                    child: CustomText(fontSize: 16, fontWeight: FontWeight.w500, text: "No", letterSpacing: 0.3),
                   ),
-                  alignment: Alignment.center,
-                  child: CustomText(fontSize: 16, fontWeight: FontWeight.w500, text: "Yes", letterSpacing: 0.3),
+                ),
+                InkWell(
+                  onTap: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => CompanyRegistrationScreen(),)),
+                  child: Container(
+                    height: 30,
+                    width: 60,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(color: CustomButtonColor,width: 1.5),
+                      color: CustomButtonColor.withOpacity(0.05),
+                    ),
+                    alignment: Alignment.center,
+                    child: CustomText(fontSize: 16, fontWeight: FontWeight.w500, text: "Yes", letterSpacing: 0.3),
+                  ),
                 ),
               ],
                 ),
@@ -85,16 +109,20 @@ class _ChoosePackageScreenState extends State<ChoosePackageScreen> {
                       CustomText(fontSize: font11, fontWeight: FontWeight.w500, text: "Annual Charges  360K", letterSpacing: 0.3,textAlign: TextAlign.left,),
                     ],
                   ),
-                ))
+                ),
+                ),
+                CustomImageSction(height: 50, width: 70, radius: 10, image: "Assets/Gif/click.gif")
               ],
             ),
                     ),
           ),)
       ),
+      bottomSheet: CustomBootomSplashBar(),
     );
   }
   List head_text=[
     "Small Industry",
+    "Medium Industry",
     "Large Industry",
     "Small Corporate Industry",
     "Large Corporate Industry",

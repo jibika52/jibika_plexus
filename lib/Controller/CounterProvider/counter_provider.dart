@@ -55,4 +55,21 @@ class CounterProvider with ChangeNotifier{
   }
 
 
+  /// For Leave Approval
+  int _selectedindex2=0;
+  int get selectindex2=>_selectedindex2;
+
+  void leave_waiting(){
+    _selectedindex2=0;
+    notifyListeners();
+  }
+  void leave_approval(){
+    _selectedindex2=1;
+    notifyListeners();
+  }
+  void leave_Disapproval(){
+    _selectedindex2=2;
+    notifyListeners();
+  }
+
 }

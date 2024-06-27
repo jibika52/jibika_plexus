@@ -35,6 +35,7 @@ class _HomeFirstPartComponentAttendanceState extends State<HomeFirstPartComponen
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(75),child: CustomDefaultAppBar(onTap: () {
+          Navigator.pop(context);
       }, text: "Attendance Approval"),),
       body: Container(
         height: double.infinity,
