@@ -88,73 +88,72 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
             ),
             SizedBox(height: 6,),
             /// ------------------ Second part ------------///
-            InkWell(
-              onTap: () {
-                  setState(() {
-                    _is_click_date=!_is_click_date;
-                    if(_is_click_date==true){
-                      animatwidth=w*0.95;
-                    }else{
-                      animatwidth=100.0;
-                    }
-              },);
-
-              },
-              child: Container(
-                height: 50,
-                width: double.infinity,
-                padding: EdgeInsets.only(left: 10, right: 10, top: 7, bottom: 7 ),
-                color: leave_approval_button_color,
-                child: Stack(
-                  children: [
-                    Container(
-                      height: 42,
-                      width: 140,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(7),
-                       // color: Colors.red,
-                        border: Border.all(
-                          color: Main_Theme_textColor.withOpacity(0.15),
-                          width: 1.5
-                        )
-                      ),
-                      padding: EdgeInsets.only(left: 7,right: 7),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          CustomImageSction(height: 24, width: 24, radius: 1, image: "Assets/Icons/share2.png"),
-                         Container(
-                            height: 20,
-                            width: 1,
-                            color: Main_Theme_textColor.withOpacity(0.3),
-                          ),
-                          CustomImageSction(height: 24, width: 24, radius: 1, image: "Assets/Icons/sms.png"),
-                         Container(
-                            height: 20,
-                            width: 1,
-                            color: Main_Theme_textColor.withOpacity(0.3),
-                          ),
-                          CustomImageSction(height: 24, width: 24, radius: 1, image: "Assets/Icons/pdf.png"),
-
-                        ],
-                      ),
+            Container(
+              height: 50,
+              width: double.infinity,
+              padding: EdgeInsets.only(left: 10, right: 10, top: 7, bottom: 7 ),
+              color: leave_approval_button_color,
+              child: Stack(
+                children: [
+                  Container(
+                    height: 42,
+                    width: 140,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(7),
+                     // color: Colors.red,
+                      border: Border.all(
+                        color: Main_Theme_textColor.withOpacity(0.15),
+                        width: 1.5
+                      )
                     ),
-                    Positioned(
-                        right: 0,
-                        bottom: 2,
-                        child: AnimatedContainer(
-                      duration: Duration(milliseconds: 300),
-                      height: 32,
-                      width: animatwidth,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(7),
-                            color: leave_approval_button_color,
-                          border: Border.all(
-                              color: Main_Theme_textColor.withOpacity(0.7),
-                              width: 1
-                          )
-                      ),
-                      padding: EdgeInsets.all(7),
+                    padding: EdgeInsets.only(left: 7,right: 7),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        CustomImageSction(height: 24, width: 24, radius: 1, image: "Assets/Icons/share2.png"),
+                       Container(
+                          height: 20,
+                          width: 1,
+                          color: Main_Theme_textColor.withOpacity(0.3),
+                        ),
+                        CustomImageSction(height: 24, width: 24, radius: 1, image: "Assets/Icons/sms.png"),
+                       Container(
+                          height: 20,
+                          width: 1,
+                          color: Main_Theme_textColor.withOpacity(0.3),
+                        ),
+                        CustomImageSction(height: 24, width: 24, radius: 1, image: "Assets/Icons/pdf.png"),
+
+                      ],
+                    ),
+                  ),
+                  Positioned(
+                      right: 0,
+                      bottom: 2,
+                      child: AnimatedContainer(
+                    duration: Duration(milliseconds: 300),
+                    height: 32,
+                    width: animatwidth,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(7),
+                          color: leave_approval_button_color,
+                        border: Border.all(
+                            color: Main_Theme_textColor.withOpacity(0.7),
+                            width: 1
+                        )
+                    ),
+                    padding: EdgeInsets.all(7),
+                    child: InkWell(
+                      onTap: () {
+                        setState(() {
+                          _is_click_date=!_is_click_date;
+                          if(_is_click_date==true){
+                            animatwidth=w*0.95;
+                          }else{
+                            animatwidth=100.0;
+                          }
+                        });
+                      },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -194,9 +193,9 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
                           ColorCustomText(fontSize: font12header, fontWeight: FontWeight.w500, text: "2023", letterSpacing: 0.3, textColor: Main_Theme_textColor),
                         ],
                       ),
-                    ))
-                  ],
-                ),
+                    ),
+                  ))
+                ],
               ),
             ),
             /// ------------------ third part ------------///
