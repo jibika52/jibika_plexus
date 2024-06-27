@@ -4,6 +4,7 @@ import 'package:jibika_plexus/Controller/CounterProvider/counter_provider.dart';
 import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 import 'package:jibika_plexus/View/Auth/CompanyRegistrationFormScreen/company_registration_form_screen.dart';
 import 'package:jibika_plexus/View/Auth/LoginScreen/login_screen_screen2.dart';
+import 'package:jibika_plexus/View/BootomNavigationBarItemsScreen/BootomNavigationBarItemsTrackingScreen/bootombar_tracking_screen.dart';
 import 'package:jibika_plexus/View/ChoosePackageScreen/choose_package_screen.dart';
 import 'package:jibika_plexus/View/HomeScreen/home_screen.dart';
 import 'package:provider/provider.dart';
@@ -51,7 +52,8 @@ class MyApp extends StatelessWidget {
       //  home:MainSplashPageViewScreen(),
 
       /// ----------Working Screen--------
-      home:HomeFirstPartComponentLeave(),
+   //   home:HomeFirstPartComponentLeave(),
+      home:BootomNavigationBarItemsTrackingScreen(),
 
 
 

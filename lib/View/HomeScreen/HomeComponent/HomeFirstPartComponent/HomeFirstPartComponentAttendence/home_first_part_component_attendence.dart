@@ -30,8 +30,6 @@ class _HomeFirstPartComponentAttendanceState extends State<HomeFirstPartComponen
   @override
   Widget build(BuildContext context) {
     final isChekin=Provider.of<CounterProvider>(context).isCheckIn;
-    double h=MediaQuery.of(context).size.height;
-    double w=MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(75),child: CustomDefaultAppBar(onTap: () {
