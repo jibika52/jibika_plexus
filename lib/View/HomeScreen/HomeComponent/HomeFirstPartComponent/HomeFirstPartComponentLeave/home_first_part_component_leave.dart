@@ -26,7 +26,10 @@ class HomeFirstPartComponentLeave extends StatefulWidget {
 class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeave> {
   int  selectedindex=0;
   double animatedheight=0;
+  double animatwidth=100;
   String ? getindex;
+  bool _is_click_date=false;
+  int selectedmonth=0;
   @override
   Widget build(BuildContext context) {
     final isChekin=Provider.of<CounterProvider>(context).isCheckIn;
@@ -42,6 +45,7 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
         width: double.infinity,
         child: Column(
           children: [
+            /// ------------------------ Waiting approved and disApproved ---------------------------
             Container(
               height: h*.06,
               width: double.infinity,
@@ -61,7 +65,6 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
                         }
                        else if(index==1){
                           value.leave_approval();
-                          print("ddddddddddddddddddddddddd");
                         }
                        else{
                           value.leave_Disapproval();
@@ -83,180 +86,128 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
                     ),),
               )
             ),
-            Container(
-              height: 55,
-              width: double.infinity,
-              padding: EdgeInsets.only(
-                  top: 10,right: 10,left: 10,bottom: 6
-              ),
-              child: Row(
-                children: [
-                  Expanded(
-                      flex: 10,
-                      child: Container(
-                        height: 48,
-                        width: 300,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(7),
-                            color:Color.fromRGBO(245, 245, 245, 1),
-                            border: Border.all(width: 2,color: Main_Theme_textColor.withOpacity(0.1))
-                        ),
-                        child: Row(
-                          children: [
-                            Container(
-                              margin: EdgeInsets.only(
-                                  left: 10,right: 10
-                              ),
-                              height: 16,width: 16 ,
-                              child: CustomImageSction(height: 16, width: 16, radius: 1, image: "Assets/DashBoardIcons/searchnormal.png"),
-                            ),
-                            Container(
-                              margin: EdgeInsets.only(right: 10
-                              ),
-                              height: 12,
-                              width: 2,
-                              color: Main_Theme_textColor.withOpacity(0.1),
-                            ),
-                            Expanded(
-                              child: Container(
-                                  child: TextFormField(
-                                    style: GoogleFonts.poppins(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 12,
-                                    ),
-                                    decoration: InputDecoration(
-                                        contentPadding: EdgeInsets.only(bottom: 10),
-                                        border: InputBorder.none,
-                                        hintStyle: TextStyle(
-                                            fontWeight: FontWeight.w400,
-                                            fontSize: 12,
-                                            color: Main_Theme_textColor.withOpacity(0.30)
-                                        ),
-                                        hintText: "Search Here"
-                                    ),
-                                  )
-                              ),
-                            )
-                          ],
-                        ),
-                      )),
-
-                  Container(
-                    height: 53,
-                    width: 40,
-                    margin: EdgeInsets.only(
-                        left: 10,right: 10
-                    ),
-                    padding: EdgeInsets.symmetric(
-                        horizontal: 10,
-                        vertical: 7.95
-                    ),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(7),
-                        color:Color.fromRGBO(245, 245, 245, 1),
-                        border: Border.all(width: 2,color: Main_Theme_textColor.withOpacity(0.1))
-                    ),
-                    child: CustomImageSction(height: 17, width: 15, radius: 1, image: "Assets/DrawerImage/search_filter.png"),
-                  ),
-
-
-
-                  Container(
-                    height: 54,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(top: 1.0,left: 10),
-                          child: ColorCustomText(
-                            text: "${selected2Datee}",
-                            textColor: Main_Theme_textColor.withOpacity(0.6),
-                            fontSize: 12,
-                            fontWeight: FontWeight.w400, letterSpacing: 0.2,),
-                        ),
-                        SizedBox(width: 5,),
-                        /// ---------- Custom Calender Part --------- ///
-                        InkWell(
-                          onTap: () {
-                            _select2Date(context);
-                          },
-                          child: Container(
-                            height: 53,
-                            width: 40,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(7),
-                                color:Color.fromRGBO(245, 245, 245, 1),
-                                border: Border.all(width: 2,color: Main_Theme_textColor.withOpacity(0.1))
-                            ),
-                            child: CustomImageSction(height: 17, width: 15, radius: 1, image: "Assets/DashBoardIcons/clender.png"),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-
+            SizedBox(height: 6,),
             /// ------------------ Second part ------------///
-            Consumer<CounterProvider>(
-              builder: (context, value, child) {
-                return Container(
-                  height: 45,width: double.infinity,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(7),
-                      color: Main_Theme_textColor.withOpacity(0.1)
-                  ),
-                  margin: EdgeInsets.only(
-                      top: 7,bottom: 7,left: 10,right: 10
-                  ),
-                  child: Row(
-                    children: [
-                      Expanded(
-                          child: InkWell(
-                            onTap: () {
-                              value.clickIn();
-                            },
-                            child: Container(
-                              height: 50,
-                              width: 500,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(7),
-                                color:value.isCheckIn==true? CheckInColor:Main_Theme_textColor.withOpacity(0.01),
-                              ),
-                              alignment: Alignment.center,child: ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Check In (17)", letterSpacing: 0.3,textColor:value.isCheckIn==true? Main_Theme_WhiteCollor:Main_Theme_textColor.withOpacity(0.70),),
-                            ),
-                          )),
-                      Expanded(
-                          child: InkWell(
-                            onTap: () {
-                              value.clickout();
-                              setState(() {
-                                animatedheight=0;
-                              });
-                            },
-                            child: Container(
-                              height: 50,
-                              width: 500,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(7),
-                                color:value.isCheckIn==true?Main_Theme_textColor.withOpacity(0.01): CheckOutColor,
-                              ),
-                              alignment: Alignment.center,child: ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Check Out (11)", letterSpacing: 0.3,textColor:value.isCheckIn==true?Main_Theme_textColor.withOpacity(0.70): Main_Theme_WhiteCollor,),
+            InkWell(
+              onTap: () {
+                  setState(() {
+                    _is_click_date=!_is_click_date;
+                    if(_is_click_date==true){
+                      animatwidth=w*0.95;
+                    }else{
+                      animatwidth=100.0;
+                    }
+              },);
 
-                            ),
-                          ))
-                    ],
-                  ),
-                );
               },
+              child: Container(
+                height: 50,
+                width: double.infinity,
+                padding: EdgeInsets.only(left: 10, right: 10, top: 7, bottom: 7 ),
+                color: leave_approval_button_color,
+                child: Stack(
+                  children: [
+                    Container(
+                      height: 42,
+                      width: 140,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(7),
+                       // color: Colors.red,
+                        border: Border.all(
+                          color: Main_Theme_textColor.withOpacity(0.15),
+                          width: 1.5
+                        )
+                      ),
+                      padding: EdgeInsets.only(left: 7,right: 7),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          CustomImageSction(height: 24, width: 24, radius: 1, image: "Assets/Icons/share2.png"),
+                         Container(
+                            height: 20,
+                            width: 1,
+                            color: Main_Theme_textColor.withOpacity(0.3),
+                          ),
+                          CustomImageSction(height: 24, width: 24, radius: 1, image: "Assets/Icons/sms.png"),
+                         Container(
+                            height: 20,
+                            width: 1,
+                            color: Main_Theme_textColor.withOpacity(0.3),
+                          ),
+                          CustomImageSction(height: 24, width: 24, radius: 1, image: "Assets/Icons/pdf.png"),
+
+                        ],
+                      ),
+                    ),
+                    Positioned(
+                        right: 0,
+                        bottom: 2,
+                        child: AnimatedContainer(
+                      duration: Duration(milliseconds: 300),
+                      height: 32,
+                      width: animatwidth,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(7),
+                            color: leave_approval_button_color,
+                          border: Border.all(
+                              color: Main_Theme_textColor.withOpacity(0.7),
+                              width: 1
+                          )
+                      ),
+                      padding: EdgeInsets.all(7),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                        _is_click_date==false?  ColorCustomText(fontSize: font12header, fontWeight: FontWeight.w500, text: "${monthList[selectedmonth]}", letterSpacing: 0.3,
+                            textColor: CustomButtonColor) :
+                                Expanded(child: ListView.builder(
+                                  itemCount: MonthList.length,
+                                  scrollDirection: Axis.horizontal,
+                                  itemBuilder: (context, index) {
+                                  return InkWell(
+                                    onTap: () {
+                                          setState(() {
+                                            selectedmonth=index;
+                                            _is_click_date=!_is_click_date;
+                                            if(_is_click_date==true){
+                                              animatwidth=w*0.95;
+                                            }else{
+                                              animatwidth=100.0;
+                                            }
+
+                                        },);
+
+
+                                    },
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(right: 10.0,left: 5),
+                                      child: Text("${MonthList[index]}"),
+                                    ),
+                                  ) ;
+                                },)),
+                          Container(
+                            height: 12,
+                            width: 1,
+                            color: Main_Theme_textColor,
+                            margin: EdgeInsets.only(left: 5,right: 5),
+                          ),
+                          ColorCustomText(fontSize: font12header, fontWeight: FontWeight.w500, text: "2023", letterSpacing: 0.3, textColor: Main_Theme_textColor),
+                        ],
+                      ),
+                    ))
+                  ],
+                ),
+              ),
             ),
             /// ------------------ third part ------------///
             Expanded(
               child: Container(
+                margin: EdgeInsets.only(top: 7),
                 width: 400,
                 color: Main_Theme_WhiteCollor,
+                padding: EdgeInsets.only(
+                  left: 10,right: 10
+                ),
                 child: Container(
                     child: ListView.builder(
                       itemCount: 10,
@@ -272,7 +223,7 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
                                     animatedheight=0;
                                     getindex='';
                                   }else{
-                                    animatedheight=270;
+                                    animatedheight=130;
                                     getindex="$index";
                                   }
 
@@ -283,8 +234,8 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
                           child: Container(
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.all( Radius.circular(7)),
-                                //  color: Color(0xffF3FCFB)
-                                color:isChekin==false?  CheckOutColor.withOpacity(0.08) : CustomButtonColor.withOpacity(0.05),
+
+                                 color:  CustomButtonColor.withOpacity(0.05),
                                 border: Border(bottom: BorderSide( color:isChekin==false?CheckOutColor:  CustomButtonColor))
                             ),
                             margin: EdgeInsets.only(bottom: 7),
@@ -300,8 +251,8 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
                                       bottomLeft: Radius.circular( selectedindex==index?0:7),
                                       bottomRight:Radius.circular( selectedindex==index?0:7),
                                     ),
-                                    //  color: Color(0xffF3FCFB)
-                                    //   color: CustomButtonColor.withOpacity(0.05),
+
+                                     color:selectedindex==index?leave_color.withOpacity(0.1) : leave_color.withOpacity(0.05),
                                     //  border: Border(bottom: BorderSide(color:_selectedindex==index?CustomButtonColor.withOpacity(0.05): CustomButtonColor))
                                   ),
                                   width: double.infinity,
@@ -329,9 +280,7 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
                                                   child: CustomImageSction(height: 50, width: 50, radius: 1, image: "Assets/DrawerImage/testperson.png")
                                               ),
                                             ),
-                                            selectedindex==index || getindex==0? Container():  Positioned(
-                                                right: 0,
-                                                child: CustomImageSction(height: 18, width: 15, radius: 1, image: "Assets/DrawerImage/chat.png"))
+
 
                                           ],
                                         ),
@@ -354,45 +303,33 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
                                             ],
                                           )),
                                       SizedBox(width: 10,),
+
+
                                       Expanded(
                                           flex: 4,
                                           child: Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            crossAxisAlignment: CrossAxisAlignment.center,
                                             mainAxisAlignment: MainAxisAlignment.center,
                                             children: [
                                               Row(
+                                                mainAxisAlignment: MainAxisAlignment.center,
                                                 children: [
-                                                  CustomImageSction(height: 12, width: 15, radius: 1, image: "Assets/DrawerImage/location.png"),
-                                                  ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "Gulshan Circle-1", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.6),),
-                                                ],
-                                              ),
-                                              Divider(
-                                                height: 10,
-                                              ),
-                                              Row(
-                                                children: [
-                                                  ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text:isChekin==false?"Check Out": "Check In", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.6),),
-                                                  SizedBox(width: 10,),
-                                                  CustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "08:25:00", letterSpacing: 0.3, ),
+                                                ColorCustomText(fontSize: 11, fontWeight: FontWeight.w500, text: "CL-02", letterSpacing: 0.3, textColor: CustomButtonColor,),
                                                 ],
                                               ),
                                               Row(
+                                                mainAxisAlignment: MainAxisAlignment.center,
                                                 children: [
-                                                  ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text:isChekin==false?"Early" :"Late", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.6),),
-                                                  SizedBox(width: 5,),
-                                                  CustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "25:00", letterSpacing: 0.3, ),
+                                                  ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "From : " , letterSpacing: 0.3, textColor: Main_Theme_textColor,),
+                                                  CustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "10 Apr 2023", letterSpacing: 0.3, ),
+                                                ],
+                                              ),
+                                              Row(
+                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                children: [
+                                                  ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "To : ", letterSpacing: 0.3, textColor: Main_Theme_textColor),
+                                                  CustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "10 Apr 2023", letterSpacing: 0.3, ),
                                                   SizedBox(width: 4,),
-
-                                                  isChekin==false?  Container(height: 10,width: 1,color: Main_Theme_textColor,):Container(),
-                                                  SizedBox(width: 4,),
-
-                                                  isChekin==false? Row(
-                                                    children: [
-                                                      ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text:"OT", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.6),),
-                                                      SizedBox(width: 5,),
-                                                      CustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "25:00", letterSpacing: 0.3, ),
-                                                    ],
-                                                  ):Container(),
 
                                                 ],
                                               ),
@@ -410,6 +347,7 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
                                 ),
                                 selectedindex==index?
                                 AnimatedContainer(
+                                  margin: EdgeInsets.only(top: 7),
                                   height: animatedheight,
                                   width: double.infinity,
                                   duration: Duration(milliseconds: 400),
@@ -417,17 +355,17 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
                                     child: SingleChildScrollView(
                                       child: Column(
                                         children: [
-                                          Divider(),
-                                          Padding(
-                                            padding: const EdgeInsets.only(left: 10.0,top: 5,bottom: 10),
-                                            child: Row(
-                                              children: [
-                                                CustomImageSction(height: 18, width: 15, radius: 1, image: "Assets/DrawerImage/chat.png"),
-                                                SizedBox(width: 10,),
-                                                ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "Gulshan Circle-1", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.6),),
-                                              ],
-                                            ),
-                                          ),
+                                          // Divider(),
+                                          // Padding(
+                                          //   padding: const EdgeInsets.only(left: 10.0,top: 5,bottom: 10),
+                                          //   child: Row(
+                                          //     children: [
+                                          //       CustomImageSction(height: 18, width: 15, radius: 1, image: "Assets/DrawerImage/chat.png"),
+                                          //       SizedBox(width: 10,),
+                                          //       ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "Gulshan Circle-1", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.6),),
+                                          //     ],
+                                          //   ),
+                                          // ),
                                           Container(
                                             decoration: BoxDecoration(
                                               borderRadius: BorderRadius.circular(7),
@@ -436,12 +374,14 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
                                                   color: Main_Theme_textColor.withOpacity(0.1)
                                               ),
                                             ),
+                                            height: 60,
                                             padding: EdgeInsets.all(10),
+                                            margin: EdgeInsets.all(7),
                                             child: CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "$Loremtext", letterSpacing: 0.3,textAlign: TextAlign.justify,),
                                           ),
                                           SizedBox(height: 7,),
                                           Container(
-                                            height: 45,
+                                            height: 40,
                                             width: double.infinity,
                                             padding: EdgeInsets.only(left: 20,right: 20),
                                             child: Row(
@@ -527,6 +467,9 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
 
   List Approvallist=[
     "Waiting","Approved","Disapproved"
+  ];
+  List MonthList=[
+    "Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"
   ];
 
 }
