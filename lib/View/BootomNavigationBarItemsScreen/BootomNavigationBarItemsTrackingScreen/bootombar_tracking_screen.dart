@@ -15,6 +15,13 @@ class BootomNavigationBarItemsTrackingScreen extends StatefulWidget {
 }
 
 class _BootomNavigationBarItemsTrackingScreenState extends State<BootomNavigationBarItemsTrackingScreen> {
+
+  int  selectedindex=0;
+  double animatedheight=0;
+  double animatwidth=100;
+  String ? getindex;
+  int selectedmonth=0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -142,6 +149,153 @@ class _BootomNavigationBarItemsTrackingScreenState extends State<BootomNavigatio
                 ],
               ),
             ),
+            Expanded(
+              child: Container(
+                margin: EdgeInsets.only(top: 7),
+                width: 400,
+                color: Main_Theme_WhiteCollor,
+                padding: EdgeInsets.only(
+                    left: 10,right: 10
+                ),
+                child: Container(
+                    child: ListView.builder(
+                      itemCount: 10,
+                      itemBuilder: (context, index) {
+                        return Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all( Radius.circular(7)),
+
+                              color:  CustomButtonColor.withOpacity(0.05),
+                              border: Border(bottom: BorderSide( color: CustomButtonColor))
+                          ),
+                          margin: EdgeInsets.only(bottom: 7),
+                          child: Column(
+                            children: [
+                              Container(
+                                padding: EdgeInsets.only(left: 6,right: 10),
+                                height: 70,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(7),
+                                    topRight: Radius.circular(7),
+                                    bottomLeft: Radius.circular( selectedindex==index?0:7),
+                                    bottomRight:Radius.circular( selectedindex==index?0:7),
+                                  ),
+
+                                  color:selectedindex==index?leave_color.withOpacity(0.1) : leave_color.withOpacity(0.05),
+                                  //  border: Border(bottom: BorderSide(color:_selectedindex==index?CustomButtonColor.withOpacity(0.05): CustomButtonColor))
+                                ),
+                                width: double.infinity,
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      height: 65,
+                                      width: 52,
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.only(
+                                            topLeft: Radius.circular(7),
+                                            topRight: Radius.circular(7),
+                                            bottomLeft: Radius.circular( selectedindex==index?0:7),
+                                            bottomRight:Radius.circular( selectedindex==index?0:7),
+
+                                          )
+                                      ),
+                                      margin: EdgeInsets.only(right: 10),
+                                      child: Stack(
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.all(1.0),
+                                            child: ClipRRect(
+                                                borderRadius: BorderRadius.circular(100),
+                                                child: CustomImageSction(height: 64, width: 50, radius: 1, image: "Assets/DrawerImage/trackingimage.png")
+                                            ),
+                                          ),
+                                          Positioned(
+                                              left: 4.0,
+                                              top: 1.6,
+                                              child: ClipRRect(
+                                            borderRadius: BorderRadius.circular(100),
+                                            child: Container(
+                                              height: 45,
+                                              width: 45,
+                                              decoration: BoxDecoration(
+                                                  color: Colors.red,
+                                                image: DecorationImage(image: AssetImage("Assets/DrawerImage/testperson.png"),fit: BoxFit.fill)
+                                              ),
+                                            ),
+                                          ))
+
+                                        ],
+                                      ),
+                                    ),
+
+
+                                    Expanded(
+                                        flex: 4,
+                                        child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "ID: 544532", letterSpacing: 0.3, textColor: CustomButtonColor.withOpacity(0.7),),
+                                            Text("Hafijur Rahman Mizan",
+                                              overflow: TextOverflow.ellipsis
+                                              ,style: GoogleFonts.poppins(
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w400,
+                                                letterSpacing: 0.3,
+                                              ),),
+                                            CustomText(fontSize: 11, fontWeight: FontWeight.w300, text: "HR Manager", letterSpacing: 0.3,  ),
+                                          ],
+                                        ),
+                                    ),
+                                    SizedBox(width: 10,),
+
+
+                                    Expanded(
+                                        flex: 4,
+                                        child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            Row(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: [
+                                                ColorCustomText(fontSize: 11, fontWeight: FontWeight.w500, text: "CL-02", letterSpacing: 0.3, textColor: CustomButtonColor,),
+                                              ],
+                                            ),
+                                            Row(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: [
+                                                ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "From : " , letterSpacing: 0.3, textColor: Main_Theme_textColor,),
+                                                CustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "10 Apr 2023", letterSpacing: 0.3, ),
+                                              ],
+                                            ),
+                                            Row(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: [
+                                                ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "To : ", letterSpacing: 0.3, textColor: Main_Theme_textColor),
+                                                CustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "10 Apr 2023", letterSpacing: 0.3, ),
+                                                SizedBox(width: 4,),
+
+                                              ],
+                                            ),
+
+                                          ],
+                                        )
+                                    ),
+
+
+                                  ],
+                                ),
+                              ),
+
+                            ],
+                          ),
+                        );
+                      },)
+                ),
+              ),
+            )
           ],
         ),
       ),

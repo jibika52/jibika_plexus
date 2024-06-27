@@ -49,11 +49,11 @@ class MyApp extends StatelessWidget {
       //    home:HomeScreen(),
 
       /// ----------SplashScreen--------
-      //  home:MainSplashPageViewScreen(),
+      home:MainSplashPageViewScreen(),
 
       /// ----------Working Screen--------
    //   home:HomeFirstPartComponentLeave(),
-      home:BootomNavigationBarItemsTrackingScreen(),
+      //  home:BootomNavigationBarItemsTrackingScreen(),
 
 
 
