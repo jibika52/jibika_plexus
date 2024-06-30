@@ -155,9 +155,6 @@ class _BootomNavigationBarItemsTrackingScreenState extends State<BootomNavigatio
                 margin: EdgeInsets.only(top: 7),
                 width: 400,
                 color: Main_Theme_WhiteCollor,
-                padding: EdgeInsets.only(
-                    left: 10,right: 10
-                ),
                 child: Container(
                     child: ListView.builder(
                       itemCount: 10,
@@ -173,8 +170,8 @@ class _BootomNavigationBarItemsTrackingScreenState extends State<BootomNavigatio
                           child: Column(
                             children: [
                               Container(
-                                padding: EdgeInsets.only(left: 6,right: 10),
-                                height: 70,
+                                padding: EdgeInsets.only(left: 10,right: 10,top: 5,bottom: 5),
+                                height: 80,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(7),
