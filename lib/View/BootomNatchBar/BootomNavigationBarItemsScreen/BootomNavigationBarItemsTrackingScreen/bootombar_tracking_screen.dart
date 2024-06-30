@@ -244,6 +244,7 @@ class _BootomNavigationBarItemsTrackingScreenState extends State<BootomNavigatio
                                               alignment: Alignment.center,
                                               child: ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "544532", letterSpacing: 0.3,textColor: Main_Theme_WhiteCollor,),
                                             ),
+                                            SizedBox(height: 3,),
                                             Text("Hafijur Rahman Mizan",
                                               overflow: TextOverflow.ellipsis
                                               ,style: GoogleFonts.poppins(
@@ -251,6 +252,7 @@ class _BootomNavigationBarItemsTrackingScreenState extends State<BootomNavigatio
                                                 fontWeight: FontWeight.w500,
                                                 letterSpacing: 0.3,
                                               ),),
+                                            SizedBox(height: 1,),
                                             CustomText(fontSize: 11, fontWeight: FontWeight.w300, text: "HR Manager", letterSpacing: 0.3,  ),
                                           ],
                                         ),
