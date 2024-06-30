@@ -164,7 +164,7 @@ class _BootomNavigationBarItemsAttendenceScreenState extends State<BootomNavigat
                         width: animatwidth,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(7),
-                            color: leave_approval_button_color,
+                            color: Main_Theme_WhiteCollor,
                             border: Border.all(
                                 color: Main_Theme_textColor.withOpacity(0.7),
                                 width: 1
@@ -344,7 +344,7 @@ class _BootomNavigationBarItemsAttendenceScreenState extends State<BootomNavigat
                           children: [
                             Row(
                               children: [
-                                ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400,  text: "Present", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.8)),
+                                ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400,  text: "Present", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.6)),
                                 SizedBox(width: 7,),
                                 ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "80828", letterSpacing: 0.3, textColor: presentsent_color.withOpacity(0.9)),
                               ],
