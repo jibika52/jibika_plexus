@@ -172,10 +172,10 @@ class _ChoosePackageScreenState extends State<ChoosePackageScreen> {
                           ),
                           Container(
                             alignment: Alignment.center,
-                            height: 40,
-                            width: 40,
+                            height: 45,
+                            width: 45,
                             //color: Colors.red,
-                            child: CustomImageSction(height: image_height, width: image_height, radius: 10, image: "Assets/DrawerImage/industry.jpg"),
+                            child: CustomImageSction(height: image_height, width: image_height, radius: 10, image: "Assets/buttonIcon/corporate.png"),
                           ),
                           Expanded(child: Container(
                             alignment: Alignment.center,
@@ -247,10 +247,10 @@ class _ChoosePackageScreenState extends State<ChoosePackageScreen> {
                           ),
                           Container(
                             alignment: Alignment.center,
-                            height: 40,
-                            width: 40,
+                            height: 45,
+                            width: 45,
                             //color: Colors.red,
-                            child: CustomImageSction(height: image_height, width: image_height, radius: 10, image: "Assets/DrawerImage/industry.jpg"),
+                            child: CustomImageSction(height: image_height, width: image_height, radius: 10, image: "Assets/buttonIcon/indistrypackage.png"),
                           ),
                           Expanded(child: Container(
                             alignment: Alignment.center,

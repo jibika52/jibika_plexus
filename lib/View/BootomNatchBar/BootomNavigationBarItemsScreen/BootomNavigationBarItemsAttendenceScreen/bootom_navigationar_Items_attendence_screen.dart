@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:jibika_plexus/CustomWidget/CustomAppBar/CustomDefaultAppBar/custom_default_app_bar.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 
 import '../../../../CustomWidget/CustomImage/custom_image.dart';
 import '../../../../CustomWidget/CustomText/custom_text.dart';
@@ -18,6 +20,8 @@ class BootomNavigationBarItemsAttendenceScreen extends StatefulWidget {
 class _BootomNavigationBarItemsAttendenceScreenState extends State<BootomNavigationBarItemsAttendenceScreen> {
   double animatedheight=0;
   double animatwidth=100;
+  double lineWidth=7.0;
+  double C_height=4;
   bool _is_click_date=false;
   int selectedmonth=0;
   List MonthList=[
@@ -95,7 +99,7 @@ class _BootomNavigationBarItemsAttendenceScreenState extends State<BootomNavigat
               padding: EdgeInsets.only(left: 10, right: 10, top: 7, bottom: 7 ),
               margin: EdgeInsets.only(left: 10,right: 10,bottom: 10),
               decoration: BoxDecoration(borderRadius: BorderRadius.circular(7),
-                color: leave_approval_button_color,
+                color: Main_Theme_WhiteCollor,
               ),
               child: Stack(
                 children: [
@@ -228,17 +232,160 @@ class _BootomNavigationBarItemsAttendenceScreenState extends State<BootomNavigat
               ),
             ),
             Expanded(child: Container(
-              height: 200,
+              color:Main_Theme_WhiteCollor,
+              padding: EdgeInsets.only(left: 10,right: 10),
+              height: 150,
               width: double.infinity,
-              color: Colors.red,
               child: ListView.builder(
                 scrollDirection: Axis.vertical,
                 itemBuilder: (context, index) => Card(
                 child: Container(
-                  height: 60,
+                  height: 75,
                   width: double.infinity,
-                  color: Colors.green,
+                 // color: Colors.green,
                   margin: EdgeInsets.only(bottom: 10),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        flex: 2,
+                        child: Container(
+                        height: 150,
+                        alignment: Alignment.topCenter,
+                        child: Stack(
+                          alignment: Alignment.topCenter,
+                          children: [
+                            Positioned(
+                              top: 22,
+                              // left: 23,
+                              child: CircularPercentIndicator(
+                                radius: 21.0,
+                                lineWidth: 1.5,
+                                percent: 0.99999,
+                                backgroundColor: Colors.grey.withOpacity(0),
+                                progressColor: Main_Theme_textColor.withOpacity(0.7),
+                                center: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+
+                                   ColorCustomText(fontSize: 15, fontWeight: FontWeight.w500, text: "01", letterSpacing: 0.1, textColor: Main_Theme_textColor),
+                                   ColorCustomText(fontSize: 10, fontWeight: FontWeight.w400, text: "Sat", letterSpacing: 0.1, textColor: Main_Theme_textColor),
+                                  ],
+                                ),
+
+                              ),
+                            ),
+                            Positioned(
+                              top: 13,
+                              // left: 23,
+                              child: CircularPercentIndicator(
+                                radius: 30.0,
+                                lineWidth: lineWidth,
+                                percent: 0.99999,
+                                backgroundColor: Colors.grey.withOpacity(0),
+                                progressColor: presentsent_color,
+                              ),
+                            ),
+                            Positioned(
+                              top: 13,
+                              //  left: 23,
+                              child: CircularPercentIndicator(
+                                radius: 30.0,
+                                lineWidth: lineWidth,
+                                /// ------------------------- increase  holiday -----------------///
+                                percent:0.30,
+                                backgroundColor: Colors.grey.withOpacity(0),
+                                progressColor: absent_color,
+                              ),
+                            ),
+                            Positioned(
+                              top: 13,
+                              //   left: 23,
+                              child: CircularPercentIndicator(
+                                radius: 30.0,
+                                lineWidth: lineWidth,
+                                percent:0.20,
+                                backgroundColor: Colors.grey.withOpacity(0),
+                                progressColor: leave_color,
+                              ),
+                            ),
+                            Positioned(
+                              top: 13,
+                              child: CircularPercentIndicator(
+                                radius: 30.0,
+                                lineWidth: lineWidth,
+                                percent: 0.20,
+                                backgroundColor: Colors.grey.withOpacity(0),
+                                progressColor: holiday_color,
+                              ),
+                            ),
+
+
+                          ],
+                        ),
+                      ),),
+                      Container(
+                          width: 60,
+                          height: 175,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "80828", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.9)),
+                              SizedBox(height: C_height,),
+                              ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "Active", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.8)),
+                            ],
+                          ),
+                      ),
+                      Expanded(
+                          flex: 3,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400,  text: "Present", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.8)),
+                                SizedBox(width: 7,),
+                                ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "80828", letterSpacing: 0.3, textColor: presentsent_color.withOpacity(0.9)),
+                              ],
+                            ),
+                            SizedBox(height: C_height,),
+                            Row(
+                              children: [
+                                ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400,  text: "Absent", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.8)),
+                                SizedBox(width: 7,),
+                                ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "8989", letterSpacing: 0.3, textColor: absent_color.withOpacity(0.9)),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      Expanded(
+                        flex: 3,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400,  text: "Leave", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.8)),
+                                SizedBox(width: 7,),
+                                ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "2020", letterSpacing: 0.3, textColor: presentsent_color.withOpacity(0.9)),
+                              ],
+                            ),
+                            SizedBox(height: C_height,),
+                            Row(
+                              children: [
+                                ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400,  text: "Holiday", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.8)),
+                                SizedBox(width: 7,),
+                                ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "8989", letterSpacing: 0.3, textColor: absent_color.withOpacity(0.9)),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),),
             ))

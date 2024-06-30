@@ -10,6 +10,7 @@ import 'package:provider/provider.dart';
 
 import 'Controller/HomeController/home_controller.dart';
 import 'Controller/PrivacyPolicyController/privacy_policy.dart';
+import 'View/BootomNatchBar/BootomNavigationBarItemsScreen/BootomNavigationBarItemsAttendenceScreen/bootom_navigationar_Items_attendence_screen.dart';
 import 'View/BootomNatchBar/bootom_bar_screen.dart';
 import 'View/HomeScreen/HomeComponent/HomeFirstPartComponent/HomeFirstPartComponentAttendence/home_first_part_component_attendence.dart';
 import 'View/HomeScreen/HomeComponent/HomeFirstPartComponent/HomeFirstPartComponentLeave/home_first_part_component_leave.dart';
@@ -53,8 +54,7 @@ class MyApp extends StatelessWidget {
       /// ----------Working Screen--------
       //  home:HomeFirstPartComponentLeave(),
       //  home:BootomNavigationBarItemsTrackingScreen(),
-      //     home:BootomNatchBarScreen(),
-      home:ChoosePackageScreen(),
+        home:BootomNavigationBarItemsAttendenceScreen(),
 
 
 
