@@ -357,7 +357,7 @@ Future.delayed(Duration(
                     Center(
                       child: InkWell(
                           onTap: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => CompanyRegistrationScreen(),));
+                           // Navigator.push(context, MaterialPageRoute(builder: (context) => CompanyRegistrationScreen(),));
                           },
                       //    child: CustomText(fontSize: 17, fontWeight: FontWeight.w500, text: "Register as a Company", letterSpacing: 0.2)),
                           child: CustomText(fontSize: 17, fontWeight: FontWeight.w500, text: "", letterSpacing: 0.2)),

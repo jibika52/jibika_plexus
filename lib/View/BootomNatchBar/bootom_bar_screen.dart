@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
+import 'package:jibika_plexus/View/BootomNatchBar/BootomNavigationBarItemsScreen/BootomNavigationBarItemsAttendenceScreen/bootom_navigationar_Items_attendence_screen.dart';
 
 import '../../CustomWidget/CustomAppBar/CustomMAinAppBAr/custom_main_app_bar.dart';
 import '../../CustomWidget/CustomDrawer/CustomLeftDrawer/custom_left_drawer.dart';
@@ -34,7 +35,7 @@ class _BootomNatchBarScreenState extends State<BootomNatchBarScreen> {
   /// widget list
   final List<Widget> bottomBarPages = [
     HomeScreen(),
-    Text(""),
+    BootomNavigationBarItemsAttendenceScreen(),
     HomeScreen(),
 
     BootomNavigationBarItemsTrackingScreen(),

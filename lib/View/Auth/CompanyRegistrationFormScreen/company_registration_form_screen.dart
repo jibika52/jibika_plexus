@@ -16,8 +16,8 @@ import 'package:jibika_plexus/View/PrivacyPolicy/privacy_policy.dart';
 import '../../../CustomWidget/CustomTExtFormField/Jibika_custom_text_from_field.dart';
 
 class CompanyRegistrationScreen extends StatefulWidget {
-  const CompanyRegistrationScreen({super.key});
-
+  CompanyRegistrationScreen({super.key,required this.Package});
+  String  Package;
   @override
   State<CompanyRegistrationScreen> createState() =>
       _CompanyRegistrationScreenState();

@@ -53,7 +53,8 @@ class MyApp extends StatelessWidget {
       /// ----------Working Screen--------
       //  home:HomeFirstPartComponentLeave(),
       //  home:BootomNavigationBarItemsTrackingScreen(),
-       home:BootomNatchBarScreen(),
+      //     home:BootomNatchBarScreen(),
+      home:ChoosePackageScreen(),
 
 
 
