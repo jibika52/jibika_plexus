@@ -6,7 +6,10 @@ import 'package:flutter/widgets.dart';
 import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
 
+import '../../CustomWidget/CustomAppBar/CustomMAinAppBAr/custom_main_app_bar.dart';
+import '../../CustomWidget/CustomDrawer/CustomLeftDrawer/custom_left_drawer.dart';
 import '../HomeScreen/home_screen.dart';
+import 'BootomNavigationBarItemsScreen/BootomNavigationBarItemsTrackingScreen/bootombar_tracking_screen.dart';
 
 
 class BootomNatchBarScreen extends StatefulWidget {
@@ -17,22 +20,12 @@ class BootomNatchBarScreen extends StatefulWidget {
 }
 
 class _BootomNatchBarScreenState extends State<BootomNatchBarScreen> {
-  /// Controller to handle PageView and also handles initial page
-  final _pageController = PageController(initialPage:2);
-
-  /// Controller to handle bottom nav bar and also handles initial page
-  var _controller = NotchBottomBarController(index: 2);
 
   int maxCount = 5;
   bool is_get_profie=false;
   dynamic getDynamicSliderData;
 
   @override
-  void dispose() {
-    _pageController.dispose();
-    super.dispose();
-  }
-@override
   void initState() {
 
     // TODO: implement initState
@@ -40,48 +33,36 @@ class _BootomNatchBarScreenState extends State<BootomNatchBarScreen> {
   }
   /// widget list
   final List<Widget> bottomBarPages = [
-
-    Text(""),
-    Text(""),
     HomeScreen(),
     Text(""),
-    Text(""),
+    HomeScreen(),
+
+    BootomNavigationBarItemsTrackingScreen(),
 
 
 
   ];
-final _scaffoldkey=GlobalKey<ScaffoldState>();
+  final _key=GlobalKey<ScaffoldState>();
 
-int Select_index=0;
+  int _currentIndex = 0;
   @override
   Widget build(BuildContext context) {
 
     return WillPopScope(
       onWillPop: () { return Future(() => false); },
       child: Scaffold(
-        key: _scaffoldkey,
-        drawer: Drawer(
-          backgroundColor:  Colors.white,
-          child: Column(
-            children: [
-              DrawerHeader(child: Container(
-                height: 100,
-                width: 300,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(11),
-                  image: DecorationImage(image: AssetImage("asset/gprojukti.png"),fit: BoxFit.fill)
-                ),
-              ))
-            ],
-          ),
+        drawer:CustomLeftDrawer(),
+        key: _key,
+        appBar: PreferredSize(preferredSize: Size.fromHeight(100),
+          /// ------------ Custom Main AppBAr -------------///
+          child: CustomMainAppBar(
+              leading_image_route: "Assets/DashBoardIcons/appbar_leadin_menu.png", center_appbar_text: "Jibika Plexus", leading_ontab: () {
+            _key.currentState!.openDrawer();
+          }, is_need_trailing: true),
         ),
 
-        body: PageView(
-          controller: _pageController,
-          physics: const NeverScrollableScrollPhysics(),
-          children: List.generate(
-              bottomBarPages.length, (index) => bottomBarPages[index]),
-        ),
+      body: bottomBarPages[_currentIndex],
+
         extendBody: true,
         bottomNavigationBar: Container(
           height: 70,
@@ -97,35 +78,60 @@ int Select_index=0;
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-           CustomImageSction(height: 35, width: 35, radius: 5, image: "Assets/DashBoardIcons/b_bar_home.png"),
-           CustomImageSction(height: 35, width: 35, radius: 5, image: "Assets/DashBoardIcons/b_bar_attendence.png"),
-           Container(
-             width: 35,
-           ),
+              InkWell(
+                  onTap: () {
+                    setState(() {
+                      _currentIndex=0;
+                    });
+                  },
+                  child: CustomImageSction(height: 35, width: 35, radius: 5, image: "Assets/DashBoardIcons/b_bar_home.png")),
 
-           CustomImageSction(height: 35, width: 35, radius: 5, image: "Assets/DashBoardIcons/b_bar_payroll.png"),
-           CustomImageSction(height: 35, width: 35, radius: 5, image: "Assets/DashBoardIcons/b_bar_tricker.png"),
+              InkWell(
+                  onTap: () {
+                    setState(() {
+                      _currentIndex=1;
+                    });
+                  },
+                  child: CustomImageSction(height: 35, width: 35, radius: 5, image: "Assets/DashBoardIcons/b_bar_attendence.png")),
+              Container(
+                width: 35,
+              ),
+
+              InkWell(
+                  onTap: () {
+                    setState(() {
+                      _currentIndex=2;
+                    });
+                  },
+                  child: CustomImageSction(height: 35, width: 35, radius: 5, image: "Assets/DashBoardIcons/b_bar_payroll.png")),
+              InkWell(
+                  onTap: () {
+                    setState(() {
+                      _currentIndex=3;
+                    });
+                  },
+                  child: CustomImageSction(height: 35, width: 35, radius: 5, image: "Assets/DashBoardIcons/b_bar_tricker.png")),
             ],
           ),
         ),
 
         floatingActionButton: CircleAvatar(
-          radius: 35,
+          radius: 30,
           backgroundColor: Colors.white,
           child: FloatingActionButton(
-           isExtended: false,shape: CircleBorder(
+            isExtended: false,shape: CircleBorder(
             side: BorderSide(color: Main_Theme_WhiteCollor),
           ),
             foregroundColor: Main_Theme_WhiteCollor,
-              backgroundColor: Main_Theme_WhiteCollor,
-              onPressed: () {
+            backgroundColor: Main_Theme_WhiteCollor,
+            onPressed: () {
 
-          }, child: Padding(
+            }, child: Padding(
             padding: const EdgeInsets.all(2.0),
             child: Image.asset("Assets/Logo/leaff.png" ),
           ),),
         ),
-       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
 
       ),
     );

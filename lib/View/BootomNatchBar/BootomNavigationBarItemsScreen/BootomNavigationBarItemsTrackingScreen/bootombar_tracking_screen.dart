@@ -3,9 +3,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:jibika_plexus/CustomWidget/CustomAppBar/CustomDefaultAppBar/custom_default_app_bar.dart';
 
-import '../../../CustomWidget/CustomImage/custom_image.dart';
-import '../../../CustomWidget/CustomText/custom_text.dart';
-import '../../../Utils/constants.dart';
+import '../../../../CustomWidget/CustomImage/custom_image.dart';
+import '../../../../CustomWidget/CustomText/custom_text.dart';
+import '../../../../Utils/constants.dart';
+
+
 
 class BootomNavigationBarItemsTrackingScreen extends StatefulWidget {
   const BootomNavigationBarItemsTrackingScreen({super.key});
@@ -25,9 +27,8 @@ class _BootomNavigationBarItemsTrackingScreenState extends State<BootomNavigatio
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(preferredSize: Size.fromHeight(75), child: CustomDefaultAppBar(onTap: () => Navigator.pop(context),
-          text: "Employee Tracker")
-      ),
+
+
       body: Container(
         height: double.infinity,
         width: double.infinity,
@@ -236,12 +237,21 @@ class _BootomNavigationBarItemsTrackingScreenState extends State<BootomNavigatio
                                           crossAxisAlignment: CrossAxisAlignment.start,
                                           mainAxisAlignment: MainAxisAlignment.center,
                                           children: [
-                                            ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "ID: 544532", letterSpacing: 0.3, textColor: CustomButtonColor.withOpacity(0.7),),
+                                            Container(
+                                              height: 22,
+                                              width: 65,
+                                              decoration: BoxDecoration(
+                                                borderRadius: BorderRadius.circular(10),
+                                              color:Main_Theme_textColor_tir_Condition.withOpacity(0.7)
+                                              ),
+                                              alignment: Alignment.center,
+                                              child: ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "544532", letterSpacing: 0.3,textColor: Main_Theme_WhiteCollor,),
+                                            ),
                                             Text("Hafijur Rahman Mizan",
                                               overflow: TextOverflow.ellipsis
                                               ,style: GoogleFonts.poppins(
                                                 fontSize: 12,
-                                                fontWeight: FontWeight.w400,
+                                                fontWeight: FontWeight.w500,
                                                 letterSpacing: 0.3,
                                               ),),
                                             CustomText(fontSize: 11, fontWeight: FontWeight.w300, text: "HR Manager", letterSpacing: 0.3,  ),
@@ -251,38 +261,23 @@ class _BootomNavigationBarItemsTrackingScreenState extends State<BootomNavigatio
                                     SizedBox(width: 10,),
 
 
-                                    Expanded(
-                                        flex: 4,
-                                        child: Column(
-                                          crossAxisAlignment: CrossAxisAlignment.center,
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children: [
-                                            Row(
-                                              mainAxisAlignment: MainAxisAlignment.center,
-                                              children: [
-                                                ColorCustomText(fontSize: 11, fontWeight: FontWeight.w500, text: "CL-02", letterSpacing: 0.3, textColor: CustomButtonColor,),
-                                              ],
-                                            ),
-                                            Row(
-                                              mainAxisAlignment: MainAxisAlignment.center,
-                                              children: [
-                                                ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "From : " , letterSpacing: 0.3, textColor: Main_Theme_textColor,),
-                                                CustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "10 Apr 2023", letterSpacing: 0.3, ),
-                                              ],
-                                            ),
-                                            Row(
-                                              mainAxisAlignment: MainAxisAlignment.center,
-                                              children: [
-                                                ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "To : ", letterSpacing: 0.3, textColor: Main_Theme_textColor),
-                                                CustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "10 Apr 2023", letterSpacing: 0.3, ),
-                                                SizedBox(width: 4,),
-
-                                              ],
-                                            ),
-
-                                          ],
-                                        )
-                                    ),
+                                    Container(
+                                      height: 38,
+                                      width: 110,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        color: Main_Theme_textColor_tir_Condition.withOpacity(0.7)
+                                      ),
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "Track Now", letterSpacing: 0.3, textColor: Main_Theme_WhiteCollor),
+                                          SizedBox(width: 5,),
+                                          Icon(Icons.arrow_forward_ios_rounded,size: 17,color: Main_Theme_WhiteCollor,),
+                                        ],
+                                      ),
+                                    )
 
 
                                   ],

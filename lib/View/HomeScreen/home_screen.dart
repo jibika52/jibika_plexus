@@ -35,15 +35,6 @@ class _HomeScreenState extends State<HomeScreen> {
     return WillPopScope(
       onWillPop: () => Future(() => false),
       child: Scaffold(
-        drawer:CustomLeftDrawer(),
-          key: _key,
-          appBar: PreferredSize(preferredSize: Size.fromHeight(100),
-            /// ------------ Custom Main AppBAr -------------///
-            child: CustomMainAppBar(
-                leading_image_route: "Assets/DashBoardIcons/appbar_leadin_menu.png", center_appbar_text: "Jibika Plexus", leading_ontab: () {
-              _key.currentState!.openDrawer();
-            }, is_need_trailing: true),
-          ),
         body: Container(
           color: home_default_color,
           child:  SingleChildScrollView(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
 import 'package:jibika_plexus/View/HomeScreen/HomeComponent/HomeFirstPartComponent/HomeFirstPartComponentAttendence/home_first_part_component_attendence.dart';
+import 'package:jibika_plexus/View/HomeScreen/HomeComponent/HomeFirstPartComponent/HomeFirstPartComponentLeave/home_first_part_component_leave.dart';
 
 import '../../../../CustomWidget/CustomText/custom_text.dart';
 
@@ -56,6 +57,11 @@ class _HomeHederPartState extends State<HomeHederPart> {
                 });
                 if(selected_index==1){
                   Navigator.push(context, MaterialPageRoute(builder: (context) => HomeFirstPartComponentAttendance(),));
+                }
+                if(selected_index==2){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => HomeFirstPartComponentLeave(
+                    tag: "dash",
+                  ),));
                 }
               },
               child: Container(
