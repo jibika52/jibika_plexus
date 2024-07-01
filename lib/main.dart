@@ -32,37 +32,36 @@ class MyApp extends StatelessWidget {
       ChangeNotifierProvider<HomeProvider>(create: (context) => HomeProvider(),),
       ChangeNotifierProvider<PrivacyPolicyProvider>(create: (context) => PrivacyPolicyProvider(),)
     ],
-    child: MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        // home:PrivacyPolicyScreen(phone_or_email: '01889173335',),
+        //  home:TEstHeroAnimation(),
+        //     home:CompanyRegistrationScreen(),
+        home:BootomNatchBarScreen(),
+        //  home:HomeFirstPartComponentAttendance(),
+
+        /// ----------Home Screen---------
+        //  home:HomeScreen(),
+
+        /// ----------SplashScreen--------
+        //    home:MainSplashPageViewScreen(),
+
+        /// ----------Working Screen--------
+        //  home:HomeFirstPartComponentLeave(),
+        //  home:BootomNavigationBarItemsTrackingScreen(),
+        //    home:BootomNavigationBarItemsAttendenceScreen(),
+
+
+
       ),
-      // home:PrivacyPolicyScreen(phone_or_email: '01889173335',),
-      //  home:TEstHeroAnimation(),
-      //     home:CompanyRegistrationScreen(),
-      home:BootomNatchBarScreen(),
-      //  home:HomeFirstPartComponentAttendance(),
-
-      /// ----------Home Screen---------
-      //  home:HomeScreen(),
-
-      /// ----------SplashScreen--------
-      //    home:MainSplashPageViewScreen(),
-
-      /// ----------Working Screen--------
-      //  home:HomeFirstPartComponentLeave(),
-      //  home:BootomNavigationBarItemsTrackingScreen(),
-      //    home:BootomNavigationBarItemsAttendenceScreen(),
-
-
-
-    ),
 
     );
   }
 }
-
 
 

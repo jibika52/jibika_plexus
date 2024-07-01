@@ -1,3 +1,4 @@
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -225,38 +226,75 @@ class _BootomNavigationBarItemsAttendenceScreenState extends State<BootomNavigat
                               ),
                               Container(
                                 height: 42,
-                                width: 60,
-                                child: DropdownButton(
-                                  isExpanded: true,
-                                  isDense: false,
-                                  enableFeedback: false,
-                                  autofocus: false,
-                                  hint: InkWell(
-                                      onTap: () {},
-                                      child: ColorCustomText(
-                                          fontSize:12,
-                                          fontWeight: FontWeight.w400,
-                                          text: "${DateTime.now().year}",
-                                          letterSpacing: 0.2,
-                                          textColor:
-                                          Main_Theme_textColor.withOpacity(0.9))),
+                                width: 50,
+                                child: DropdownButtonHideUnderline(
+                                  child: DropdownButton2<String>(
+                                    isExpanded: true,
+                                    hint: Text(
+                                      '${DateTime.now().year}',
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.bold,
+                                        color: Main_Theme_textColor,
+                                      ),
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                    items: items
+                                        .map((String item) => DropdownMenuItem<String>(
+                                      value: item,
+                                      child: Text(
+                                        item,
+                                        style: const TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black,
+                                        ),
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                    ))
+                                        .toList(),
+                                    value: selectedValue,
+                                    onChanged: (String? value) {
+                                      setState(() {
+                                        selectedValue = value;
+                                      });
+                                    },
 
-                                  // Not necessary for Option 1
-                                  underline: Container(),
-                                  value: busnessid,
-                                  borderRadius: BorderRadius.circular(10),
-                                  onChanged: (newValue) {
-                                    setState(() {
-                                      busnessid = newValue.toString();
-                                      _is_tear_date=true;
-                                    });
-                                  },
-                                  items: busnessidlist.map((location) {
-                                    return DropdownMenuItem(
-                                      child: CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "${location ?? ""}", letterSpacing: 0.2),
-                                      value: "${location}",
-                                    );
-                                  }).toList(),
+                                    iconStyleData: const IconStyleData(
+                                      icon: Icon(
+                                        Icons.arrow_downward,
+                                      ),
+                                      iconSize: 14,
+                                      iconEnabledColor: Main_Theme_textColor,
+                                      iconDisabledColor: Colors.grey,
+                                    ),
+                                    dropdownStyleData: DropdownStyleData(
+                                      scrollPadding: EdgeInsets.all(0.0),
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(11),
+                                          border: Border.all(
+                                              color: Main_Theme_textColor.withOpacity(0.5),
+                                            width: 1
+                                          )
+                                      ),
+                                      direction: DropdownDirection.textDirection,
+                                      maxHeight: 200,
+                                      width: 65,
+                                      useRootNavigator: true,
+                                      padding: EdgeInsets.only(left: 2,right: 2),
+                                      offset:  Offset( -3, -6),
+                                      scrollbarTheme: ScrollbarThemeData(
+                                        radius:  Radius.circular(11),
+                                        trackBorderColor: MaterialStateProperty.all(Color(0xFF5D5F6E)),
+                                        thickness: MaterialStateProperty.all<double>(6),
+                                        thumbVisibility: MaterialStateProperty.all<bool>(true),
+                                      ),
+                                    ),
+                                    menuItemStyleData: const MenuItemStyleData(
+                                      height: 40,
+                                      padding: EdgeInsets.only(left: 14, right: 14),
+                                    ),
+                                  ),
                                 ),
                               )
 
@@ -449,7 +487,15 @@ class _BootomNavigationBarItemsAttendenceScreenState extends State<BootomNavigat
       ),
     );
   }
-  String? busnessid;
-  List busnessidlist = ["2000", "2001", "2002","2003","2004", "2005",];
-
+  final List<String> items = [
+    '2022',
+    '2023',
+    '2024',
+    '2025',
+    '2026',
+    '2027',
+    '2028',
+    '2029',
+  ];
+  String? selectedValue;
 }
