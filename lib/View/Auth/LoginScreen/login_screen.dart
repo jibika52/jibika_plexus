@@ -13,6 +13,7 @@ import 'package:jibika_plexus/View/Auth/CompanyRegistrationFormScreen/company_re
 import 'package:jibika_plexus/View/Auth/ForgetPassword/forget_password_screen.dart';
 import 'package:jibika_plexus/View/Auth/LoginScreen/login_screen_screen2.dart';
 import 'package:jibika_plexus/View/Auth/OtpScreen/otp_screen.dart';
+import 'package:jibika_plexus/View/BootomNatchBar/bootom_bar_screen.dart';
 import 'package:jibika_plexus/View/HomeScreen/home_screen.dart';
 import 'package:marquee/marquee.dart';
 
@@ -342,7 +343,7 @@ Future.delayed(Duration(
                           CustomButton(onTap: () {
                             if(_formKey.currentState!.validate()){
                               if(countruyCode=="+880"){
-                                Navigator.push(context, MaterialPageRoute(builder: (context) =>  HomeScreen(
+                                Navigator.push(context, MaterialPageRoute(builder: (context) =>  BootomNatchBarScreen(
                                 ),));
                               }
                             }else{

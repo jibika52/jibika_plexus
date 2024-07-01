@@ -42,11 +42,11 @@ class MyApp extends StatelessWidget {
       // home:PrivacyPolicyScreen(phone_or_email: '01889173335',),
       //  home:TEstHeroAnimation(),
       //     home:CompanyRegistrationScreen(),
-      //   home:BootomNatchBarScreen(),
+      home:BootomNatchBarScreen(),
       //  home:HomeFirstPartComponentAttendance(),
 
       /// ----------Home Screen---------
-      //   home:HomeScreen(),
+      //    home:HomeScreen(),
 
       /// ----------SplashScreen--------
       //    home:MainSplashPageViewScreen(),
@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
       /// ----------Working Screen--------
       //  home:HomeFirstPartComponentLeave(),
       //  home:BootomNavigationBarItemsTrackingScreen(),
-        home:BootomNavigationBarItemsAttendenceScreen(),
+      //    home:BootomNavigationBarItemsAttendenceScreen(),
 
 
 

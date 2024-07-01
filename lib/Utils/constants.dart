@@ -48,9 +48,10 @@ const home_default_color = Color(0xffF2F2F2);
 
 
  ///--------------Dashboard leave absent holidays count ------------------------///
-Color presentsent_color=Color(0xff88DB2E);
+// Color presentsent_color=Color(0xff88DB2E);
+Color presentsent_color=Color(0xff16be16);
 Color absent_color=Color(0xffEC4F4F);
-Color leave_color=Color(0xffDAAF04);
+Color leave_color=Color(0xff685CF0);
 Color leave_approval_button_color=Color(0xffe7edbf);
 Color holiday_color=Color(0xff2C928C);
 
