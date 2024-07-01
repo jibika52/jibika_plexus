@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
       //  home:HomeFirstPartComponentAttendance(),
 
       /// ----------Home Screen---------
-      //    home:HomeScreen(),
+      //  home:HomeScreen(),
 
       /// ----------SplashScreen--------
       //    home:MainSplashPageViewScreen(),

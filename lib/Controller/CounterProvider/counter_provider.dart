@@ -71,5 +71,14 @@ class CounterProvider with ChangeNotifier{
     _selectedindex2=2;
     notifyListeners();
   }
+  /// For Detpicker
+  String _Detpicker="${DateTime.now().year}";
+  String get  Detpicker=>_Detpicker;
+
+  void GetDate(String date){
+    _Detpicker=date;
+    notifyListeners();
+  }
+
 
 }

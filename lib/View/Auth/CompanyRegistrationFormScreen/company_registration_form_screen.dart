@@ -30,7 +30,8 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
   TextEditingController _con_passwordController = TextEditingController();
   TextEditingController _phoneController = TextEditingController();
   TextEditingController _companyNameController = TextEditingController();
-  TextEditingController _companyNumberController = TextEditingController();
+  TextEditingController _companyAddressController = TextEditingController();
+  TextEditingController _NumberOfEmployeeController = TextEditingController();
   TextEditingController _companyEmailController = TextEditingController();
   final _fromKey=GlobalKey<FormState>();
   File ? _image;
@@ -134,6 +135,75 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                       ),
                     ],
                   ),
+                  // Container(
+                  //   height: 60,
+                  //   width: double.infinity,
+                  //   child: Row(
+                  //     children: [
+                  //       Container(
+                  //         padding: const EdgeInsets.only(right: 8.0, top: 7),
+                  //         child: Image.asset(
+                  //           "Assets/Icons/crbuisness.png",
+                  //           height: 21,
+                  //           width: 21,
+                  //           fit: BoxFit.fill,
+                  //           color: Main_Theme_textColor.withOpacity(0.6),
+                  //         ),
+                  //       ),
+                  //       Expanded(
+                  //         child: Container(
+                  //           margin: EdgeInsets.only(top: 10),
+                  //           height: 50,
+                  //           width: double.infinity,
+                  //           padding: EdgeInsets.only(left: 15, right: 15),
+                  //           decoration: BoxDecoration(
+                  //             borderRadius: BorderRadius.circular(11),
+                  //             //   border: Border.all(color:icons_green_color,width: 2),
+                  //           ),
+                  //           child: IgnorePointer(
+                  //             ignoring: false,
+                  //             child: DropdownButton(
+                  //               enableFeedback: true,
+                  //               autofocus: false,
+                  //               isExpanded: true,
+                  //               hint: InkWell(
+                  //                   onTap: () {},
+                  //                   child: ColorCustomText(
+                  //                       fontSize: 16,
+                  //                       fontWeight: FontWeight.w500,
+                  //                       text: "  Business Type",
+                  //                       letterSpacing: 0.2,
+                  //                       textColor:
+                  //                       Main_Theme_textColor.withOpacity(0.4))),
+                  //               // Not necessary for Option 1
+                  //               value: busnessid,
+                  //               onChanged: (newValue) {
+                  //                 setState(() {
+                  //                   busnessid = newValue.toString();
+                  //                   if(busnessid!.contains("SME(0-100 Employee)")){
+                  //                     busnessidlist2=["A","B","c"];
+                  //                   }
+                  //                  else if(busnessid!.contains("Corporate(100-500 Employee)")){
+                  //                     busnessidlist2=["1","2","3"];
+                  //                   }
+                  //                  else{
+                  //                     busnessidlist2=["x","y","z"];
+                  //                   }
+                  //                 });
+                  //               },
+                  //               items: busnessidlist.map((location) {
+                  //                 return DropdownMenuItem(
+                  //                   child: Text("${location ?? ""}"),
+                  //                   value: "${location}",
+                  //                 );
+                  //               }).toList(),
+                  //             ),
+                  //           ),
+                  //         ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
                   Container(
                     height: 60,
                     width: double.infinity,
@@ -170,76 +240,7 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                                     child: ColorCustomText(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w500,
-                                        text: "  Business Type",
-                                        letterSpacing: 0.2,
-                                        textColor:
-                                        Main_Theme_textColor.withOpacity(0.4))),
-                                // Not necessary for Option 1
-                                value: busnessid,
-                                onChanged: (newValue) {
-                                  setState(() {
-                                    busnessid = newValue.toString();
-                                    if(busnessid!.contains("SME(0-100 Employee)")){
-                                      busnessidlist2=["A","B","c"];
-                                    }
-                                   else if(busnessid!.contains("Corporate(100-500 Employee)")){
-                                      busnessidlist2=["1","2","3"];
-                                    }
-                                   else{
-                                      busnessidlist2=["x","y","z"];
-                                    }
-                                  });
-                                },
-                                items: busnessidlist.map((location) {
-                                  return DropdownMenuItem(
-                                    child: Text("${location ?? ""}"),
-                                    value: "${location}",
-                                  );
-                                }).toList(),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    height: 60,
-                    width: double.infinity,
-                    child: Row(
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.only(right: 8.0, top: 7),
-                          child: Image.asset(
-                            "Assets/Icons/crbuisness.png",
-                            height: 21,
-                            width: 21,
-                            fit: BoxFit.fill,
-                            color: Main_Theme_textColor.withOpacity(0.6),
-                          ),
-                        ),
-                        Expanded(
-                          child: Container(
-                            margin: EdgeInsets.only(top: 10),
-                            height: 50,
-                            width: double.infinity,
-                            padding: EdgeInsets.only(left: 15, right: 15),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(11),
-                              //   border: Border.all(color:icons_green_color,width: 2),
-                            ),
-                            child: IgnorePointer(
-                              ignoring: false,
-                              child: DropdownButton(
-                                enableFeedback: true,
-                                autofocus: false,
-                                isExpanded: true,
-                                hint: InkWell(
-                                    onTap: () {},
-                                    child: ColorCustomText(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w500,
-                                        text: "  Package Type",
+                                        text: "  Company type",
                                         letterSpacing: 0.2,
                                         textColor:
                                         Main_Theme_textColor.withOpacity(0.4))),
@@ -273,15 +274,15 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                       obscureText: false),
                   SizedBox(height: h * 0.02),
                   JibikaCustomTextFromField(
-                      controller: _companyNameController,
+                      controller: _companyAddressController,
                       height: 50,
                       img: "Assets/DashBoardIcons/location.png",
-                      hinttext: "Company Location",
+                      hinttext: "Company Address",
                       keyboardType: TextInputType.text,
                       obscureText: false),
                   SizedBox(height: h * 0.02),
                   JibikaCustomTextFromField(
-                      controller: _companyNumberController,
+                      controller: _NumberOfEmployeeController,
                       height: 50,
                       img: "Assets/Icons/crppol.png",
                       hinttext: "Number of Employee",
@@ -383,4 +384,12 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
   String? busnessid2;
   List busnessidlist = ["SME(0-100 Employee)", "Corporate(100-500 Employee)", "Industry(501 - 5000 Employee)","Others(Contact Us)"];
   List busnessidlist2 = ["SME", "Corporate", "Industry","Others"];
+
+
+
+
+   companyRegistration()async{
+
+  }
+
 }
