@@ -19,7 +19,7 @@ class BootomNavigationBarItemsAttendenceScreen extends StatefulWidget {
 
 class _BootomNavigationBarItemsAttendenceScreenState extends State<BootomNavigationBarItemsAttendenceScreen> {
   double animatedheight=0;
-  double animatwidth=150;
+  double animatwidth=130;
   double lineWidth=7.0;
   double C_height=5;
   bool _is_click_date=false;
@@ -206,7 +206,7 @@ class _BootomNavigationBarItemsAttendenceScreenState extends State<BootomNavigat
                                         if(_is_click_date==true){
                                           animatwidth=w*0.95;
                                         }else{
-                                          animatwidth=100.0;
+                                          animatwidth=130.0;
                                         }
                                       },);
                                     },
