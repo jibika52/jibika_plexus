@@ -2,6 +2,7 @@
 import 'dart:io';
 
 import 'package:country_picker/country_picker.dart';
+import 'package:elegant_notification/elegant_notification.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -61,7 +62,7 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
               onTap: () {
                 Navigator.pop(context);
               },
-              text: "Company sign up",
+              text: "${widget.Package} sign up",
             )),
         body: Container(
           height: double.infinity,
@@ -349,26 +350,84 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                     onTap: () {
       
                       if(_fromKey.currentState!.validate()){
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => PrivacyPolicyScreen(
-                                phone_or_email: _phoneController.text,
-                                companytype :busnessid2,
-                                companyname:_companyNameController.toString(),
-                                companyAddress:_companyAddressController.toString(),
-                                noOfEmployee:_NumberOfEmployeeController.toString(),
-                                mobileNumber:_phoneController.toString(),
-                                companyEmail:_companyEmailController.toString(),
-                                password:_passwordController.toString(),
-                                previous_route_name: "CompanyRegistration",
-                              ),
-                            ));
+                        if(busnessid2==null){
+                          ElegantNotification(
+                            borderRadius: BorderRadius.circular(11),
+                            width: 340,
+                            iconSize: 25,
+                            background: presentsent_color,
+                            progressIndicatorBackground: presentsent_color,
+                            progressIndicatorColor: absent_color,
+                            // position: Alignment.center,
+                            title:  ColorCustomText(fontSize: 16, fontWeight: FontWeight.w500, text: "Could not select company", letterSpacing: 0.3, textColor: Main_Theme_textColor),
+                            description: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "Please select & try again", letterSpacing: 0.3, textColor: Main_Theme_textColor),
+                            onDismiss: () {
+                              print('Message when the notification is dismissed');
+                            }, icon: Icon(Icons.info_outlined,color:Colors.black,),
+                          ).show(context);
+                        }else{
+                          if(_passwordController.text==_con_passwordController.text) {
+
+                            if(_passwordController.text.length>7){
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        PrivacyPolicyScreen(
+                                          Package: "${widget.Package}",
+                                          companytype: busnessid2,
+                                          companyname: _companyNameController.text
+                                              .toString(),
+                                          companyAddress: _companyAddressController
+                                              .text.toString(),
+                                          noOfEmployee: _NumberOfEmployeeController
+                                              .text.toString(),
+                                          mobileNumber: _phoneController.text
+                                              .toString(),
+                                          companyEmail: _companyEmailController
+                                              .text.toString(),
+                                          password: _passwordController.text
+                                              .toString(),
+                                          previous_route_name: "CompanyRegistration",
+                                        ),
+                                  ));
+                            }else{
+                              ElegantNotification(
+                                borderRadius: BorderRadius.circular(11),
+                                width: 340,
+                                iconSize: 25,
+                                background: presentsent_color,
+                                progressIndicatorBackground: presentsent_color,
+                                progressIndicatorColor: absent_color,
+                                // position: Alignment.center,
+                                title:  ColorCustomText(fontSize: 16, fontWeight: FontWeight.w500, text: "Password will be more than 8 digit", letterSpacing: 0.3, textColor: Main_Theme_textColor),
+                                description: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "Please input again", letterSpacing: 0.3, textColor: Main_Theme_textColor),
+                                onDismiss: () {
+                                  print('Message when the notification is dismissed');
+                                }, icon: Icon(Icons.info_outlined,color:Colors.black,),
+                              ).show(context);
+                            }
+                          }else{
+                            ElegantNotification(
+                              borderRadius: BorderRadius.circular(11),
+                              width: 340,
+                              iconSize: 25,
+                              background: presentsent_color,
+                              progressIndicatorBackground: presentsent_color,
+                              progressIndicatorColor: absent_color,
+                              // position: Alignment.center,
+                              title:  ColorCustomText(fontSize: 16, fontWeight: FontWeight.w500, text: "Password does not match", letterSpacing: 0.3, textColor: Main_Theme_textColor),
+                              description: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "Please try again", letterSpacing: 0.3, textColor: Main_Theme_textColor),
+                              onDismiss: () {
+                                print('Message when the notification is dismissed');
+                              }, icon: Icon(Icons.info_outlined,color:Colors.black,),
+                            ).show(context);
+                          }
+                        }
+
                       }else{
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: ColorCustomText(fontSize: 16, textColor: Main_Theme_WhiteCollor,fontWeight: FontWeight.w500, text: "Please fill all the field", letterSpacing: 0.3)));
                       }
-      
-      
                     },
                     text: "Next",
                     button_text_fontSize: 18,
@@ -393,11 +452,7 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
   // List busnessidlist = ["SME(0-100 Employee)", "Corporate(100-500 Employee)", "Industry(501 - 5000 Employee)","Others(Contact Us)"];
   List busnessidlist2 = ["SME", "Corporate", "Industry","Others"];
 
-
-
-
-   companyRegistration()async{
+  companyRegistration()async{
 
   }
-
 }

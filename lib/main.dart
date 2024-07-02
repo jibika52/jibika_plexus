@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
         //    home:MainSplashPageViewScreen(),
 
         /// ----------Working Screen--------
-        home:CompanyRegistrationScreen(Package: 'small',),
+        home:ChoosePackageScreen(),
 
         //  home:BootomNavigationBarItemsTrackingScreen(),
         //   home:BootomNavigationBarItemsAttendenceScreen(),
@@ -65,3 +65,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+

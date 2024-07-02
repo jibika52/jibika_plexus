@@ -17,7 +17,7 @@ import '../../CustomWidget/CustomAppBar/CustomDefaultAppBar/custom_default_app_b
 
 class PrivacyPolicyScreen extends StatefulWidget {
   PrivacyPolicyScreen({super.key,
-    required this.phone_or_email,
+    required this.Package,
     required this.companytype,
     required this.companyname,
     required this.companyAddress,
@@ -28,7 +28,7 @@ class PrivacyPolicyScreen extends StatefulWidget {
     required this.previous_route_name,
   });
   String ? previous_route_name;
-  String ? phone_or_email;
+  String ? Package;
   String ? companytype;
   String ? companyname;
   String ? companyAddress;
@@ -61,7 +61,7 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
             onTap: () {
               Navigator.pop(context);
             },
-            text: "PRIVACY POLICY",
+            text: "PRIVACY POLICY ${widget.mobileNumber}",
           )),
       body: Stack(
         children: [
@@ -153,9 +153,9 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
                     function();
                     }else{
                      CustomHttpRequestClass().sendOtpFunction(
-                       "${widget.phone_or_email}",
+                       "${widget.Package}",
                        context,
-                       "${widget.phone_or_email}",
+                       "${widget.mobileNumber}",
                        "${widget.companytype}",
                        "${widget.companyname}",
                         "${widget.companyAddress}",

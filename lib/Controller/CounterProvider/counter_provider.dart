@@ -71,12 +71,23 @@ class CounterProvider with ChangeNotifier{
     _selectedindex2=2;
     notifyListeners();
   }
+
+
   /// For Detpicker
   String _Detpicker="${DateTime.now().year}";
   String get  Detpicker=>_Detpicker;
 
   void GetDate(String date){
     _Detpicker=date;
+    notifyListeners();
+  }
+
+  /// For Set OTP
+  String _setOTP="${DateTime.now().year}";
+  String get  setOTP=>_setOTP;
+
+  void eetOTP(String otp){
+    _setOTP=otp;
     notifyListeners();
   }
 

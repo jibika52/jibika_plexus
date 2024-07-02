@@ -1,7 +1,9 @@
 import 'dart:async';
-
+import 'package:dio/dio.dart';
+import 'package:elegant_notification/elegant_notification.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jibika_plexus/CustomHttp/custom_http.dart';
 import 'package:jibika_plexus/CustomWidget/CustomBootomSplashBar/custom_bootom_splash_bar.dart';
 import 'package:jibika_plexus/CustomWidget/CustomButton/custom_button.dart';
 import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
@@ -11,8 +13,7 @@ import 'package:jibika_plexus/View/Auth/LoginScreen/login_screen_screen2.dart';
 
 class OTPScreen extends StatefulWidget {
   OTPScreen({super.key,
-    required this.previous_route_name,
-    required this.phone_or_email,
+    required this.package,
     required this.companytype,
     required this.companyname,
     required this.companyAddress,
@@ -20,9 +21,10 @@ class OTPScreen extends StatefulWidget {
     required this.mobileNumber,
     required this.companyEmail,
     required this.password,
+    required this.previous_route_name,
   });
   String ? previous_route_name;
-  String ? phone_or_email;
+  String ? package;
   String ? companytype;
   String ? companyname;
   String ? companyAddress;
@@ -41,19 +43,22 @@ class _OTPScreenState extends State<OTPScreen> {
   final TextEditingController _fieldThree = TextEditingController();
   final TextEditingController _fieldFour = TextEditingController();
   String? _otp;
+  void itmer(){
+    Timer.periodic(const Duration(seconds: 1), (timer) {
+      print("timeeeee  eee   e eee ${timer.tick}");
+      if(timer.tick==120) {
+        timer.cancel();
+          count=119;
+      }else{
+        setState(() {
+          count--;
+        });
+      }
+    });
+  }
 @override
   void initState() {
-  Timer.periodic(const Duration(seconds: 1), (timer) {
-    print("timeeeee  eee   e eee ${timer.tick}");
-    if(timer.tick==120) {
-      timer.cancel();
-
-    }else{
-      setState(() {
-        count--;
-      });
-    }
-  });
+  itmer();
   // TODO: implement initState
     super.initState();
   }
@@ -63,7 +68,7 @@ class _OTPScreenState extends State<OTPScreen> {
   Widget build(BuildContext context) {
     double h=MediaQuery.of(context).size.height;
     double w=MediaQuery.of(context).size.width;
-
+print("1111111111111111111111111 ========== $count");
     return Scaffold(
       resizeToAvoidBottomInset: false,
          body: Container(
@@ -97,9 +102,10 @@ class _OTPScreenState extends State<OTPScreen> {
                          CustomImageSction(height: 115, width: 115, radius: 7, image: "Assets/Logo/jibikalogo.png"),
                          SizedBox(height: h*0.12,),
                          CustomText(fontSize: 18, fontWeight: FontWeight.w500, text: "Please Enter The 4 Digit Code Sent to", letterSpacing: 0.3),
-                         CustomText(fontSize: 18, fontWeight: FontWeight.w600, text: "your Phone : ${widget.phone_or_email}", letterSpacing: 0.4),
+                         CustomText(fontSize: 18, fontWeight: FontWeight.w600, text: "your Phone : ${widget.mobileNumber}", letterSpacing: 0.4),
                          SizedBox(height: h*0.02,),
-                         ColorCustomText(fontSize: 22, fontWeight: FontWeight.w700, text: "Expire Time: $count s", letterSpacing: 0.4,textColor: Main_Theme_textColor_tir_Condition),
+                        // ColorCustomText(fontSize: 22, fontWeight: FontWeight.w700, text:"$count".contains("-")?"${count}": "Expire Time: $count s", letterSpacing: 0.4,textColor: Main_Theme_textColor_tir_Condition),
+                         ColorCustomText(fontSize: 22, fontWeight: FontWeight.w700, text:"Expire Time: $count s", letterSpacing: 0.4,textColor: Main_Theme_textColor_tir_Condition),
                          SizedBox(height: h*0.01,),
                          ///  CustomPinPut
                          Row(
@@ -122,7 +128,81 @@ class _OTPScreenState extends State<OTPScreen> {
                                children: [
                                  CustomText(fontSize: 16, fontWeight: FontWeight.w400, text:"If you didn’t receive a code!" , letterSpacing: 0.2),
                                  SizedBox(width: 8,),
-                                 ColorCustomText(fontSize: 16, fontWeight: FontWeight.w400, text:count==0? "Resend":"", letterSpacing: 0.2,textColor:CustomButtonColor),
+                                 InkWell(
+                                     onTap: () {
+                                       if(count==0) {
+                                         ElegantNotification(
+                                           borderRadius: BorderRadius.circular(
+                                               11),
+                                           width: 340,
+                                           iconSize: 25,
+                                           background: presentsent_color,
+                                           progressIndicatorBackground: presentsent_color,
+                                           progressIndicatorColor: absent_color,
+                                           // position: Alignment.center,
+                                           title: ColorCustomText(fontSize: 16,
+                                               fontWeight: FontWeight.w500,
+                                               text: "Re send OTP successfully",
+                                               letterSpacing: 0.3,
+                                               textColor: Main_Theme_textColor),
+                                           description: ColorCustomText(
+                                               fontSize: 14,
+                                               fontWeight: FontWeight.w400,
+                                               text: "Please check your mobile number",
+                                               letterSpacing: 0.3,
+                                               textColor: Main_Theme_textColor),
+                                           onDismiss: () {
+                                             print(
+                                                 'Message when the notification is dismissed');
+                                           },
+                                           icon: Icon(Icons.info_outlined,
+                                             color: Colors.black,),
+                                         ).show(context);
+                                         CustomHttpRequestClass()
+                                             .sendOtpFunction(
+                                           "${widget.package}",
+                                           context,
+                                           "${widget.mobileNumber}",
+                                           "${widget.companytype}",
+                                           "${widget.companyname}",
+                                           "${widget.companyAddress}",
+                                           "${widget.noOfEmployee}",
+                                           "${widget.companyEmail}",
+                                           "${widget.password}",
+                                           "resend",
+                                         );
+                                         itmer();
+                                       }else{
+                                         ElegantNotification(
+                                           borderRadius: BorderRadius.circular(
+                                               11),
+                                           width: 340,
+                                           iconSize: 25,
+                                           background: presentsent_color,
+                                           progressIndicatorBackground: presentsent_color,
+                                           progressIndicatorColor: absent_color,
+                                           // position: Alignment.center,
+                                           title: ColorCustomText(fontSize: 16,
+                                               fontWeight: FontWeight.w500,
+                                               text: "Re send will be after time expire",
+                                               letterSpacing: 0.3,
+                                               textColor: Main_Theme_textColor),
+                                           description: ColorCustomText(
+                                               fontSize: 14,
+                                               fontWeight: FontWeight.w400,
+                                               text: "Please check your mobile number",
+                                               letterSpacing: 0.3,
+                                               textColor: Main_Theme_textColor),
+                                           onDismiss: () {
+                                             print(
+                                                 'Message when the notification is dismissed');
+                                           },
+                                           icon: Icon(Icons.info_outlined,
+                                             color: Colors.black,),
+                                         ).show(context);
+                                       }
+                                      },
+                                     child: ColorCustomText(fontSize: 16, fontWeight: FontWeight.w400, text:"Resend", letterSpacing: 0.2,textColor:CustomButtonColor)),
                                ],
                              )),
                          SizedBox(
@@ -136,9 +216,20 @@ class _OTPScreenState extends State<OTPScreen> {
                                    _fieldThree.text +
                                    _fieldFour.text;
                              });
-                             Future.delayed(Duration(seconds: 1),() {
-                               Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreenSlide(),));
-                             },);
+
+                             f();
+
+
+
+
+
+                             // Future.delayed(Duration(seconds: 1),() {
+                             //
+                             //  CustomHttpRequestClass().companyRegistrationFunction("01889173335");
+                             //   //Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreenSlide(),));
+                             //
+                             //
+                             //   },);
                            }, text: "Verify", button_text_fontSize: 16, button_height: 50, custom_button_collor: CustomButtonColor, button_text_color: Main_Theme_WhiteCollor, borderRadius: 50),
                          ),
                          const SizedBox(
@@ -272,6 +363,20 @@ class _OTPScreenState extends State<OTPScreen> {
 //     );
 //   }
 //
+  f()async{
+    print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+    try{
+      final response = await Dio().post('http://45.114.84.22:8081/useridentity/registration',
+        data: {'aa': 'bb' * 22},
+        onSendProgress: (int sent, int total) {
+          print('$sent $total');
+        },
+      );
+      print(response.data);
+    }catch(e){
+      print("errorrrrrrrrrrrrr $e");
+    }
+  }
  }
 
 
@@ -313,4 +418,5 @@ class OtpInput extends StatelessWidget {
       ),
     );
   }
+
 }

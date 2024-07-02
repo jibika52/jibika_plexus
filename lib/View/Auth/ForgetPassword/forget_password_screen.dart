@@ -115,13 +115,13 @@ final _foromkey=GlobalKey<FormState>();
                         CustomButton(onTap: () {
                           if(_foromkey.currentState!.validate()){
                             Navigator.push(context, MaterialPageRoute(builder: (context) => OTPScreen(
-                                phone_or_email: widget.phone,
+                              package: "",
                                 previous_route_name: "ForgetPassword",
                               companytype :"",
                               companyname:"",
                               companyAddress:"",
                               noOfEmployee:"",
-                              mobileNumber:"",
+                              mobileNumber:"01889173335",
                               companyEmail:"",
                               password:"",
                             ),));

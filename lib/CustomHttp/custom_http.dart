@@ -53,9 +53,9 @@ class CustomHttpRequestClass{
 
   ///           OTP send Function --------------------------------------------------
    sendOtpFunction(
-        String mobileNumber,
+        String package,
         BuildContext context,
-        String   phone_or_email,
+        String   mobileNumber,
         String   companytype,
         String   companyname,
         String   companyAddress,
@@ -70,8 +70,8 @@ class CustomHttpRequestClass{
     var data=jsonDecode(response.body);
     print("ccccccccccccccccccccccccccccc ${data}");
     if(response.statusCode==200 && data["status"]=="Message has been sent."){
-      Navigator.push(context, MaterialPageRoute(builder: (context) => OTPScreen(
-        phone_or_email: "${phone_or_email}",
+      previous_route_name=="resend"?f():   Navigator.push(context, MaterialPageRoute(builder: (context) => OTPScreen(
+        package: "${package}",
         companytype :"${companytype}",
         companyname:"${companyname}",
         companyAddress:"${companyAddress}",
@@ -111,12 +111,35 @@ class CustomHttpRequestClass{
     }
    }
 
-  ///           OTP send Function --------------------------------------------------
+
+
+  ///           Company Registration  --------------------------------------------------
    companyRegistrationFunction(String mobileNumber)async{
-    print("ssssssssssssssssssssssssssssssssssss ${BASEURL}/${SEND_OTP}$mobileNumber");
-    Response response=await http.get(Uri.parse("${BASEURL}/${SEND_OTP}$mobileNumber"));
-    print("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz =========== ${response.body}");
-   }
+    try{
+      Response response=await http.post(Uri.parse("http://45.114.84.22:8081/useridentity/registration"),
+          body:
+      jsonEncode(
+         {
+            "EnglishDesc":"JIBIKA",
+            "BusinessType":"1",
+            "Address":"Jumuna Future Park",
+            "EmpSize":"100",
+            "Mobile":"0188973335",
+            "GroupMail":"uzzal@gmail.com",
+            "PackageType":"small",
+            "NewPassword":"123456789",
+            "ConPassword":"123456789",
+            "Otp":"8296"
+          }
+      ));
 
+    print("registration -----------------------------> ${response.body}");
+    print("registration -----------------------------> ${response.statusCode}");
 
+   }catch(e){
+      print("Catch error $e");
+    }
+  }
 }
+
+f(){}
