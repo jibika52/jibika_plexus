@@ -48,7 +48,7 @@ dependencies:
   #for get provider path
   path_provider: ^2.1.3
   # Get Custom Notification from this package
-  another_flushbar: ^1.12.30
+  elegant_notification: ^2.2.1
   # get http request from this package
   http: ^1.2.0
   # Local Database get  from this package

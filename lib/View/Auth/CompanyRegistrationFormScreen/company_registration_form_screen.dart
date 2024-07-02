@@ -26,13 +26,13 @@ class CompanyRegistrationScreen extends StatefulWidget {
 class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
   bool obscureText = true;
   bool obscureText2 = true;
-  TextEditingController _passwordController = TextEditingController();
-  TextEditingController _con_passwordController = TextEditingController();
-  TextEditingController _phoneController = TextEditingController();
   TextEditingController _companyNameController = TextEditingController();
   TextEditingController _companyAddressController = TextEditingController();
   TextEditingController _NumberOfEmployeeController = TextEditingController();
+  TextEditingController _phoneController = TextEditingController();
   TextEditingController _companyEmailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  TextEditingController _con_passwordController = TextEditingController();
   final _fromKey=GlobalKey<FormState>();
   File ? _image;
 
@@ -354,6 +354,14 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                             MaterialPageRoute(
                               builder: (context) => PrivacyPolicyScreen(
                                 phone_or_email: _phoneController.text,
+                                companytype :busnessid2,
+                                companyname:_companyNameController.toString(),
+                                companyAddress:_companyAddressController.toString(),
+                                noOfEmployee:_NumberOfEmployeeController.toString(),
+                                mobileNumber:_phoneController.toString(),
+                                companyEmail:_companyEmailController.toString(),
+                                password:_passwordController.toString(),
+                                previous_route_name: "CompanyRegistration",
                               ),
                             ));
                       }else{
@@ -380,9 +388,9 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
     );
   }
 
-  String? busnessid;
+//  String? busnessid;
   String? busnessid2;
-  List busnessidlist = ["SME(0-100 Employee)", "Corporate(100-500 Employee)", "Industry(501 - 5000 Employee)","Others(Contact Us)"];
+  // List busnessidlist = ["SME(0-100 Employee)", "Corporate(100-500 Employee)", "Industry(501 - 5000 Employee)","Others(Contact Us)"];
   List busnessidlist2 = ["SME", "Corporate", "Industry","Others"];
 
 

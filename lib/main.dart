@@ -4,8 +4,10 @@ import 'package:get_storage/get_storage.dart';
 import 'package:jibika_plexus/Controller/CounterProvider/counter_provider.dart';
 import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 import 'package:jibika_plexus/View/Auth/CompanyRegistrationFormScreen/company_registration_form_screen.dart';
+import 'package:jibika_plexus/View/Auth/LoginScreen/login_screen_screen2.dart';
 import 'package:jibika_plexus/View/ChoosePackageScreen/choose_package_screen.dart';
 import 'package:jibika_plexus/View/HomeScreen/home_screen.dart';
+import 'package:jibika_plexus/testpackage.dart';
 import 'package:provider/provider.dart';
 
 import 'Controller/HomeController/home_controller.dart';
@@ -42,7 +44,7 @@ class MyApp extends StatelessWidget {
         // home:PrivacyPolicyScreen(phone_or_email: '01889173335',),
         //  home:TEstHeroAnimation(),
         //     home:CompanyRegistrationScreen(),
-        home:BootomNatchBarScreen(),
+     //   home:BootomNatchBarScreen(),
         //  home:HomeFirstPartComponentAttendance(),
 
         /// ----------Home Screen---------
@@ -52,16 +54,14 @@ class MyApp extends StatelessWidget {
         //    home:MainSplashPageViewScreen(),
 
         /// ----------Working Screen--------
-        //  home:HomeFirstPartComponentLeave(),
+        home:CompanyRegistrationScreen(Package: 'small',),
+
         //  home:BootomNavigationBarItemsTrackingScreen(),
-        //    home:BootomNavigationBarItemsAttendenceScreen(),
-
-
+        //   home:BootomNavigationBarItemsAttendenceScreen(),
+        //    home:TestPAckageScreen(),
 
       ),
 
     );
   }
 }
-
-

@@ -10,9 +10,26 @@ import 'package:jibika_plexus/Utils/constants.dart';
 import 'package:jibika_plexus/View/Auth/LoginScreen/login_screen_screen2.dart';
 
 class OTPScreen extends StatefulWidget {
-  OTPScreen({super.key,required this.phone_or_email,required this.previous_route_name});
-  String phone_or_email;
-  String previous_route_name;
+  OTPScreen({super.key,
+    required this.previous_route_name,
+    required this.phone_or_email,
+    required this.companytype,
+    required this.companyname,
+    required this.companyAddress,
+    required this.noOfEmployee,
+    required this.mobileNumber,
+    required this.companyEmail,
+    required this.password,
+  });
+  String ? previous_route_name;
+  String ? phone_or_email;
+  String ? companytype;
+  String ? companyname;
+  String ? companyAddress;
+  String ?  noOfEmployee;
+  String ? mobileNumber;
+  String ? companyEmail;
+  String ? password;
   @override
   State<OTPScreen> createState() => _OTPScreenState();
 }

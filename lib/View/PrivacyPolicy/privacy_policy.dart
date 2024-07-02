@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:jibika_plexus/Controller/PrivacyPolicyController/privacy_policy.dart';
+import 'package:jibika_plexus/CustomHttp/custom_http.dart';
 import 'package:jibika_plexus/CustomWidget/CustomButton/custom_button.dart';
 import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
 import 'package:jibika_plexus/CustomWidget/CustomTExtFormField/CustomTextFromField/custom_text_from_fild.dart';
@@ -16,8 +17,25 @@ import '../../CustomWidget/CustomAppBar/CustomDefaultAppBar/custom_default_app_b
 
 class PrivacyPolicyScreen extends StatefulWidget {
   PrivacyPolicyScreen({super.key,
-    required this.phone_or_email});
- String ? phone_or_email;
+    required this.phone_or_email,
+    required this.companytype,
+    required this.companyname,
+    required this.companyAddress,
+    required this.noOfEmployee,
+    required this.mobileNumber,
+    required this.companyEmail,
+    required this.password,
+    required this.previous_route_name,
+  });
+  String ? previous_route_name;
+  String ? phone_or_email;
+  String ? companytype;
+  String ? companyname;
+  String ? companyAddress;
+  String ?  noOfEmployee;
+  String ? mobileNumber;
+  String ? companyEmail;
+  String ? password;
   @override
   State<PrivacyPolicyScreen> createState() => _PrivacyPolicyScreenState();
 }
@@ -131,10 +149,23 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
                   ),
                   SizedBox(height: 10,),
                   CustomButton(onTap: () {
-                    is_agree==false? function():   Navigator.push(context, MaterialPageRoute(builder: (context) => OTPScreen(
-                      phone_or_email: "${widget.phone_or_email}",
-                      previous_route_name: "PrivacyPlicy",
-                    ),));
+                    if(is_agree==false){
+                    function();
+                    }else{
+                     CustomHttpRequestClass().sendOtpFunction(
+                       "${widget.phone_or_email}",
+                       context,
+                       "${widget.phone_or_email}",
+                       "${widget.companytype}",
+                       "${widget.companyname}",
+                        "${widget.companyAddress}",
+                        "${widget.noOfEmployee}",
+                         "${widget.companyEmail}",
+                        "${widget.password}",
+                        "${widget.previous_route_name}",
+                     );
+                    }
+
                   }, text: "Finish", button_text_fontSize: 14, fontWeight: FontWeight.w500,button_height: 50, custom_button_collor:is_agree==false?Colors.grey :CustomButtonColor, button_text_color: Main_Theme_WhiteCollor, borderRadius: 50),
                 ],
               ),

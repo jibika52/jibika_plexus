@@ -114,7 +114,17 @@ final _foromkey=GlobalKey<FormState>();
                         ),
                         CustomButton(onTap: () {
                           if(_foromkey.currentState!.validate()){
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => OTPScreen(phone_or_email: widget.phone,previous_route_name: "ForgetPassword"),));
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => OTPScreen(
+                                phone_or_email: widget.phone,
+                                previous_route_name: "ForgetPassword",
+                              companytype :"",
+                              companyname:"",
+                              companyAddress:"",
+                              noOfEmployee:"",
+                              mobileNumber:"",
+                              companyEmail:"",
+                              password:"",
+                            ),));
                           }else{
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: ColorCustomText(fontSize: 16, textColor: Main_Theme_WhiteCollor,fontWeight: FontWeight.w500, text: "Please fill all the field", letterSpacing: 0.3)));
                           }
