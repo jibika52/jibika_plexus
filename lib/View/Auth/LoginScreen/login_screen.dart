@@ -3,6 +3,7 @@ import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jibika_plexus/CustomHttp/custom_http.dart';
 import 'package:jibika_plexus/CustomWidget/CustomButton/custom_button.dart';
 import 'package:jibika_plexus/CustomWidget/CustomCheckSection/custom_check_section.dart';
 import 'package:jibika_plexus/CustomWidget/CustomSlideText/custom_slide_tex.dart';
@@ -343,8 +344,12 @@ Future.delayed(Duration(
                           CustomButton(onTap: () {
                             if(_formKey.currentState!.validate()){
                               if(countruyCode=="+880"){
-                                Navigator.push(context, MaterialPageRoute(builder: (context) =>  BootomNatchBarScreen(
-                                ),));
+                                // Navigator.push(context, MaterialPageRoute(builder: (context) =>  BootomNatchBarScreen(
+                                // ),));
+
+                                CustomHttpRequestClass().loginEmployee(_phoneController.text, _passwordController.text, context);
+                                ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: ColorCustomText(fontSize: 16, textColor: Main_Theme_WhiteCollor,fontWeight: FontWeight.w500, text: "wait", letterSpacing: 0.3)));
+
                               }
                             }else{
                               ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: ColorCustomText(fontSize: 16, textColor: Main_Theme_WhiteCollor,fontWeight: FontWeight.w500, text: "Please fill all the field", letterSpacing: 0.3)));

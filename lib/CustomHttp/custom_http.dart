@@ -14,6 +14,7 @@ import 'package:jibika_plexus/Controller/CounterProvider/counter_provider.dart';
 import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 import 'package:jibika_plexus/Model/PrivacyPolicyModelClass/privacy_policy_model_class.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
+import 'package:jibika_plexus/View/BootomNatchBar/bootom_bar_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../View/Auth/LoginScreen/login_screen_screen2.dart';
@@ -26,9 +27,6 @@ class CustomHttpRequestClass{
     "accept": "application/json",
     'Authorization': 'Bearer ${GetStorage().read("api_token")}'
   };
-
-
-
 
   ///--------- PRIVACY POLICY ------------///
   prvacyPolicylist(String privacyPolicytype) async {
@@ -54,40 +52,15 @@ class CustomHttpRequestClass{
     return prvacyPolicylist;
   }
 
-
-  
-  
   ///           OTP send Function --------------------------------------------------
-   sendOtpFunction(
-        String package,
-        BuildContext context,
-        String   mobileNumber,
-        String   companytype,
-        String   companyname,
-        String   companyAddress,
-        String   noOfEmployee,
-        String  companyEmail,
-        String   password,
-        String previous_route_name,
-
-       )async{
+   sendOtpFunction(String package, BuildContext context, String mobileNumber, String companytype, String companyname, String companyAddress, String noOfEmployee, String companyEmail, String password, String previous_route_name,) async{
     Response response=await http.get(Uri.parse("${BASEURL}/${SEND_OTP}$mobileNumber"));
     print(response.statusCode);
     var data=jsonDecode(response.body);
     print("ccccccccccccccccccccccccccccc ${data}");
     Provider.of<CounterProvider>(context,listen: false).eetOTP(data["otp"]);
     if(response.statusCode==200 && data["status"]=="Message has been sent."){
-      previous_route_name=="resend"?f():   Navigator.push(context, MaterialPageRoute(builder: (context) => OTPScreen(
-        package: "${package}",
-        companytype :"${companytype}",
-        companyname:"${companyname}",
-        companyAddress:"${companyAddress}",
-        noOfEmployee:"${noOfEmployee}",
-        mobileNumber:"${mobileNumber}",
-        companyEmail:"${companyEmail}",
-        password:"${password}",
-        previous_route_name:"${previous_route_name}",
-      ),),);
+      previous_route_name=="resend"?f():   Navigator.push(context, MaterialPageRoute(builder: (context) => OTPScreen(package: "${package}", companytype :"${companytype}", companyname:"${companyname}", companyAddress:"${companyAddress}", noOfEmployee:"${noOfEmployee}", mobileNumber:"${mobileNumber}", companyEmail:"${companyEmail}", password:"${password}", previous_route_name:"${previous_route_name}",),),);
     }else{
       ElegantNotification(
         borderRadius: BorderRadius.circular(11),
@@ -106,22 +79,8 @@ class CustomHttpRequestClass{
     }
    }
 
-
-
   ///           Company Registration  --------------------------------------------------
-   companyRegistrationFunction(
-       String package,
-       BuildContext context,
-       String   mobileNumber,
-       String   companytype,
-       String   companyname,
-       String   companyAddress,
-       String   noOfEmployee,
-       String  companyEmail,
-       String   password,
-       String OTP,
-
-       )async{
+   companyRegistrationFunction(String package, BuildContext context, String   mobileNumber, String   companytype, String   companyname, String   companyAddress, String   noOfEmployee, String  companyEmail, String   password, String OTP,)async{
     try{
           var body = jsonEncode({
             "EnglishDesc":"$companyname",
@@ -139,12 +98,6 @@ class CustomHttpRequestClass{
           headers: {"Content-Type": "application/json"},
           body: body
       ).then((http.Response response) {
-        print("Response status: ${response.statusCode}");
-        print("Response body: ${response.contentLength}");
-        print(response.statusCode);
-        print(response.body);
-        print(response.headers);
-        print(response.request);
         var registration =jsonDecode(response.body);
         if(response.statusCode==200 && registration["msg"]=="success"){
           ElegantNotification(
@@ -165,12 +118,53 @@ class CustomHttpRequestClass{
         }
       }
       );
-
-
    }catch(e){
       print("Catch error $e");
     }
   }
+
+  ///           Login as Employee  --------------------------------------------------------------------------
+  loginEmployee(String phone,String password, BuildContext context)async{
+    try{
+      var body = jsonEncode({
+        "UserId":"$phone",
+        "UserPass":"$password",
+      });
+      var data=await http.post(Uri.parse("${BASEURL}/${LOGIN}"),
+          headers: {
+        "Content-Type": "application/json",
+        "username": "jibikaapps",
+        "password": "20jibika24",
+          },
+          body: body
+      ).then((http.Response response) {
+        print(response.statusCode);
+        print(response.body);
+        var loginData =jsonDecode(response.body);
+        if(response.statusCode==200 && loginData["msg"]=="fail"){
+          ElegantNotification(
+            borderRadius: BorderRadius.circular(11),
+            width: 380,
+            iconSize: 25,
+            background: presentsent_color,
+            progressIndicatorBackground: presentsent_color,
+            progressIndicatorColor: absent_color,
+            // position: Alignment.center,
+            title:  ColorCustomText(fontSize: 16, fontWeight: FontWeight.w500, text: "Login Successful", letterSpacing: 0.3, textColor: Main_Theme_textColor),
+            description: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "Thanks from JIBIKA PAYSCALE!..", letterSpacing: 0.3, textColor: Main_Theme_textColor),
+            onDismiss: () {
+              print('Message when the notification is dismissed');
+            }, icon: Icon(Icons.info_outlined,color:Colors.black,),
+          ).show(context);
+          Navigator.push(context, MaterialPageRoute(builder: (context) => BootomNatchBarScreen(),));
+        }
+      }
+      );
+    }catch(e){
+      print("Login employeee Catch error ${e}");
+    }
+  }
+
 }
 
 f(){}

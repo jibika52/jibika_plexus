@@ -13,3 +13,6 @@
 
   /// Get Privacy Policy
     String REGISTRATION="useridentity/registration";
+
+  /// Get Privacy Policy
+    String LOGIN="useridentity/challenge";
