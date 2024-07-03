@@ -41,9 +41,9 @@ void initState() {
       .animate(CurvedAnimation(parent: controller, curve: Curves.decelerate));
   controller.forward();
   controller.addListener(() {
-    print("cccccccccccccccccccc ${logoanimation.value}");
+
     setState(() {
-      print("DDDDDDDDDDDDDDDD  ${logosize.value}");
+
     });
   });
 

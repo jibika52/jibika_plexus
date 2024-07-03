@@ -57,10 +57,10 @@ class LoginScreenSlideState extends State<LoginScreenSlide>
 
 
      controller.addListener(() {
-       print("cccccccccccccccccccc ${logoanimation.value}");
+   //    print("cccccccccccccccccccc ${logoanimation.value}");
 
        setState(() {
-         print("DDDDDDDDDDDDDDDD  ${logosize.value}");
+    //     print("DDDDDDDDDDDDDDDD  ${logosize.value}");
        });
      });
 

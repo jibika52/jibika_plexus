@@ -368,7 +368,7 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                         }else{
                           if(_passwordController.text==_con_passwordController.text) {
 
-                            if(_passwordController.text.length>7){
+                            if(_passwordController.text.length>=6){
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -400,8 +400,8 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                                 progressIndicatorBackground: presentsent_color,
                                 progressIndicatorColor: absent_color,
                                 // position: Alignment.center,
-                                title:  ColorCustomText(fontSize: 16, fontWeight: FontWeight.w500, text: "Password will be more than 8 digit", letterSpacing: 0.3, textColor: Main_Theme_textColor),
-                                description: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "Please input again", letterSpacing: 0.3, textColor: Main_Theme_textColor),
+                                title:  ColorCustomText(fontSize: 16, fontWeight: FontWeight.w500, text: "Minimum password length 6 digit", letterSpacing: 0.3, textColor: Main_Theme_textColor),
+                                description: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "Please try again", letterSpacing: 0.3, textColor: Main_Theme_textColor),
                                 onDismiss: () {
                                   print('Message when the notification is dismissed');
                                 }, icon: Icon(Icons.info_outlined,color:Colors.black,),

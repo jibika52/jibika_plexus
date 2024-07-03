@@ -59,7 +59,7 @@ Future.delayed(Duration(
 
   controller.addListener(() {
     setState(() {
-      print("DDDDDDDDDDDDDDDD  ${logosize.value}");
+  //    print("DDDDDDDDDDDDDDDD  ${logosize.value}");
     });
   });
 },);
@@ -84,10 +84,8 @@ Future.delayed(Duration(
     double h=MediaQuery.of(context).size.height;
     double w=MediaQuery.of(context).size.width;
 
-
     if(phone_number_test.startsWith("00")){
-
-      print("replesssssssssssss  ${phone_number_test.substring(1)}");
+  //    print("replesssssssssssss  ${phone_number_test.substring(1)}");
     }else{
       print("elseeeeeeeeeeeeeeeeee  $phone_number_test");
     }
@@ -344,12 +342,7 @@ Future.delayed(Duration(
                           CustomButton(onTap: () {
                             if(_formKey.currentState!.validate()){
                               if(countruyCode=="+880"){
-                                // Navigator.push(context, MaterialPageRoute(builder: (context) =>  BootomNatchBarScreen(
-                                // ),));
-
                                 CustomHttpRequestClass().loginEmployee(_phoneController.text, _passwordController.text, context);
-                                ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: ColorCustomText(fontSize: 16, textColor: Main_Theme_WhiteCollor,fontWeight: FontWeight.w500, text: "wait", letterSpacing: 0.3)));
-
                               }
                             }else{
                               ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: ColorCustomText(fontSize: 16, textColor: Main_Theme_WhiteCollor,fontWeight: FontWeight.w500, text: "Please fill all the field", letterSpacing: 0.3)));

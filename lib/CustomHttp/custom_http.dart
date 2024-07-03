@@ -141,22 +141,37 @@ class CustomHttpRequestClass{
         print(response.statusCode);
         print(response.body);
         var loginData =jsonDecode(response.body);
-        if(response.statusCode==200 && loginData["msg"]=="fail"){
+        if(response.statusCode==200 && loginData["msg"]=="success"){
           ElegantNotification(
             borderRadius: BorderRadius.circular(11),
-            width: 380,
+            width: 340,
             iconSize: 25,
             background: presentsent_color,
             progressIndicatorBackground: presentsent_color,
             progressIndicatorColor: absent_color,
             // position: Alignment.center,
             title:  ColorCustomText(fontSize: 16, fontWeight: FontWeight.w500, text: "Login Successful", letterSpacing: 0.3, textColor: Main_Theme_textColor),
-            description: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "Thanks from JIBIKA PAYSCALE!..", letterSpacing: 0.3, textColor: Main_Theme_textColor),
+            description: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "Thanks, JIBIKA PAYSCALE!..", letterSpacing: 0.3, textColor: Main_Theme_textColor),
             onDismiss: () {
               print('Message when the notification is dismissed');
             }, icon: Icon(Icons.info_outlined,color:Colors.black,),
           ).show(context);
           Navigator.push(context, MaterialPageRoute(builder: (context) => BootomNatchBarScreen(),));
+        }else{
+          ElegantNotification(
+            borderRadius: BorderRadius.circular(11),
+            width: 340,
+            iconSize: 25,
+            background: presentsent_color,
+            progressIndicatorBackground: presentsent_color,
+            progressIndicatorColor: absent_color,
+            // position: Alignment.center,
+            title:  ColorCustomText(fontSize: 16, fontWeight: FontWeight.w500, text: "Wrong phone or Password", letterSpacing: 0.3, textColor: Main_Theme_textColor),
+            description: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "Please correct & try again", letterSpacing: 0.3, textColor: Main_Theme_textColor),
+            onDismiss: () {
+              print('Message when the notification is dismissed');
+            }, icon: Icon(Icons.delete_forever,color:Colors.black,),
+          ).show(context);
         }
       }
       );
