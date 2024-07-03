@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:dio/dio.dart';
 import 'package:elegant_notification/elegant_notification.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -398,20 +397,7 @@ print("1111111111111111111111111 ========== $count");
 //     );
 //   }
 //
-  f()async{
-    print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-    try{
-      final response = await Dio().post('http://45.114.84.22:8081/useridentity/registration',
-        data: {'aa': 'bb' * 22},
-        onSendProgress: (int sent, int total) {
-          print('$sent $total');
-        },
-      );
-      print(response.data);
-    }catch(e){
-      print("errorrrrrrrrrrrrr $e");
-    }
-  }
+
  }
 
 

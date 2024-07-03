@@ -75,8 +75,6 @@ dependencies:
 
   web: 0.5.0
   dropdown_button2: ^2.3.9
-  dio: ^5.4.3+1
-  flutter_keyboard_visibility: ^6.0.0
 
 
 dev_dependencies:
