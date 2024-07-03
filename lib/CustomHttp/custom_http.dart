@@ -1,6 +1,7 @@
 
 
 import 'dart:convert';
+import 'dart:ffi';
 
 import 'package:elegant_notification/elegant_notification.dart';
 import 'package:flutter/cupertino.dart';
@@ -9,10 +10,13 @@ import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 import 'package:jibika_plexus/Api/Routes/routes.dart';
+import 'package:jibika_plexus/Controller/CounterProvider/counter_provider.dart';
 import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 import 'package:jibika_plexus/Model/PrivacyPolicyModelClass/privacy_policy_model_class.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
+import 'package:provider/provider.dart';
 
+import '../View/Auth/LoginScreen/login_screen_screen2.dart';
 import '../View/Auth/OtpScreen/otp_screen.dart';
 
 class CustomHttpRequestClass{
@@ -51,6 +55,8 @@ class CustomHttpRequestClass{
   }
 
 
+  
+  
   ///           OTP send Function --------------------------------------------------
    sendOtpFunction(
         String package,
@@ -69,6 +75,7 @@ class CustomHttpRequestClass{
     print(response.statusCode);
     var data=jsonDecode(response.body);
     print("ccccccccccccccccccccccccccccc ${data}");
+    Provider.of<CounterProvider>(context,listen: false).eetOTP(data["otp"]);
     if(response.statusCode==200 && data["status"]=="Message has been sent."){
       previous_route_name=="resend"?f():   Navigator.push(context, MaterialPageRoute(builder: (context) => OTPScreen(
         package: "${package}",
@@ -82,18 +89,6 @@ class CustomHttpRequestClass{
         previous_route_name:"${previous_route_name}",
       ),),);
     }else{
-      // Flushbar(
-      //   backgroundColor: presentsent_color,
-      //   flushbarPosition: FlushbarPosition.TOP,
-      //   messageColor: Main_Theme_textColor,
-      //   titleColor: Main_Theme_textColor,
-      //   icon: Icon(Icons.info_outlined,color:Colors.black,),
-      //   messageSize: 16,
-      //   title:  "Could not send OTP",
-      //   message:  "Please check your mobile number",
-      //   duration:  Duration(seconds: 3),
-      // )..show(context);
-
       ElegantNotification(
         borderRadius: BorderRadius.circular(11),
         width: 380,
@@ -114,27 +109,63 @@ class CustomHttpRequestClass{
 
 
   ///           Company Registration  --------------------------------------------------
-   companyRegistrationFunction(String mobileNumber)async{
-    try{
-      Response response=await http.post(Uri.parse("http://45.114.84.22:8081/useridentity/registration"),
-          body:
-      jsonEncode(
-         {
-            "EnglishDesc":"JIBIKA",
-            "BusinessType":"1",
-            "Address":"Jumuna Future Park",
-            "EmpSize":"100",
-            "Mobile":"0188973335",
-            "GroupMail":"uzzal@gmail.com",
-            "PackageType":"small",
-            "NewPassword":"123456789",
-            "ConPassword":"123456789",
-            "Otp":"8296"
-          }
-      ));
+   companyRegistrationFunction(
+       String package,
+       BuildContext context,
+       String   mobileNumber,
+       String   companytype,
+       String   companyname,
+       String   companyAddress,
+       String   noOfEmployee,
+       String  companyEmail,
+       String   password,
+       String OTP,
 
-    print("registration -----------------------------> ${response.body}");
-    print("registration -----------------------------> ${response.statusCode}");
+       )async{
+    try{
+          var body = jsonEncode({
+            "EnglishDesc":"$companyname",
+            "BusinessType":"$companytype",
+            "Address":"$companyAddress",
+            "EmpSize":int.parse("${noOfEmployee}"),
+            "Mobile":"$mobileNumber",
+            "GroupMail":"$companyEmail",
+            "PackageType":"$package",
+            "NewPassword":"$password",
+            "ConPassword":"$password",
+            "Otp":"$OTP"
+          });
+   var data=await http.post(Uri.parse("${BASEURL}/${REGISTRATION}"),
+          headers: {"Content-Type": "application/json"},
+          body: body
+      ).then((http.Response response) {
+        print("Response status: ${response.statusCode}");
+        print("Response body: ${response.contentLength}");
+        print(response.statusCode);
+        print(response.body);
+        print(response.headers);
+        print(response.request);
+        var registration =jsonDecode(response.body);
+        if(response.statusCode==200 && registration["msg"]=="success"){
+          ElegantNotification(
+            borderRadius: BorderRadius.circular(11),
+            width: 380,
+            iconSize: 25,
+            background: presentsent_color,
+            progressIndicatorBackground: presentsent_color,
+            progressIndicatorColor: absent_color,
+            // position: Alignment.center,
+            title:  ColorCustomText(fontSize: 16, fontWeight: FontWeight.w500, text: "Registration Successful", letterSpacing: 0.3, textColor: Main_Theme_textColor),
+            description: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "Thanks from JIBIKA PAYSCALE!..", letterSpacing: 0.3, textColor: Main_Theme_textColor),
+            onDismiss: () {
+              print('Message when the notification is dismissed');
+            }, icon: Icon(Icons.info_outlined,color:Colors.black,),
+          ).show(context);
+          Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreenSlide(),));
+        }
+      }
+      );
+
 
    }catch(e){
       print("Catch error $e");

@@ -10,3 +10,6 @@
 
   /// Get Privacy Policy
     String SEND_OTP="useridentity/sendsms?mbn=";
+
+  /// Get Privacy Policy
+    String REGISTRATION="useridentity/registration";

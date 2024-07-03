@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:elegant_notification/elegant_notification.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jibika_plexus/Controller/CounterProvider/counter_provider.dart';
 import 'package:jibika_plexus/CustomHttp/custom_http.dart';
 import 'package:jibika_plexus/CustomWidget/CustomBootomSplashBar/custom_bootom_splash_bar.dart';
 import 'package:jibika_plexus/CustomWidget/CustomButton/custom_button.dart';
@@ -10,6 +11,7 @@ import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
 import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
 import 'package:jibika_plexus/View/Auth/LoginScreen/login_screen_screen2.dart';
+import 'package:provider/provider.dart';
 
 class OTPScreen extends StatefulWidget {
   OTPScreen({super.key,
@@ -66,6 +68,7 @@ class _OTPScreenState extends State<OTPScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final otp= Provider.of<CounterProvider>(context).setOTP;
     double h=MediaQuery.of(context).size.height;
     double w=MediaQuery.of(context).size.width;
 print("1111111111111111111111111 ========== $count");
@@ -217,19 +220,51 @@ print("1111111111111111111111111 ========== $count");
                                    _fieldFour.text;
                              });
 
-                             f();
+                             Future.delayed(Duration(milliseconds: 500),() {
+                               if(_otp==otp){
+                                 CustomHttpRequestClass().companyRegistrationFunction(
+                                   "${widget.package}",
+                                   context,
+                                   "${widget.mobileNumber}",
+                                   "${widget.companytype}",
+                                   "${widget.companyname}",
+                                   "${widget.companyAddress}",
+                                   "${widget.noOfEmployee}",
+                                   "${widget.companyEmail}",
+                                   "${widget.password}",
+                                   "$_otp",
+                                 );
+                               }else{
+                                 ElegantNotification(
+                                   borderRadius: BorderRadius.circular(
+                                       11),
+                                   width: 340,
+                                   iconSize: 25,
+                                   background: presentsent_color,
+                                   progressIndicatorBackground: presentsent_color,
+                                   progressIndicatorColor: absent_color,
+                                   // position: Alignment.center,
+                                   title: ColorCustomText(fontSize: 16,
+                                       fontWeight: FontWeight.w500,
+                                       text: "Wrong OTP",
+                                       letterSpacing: 0.3,
+                                       textColor: Main_Theme_textColor),
+                                   description: ColorCustomText(
+                                       fontSize: 14,
+                                       fontWeight: FontWeight.w400,
+                                       text: "Please Enter Correct OTP",
+                                       letterSpacing: 0.3,
+                                       textColor: Main_Theme_textColor),
+                                   onDismiss: () {
+                                     print(
+                                         'Message when the notification is dismissed');
+                                   },
+                                   icon: Icon(Icons.info_outlined,
+                                     color: Colors.black,),
+                                 ).show(context);
+                               }
+                             },);
 
-
-
-
-
-                             // Future.delayed(Duration(seconds: 1),() {
-                             //
-                             //  CustomHttpRequestClass().companyRegistrationFunction("01889173335");
-                             //   //Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreenSlide(),));
-                             //
-                             //
-                             //   },);
                            }, text: "Verify", button_text_fontSize: 16, button_height: 50, custom_button_collor: CustomButtonColor, button_text_color: Main_Theme_WhiteCollor, borderRadius: 50),
                          ),
                          const SizedBox(
