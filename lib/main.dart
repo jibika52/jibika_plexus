@@ -54,7 +54,8 @@ class MyApp extends StatelessWidget {
         //    home:MainSplashPageViewScreen(),
 
         /// ----------Working Screen--------
-        home:LoginScreenSlide(),
+      //  home:LoginScreenSlide(),
+        home:BootomNatchBarScreen(),
 
         //  home:BootomNavigationBarItemsTrackingScreen(),
         //   home:BootomNavigationBarItemsAttendenceScreen(),

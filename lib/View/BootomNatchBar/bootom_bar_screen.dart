@@ -12,7 +12,6 @@ import '../../CustomWidget/CustomDrawer/CustomLeftDrawer/custom_left_drawer.dart
 import '../HomeScreen/home_screen.dart';
 import 'BootomNavigationBarItemsScreen/BootomNavigationBarItemsTrackingScreen/bootombar_tracking_screen.dart';
 
-
 class BootomNatchBarScreen extends StatefulWidget {
   const BootomNatchBarScreen({super.key});
 
@@ -52,6 +51,7 @@ class _BootomNatchBarScreenState extends State<BootomNatchBarScreen> {
     return WillPopScope(
       onWillPop: () { return Future(() => false); },
       child: Scaffold(
+          resizeToAvoidBottomInset: false,
         drawer:CustomLeftDrawer(),
         key: _key,
         appBar: PreferredSize(preferredSize: Size.fromHeight(100),
@@ -115,8 +115,8 @@ class _BootomNatchBarScreenState extends State<BootomNatchBarScreen> {
             ],
           ),
         ),
-
-        floatingActionButton: CircleAvatar(
+        floatingActionButton:keyboardOpen
+            ? SizedBox(): CircleAvatar(
           radius: 30,
           backgroundColor: Colors.white,
           child: FloatingActionButton(
@@ -137,4 +137,5 @@ class _BootomNatchBarScreenState extends State<BootomNatchBarScreen> {
       ),
     );
   }
+  bool keyboardOpen = false;
 }
