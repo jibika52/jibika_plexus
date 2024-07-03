@@ -45,7 +45,7 @@ class _BootomNavBarItemsMainFloationHomeScreenState extends State<BootomNavBarIt
               height: 55,
               width: w,
               padding: EdgeInsets.only(left: 10, right: 10, top: 7, bottom: 7 ),
-              margin: EdgeInsets.only(left: 10,right: 10,bottom: 10),
+              margin: EdgeInsets.only(left: 10,right: 10),
               decoration: BoxDecoration(borderRadius: BorderRadius.circular(7),
                 color: Main_Theme_WhiteCollor,
               ),
