@@ -133,7 +133,7 @@ print("1111111111111111111111111 ========== $count");
                                  SizedBox(width: 8,),
                                  InkWell(
                                      onTap: () {
-                                       if(count==0) {
+                                       if(count==119) {
                                          ElegantNotification(
                                            borderRadius: BorderRadius.circular(
                                                11),
