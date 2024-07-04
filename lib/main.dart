@@ -7,6 +7,7 @@ import 'package:jibika_plexus/View/Auth/CompanyRegistrationFormScreen/company_re
 import 'package:jibika_plexus/View/Auth/LoginScreen/login_screen_screen2.dart';
 import 'package:jibika_plexus/View/ChoosePackageScreen/choose_package_screen.dart';
 import 'package:jibika_plexus/View/HomeScreen/home_screen.dart';
+import 'package:jibika_plexus/testfile.dart';
 import 'package:jibika_plexus/testpackage.dart';
 import 'package:provider/provider.dart';
 
@@ -44,7 +45,7 @@ class MyApp extends StatelessWidget {
         // home:PrivacyPolicyScreen(phone_or_email: '01889173335',),
         //  home:TEstHeroAnimation(),
         //     home:CompanyRegistrationScreen(),
-     //   home:BootomNatchBarScreen(),
+     home:BootomNatchBarScreen(),
         //  home:HomeFirstPartComponentAttendance(),
 
         /// ----------Home Screen---------
@@ -55,7 +56,7 @@ class MyApp extends StatelessWidget {
 
         /// ----------Working Screen--------
       //  home:LoginScreenSlide(),
-        home:BootomNatchBarScreen(),
+        //   home:testFile(),
 
         //  home:BootomNavigationBarItemsTrackingScreen(),
         //   home:BootomNavigationBarItemsAttendenceScreen(),

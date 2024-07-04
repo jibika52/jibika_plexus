@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jibika_plexus/CustomWidget/CustomAppBar/CustomDefaultAppBar/custom_default_app_bar.dart';
+import 'package:jibika_plexus/View/BootomNatchBar/bootom_bar_screen.dart';
 
 import '../../../../CustomWidget/CustomImage/custom_image.dart';
 import '../../../../CustomWidget/CustomText/custom_text.dart';
@@ -33,7 +34,7 @@ class _BootomNavBarItemsMainFloationHomeScreenState extends State<BootomNavBarIt
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(75),
         child: CustomDefaultAppBar(onTap: () {
-          Navigator.pop(context);
+          Navigator.push(context, MaterialPageRoute(builder: (context) => BootomNatchBarScreen(),));
         }, text: "Employee"),
       ),
       body: Container(
@@ -45,7 +46,6 @@ class _BootomNavBarItemsMainFloationHomeScreenState extends State<BootomNavBarIt
               height: 55,
               width: w,
               padding: EdgeInsets.only(left: 10, right: 10, top: 7, bottom: 7 ),
-              margin: EdgeInsets.only(left: 10,right: 10),
               decoration: BoxDecoration(borderRadius: BorderRadius.circular(7),
                 color: Main_Theme_WhiteCollor,
               ),
@@ -112,93 +112,93 @@ class _BootomNavBarItemsMainFloationHomeScreenState extends State<BootomNavBarIt
                         height: 50,
                         width: animatwidth,
 
-                        padding: EdgeInsets.only(left: 7,right: 7,top: 1,bottom: 1),
-                        child: InkWell(
-                          onTap: () {
-                            setState(() {
-                              _is_click_date=!_is_click_date;
-                              if(_is_click_date==true){
-                                if(w>530){
-                                  animatwidth=530;
-                                }else{
-                                  animatwidth=w*0.92;
-                                }
-                              }else{
-                                animatwidth=117.0;
-                              }
-                            });
-                          },
-                          child: Row(
-                            children: [
-                              Expanded(
-                                  flex: 10,
-                                  child: Container(
-                                    height: 55,
-                                    width: 300,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(7),
-                                        color:Color.fromRGBO(245, 245, 245, 1),
-                                       border: Border.all(width: 2,color: Main_Theme_textColor.withOpacity(0.1))
-                                    ),
-                                    child: Row(
-                                      children: [
-                                        Container(
+                        padding: EdgeInsets.only(left: 7,right: 7),
+                        child: Row(
+                          children: [
+                            Expanded(
+                                flex: 10,
+                                child: Container(
+                                  height: 55,
+                                  width: 300,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(7),
+                                      color:Color.fromRGBO(245, 245, 245, 1),
+                                     border: Border.all(width: 2,color: Main_Theme_textColor.withOpacity(0.1))
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      InkWell(
+                                        onTap: () {
+                                          setState(() {
+                                            _is_click_date=!_is_click_date;
+                                            if(_is_click_date==true){
+                                              if(w>530){
+                                                animatwidth=530;
+                                              }else{
+                                                animatwidth=w-13;
+                                              }
+                                            }else{
+                                              animatwidth=117.0;
+                                            }
+                                          });
+                                        },
+                                        child: Container(
                                           margin: EdgeInsets.only(
                                               left: 10,right: 10
                                           ),
                                           height: 16,width: 16 ,
                                           child: CustomImageSction(height: 16, width: 16, radius: 1, image: "Assets/DashBoardIcons/searchnormal.png"),
                                         ),
-                                        Container(
-                                          margin: EdgeInsets.only(right: 10
-                                          ),
-                                          height: 12,
-                                          width: 2,
-                                          color: Main_Theme_textColor.withOpacity(0.1),
+                                      ),
+                                      Container(
+                                        margin: EdgeInsets.only(right: 10
                                         ),
-                                        Expanded(
-                                          child: Container(
-                                              child: TextFormField(
-                                                style: GoogleFonts.poppins(
-                                                  fontWeight: FontWeight.w400,
-                                                  fontSize: 12,
-                                                ),
-                                                decoration: InputDecoration(
-                                                    contentPadding: EdgeInsets.only(bottom: 14),
-                                                    border: InputBorder.none,
-                                                    hintStyle: TextStyle(
-                                                        fontWeight: FontWeight.w400,
-                                                        fontSize: 12,
-                                                        color: Main_Theme_textColor.withOpacity(0.30)
-                                                    ),
-                                                    hintText: "Search Here"
-                                                ),
-                                              )
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  )),
+                                        height: 12,
+                                        width: 2,
+                                        color: Main_Theme_textColor.withOpacity(0.1),
+                                      ),
+                                      Expanded(
+                                        child: Container(
+                                            child: TextFormField(
+                                              style: GoogleFonts.poppins(
+                                                fontWeight: FontWeight.w400,
+                                                fontSize: 12,
+                                              ),
+                                              decoration: InputDecoration(
+                                                  contentPadding: EdgeInsets.only(bottom: 14),
+                                                  border: InputBorder.none,
+                                                  hintStyle: TextStyle(
+                                                      fontWeight: FontWeight.w400,
+                                                      fontSize: 12,
+                                                      color: Main_Theme_textColor.withOpacity(0.30)
+                                                  ),
+                                                  hintText: "Search Here"
+                                              ),
+                                            )
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                )),
 
-                              Container(
-                                height: 55,
-                                width: 40,
-                                margin: EdgeInsets.only(
-                                    left: 10,right: 0
-                                ),
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 7,
-                                    vertical:2.95
-                                ),
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(7),
-                                    color:Color.fromRGBO(245, 245, 245, 1),
-                                    border: Border.all(width: 2,color: Main_Theme_textColor.withOpacity(0.1))
-                                ),
-                                child: CustomImageSction(height: 17, width: 15, radius: 1, image: "Assets/DrawerImage/search_filter.png"),
+                            Container(
+                              height: 55,
+                              width: 40,
+                              margin: EdgeInsets.only(
+                                  left: 10,right: 0
                               ),
-                            ],
-                          ),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 7,
+                                  vertical:2.95
+                              ),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(7),
+                                  color:Color.fromRGBO(245, 245, 245, 1),
+                                  border: Border.all(width: 2,color: Main_Theme_textColor.withOpacity(0.1))
+                              ),
+                              child: CustomImageSction(height: 17, width: 15, radius: 1, image: "Assets/DrawerImage/search_filter.png"),
+                            ),
+                          ],
                         ),
                       ))
                 ],

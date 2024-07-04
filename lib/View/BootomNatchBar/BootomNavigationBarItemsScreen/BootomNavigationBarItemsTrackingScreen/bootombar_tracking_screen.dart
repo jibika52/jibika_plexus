@@ -27,8 +27,6 @@ class _BootomNavigationBarItemsTrackingScreenState extends State<BootomNavigatio
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-
       body: Container(
         height: double.infinity,
         width: double.infinity,

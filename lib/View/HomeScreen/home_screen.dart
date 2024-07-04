@@ -30,7 +30,6 @@ class _HomeScreenState extends State<HomeScreen> {
     double animated_leave=0;
   @override
   Widget build(BuildContext context) {
-    FocusScope.of(context).requestFocus(new FocusNode());
 
     return WillPopScope(
       onWillPop: () => Future(() => false),
