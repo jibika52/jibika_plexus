@@ -3,8 +3,10 @@
 import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jibika_plexus/CustomWidget/CustomAppBar/CustomDefaultAppBar/custom_default_app_bar.dart';
+import 'package:jibika_plexus/View/BootomNatchBar/BootomNavigationBarItemsScreen/BootomNavigationBarItemsMainHomeScreen/EmployeeProfile/employee_profile_screen.dart';
 import 'package:jibika_plexus/View/BootomNatchBar/bootom_bar_screen.dart';
 
 import '../../../../CustomWidget/CustomImage/custom_image.dart';
@@ -33,6 +35,7 @@ class _BootomNavBarItemsMainFloationHomeScreenState extends State<BootomNavBarIt
   Widget build(BuildContext context) {
     double h=MediaQuery.of(context).size.height;
     double w=MediaQuery.of(context).size.width;
+    print("ccccccccccccccccccc =============== ${_isActive}");
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(75),
@@ -56,7 +59,7 @@ class _BootomNavBarItemsMainFloationHomeScreenState extends State<BootomNavBarIt
                 children: [
                   Container(
                     height: 38,
-                    width: 140,
+                    width: 160,
                     padding: EdgeInsets.only(top: 2),
                     child:  Container(
                       height: 38,
@@ -64,13 +67,13 @@ class _BootomNavBarItemsMainFloationHomeScreenState extends State<BootomNavBarIt
                         current:_isActive ,
                         values: [false,true],
                         iconOpacity: 0.2,
-                        indicatorSize: Size.fromWidth(100),
-                        customIconBuilder: (context,local,global)=>
-                            Text(local.value? "Inactive":"Active",style: TextStyle(
-                              fontSize: 11,
-                              fontWeight: FontWeight.w400,
-                              color:Main_Theme_textColor,
-                            ),),
+                        indicatorSize: Size.fromWidth(120),
+                        customIconBuilder: (context,local,global){
+                         return Text(local.value? "Inactive":"Active",style: TextStyle(
+                            fontSize: _isActive? 13:13,
+                            fontWeight:  _isActive? FontWeight.w400 : FontWeight.w400,
+                            color:  Colors.black ),);},
+
                         borderWidth: 1.0,
                         iconAnimationCurve: Curves.linear,
                         selectedIconOpacity: 1.0,
@@ -80,6 +83,7 @@ class _BootomNavBarItemsMainFloationHomeScreenState extends State<BootomNavBarIt
                         styleBuilder: (b) => ToggleStyle(
                           borderColor: Main_Theme_textColor.withOpacity(0.5),
 borderRadius: BorderRadius.circular(10),
+
                           backgroundColor: b ? Colors.white : Colors.white,
                           indicatorColor: b ? Colors.red : Colors.green,
                           indicatorBorderRadius: BorderRadius.circular(b ? 4.0 : 4.0),
@@ -190,129 +194,112 @@ borderRadius: BorderRadius.circular(10),
                 ],
               ),
             ),
+
             Expanded(
               child: Container(
                 margin: EdgeInsets.only(top: 7),
                 width: 400,
                 color: Main_Theme_WhiteCollor,
+                padding: EdgeInsets.only(
+                  left: 10,
+                  right: 10
+                ),
                 child: Container(
                     child: ListView.builder(
                       itemCount: 10,
                       itemBuilder: (context, index) {
-                        return Container(
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all( Radius.circular(7)),
+                        return InkWell(
+                          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => EmployeeProfileScreen(),)),
+                          child: AnimatedContainer(
+                            duration: Duration(milliseconds: 400),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.all( Radius.circular(7)),
+                                color:  _isActive==false?
+                                  presentsent_color.withOpacity(0.05):
+                                 absent_color.withOpacity(0.1),
 
-                              color:  CustomButtonColor.withOpacity(0.05),
-                              border: Border(bottom: BorderSide( color: CustomButtonColor))
-                          ),
-                          margin: EdgeInsets.only(bottom: 7),
-                          child: Column(
-                            children: [
-                              Container(
-                                padding: EdgeInsets.only(left: 10,right: 10,top: 5,bottom: 5),
-                                height: 80,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(7),
-
-                                  color:  leave_color.withOpacity(0.05),
-                                  //  border: Border(bottom: BorderSide(color:_selectedindex==index?CustomButtonColor.withOpacity(0.05): CustomButtonColor))
-                                ),
-                                width: double.infinity,
-                                child: Row(
-                                  children: [
-                                    Container(
-                                      height: 65,
-                                      width: 52,
-                                      decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.all(Radius.circular(7))
+                                border: Border(bottom: BorderSide(color:  _isActive==false?
+                                  presentsent_color:
+                                  absent_color,))
+                            ),
+                            margin: EdgeInsets.only(bottom: 7),
+                            child: Column(
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.only(left: 10,right: 0,top: 5,bottom: 5),
+                                  height: 80,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(7),
+                          
+                                    color:  leave_color.withOpacity(0.05),
+                                    //  border: Border(bottom: BorderSide(color:_selectedindex==index?CustomButtonColor.withOpacity(0.05): CustomButtonColor))
+                                  ),
+                                  width: double.infinity,
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                        height: 55,
+                                        width: 45,
+                                        decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.all(Radius.circular(7)),
+                                        ),
+                                        margin: EdgeInsets.only(right: 5),
+                                        child: CustomImageSction(height: 55, width: 45, radius: 7, image: "Assets/DrawerImage/testperson.png"),
                                       ),
-                                      margin: EdgeInsets.only(right: 10),
-                                      child: Stack(
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.all(1.0),
-                                            child: ClipRRect(
-                                                borderRadius: BorderRadius.circular(100),
-                                                child: CustomImageSction(height: 64, width: 50, radius: 1, image: "Assets/DrawerImage/trackingimage.png")
-                                            ),
+                          
+                          SizedBox(width: 5,),
+                                      Expanded(
+                                        flex: 4,
+                                        child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            Text("Hafijur Rahman Mizan",
+                                              overflow: TextOverflow.ellipsis
+                                              ,style: GoogleFonts.poppins(
+                                                fontSize: 13,
+                                                fontWeight: FontWeight.w500,
+                                                letterSpacing: 0.3,
+                                              ),),
+                                            SizedBox(height: 1,),
+                                            CustomText(fontSize: 12, fontWeight: FontWeight.w300, text: "HR Manager", letterSpacing: 0.3,  ),
+                                            SizedBox(height: 1,),
+                                            CustomText(fontSize: 12, fontWeight: FontWeight.w300, text: "50y to 60Y", letterSpacing: 0.3,  ),
+                                          ],
+                                        ),
+                                      ),
+                                      SizedBox(width: 10,),
+                          
+                          
+                                      Expanded(
+                                        flex: 4,
+                                        child: Container(
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                            children: [
+                                              CustomImageSction(height: 18, width: 18, radius: 1, image: "Assets/DashBoardIcons/rating.png"),
+                                              SizedBox(width: 5,),
+                                              CustomImageSction(height: 18, width: 18, radius: 1, image: "Assets/DashBoardIcons/rating.png"),
+                                              SizedBox(width: 5,),
+                                              CustomImageSction(height: 18, width: 18, radius: 1, image: "Assets/DashBoardIcons/rating.png"),
+                                              SizedBox(width: 5,),
+                                              CustomImageSction(height: 18, width: 18, radius: 1, image: "Assets/DashBoardIcons/rating.png"),
+                                              IconButton(onPressed: () {
+                          
+                                              }, icon: Icon(Icons.arrow_forward_ios_rounded,size: 22,color: Main_Theme_textColor,))
+                                            ],
                                           ),
-                                          Positioned(
-                                              left: 4.0,
-                                              top: 1.6,
-                                              child: ClipRRect(
-                                                borderRadius: BorderRadius.circular(100),
-                                                child: Container(
-                                                  height: 45,
-                                                  width: 45,
-                                                  decoration: BoxDecoration(
-                                                      color: Colors.red,
-                                                      image: DecorationImage(image: AssetImage("Assets/DrawerImage/testperson.png"),fit: BoxFit.fill)
-                                                  ),
-                                                ),
-                                              ))
-
-                                        ],
-                                      ),
-                                    ),
-
-
-                                    Expanded(
-                                      flex: 4,
-                                      child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        children: [
-                                          Container(
-                                            height: 22,
-                                            width: 65,
-                                            decoration: BoxDecoration(
-                                                borderRadius: BorderRadius.circular(10),
-                                                color:Main_Theme_textColor_tir_Condition.withOpacity(0.7)
-                                            ),
-                                            alignment: Alignment.center,
-                                            child: ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "544532", letterSpacing: 0.3,textColor: Main_Theme_WhiteCollor,),
-                                          ),
-                                          SizedBox(height: 3,),
-                                          Text("Hafijur Rahman Mizan",
-                                            overflow: TextOverflow.ellipsis
-                                            ,style: GoogleFonts.poppins(
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w500,
-                                              letterSpacing: 0.3,
-                                            ),),
-                                          SizedBox(height: 1,),
-                                          CustomText(fontSize: 11, fontWeight: FontWeight.w300, text: "HR Manager", letterSpacing: 0.3,  ),
-                                        ],
-                                      ),
-                                    ),
-                                    SizedBox(width: 10,),
-
-
-                                    Container(
-                                      height: 38,
-                                      width: 110,
-                                      decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(10),
-                                          color: Main_Theme_textColor_tir_Condition.withOpacity(0.7)
-                                      ),
-                                      child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        crossAxisAlignment: CrossAxisAlignment.center,
-                                        children: [
-                                          ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "Track Now", letterSpacing: 0.3, textColor: Main_Theme_WhiteCollor),
-                                          SizedBox(width: 5,),
-                                          Icon(Icons.arrow_forward_ios_rounded,size: 17,color: Main_Theme_WhiteCollor,),
-                                        ],
-                                      ),
-                                    )
-
-
-                                  ],
+                                        ),
+                                      )
+                          
+                          
+                                    ],
+                                  ),
                                 ),
-                              ),
-
-                            ],
+                          
+                              ],
+                            ),
                           ),
                         );
                       },)
