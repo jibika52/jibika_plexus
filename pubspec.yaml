@@ -75,6 +75,7 @@ dependencies:
 
   web: 0.5.0
   dropdown_button2: ^2.3.9
+  animated_toggle_switch: ^0.8.2
 
 
 dev_dependencies:
