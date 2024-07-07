@@ -13,7 +13,7 @@ class CustomCalender extends StatelessWidget {
       child: Container(
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5),
-              color: Main_Theme_textColor.withOpacity(0.04)
+            //  color: Main_Theme_textColor.withOpacity(0.04)
           ),
           height: 30,
           width: 30,
