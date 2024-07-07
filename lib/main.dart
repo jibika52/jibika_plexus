@@ -5,6 +5,7 @@ import 'package:jibika_plexus/Controller/CounterProvider/counter_provider.dart';
 import 'package:provider/provider.dart';
 import 'Controller/HomeController/home_controller.dart';
 import 'Controller/PrivacyPolicyController/privacy_policy.dart';
+import 'View/BootomNatchBar/BootomNavigationBarItemsScreen/BootomNavigationBarItemsMainHomeScreen/EmployeeProfile/employee_profile_screen.dart';
 import 'View/BootomNatchBar/bootom_bar_screen.dart';
 
 void main() async {
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
         // home:PrivacyPolicyScreen(phone_or_email: '01889173335',),
         //  home:TEstHeroAnimation(),
         //     home:CompanyRegistrationScreen(),
-     home:BootomNatchBarScreen(),
+  home:BootomNatchBarScreen(),
         //  home:HomeFirstPartComponentAttendance(),
 
         /// ----------Home Screen---------
@@ -46,7 +47,7 @@ class MyApp extends StatelessWidget {
         //   home:testFile(),
         //  home:BootomNavigationBarItemsTrackingScreen(),
         //   home:BootomNavigationBarItemsAttendenceScreen(),
-        //    home:TestPAckageScreen(),
+        //      home:EmployeeProfileScreen(),
       ),
 
     );
