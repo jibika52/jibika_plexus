@@ -35,6 +35,7 @@ class CustomText extends StatelessWidget {
     );
   }
 }
+
 class ColorCustomText extends StatelessWidget {
   ColorCustomText({super.key,
     required this.fontSize,

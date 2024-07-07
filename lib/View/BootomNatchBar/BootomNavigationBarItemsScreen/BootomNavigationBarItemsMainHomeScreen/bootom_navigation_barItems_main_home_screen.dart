@@ -63,27 +63,33 @@ class _BootomNavBarItemsMainFloationHomeScreenState extends State<BootomNavBarIt
                     padding: EdgeInsets.only(top: 2),
                     child:  Container(
                       height: 38,
-                      child: AnimatedToggleSwitch<bool>.size(
+                      child: AnimatedToggleSwitch.size(
+
+                        clipBehavior: Clip.none,
+
                         current:_isActive ,
                         values: [false,true],
-                        iconOpacity: 0.2,
+                        iconOpacity: 0.8,
                         indicatorSize: Size.fromWidth(120),
                         customIconBuilder: (context,local,global){
-                         return Text(local.value? "Inactive":"Active",style: TextStyle(
-                            fontSize: _isActive? 13:13,
-                            fontWeight:  _isActive? FontWeight.w400 : FontWeight.w400,
-                            color:  Colors.black ),);},
+                         return  AnimatedContainer(
+                           duration: Duration(milliseconds: 500),
+                           child: Text(local.value? "Inactive":"Active",style: TextStyle(
+                              fontSize: _isActive? 11:11,
+                              fontWeight:  _isActive? FontWeight.w400 : FontWeight.w400,
+                              color:  Colors.black ),),
+                         );},
 
                         borderWidth: 1.0,
                         iconAnimationCurve: Curves.linear,
-                        selectedIconOpacity: 1.0,
+                      //  selectedIconOpacity: 1.0,
+                        selectedIconOpacity: 0.8,
                         onChanged: (value) => setState(() {
                           _isActive=!_isActive;
                         }),
                         styleBuilder: (b) => ToggleStyle(
                           borderColor: Main_Theme_textColor.withOpacity(0.5),
-borderRadius: BorderRadius.circular(10),
-
+                          borderRadius: BorderRadius.circular(10),
                           backgroundColor: b ? Colors.white : Colors.white,
                           indicatorColor: b ? Colors.red : Colors.green,
                           indicatorBorderRadius: BorderRadius.circular(b ? 4.0 : 4.0),

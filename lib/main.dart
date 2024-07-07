@@ -2,23 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:jibika_plexus/Controller/CounterProvider/counter_provider.dart';
-import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
-import 'package:jibika_plexus/View/Auth/CompanyRegistrationFormScreen/company_registration_form_screen.dart';
-import 'package:jibika_plexus/View/Auth/LoginScreen/login_screen_screen2.dart';
-import 'package:jibika_plexus/View/ChoosePackageScreen/choose_package_screen.dart';
-import 'package:jibika_plexus/View/HomeScreen/home_screen.dart';
-import 'package:jibika_plexus/testfile.dart';
-import 'package:jibika_plexus/testpackage.dart';
 import 'package:provider/provider.dart';
-
 import 'Controller/HomeController/home_controller.dart';
 import 'Controller/PrivacyPolicyController/privacy_policy.dart';
-import 'View/BootomNatchBar/BootomNavigationBarItemsScreen/BootomNavigationBarItemsAttendenceScreen/bootom_navigationar_Items_attendence_screen.dart';
 import 'View/BootomNatchBar/bootom_bar_screen.dart';
-import 'View/HomeScreen/HomeComponent/HomeFirstPartComponent/HomeFirstPartComponentAttendence/home_first_part_component_attendence.dart';
-import 'View/HomeScreen/HomeComponent/HomeFirstPartComponent/HomeFirstPartComponentLeave/home_first_part_component_leave.dart';
-import 'View/PrivacyPolicy/privacy_policy.dart';
-import 'View/SplashScreen/main_splash_pageview_screen.dart';
 
 void main() async {
   await GetStorage.init();
@@ -55,13 +42,11 @@ class MyApp extends StatelessWidget {
         //    home:MainSplashPageViewScreen(),
 
         /// ----------Working Screen--------
-      //  home:LoginScreenSlide(),
+        //  home:LoginScreenSlide(),
         //   home:testFile(),
-
         //  home:BootomNavigationBarItemsTrackingScreen(),
         //   home:BootomNavigationBarItemsAttendenceScreen(),
         //    home:TestPAckageScreen(),
-
       ),
 
     );
