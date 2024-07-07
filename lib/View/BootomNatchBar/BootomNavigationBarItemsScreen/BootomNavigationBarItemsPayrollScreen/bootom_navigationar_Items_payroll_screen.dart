@@ -341,171 +341,71 @@ class _BootomNavigationBarItemsPayrollScreenState extends State<BootomNavigation
                   margin: EdgeInsets.only(left: 10,right: 10,top: 10),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(7) ,
-                    color:Main_Theme_WhiteCollor,
                   ),
-                  height: 150,
                   width: double.infinity,
                   child: ListView.builder(
                     scrollDirection: Axis.vertical,
-                    itemBuilder: (context, index) => Card(
-                      color: Color(0xfff2f2ff),
-                      child: Container(
-                        height: 75,
-                        width: double.infinity,
-                        //  color: Colors.green,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          //  color: Color(0xffF2F2F2)
-                        ),
-                        margin: EdgeInsets.only(bottom: 7),
-                        child: Row(
-                          children: [
-                            Expanded(
-                              flex: 2,
-                              child: Container(
-                                //   color: Colo
-                                alignment: Alignment.topCenter,
-                                child: Stack(
-                                  alignment: Alignment.topCenter,
-                                  children: [
-                                    Positioned(
-                                      top: 22,
-                                      // left: 23,
-                                      child: CircularPercentIndicator(
-                                        radius: 21.0,
-                                        lineWidth: 1.5,
-                                        percent: 0.99999,
-                                        backgroundColor: Colors.grey.withOpacity(0),
-                                        progressColor: Main_Theme_textColor.withOpacity(0.7),
-                                        center: Column(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children: [
-
-                                            ColorCustomText(fontSize: 15, fontWeight: FontWeight.w500, text: "01", letterSpacing: 0.1, textColor: Main_Theme_textColor),
-                                            ColorCustomText(fontSize: 10, fontWeight: FontWeight.w400, text: "Sat", letterSpacing: 0.1, textColor: Main_Theme_textColor),
-                                          ],
-                                        ),
-
-                                      ),
-                                    ),
-                                    Positioned(
-                                      top: 13,
-                                      // left: 23,
-                                      child: CircularPercentIndicator(
-                                        radius: 30.0,
-                                        lineWidth: lineWidth,
-                                        percent: 0.99999,
-                                        backgroundColor: Colors.grey.withOpacity(0),
-                                        progressColor: presentsent_color,
-                                      ),
-                                    ),
-                                    Positioned(
-                                      top: 13,
-                                      //  left: 23,
-                                      child: CircularPercentIndicator(
-                                        radius: 30.0,
-                                        lineWidth: lineWidth,
-                                        /// ------------------------- increase  holiday -----------------///
-                                        percent:0.30,
-                                        backgroundColor: Colors.grey.withOpacity(0),
-                                        progressColor: absent_color,
-                                      ),
-                                    ),
-                                    Positioned(
-                                      top: 13,
-                                      //   left: 23,
-                                      child: CircularPercentIndicator(
-                                        radius: 30.0,
-                                        lineWidth: lineWidth,
-                                        percent:0.20,
-                                        backgroundColor: Colors.grey.withOpacity(0),
-                                        progressColor: leave_color,
-                                      ),
-                                    ),
-                                    Positioned(
-                                      top: 13,
-                                      child: CircularPercentIndicator(
-                                        radius: 30.0,
-                                        lineWidth: lineWidth,
-                                        percent: 0.20,
-                                        backgroundColor: Colors.grey.withOpacity(0),
-                                        progressColor: holiday_color,
-                                      ),
-                                    ),
-
-
-                                  ],
-                                ),
-                              ),),
-                            Container(
-                              padding: const EdgeInsets.only(top: 6.0),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400,  text: "8080", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.9)),
-                                  SizedBox(height: C_height,),
-                                  ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400,  text: "Active", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.9)),
-                                ],
-                              ),
+                    itemBuilder: (context, index) => Container(
+                      height: 67,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                          color: Main_Theme_WhiteCollor,
+                        border: Border(
+                          bottom: BorderSide(
+                            color: presentsent_color,
+                            width: 1.5,
+                          )
+                        )
+                      ),
+                      margin: EdgeInsets.only(bottom: 4),
+                      padding: EdgeInsets.only(right: 10),
+                      child: Row(
+                        children: [
+                         Container(
+                           height: 47,
+                           width: 43,
+                           margin: EdgeInsets.all(10),
+                           decoration: BoxDecoration(
+                             color: presentsent_color.withOpacity(0.05),
+                             borderRadius: BorderRadius.circular(7),
+                           ),
+                           child: Column(
+                             children: [
+                               ColorCustomText(fontSize: 16, fontWeight: FontWeight.w500, text: "Jan", letterSpacing: 0.2, textColor: presentsent_color),
+                               ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "1-31", letterSpacing: 0.2, textColor: Main_Theme_textColor),
+                             ],
+                           ),
+                         ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              ColorCustomText(fontSize: 15, fontWeight: FontWeight.w500, text: "168", letterSpacing: 0.2, textColor: Main_Theme_textColor),
+                              ColorCustomText(fontSize: 14, fontWeight: FontWeight.w300, text: "Total Employee", letterSpacing: 0.2, textColor: Main_Theme_textColor.withOpacity(0.5)),
+                            ],
+                          ),
+                          Spacer(),
+                          Container(
+                            height: 35,
+                            width: 2,
+                            margin:EdgeInsets.symmetric(horizontal: 10),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              color: Main_Theme_textColor.withOpacity(0.1)
                             ),
-                            SizedBox(width:20,),
-                            Expanded(
-                              flex: 3,
-                              child: Padding(
-                                padding: const EdgeInsets.only(top: 6.0),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400,  text: "Present : ", letterSpacing: 0.3, textColor: presentsent_color),
-                                        // SizedBox(width: 7,),
-                                        ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "8989", letterSpacing: 0.3, textColor: presentsent_color),
-                                      ],
-                                    ),
-                                    SizedBox(height: C_height,),
-                                    Row(
-                                      children: [
-                                        ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400,  text: "Absent : ", letterSpacing: 0.3, textColor: absent_color.withOpacity(0.9)),
-                                        //  SizedBox(width: 7,),
-                                        ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "8989", letterSpacing: 0.3, textColor: absent_color.withOpacity(0.9)),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              flex: 3,
-                              child: Container(
-                                padding: const EdgeInsets.only(top: 6.0),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400,  text: "Leave : ", letterSpacing: 0.3, textColor: leave_color.withOpacity(0.9)),
-                                        //  SizedBox(width: 7,),
-                                        ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "2020", letterSpacing: 0.3, textColor: leave_color.withOpacity(0.9)),
-                                      ],
-                                    ),
-                                    SizedBox(height: C_height,),
-                                    Row(
-                                      children: [
-                                        ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400,  text: "Holiday : ", letterSpacing: 0.3, textColor: holiday_color),
-                                        //   SizedBox(width: 7,),
-                                        ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "8989", letterSpacing: 0.3, textColor: holiday_color),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+                          ),
+                          Spacer(),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              ColorCustomText(fontSize: 15, fontWeight: FontWeight.w500, text: "168", letterSpacing: 0.2, textColor: Main_Theme_textColor),
+                              ColorCustomText(fontSize: 14, fontWeight: FontWeight.w300, text: "Net Payable Amount", letterSpacing: 0.2, textColor: Main_Theme_textColor.withOpacity(0.5)),
+                            ],
+                          ),
+                          SizedBox(width: 15,),
+                          Icon(Icons.arrow_forward_ios_rounded,size: 22,color: Main_Theme_textColor,)
+                        ],
                       ),
                     ),),
                 ))
