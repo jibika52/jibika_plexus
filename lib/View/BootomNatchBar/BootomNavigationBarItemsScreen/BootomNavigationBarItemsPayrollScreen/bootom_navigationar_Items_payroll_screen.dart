@@ -446,9 +446,6 @@ class _BootomNavigationBarItemsPayrollScreenState extends State<BootomNavigation
                                   ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400,  text: "8080", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.9)),
                                   SizedBox(height: C_height,),
                                   ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400,  text: "Active", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.9)),
-
-
-
                                 ],
                               ),
                             ),
