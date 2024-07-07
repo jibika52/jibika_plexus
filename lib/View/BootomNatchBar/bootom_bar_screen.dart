@@ -4,6 +4,7 @@ import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
 import 'package:jibika_plexus/View/BootomNatchBar/BootomNavigationBarItemsScreen/BootomNavigationBarItemsAttendenceScreen/bootom_navigationar_Items_attendence_screen.dart';
 import 'package:jibika_plexus/View/BootomNatchBar/BootomNavigationBarItemsScreen/BootomNavigationBarItemsMainHomeScreen/bootom_navigation_barItems_main_home_screen.dart';
+import 'package:jibika_plexus/View/BootomNatchBar/BootomNavigationBarItemsScreen/BootomNavigationBarItemsPayrollScreen/bootom_navigationar_Items_payroll_screen.dart';
 
 import '../../CustomWidget/CustomAppBar/CustomMAinAppBAr/custom_main_app_bar.dart';
 import '../../CustomWidget/CustomDrawer/CustomLeftDrawer/custom_left_drawer.dart';
@@ -34,7 +35,7 @@ class _BootomNatchBarScreenState extends State<BootomNatchBarScreen> {
   final List<Widget> bottomBarPages = [
     HomeScreen(),
     BootomNavigationBarItemsAttendenceScreen(),
-    HomeScreen(),
+    BootomNavigationBarItemsPayrollScreen(),
 
     BootomNavigationBarItemsTrackingScreen(),
 

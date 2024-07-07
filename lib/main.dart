@@ -7,6 +7,7 @@ import 'Controller/HomeController/home_controller.dart';
 import 'Controller/PrivacyPolicyController/privacy_policy.dart';
 import 'View/BootomNatchBar/BootomNavigationBarItemsScreen/BootomNavigationBarItemsMainHomeScreen/EmployeeProfile/employee_profile_screen.dart';
 import 'View/BootomNatchBar/bootom_bar_screen.dart';
+import 'View/SplashScreen/main_splash_pageview_screen.dart';
 
 void main() async {
   await GetStorage.init();
@@ -33,22 +34,22 @@ class MyApp extends StatelessWidget {
         // home:PrivacyPolicyScreen(phone_or_email: '01889173335',),
         //  home:TEstHeroAnimation(),
         //     home:CompanyRegistrationScreen(),
-  home:BootomNatchBarScreen(),
+         home:BootomNatchBarScreen(),
         //  home:HomeFirstPartComponentAttendance(),
 
         /// ----------Home Screen---------
         //  home:HomeScreen(),
 
         /// ----------SplashScreen--------
-        //    home:MainSplashPageViewScreen(),
+        //       home:MainSplashPageViewScreen(),
 
         /// ----------Working Screen--------
         //  home:LoginScreenSlide(),
         //   home:testFile(),
         //  home:BootomNavigationBarItemsTrackingScreen(),
         //   home:BootomNavigationBarItemsAttendenceScreen(),
-        //      home:EmployeeProfileScreen(),
-      ),
+        //  home:EmployeeProfileScreen(),
+      )
 
     );
   }

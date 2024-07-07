@@ -156,6 +156,7 @@ class _EmployeeProfileScreenState extends State<EmployeeProfileScreen> {
                                     child: ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "${countList[index]}", letterSpacing: 0.2, textColor: Main_Theme_WhiteCollor),
                                                               ),
                                 )),
+
                           ],
                         ),
                       );
