@@ -329,11 +329,58 @@ class _PAyrollProcessScreenState extends State<PAyrollProcessScreen> {
                                 ],
                               ),
                             ),
+
                           ],
                         ),
 
                       ],
                     )
+                  ),
+                  Container(
+                    height: 43,
+                    width: double.infinity,
+                    padding: EdgeInsets.only(right: 10,left: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "Payment Date", letterSpacing: 0.2, textColor: Main_Theme_textColor),
+                        Container(
+                          height: 28,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(4),
+                              color: Main_Theme_WhiteCollor,
+                            border: Border.all(
+                              color: Main_Theme_textColor.withOpacity(0.5)
+                            )
+                          ),
+                          padding: EdgeInsets.all(3),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(top: 1.0,left: 10),
+                                child: ColorCustomText(
+                                  text: "${selected2Datee}",
+                                  textColor: Main_Theme_textColor.withOpacity(0.6),
+                                  fontSize: font11,
+                                  fontWeight: FontWeight.w400, letterSpacing: 0.2,),
+                              ),
+                              SizedBox(width: 10,),
+                              /// ---------- Custom Calender Part --------- ///
+                              InkWell(
+                                  onTap: () {
+                                    _select2Date(context);
+                                  },
+                                  child:  Container(
+                                      color: Main_Theme_WhiteCollor,
+                                      child: CustomImageSction(height: 30, width: 25, radius: 3, image: "Assets/DashBoardIcons/clender.png"))
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   )
                 ],
               ),
