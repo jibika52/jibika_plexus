@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:jibika_plexus/CustomWidget/CustomAppBar/CustomDefaultAppBar/custom_default_app_bar.dart';
+import 'package:jibika_plexus/CustomWidget/CustomTrackNowButton/custom_tracknow_button.dart';
+import 'package:jibika_plexus/View/BootomNatchBar/BootomNavigationBarItemsScreen/BootomNavigationBarItemsTrackingScreen/EmployeeTrackinScreen/employee_tracking_screen.dart';
 
 import '../../../../CustomWidget/CustomImage/custom_image.dart';
 import '../../../../CustomWidget/CustomText/custom_text.dart';
@@ -256,25 +258,11 @@ class _BootomNavigationBarItemsTrackingScreenState extends State<BootomNavigatio
                                         ),
                                     ),
                                     SizedBox(width: 10,),
+                                    CustomTrackNowButton(b_text: "Track Now",  onTap: () {
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) => EmployeeTrackinScreen(),));
+                                      }, )
 
 
-                                    Container(
-                                      height: 38,
-                                      width: 110,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10),
-                                        color: Main_Theme_textColor_tir_Condition.withOpacity(0.7)
-                                      ),
-                                      child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        crossAxisAlignment: CrossAxisAlignment.center,
-                                        children: [
-                                          ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "Track Now", letterSpacing: 0.3, textColor: Main_Theme_WhiteCollor),
-                                          SizedBox(width: 5,),
-                                          Icon(Icons.arrow_forward_ios_rounded,size: 17,color: Main_Theme_WhiteCollor,),
-                                        ],
-                                      ),
-                                    )
 
 
                                   ],

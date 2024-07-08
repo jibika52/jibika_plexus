@@ -309,8 +309,7 @@ Future.delayed(Duration(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Expanded(
-
-                                    child: CustomSaveInfoSection()),
+                                    child: CustomSaveInfoSection(text: "Remember Me,",)),
                                 InkWell(
                                   onTap: () {
                                     if(_phoneController.text.isEmpty){

@@ -2,6 +2,7 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:jibika_plexus/CustomWidget/CustomAppBar/CustomDefaultAppBar/custom_default_app_bar.dart';
+import 'package:jibika_plexus/CustomWidget/CustomCheckSection/custom_check_section.dart';
 
 import '../../../../../CustomWidget/CustomCalender/custom_calender.dart';
 import '../../../../../CustomWidget/CustomImage/custom_image.dart';
@@ -36,7 +37,18 @@ class _PAyrollProcessScreenState extends State<PAyrollProcessScreen> {
     '2028',
     '2029',
   ];
+  final List<String> itemss = [
+    'AAAAAAAA',
+    'BBBBBBBBBBBB',
+    'CCCCCCC',
+    'DDDDDDDDD',
+    'EEEEEEE',
+    '2027',
+    '2028',
+    '2029',
+  ];
   String? selectedValue;
+  String? selectedValue2;
   @override
   Widget build(BuildContext context) {
     double h=MediaQuery.of(context).size.height;
@@ -233,9 +245,8 @@ class _PAyrollProcessScreenState extends State<PAyrollProcessScreen> {
             ),
             /// Second part-----------------------
             Container(
-              padding: EdgeInsets.only(left: 18,right: 18,top: 10),
+              padding: EdgeInsets.only(left: 18,right: 18,top: 10,bottom: 15),
               margin: EdgeInsets.all(10),
-              height: 160,
               width: double.infinity,
               decoration: BoxDecoration(
                 color: Main_Theme_WhiteCollor,
@@ -381,7 +392,107 @@ class _PAyrollProcessScreenState extends State<PAyrollProcessScreen> {
                         ),
                       ],
                     ),
-                  )
+                  ),
+                  Container(
+                    height: 43,
+                    width: double.infinity,
+                    padding: EdgeInsets.only(right: 10,left: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                            height: 22,
+                            width: 150,
+                            child: CustomSaveInfoSection(text: "Marge Bonus")),
+
+                        Container(
+                          height: 32,
+                          width: 140,
+                          padding: EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(4),
+                            border: Border.all(
+                              color: Main_Theme_textColor.withOpacity(0.4),
+                              width: 1.3
+                            )
+                          ),
+                          child: DropdownButtonHideUnderline(
+                            child: DropdownButton2<String>(
+                              isExpanded: true,
+                              hint: Text(
+                                '$selectedValue2',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold,
+                                  color: Main_Theme_textColor,
+                                ),
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                              items: itemss
+                                  .map((String item) => DropdownMenuItem<String>(
+                                value: item,
+                                child: Text(
+                                  item,
+                                  style: const TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black,
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ))
+                                  .toList(),
+                              value: selectedValue2,
+                              onChanged: (String? value) {
+                                setState(() {
+                                  selectedValue2 = value;
+                                });
+                              },
+
+                              iconStyleData: const IconStyleData(
+                                icon: Icon(
+                                  Icons.arrow_downward,
+                                ),
+                                iconSize: 14,
+                                iconEnabledColor: Main_Theme_textColor,
+                                iconDisabledColor: Colors.grey,
+                              ),
+                              dropdownStyleData: DropdownStyleData(
+                                scrollPadding: EdgeInsets.all(0.0),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(11),
+                                    border: Border.all(
+                                        color: Main_Theme_textColor.withOpacity(0.5),
+                                        width: 1
+                                    )
+                                ),
+                                direction: DropdownDirection.textDirection,
+                                useRootNavigator: true,
+                                padding: EdgeInsets.only(left: 2,right: 2),
+                                offset:  Offset( -3,  -5),
+                                scrollbarTheme: ScrollbarThemeData(
+                                  radius:  Radius.circular(11),
+                                  trackBorderColor: MaterialStateProperty.all(Color(0xFF5D5F6E)),
+                                  thickness: MaterialStateProperty.all<double>(6),
+                                  thumbVisibility: MaterialStateProperty.all<bool>(true),
+                                ),
+                              ),
+                              menuItemStyleData: const MenuItemStyleData(
+                                height: 40,
+                                padding: EdgeInsets.only(left: 14, right: 14),
+                              ),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  Container(
+                            height: 22,
+                            width: double.infinity,
+                            padding: EdgeInsets.only(right: 10,left: 10),
+                            child: CustomSaveInfoSection(text: "Marge Bonus")),
+
                 ],
               ),
             ),
