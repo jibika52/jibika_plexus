@@ -178,6 +178,35 @@ class CustomHttpRequestClass{
     }
   }
 
+
+  ///           Home Dashboard Pichart Data get  --------------------------------------------------------------------------
+  dashboardPieChartData(String UserId,String AttDate, BuildContext context)async{
+    dynamic dashboardPieChartData;
+    try{
+      var body = jsonEncode({
+        "UserId":"$UserId",
+        "AttDate":"$AttDate"
+      });
+      var data=await http.post(Uri.parse("${BASEURL}/${HomeDashboardPieChartData}"),
+          headers: {
+        "Content-Type": "application/json",
+        "username": "jibikaapps",
+        "password": "20jibika24",
+          },
+          body: body
+      ).then((http.Response response) {
+        print(response.statusCode);
+        print(response.body);
+        dashboardPieChartData =jsonDecode(response.body);
+        print(dashboardPieChartData);
+      }
+      );
+      return dashboardPieChartData;
+    }catch(e){
+      print("Login employeee Catch error ${e}");
+    }
+  }
+
 }
 
 f(){}

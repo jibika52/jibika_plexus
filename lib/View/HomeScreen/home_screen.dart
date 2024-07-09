@@ -2,6 +2,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:jibika_plexus/Controller/HomeController/home_controller.dart';
 import 'package:jibika_plexus/CustomWidget/CustomAppBar/CustomMAinAppBAr/custom_main_app_bar.dart';
 import 'package:jibika_plexus/CustomWidget/CustomCalender/custom_calender.dart';
 import 'package:jibika_plexus/CustomWidget/CustomDrawer/CustomLeftDrawer/custom_left_drawer.dart';
@@ -12,6 +13,7 @@ import 'package:jibika_plexus/View/HomeScreen/HomeComponent/HomeThirdPartCompone
 import 'package:jibika_plexus/View/HomeScreen/HomeComponent/HomeThirdPartComponent/home_third_part_progressbar.dart';
 import 'package:jibika_plexus/View/HomeScreen/HomeComponent/HomeSecondPartComponent/summary_status.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 import '../../CustomWidget/CustomText/custom_text.dart';
 import 'HomeComponent/HomeFirstPartComponent/home_header_partt.dart';
 import 'HomeComponent/HomeThirdPartComponent/home_thired_part_header.dart';
@@ -28,9 +30,16 @@ class _HomeScreenState extends State<HomeScreen> {
     int total_Amount=100000000;
     String value = "K";
     double animated_leave=0;
+    @override
+  void initState() {
+    Provider.of<HomeProvider>(context,listen: false).dashboardPieChartDataProvider("01711017970", "09-Jul-2024", context);
+      // TODO: implement initState
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
-
+    final dashboardPieChartData=  Provider.of<HomeProvider>(context).dashboardPieChartData;
+    print("ccccccccccccc ${dashboardPieChartData["plist"]}");
     return WillPopScope(
       onWillPop: () => Future(() => false),
       child: Scaffold(
