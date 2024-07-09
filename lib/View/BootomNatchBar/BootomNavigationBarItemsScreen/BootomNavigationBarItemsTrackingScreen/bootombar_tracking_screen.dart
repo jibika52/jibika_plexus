@@ -258,7 +258,7 @@ class _BootomNavigationBarItemsTrackingScreenState extends State<BootomNavigatio
                                         ),
                                     ),
                                     SizedBox(width: 10,),
-                                    CustomTrackNowButton(b_text: "Track Now",  onTap: () {
+                                    CustomTrackNowButton(b_text: "Track history",  onTap: () {
                                       Navigator.push(context, MaterialPageRoute(builder: (context) => EmployeeTrackinScreen(),));
                                       }, )
 

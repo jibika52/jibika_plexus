@@ -13,6 +13,8 @@ class CustomEmployeeProfile extends StatelessWidget {
       required this.time,
       required this.onTap1,
       required this.onTap2,
+      required this.onTap3,
+      required this.need_location,
     });
   String image;
   String id;
@@ -21,6 +23,8 @@ class CustomEmployeeProfile extends StatelessWidget {
   String time;
   VoidCallback onTap1;
   VoidCallback onTap2;
+  VoidCallback onTap3;
+  bool need_location;
   @override
   Widget build(BuildContext context) {
     return  Container(
@@ -76,6 +80,23 @@ class CustomEmployeeProfile extends StatelessWidget {
                 InkWell(
                     onTap: onTap2,
                     child: CustomImageSction(height: 30, width: 30, radius: 7, image: "Assets/DashBoardIcons/messagetext.png")),
+
+                 Container(
+              height: 30,
+              width: 30,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(2),
+                // image: DecorationImage(image: AssetImage("$image"),fit: BoxFit.fill),
+              ),
+            child: need_location==false?Container(): Image.asset("Assets/DashBoardIcons/location.png",fit: BoxFit.fill,color: Colors.white,),
+            ) ,
+
+                // InkWell(
+                //     onTap: onTap3,
+                //     child: Icon(Icons.location_on_outlined,color: Main_Theme_WhiteCollor.withOpacity(0.75),size: 30,)
+                // ),
+
+
               ],
             ),
           )

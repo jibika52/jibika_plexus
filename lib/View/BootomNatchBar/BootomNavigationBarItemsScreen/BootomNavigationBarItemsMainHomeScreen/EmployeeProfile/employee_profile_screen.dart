@@ -63,7 +63,12 @@ class _EmployeeProfileScreenState extends State<EmployeeProfileScreen> {
 
                 }, onTap2: () {
 
-                },),
+                },
+            onTap3: () {
+
+            },
+              need_location: false,
+            ),
             /// Second part -----------------------------
 
             Expanded(

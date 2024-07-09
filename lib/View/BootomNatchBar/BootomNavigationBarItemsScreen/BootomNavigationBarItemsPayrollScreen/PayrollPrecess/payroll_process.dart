@@ -420,7 +420,7 @@ class _PAyrollProcessScreenState extends State<PAyrollProcessScreen> {
                             child: DropdownButton2<String>(
                               isExpanded: true,
                               hint: Text(
-                                '$selectedValue2',
+                                'Select bonus',
                                 style: TextStyle(
                                   fontSize: 12,
                                   fontWeight: FontWeight.bold,

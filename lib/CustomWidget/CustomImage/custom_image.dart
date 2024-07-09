@@ -18,8 +18,9 @@ class CustomImageSction extends StatelessWidget {
       width: width,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(radius),
-        image: DecorationImage(image: AssetImage("$image"),fit: BoxFit.fill),
+         image: DecorationImage(image: AssetImage("$image"),fit: BoxFit.fill),
       ),
+   //   child: Image.asset("$image",fit: BoxFit.fill,color: Colors.white,),
     );
   }
 }

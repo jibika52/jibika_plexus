@@ -31,7 +31,7 @@ class CustomTrackNowButton extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            ColorCustomText(fontSize: 14, fontWeight: FontWeight.w500, text: "$b_text", letterSpacing: 0.3, textColor: Main_Theme_WhiteCollor),
+            ColorCustomText(fontSize: 12, fontWeight: FontWeight.w500, text: "$b_text", letterSpacing: 0.3, textColor: Main_Theme_WhiteCollor),
             SizedBox(width: 5,),
             Icon(Icons.arrow_forward_ios_rounded,size: 17,color: Main_Theme_WhiteCollor),
           ],
