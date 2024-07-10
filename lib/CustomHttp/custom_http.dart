@@ -198,7 +198,6 @@ class CustomHttpRequestClass{
         print(response.statusCode);
         print(response.body);
         dashboardPieChartData =jsonDecode(response.body);
-        print(dashboardPieChartData);
       }
       );
       return dashboardPieChartData;

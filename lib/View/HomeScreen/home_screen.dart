@@ -38,8 +38,38 @@ class _HomeScreenState extends State<HomeScreen> {
   }
   @override
   Widget build(BuildContext context) {
-    final dashboardPieChartData=  Provider.of<HomeProvider>(context).dashboardPieChartData;
-    print("ccccccccccccc ${dashboardPieChartData["plist"]}");
+    final dashboardPieChartData =  Provider.of<HomeProvider>(context).dashboardPieChartData;
+    print(dashboardPieChartData == null ?"":"ccccccccccccc ${dashboardPieChartData}");
+
+
+
+
+
+
+    double TP=double.parse(dashboardPieChartData == null ?"0":"${dashboardPieChartData["plist"][0]}") ;
+    double TA=double.parse(dashboardPieChartData == null ?"0":"${dashboardPieChartData["plist"][1]}");
+    double TL=double.parse(dashboardPieChartData == null ?"0":"${dashboardPieChartData["plist"][2]}");
+    double TH=double.parse(dashboardPieChartData == null ?"0":"${dashboardPieChartData["plist"][3]}");
+    double TH2=double.parse(dashboardPieChartData == null ?"0":"${dashboardPieChartData["plist"][4]}");
+
+
+
+
+    int total_present_parsent=double.parse("${TP}").toInt();
+    print("total_holiday_parsent ------- $total_present_parsent");
+
+    int total_absent_parsent=double.parse("${TA+TP}").toInt();
+    print("total_absent_parsent ------- $total_absent_parsent");
+
+    int total_leave_parsent=double.parse("${TA+TP+TL}").toInt();
+    print("total_leave_parsent ------- $total_leave_parsent");
+
+    int total_holiday_parsent=double.parse("${TA+TP+TL+TH}").toInt();
+    print("total_holiday_parsent ------- $total_holiday_parsent");
+
+    int total_holiday_parsent2=double.parse("${TA+TP+TL+TH+TH2}").toInt();
+    print("total_holiday_parsent2 ------- $total_holiday_parsent2");
+
     return WillPopScope(
       onWillPop: () => Future(() => false),
       child: Scaffold(
@@ -52,14 +82,26 @@ class _HomeScreenState extends State<HomeScreen> {
                 Padding(
                   padding: const EdgeInsets.only(top :apps_div_margin-2, left: 10.0,right: 10),
                   child: HomeHederPart(
-                    permission_list: [],
+                    permission_list:[],
                   ),
                 ),
                 /// ------------- Second Part -------------///
                 Container(
                  height: 180, padding: const EdgeInsets.only(top :7, left: 11.0,right: 11),
                   child:SecondhomePartScreen(
-                      presentTExt: "93", PersentCount: "565", AbsentCount: "323", LeaveCount: "868", HolidayCount: "696", ManpowerCount: "255", total_present: 0.8, total_absent: 0.90, total_leave: 0.95, total_holiday: 1.0),
+                      presentTExt: "93",
+                      PersentCount: dashboardPieChartData!=null? "${dashboardPieChartData["clist"][0] ?? 0}":"0",
+                      AbsentCount:dashboardPieChartData!=null? "${dashboardPieChartData["clist"][1] ?? 0}":'0',
+                      LeaveCount:dashboardPieChartData!=null? "${dashboardPieChartData["clist"][2] ?? 0}":'0',
+                      HolidayCount:dashboardPieChartData!=null? "${dashboardPieChartData["clist"][3] ?? 0}":'0',
+                      ManpowerCount: "255",
+                    //  total_present:"0.${int.parse("${dashboardPieChartData["plist"][0] ?? 0}")}",
+                      total_present:double.parse(total_present_parsent==100 ? "1.0":"0.$total_present_parsent"),
+                      total_absent:  double.parse(total_absent_parsent==100 ? "1.0":"0.$total_absent_parsent"),
+                      total_leave:  double.parse(total_leave_parsent==100 ? "1.0":"0.$total_leave_parsent"),
+                    total_holiday : double.parse(total_holiday_parsent2==100 ? "1.0":"0.$total_holiday_parsent2"),
+
+                  ),
                 ),
       
                 ///---------------- Third Part --------------------///

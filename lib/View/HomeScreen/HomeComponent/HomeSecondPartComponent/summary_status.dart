@@ -138,7 +138,7 @@ class _SecondhomePartScreenState extends State<SecondhomePartScreen> {
                           child: CircularPercentIndicator(
                             radius: 62.0,
                             lineWidth: 20.0,
-                            percent: widget.total_present,
+                            percent:  widget.total_present ,
                             backgroundColor: Colors.grey.withOpacity(0),
                             progressColor: presentsent_color,
                           ),
