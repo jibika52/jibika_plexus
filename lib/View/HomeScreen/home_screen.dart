@@ -2,6 +2,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:jibika_plexus/Controller/HomeController/home_controller.dart';
 import 'package:jibika_plexus/CustomWidget/CustomAppBar/CustomMAinAppBAr/custom_main_app_bar.dart';
 import 'package:jibika_plexus/CustomWidget/CustomCalender/custom_calender.dart';
@@ -30,6 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
     int total_Amount=100000000;
     String value = "K";
     double animated_leave=0;
+    double animated_height=0;
     @override
   void initState() {
     Provider.of<HomeProvider>(context,listen: false).dashboardPieChartDataProvider("01711017970", "09-Jul-2024", context);
@@ -351,14 +353,28 @@ class _HomeScreenState extends State<HomeScreen> {
                             return InkWell(
                               onTap: () {
                                 setState(() {
+                                  selected_indexnumber=!selected_indexnumber;
                                   animated_leave=0;
+                                  animated_height=0;
                                  leave_selected_index=index;
                                 });
-                                Future.delayed(Duration(milliseconds: 200),() {
-                                  setState(() {
-                                    animated_leave=95;
-                                  });
-                                },);
+
+                                if(selected_indexnumber==true){
+                                  Future.delayed(Duration(milliseconds: 200),() {
+                                    setState(() {
+                                      animated_leave=95;
+                                    });
+                                  },);
+
+                                  Future.delayed(Duration(milliseconds: 700),() {
+                                    setState(() {
+                                      animated_height=82;
+                                    });
+                                  },);
+                                }
+
+
+
                               },
                               child: Container(
                                 margin: EdgeInsets.only(left: 5),
@@ -366,7 +382,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   children: [
                                     Container(
                                         height: 115,
-                                        width: 100,
+                                        width: 85,
                                         decoration: BoxDecoration(
                                             borderRadius: BorderRadius.circular(11),
                                           //  color: Color(0xedecf1ec),
@@ -387,61 +403,66 @@ class _HomeScreenState extends State<HomeScreen> {
 
                                     leave_selected_index==index?
 
-                                    InkWell(
-                                      onTap: () {
-                                       setState(() {
-                                         leave_selected_index=-1;
-                                       });
-                                      },
-                                      child: AnimatedContainer(
-                                        duration: Duration(seconds: 1),
-                                          height: 110,
-                                          width: animated_leave,
-                                          decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.only(
-                                              topRight: Radius.circular(11),
-                                              bottomRight: Radius.circular(11),
-                                            ),
-                                            color: Color(0xffACC027).withOpacity(0.2),
+                                    AnimatedContainer(
+                                      duration: Duration(milliseconds:200),
+                                        height: 110,
+                                        width: animated_leave,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.only(
+                                            topRight: Radius.circular(11),
+                                            bottomRight: Radius.circular(11),
                                           ),
-                                          child: Column(
-                                            crossAxisAlignment: CrossAxisAlignment.center,
-                                            children: [
-                                              Container(
-                                                height: 22,
-                                                width: animated_leave,
-                                                color: Color(0xffACC027).withOpacity(0.6),
-                                                child: CustomText(fontSize: font12header, fontWeight: FontWeight.w400, text: "Abdur romel", letterSpacing: 0.1),
+                                          color: Color(0xffACC027).withOpacity(0.2),
+                                        ),
+                                        child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          children: [
+                                            Container(
+                                              height: 22,
+                                              width: animated_leave,
+                                              color: Color(0xffACC027).withOpacity(0.6),
+                                              child: CustomText(fontSize: font12header, fontWeight: FontWeight.w400, text: "Abdur romel", letterSpacing: 0.1),
+                                            ),
+                                            SizedBox(height: 3,),
+                                            AnimatedContainer(
+                                              duration: Duration(
+                                                milliseconds: 200
                                               ),
-                                              SizedBox(height: 3,),
-                                              Container(
-                                                height: 17,
-                                                width: animated_leave,
-                                                alignment: Alignment.center,
-                                                child:  CustomText(fontSize: font12header, fontWeight: FontWeight.bold, text: "Cl - 03", letterSpacing: 0.5, ),
+                                              height: animated_height,
+                                              child: SingleChildScrollView(
+                                                child: Column(
+                                                  children: [
+                                                    Container(
+                                                      height: 17,
+                                                      width: animated_leave,
+                                                      alignment: Alignment.center,
+                                                      child:  CustomText(fontSize: font12header, fontWeight: FontWeight.bold, text: "Cl - 03", letterSpacing: 0.5, ),
+                                                    ),
+                                                    SizedBox(height: 3,),
+                                                    Container(
+                                                      height: 12,
+                                                      width: animated_leave,
+                                                      alignment: Alignment.center,
+                                                      child:  CustomText(fontSize: font11, fontWeight: FontWeight.w500, text: "10 jul 2024", letterSpacing: 0.5, ),
+                                                    ),
+                                                    Container(
+                                                      height: 20,
+                                                      width: animated_leave,
+                                                      alignment: Alignment.center,
+                                                      child:  CustomText(fontSize: font11, fontWeight: FontWeight.w600, text: "     To", letterSpacing: 0.5, ),
+                                                    ),
+                                                    Container(
+                                                      height: 20,
+                                                      width: animated_leave,
+                                                      alignment: Alignment.center,
+                                                      child:  CustomText(fontSize: font11, fontWeight: FontWeight.w500, text: "10 jul 2024", letterSpacing: 0.5, ),
+                                                    ),
+                                                  ],
+                                                ),
                                               ),
-                                              SizedBox(height: 3,),
-                                              Container(
-                                                height: 12,
-                                                width: animated_leave,
-                                                alignment: Alignment.center,
-                                                child:  CustomText(fontSize: font11, fontWeight: FontWeight.w500, text: "10 jul 2024", letterSpacing: 0.5, ),
-                                              ),
-                                              Container(
-                                                height: 20,
-                                                width: animated_leave,
-                                                alignment: Alignment.center,
-                                                child:  CustomText(fontSize: font11, fontWeight: FontWeight.w600, text: "     To", letterSpacing: 0.5, ),
-                                              ),
-                                              Container(
-                                                height: 20,
-                                                width: animated_leave,
-                                                alignment: Alignment.center,
-                                                child:  CustomText(fontSize: font11, fontWeight: FontWeight.w500, text: "10 jul 2024", letterSpacing: 0.5, ),
-                                              ),
-                                            ],
-                                          )
-                                      ),
+                                            )
+                                          ],
+                                        )
                                     ):Container(),
                                   ],
                                 ),
@@ -500,20 +521,8 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
- List monthList= [
-   "Jan",
-   "Feb",
-   "Mar",
-   "Apr",
-   "May",
-   "Jun",
-   "Jul",
-   "Aug",
-   "Sep",
-   "Oct",
-   "Nov",
-   "Dec",
- ];
+
 int leave_selected_index=-1;
+  bool selected_indexnumber=false;
 }
 
