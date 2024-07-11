@@ -528,20 +528,15 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
-    DateFormat customDateFormat = DateFormat('dd MMMM yyyy');
-
-
-
-
   int selected_index = 0;
-  String selected2Datee = DateFormat('dd MMMM yyyy').format(DateTime.now()).toString();
+  String selected2Datee = DateFormat('E, dd-MMMM-yyyy').format(DateTime.now()).toString();
   Future<void> _select2Date(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
         context: context,
         firstDate: DateTime(2015, 8),
         lastDate: DateTime(2101));
     if (picked != null && picked != selected2Datee) {
-      final df = new DateFormat('dd MMMM yyyy');
+      final df = new DateFormat('E, dd-MMMM-yyyy');
       setState(() {
         selected2Datee = df.format(picked);
       });

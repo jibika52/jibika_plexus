@@ -238,7 +238,7 @@ SizedBox(width: 10,),
 
   int selected_index = 0;
  // String selected2Datee = DateFormat.yMMMEd().format(DateTime.now()).toString();
-  String selected2Datee = DateFormat('E, dd MMMM yyyy').format(DateTime.now()).toString();
+  String selected2Datee = DateFormat('E, dd-MMMM-yyyy').format(DateTime.now()).toString();
 
   Future<void> _select2Date(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
@@ -246,7 +246,7 @@ SizedBox(width: 10,),
         firstDate: DateTime(2015, 8),
         lastDate: DateTime(2101));
     if (picked != null && picked != selected2Datee) {
-      final df = new DateFormat('dd MMMM yyyy');
+      final df = new DateFormat('E, dd-MMMM-yyyy');
       setState(() {
         selected2Datee = df.format(picked);
       });

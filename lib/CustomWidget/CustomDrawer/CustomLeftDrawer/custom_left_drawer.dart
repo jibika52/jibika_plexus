@@ -8,6 +8,8 @@ import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
 import 'package:jibika_plexus/View/Auth/LoginScreen/login_screen_screen2.dart';
 
+import '../../CustomImageButton/custom_imagebutton.dart';
+
 class CustomLeftDrawer extends StatelessWidget {
   const CustomLeftDrawer({super.key});
 
@@ -83,11 +85,11 @@ class CustomLeftDrawer extends StatelessWidget {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreenSlide(),));
                 },
                 child: Container(
-                  height: 45,
+                  height: 40,
                   width: 224,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
+                    borderRadius: BorderRadius.circular(20),
                     color: Color(0xffE3F0ED),
                   ),
                   child:Row(
@@ -99,6 +101,7 @@ class CustomLeftDrawer extends StatelessWidget {
                     ],
                   )
                 ),
+
               )
 
 

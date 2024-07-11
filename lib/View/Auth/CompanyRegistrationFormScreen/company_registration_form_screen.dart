@@ -281,6 +281,8 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                       hinttext: "Company Address",
                       keyboardType: TextInputType.text,
                       obscureText: false),
+
+
                   SizedBox(height: h * 0.02),
                   JibikaCustomTextFromField(
                       controller: _NumberOfEmployeeController,
@@ -293,7 +295,7 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                   JibikaCustomTextFromField2(
                       controller: _phoneController,
                       height: 50,
-                      img: "Assets/Icons/call.png",
+                      img: "Assets/PrimaryInformation/phone.png",
                       hinttext: "Phone",
                       keyboardType: TextInputType.text,
                       obscureText: false),

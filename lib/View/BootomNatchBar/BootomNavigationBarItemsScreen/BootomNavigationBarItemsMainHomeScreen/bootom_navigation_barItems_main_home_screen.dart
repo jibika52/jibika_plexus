@@ -321,7 +321,7 @@ class _BootomNavBarItemsMainFloationHomeScreenState extends State<BootomNavBarIt
         shape: const RoundedRectangleBorder( // <= Change BeveledRectangleBorder to RoundedRectangularBorder
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(30.0),
-            topRight: Radius.circular(1.0),
+            topRight: Radius.circular(30.0),
             bottomLeft: Radius.circular(30.0),
             bottomRight: Radius.circular(30.0),
           ),
