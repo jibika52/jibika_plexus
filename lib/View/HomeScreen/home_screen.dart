@@ -41,7 +41,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final dashboardPieChartData =  Provider.of<HomeProvider>(context).dashboardPieChartData;
-    print(dashboardPieChartData == null ?"":"ccccccccccccc ${dashboardPieChartData}");
 
 
 
@@ -330,7 +329,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   ColorCustomText(
-                                    text: "${selected2Datee}",
+                                     text: "${selected2Datee}",
                                     textColor: Main_Theme_textColor.withOpacity(0.6),
                                     fontSize: font11,
                                     fontWeight: FontWeight.w700, letterSpacing: 0.3,),
@@ -338,7 +337,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   /// ---------- Custom Calender Part --------- ///
                                   CustomCalender(onTap: () {
                                     _select2Date(context);
-                                  },),
+                                },),
                                 ],
                               ),
                             ),
