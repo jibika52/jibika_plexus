@@ -24,3 +24,29 @@ class CustomImageSction extends StatelessWidget {
     );
   }
 }
+
+class CustomImageSction2 extends StatelessWidget {
+    CustomImageSction2({super.key,
+    required this.height,
+    required this.width,
+    required this.radius,
+      required this.image,
+      required this.img_color,
+    });
+  double   height;
+  double width;
+  double  radius;
+  String ? image;
+  Color img_color;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: height,
+      width: width,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(radius),
+      ),
+       child: Image.asset("$image",fit: BoxFit.fill,color: img_color,),
+    );
+  }
+}

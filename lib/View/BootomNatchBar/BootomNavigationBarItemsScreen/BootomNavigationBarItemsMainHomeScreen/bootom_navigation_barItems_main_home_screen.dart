@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jibika_plexus/CustomWidget/CustomAppBar/CustomDefaultAppBar/custom_default_app_bar.dart';
+import 'package:jibika_plexus/View/BootomNatchBar/BootomNavigationBarItemsScreen/BootomNavigationBarItemsMainHomeScreen/CreateEmployeeScreen/create_employee.dart';
 import 'package:jibika_plexus/View/BootomNatchBar/BootomNavigationBarItemsScreen/BootomNavigationBarItemsMainHomeScreen/EmployeeProfile/employee_profile_screen.dart';
 import 'package:jibika_plexus/View/BootomNatchBar/bootom_bar_screen.dart';
 
@@ -315,7 +316,22 @@ class _BootomNavBarItemsMainFloationHomeScreenState extends State<BootomNavBarIt
 
           ],
         ),
-      )
+      ),
+      floatingActionButton: FloatingActionButton(
+        shape: const RoundedRectangleBorder( // <= Change BeveledRectangleBorder to RoundedRectangularBorder
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(30.0),
+            topRight: Radius.circular(1.0),
+            bottomLeft: Radius.circular(30.0),
+            bottomRight: Radius.circular(30.0),
+          ),
+        ),
+        backgroundColor: CustomButtonColor,
+        onPressed: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) => CreateNewEmployeeScreen(),));
+      },
+      child:Image.asset("Assets/DashBoardIcons/employee_management.png",height: 30,width: 30,fit: BoxFit.fill,color: Main_Theme_WhiteCollor,),
+      ),
     );
   }
   bool  isActive=true;

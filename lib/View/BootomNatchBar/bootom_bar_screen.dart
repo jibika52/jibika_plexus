@@ -36,18 +36,13 @@ class _BootomNatchBarScreenState extends State<BootomNatchBarScreen> {
     HomeScreen(),
     BootomNavigationBarItemsAttendenceScreen(),
     BootomNavigationBarItemsPayrollScreen(),
-
     BootomNavigationBarItemsTrackingScreen(),
-
-
-
   ];
   final _key=GlobalKey<ScaffoldState>();
-
   int _currentIndex = 0;
   @override
-  Widget build(BuildContext context) {
 
+  Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       drawer:CustomLeftDrawer(),

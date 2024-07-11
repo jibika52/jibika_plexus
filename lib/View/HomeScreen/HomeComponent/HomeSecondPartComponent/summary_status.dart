@@ -187,7 +187,7 @@ class _SecondhomePartScreenState extends State<SecondhomePartScreen> {
                       Container(
                         height: 25,
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.end,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Padding(
@@ -198,7 +198,7 @@ class _SecondhomePartScreenState extends State<SecondhomePartScreen> {
                                 fontSize: font11,
                                 fontWeight: FontWeight.w400, letterSpacing: 0.2,),
                             ),
-
+SizedBox(width: 10,),
                             /// ---------- Custom Calender Part --------- ///
                             CustomCalender(onTap: () {
                               _select2Date(context);
@@ -237,7 +237,8 @@ class _SecondhomePartScreenState extends State<SecondhomePartScreen> {
   }
 
   int selected_index = 0;
-  String selected2Datee = DateFormat.yMMMEd().format(DateTime.now()).toString();
+ // String selected2Datee = DateFormat.yMMMEd().format(DateTime.now()).toString();
+  String selected2Datee = DateFormat('E, dd MMMM yyyy').format(DateTime.now()).toString();
 
   Future<void> _select2Date(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
@@ -245,7 +246,7 @@ class _SecondhomePartScreenState extends State<SecondhomePartScreen> {
         firstDate: DateTime(2015, 8),
         lastDate: DateTime(2101));
     if (picked != null && picked != selected2Datee) {
-      final df = new DateFormat.yMMMEd();
+      final df = new DateFormat('dd MMMM yyyy');
       setState(() {
         selected2Datee = df.format(picked);
       });

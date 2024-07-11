@@ -56,21 +56,24 @@ class _HomeScreenState extends State<HomeScreen> {
 
 
 
-
     int total_present_parsent=double.parse("${TP}").toInt();
-    print("total_holiday_parsent ------- $total_present_parsent");
+    print("total_holiday_parsent ----$TP--- $total_present_parsent");
 
     int total_absent_parsent=double.parse("${TA+TP}").toInt();
-    print("total_absent_parsent ------- $total_absent_parsent");
+    print("total_absent_parsent --$TA+$TP----- $total_absent_parsent");
 
     int total_leave_parsent=double.parse("${TA+TP+TL}").toInt();
-    print("total_leave_parsent ------- $total_leave_parsent");
+    print("total_leave_parsent ---$TA+ $TP+ $TL---- $total_leave_parsent");
 
     int total_holiday_parsent=double.parse("${TA+TP+TL+TH}").toInt();
-    print("total_holiday_parsent ------- $total_holiday_parsent");
+    print("total_holiday_parsent --$TA+$TP+$TL+$TH----- $total_holiday_parsent");
 
     int total_holiday_parsent2=double.parse("${TA+TP+TL+TH+TH2}").toInt();
     print("total_holiday_parsent2 ------- $total_holiday_parsent2");
+
+
+
+ //   total_present_parsent = total_present_parsent+100-total_absent_parsent-total_leave_parsent-total_holiday_parsent2;
 
     return WillPopScope(
       onWillPop: () => Future(() => false),
@@ -251,46 +254,46 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
       
-                /// -----------------  Test Part -------------------///
-               Container(
-                 margin: EdgeInsets.only(left: 10,right: 10,top: apps_div_margin),
-                 height: 200,
-                 width: double.infinity,
-                 decoration: BoxDecoration(
-                   color: Main_Theme_WhiteCollor,
-                   borderRadius: BorderRadius.circular(11),
-                 ),
-      
-                 child: LineChart(
-                   LineChartData(
-                     minY: 0,
-                     minX: 0,
-                     maxX: 100,
-                     maxY: 100,
-      
-                     lineBarsData: [
-                       LineChartBarData(
-                         spots: [
-                           FlSpot(0, 10),
-                           FlSpot(10, 70),
-                           FlSpot(20, 20),
-                           FlSpot(30, 50),
-                           FlSpot(40, 30),
-                           FlSpot(50, 50),
-                           FlSpot(60, 40),
-                           FlSpot(70, 70),
-                           FlSpot(80, 10),
-                           FlSpot(90, 50),
-                           FlSpot(100, 10),
-                         ], 
-                         color: absent_color,
-                         barWidth: 2
-                       ),
-                     ]
-      
-                   ),
-                 ),
-               ),
+               //  /// -----------------  Test Part -------------------///
+               // Container(
+               //   margin: EdgeInsets.only(left: 10,right: 10,top: apps_div_margin),
+               //   height: 200,
+               //   width: double.infinity,
+               //   decoration: BoxDecoration(
+               //     color: Main_Theme_WhiteCollor,
+               //     borderRadius: BorderRadius.circular(11),
+               //   ),
+               //
+               //   child: LineChart(
+               //     LineChartData(
+               //       minY: 0,
+               //       minX: 0,
+               //       maxX: 100,
+               //       maxY: 100,
+               //
+               //       lineBarsData: [
+               //         LineChartBarData(
+               //           spots: [
+               //             FlSpot(0, 10),
+               //             FlSpot(10, 70),
+               //             FlSpot(20, 20),
+               //             FlSpot(30, 50),
+               //             FlSpot(40, 30),
+               //             FlSpot(50, 50),
+               //             FlSpot(60, 40),
+               //             FlSpot(70, 70),
+               //             FlSpot(80, 10),
+               //             FlSpot(90, 50),
+               //             FlSpot(100, 10),
+               //           ],
+               //           color: absent_color,
+               //           barWidth: 2
+               //         ),
+               //       ]
+               //
+               //     ),
+               //   ),
+               // ),
                 /// ------------------- Five Part Start here ------------------------///
                 SizedBox(height: apps_div_margin,),
                 HomeFivePartBodyScetion(
@@ -353,22 +356,34 @@ class _HomeScreenState extends State<HomeScreen> {
                             return InkWell(
                               onTap: () {
                                 setState(() {
-                                  selected_indexnumber=!selected_indexnumber;
-                                  animated_leave=0;
-                                  animated_height=0;
-                                 leave_selected_index=index;
+                                selected_indexnumber=!selected_indexnumber;
                                 });
 
                                 if(selected_indexnumber==true){
+                                  setState(() {
+                                    leave_selected_index=index;
+                                  });
                                   Future.delayed(Duration(milliseconds: 200),() {
                                     setState(() {
                                       animated_leave=95;
                                     });
                                   },);
 
-                                  Future.delayed(Duration(milliseconds: 700),() {
+                                  Future.delayed(Duration(milliseconds: 500),() {
                                     setState(() {
                                       animated_height=82;
+                                    });
+                                  },);
+                               }else{
+                                  Future.delayed(Duration(milliseconds: 500),() {
+                                    setState(() {
+                                      animated_leave=0;
+                                    });
+                                  },);
+
+                                  Future.delayed(Duration(milliseconds: 200),() {
+                                    setState(() {
+                                      animated_height=0;
                                     });
                                   },);
                                 }
@@ -401,7 +416,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         )
                                     ),
 
-                                    leave_selected_index==index?
+                                    leave_selected_index==index  ?
 
                                     AnimatedContainer(
                                       duration: Duration(milliseconds:200),
@@ -412,8 +427,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                             topRight: Radius.circular(11),
                                             bottomRight: Radius.circular(11),
                                           ),
-                                          color: Color(0xffACC027).withOpacity(0.2),
+                                         color: Colors.white
                                         ),
+
+
                                         child: Column(
                                           crossAxisAlignment: CrossAxisAlignment.center,
                                           children: [
@@ -421,12 +438,19 @@ class _HomeScreenState extends State<HomeScreen> {
                                               height: 22,
                                               width: animated_leave,
                                               color: Color(0xffACC027).withOpacity(0.6),
-                                              child: CustomText(fontSize: font12header, fontWeight: FontWeight.w400, text: "Abdur romel", letterSpacing: 0.1),
+                                              child: CustomText(fontSize: font12header, fontWeight: FontWeight.w600, text: "Abdur romel", letterSpacing: 0.1),
                                             ),
-                                            SizedBox(height: 3,),
                                             AnimatedContainer(
+
                                               duration: Duration(
-                                                milliseconds: 200
+                                                milliseconds: 300,
+                                              ),
+                                              decoration: BoxDecoration(
+                                                borderRadius: BorderRadius.only(
+                                                  bottomRight: Radius.circular(10),
+                                                  bottomLeft: Radius.circular(10),
+                                                )    ,
+                                                color: Color(0xffACC027).withOpacity(0.3),
                                               ),
                                               height: animated_height,
                                               child: SingleChildScrollView(
@@ -505,16 +529,20 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
+    DateFormat customDateFormat = DateFormat('dd MMMM yyyy');
+
+
+
 
   int selected_index = 0;
-  String selected2Datee = DateFormat.yMMMEd().format(DateTime.now()).toString();
+  String selected2Datee = DateFormat('dd MMMM yyyy').format(DateTime.now()).toString();
   Future<void> _select2Date(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
         context: context,
         firstDate: DateTime(2015, 8),
         lastDate: DateTime(2101));
     if (picked != null && picked != selected2Datee) {
-      final df = new DateFormat.yMMMEd();
+      final df = new DateFormat('dd MMMM yyyy');
       setState(() {
         selected2Datee = df.format(picked);
       });

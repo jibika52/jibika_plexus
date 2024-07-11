@@ -99,7 +99,7 @@ class _EmployeeProfileScreenState extends State<EmployeeProfileScreen> {
                                 flex: 3,
                                 child: Align(
                                   alignment: Alignment.centerRight,
-                                  child: Container(  
+                                  child: Container(
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.only(
                                         topLeft: Radius.circular(5),
@@ -123,6 +123,6 @@ class _EmployeeProfileScreenState extends State<EmployeeProfileScreen> {
           ],
         ),
       ),
-    );
+        );
   }
 }
