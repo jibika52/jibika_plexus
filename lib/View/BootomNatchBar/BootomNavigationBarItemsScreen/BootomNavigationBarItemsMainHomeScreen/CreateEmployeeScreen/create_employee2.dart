@@ -84,6 +84,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
 
           ),
 
+          _selectedIndex==0?
           Expanded(
             child: Container(
               width: double.infinity,
@@ -492,7 +493,487 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                 ),
               ),
             ),
-          ),
+          )
+              :
+          _selectedIndex==1?
+          Expanded(
+            child: Container(
+              width: double.infinity,
+              height: double.infinity,
+              margin: EdgeInsets.only(
+                  left: 15,
+                  right: 15,
+                  top: 10
+              ),
+              padding: EdgeInsets.only(
+                  left: 15,
+                  right: 10,
+                  top: 0
+              ),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(7),
+                color: Main_Theme_WhiteCollor,
+              ),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    /// Primary Information ---------------------------------------------------------
+                    Padding(
+                      padding: EdgeInsets.only(left: 0,right: 10,),
+                      child: Column(
+                        children: [
+                          JibikaCustomTextFromField(
+                              controller: _companyAddressController,
+                              height: 50,
+                              img: "Assets/PrimaryInformation/people (2).png",
+                              hinttext: "Department",
+                              keyboardType: TextInputType.text,
+                              obscureText: false),
+                          SizedBox(height: C_height,),
+                          JibikaCustomTextFromField(
+                              controller: _companyAddressController,
+                              height: 50,
+                              img: "Assets/PrimaryInformation/people (1).png",
+                              hinttext: "Designation",
+                              keyboardType: TextInputType.text,
+                              obscureText: false),
+                          SizedBox(height: C_height,),
+                          JibikaCustomTextFromField(
+                              controller: _companyAddressController,
+                              height: 50,
+                              img: "Assets/PrimaryInformation/calendar.png",
+                              hinttext: "Section",
+                              keyboardType: TextInputType.text,
+                              obscureText: false),
+                          SizedBox(height: C_height,),
+                          JibikaCustomTextFromField(
+                              controller: _companyAddressController,
+                              height: 50,
+                              img: "Assets/PrimaryInformation/father.png",
+                              hinttext: "Staff Category",
+                              keyboardType: TextInputType.text,
+                              obscureText: false),
+                          SizedBox(height: C_height,),
+                          JibikaCustomTextFromField2(
+                              controller: _phoneController,
+                              height: 50,
+                              img: "Assets/PrimaryInformation/gender.png",
+                              hinttext: "Work Station",
+                              keyboardType: TextInputType.text,
+                              obscureText: false),
+                          SizedBox(height: C_height,),
+
+                          JibikaCustomTextFromField2(
+                              controller: _phoneController,
+                              height: 50,
+                              img: "Assets/PrimaryInformation/calendar.png",
+                              hinttext: "Joining Date",
+                              keyboardType: TextInputType.text,
+                              obscureText: false),
+                          SizedBox(height: C_height,),
+
+                          JibikaCustomTextFromField2(
+                              controller: _phoneController,
+                              height: 50,
+                              img: "Assets/PrimaryInformation/calendar.png",
+                              hinttext: "Inactive Date",
+                              keyboardType: TextInputType.text,
+                              obscureText: false),
+                          SizedBox(height: C_height,),
+
+                          JibikaCustomTextFromField2(
+                              controller: _phoneController,
+                              height: 50,
+                              img: "Assets/DashBoardIcons/messagetext.png",
+                              hinttext: "Roster Type",
+                              keyboardType: TextInputType.text,
+                              obscureText: false),
+                          SizedBox(height: C_height,),
+
+                          JibikaCustomTextFromField2(
+                              controller: _phoneController,
+                              height: 50,
+                              img: "Assets/PrimaryInformation/work-shift 1.png",
+                              hinttext: "Shift Plan",
+                              keyboardType: TextInputType.text,
+                              obscureText: false),
+                          SizedBox(height: C_height,),
+
+                          JibikaCustomTextFromField2(
+                              controller: _phoneController,
+                              height: 50,
+                              img: "Assets/PrimaryInformation/work-shift 1.png",
+                              hinttext: "Shift plane",
+                              keyboardType: TextInputType.text,
+                              obscureText: false),
+                          SizedBox(height: C_height,),
+                          JibikaCustomTextFromField2(
+                              controller: _phoneController,
+                              height: 50,
+                              img: "Assets/PrimaryInformation/work-shift 2.png",
+                              hinttext: "Employee status",
+                              keyboardType: TextInputType.text,
+                              obscureText: false),
+                          SizedBox(height: C_height+10,),
+                          Align(
+                              alignment: Alignment.centerLeft,
+                              child: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w500, text: "Weekend", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),)),
+                          SizedBox(height: C_height,),
+                          Container(
+                              height: 35,
+                              width: double.infinity,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  CustomCircleDay(day: "Sa", onTap: () {
+                                    setState(() =>sat=!sat);
+                                  }, backgroundColor:sat==true?Main_Theme_textColor_tir_Condition : home_default_color,textColor:sat==true?Main_Theme_WhiteCollor: Main_Theme_textColor.withOpacity(0.4),),
+
+                                  CustomCircleDay(day: "Su", onTap: () {
+                                    setState(() =>sun=!sun);
+                                  }, backgroundColor:sun==true?Main_Theme_textColor_tir_Condition : home_default_color,textColor:sun==true?Main_Theme_WhiteCollor: Main_Theme_textColor.withOpacity(0.4),),
+
+                                  CustomCircleDay(day: "Mo", onTap: () {
+                                    setState(() =>mon=!mon);
+                                  }, backgroundColor:mon==true?Main_Theme_textColor_tir_Condition : home_default_color,textColor:mon==true?Main_Theme_WhiteCollor: Main_Theme_textColor.withOpacity(0.4),),
+
+                                  CustomCircleDay(day: "Tu", onTap: () {
+                                    setState(() =>Tue=!Tue);
+                                  }, backgroundColor:Tue==true?Main_Theme_textColor_tir_Condition : home_default_color,textColor:Tue==true?Main_Theme_WhiteCollor: Main_Theme_textColor.withOpacity(0.4),),
+                                  CustomCircleDay(day: "We", onTap: () {
+                                    setState(() =>Wed=!Wed);
+                                  }, backgroundColor:Wed==true?Main_Theme_textColor_tir_Condition : home_default_color,textColor:Wed==true?Main_Theme_WhiteCollor: Main_Theme_textColor.withOpacity(0.4),),
+
+                                  CustomCircleDay(day: "Th", onTap: () {
+                                    setState(() =>Thu=!Thu);
+                                  }, backgroundColor:Thu==true?Main_Theme_textColor_tir_Condition : home_default_color,textColor:Thu==true?Main_Theme_WhiteCollor: Main_Theme_textColor.withOpacity(0.4),),
+
+
+                                  CustomCircleDay(day: "Fr", onTap: () {
+                                    setState(() =>fri=!fri);
+                                  }, backgroundColor:fri==true?Main_Theme_textColor_tir_Condition : home_default_color,textColor:fri==true?Main_Theme_WhiteCollor: Main_Theme_textColor.withOpacity(0.4),),
+
+
+
+                                ],
+                              )
+                          ),
+                          SizedBox(height: C_height+5,),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 70.0,right: 70),
+                      child: CustomImageButton(height: 45, img: "Assets/PrimaryInformation/save 1.png", text: "Save",
+                          textColor: Colors.white, b_color: CustomButtonColor),
+                    ),
+                    SizedBox(height: C_height+20,),
+
+                  ],
+                ),
+              ),
+            ),
+          )
+          :
+          _selectedIndex==2?
+          Expanded(
+            child: Container(
+              width: double.infinity,
+              height: double.infinity,
+              margin: EdgeInsets.only(
+                  left: 15,
+                  right: 15,
+                  top: 10
+              ),
+              padding: EdgeInsets.only(
+                  left: 15,
+                  right: 10,
+                  top: 0
+              ),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(7),
+                color: Main_Theme_WhiteCollor,
+              ),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    /// Primary Information ---------------------------------------------------------
+                    Padding(
+                      padding: EdgeInsets.only(left: 0,right: 10,),
+                      child: Column(
+                        children: [
+                          JibikaCustomTextFromField(
+                              controller: _companyAddressController,
+                              height: 50,
+                              img: "Assets/PrimaryInformation/money_payment.png",
+                              hinttext: "Gross Salary",
+                              keyboardType: TextInputType.text,
+                              obscureText: false),
+                          SizedBox(height: C_height,),
+                          JibikaCustomTextFromField(
+                              controller: _companyAddressController,
+                              height: 50,
+                              img: "Assets/PrimaryInformation/money_payment.png",
+                              hinttext: "Basic Salary",
+                              keyboardType: TextInputType.text,
+                              obscureText: false),
+                          SizedBox(height: C_height,),
+                          JibikaCustomTextFromField(
+                              controller: _companyAddressController,
+                              height: 50,
+                              img: "Assets/PrimaryInformation/home-svgrepo-com 1.png",
+                              hinttext: "House rent",
+                              keyboardType: TextInputType.text,
+                              obscureText: false),
+                          SizedBox(height: C_height,),
+
+                          JibikaCustomTextFromField(
+                              controller: _companyAddressController,
+                              height: 50,
+                              img: "Assets/PrimaryInformation/people.png",
+                              hinttext: "Medical Allowance",
+                              keyboardType: TextInputType.text,
+                              obscureText: false),
+                          SizedBox(height: C_height,),
+                          JibikaCustomTextFromField(
+                              controller: _companyAddressController,
+                              height: 50,
+                              img: "Assets/PrimaryInformation/gender-7 1.png",
+                              hinttext: "Food Allowance",
+                              keyboardType: TextInputType.text,
+                              obscureText: false),
+                          SizedBox(height: C_height,),
+
+
+                          JibikaCustomTextFromField2(
+                              controller: _phoneController,
+                              height: 50,
+                              img: "Assets/PrimaryInformation/convienceallowence.png",
+                              hinttext: "Convince Allowance",
+                              keyboardType: TextInputType.text,
+                              obscureText: false),
+                          SizedBox(height: C_height,),
+
+                          JibikaCustomTextFromField2(
+                              controller: _phoneController,
+                              height: 50,
+                              img: "Assets/PrimaryInformation/other_allowence.png",
+                              hinttext: "Other Allowance",
+                              keyboardType: TextInputType.text,
+                              obscureText: false),
+                          SizedBox(height: C_height,),
+
+
+                          JibikaCustomTextFromField2(
+                              controller: _phoneController,
+                              height: 50,
+                              img: "Assets/PrimaryInformation/other_deduction.png",
+                              hinttext: "Other Deduction",
+                              keyboardType: TextInputType.text,
+                              obscureText: false),
+                          SizedBox(height: C_height,),
+
+                          JibikaCustomTextFromField2(
+                              controller: _phoneController,
+                              height: 50,
+                              img: "Assets/PrimaryInformation/clock.png",
+                              hinttext: "Over Time Rate",
+                              keyboardType: TextInputType.text,
+                              obscureText: false),
+                          SizedBox(height: C_height,),
+
+                          JibikaCustomTextFromField2(
+                              controller: _phoneController,
+                              height: 50,
+                              img: "Assets/PrimaryInformation/bank.png",
+                              hinttext: "Bank & Branch Name",
+                              keyboardType: TextInputType.text,
+                              obscureText: false),
+
+                          JibikaCustomTextFromField2(
+                              controller: _phoneController,
+                              height: 50,
+                              img: "Assets/PrimaryInformation/calendar.png",
+                              hinttext: "Account number",
+                              keyboardType: TextInputType.text,
+                              obscureText: false),
+
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 70.0,right: 70),
+                      child: CustomImageButton(height: 45, img: "Assets/PrimaryInformation/save 1.png", text: "Save",
+                          textColor: Colors.white, b_color: CustomButtonColor),
+                    ),
+                    SizedBox(height: C_height+20,),
+
+                  ],
+                ),
+              ),
+            ),
+          )
+              :
+          Expanded(
+            child: Container(
+              width: double.infinity,
+              height: double.infinity,
+              margin: EdgeInsets.only(
+                  left: 15,
+                  right: 15,
+                  top: 10
+              ),
+              padding: EdgeInsets.only(
+                  left: 15,
+                  right: 10,
+                  top: 0
+              ),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(7),
+                color: Main_Theme_WhiteCollor,
+              ),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    /// Primary Information ---------------------------------------------------------
+                    Padding(
+                      padding: EdgeInsets.only(left: 0,right: 10,),
+                      child: Column(
+                        children: [
+                          SizedBox(height: 30,),
+                          Container(
+                            height: 102,
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 20
+                            ),
+                            width: double.infinity,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Column(
+                                  children: [
+                                    Container(
+                                      height: 80,
+                                      width:80,
+                                      decoration: BoxDecoration(
+                                          borderRadius:BorderRadius.circular(7),
+                                          border: Border.all(
+                                              color: Main_Theme_textColor.withOpacity(0.4),
+                                              width: 1.2
+                                          )
+                                      ),
+                                      alignment: Alignment.center,
+                                      child: Stack(
+                                        alignment: Alignment.topCenter,
+                                        children: [
+                                          ClipRRect(
+                                            borderRadius: BorderRadius.circular(56),
+                                            child: Container(
+                                              height: 56,
+                                              width: 56,
+                                              color:  Main_Theme_textColor.withOpacity(0.07),
+                                              padding: EdgeInsets.all(10),
+                                              child: CustomImageSction(height: 20, width: 15, radius: 1, image: "Assets/DashBoardIcons/person1.png"),
+                                            ),
+                                          ),
+                                          Positioned(
+                                            bottom: -1.5,
+                                            left: 0,
+                                            right: 0,
+                                            child: Padding(
+                                              padding:
+                                              EdgeInsets.only(bottom: 1, left: 1.0, right:1.0),
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                  image: DecorationImage(
+                                                      image: AssetImage("Assets/Icons/subtract.png"),
+                                                      fit: BoxFit.fill),
+                                                ),
+                                                height: 20,
+                                                width: 50,
+                                              ),
+                                            ),
+                                          ),
+
+
+
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(height: 5,),
+                                    CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Upload / Take photo", letterSpacing: 0.3),
+
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(height: 15,),
+                          JibikaCustomTextFromField(
+                              controller: _companyAddressController,
+                              height: 50,
+                              img: "Assets/PrimaryInformation/people (2).png",
+                              hinttext: "Referrer Name",
+                              keyboardType: TextInputType.text,
+                              obscureText: false),
+                          SizedBox(height: C_height,),
+                          JibikaCustomTextFromField(
+                              controller: _companyAddressController,
+                              height: 50,
+                              img: "Assets/PrimaryInformation/people (1).png",
+                              hinttext: "Referrer Address",
+                              keyboardType: TextInputType.text,
+                              obscureText: false),
+                          SizedBox(height: C_height,),
+                          JibikaCustomTextFromField2(
+                              controller: _phoneController,
+                              height: 50,
+                              img: "Assets/PrimaryInformation/phone.png",
+                              hinttext: "Mobile number",
+                              keyboardType: TextInputType.text,
+                              obscureText: false),
+                          SizedBox(height: C_height,),
+                          JibikaCustomTextFromField(
+                              controller: _companyAddressController,
+                              height: 50,
+                              img: "Assets/PrimaryInformation/sms.png",
+                              hinttext: "Referrer E-mail",
+                              keyboardType: TextInputType.text,
+                              obscureText: false),
+                          SizedBox(height: C_height,),
+                          JibikaCustomTextFromField2(
+                              controller: _phoneController,
+                              height: 50,
+                              img: "Assets/PrimaryInformation/relation.png",
+                              hinttext: "Relation with Referrer",
+                              keyboardType: TextInputType.text,
+                              obscureText: false),
+                          SizedBox(height: C_height+5,),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 70.0,right: 70),
+                      child: CustomImageButton(height: 45, img: "Assets/PrimaryInformation/save 1.png", text: "Save",
+                          textColor: Colors.white, b_color: CustomButtonColor),
+                    ),
+                    SizedBox(height: C_height+20,),
+
+                  ],
+                ),
+              ),
+            ),
+          )
+
         ],
       ),
     );
@@ -507,4 +988,14 @@ List nameList=[
   bool m=false;
   bool f=false;
   bool o=false;
+  /////////////////////////
+  bool sat=false;
+  bool sun=false;
+  bool mon=false;
+  bool Tue=false;
+  bool Wed=false;
+  bool Thu=false;
+  bool fri=false;
+
+
 }
