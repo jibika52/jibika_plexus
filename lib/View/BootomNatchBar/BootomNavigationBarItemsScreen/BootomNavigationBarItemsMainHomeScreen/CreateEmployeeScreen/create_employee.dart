@@ -19,6 +19,7 @@ import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 
 import '../../../../../CustomWidget/CustomTExtFormField/Jibika_custom_text_from_field.dart';
 import '../../../../../Utils/constants.dart';
+import 'create_employee2.dart';
 
 class CreateNewEmployeeScreen extends StatefulWidget {
   const CreateNewEmployeeScreen({super.key});
@@ -28,13 +29,8 @@ class CreateNewEmployeeScreen extends StatefulWidget {
 }
 
 class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
-  TextEditingController _companyNameController = TextEditingController();
   TextEditingController _companyAddressController = TextEditingController();
-  TextEditingController _NumberOfEmployeeController = TextEditingController();
   TextEditingController _phoneController = TextEditingController();
-  TextEditingController _companyEmailController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
-  TextEditingController _con_passwordController = TextEditingController();
   final _fromKey=GlobalKey<FormState>();
   File ? _image;
 
@@ -384,7 +380,9 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
               SizedBox(height: C_height+10,),
               Align(
               alignment: Alignment.centerRight,
-                child: ColorCustomText(fontSize: 13, fontWeight: FontWeight.w500, text: "More info...", letterSpacing: 0.3, textColor: Main_Theme_textColor_tir_Condition),
+                child: InkWell(
+                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => CreateNewEmployeeScreen2(),)),
+                    child: ColorCustomText(fontSize: 13, fontWeight: FontWeight.w500, text: "More info...", letterSpacing: 0.3, textColor: Main_Theme_textColor_tir_Condition)),
               ),
               SizedBox(height: C_height+10,),
 

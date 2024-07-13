@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'Controller/HomeController/home_controller.dart';
 import 'Controller/PrivacyPolicyController/privacy_policy.dart';
 import 'View/BootomNatchBar/BootomNavigationBarItemsScreen/BootomNavigationBarItemsMainHomeScreen/EmployeeProfile/employee_profile_screen.dart';
+import 'View/BootomNatchBar/BootomNavigationBarItemsScreen/BootomNavigationBarItemsMainHomeScreen/bootom_navigation_barItems_main_home_screen.dart';
 import 'View/BootomNatchBar/bootom_bar_screen.dart';
 import 'View/SplashScreen/main_splash_pageview_screen.dart';
 
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
         // home:PrivacyPolicyScreen(phone_or_email: '01889173335',),
         //  home:TEstHeroAnimation(),
         //     home:CompanyRegistrationScreen(),
-         home:BootomNatchBarScreen(),
+         home:BootomNavBarItemsMainFloationHomeScreen(),
         //  home:HomeFirstPartComponentAttendance(),
 
         /// ----------Home Screen---------
