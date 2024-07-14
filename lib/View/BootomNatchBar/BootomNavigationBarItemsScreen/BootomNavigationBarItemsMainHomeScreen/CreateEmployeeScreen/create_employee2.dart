@@ -1,12 +1,14 @@
 
 import 'dart:io';
 import 'dart:math';
+import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:jibika_plexus/CustomWidget/CustomAppBar/CustomDefaultAppBar/custom_default_app_bar.dart';
 import 'package:jibika_plexus/CustomWidget/CustomAppBar/CustomMAinAppBAr/custom_main_app_bar.dart';
@@ -56,33 +58,51 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
           text: "Primary Information")),
       body: Column(
         children: [
-          Container(
-            margin: EdgeInsets.only(top: 10,left: 10,right: 10),
-            height: 30,
-            width: double.infinity,
-            child: ListView.builder(
-              itemCount: nameList.length,
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) => InkWell(
-                splashColor:home_default_color,
-                onTap: () {
-                  setState(() {
-                    _selectedIndex =index;
-                  });
-                },
-                child: Container(
-                  margin: EdgeInsets.only(right: MediaQuery.of(context).size.width*0.06),
-                  alignment: Alignment.center,
-                  padding: EdgeInsets.symmetric(vertical: 2,horizontal: 15),
-                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),
-                      color:index==_selectedIndex? presentsent_color:home_default_color
-                  ),
-                  child: CustomText(fontSize: 12, fontWeight: FontWeight.w400,
-                      text: "${nameList[index]}", letterSpacing: 0.2),
-                ),
-              ),),
+          Padding(
+            padding: const EdgeInsets.only(left: 15.0,right: 10,top: 10),
+            child: AnimatedToggleSwitch<int>.size(
+              height: 35,
+              current: max(_selectedIndex, 0),
+              style: ToggleStyle(
+                backgroundColor: home_default_color,
+                indicatorColor: presentsent_color,
+                borderColor: Colors.transparent,
+                borderRadius: BorderRadius.circular(10.0),
+                indicatorBorderRadius: BorderRadius.zero,
 
+              ),
+              values:  [0, 1, 2, 4],
+              iconOpacity: 1.0,
+              selectedIconScale: 1.0,
+              indicatorSize: Size.fromWidth(100),
+              iconAnimationType: AnimationType.onHover,
+              styleAnimationType: AnimationType.onHover,
+              spacing: 2.0,
+              customSeparatorBuilder: (context, local, global) {
+                final opacity =
+                ((global.position - local.position).abs() - 0.5)
+                    .clamp(0.0, 1.0);
+                return VerticalDivider(
+                    indent: 10.0,
+                    endIndent: 10.0,
+                    color: Colors.white38.withOpacity(opacity));
+              },
+              customIconBuilder: (context, local, global) {
+                final text = nameList[local.index];
+                return Center(
+                    child: Text(text,
+                        style: GoogleFonts.poppins(
+                          fontSize : 13,
+                            fontWeight : FontWeight.w400,
+                            letterSpacing :  0.3,
+                            color: Color.lerp(Colors.black, Colors.white,
+                                local.animationValue))));
+              },
+              borderWidth: 1.0,
+              onChanged: (i) => setState(() => _selectedIndex = i),
+            ),
           ),
+
 
           _selectedIndex==0?
           Expanded(
@@ -107,8 +127,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                 child: Column(
                   children: [
                     /// Primary Information ---------------------------------------------------------
-            
-            
+
                     SizedBox(height: C_height,),
                     Container(
                       height: 102,
