@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
 import 'package:jibika_plexus/CustomWidget/CustomButton/custom_button.dart';
 import 'package:jibika_plexus/CustomWidget/CustomDrawer/CustomDrawerOption/custom_draweroption.dart';
@@ -7,9 +8,7 @@ import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
 import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
 import 'package:jibika_plexus/View/Auth/LoginScreen/login_screen_screen2.dart';
-
-import '../../CustomImageButton/custom_imagebutton.dart';
-
+import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/self_bootom_navigation_bar.dart';
 class CustomLeftDrawer extends StatelessWidget {
   const CustomLeftDrawer({super.key});
 
@@ -56,6 +55,12 @@ class CustomLeftDrawer extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 20),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: CustomButton(onTap: () {
+                      Navigator.push(context, DialogRoute(context: context, builder: (context) => SalfBootomNatchBarScreen(),));
+                    }, text: "Switch to Self mode", button_text_fontSize: 14, button_height: 35, custom_button_collor: CustomButtonColor, button_text_color: Main_Theme_WhiteCollor, borderRadius: 30),
+                  ),
                   CustomDrawerOption(image: "Assets/DrawerImage/drawericonong.png", name: "Home", size: 16,size2: 16,),
                   CustomDrawerOption(image: "Assets/DrawerImage/leaveupbrla.png", name: "Planning", size: 20,size2: 20,),
                   CustomDrawerOption(image: "Assets/DrawerImage/drawer_person_option.png", name: "Employee Management", size: 16,size2: 16,),

@@ -328,7 +328,7 @@ class _BootomNavBarItemsMainFloationHomeScreenState extends State<BootomNavBarIt
         ),
         backgroundColor: CustomButtonColor,
         onPressed: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => CreateNewEmployeeScreen(),));
+        Navigator.push(context, CupertinoPageRoute(builder: (context) => CreateNewEmployeeScreen(),));
       },
       child:Image.asset("Assets/DashBoardIcons/employee_management.png",height: 30,width: 30,fit: BoxFit.fill,color: Main_Theme_WhiteCollor,),
       ),

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:jibika_plexus/Controller/CounterProvider/counter_provider.dart';
+import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/self_bootom_navigation_bar.dart';
 import 'package:provider/provider.dart';
 import 'Controller/HomeController/home_controller.dart';
 import 'Controller/PrivacyPolicyController/privacy_policy.dart';
@@ -35,11 +36,11 @@ class MyApp extends StatelessWidget {
         // home:PrivacyPolicyScreen(phone_or_email: '01889173335',),
         //  home:TEstHeroAnimation(),
         //     home:CompanyRegistrationScreen(),
-         home:BootomNavBarItemsMainFloationHomeScreen(),
-        //  home:HomeFirstPartComponentAttendance(),
+       //  home:BootomNavBarItemsMainFloationHomeScreen(),
+        //     home:HomeFirstPartComponentAttendance(),
 
         /// ----------Home Screen---------
-        //  home:HomeScreen(),
+        //   home:BootomNatchBarScreen(),
 
         /// ----------SplashScreen--------
         //       home:MainSplashPageViewScreen(),
@@ -48,8 +49,15 @@ class MyApp extends StatelessWidget {
         //  home:LoginScreenSlide(),
         //   home:testFile(),
         //  home:BootomNavigationBarItemsTrackingScreen(),
-        //   home:BootomNavigationBarItemsAttendenceScreen(),
+        // home:BootomNavigationBarItemsAttendenceScreen(),
         //  home:EmployeeProfileScreen(),
+
+
+        /// Self Screen===========================
+
+     home:   SalfBootomNatchBarScreen(),
+
+
       )
 
     );

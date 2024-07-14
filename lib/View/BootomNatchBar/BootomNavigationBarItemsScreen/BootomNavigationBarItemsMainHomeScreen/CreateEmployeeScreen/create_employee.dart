@@ -1,6 +1,7 @@
 
 import 'dart:io';
 import 'dart:math';
+import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -381,13 +382,10 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
               Align(
               alignment: Alignment.centerRight,
                 child: InkWell(
-                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => CreateNewEmployeeScreen2(),)),
+                    onTap: () => Navigator.push(context, CupertinoPageRoute(builder: (context) => CreateNewEmployeeScreen2(),)),
                     child: ColorCustomText(fontSize: 13, fontWeight: FontWeight.w500, text: "More info...", letterSpacing: 0.3, textColor: Main_Theme_textColor_tir_Condition)),
               ),
               SizedBox(height: C_height+10,),
-
-
-
               Padding(
                 padding: const EdgeInsets.only(left: 70.0,right: 70),
                 child: CustomImageButton(height: 45, img: "Assets/PrimaryInformation/save 1.png", text: "Save",
