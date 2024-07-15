@@ -82,14 +82,14 @@ class _SecondhomePartScreenState extends State<SecondhomePartScreen> {
                                 children: [
                                   ColorCustomText(
                                     text: "${widget.presentTExt}%",
-                                    fontSize: 18,
+                                    fontSize: 16,
                                     fontWeight: FontWeight.w700,
                                     letterSpacing:1,
                                     textColor: presentsent_color,
                                   ),
                                   ColorCustomText(
                                     text: "Present",
-                                    fontSize: 13,
+                                    fontSize: 12,
                                     fontWeight: FontWeight.w500,
                                     letterSpacing: 0.3,
                                     textColor: Main_Theme_textColor.withOpacity(0.7),
@@ -156,9 +156,9 @@ class _SecondhomePartScreenState extends State<SecondhomePartScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          ColorCustomText(fontSize: font12header, fontWeight: FontWeight.w500, text: "Active Manpower", textColor: Main_Theme_textColor.withOpacity(0.9),letterSpacing: 0.3),
+                          ColorCustomText(fontSize: font12header, fontWeight: FontWeight.w500, text: "Manpower", textColor: Main_Theme_textColor.withOpacity(0.9),letterSpacing: 0.3),
                           SizedBox(width: 5,),
-                          ColorCustomText(fontSize: 13, fontWeight: FontWeight.w600, text: "2555", letterSpacing: 0.3,textColor: absent_color),
+                          ColorCustomText(fontSize: 12, fontWeight: FontWeight.w600, text: "2555", letterSpacing: 0.3,textColor: absent_color),
                         ],
                       ))
                 ],

@@ -11,6 +11,13 @@ class HomeProvider with ChangeNotifier{
     notifyListeners();
   }
 
+  /// dashboard BarChart Data get here and return dashboardBarChartData
+  dynamic dashboardBarChartData;
+  dashboardBarChartDataProvider(String UserId,String AttDate,String PayrollMonth, BuildContext context)async{
+    dashboardBarChartData=await CustomHttpRequestClass().dashboardBarChartData(UserId, AttDate,PayrollMonth, context);
+    notifyListeners();
+  }
+
 
 
 }

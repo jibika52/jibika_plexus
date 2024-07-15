@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../CustomWidget/CustomText/custom_text.dart';
@@ -48,9 +49,7 @@ class SummaryStatusSecondPart extends StatelessWidget {
                     textColor: CapitaltextColor,
                   ),
                   Padding(
-                    padding:
-
-                    const EdgeInsets.only(bottom: 2.5),
+                    padding:EdgeInsets.only(bottom: 2.5),
                     child: ColorCustomText(
                       text: "$SmallTExt",
                       fontSize: 12,
@@ -61,15 +60,16 @@ class SummaryStatusSecondPart extends StatelessWidget {
                   ),
                 ],
               )),
-          Expanded(
-              flex: 3,
+          Container(
+             // flex: 3,
+             // height: ,
+            width: 65,
               child: Row(
                 mainAxisAlignment:
                 MainAxisAlignment.start,
                 crossAxisAlignment:
                 CrossAxisAlignment.end,
                 children: [
-                  Spacer(),
                   Container(
                     height: 18,
                     width: 1.8,

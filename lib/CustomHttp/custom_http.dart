@@ -195,17 +195,57 @@ class CustomHttpRequestClass{
           },
           body: body
       ).then((http.Response response) {
-        print(response.statusCode);
-        print(response.body);
         dashboardPieChartData =jsonDecode(response.body);
       }
       );
       return dashboardPieChartData;
     }catch(e){
-      print("Login employeee Catch error ${e}");
+      print("dashboardPieChartData Catch error ${e}");
+    }
+  }
+
+
+  ///           Home Dashboard Pichart Data get  --------------------------------------------------------------------------
+  dashboardBarChartData(String UserId,String AttDate,String PayrollMonth, BuildContext context)async{
+    dynamic dashboardBarChartData;
+    try{
+      var body = jsonEncode({
+        "UserId":"$UserId",
+        "AttDate":"$AttDate",
+        "PayrollMonth":"$PayrollMonth"
+      });
+      var data=await http.post(Uri.parse("${BASEURL}/${HomeDashboardBarChartData}"),
+          headers: {
+        "Content-Type": "application/json",
+        "username": "jibikaapps",
+        "password": "20jibika24",
+          },
+          body: body
+      ).then((http.Response response) {
+        print(response.statusCode);
+        print(response.body);
+        dashboardBarChartData =jsonDecode(response.body);
+      }
+      );
+      return dashboardBarChartData;
+    }catch(e){
+      print("dashboarBarChartData Catch error ${e}");
     }
   }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 f(){}

@@ -34,26 +34,24 @@ class _HomeScreenState extends State<HomeScreen> {
     double animated_height=0;
     @override
   void initState() {
-    Provider.of<HomeProvider>(context,listen: false).dashboardPieChartDataProvider("01711017970", "09-Jul-2024", context);
+    Provider.of<HomeProvider>(context,listen: false).dashboardPieChartDataProvider("01711017970", "15-Jul-2024", context);
+    Provider.of<HomeProvider>(context,listen: false).dashboardBarChartDataProvider("01711017970", "15-Jul-2024","15-Jul-2024", context);
       // TODO: implement initState
     super.initState();
   }
   @override
   Widget build(BuildContext context) {
     final dashboardPieChartData =  Provider.of<HomeProvider>(context).dashboardPieChartData;
+    final dashboardBarChartData =  Provider.of<HomeProvider>(context).dashboardBarChartData;
 
-
-
-
-
+// print("2222222222222222222222222222222222 ============= ${dashboardBarChartData}");
+// print("2222222222222222222222222222222222 ============= ${ dashboardBarChartData["tpls"].length}");
 
     double TP=double.parse(dashboardPieChartData == null ?"0":"${dashboardPieChartData["plist"][0]}") ;
     double TA=double.parse(dashboardPieChartData == null ?"0":"${dashboardPieChartData["plist"][1]}");
     double TL=double.parse(dashboardPieChartData == null ?"0":"${dashboardPieChartData["plist"][2]}");
     double TH=double.parse(dashboardPieChartData == null ?"0":"${dashboardPieChartData["plist"][3]}");
     double TH2=double.parse(dashboardPieChartData == null ?"0":"${dashboardPieChartData["plist"][4]}");
-
-
 
     int total_present_parsent=double.parse("${TP}").toInt();
     print("total_holiday_parsent ----$TP--- $total_present_parsent");
@@ -84,8 +82,9 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 /// ------------- First Part ---------------///
                 Padding(
-                  padding: const EdgeInsets.only(top :apps_div_margin-2, left: 10.0,right: 10),
-                  child: HomeHederPart(
+                  padding: const EdgeInsets.only(
+                      top :apps_div_margin-2, left: 10.0,right: 10),
+                     child: HomeHederPart(
                     permission_list:[],
                   ),
                 ),
@@ -93,7 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Container(
                  height: 180, padding: const EdgeInsets.only(top :7, left: 11.0,right: 11),
                   child:SecondhomePartScreen(
-                      presentTExt: "93",
+                      presentTExt: "$TP",
                       PersentCount: dashboardPieChartData!=null? "${dashboardPieChartData["clist"][0] ?? 0}":"0",
                       AbsentCount:dashboardPieChartData!=null? "${dashboardPieChartData["clist"][1] ?? 0}":'0',
                       LeaveCount:dashboardPieChartData!=null? "${dashboardPieChartData["clist"][2] ?? 0}":'0',
@@ -140,15 +139,55 @@ class _HomeScreenState extends State<HomeScreen> {
                                     height: 90,
                                     width: 500,
                                     child:ListView.builder(
-                                      itemCount: 30,
+                                      itemCount:dashboardBarChartData==null?0: dashboardBarChartData["tpls"].length,
                                       scrollDirection: Axis.horizontal,
                                       itemBuilder: (context, index) {
+                                      // print("ffffffffffffffffffffff ${ dashboardBarChartData["tpls"][index].substring(0,2)}");
                                       return  Container(
                                         height: 90,
                                           margin: EdgeInsets.only(right: 10),
                                           child: Column(
                                             children: [
-                                              Expanded(child: ThirdPartProgressBar(  absenttheight: 30+double.parse("$index"), presentheight:70-double.parse("$index"), present_width: 10, Absent_width: 10, total_width: 21,)),
+                                              Expanded(child: ThirdPartProgressBar(
+                                                absenttheight: dashboardBarChartData==null?0: double.parse(
+
+                                          dashboardBarChartData["tabls"][index]==0?
+                                          dashboardBarChartData["tabls"][index]
+                                              :
+                                          dashboardBarChartData["tabls"][index].length==1?
+                                          dashboardBarChartData["tabls"][index].substring(0)
+                                              :
+                                          dashboardBarChartData["tabls"][index].length==2?
+                                      dashboardBarChartData["tabls"][index].substring(0,2)
+                                            :
+                                        dashboardBarChartData["tabls"][index].length==3?
+                                        dashboardBarChartData["tabls"][index].substring(0,2)
+                                            :
+                                        dashboardBarChartData["tabls"][index].length==4?
+                                        "100":"100"
+
+                                                ),
+                                                presentheight:dashboardBarChartData==null?0: double.parse(
+
+                                                    dashboardBarChartData["tpls"][index]==0?
+                                                    dashboardBarChartData["tpls"][index]
+                                                    :
+                                                    dashboardBarChartData["tpls"][index].length==1?
+                                                    dashboardBarChartData["tpls"][index].substring(0)
+                                                    :
+                                                    dashboardBarChartData["tpls"][index].length==2?
+                                                    dashboardBarChartData["tpls"][index].substring(0,2)
+                                                    :
+                                                    dashboardBarChartData["tpls"][index].length==3?
+                                                    dashboardBarChartData["tpls"][index].substring(0,2)
+                                                    :
+                                                    dashboardBarChartData["tpls"][index].length==4?
+                                                    "100":"100"
+
+                                                ),
+                                                present_width: 10,
+                                                Absent_width: 10,
+                                                total_width: 21,)),
                                               SizedBox(height: 5,),
                                               Container(
                                                 height: 20,

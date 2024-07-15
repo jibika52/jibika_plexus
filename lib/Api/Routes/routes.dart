@@ -17,5 +17,8 @@
   /// Get Privacy Policy
     String LOGIN="useridentity/challenge";
 
-  /// Get Privacy Policy
+  /// Get DashBoard Pichart
     String HomeDashboardPieChartData="dashboard/DashboardPieChartData";
+
+  /// Get Dash Boadr Pichart
+    String HomeDashboardBarChartData="dashboard/DashboardBarChartData";
