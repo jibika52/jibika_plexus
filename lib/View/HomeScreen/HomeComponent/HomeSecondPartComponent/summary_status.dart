@@ -21,6 +21,8 @@ class SecondhomePartScreen extends StatefulWidget {
   required this.total_absent,
   required this.total_leave,
   required this.total_holiday,
+  required this.date_onTap,
+  required this.date_text,
   }) : super(key: key);
 
   /// --------------- Create All TExt Value --------------------///
@@ -35,6 +37,9 @@ class SecondhomePartScreen extends StatefulWidget {
   double total_absent;
   double total_leave;
   double total_holiday;
+
+  VoidCallback date_onTap;
+  String date_text ;
 
   @override
   State<SecondhomePartScreen> createState() => _SecondhomePartScreenState();
@@ -193,16 +198,15 @@ class _SecondhomePartScreenState extends State<SecondhomePartScreen> {
                             Padding(
                               padding: const EdgeInsets.only(top: 1.0,left: 10),
                               child: ColorCustomText(
-                                text: "${selected2Datee}",
+                                text: "${widget.date_text}",
                                 textColor: Main_Theme_textColor.withOpacity(0.6),
                                 fontSize: font11,
                                 fontWeight: FontWeight.w400, letterSpacing: 0.2,),
                             ),
-SizedBox(width: 10,),
+                            SizedBox(width: 10,),
                             /// ---------- Custom Calender Part --------- ///
-                            CustomCalender(onTap: () {
-                              _select2Date(context);
-                            },),
+                            CustomCalender(
+                            onTap: widget.date_onTap,),
                           ],
                         ),
                       ),
@@ -238,19 +242,6 @@ SizedBox(width: 10,),
 
   int selected_index = 0;
  // String selected2Datee = DateFormat.yMMMEd().format(DateTime.now()).toString();
-  String selected2Datee = DateFormat('E, dd-MMMM-yyyy').format(DateTime.now()).toString();
 
-  Future<void> _select2Date(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-        context: context,
-        firstDate: DateTime(2015, 8),
-        lastDate: DateTime(2101));
-    if (picked != null && picked != selected2Datee) {
-      final df = new DateFormat('E, dd-MMMM-yyyy');
-      setState(() {
-        selected2Datee = df.format(picked);
-      });
-    }
-  }
 }
 

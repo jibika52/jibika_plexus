@@ -140,6 +140,8 @@ class CustomHttpRequestClass{
         print(response.body);
         var loginData =jsonDecode(response.body);
         if(response.statusCode==200 && loginData["msg"]=="success"){
+          GetStorage().write("id_token",loginData["id_token"]) ;
+          GetStorage().write("refresh_token",loginData["refresh_token"]) ;
           ElegantNotification(
             borderRadius: BorderRadius.circular(11),
             width: 340,

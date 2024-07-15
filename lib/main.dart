@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
         //     home:HomeFirstPartComponentAttendance(),
 
         /// ----------Home Screen---------
-       home:BootomNatchBarScreen(),
+          home:BootomNatchBarScreen(),
 
         /// ----------SplashScreen--------
         //       home:MainSplashPageViewScreen(),

@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
 import 'package:jibika_plexus/View/BootomNatchBar/BootomNavigationBarItemsScreen/BootomNavigationBarItemsAttendenceScreen/bootom_navigationar_Items_attendence_screen.dart';
@@ -24,7 +25,6 @@ class _BootomNatchBarScreenState extends State<BootomNatchBarScreen> {
   int maxCount = 5;
   bool is_get_profie=false;
   dynamic getDynamicSliderData;
-
   @override
   void initState() {
 

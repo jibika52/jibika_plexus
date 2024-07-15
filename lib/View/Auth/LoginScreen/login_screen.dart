@@ -341,6 +341,7 @@ Future.delayed(Duration(
                           CustomButton(onTap: () {
                             if(_formKey.currentState!.validate()){
                               if(countruyCode=="+880"){
+                                GetStorage().write("mobile_id","${_phoneController.text}") ;
                                 CustomHttpRequestClass().loginEmployee(_phoneController.text, _passwordController.text, context);
                               }
                             }else{

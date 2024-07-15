@@ -3,6 +3,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:jibika_plexus/Controller/HomeController/home_controller.dart';
 import 'package:jibika_plexus/CustomWidget/CustomAppBar/CustomMAinAppBAr/custom_main_app_bar.dart';
 import 'package:jibika_plexus/CustomWidget/CustomCalender/custom_calender.dart';
@@ -34,18 +35,20 @@ class _HomeScreenState extends State<HomeScreen> {
     double animated_height=0;
     @override
   void initState() {
-    Provider.of<HomeProvider>(context,listen: false).dashboardPieChartDataProvider("01711017970", "15-Jul-2024", context);
-    Provider.of<HomeProvider>(context,listen: false).dashboardBarChartDataProvider("01711017970", "15-Jul-2024","15-Jul-2024", context);
+    Provider.of<HomeProvider>(context,listen: false).dashboardPieChartDataProvider("${GetStorage().read("mobile_id")}", "15-Jul-2024", context);
+    Provider.of<HomeProvider>(context,listen: false).dashboardBarChartDataProvider("${GetStorage().read("mobile_id")}", "15-Jul-2024","15-Jul-2024", context);
       // TODO: implement initState
     super.initState();
   }
   @override
   Widget build(BuildContext context) {
+
+
+  print("mobile_id====>${GetStorage().read("mobile_id")}---------------id_token====>${GetStorage().read("id_token")}------------------------refresh_token====>${GetStorage().read("refresh_token")}");
+
+
     final dashboardPieChartData =  Provider.of<HomeProvider>(context).dashboardPieChartData;
     final dashboardBarChartData =  Provider.of<HomeProvider>(context).dashboardBarChartData;
-
-// print("2222222222222222222222222222222222 ============= ${dashboardBarChartData}");
-// print("2222222222222222222222222222222222 ============= ${ dashboardBarChartData["tpls"].length}");
 
     double TP=double.parse(dashboardPieChartData == null ?"0":"${dashboardPieChartData["plist"][0]}") ;
     double TA=double.parse(dashboardPieChartData == null ?"0":"${dashboardPieChartData["plist"][1]}");
@@ -103,7 +106,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       total_absent:  double.parse(total_absent_parsent==100 ? "1.0":"0.$total_absent_parsent"),
                       total_leave:  double.parse(total_leave_parsent==100 ? "1.0":"0.$total_leave_parsent"),
                     total_holiday : double.parse(total_holiday_parsent2==100 ? "1.0":"0.$total_holiday_parsent2"),
-
+                    date_onTap: () {
+                      _select3Date(context);
+                    },
+                    date_text: selected3Datee,
                   ),
                 ),
       
@@ -585,5 +591,21 @@ class _HomeScreenState extends State<HomeScreen> {
 
 int leave_selected_index=-1;
   bool selected_indexnumber=false;
+
+
+    String selected3Datee = DateFormat('E, dd-MMMM-yyyy').format(DateTime.now()).toString();
+
+    Future<void> _select3Date(BuildContext context) async {
+      final DateTime? picked = await showDatePicker(
+          context: context,
+          firstDate: DateTime(2015, 8),
+          lastDate: DateTime(2101));
+      if (picked != null && picked != selected2Datee) {
+        final df = new DateFormat('E, dd-MMMM-yyyy');
+        setState(() {
+          selected2Datee = df.format(picked);
+        });
+      }
+    }
 }
 
