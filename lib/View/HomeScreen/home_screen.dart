@@ -50,7 +50,6 @@ class _HomeScreenState extends State<HomeScreen> {
     final dashboardPieChartData =  Provider.of<HomeProvider>(context).dashboardPieChartData;
     final dashboardBarChartData =  Provider.of<HomeProvider>(context).dashboardBarChartData;
 
-    print("ssssssssssssssssssssssssssssss ${dashboardPieChartData["plist"]}");
 
     double TP=double.parse(dashboardPieChartData == null ||"${dashboardPieChartData["plist"]}"== "[]"?"0":"${dashboardPieChartData["plist"][0]??0 }") ;
     double TA=double.parse(dashboardPieChartData == null ||"${dashboardPieChartData["plist"]}"== "[]"?"0":"${dashboardPieChartData["plist"][1]??0 }");

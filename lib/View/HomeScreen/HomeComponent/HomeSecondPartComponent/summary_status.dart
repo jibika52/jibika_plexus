@@ -173,7 +173,7 @@ class _SecondhomePartScreenState extends State<SecondhomePartScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          ColorCustomText(fontSize: font12header, fontWeight: FontWeight.w500, text: "Manpower", textColor: Main_Theme_textColor.withOpacity(0.9),letterSpacing: 0.3),
+                          ColorCustomText(fontSize: font12header, fontWeight: FontWeight.w500, text: "Manpower", textColor: Main_Theme_textColor.withOpacity(0.5),letterSpacing: 0.3),
                           SizedBox(width: 5,),
                           ColorCustomText(fontSize: 12, fontWeight: FontWeight.w600, text: "${widget.manpower}", letterSpacing: 0.3,textColor: absent_color),
                         ],
