@@ -35,8 +35,8 @@ class _HomeScreenState extends State<HomeScreen> {
     double animated_height=0;
     @override
   void initState() {
-    Provider.of<HomeProvider>(context,listen: false).dashboardPieChartDataProvider("${GetStorage().read("mobile_id")}", "15-Jul-2024", context);
-    Provider.of<HomeProvider>(context,listen: false).dashboardBarChartDataProvider("${GetStorage().read("mobile_id")}", "15-Jul-2024","15-Jul-2024", context);
+    Provider.of<HomeProvider>(context,listen: false).dashboardPieChartDataProvider("${GetStorage().read("mobile_id")}", "$selected3Datee", context);
+    Provider.of<HomeProvider>(context,listen: false).dashboardBarChartDataProvider("${GetStorage().read("mobile_id")}", "$selected3Datee","$selected3Datee", context);
       // TODO: implement initState
     super.initState();
   }
@@ -50,11 +50,13 @@ class _HomeScreenState extends State<HomeScreen> {
     final dashboardPieChartData =  Provider.of<HomeProvider>(context).dashboardPieChartData;
     final dashboardBarChartData =  Provider.of<HomeProvider>(context).dashboardBarChartData;
 
-    double TP=double.parse(dashboardPieChartData == null ?"0":"${dashboardPieChartData["plist"][0]}") ;
-    double TA=double.parse(dashboardPieChartData == null ?"0":"${dashboardPieChartData["plist"][1]}");
-    double TL=double.parse(dashboardPieChartData == null ?"0":"${dashboardPieChartData["plist"][2]}");
-    double TH=double.parse(dashboardPieChartData == null ?"0":"${dashboardPieChartData["plist"][3]}");
-    double TH2=double.parse(dashboardPieChartData == null ?"0":"${dashboardPieChartData["plist"][4]}");
+    print("ssssssssssssssssssssssssssssss ${dashboardPieChartData["plist"]}");
+
+    double TP=double.parse(dashboardPieChartData == null ||"${dashboardPieChartData["plist"]}"== "[]"?"0":"${dashboardPieChartData["plist"][0]??0 }") ;
+    double TA=double.parse(dashboardPieChartData == null ||"${dashboardPieChartData["plist"]}"== "[]"?"0":"${dashboardPieChartData["plist"][1]??0 }");
+    double TL=double.parse(dashboardPieChartData == null ||"${dashboardPieChartData["plist"]}"== "[]"?"0":"${dashboardPieChartData["plist"][2]??0 }");
+    double TH=double.parse(dashboardPieChartData == null ||"${dashboardPieChartData["plist"]}"== "[]"?"0":"${dashboardPieChartData["plist"][3]??0 }");
+    double TH2=double.parse(dashboardPieChartData == null ||"${dashboardPieChartData["plist"]}"== "[]"?"0":"${dashboardPieChartData["plist"][4]??0 }");
 
     int total_present_parsent=double.parse("${TP}").toInt();
     print("total_holiday_parsent ----$TP--- $total_present_parsent");
@@ -96,10 +98,10 @@ class _HomeScreenState extends State<HomeScreen> {
                  height: 180, padding: const EdgeInsets.only(top :7, left: 11.0,right: 11),
                   child:SecondhomePartScreen(
                       presentTExt: "$TP",
-                      PersentCount: dashboardPieChartData!=null? "${dashboardPieChartData["clist"][0] ?? 0}":"0",
-                      AbsentCount:dashboardPieChartData!=null? "${dashboardPieChartData["clist"][1] ?? 0}":'0',
-                      LeaveCount:dashboardPieChartData!=null? "${dashboardPieChartData["clist"][2] ?? 0}":'0',
-                      HolidayCount:dashboardPieChartData!=null? "${dashboardPieChartData["clist"][3] ?? 0}":'0',
+                      PersentCount: dashboardPieChartData!=null &&"${dashboardPieChartData["clist"]}"!= "[]" ? "${dashboardPieChartData["clist"][0] ?? 0}":"0",
+                      AbsentCount:dashboardPieChartData!=null &&"${dashboardPieChartData["clist"]}"!= "[]"? "${dashboardPieChartData["clist"][1] ?? 0}":'0',
+                      LeaveCount:dashboardPieChartData!=null &&"${dashboardPieChartData["clist"]}"!= "[]"? "${dashboardPieChartData["clist"][2] ?? 0}":'0',
+                      HolidayCount:dashboardPieChartData!=null &&"${dashboardPieChartData["clist"]}"!= "[]"? "${dashboardPieChartData["clist"][3] ?? 0}":'0',
                       ManpowerCount: "255",
                     //  total_present:"0.${int.parse("${dashboardPieChartData["plist"][0] ?? 0}")}",
                       total_present:double.parse(total_present_parsent==100 ? "1.0":"0.$total_present_parsent"),
@@ -109,7 +111,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     date_onTap: () {
                       _select3Date(context);
                     },
-                    date_text: selected3Datee,
+                    date_text: "$selected3Datee",
+                    manpower: "555",
                   ),
                 ),
       
@@ -189,7 +192,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     :
                                                     dashboardBarChartData["tpls"][index].length==4?
                                                     "100":"100"
-
                                                 ),
                                                 present_width: 10,
                                                 Absent_width: 10,
@@ -199,7 +201,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 height: 20,
                                                 width: 22,
                                                 decoration: BoxDecoration(
-                                                    color:DateTime.now().day==index? presentsent_color:Main_Theme_textColor.withOpacity(0.05),
+                                                    color:DateTime.now().day==index+1?
+                                                    presentsent_color:Main_Theme_textColor.withOpacity(0.05),
                                                   borderRadius: BorderRadius.circular(2)
                                                 ),
                                                 alignment: Alignment.center,
@@ -207,7 +210,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                               ),
                                               SizedBox(height: 10,),
                                             ],
-                                          ));
+                                          ),
+                                      );
                                     },)
                                   ),
                                 )),
@@ -574,14 +578,14 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
   int selected_index = 0;
-  String selected2Datee = DateFormat('E, dd-MMMM-yyyy').format(DateTime.now()).toString();
+  String selected2Datee = DateFormat('dd-MMMM-yyyy').format(DateTime.now()).toString();
   Future<void> _select2Date(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
         context: context,
         firstDate: DateTime(2015, 8),
         lastDate: DateTime(2101));
     if (picked != null && picked != selected2Datee) {
-      final df = new DateFormat('E, dd-MMMM-yyyy');
+      final df = new DateFormat('dd-MMMM-yyyy');
       setState(() {
         selected2Datee = df.format(picked);
       });
@@ -593,17 +597,18 @@ int leave_selected_index=-1;
   bool selected_indexnumber=false;
 
 
-    String selected3Datee = DateFormat('E, dd-MMMM-yyyy').format(DateTime.now()).toString();
+    String selected3Datee = DateFormat('dd-MMMM-yyyy').format(DateTime.now()).toString();
 
     Future<void> _select3Date(BuildContext context) async {
       final DateTime? picked = await showDatePicker(
           context: context,
           firstDate: DateTime(2015, 8),
           lastDate: DateTime(2101));
-      if (picked != null && picked != selected2Datee) {
-        final df = new DateFormat('E, dd-MMMM-yyyy');
+      if (picked != null && picked != selected3Datee) {
+        final df = new DateFormat('dd-MMMM-yyyy');
         setState(() {
-          selected2Datee = df.format(picked);
+          selected3Datee = df.format(picked);
+          Provider.of<HomeProvider>(context,listen: false).dashboardPieChartDataProvider("${GetStorage().read("mobile_id")}", "$selected3Datee", context);
         });
       }
     }

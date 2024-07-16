@@ -23,6 +23,7 @@ class SecondhomePartScreen extends StatefulWidget {
   required this.total_holiday,
   required this.date_onTap,
   required this.date_text,
+  required this.manpower,
   }) : super(key: key);
 
   /// --------------- Create All TExt Value --------------------///
@@ -40,6 +41,7 @@ class SecondhomePartScreen extends StatefulWidget {
 
   VoidCallback date_onTap;
   String date_text ;
+  String manpower ;
 
   @override
   State<SecondhomePartScreen> createState() => _SecondhomePartScreenState();
@@ -163,7 +165,7 @@ class _SecondhomePartScreenState extends State<SecondhomePartScreen> {
                         children: [
                           ColorCustomText(fontSize: font12header, fontWeight: FontWeight.w500, text: "Manpower", textColor: Main_Theme_textColor.withOpacity(0.9),letterSpacing: 0.3),
                           SizedBox(width: 5,),
-                          ColorCustomText(fontSize: 12, fontWeight: FontWeight.w600, text: "2555", letterSpacing: 0.3,textColor: absent_color),
+                          ColorCustomText(fontSize: 12, fontWeight: FontWeight.w600, text: "${widget.manpower}", letterSpacing: 0.3,textColor: absent_color),
                         ],
                       ))
                 ],
