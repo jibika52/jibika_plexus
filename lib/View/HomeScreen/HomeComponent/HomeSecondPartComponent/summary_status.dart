@@ -110,8 +110,10 @@ class _SecondhomePartScreenState extends State<SecondhomePartScreen> {
                           top: 13,
                           // left: 23,
                           child: CircularPercentIndicator(
+                            reverse: true,
                             radius: 60.0,
                             lineWidth: 16.0,
+                            startAngle:  50,
                             percent: widget.total_holiday,
                             backgroundColor: Colors.grey.withOpacity(0),
                             progressColor: holiday_color,
@@ -121,8 +123,10 @@ class _SecondhomePartScreenState extends State<SecondhomePartScreen> {
                           top: 13,
                           //  left: 23,
                           child: CircularPercentIndicator(
+                            reverse: true,
                             radius: 60.0,
                             lineWidth: 16.0,
+                            startAngle:  50,
                             /// ------------------------- increase  holiday -----------------///
                             percent:widget.total_leave,
                             backgroundColor: Colors.grey.withOpacity(0),
@@ -130,12 +134,15 @@ class _SecondhomePartScreenState extends State<SecondhomePartScreen> {
                           ),
                         ),
                         Positioned(
+
                           top: 13,
                           //   left: 23,
                           child: CircularPercentIndicator(
+                            reverse: true,
                             radius: 60.0,
                             lineWidth: 16.0,
                             percent:widget.total_absent,
+                            startAngle:  50,
                             backgroundColor: Colors.grey.withOpacity(0),
                             progressColor: absent_color,
                           ),
@@ -143,8 +150,11 @@ class _SecondhomePartScreenState extends State<SecondhomePartScreen> {
                         Positioned(
                           top: 10,
                           child: CircularPercentIndicator(
+                            reverse: true,
+                            rotateLinearGradient: true,
+                            startAngle:  50,
                             radius: 62.0,
-                            lineWidth: 20.0,
+                            lineWidth: 22.0,
                             percent:  widget.total_present ,
                             backgroundColor: Colors.grey.withOpacity(0),
                             progressColor: presentsent_color,
