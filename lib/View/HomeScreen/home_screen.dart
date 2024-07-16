@@ -36,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
     @override
   void initState() {
     Provider.of<HomeProvider>(context,listen: false).dashboardPieChartDataProvider("${GetStorage().read("mobile_id")}", "$selected3Datee", context);
-    Provider.of<HomeProvider>(context,listen: false).dashboardBarChartDataProvider("${GetStorage().read("mobile_id")}", "$selected3Datee","$selected3Datee", context);
+    Provider.of<HomeProvider>(context,listen: false).dashboardBarChartDataProvider("${GetStorage().read("mobile_id")}", "${DateFormat('dd-MMMM-yyyy').format(DateTime.now())}","$selected3Datee", context);
       // TODO: implement initState
     super.initState();
   }
@@ -96,7 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Container(
                  height: 180, padding: const EdgeInsets.only(top :7, left: 11.0,right: 11),
                   child:SecondhomePartScreen(
-                      presentTExt: "$TP",
+                      presentTExt: "$total_present_parsent",
                       PersentCount: dashboardPieChartData!=null &&"${dashboardPieChartData["clist"]}"!= "[]" ? "${dashboardPieChartData["clist"][0] ?? 0}":"0",
                       AbsentCount:dashboardPieChartData!=null &&"${dashboardPieChartData["clist"]}"!= "[]"? "${dashboardPieChartData["clist"][1] ?? 0}":'0',
                       LeaveCount:dashboardPieChartData!=null &&"${dashboardPieChartData["clist"]}"!= "[]"? "${dashboardPieChartData["clist"][2] ?? 0}":'0',
@@ -110,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     date_onTap: () {
                       _select3Date(context);
                     },
-                    date_text: "$selected3Datee",
+                    date_text: "${DateFormat('E, ').format(DateTime.now())}${selected3Datee}",
                     manpower: "555",
                   ),
                 ),
@@ -377,7 +377,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   ColorCustomText(
-                                     text: "${selected2Datee}",
+                                     text: "${DateFormat('E, ').format(DateTime.now())} ${selected2Datee}",
                                     textColor: Main_Theme_textColor.withOpacity(0.6),
                                     fontSize: font11,
                                     fontWeight: FontWeight.w700, letterSpacing: 0.3,),

@@ -235,6 +235,10 @@ class CustomHttpRequestClass{
     }
   }
 
+
+  ///             Salary comparison Chart  --------------------------------------------------------------------------
+
+
 }
 
 
