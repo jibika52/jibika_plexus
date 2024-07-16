@@ -10,6 +10,7 @@ import 'package:http/http.dart';
 import 'package:jibika_plexus/Api/Routes/routes.dart';
 import 'package:jibika_plexus/Controller/CounterProvider/counter_provider.dart';
 import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
+import 'package:jibika_plexus/Model/DashboardEmployeeLeaveListModel/dashboard_employee_leave_list_model.dart';
 import 'package:jibika_plexus/Model/PrivacyPolicyModelClass/privacy_policy_model_class.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
 import 'package:jibika_plexus/View/BootomNatchBar/bootom_bar_screen.dart';
@@ -224,8 +225,6 @@ class CustomHttpRequestClass{
           },
           body: body
       ).then((http.Response response) {
-        print(response.statusCode);
-        print(response.body);
         dashboardBarChartData =jsonDecode(response.body);
       }
       );
@@ -236,7 +235,62 @@ class CustomHttpRequestClass{
   }
 
 
-  ///             Salary comparison Chart  --------------------------------------------------------------------------
+
+  ///           Home Dashboard On Leave Employee List --------------------------------------------------------------------------
+  dashboardOnleaveEmployeeList(String UserId,String AttDate, BuildContext context)async{
+
+    dynamic dashboardOnleaveEmployeeList ;
+    var body = jsonEncode({
+      "UserId":"$UserId",
+      "lvDate":"$AttDate"
+    });
+
+    try{
+      var data=await http.post(Uri.parse("${BASEURL}/${HomeDashboardLeaveInformation}"),
+          headers: {
+            "Content-Type": "application/json",
+            "username": "jibikaapps",
+            "password": "20jibika24",
+          },
+          body: body
+      ).then((http.Response response) {
+        dashboardOnleaveEmployeeList =jsonDecode(response.body)["lvinfo"];
+      });
+      return dashboardOnleaveEmployeeList;
+          }
+    catch(e){
+      print("dashboardOnleaveEmployeeList Catch error ${e}");
+    }
+  }
+
+  ///           Home Dashboard On Leave Employee List --------------------------------------------------------------------------
+  dashboardOnleaveEmployeeinfo(String UserId,String AttDate, BuildContext context)async{
+
+    dynamic dashboardOnleaveEmployeeinfo ;
+    var body = jsonEncode({
+      "UserId":"$UserId",
+      "lvDate":"$AttDate"
+    });
+
+    try{
+      var data=await http.post(Uri.parse("${BASEURL}/${HomeDashboardLeaveInf}"),
+          headers: {
+            "Content-Type": "application/json",
+            "username": "jibikaapps",
+            "password": "20jibika24",
+          },
+          body: body
+      ).then((http.Response response) {
+        dashboardOnleaveEmployeeinfo =jsonDecode(response.body)["empinfo"];
+      });
+      return dashboardOnleaveEmployeeinfo;
+          }
+    catch(e){
+      print("dashboardOnleaveEmployeeinfo Catch error ${e}");
+    }
+  }
+
+
 
 
 }

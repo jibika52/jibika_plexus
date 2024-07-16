@@ -168,4 +168,5 @@ class Lvinfo {
     data['ApprovalStatus'] = this._approvalStatus;
     return data;
   }
+
 }

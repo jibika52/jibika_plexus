@@ -22,3 +22,9 @@
 
   /// Get Dash Boadr Pichart
     String HomeDashboardBarChartData="dashboard/DashboardBarChartData";
+
+  /// Get Dash Boadr Pichart
+    String HomeDashboardLeaveInformation="dashboard/DashboardEmpLeaveInfoByDate";
+
+  /// Get Dash Boadr Pichart
+    String HomeDashboardLeaveInf="dashboard/DashboardEmployeeInfoSummary";

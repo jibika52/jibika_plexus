@@ -17,6 +17,7 @@ import 'package:jibika_plexus/View/HomeScreen/HomeComponent/HomeSecondPartCompon
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import '../../CustomWidget/CustomText/custom_text.dart';
+import '../../Model/DashboardEmployeeLeaveListModel/dashboard_employee_leave_list_model.dart';
 import 'HomeComponent/HomeFirstPartComponent/home_header_partt.dart';
 import 'HomeComponent/HomeThirdPartComponent/home_thired_part_header.dart';
 
@@ -37,19 +38,21 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     Provider.of<HomeProvider>(context,listen: false).dashboardPieChartDataProvider("${GetStorage().read("mobile_id")}", "$selected3Datee", context);
     Provider.of<HomeProvider>(context,listen: false).dashboardBarChartDataProvider("${GetStorage().read("mobile_id")}", "${DateFormat('dd-MMMM-yyyy').format(DateTime.now())}","$selected3Datee", context);
+    Provider.of<HomeProvider>(context,listen: false).dashboardOnleaveEmployeeListProvider("${GetStorage().read("mobile_id")}", "$selected3Datee", context);
+    Provider.of<HomeProvider>(context,listen: false).dashboardOnleaveEmployeeInfoProvider("${GetStorage().read("mobile_id")}", "$selected3Datee", context);
       // TODO: implement initState
     super.initState();
   }
   @override
   Widget build(BuildContext context) {
-
-
   print("mobile_id====>${GetStorage().read("mobile_id")}---------------id_token====>${GetStorage().read("id_token")}------------------------refresh_token====>${GetStorage().read("refresh_token")}");
-
 
     final dashboardPieChartData =  Provider.of<HomeProvider>(context).dashboardPieChartData;
     final dashboardBarChartData =  Provider.of<HomeProvider>(context).dashboardBarChartData;
+  final  dashboardOnLeaveEmployeeData =  Provider.of<HomeProvider>(context).dashboardOnleaveEmployeeList;
+  final  dashboardOnLeaveEmployeeInfo=  Provider.of<HomeProvider>(context).dashboardOnleaveEmployeeinfo;
 
+  print("ccccccccccccccccccccccccccccccccccccccccccc            ${dashboardOnLeaveEmployeeInfo}");
 
     double TP=double.parse(dashboardPieChartData == null ||"${dashboardPieChartData["plist"]}"== "[]"?"0":"${dashboardPieChartData["plist"][0]??0 }") ;
     double TA=double.parse(dashboardPieChartData == null ||"${dashboardPieChartData["plist"]}"== "[]"?"0":"${dashboardPieChartData["plist"][1]??0 }");
@@ -364,10 +367,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       Spacer(),
                       Padding(
-                        padding: const EdgeInsets.only(top: 0,bottom: 0,left: 8,right: 8),
+                        padding:   EdgeInsets.only(top: 0,bottom: 0,left: 8,right: 8),
                         child: Row(
                           children: [
-                            ColorCustomText(text: "20 ", fontSize: font12header, fontWeight: FontWeight.w500,textColor: absent_color, letterSpacing: 0.3,),
+                            ColorCustomText(text: "${dashboardOnLeaveEmployeeData.length} ", fontSize: font12header, fontWeight: FontWeight.w500,textColor: absent_color, letterSpacing: 0.3,),
                             ColorCustomText(text: "Person on leave", fontSize: font12header, fontWeight: FontWeight.w500,textColor: Main_Theme_textColor.withOpacity(0.9), letterSpacing: 0.3,),
                             Spacer(),
                             Container(
@@ -398,6 +401,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         width: double.infinity,
                         padding: EdgeInsets.only(bottom: 8),
                         child: ListView.builder(
+                          itemCount: dashboardOnLeaveEmployeeData.length,
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
                             return InkWell(
@@ -458,7 +462,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   image: DecorationImage(image: AssetImage("Assets/DashBoardIcons/man_picture.png"),fit: BoxFit.fill)
                                               ),
                                             )),
-                                            ColorCustomText(text: "66799", fontSize: 14, textColor: Main_Theme_textColor.withOpacity(0.6),fontWeight: FontWeight.w800,letterSpacing: 0.2,)
+                                            ColorCustomText(text: "${dashboardOnLeaveEmployeeData[index]["EmployeeCode"]}", fontSize: 14, textColor: Main_Theme_textColor.withOpacity(0.6),fontWeight: FontWeight.w800,letterSpacing: 0.2,)
                                           ],
                                         )
                                     ),
@@ -485,7 +489,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                               height: 22,
                                               width: animated_leave,
                                               color: Color(0xffACC027).withOpacity(0.6),
-                                              child: CustomText(fontSize: font12header, fontWeight: FontWeight.w600, text: "Abdur romel", letterSpacing: 0.1),
+                                              child: CustomText(fontSize: font12header, fontWeight: FontWeight.w600, text: "${dashboardOnLeaveEmployeeData[index]["EmployeeName"]}", letterSpacing: 0.1),
                                             ),
                                             AnimatedContainer(
 
@@ -507,27 +511,32 @@ class _HomeScreenState extends State<HomeScreen> {
                                                       height: 17,
                                                       width: animated_leave,
                                                       alignment: Alignment.center,
-                                                      child:  CustomText(fontSize: font12header, fontWeight: FontWeight.bold, text: "Cl - 03", letterSpacing: 0.5, ),
+                                                      child:  CustomText(fontSize: font12header, fontWeight: FontWeight.bold, text: "${dashboardOnLeaveEmployeeData[index]["LeaveType"][0]}L - ${dashboardOnLeaveEmployeeData[index]["LeaveDays"]}", letterSpacing: 0.5, ),
                                                     ),
                                                     SizedBox(height: 3,),
-                                                    Container(
-                                                      height: 12,
-                                                      width: animated_leave,
-                                                      alignment: Alignment.center,
-                                                      child:  CustomText(fontSize: font11, fontWeight: FontWeight.w500, text: "10 jul 2024", letterSpacing: 0.5, ),
+
+                                                    Padding(
+                                                      padding: const EdgeInsets.only(left: 8.0,right: 8),
+                                                      child: Text("${dashboardOnLeaveEmployeeData[index]["LeaveDate"]}"),
                                                     ),
-                                                    Container(
-                                                      height: 20,
-                                                      width: animated_leave,
-                                                      alignment: Alignment.center,
-                                                      child:  CustomText(fontSize: font11, fontWeight: FontWeight.w600, text: "     To", letterSpacing: 0.5, ),
-                                                    ),
-                                                    Container(
-                                                      height: 20,
-                                                      width: animated_leave,
-                                                      alignment: Alignment.center,
-                                                      child:  CustomText(fontSize: font11, fontWeight: FontWeight.w500, text: "10 jul 2024", letterSpacing: 0.5, ),
-                                                    ),
+                                                    // Container(
+                                                    //   height: 12,
+                                                    //   width: animated_leave,
+                                                    //   alignment: Alignment.center,
+                                                    //   child:  CustomText(fontSize: font11, fontWeight: FontWeight.w500, text: "${dashboardOnLeaveEmployeeData[index]["LeaveDate"]}", letterSpacing: 0.5, ),
+                                                    // ),
+                                                    // Container(
+                                                    //   height: 20,
+                                                    //   width: animated_leave,
+                                                    //   alignment: Alignment.center,
+                                                    //   child:  CustomText(fontSize: font11, fontWeight: FontWeight.w600, text: "     To", letterSpacing: 0.5, ),
+                                                    // ),
+                                                    // Container(
+                                                    //   height: 20,
+                                                    //   width: animated_leave,
+                                                    //   alignment: Alignment.center,
+                                                    //   child:  CustomText(fontSize: font11, fontWeight: FontWeight.w500, text: "10 jul 2024", letterSpacing: 0.5, ),
+                                                    // ),
                                                   ],
                                                 ),
                                               ),
@@ -592,12 +601,9 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
 
-int leave_selected_index=-1;
-  bool selected_indexnumber=false;
-
-
+    int leave_selected_index=-1;
+    bool selected_indexnumber=false;
     String selected3Datee = DateFormat('dd-MMMM-yyyy').format(DateTime.now()).toString();
-
     Future<void> _select3Date(BuildContext context) async {
       final DateTime? picked = await showDatePicker(
           context: context,
