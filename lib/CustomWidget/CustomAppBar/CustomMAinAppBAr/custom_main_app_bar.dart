@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/self_bootom_navigation_bar.dart';
 
 import '../../../Utils/constants.dart';
 import '../../CustomImage/custom_image.dart';
@@ -59,7 +60,10 @@ class CustomMainAppBar extends StatelessWidget {
                         ))
                   ],
                 ),
-                Icon(Icons.more_vert,size: 30,color: Main_Theme_WhiteCollor.withOpacity(0.8) ,)
+                InkWell(onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => SalfBootomNatchBarScreen(),));
+                }, child: Icon(Icons.more_vert,size: 30,color: Main_Theme_WhiteCollor.withOpacity(0.8) ,))
+
               ],
             ),
           )

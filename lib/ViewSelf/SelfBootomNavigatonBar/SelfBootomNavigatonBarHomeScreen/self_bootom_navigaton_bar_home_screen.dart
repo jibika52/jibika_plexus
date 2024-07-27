@@ -9,9 +9,11 @@ import 'package:flutter/widgets.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:jibika_plexus/CustomSelfWedget/myself_leave_status.dart';
 import 'package:jibika_plexus/CustomWidget/CustomButton/customize_button.dart';
  import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
+import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/SelfBootomNavigatonBarHomeScreen/SelfMyLeaveSatusScreen/self_my_leave_satus_screen.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:provider/provider.dart';
 
@@ -44,7 +46,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
   }
   double Animatedwidth=170;
   double animated_height=0;
-  bool is_clicked=false;
+  bool is_clicked=false; 
   @override
   Widget build(BuildContext context) {
     final  dashboardtodaysBirthdayEmployeeinfo=  Provider.of<HomeProvider>(context).dashboardtodaysBirthdayEmployeeinfo;
@@ -59,7 +61,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
              children: [
                ///------------ First Part -----------------------------------
                Container(
-                 margin: EdgeInsets.all( 10 ),
+                 margin: EdgeInsets.only(left:  10,right: 10,top: apps_div_margin),
                  padding: EdgeInsets.all(10),
                  height: 150,
                  width: double.infinity,
@@ -81,7 +83,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                  crossAxisAlignment: CrossAxisAlignment.start,
                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                  children: [
-                                   CustomText(fontSize: 15, fontWeight: FontWeight.w500, text: "  My Presence", letterSpacing: 0.3),
+                                   CustomText(fontSize: 13, fontWeight: FontWeight.w500, text: "  My Presence", letterSpacing: 0.3),
                                    ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "  28-Sep-2023", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
                                    Row(
                                      mainAxisAlignment: MainAxisAlignment.start,
@@ -280,9 +282,14 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                Container(
                //  height: animated_height,
                  width: double.infinity,
-               color: holiday_color.withOpacity(0.08),
+             //  color: holiday_color.withOpacity(0.08),
                  padding: EdgeInsets.only(bottom: 10),
+                 margin: EdgeInsets.only(left: 10,right: 10,top: apps_div_margin ),
                  //    color: holiday_color ,
+                 decoration: BoxDecoration(
+                   borderRadius: BorderRadius.circular(7),
+                   color: Main_Theme_WhiteCollor,
+                 ),
                  child: Column(
                    children: [
                      Container(
@@ -294,10 +301,10 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                        ),
                        child: Row(
                          children: [
-                           CustomText(fontSize: 15, fontWeight: FontWeight.w500, text: "My Attendance", letterSpacing: 0.3),
+                           CustomText(fontSize: 13, fontWeight: FontWeight.w500, text: "My Attendance", letterSpacing: 0.3),
                           Spacer(),
                             Icon(Icons.arrow_back_ios,size: 16, color: Main_Theme_textColor.withOpacity(0.8),),
-                            CustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "Jan 2023", letterSpacing: 0.3),
+                            CustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "Jan 2023", letterSpacing: 0.3),
                             Icon(Icons.arrow_forward_ios_rounded,size: 16,color: Main_Theme_textColor.withOpacity(0.8)) ,
                            Spacer(),
                            IconButton(
@@ -402,12 +409,9 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                ),
                 /// Animated Calender /...........Calender....................................
                AnimatedContainer(
-                 padding: EdgeInsets.only(
-                     top: 5,bottom: 5
-                 ),
-                 margin: EdgeInsets.only(top: 10,left: 10,right: 10),
+                 margin: EdgeInsets.only(left: 10,right: 10, top:is_clicked==false?0: apps_div_margin),
                  //   height: 0,
-                height: animated_height,
+                 height: animated_height,
                  decoration: BoxDecoration(
                    borderRadius: BorderRadius.circular(7),
                    color: Main_Theme_WhiteCollor,
@@ -417,7 +421,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                    child: Column(
                      children: [
                        Container(
-                         margin: EdgeInsets.only(bottom: 10),
+                         margin: EdgeInsets.only(bottom: 10,top: 10),
                          height: 26,
                          width: double.infinity,
                          child: GridView.builder(
@@ -457,7 +461,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                padding: const EdgeInsets.all(2.0),
                                child: CircleAvatar(
                                  radius: 26,
-                            backgroundColor:index>10?presentsent_color: Colors.white ,
+                                 backgroundColor:index>10?presentsent_color: Colors.white ,
                                  child: ColorCustomText(
                                    fontSize: 12, fontWeight: FontWeight.w400,
                                    text: "${index+1}", letterSpacing: 0.3,
@@ -477,51 +481,42 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                Container(
                  decoration: BoxDecoration(
                    borderRadius: BorderRadius.circular(7),
-                   color: Main_Theme_WhiteCollor,
+                 color: Main_Theme_WhiteCollor,
+                   //   color: CustomButtonColor.withOpacity(0.15),
                  ),
-                 margin: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+                 margin: EdgeInsets.only(left: 10,right: 10 ,top: apps_div_margin),
                  child: Column(
                    children: [
                      Container(
                        height: 30,
                        width: double.infinity,
-                         padding: EdgeInsets.symmetric(horizontal: 10),
+                         padding: EdgeInsets.only(left: 10,right: 10),
                        child: Row(
                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                          children: [
-                           CustomText(fontSize: 15, fontWeight: FontWeight.w500, text: "My Leave Status 2023", letterSpacing: 0.3),
-                           ColorCustomText(fontSize: 15, fontWeight: FontWeight.w500, text: "See All", letterSpacing: 0.3, textColor: presentsent_color,)
+                           CustomText(fontSize: 13, fontWeight: FontWeight.w500, text: "My Leave Status", letterSpacing: 0.3),
+                           InkWell(
+                               onTap: () {
+                                 Navigator.push(context, CupertinoPageRoute(builder: (context) => SelfMyLeaveSatusScreen(),));
+                               },
+                               child: ColorCustomText(fontSize: 13, fontWeight: FontWeight.w500, text: "See All", letterSpacing: 0.3, textColor: presentsent_color,))
                          ],
                        )
                      ),
-                     Divider(
-                       height: 2,
-                       color: Main_Theme_textColor.withOpacity(0.5),
-                     ),
+
                      Container(
                          width: double.infinity,
-                         padding: EdgeInsets.all( 10),
+                         margin: EdgeInsets.only(left:  10,right: 10,bottom: 10),
+                         decoration: BoxDecoration(
+                           borderRadius: BorderRadius.circular(7),
+                           color: Main_Theme_WhiteCollor,
+                         ),
                          child: Row(
                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                            children: [
-                             Column(
-                               children: [
-                                 CustomText(fontSize: 14, fontWeight: FontWeight.w500, text: "2 Days", letterSpacing: 0.3),
-                                 CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Sick Leave", letterSpacing: 0.3),
-                               ],
-                             ),
-                             Column(
-                               children: [
-                                 CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "13-Sep-2023", letterSpacing: 0.3),
-                                 CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "14-Sep-2023", letterSpacing: 0.3),
-                               ],
-                             ),
-                             Column(
-                               children: [
-                                 CustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "Pending", letterSpacing: 0.3),
-                                 CustomText(fontSize: 10, fontWeight: FontWeight.w300, text: "Status", letterSpacing: 0.3),
-                               ],
-                             ),
+                             MySelfLeaveStatus(text1: "2 Days", text2: "Sick Leave", textColor: Main_Theme_textColor,),
+                             MySelfLeaveStatus(text1: "13-Sep-2023", text2: "13-Sep-2023", textColor: Main_Theme_textColor,),
+                             MySelfLeaveStatus(text1: "Pending", text2: "Status", textColor: Main_Theme_textColor,),
                            ],
                          )
                      ),
@@ -546,15 +541,14 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                  width: double.infinity,
                  decoration: BoxDecoration(
                    borderRadius: BorderRadius.circular(11),
-                   //   color: Color(0xffc7ded6),
-                   color: CustomButtonColor.withOpacity(0.15),
+                   color: Main_Theme_WhiteCollor
                  ),
                  child: Column(
                    crossAxisAlignment: CrossAxisAlignment.start,
                    children: [
                      Padding(
                        padding: const EdgeInsets.all(8.0),
-                       child: ColorCustomText(text: "New Face - ${DateFormat('MMMM yyyy').format(DateTime.now())}", fontSize: 14, fontWeight: FontWeight.w500, textColor: Main_Theme_textColor.withOpacity(0.9),letterSpacing: 0.3,),
+                       child: ColorCustomText(text: "New Face - ${DateFormat('MMMM yyyy').format(DateTime.now())}", fontSize: 13, fontWeight: FontWeight.w500, textColor: Main_Theme_textColor.withOpacity(0.9),letterSpacing: 0.3,),
                      ),
                      Container(
                        height: 182,
@@ -571,7 +565,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                              padding: EdgeInsets.all(10),
                              decoration: BoxDecoration(
                                borderRadius: BorderRadius.circular(11),
-                               color: Colors.white,
+                               color: CustomButtonColor.withOpacity(0.07),
                              ),
                              child: Column(
                                mainAxisAlignment: MainAxisAlignment.start,
@@ -614,9 +608,9 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                          mainAxisAlignment: MainAxisAlignment.start,
                                          children: [
                                            SizedBox(height: 3,),
-                                           ColorCustomText(text:"Uzzal Biswas", fontSize: font12header, fontWeight: FontWeight.w500, letterSpacing: 0.4, textColor: Main_Theme_textColor,overflow: TextOverflow.ellipsis, )
+                                           ColorCustomText(text:"Uzzal Biswas", fontSize: 12, fontWeight: FontWeight.w500, letterSpacing: 0.4, textColor: Main_Theme_textColor,overflow: TextOverflow.ellipsis, )
                                            , SizedBox(height: 3,),
-                                           ColorCustomText(overflow: TextOverflow.ellipsis,fontSize: font11, fontWeight: FontWeight.w400, text:"Hr Admin Manager", letterSpacing: 0.2, textColor:Main_Theme_textColor.withOpacity(0.75) )
+                                             ColorCustomText(overflow: TextOverflow.ellipsis,fontSize: font11, fontWeight: FontWeight.w400, text:"Hr Admin Manager", letterSpacing: 0.2, textColor:Main_Theme_textColor.withOpacity(0.75) )
                                            , ColorCustomText(overflow: TextOverflow.ellipsis,fontSize: font11, fontWeight: FontWeight.w400, text:"uzzal.171.cse@gmail.com", letterSpacing: 0.2,textColor:Main_Theme_textColor.withOpacity(0.75)  )
                                            , ColorCustomText(fontSize: font11, fontWeight: FontWeight.w400, text:"01889173335", letterSpacing: 0.2, textColor:Main_Theme_textColor.withOpacity(0.75)  )
 

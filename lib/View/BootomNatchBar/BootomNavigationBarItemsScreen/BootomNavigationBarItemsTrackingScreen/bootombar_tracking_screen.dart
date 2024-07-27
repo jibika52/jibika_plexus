@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
@@ -259,7 +260,7 @@ class _BootomNavigationBarItemsTrackingScreenState extends State<BootomNavigatio
                                     ),
                                     SizedBox(width: 10,),
                                     CustomTrackNowButton(b_text: "Track history",  onTap: () {
-                                      Navigator.push(context, MaterialPageRoute(builder: (context) => EmployeeTrackinScreen(),));
+                                      Navigator.push(context, CupertinoPageRoute(builder: (context) => EmployeeTrackinScreen(),));
                                       }, )
 
 

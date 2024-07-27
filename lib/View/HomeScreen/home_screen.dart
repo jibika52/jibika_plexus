@@ -156,7 +156,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     height: 90,
                                     width: 500,
                                     child:ListView.builder(
-                                      itemCount:dashboardBarChartData==null?0:"${dashboardBarChartData["tpls"]}"==null?0: dashboardBarChartData["tpls"].length,
+                                      itemCount:dashboardBarChartData==null?0:"${dashboardBarChartData["tpls"]}"=="[]"?0: dashboardBarChartData["tpls"].length,
                                       scrollDirection: Axis.horizontal,
                                       itemBuilder: (context, index) {
                                       // print("ffffffffffffffffffffff ${ dashboardBarChartData["tpls"][index].substring(0,2)}");
@@ -351,7 +351,6 @@ class _HomeScreenState extends State<HomeScreen> {
                //   ),
                // ),
                 /// ------------------- Five Part Start here  birthday------------------------///
-                SizedBox(height: apps_div_margin,),
                 HomeFivePartBodyScetion(
                   todayselectionbirthdaylist:"$dashboardtodaysBirthdayEmployeeinfo"=="null"?
                       []

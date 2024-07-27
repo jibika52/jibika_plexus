@@ -33,7 +33,7 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(preferredSize: Size.fromHeight(80), child: Container(
+      appBar: PreferredSize(preferredSize: Size.fromHeight(90), child: Container(
         color: CustomAppbarColor,
         height: 75,
         width: double.infinity,

@@ -1,4 +1,5 @@
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -338,7 +339,7 @@ class _EmployeeTrackinScreenState extends State<EmployeeTrackinScreen> {
                     Padding(
                       padding: const EdgeInsets.only(left: 100.0,right: 100,top: 10,bottom: 10),
                       child: CustomButton(onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => EmployeeConvinceTrackinScreen(),));
+                        Navigator.push(context, CupertinoPageRoute(builder: (context) => EmployeeConvinceTrackinScreen(),));
                       }, text: "View convince", button_text_fontSize: 15, button_height: 40, custom_button_collor: CustomButtonColor.withOpacity(0.8), button_text_color: Main_Theme_WhiteCollor, borderRadius: 20),
                     ),
 

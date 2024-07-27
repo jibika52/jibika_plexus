@@ -27,15 +27,15 @@ class HomeFivePartBodyScetion extends StatelessWidget {
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(11),
-        //   color: Color(0xffc7ded6),
-        color: CustomButtonColor.withOpacity(0.15),
+         color: Main_Theme_WhiteCollor
+      //  color: CustomButtonColor.withOpacity(0.15),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: ColorCustomText(text: "Today's Selection", fontSize: 14, fontWeight: FontWeight.w500, textColor: Main_Theme_textColor.withOpacity(0.9),letterSpacing: 0.3,),
+            child: ColorCustomText(text: "Today's Birthday", fontSize: 13, fontWeight: FontWeight.w500, textColor: Main_Theme_textColor.withOpacity(0.9),letterSpacing: 0.3,),
           ),
           Container(
             height: 100,
@@ -46,65 +46,77 @@ class HomeFivePartBodyScetion extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
                 return Container(
-                  height: 98,
-                  width: 220,
-                  margin: EdgeInsets.only(left: 10),
-                  padding: EdgeInsets.all(2),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(11),
-                    color: Colors.white,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  child: Stack(
                     children: [
-                      Stack(
-                        children: [
-                          Positioned(
-                            top: -4,
-                            left: -4,
-                            bottom: 7,
-                            child: Container(
-                              margin: EdgeInsets.all(10),
-                              width: 55,
-                              height: 75,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(9),
-                                color: absent_color.withOpacity(0.4),
-                              ),
+                      Container(
+                        height: 98,
+                        width: 220,
+                        margin: EdgeInsets.only(left: 10),
+                        padding: EdgeInsets.all(2),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(11),
+                          color: CustomButtonColor.withOpacity(0.07),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Stack(
+                              children: [
+                                Positioned(
+                                  top: -4,
+                                  left: -4,
+                                  bottom: 7,
+                                  child: Container(
+                                    margin: EdgeInsets.all(10),
+                                    width: 55,
+                                    height: 75,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(9),
+                                      color: absent_color.withOpacity(0.4),
+                                    ),
 
-                            ),),
-                          Positioned(
-                            child: Container(
-                            margin: EdgeInsets.all(10),
-                            width: 60,
-                            height: 75,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(9),
-                                image: DecorationImage(image: AssetImage("$image"),fit: BoxFit.fill,)
+                                  ),),
+                                Positioned(
+                                  child: Container(
+                                  margin: EdgeInsets.all(10),
+                                  width: 60,
+                                  height: 75,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(9),
+                                      image: DecorationImage(image: AssetImage("$image"),fit: BoxFit.fill,)
+                                  ),
+
+                                ),),
+                              ],
                             ),
-
-                          ),),
-                        ],
+                            Expanded(
+                                child: Container(
+                                  padding: EdgeInsets.only(right: 5,top: 5),
+                                  child: SingleChildScrollView(
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      children: [
+                                        SizedBox(height: 3,),
+                                        ColorCustomText(
+                                          text:"${todayselectionbirthdaylist}"=="[]"?"": "${todayselectionbirthdaylist[index]["EmployeeNameEnglish"]}", fontSize: 13, fontWeight: FontWeight.w500, letterSpacing: 0.4, textColor: Main_Theme_textColor,overflow: TextOverflow.ellipsis, )
+                                       , SizedBox(height: 3,),
+                                         ColorCustomText(fontSize: font11, fontWeight: FontWeight.w400, text:"${todayselectionbirthdaylist}"=="[]"?"": "${todayselectionbirthdaylist[index]["DesignationEnglish"]}", letterSpacing: 0.2, textColor:Main_Theme_textColor.withOpacity(0.6))
+                                        , ColorCustomText(fontSize: font11, fontWeight: FontWeight.w400, text:"${todayselectionbirthdaylist}"=="[]"?"": "${todayselectionbirthdaylist[index]["MobileNo"]}", letterSpacing: 0.2, textColor:Main_Theme_textColor.withOpacity(0.6))
+                                        , ColorCustomText(fontSize: font11, fontWeight: FontWeight.w400, text:"${todayselectionbirthdaylist}"=="[]"?"": "${todayselectionbirthdaylist[index]["Email"]}", letterSpacing: 0.2, textColor:Main_Theme_textColor.withOpacity(0.6))
+                                      ],
+                                    ),
+                                  ),
+                                ))
+                          ],
+                        ),
                       ),
-                      Expanded(
-                          child: Container(
-                            padding: EdgeInsets.only(right: 5,top: 5),
-                            child: SingleChildScrollView(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  SizedBox(height: 3,),
-                                  ColorCustomText(text:"${todayselectionbirthdaylist}"=="[]"?"": "${todayselectionbirthdaylist[index]["EmployeeNameEnglish"]}", fontSize: font12header, fontWeight: FontWeight.w500, letterSpacing: 0.4, textColor: Main_Theme_textColor,overflow: TextOverflow.ellipsis, )
-                                 , SizedBox(height: 3,),
-                                   ColorCustomText(fontSize: font11, fontWeight: FontWeight.w400, text:"${todayselectionbirthdaylist}"=="[]"?"": "${todayselectionbirthdaylist[index]["DesignationEnglish"]}", letterSpacing: 0.2, textColor:Main_Theme_textColor.withOpacity(0.6))
-                                  , ColorCustomText(fontSize: font11, fontWeight: FontWeight.w400, text:"${todayselectionbirthdaylist}"=="[]"?"": "${todayselectionbirthdaylist[index]["MobileNo"]}", letterSpacing: 0.2, textColor:Main_Theme_textColor.withOpacity(0.6))
-                                  , ColorCustomText(fontSize: font11, fontWeight: FontWeight.w400, text:"${todayselectionbirthdaylist}"=="[]"?"": "${todayselectionbirthdaylist[index]["Email"]}", letterSpacing: 0.2, textColor:Main_Theme_textColor.withOpacity(0.6))
-                                ],
-                              ),
-                            ),
-                          ))
+                      Positioned(
+                        bottom: 10,
+                        right: 10,
+                        child: Image.asset("Assets/Icons/birthday.png",height: 35,width: 35,fit: BoxFit.fill,),)
+
                     ],
                   ),
                 );
