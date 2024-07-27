@@ -36,11 +36,11 @@ class MyApp extends StatelessWidget {
         // home:PrivacyPolicyScreen(phone_or_email: '01889173335',),
         //  home:TEstHeroAnimation(),
         //     home:CompanyRegistrationScreen(),
-       //  home:BootomNavBarItemsMainFloationHomeScreen(),
+        //  home:BootomNavBarItemsMainFloationHomeScreen(),
         //     home:HomeFirstPartComponentAttendance(),
 
         /// ----------Home Screen---------
-          home:BootomNatchBarScreen(),
+        //      home:BootomNatchBarScreen(),
 
         /// ----------SplashScreen--------
         //       home:MainSplashPageViewScreen(),
@@ -50,12 +50,12 @@ class MyApp extends StatelessWidget {
         //   home:testFile(),
         //  home:BootomNavigationBarItemsTrackingScreen(),
         // home:BootomNavigationBarItemsAttendenceScreen(),
-        //  home:EmployeeProfileScreen(),
+     //  home:EmployeeProfileScreen(),
 
 
         /// Self Screen===========================
 
-        //    home:   SalfBootomNatchBarScreen(),
+        home:   SalfBootomNatchBarScreen(),
 
 
       )

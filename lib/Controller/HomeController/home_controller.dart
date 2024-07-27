@@ -29,9 +29,16 @@ class HomeProvider with ChangeNotifier{
   }
 
   /// dashboard On Leave Employee Data get here and return dashboardBarChartData
-  dynamic dashboardOnleaveEmployeeinfo ;
-  dashboardOnleaveEmployeeInfoProvider(String UserId,String AttDate , BuildContext context)async{
-    dashboardOnleaveEmployeeinfo=await CustomHttpRequestClass().dashboardOnleaveEmployeeinfo(UserId, AttDate,  context);
+  dynamic dashboardEmployeeinfo ;
+  dashboardEmployeeInfoProvider(String UserId,String AttDate , BuildContext context)async{
+    dashboardEmployeeinfo=await CustomHttpRequestClass().dashboardEmployeeinfo(UserId, AttDate,  context);
+    notifyListeners();
+  }
+
+  /// dashboard On Leave Employee Data get here and return dashboardBarChartData
+  dynamic dashboardtodaysBirthdayEmployeeinfo ;
+  dashboardTodaysBirthdayEmployeeInfoProvider(String UserId,String AttDate , BuildContext context)async{
+    dashboardtodaysBirthdayEmployeeinfo=await CustomHttpRequestClass().dashboardTodaysBirthDayEmployeeinfo(UserId, AttDate,  context);
     notifyListeners();
   }
 

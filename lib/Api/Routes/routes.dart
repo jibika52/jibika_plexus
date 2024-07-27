@@ -27,4 +27,6 @@
     String HomeDashboardLeaveInformation="dashboard/DashboardEmpLeaveInfoByDate";
 
   /// Get Dash Boadr Pichart
-    String HomeDashboardLeaveInf="dashboard/DashboardEmployeeInfoSummary";
+    String HomeDashboardEmployeeInf="dashboard/DashboardEmployeeInfoSummary";
+  /// Get Dash Boadr Pichart
+    String HomeDashboardTodayBirthDay="dashboard/DashboardEmpBirthdayList";

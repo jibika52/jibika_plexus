@@ -11,12 +11,14 @@ class HomeFivePartBodyScetion extends StatelessWidget {
   required this.designation,
   required this.email,
   required this.phone,
+  required this.todayselectionbirthdaylist,
   });
   String name;
   String phone;
   String email;
   String designation;
   String image;
+  List todayselectionbirthdaylist;
   @override
   Widget build(BuildContext context) {
     return   Container(
@@ -40,6 +42,7 @@ class HomeFivePartBodyScetion extends StatelessWidget {
             width: double.infinity,
             padding: EdgeInsets.only(bottom: 8),
             child: ListView.builder(
+              itemCount: todayselectionbirthdaylist.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
                 return Container(
@@ -60,6 +63,7 @@ class HomeFivePartBodyScetion extends StatelessWidget {
                           Positioned(
                             top: -4,
                             left: -4,
+                            bottom: 7,
                             child: Container(
                               margin: EdgeInsets.all(10),
                               width: 55,
@@ -86,17 +90,19 @@ class HomeFivePartBodyScetion extends StatelessWidget {
                       Expanded(
                           child: Container(
                             padding: EdgeInsets.only(right: 5,top: 5),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                SizedBox(height: 3,),
-                                ColorCustomText(text: "$name", fontSize: font12header, fontWeight: FontWeight.w500, letterSpacing: 0.4, textColor: Main_Theme_textColor )
-                               , SizedBox(height: 3,),
-                                 ColorCustomText(fontSize: font11, fontWeight: FontWeight.w400, text: "$designation", letterSpacing: 0.2, textColor:Main_Theme_textColor.withOpacity(0.6))
-                                , ColorCustomText(fontSize: font11, fontWeight: FontWeight.w400, text: "$email", letterSpacing: 0.2, textColor:Main_Theme_textColor.withOpacity(0.6))
-                                , ColorCustomText(fontSize: font11, fontWeight: FontWeight.w400, text: "$phone", letterSpacing: 0.2, textColor:Main_Theme_textColor.withOpacity(0.6))
-                              ],
+                            child: SingleChildScrollView(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  SizedBox(height: 3,),
+                                  ColorCustomText(text:"${todayselectionbirthdaylist}"=="[]"?"": "${todayselectionbirthdaylist[index]["EmployeeNameEnglish"]}", fontSize: font12header, fontWeight: FontWeight.w500, letterSpacing: 0.4, textColor: Main_Theme_textColor,overflow: TextOverflow.ellipsis, )
+                                 , SizedBox(height: 3,),
+                                   ColorCustomText(fontSize: font11, fontWeight: FontWeight.w400, text:"${todayselectionbirthdaylist}"=="[]"?"": "${todayselectionbirthdaylist[index]["DesignationEnglish"]}", letterSpacing: 0.2, textColor:Main_Theme_textColor.withOpacity(0.6))
+                                  , ColorCustomText(fontSize: font11, fontWeight: FontWeight.w400, text:"${todayselectionbirthdaylist}"=="[]"?"": "${todayselectionbirthdaylist[index]["MobileNo"]}", letterSpacing: 0.2, textColor:Main_Theme_textColor.withOpacity(0.6))
+                                  , ColorCustomText(fontSize: font11, fontWeight: FontWeight.w400, text:"${todayselectionbirthdaylist}"=="[]"?"": "${todayselectionbirthdaylist[index]["Email"]}", letterSpacing: 0.2, textColor:Main_Theme_textColor.withOpacity(0.6))
+                                ],
+                              ),
                             ),
                           ))
                     ],

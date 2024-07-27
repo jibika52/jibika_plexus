@@ -11,6 +11,7 @@ class CustomText extends StatelessWidget {
     required this.letterSpacing,
     this.textAlign,
     this.fontStyle,
+    this.overflow,
   });
 
   String? text;
@@ -19,10 +20,11 @@ class CustomText extends StatelessWidget {
   FontWeight? fontWeight;
   final TextAlign? textAlign;
   final FontStyle? fontStyle;
-
+  final TextOverflow? overflow;
   @override
   Widget build(BuildContext context) {
     return Text(
+      overflow: overflow,
       textAlign: textAlign,
       "$text",
       style: GoogleFonts.poppins(
@@ -42,6 +44,7 @@ class ColorCustomText extends StatelessWidget {
     required this.fontWeight,
     required  this.text,
     required this.letterSpacing,
+    this.overflow,
     this.textAlign,
    required this.textColor
   });
@@ -52,10 +55,11 @@ class ColorCustomText extends StatelessWidget {
   FontWeight? fontWeight;
   final TextAlign? textAlign;
   Color textColor;
-
+  final TextOverflow? overflow;
   @override
   Widget build(BuildContext context) {
     return Text(
+      overflow: overflow,
       textAlign: textAlign,
       "$text",
       style: GoogleFonts.poppins(

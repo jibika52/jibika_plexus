@@ -38,21 +38,27 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     Provider.of<HomeProvider>(context,listen: false).dashboardPieChartDataProvider("${GetStorage().read("mobile_id")}", "$selected3Datee", context);
     Provider.of<HomeProvider>(context,listen: false).dashboardBarChartDataProvider("${GetStorage().read("mobile_id")}", "${DateFormat('dd-MMMM-yyyy').format(DateTime.now())}","$selected3Datee", context);
-    Provider.of<HomeProvider>(context,listen: false).dashboardOnleaveEmployeeListProvider("${GetStorage().read("mobile_id")}", "$selected3Datee", context);
-    Provider.of<HomeProvider>(context,listen: false).dashboardOnleaveEmployeeInfoProvider("${GetStorage().read("mobile_id")}", "$selected3Datee", context);
+    Provider.of<HomeProvider>(context,listen: false).dashboardOnleaveEmployeeListProvider("${GetStorage().read("mobile_id")}", "$selected4Datee", context); //Person on leave
+    Provider.of<HomeProvider>(context,listen: false).dashboardEmployeeInfoProvider("${GetStorage().read("mobile_id")}", "${DateFormat('dd-MMMM-yyyy').format(DateTime.now())}", context);//Dashboard Employee info
+    Provider.of<HomeProvider>(context,listen: false).dashboardTodaysBirthdayEmployeeInfoProvider("${GetStorage().read("mobile_id")}", "", context); // Todays birthday
+
       // TODO: implement initState
     super.initState();
   }
   @override
   Widget build(BuildContext context) {
+
+
+
   print("mobile_id====>${GetStorage().read("mobile_id")}---------------id_token====>${GetStorage().read("id_token")}------------------------refresh_token====>${GetStorage().read("refresh_token")}");
 
     final dashboardPieChartData =  Provider.of<HomeProvider>(context).dashboardPieChartData;
     final dashboardBarChartData =  Provider.of<HomeProvider>(context).dashboardBarChartData;
   final  dashboardOnLeaveEmployeeData =  Provider.of<HomeProvider>(context).dashboardOnleaveEmployeeList;
-  final  dashboardOnLeaveEmployeeInfo=  Provider.of<HomeProvider>(context).dashboardOnleaveEmployeeinfo;
+  final  dashboardEmployeeInfo=  Provider.of<HomeProvider>(context).dashboardEmployeeinfo;
+  final  dashboardtodaysBirthdayEmployeeinfo=  Provider.of<HomeProvider>(context).dashboardtodaysBirthdayEmployeeinfo;
 
-  print("ccccccccccccccccccccccccccccccccccccccccccc            ${dashboardOnLeaveEmployeeInfo}");
+  print("ccccccccccccccccccccccccccccccccccccccccccc            ${dashboardOnLeaveEmployeeData}");
 
     double TP=double.parse(dashboardPieChartData == null ||"${dashboardPieChartData["plist"]}"== "[]"?"0":"${dashboardPieChartData["plist"][0]??0 }") ;
     double TA=double.parse(dashboardPieChartData == null ||"${dashboardPieChartData["plist"]}"== "[]"?"0":"${dashboardPieChartData["plist"][1]??0 }");
@@ -114,7 +120,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       _select3Date(context);
                     },
                     date_text: "${DateFormat('E, ').format(DateTime.now())}${selected3Datee}",
-                    manpower: "555",
+                    manpower:"${dashboardEmployeeInfo}"=="null"?"0": "${dashboardEmployeeInfo["TotalEmployee"]}",
                   ),
                 ),
       
@@ -150,7 +156,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     height: 90,
                                     width: 500,
                                     child:ListView.builder(
-                                      itemCount:dashboardBarChartData==null?0: dashboardBarChartData["tpls"].length,
+                                      itemCount:dashboardBarChartData==null?0:"${dashboardBarChartData["tpls"]}"==null?0: dashboardBarChartData["tpls"].length,
                                       scrollDirection: Axis.horizontal,
                                       itemBuilder: (context, index) {
                                       // print("ffffffffffffffffffffff ${ dashboardBarChartData["tpls"][index].substring(0,2)}");
@@ -344,19 +350,23 @@ class _HomeScreenState extends State<HomeScreen> {
                //     ),
                //   ),
                // ),
-                /// ------------------- Five Part Start here ------------------------///
+                /// ------------------- Five Part Start here  birthday------------------------///
                 SizedBox(height: apps_div_margin,),
                 HomeFivePartBodyScetion(
+                  todayselectionbirthdaylist:"$dashboardtodaysBirthdayEmployeeinfo"=="null"?
+                      []
+                    :
+                  dashboardtodaysBirthdayEmployeeinfo,
                     image: "Assets/DashBoardIcons/man_picture.png",
                     name: "Hafizur Rahaman",
                     designation: "Manager, HR, Admin ,",
                     email: "jibikaapps@gmail.com ",
                     phone: "01889173335"
                 ),
-                /// ------------------- Six Part Start here ------------------------///
+                /// ------------------- Six Part Start here - Person on leave-----------------------///
                 Container(
                   margin: EdgeInsets.only(left: 10,right: 10,top: apps_div_margin),
-                  height: 154,
+                  height:"$dashboardOnLeaveEmployeeData"=="null"?35 :"$dashboardOnLeaveEmployeeData"=="[]"?35 : 154,
                   width: double.infinity,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(11),
@@ -370,7 +380,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         padding:   EdgeInsets.only(top: 0,bottom: 0,left: 8,right: 8),
                         child: Row(
                           children: [
-                            ColorCustomText(text: "${dashboardOnLeaveEmployeeData.length} ", fontSize: font12header, fontWeight: FontWeight.w500,textColor: absent_color, letterSpacing: 0.3,),
+                            ColorCustomText(text:"$dashboardOnLeaveEmployeeData"=="null"?"No " :"$dashboardOnLeaveEmployeeData"=="[]"?"No " : "${dashboardOnLeaveEmployeeData.length} ", fontSize: font12header, fontWeight: FontWeight.w500,textColor: absent_color, letterSpacing: 0.3,),
                             ColorCustomText(text: "Person on leave", fontSize: font12header, fontWeight: FontWeight.w500,textColor: Main_Theme_textColor.withOpacity(0.9), letterSpacing: 0.3,),
                             Spacer(),
                             Container(
@@ -380,14 +390,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   ColorCustomText(
-                                     text: "${DateFormat('E, ').format(DateTime.now())} ${selected2Datee}",
+                                     text: "${DateFormat('E, ').format(DateTime.now())} ${selected4Datee}",
                                     textColor: Main_Theme_textColor.withOpacity(0.6),
                                     fontSize: font11,
                                     fontWeight: FontWeight.w700, letterSpacing: 0.3,),
                                   SizedBox(width: 15,),
                                   /// ---------- Custom Calender Part --------- ///
                                   CustomCalender(onTap: () {
-                                    _select2Date(context);
+                                    _select4Date(context);
                                 },),
                                 ],
                               ),
@@ -396,12 +406,13 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       Spacer(),
+                      "$dashboardOnLeaveEmployeeData"=="null"?Container() :"$dashboardOnLeaveEmployeeData"=="[]"?Container() :
                       Container(
                         height: 120,
                         width: double.infinity,
                         padding: EdgeInsets.only(bottom: 8),
                         child: ListView.builder(
-                          itemCount: dashboardOnLeaveEmployeeData.length,
+                          itemCount:"$dashboardOnLeaveEmployeeData"=="null"?0: dashboardOnLeaveEmployeeData.length,
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
                             return InkWell(
@@ -489,7 +500,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                               height: 22,
                                               width: animated_leave,
                                               color: Color(0xffACC027).withOpacity(0.6),
-                                              child: CustomText(fontSize: font12header, fontWeight: FontWeight.w600, text: "${dashboardOnLeaveEmployeeData[index]["EmployeeName"]}", letterSpacing: 0.1),
+                                              child: CustomText(
+                                                  overflow: TextOverflow.ellipsis,
+                                                  fontSize: font12header, fontWeight: FontWeight.w600, text: "${dashboardOnLeaveEmployeeData[index]["EmployeeName"]}", letterSpacing: 0.1),
                                             ),
                                             AnimatedContainer(
 
@@ -511,7 +524,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                                       height: 17,
                                                       width: animated_leave,
                                                       alignment: Alignment.center,
-                                                      child:  CustomText(fontSize: font12header, fontWeight: FontWeight.bold, text: "${dashboardOnLeaveEmployeeData[index]["LeaveType"][0]}L - ${dashboardOnLeaveEmployeeData[index]["LeaveDays"]}", letterSpacing: 0.5, ),
+                                                      child:  CustomText(
+                                                        fontSize: font12header, fontWeight: FontWeight.bold, text: "${dashboardOnLeaveEmployeeData[index]["LeaveType"][0]}L - ${dashboardOnLeaveEmployeeData[index]["LeaveDays"]}", letterSpacing: 0.5, ),
                                                     ),
                                                     SizedBox(height: 3,),
 
@@ -565,18 +579,18 @@ class _HomeScreenState extends State<HomeScreen> {
                       scrollDirection: Axis.horizontal,
                       child: Row(
                         children: [
-                          HomeSeventhPartBodySection(image: "Assets/DashBoardIcons/employee.png", Head_text: "455H", body_text: "Total Active", footer_text: "Employee", color: Color(0xffE5B336),),
-                          HomeSeventhPartBodySection(image: "Assets/DashBoardIcons/male.png", Head_text: "455H", body_text: "Total Active", footer_text: "Male", color: Color(0xffCAAD18),),
-                          HomeSeventhPartBodySection(image: "Assets/DashBoardIcons/femalee.png", Head_text: "455H", body_text: "Total Active", footer_text: "Female", color: Color(0xff26986B),),
-                          HomeSeventhPartBodySection(image: "Assets/DashBoardIcons/join.png", Head_text: "455H", body_text: "This Month", footer_text: "Join", color: Color(0xff427C65),),
-                          HomeSeventhPartBodySection(image: "Assets/DashBoardIcons/inactive.png", Head_text: "455H", body_text: "This Month", footer_text: "InActive", color: Color(0xff38745F),),
-                          HomeSeventhPartBodySection(image: "Assets/DashBoardIcons/conformation.png", Head_text: "455H", body_text: "This Month", footer_text: "Confirmation", color: Color(0xff064F42),),
+                          HomeSeventhPartBodySection(image: "Assets/DashBoardIcons/employee.png", Head_text: "${dashboardEmployeeInfo}"=="null"?"0H": "${dashboardEmployeeInfo["TotalEmployee"]}H", body_text: "Total Active", footer_text: "Employee", color: Color(0xffE5B336),),
+                          HomeSeventhPartBodySection(image: "Assets/DashBoardIcons/male.png", Head_text: "${dashboardEmployeeInfo}"=="null"?"0H": "${dashboardEmployeeInfo["TotalMale"]}H", body_text: "Total Active", footer_text: "Male", color: Color(0xffCAAD18),),
+                          HomeSeventhPartBodySection(image: "Assets/DashBoardIcons/femalee.png", Head_text:"${dashboardEmployeeInfo}"=="null"?"0H": "${dashboardEmployeeInfo["TotalFemale"]}H", body_text: "Total Active", footer_text: "Female", color: Color(0xff26986B),),
+                          HomeSeventhPartBodySection(image: "Assets/DashBoardIcons/join.png", Head_text: "${dashboardEmployeeInfo}"=="null"?"0H": "${dashboardEmployeeInfo["ThisMonthJoin"]}H",body_text: "This Month", footer_text: "Join", color: Color(0xff427C65),),
+                          HomeSeventhPartBodySection(image: "Assets/DashBoardIcons/inactive.png", Head_text:"${dashboardEmployeeInfo}"=="null"?"0H": "${dashboardEmployeeInfo["ThisMonthInactive"]}H", body_text: "This Month", footer_text: "InActive", color: Color(0xff38745F),),
+                          HomeSeventhPartBodySection(image: "Assets/DashBoardIcons/conformation.png", Head_text: "${dashboardEmployeeInfo}"=="null"?"0H": "${dashboardEmployeeInfo["ThisMonthConfirmation"]}H", body_text: "This Month", footer_text: "Confirmation", color: Color(0xff064F42),),
       
                         ],
                       ),
                     )
                 ),
-                SizedBox(height: 100,),
+               SizedBox(height: 40,),
 
               ],
             ),
@@ -596,6 +610,7 @@ class _HomeScreenState extends State<HomeScreen> {
       final df = new DateFormat('dd-MMMM-yyyy');
       setState(() {
         selected2Datee = df.format(picked);
+
       });
     }
   }
@@ -614,6 +629,20 @@ class _HomeScreenState extends State<HomeScreen> {
         setState(() {
           selected3Datee = df.format(picked);
           Provider.of<HomeProvider>(context,listen: false).dashboardPieChartDataProvider("${GetStorage().read("mobile_id")}", "$selected3Datee", context);
+        });
+      }
+    }
+    String selected4Datee = DateFormat('dd-MMMM-yyyy').format(DateTime.now()).toString();
+    Future<void> _select4Date(BuildContext context) async {
+      final DateTime? picked = await showDatePicker(
+          context: context,
+          firstDate: DateTime(2015, 8),
+          lastDate: DateTime(2101));
+      if (picked != null && picked != selected3Datee) {
+        final df = new DateFormat('dd-MMMM-yyyy');
+        setState(() {
+          selected4Datee = df.format(picked);
+          Provider.of<HomeProvider>(context,listen: false).dashboardOnleaveEmployeeListProvider("${GetStorage().read("mobile_id")}", "$selected4Datee", context); //Person on leave
         });
       }
     }

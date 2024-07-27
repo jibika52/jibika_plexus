@@ -1,42 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
-import 'package:jibika_plexus/View/BootomNatchBar/BootomNavigationBarItemsScreen/BootomNavigationBarItemsMainHomeScreen/bootom_navigation_barItems_main_home_screen.dart';
 import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/SelfBootomNavigatonBarHomeScreen/self_bootom_navigaton_bar_home_screen.dart';
-import '../../CustomWidget/CustomAppBar/CustomMAinAppBAr/custom_main_app_bar.dart';
 import '../../CustomWidget/CustomDrawer/CustomLeftDrawer/custom_left_drawer.dart';
 import '../../CustomWidget/CustomText/custom_text.dart';
-import '../../View/BootomNatchBar/BootomNavigationBarItemsScreen/BootomNavigationBarItemsAttendenceScreen/bootom_navigationar_Items_attendence_screen.dart';
-import '../../View/BootomNatchBar/BootomNavigationBarItemsScreen/BootomNavigationBarItemsPayrollScreen/bootom_navigationar_Items_payroll_screen.dart';
-import '../../View/BootomNatchBar/BootomNavigationBarItemsScreen/BootomNavigationBarItemsTrackingScreen/bootombar_tracking_screen.dart';
-import '../../View/HomeScreen/home_screen.dart';
 
 class SalfBootomNatchBarScreen extends StatefulWidget {
   const SalfBootomNatchBarScreen({super.key});
-
   @override
   State<SalfBootomNatchBarScreen> createState() => _SalfBootomNatchBarScreenState();
 }
 
 class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
-
-
   int maxCount = 5;
   bool is_get_profie=false;
   dynamic getDynamicSliderData;
-
   @override
   void initState() {
-
     // TODO: implement initState
     super.initState();
   }
   /// widget list
   final List<Widget> bottomBarPages = [
     SelfBootomNavigatonBarHomeScreen(),
-Text("AAAAAAAAA"),
-Text("BBBBBBBBBBBB"),
-Text("CCCCCCCCCCCCCCCCCCC"),
+    Text("AAAAAAAAA"),
+    Text("BBBBBBBBBBBB"),
+    Text("CCCCCCCCCCCCCCCCCCC"),
   ];
   final _key=GlobalKey<ScaffoldState>();
   int _currentIndex = 0;
@@ -165,7 +154,7 @@ Text("CCCCCCCCCCCCCCCCCCC"),
           foregroundColor: Main_Theme_WhiteCollor,
           backgroundColor: Main_Theme_WhiteCollor,
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => BootomNavBarItemsMainFloationHomeScreen(),));
+       //     Navigator.push(context, MaterialPageRoute(builder: (context) => BootomNavBarItemsMainFloationHomeScreen(),));
           }, child: Padding(
           padding: const EdgeInsets.all(2.0),
           child: Image.asset("Assets/Logo/leaff.png" ),

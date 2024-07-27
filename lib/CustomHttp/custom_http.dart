@@ -263,17 +263,17 @@ class CustomHttpRequestClass{
     }
   }
 
-  ///           Home Dashboard On Leave Employee List --------------------------------------------------------------------------
-  dashboardOnleaveEmployeeinfo(String UserId,String AttDate, BuildContext context)async{
+  ///           Home Dashboard Employee Information  --------------------------------------------------------------------------
+  dashboardEmployeeinfo(String UserId,String AttDate, BuildContext context)async{
 
-    dynamic dashboardOnleaveEmployeeinfo ;
+    dynamic dashboardEmployeeinfo ;
     var body = jsonEncode({
       "UserId":"$UserId",
-      "lvDate":"$AttDate"
+      "AttDate":"$AttDate"
     });
 
     try{
-      var data=await http.post(Uri.parse("${BASEURL}/${HomeDashboardLeaveInf}"),
+      var data=await http.post(Uri.parse("${BASEURL}/${HomeDashboardEmployeeInf}"),
           headers: {
             "Content-Type": "application/json",
             "username": "jibikaapps",
@@ -281,12 +281,38 @@ class CustomHttpRequestClass{
           },
           body: body
       ).then((http.Response response) {
-        dashboardOnleaveEmployeeinfo =jsonDecode(response.body)["empinfo"];
+        dashboardEmployeeinfo =jsonDecode(response.body)["empinfo"];
       });
-      return dashboardOnleaveEmployeeinfo;
+      return dashboardEmployeeinfo;
           }
     catch(e){
-      print("dashboardOnleaveEmployeeinfo Catch error ${e}");
+      print("dashboardEmployeeinfo Catch error ${e}");
+    }
+  }
+
+  ///           Home Dashboard On Leave Employee List --------------------------------------------------------------------------
+  dashboardTodaysBirthDayEmployeeinfo(String UserId,String AttDate, BuildContext context)async{
+
+    dynamic dashboardtodaysBirthdayEmployeeinfo ;
+    var body = jsonEncode({
+      "UserId":"$UserId",
+    });
+
+    try{
+      var data=await http.post(Uri.parse("${BASEURL}/${HomeDashboardTodayBirthDay}"),
+          headers: {
+            "Content-Type": "application/json",
+            "username": "jibikaapps",
+            "password": "20jibika24",
+          },
+          body: body
+      ).then((http.Response response) {
+        dashboardtodaysBirthdayEmployeeinfo =jsonDecode(response.body)["brinfo"];
+      });
+      return dashboardtodaysBirthdayEmployeeinfo;
+          }
+    catch(e){
+      print("dashboardtodaysBirthdayEmployeeinfo Catch error ${e}");
     }
   }
 
