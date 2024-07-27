@@ -33,6 +33,12 @@ class _SelfMyLeaveSatusScreenState extends State<SelfMyLeaveSatusScreen> {
          children: [
            SizedBox(height: apps_div_margin ),
            Container(
+             decoration: BoxDecoration(
+               borderRadius: BorderRadius.circular(7),
+               color: Main_Theme_WhiteCollor,
+             ),
+             padding: EdgeInsets.all(5),
+             margin: EdgeInsets.only(left: 10,right: 10),
              width: double.infinity,
              child: ListView.builder(
                shrinkWrap: true,
@@ -53,11 +59,17 @@ class _SelfMyLeaveSatusScreenState extends State<SelfMyLeaveSatusScreen> {
                  child: Row(
                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                    children: [
-                     Text(index==0?"Leave":index==1?"SL": index==2?"SL": index==3?"LW":"OL"),
-                     Text(index==0?"Entitle":"10"),
-                     Text(index==0?"Availed":"20"),
-                     Text(index==0?"Encashment":"30"),
-                     Text(index==0?"Dues":"40"),
+                     CustomText(text :index==0?"Leave":index==1?"SL": index==2?"SL": index==3?"LW":"OL", fontSize: 10, fontWeight: FontWeight.w300, letterSpacing: 0.2,),
+                    Spacer(),
+                     CustomText(text :index==0?"Entitle":"  10" ,fontSize: 10, fontWeight: FontWeight.w300, letterSpacing: 0.2,),
+                     Spacer(),
+                     CustomText(text :index==0?"Availed":"   20" ,fontSize: 10, fontWeight: FontWeight.w300, letterSpacing: 0.2,),
+                     Spacer(),
+                  CustomText(text :index==0?"Encashment":"  30" ,fontSize: 10, fontWeight: FontWeight.w300, letterSpacing: 0.2,),
+                     Spacer(),
+                     CustomText(text :index==0?"Dues":"  40" ,fontSize: 10, fontWeight: FontWeight.w300, letterSpacing: 0.2,),
+                     Spacer(),
+                  CustomText(text :index==0?"Date": "10-jun-2024", fontSize: 10, fontWeight: FontWeight.w300, letterSpacing: 0.2,),
                    ],
                  ),
                );
@@ -65,7 +77,7 @@ class _SelfMyLeaveSatusScreenState extends State<SelfMyLeaveSatusScreen> {
            ),
            SizedBox(height: apps_div_margin ),
            Container(
-             height: 40,
+             height: 39,
              width: double.infinity,
              padding: EdgeInsets.only(
                 right: 10,left: 10
