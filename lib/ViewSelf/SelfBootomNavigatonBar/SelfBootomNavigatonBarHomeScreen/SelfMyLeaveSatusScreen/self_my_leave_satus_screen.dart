@@ -31,6 +31,11 @@ class _SelfMyLeaveSatusScreenState extends State<SelfMyLeaveSatusScreen> {
            margin: EdgeInsets.only(left: 10,right: 10,top: 10),
            padding: EdgeInsets.only(top: 10,left: 10,right: 10),
            decoration: BoxDecoration(
+             border: Border(
+               bottom: BorderSide(
+                 color: Colors.black
+               )
+             ),
              borderRadius: BorderRadius.circular(7),
              color: Main_Theme_WhiteCollor
            ),
@@ -252,7 +257,8 @@ class _SelfMyLeaveSatusScreenState extends State<SelfMyLeaveSatusScreen> {
                            )
                          ],
                        ),
-                     )),
+                     ),
+                 ),
 
                  Container(
                    height: 53,

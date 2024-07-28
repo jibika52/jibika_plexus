@@ -58,13 +58,12 @@ class _HomeScreenState extends State<HomeScreen> {
   final  dashboardEmployeeInfo=  Provider.of<HomeProvider>(context).dashboardEmployeeinfo;
   final  dashboardtodaysBirthdayEmployeeinfo=  Provider.of<HomeProvider>(context).dashboardtodaysBirthdayEmployeeinfo;
 
-  print("ccccccccccccccccccccccccccccccccccccccccccc            ${dashboardOnLeaveEmployeeData}");
 
-    double TP=double.parse(dashboardPieChartData == null ||"${dashboardPieChartData["plist"]}"== "[]"?"0":"${dashboardPieChartData["plist"][0]??0 }") ;
-    double TA=double.parse(dashboardPieChartData == null ||"${dashboardPieChartData["plist"]}"== "[]"?"0":"${dashboardPieChartData["plist"][1]??0 }");
-    double TL=double.parse(dashboardPieChartData == null ||"${dashboardPieChartData["plist"]}"== "[]"?"0":"${dashboardPieChartData["plist"][2]??0 }");
-    double TH=double.parse(dashboardPieChartData == null ||"${dashboardPieChartData["plist"]}"== "[]"?"0":"${dashboardPieChartData["plist"][3]??0 }");
-    double TH2=double.parse(dashboardPieChartData == null ||"${dashboardPieChartData["plist"]}"== "[]"?"0":"${dashboardPieChartData["plist"][4]??0 }");
+    double TP=double.parse(dashboardPieChartData == null ?"0":"${dashboardPieChartData["plist"]}"== "[]"?"0":"${dashboardPieChartData["plist"][0]??0 }");
+    double TA=double.parse(dashboardPieChartData == null ?"0":"${dashboardPieChartData["plist"]}"== "[]"?"0":"${dashboardPieChartData["plist"][1]??0 }");
+    double TL=double.parse(dashboardPieChartData == null ?"0":"${dashboardPieChartData["plist"]}"== "[]"?"0":"${dashboardPieChartData["plist"][2]??0 }");
+    double TH=double.parse(dashboardPieChartData == null ?"0":"${dashboardPieChartData["plist"]}"== "[]"?"0":"${dashboardPieChartData["plist"][3]??0 }");
+    double TH2=double.parse(dashboardPieChartData == null?"0":"${dashboardPieChartData["plist"]}"== "[]"?"0":"${dashboardPieChartData["plist"][4]??0 }");
 
     int total_present_parsent=double.parse("${TP}").toInt();
     print("total_holiday_parsent ----$TP--- $total_present_parsent");
@@ -82,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
     print("total_holiday_parsent2 ------- $total_holiday_parsent2");
 
 
- //   total_present_parsent = total_present_parsent+100-total_absent_parsent-total_leave_parsent-total_holiday_parsent2;
+    //   total_present_parsent = total_present_parsent+100-total_absent_parsent-total_leave_parsent-total_holiday_parsent2;
 
     return WillPopScope(
       onWillPop: () => Future(() => false),

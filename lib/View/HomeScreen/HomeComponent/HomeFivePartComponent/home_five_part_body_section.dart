@@ -23,10 +23,10 @@ class HomeFivePartBodyScetion extends StatelessWidget {
   Widget build(BuildContext context) {
     return   Container(
       margin: EdgeInsets.only(left: 10,right: 10,top:apps_div_margin ),
-      height: "${todayselectionbirthdaylist}"=="[]"?40: 140,
+      height: "${todayselectionbirthdaylist}"=="[]"?35: 140,
       width: double.infinity,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(11),
+        borderRadius: BorderRadius.circular(7),
          color: Main_Theme_WhiteCollor
       //  color: CustomButtonColor.withOpacity(0.15),
       ),
