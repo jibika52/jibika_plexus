@@ -12,8 +12,8 @@ class MySelfLeaveStatus extends StatelessWidget {
   Widget build(BuildContext context) {
     return    Column(
       children: [
-        ColorCustomText(fontSize: 14, fontWeight: FontWeight.w500, text: "${text1}", letterSpacing: 0.3, textColor: textColor,),
-        CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "${text2}", letterSpacing: 0.3),
+        CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "${text1}", letterSpacing: 0.3,),
+        ColorCustomText(fontSize: 12, fontWeight: FontWeight.w300, text: "${text2}", letterSpacing: 0.3, textColor: textColor,),
       ],
     );
   }

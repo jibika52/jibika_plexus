@@ -23,7 +23,7 @@ class HomeFivePartBodyScetion extends StatelessWidget {
   Widget build(BuildContext context) {
     return   Container(
       margin: EdgeInsets.only(left: 10,right: 10,top:apps_div_margin ),
-      height: 140,
+      height: "${todayselectionbirthdaylist}"=="[]"?40: 140,
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(11),
@@ -35,9 +35,9 @@ class HomeFivePartBodyScetion extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: ColorCustomText(text: "Today's Birthday", fontSize: 13, fontWeight: FontWeight.w500, textColor: Main_Theme_textColor.withOpacity(0.9),letterSpacing: 0.3,),
+            child: ColorCustomText(text: "${todayselectionbirthdaylist}"=="[]"?"Today's Birthday Not Found": "Today's Birthday", fontSize: 13, fontWeight: FontWeight.w500, textColor: Main_Theme_textColor.withOpacity(0.9),letterSpacing: 0.3,),
           ),
-          Container(
+          "${todayselectionbirthdaylist}"=="[]"?Container():       Container(
             height: 100,
             width: double.infinity,
             padding: EdgeInsets.only(bottom: 8),

@@ -524,7 +524,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                  ),
                ),
                /// 4th part Todays birth day-----------------------------------------------------------------
-               HomeFivePartBodyScetion(
+                 HomeFivePartBodyScetion(
                    todayselectionbirthdaylist:"$dashboardtodaysBirthdayEmployeeinfo"=="null"?
                    []
                        :
@@ -548,10 +548,11 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                    children: [
                      Padding(
                        padding: const EdgeInsets.all(8.0),
-                       child: ColorCustomText(text: "New Face - ${DateFormat('MMMM yyyy').format(DateTime.now())}", fontSize: 13, fontWeight: FontWeight.w500, textColor: Main_Theme_textColor.withOpacity(0.9),letterSpacing: 0.3,),
+                       child: ColorCustomText(text: "New Face - ${DateFormat('MMMM yyyy').format(DateTime.now())}",
+                         fontSize: 13, fontWeight: FontWeight.w500, textColor: Main_Theme_textColor.withOpacity(0.9),letterSpacing: 0.3,),
                      ),
                      Container(
-                       height: 182,
+                       height: 175,
                        width: double.infinity,
                        padding: EdgeInsets.only(bottom: 8),
                        child: ListView.builder(
@@ -559,10 +560,10 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                          scrollDirection: Axis.horizontal,
                          itemBuilder: (context, index) {
                            return Container(
-                             height: 182,
+                             height: 170,
                              width: 130,
                              margin: EdgeInsets.only(left: 10),
-                             padding: EdgeInsets.all(10),
+                             padding: EdgeInsets.only(top: 10,left: 5,right: 5),
                              decoration: BoxDecoration(
                                borderRadius: BorderRadius.circular(11),
                                color: CustomButtonColor.withOpacity(0.07),
