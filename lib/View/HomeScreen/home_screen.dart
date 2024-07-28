@@ -30,7 +30,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
     final _key=GlobalKey<ScaffoldState>();
-    int total_Amount=100000000;
+    int total_Amount=10000;
     String value = "K";
     double animated_leave=0;
     double animated_height=0;
@@ -52,8 +52,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   print("mobile_id====>${GetStorage().read("mobile_id")}---------------id_token====>${GetStorage().read("id_token")}------------------------refresh_token====>${GetStorage().read("refresh_token")}");
 
-    final dashboardPieChartData =  Provider.of<HomeProvider>(context).dashboardPieChartData;
-    final dashboardBarChartData =  Provider.of<HomeProvider>(context).dashboardBarChartData;
+  final  dashboardPieChartData =  Provider.of<HomeProvider>(context).dashboardPieChartData;
+  final  dashboardBarChartData =  Provider.of<HomeProvider>(context).dashboardBarChartData;
   final  dashboardOnLeaveEmployeeData =  Provider.of<HomeProvider>(context).dashboardOnleaveEmployeeList;
   final  dashboardEmployeeInfo=  Provider.of<HomeProvider>(context).dashboardEmployeeinfo;
   final  dashboardtodaysBirthdayEmployeeinfo=  Provider.of<HomeProvider>(context).dashboardtodaysBirthdayEmployeeinfo;
@@ -80,7 +80,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
     int total_holiday_parsent2=double.parse("${TA+TP+TL+TH+TH2}").toInt();
     print("total_holiday_parsent2 ------- $total_holiday_parsent2");
-
 
 
  //   total_present_parsent = total_present_parsent+100-total_absent_parsent-total_leave_parsent-total_holiday_parsent2;
@@ -254,7 +253,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 HomeThirdPartBodyLeftSide(
                                   top1:total_Amount>10000? "1000M": "1000K",
                                   top2: total_Amount>10000? "120M": "120K",
-                                  top3: total_Amount>10000? "60M": "600K",
+                                  top3: total_Amount>10000? "60M": "60K",
                                   top4: total_Amount>10000? "0M": "0K",
                                   color:Main_Theme_textColor.withOpacity(0.6),
                                 ),
