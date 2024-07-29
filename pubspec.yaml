@@ -71,12 +71,14 @@ dependencies:
   percent_indicator: ^4.2.3
   # For flow chart
   fl_chart: ^0.68.0
+  pie_chart: ^5.4.0
   intl: ^0.18.0
 
   web: 0.5.0
   dropdown_button2: ^2.3.9
   animated_toggle_switch: ^0.8.2
   duration_picker: ^1.2.0
+  month_year_picker: ^0.3.0+1
 
 
 dev_dependencies:
@@ -114,6 +116,7 @@ flutter:
     - Assets/DashBoardIcons/
     - Assets/DrawerImage/
     - Assets/PrimaryInformation/
+    - Assets/SelfIcon/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

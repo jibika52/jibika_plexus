@@ -81,10 +81,12 @@ class MyselfNewFaceScreen extends StatelessWidget {
                               children: [
                                 SizedBox(height: 3,),
                                 ColorCustomText(text:"Uzzal Biswas", fontSize: 12, fontWeight: FontWeight.w500, letterSpacing: 0.4, textColor: Main_Theme_textColor,overflow: TextOverflow.ellipsis, )
-                                , SizedBox(height: 3,),
+                                , SizedBox(height: 1.5,),
                                 ColorCustomText(overflow: TextOverflow.ellipsis,fontSize: font11, fontWeight: FontWeight.w400, text:"Hr Admin Manager", letterSpacing: 0.2, textColor:Main_Theme_textColor.withOpacity(0.75) )
-                                , ColorCustomText(overflow: TextOverflow.ellipsis,fontSize: font11, fontWeight: FontWeight.w400, text:"uzzal.171.cse@gmail.com", letterSpacing: 0.2,textColor:Main_Theme_textColor.withOpacity(0.75)  )
-                                , ColorCustomText(fontSize: font11, fontWeight: FontWeight.w400, text:"01889173335", letterSpacing: 0.2, textColor:Main_Theme_textColor.withOpacity(0.75)  )
+                              , SizedBox(height: 1.5,)
+                                , ColorCustomText(overflow: TextOverflow.ellipsis,fontSize: 10, fontWeight: FontWeight.w400, text:"uzzal.171.cse@gmail.com", letterSpacing: 0.2,textColor:Main_Theme_textColor.withOpacity(0.75)  )
+                              , SizedBox(height: 1.7,),
+                                 ColorCustomText(fontSize: 10, fontWeight: FontWeight.w400, text:"01889173335", letterSpacing: 0.2, textColor:Main_Theme_textColor.withOpacity(0.75)  )
 
                               ],
                             ),

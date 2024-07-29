@@ -12,6 +12,7 @@ class CustomText extends StatelessWidget {
     this.textAlign,
     this.fontStyle,
     this.overflow,
+    this.maxLines,
   });
 
   String? text;
@@ -21,11 +22,13 @@ class CustomText extends StatelessWidget {
   final TextAlign? textAlign;
   final FontStyle? fontStyle;
   final TextOverflow? overflow;
+  final int? maxLines;
   @override
   Widget build(BuildContext context) {
     return Text(
       overflow: overflow,
       textAlign: textAlign,
+      maxLines:maxLines ,
       "$text",
       style: GoogleFonts.poppins(
         letterSpacing: letterSpacing,

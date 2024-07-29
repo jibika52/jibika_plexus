@@ -121,7 +121,7 @@ class _BootomNavigationBarItemsPayrollScreenState extends State<BootomNavigation
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  _is_click_date==false?  ColorCustomText(fontSize: font12header, fontWeight: FontWeight.w500, text: "${monthList[selectedmonth]}", letterSpacing: 0.3,
+                                  _is_click_date==false?  ColorCustomText(fontSize: font12header, fontWeight: FontWeight.w500, text: "${MonthList[selectedmonth]}", letterSpacing: 0.3,
                                       textColor: CustomButtonColor) :
                                   Expanded(
                                     child: ListView.builder(
@@ -291,7 +291,7 @@ class _BootomNavigationBarItemsPayrollScreenState extends State<BootomNavigation
                                                           alignment: Alignment.center,
                                                           child:RotatedBox(
                                                               quarterTurns: 1,
-                                                              child: ColorCustomText(fontSize: font11, fontWeight: FontWeight.w400, text: "${monthList[index]}", letterSpacing: 0.2, textColor: Main_Theme_textColor.withOpacity(0.6),)
+                                                              child: ColorCustomText(fontSize: font11, fontWeight: FontWeight.w400, text: "${MonthList[index]}", letterSpacing: 0.2, textColor: Main_Theme_textColor.withOpacity(0.6),)
                                                           ),
                                                         ),
                                                         SizedBox(height: 10,),

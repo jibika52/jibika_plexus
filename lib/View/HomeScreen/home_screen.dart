@@ -117,7 +117,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     date_onTap: () {
                       _select3Date(context);
                     },
-                    date_text: "${DateFormat('E, ').format(DateTime.now())}${selected3Datee}",
+                    date_text: "${selected3Datee}",
                     manpower:"${dashboardEmployeeInfo}"=="null"?"0": "${dashboardEmployeeInfo["TotalEmployee"]}",
                   ),
                 ),
@@ -285,7 +285,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   alignment: Alignment.center,
                                                   child:RotatedBox(
                                                           quarterTurns: 1,
-                                                          child: ColorCustomText(fontSize: font11, fontWeight: FontWeight.w400, text: "${monthList[index]}", letterSpacing: 0.2, textColor: Main_Theme_textColor.withOpacity(0.6),)
+                                                          child: ColorCustomText(fontSize: font11, fontWeight: FontWeight.w400, text: "${MonthList[index]}", letterSpacing: 0.2, textColor: Main_Theme_textColor.withOpacity(0.6),)
                                                           ),
                                                 ),
                                                 SizedBox(height: 10,),

@@ -52,7 +52,7 @@ class _HomeThiredPartHeaderState extends State<HomeThiredPartHeader> {
               parpose: "Salary",
             ),
             Container(height: 50,width:1,color: Main_Theme_textColor.withOpacity(0.3),),
-            SizedBox(width: 5,),
+            SizedBox(width: 1,),
             Container(
               height: 68,
               width: 60,
@@ -120,7 +120,7 @@ class _HomeThiredPartHeaderState extends State<HomeThiredPartHeader> {
                     _is_click_date==false?
                     Container(
                       margin: EdgeInsets.only(right: 7),
-                      child: ColorCustomText(fontSize: font12header, fontWeight: FontWeight.w500, text: "${monthList[selectedmonth]}  ", letterSpacing: 0.3,
+                      child: ColorCustomText(fontSize: font12header, fontWeight: FontWeight.w500, text: "${MonthList[selectedmonth]}  ", letterSpacing: 0.3,
                           textColor: Main_Theme_textColor),
                     ) :
                     Expanded(
@@ -130,7 +130,7 @@ class _HomeThiredPartHeaderState extends State<HomeThiredPartHeader> {
                         itemBuilder: (context, index) {
                           return InkWell(
                             onTap: () {
-                           "${monthList[index]}"=="" ?invalidfunction():   setState(() {
+                           "${MonthList[index]}"=="" ?invalidfunction():   setState(() {
                                 selectedmonth=index;
                                 _is_click_date=!_is_click_date;
                                 if(_is_click_date==true){

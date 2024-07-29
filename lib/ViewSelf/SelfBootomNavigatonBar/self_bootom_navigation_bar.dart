@@ -177,6 +177,7 @@ import 'package:flutter/material.dart';
 import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
 import 'package:jibika_plexus/View/BootomNatchBar/BootomNavigationBarItemsScreen/BootomNavigationBarItemsMainHomeScreen/bootom_navigation_barItems_main_home_screen.dart';
+import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/SelfBootomNavigatonJobCard/self_bootom_navigaton_jobcard.dart';
 import '../../CustomWidget/CustomAppBar/CustomMAinAppBAr/custom_main_app_bar.dart';
 import '../../CustomWidget/CustomDrawer/CustomLeftDrawer/custom_left_drawer.dart';
 import 'SelfBootomNavigatonBarHomeScreen/self_bootom_navigaton_bar_home_screen.dart';
@@ -202,7 +203,7 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
   /// widget list
   final List<Widget> bottomBarPages = [
     SelfBootomNavigatonBarHomeScreen(),
-    Text("AAAAAAAAA"),
+    SelfBootomNavigatonJobCard(),
     Text("BBBBBBBBBBBB"),
     Text("CCCCCCCCCCCCCCCCCCC"),
   ];
@@ -254,7 +255,12 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
                     _currentIndex=1;
                   });
                 },
-                child: CustomImageSction(height: 35, width: 35, radius: 5, image: "Assets/DashBoardIcons/b_bar_attendence.png")),
+                child:
+
+                CustomImageSction(
+                    height: 35, width: 35, radius: 5, image: "Assets/SelfIcon/jobcard.png",)
+
+            ),
             Container(
               width: 35,
             ),

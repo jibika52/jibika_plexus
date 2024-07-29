@@ -129,7 +129,7 @@ class _PAyrollProcessScreenState extends State<PAyrollProcessScreen> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               _is_click_date==false?  ColorCustomText(fontSize: font12header, fontWeight: FontWeight.w500,
-                                  text: "${monthList[selectedmonth]}", letterSpacing: 0.3,
+                                  text: "${MonthList[selectedmonth]}", letterSpacing: 0.3,
                                   textColor: presentsent_color) :
                               Expanded(
                                 child: ListView.builder(

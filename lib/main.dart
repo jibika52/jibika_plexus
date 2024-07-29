@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:jibika_plexus/Controller/CounterProvider/counter_provider.dart';
 import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/self_bootom_navigation_bar.dart';
+import 'package:jibika_plexus/testfile.dart';
 import 'package:provider/provider.dart';
 import 'Controller/HomeController/home_controller.dart';
 import 'Controller/PrivacyPolicyController/privacy_policy.dart';
@@ -40,10 +41,11 @@ class MyApp extends StatelessWidget {
         //     home:HomeFirstPartComponentAttendance(),
 
         /// ----------Home Screen---------
-        //      home:BootomNatchBarScreen(),
+        //     home:BootomNatchBarScreen(),
+        //  home:MyHomePagefffff(),
 
         /// ----------SplashScreen--------
-             home:MainSplashPageViewScreen(),
+         home:MainSplashPageViewScreen(),
 
         /// ----------Working Screen--------
         //  home:LoginScreenSlide(),
@@ -55,7 +57,7 @@ class MyApp extends StatelessWidget {
 
         /// Self Screen===========================
 
-        //    home:   SalfBootomNatchBarScreen(),
+        //      home:   SalfBootomNatchBarScreen(),
 
 
       )
