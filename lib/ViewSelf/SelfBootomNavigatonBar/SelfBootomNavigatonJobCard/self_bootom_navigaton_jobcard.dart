@@ -1,11 +1,15 @@
- import 'dart:math' as math;
-import 'package:dropdown_button2/dropdown_button2.dart';
+
+import 'dart:math' as math;
+import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:jibika_plexus/CustomSelfWedget/CustomMySelfJobCard/CustomMySelfJobCard3rdPart/custom_myself_jobcard3rdpart.dart';
+import 'package:jibika_plexus/CustomSelfWedget/CustomMySelfJobCard/SelfCustomCalender/self_custom_calender.dart';
+import 'package:jibika_plexus/CustomSelfWedget/self_profile_summary.dart';
 import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
 import 'package:pie_chart/pie_chart.dart';
-
 import '../../../CustomWidget/CustomImage/custom_image.dart';
 
 class SelfBootomNavigatonJobCard extends StatefulWidget {
@@ -17,14 +21,13 @@ class SelfBootomNavigatonJobCard extends StatefulWidget {
 
 class _SelfBootomNavigatonJobCardState extends State<SelfBootomNavigatonJobCard> {
   double animatedheight=0;
-  double animatwidth=130;
-  double lineWidth=7.0;
-  double C_height=5;
-  bool _is_click_date=false;
-  bool _is_tear_date=false;
   int selectedmonth=0;
   String? selectedValue;
   int key=0;
+
+  int  selectedindex=-1;
+  String ? getindex;
+
   @override
   Widget build(BuildContext context) {
     double h=MediaQuery.of(context).size.height;
@@ -44,74 +47,15 @@ class _SelfBootomNavigatonJobCardState extends State<SelfBootomNavigatonJobCard>
 
               child: Row(
                 children: [
-                  Container(
-                    height: 117,
-                    width: 80,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(7),
-                      border: Border.all(
-                        color: Main_Theme_textColor.withOpacity(0.1)
-                      )
-                    ),
-                    child: Column(
-                      children: [
-                        Container(
-                          height: 92, width: 126,
-                          decoration: BoxDecoration(
-                             borderRadius: BorderRadius.only(
-                               topLeft: Radius.circular(7),
-                               topRight: Radius.circular(7),
-                             ),
-                             image: DecorationImage(image: AssetImage("Assets/DashBoardIcons/man_picture.png"),fit: BoxFit.fill),
-                          ),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "ID : ", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
-                            CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "171045", letterSpacing: 0.3),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(width: 10,),
                   Expanded(
                     child: Container(
-                      height: 170,
-                      width: MediaQuery.of(context).size.width*0.3,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Spacer(),
-                          CustomText(fontSize: 13, fontWeight: FontWeight.w500,maxLines: 2,text: "Uzzal Biswas jsagfda as asg fa ", letterSpacing: 0.3,overflow: TextOverflow.ellipsis,),
-                          SizedBox(height:4,),
-                          Row(
-                            children: [
-                              ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Dep : ", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
-                              CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Finishing", letterSpacing: 0.3),
-                            ],
-                          ),
-                          SizedBox(height:3,),
-                          Row(
-                            children: [
-                              ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Deg : ", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
-                              CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Sr. Operator", letterSpacing: 0.3),
-                            ],
-                          ),
-                          SizedBox(height: 3,),
-                          Row(
-                            children: [
-                              ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Age : ", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
-                              CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "25Y 8M", letterSpacing: 0.3),
-                            ],
-                          ),
-                          Spacer(),
-                        ],
-                      ),
-                    ),
+                        height: 139,
+                        width: 170,
+                        child: SelfProfileSummaryPart()),
                   ),
+
+
+
                   Container(
                     height: 170,
                     width: 170,
@@ -144,205 +88,146 @@ class _SelfBootomNavigatonJobCardState extends State<SelfBootomNavigatonJobCard>
               ),
             ),
             SizedBox(height: apps_div_margin,),
-            Container (
-              height: 50,
-              width: double.infinity,
-              padding: EdgeInsets.only(left: 10, right: 10, top: 7, bottom: 7 ),
-              margin: EdgeInsets.only(left: 10,right: 10,bottom: 10),
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(7),
+            CustomCalender(
+                width: 120, is_share: true, onTap: () {
+            }, is_messsage: true, onTap2message: () {
+            }, is_pdf: true, onTap3pdf: () {
+            },
+            ),
+            Expanded(
+              child: Container(
+                margin: EdgeInsets.only(left: 10,right: 10),
+                width: 400,
                 color: Main_Theme_WhiteCollor,
-              ),
-              child: Stack(
-                children: [
-                  Container(
-                    height: 42,
-                    width: 120,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(7),
-                        // color: Colors.red,
-                        border: Border.all(
-                            color: Main_Theme_textColor.withOpacity(0.15),
-                            width: 1.5
-                        )
-                    ),
-                    padding: EdgeInsets.only(left: 7,right: 7),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        CustomImageSction(height: 24, width: 24, radius: 1, image: "Assets/Icons/share2.png"),
-                        Container(
-                          height: 20,
-                          width: 1,
-                          color: Main_Theme_textColor.withOpacity(0.3),
-                        ),
-                        CustomImageSction(height: 24, width: 24, radius: 1, image: "Assets/Icons/sms.png"),
-                        Container(
-                          height: 20,
-                          width: 1,
-                          color: Main_Theme_textColor.withOpacity(0.3),
-                        ),
-                        CustomImageSction(height: 24, width: 24, radius: 1, image: "Assets/Icons/pdf.png"),
-
-
-                      ],
-                    ),
-                  ),
-                  Positioned(
-                      right: 0,
-                      bottom: 2,
-                      child: AnimatedContainer(
-                        duration: Duration(milliseconds: 300),
-                        height: 32,
-                        width: animatwidth,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(7),
-                            color: Main_Theme_WhiteCollor,
-                            border: Border.all(
-                                color: Main_Theme_textColor.withOpacity(0.7),
-                                width: 1
-                            )
-                        ),
-                        padding: EdgeInsets.only(left: 7,right: 7,top: 5,bottom: 5),
-                        child: InkWell(
+                child: Container(
+                    child: ListView.builder(
+                      itemCount: DateTime(DateTime.now().year, DateTime.now().month+1, 0).day,
+                      itemBuilder: (context, index) {
+                        return InkWell(
                           onTap: () {
                             setState(() {
-                              _is_click_date=!_is_click_date;
-                              if(_is_click_date==true){
-                                if(w>530){
-                                  animatwidth=530;
-                                }else{
-                                  animatwidth=w*0.90;
-                                }
-                              }else{
-                                animatwidth=100.0;
-                              }
+                              selectedindex=index;
+                              animatedheight=0;
+                              Future.delayed(Duration(milliseconds: 100),() {
+                                setState(() {
+                                  if(getindex=="$index"){
+                                    animatedheight=0;
+                                    getindex='';
+                                  }else{
+                                    animatedheight=210;
+                                    getindex="$index";
+                                  }
+
+                                });
+                              },);
                             });
                           },
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          child: Stack(
                             children: [
-                              _is_click_date==false?  ColorCustomText(fontSize: font12header, fontWeight: FontWeight.w500, text: "${MonthList[selectedmonth]}", letterSpacing: 0.3,
-                                  textColor: CustomButtonColor) :
-                              Expanded(
-                                child: ListView.builder(
-                                  itemCount: MonthList.length,
-                                  scrollDirection: Axis.horizontal,
-                                  itemBuilder: (context, index) {
-                                    return InkWell(
-                                      onTap: () {
-                                        setState(() {
-                                          selectedmonth=index;
-                                          _is_click_date=!_is_click_date;
-                                          if(_is_click_date==true){
-                                            animatwidth=w*0.95;
-                                          }else{
-                                            animatwidth=130.0;
-                                          }
-                                        },);
-                                      },
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(right: 10.0,left: 5,top: 0),
-                                        child: Text("${MonthList[index]}"),
-                                      ),
-                                    ) ;
-                                  },),
-                              ),
                               Container(
-                                height: 12,
-                                width: 1,
-                                color: Main_Theme_textColor,
-                                margin: EdgeInsets.only(left: 5,right: 7),
-                              ),
-                              Container(
-                                height: 42,
-                                width: 50,
-                                child: DropdownButtonHideUnderline(
-                                  child: DropdownButton2<String>(
-                                    isExpanded: true,
-                                    hint: Text(
-                                      '${DateTime.now().year}',
-                                      style: TextStyle(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.bold,
-                                        color: Main_Theme_textColor,
-                                      ),
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                    items: yearslist
-                                        .map((String item) => DropdownMenuItem<String>(
-                                      value: item,
-                                      child: Text(
-                                        item,
-                                        style: const TextStyle(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black,
-                                        ),
-                                        overflow: TextOverflow.ellipsis,
-                                      ),
-                                    ))
-                                        .toList(),
-                                    value: selectedValue,
-                                    onChanged: (String? value) {
-                                      setState(() {
-                                        selectedValue = value;
-                                      });
-                                    },
-
-                                    iconStyleData: const IconStyleData(
-                                      icon: Icon(
-                                        Icons.arrow_downward,
-                                      ),
-                                      iconSize: 14,
-                                      iconEnabledColor: Main_Theme_textColor,
-                                      iconDisabledColor: Colors.grey,
-                                    ),
-                                    dropdownStyleData: DropdownStyleData(
-                                      scrollPadding: EdgeInsets.all(0.0),
-                                      decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(11),
-                                          border: Border.all(
-                                              color: Main_Theme_textColor.withOpacity(0.5),
-                                              width: 1
-                                          )
-                                      ),
-                                      direction: DropdownDirection.textDirection,
-                                      maxHeight: 200,
-                                      width: 65,
-                                      useRootNavigator: true,
-                                      padding: EdgeInsets.only(left: 2,right: 2),
-                                      offset:  Offset( -3, -6),
-                                      scrollbarTheme: ScrollbarThemeData(
-                                        radius:  Radius.circular(11),
-                                        trackBorderColor: MaterialStateProperty.all(Color(0xFF5D5F6E)),
-                                        thickness: MaterialStateProperty.all<double>(6),
-                                        thumbVisibility: MaterialStateProperty.all<bool>(true),
-                                      ),
-                                    ), 
-                                    menuItemStyleData: const MenuItemStyleData(
-                                      height: 40,
-                                      padding: EdgeInsets.only(left: 14, right: 14),
-                                    ),
-                                  ),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.all( Radius.circular(7)),
+                                    //  color: Color(0xffF3FCFB)
+                                  //  color:  CustomButtonColor.withOpacity(0.05),
+                                    border: Border(bottom: BorderSide( color: CustomButtonColor))
                                 ),
+                                margin: EdgeInsets.only(bottom: 7),
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      padding: EdgeInsets.only(left: 6,right: 10),
+                                      height: 62,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(7),
+                                          topRight: Radius.circular(7),
+                                          bottomLeft: Radius.circular( selectedindex==index?0:7),
+                                          bottomRight:Radius.circular( selectedindex==index?0:7),
+                                        ),    ),
+                                      width: double.infinity,
+                                      child: CustomMySelfJobCard3rdPart1(selectedindex: selectedindex==index?true:false,index: index,),
+                                    ),
+                                    selectedindex==index?
+                                    AnimatedContainer(
+                                      height: animatedheight,
+                                      width: double.infinity,
+                                      duration: Duration(milliseconds: 400),
+                                      child: Container(
+                                        child: SingleChildScrollView(
+                                          physics: NeverScrollableScrollPhysics(),
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              Divider(height: 0.5,),
+                                              CustomMySelfJobCard3rdPart(),
+                                              Divider(height: 0.5,),
+                                              Container(
+                                                height: 20,
+                                                margin: EdgeInsets.only(left: 10,top: 5,bottom: 5),
+                                                width: double.infinity,
+                                                child: Row(
+                                                  children: [
+                                                    CustomImageSction2(height: 16, width: 14, radius: 5, image: "Assets/DrawerImage/chat.png", img_color: Main_Theme_textColor.withOpacity(0.6)),
+                                                    SizedBox(width: 7,),
+                                                    CustomText(fontSize: 13, fontWeight: FontWeight.w300, text: "Comments", letterSpacing: 0.3),
+                                                  ],
+                                                ),
+                                              ),
+                                              Container(
+                                                decoration: BoxDecoration(
+                                                  borderRadius: BorderRadius.circular(7),
+                                                  border: Border.all(color: Main_Theme_textColor.withOpacity(0.5)),
+                                                ),
+                                                margin: EdgeInsets.only(left: 10,right: 10),
+                                                padding: EdgeInsets.all(10),
+                                                child: ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400,maxLines: 2 ,text: "$Loremtext", letterSpacing: 0.3,textAlign: TextAlign.justify, textColor: Main_Theme_textColor.withOpacity(0.6),),
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsets.only(left: 10.0,top: 5),
+                                                child: ColorCustomText(fontSize: 13, fontWeight: FontWeight.w300, text: "Movement punch", letterSpacing: 0.3,textAlign: TextAlign.left ,textColor: Main_Theme_textColor.withOpacity(0.7)),
+                                              ),
+                                              Container(
+                                                height: 100,
+                                                margin: EdgeInsets.only(top: 7,left: 10,right: 10),
+                                                width: double.infinity,
+                                                child:
+                                                GridView.builder(
+                                                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                                      crossAxisCount: 2,mainAxisSpacing:5, crossAxisSpacing: 5,mainAxisExtent: 15),
+                                                  itemCount: 4,
+                                                  physics: NeverScrollableScrollPhysics(),
+                                                  itemBuilder: (context, index) {
+                                                      return ColorCustomText(fontSize:11, fontWeight: FontWeight.w300, text: "10-sep-2024 : 10:20:44 (A-101)", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5));
+                                                    },
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ) ,
+                                    ) :Container(),
+                                  ],
+                                ),
+                              ),
+                              Positioned(
+                                top: 5,
+                                  left: 40,
+                                  child: CircleAvatar(
+                                radius: 8,
+                               backgroundColor:absent_color.withOpacity(0.4),
+                              // backgroundColor:Main_Theme_WhiteCollor,
+                                    child: Icon(Icons.location_on_outlined,color: Main_Theme_textColor.withOpacity(0.6),size: 12,),
+                                    // backgroundColor:Colors.red,
+                              ),
+
                               )
-
-
                             ],
                           ),
-                        ),
-                      ))
-                ],
+                        );
+                      },)
+                ),
               ),
-            ),
-            Expanded(child: ListView.builder(itemBuilder: (context, index) {
-              return Container(
-                margin: EdgeInsets.only(top: 10),
-                height: 100,
-                width: double.infinity,
-                color: Colors.red,
-              );
-            },))
+            )
           ],
         ),
       ),

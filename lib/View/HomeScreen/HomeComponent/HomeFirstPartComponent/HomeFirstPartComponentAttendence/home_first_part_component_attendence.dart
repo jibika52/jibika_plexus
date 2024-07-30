@@ -223,7 +223,7 @@ class _HomeFirstPartComponentAttendanceState extends State<HomeFirstPartComponen
                        setState(() {
                          selectedindex=index;
                          animatedheight=0;
-                         Future.delayed(Duration(milliseconds: 400),() {
+                         Future.delayed(Duration(milliseconds: 100),() {
                            setState(() {
                              if(getindex=="$index"){
                                animatedheight=0;

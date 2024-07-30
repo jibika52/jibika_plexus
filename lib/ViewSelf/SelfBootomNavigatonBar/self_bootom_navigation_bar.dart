@@ -177,6 +177,7 @@ import 'package:flutter/material.dart';
 import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
 import 'package:jibika_plexus/View/BootomNatchBar/BootomNavigationBarItemsScreen/BootomNavigationBarItemsMainHomeScreen/bootom_navigation_barItems_main_home_screen.dart';
+import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/SelfBootomNavigationLeave/self_bootom_navigation_leave.dart';
 import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/SelfBootomNavigatonJobCard/self_bootom_navigaton_jobcard.dart';
 import '../../CustomWidget/CustomAppBar/CustomMAinAppBAr/custom_main_app_bar.dart';
 import '../../CustomWidget/CustomDrawer/CustomLeftDrawer/custom_left_drawer.dart';
@@ -204,7 +205,7 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
   final List<Widget> bottomBarPages = [
     SelfBootomNavigatonBarHomeScreen(),
     SelfBootomNavigatonJobCard(),
-    Text("BBBBBBBBBBBB"),
+    SelfBootomNavigationLeave(),
     Text("CCCCCCCCCCCCCCCCCCC"),
   ];
   final _key=GlobalKey<ScaffoldState>();
@@ -264,22 +265,21 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
             Container(
               width: 35,
             ),
-
             InkWell(
                 onTap: () {
                   setState(() {
+
                     _currentIndex=2;
                   });
                 },
-                child: CustomImageSction(height: 35, width: 35, radius: 5, image: "Assets/DashBoardIcons/b_bar_payroll.png")),
+                child: CustomImageSction2(height: 40, width: 35, radius: 5, image: "Assets/DashBoardIcons/aireplane_leave.png", img_color: Main_Theme_WhiteCollor,)),
             InkWell(
                 onTap: () {
                   setState(() {
-
                     _currentIndex=3;
                   });
                 },
-                child: CustomImageSction(height: 35, width: 35, radius: 5, image: "Assets/DashBoardIcons/b_bar_tricker.png")),
+                child: CustomImageSction(height: 35, width: 35, radius: 5, image: "Assets/DashBoardIcons/b_bar_payroll.png")),
           ],
         ),
       ),

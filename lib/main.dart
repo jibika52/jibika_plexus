@@ -45,20 +45,21 @@ class MyApp extends StatelessWidget {
         //  home:MyHomePagefffff(),
 
         /// ----------SplashScreen--------
-         home:MainSplashPageViewScreen(),
+        //     home:MainSplashPageViewScreen(),
 
         /// ----------Working Screen--------
         //  home:LoginScreenSlide(),
+
         //   home:testFile(),
+
         //  home:BootomNavigationBarItemsTrackingScreen(),
+
         // home:BootomNavigationBarItemsAttendenceScreen(),
-     //  home:EmployeeProfileScreen(),
 
+        //  home:EmployeeProfileScreen(),
 
-        /// Self Screen===========================
-
-        //      home:   SalfBootomNatchBarScreen(),
-
+        /// Self Screen=================
+        home:   SalfBootomNatchBarScreen(),
 
       )
 

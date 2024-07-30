@@ -49,6 +49,7 @@ class ColorCustomText extends StatelessWidget {
     required this.letterSpacing,
     this.overflow,
     this.textAlign,
+    this.maxLines,
    required this.textColor
   });
 
@@ -58,10 +59,12 @@ class ColorCustomText extends StatelessWidget {
   FontWeight? fontWeight;
   final TextAlign? textAlign;
   Color textColor;
+  final int? maxLines;
   final TextOverflow? overflow;
   @override
   Widget build(BuildContext context) {
     return Text(
+      maxLines: maxLines,
       overflow: overflow,
       textAlign: textAlign,
       "$text",
