@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
@@ -59,55 +60,51 @@ class _SecondhomePartScreenState extends State<SecondhomePartScreen> {
       child:Row(
         children: [
           Expanded(
-              child: Stack(
+              child: Column(
                 children: [
                   Container(
-                    height: 180,
-                    alignment: Alignment.topCenter,
+                    height: 150,
+                    alignment: Alignment.center,
                     child: Stack(
-                      alignment: Alignment.topCenter,
+                      alignment: Alignment.center,
                       children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(11),
-                              topLeft: Radius.circular(11),
-                            ),
-                            //    color: Colors.greenAccent
-                          ),
-                          alignment: Alignment.center,
-                          padding: EdgeInsets.only(bottom: 30),
-                          child: CircleAvatar(
-                            radius: 36,
+
+
+                        Positioned(
+                          // left: 23,
+                          child: CircularPercentIndicator(
+                            reverse: true,
+                            center:Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    ColorCustomText(
+                                      text: "${widget.presentTExt}%",
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w700,
+                                      letterSpacing:1,
+                                      textColor: presentsent_color,
+                                    ),
+                                    ColorCustomText(
+                                      text: "Present",
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w500,
+                                      letterSpacing: 0.3,
+                                      textColor: Main_Theme_textColor.withOpacity(0.5),
+                                    ),
+                                  ],
+                                ),
+                            radius: 37.0,
+                            lineWidth: 1.0,
+                            startAngle:  50,
+                            percent: widget.total_holiday,
                             backgroundColor: Main_Theme_textColor,
-                            child: CircleAvatar(
-                              radius: 35,
-                              backgroundColor: Main_Theme_WhiteCollor,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  ColorCustomText(
-                                    text: "${widget.presentTExt}%",
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w700,
-                                    letterSpacing:1,
-                                    textColor: presentsent_color,
-                                  ),
-                                  ColorCustomText(
-                                    text: "Present",
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w500,
-                                    letterSpacing: 0.3,
-                                    textColor: Main_Theme_textColor.withOpacity(0.5),
-                                  ),
-                                ],
-                              ),
-                            ),
+                            progressColor: Main_Theme_textColor,
                           ),
                         ),
+
+                        /// holiday-------------------------------------
                         Positioned(
-                          top: 13,
                           // left: 23,
                           child: CircularPercentIndicator(
                             reverse: true,
@@ -119,8 +116,8 @@ class _SecondhomePartScreenState extends State<SecondhomePartScreen> {
                             progressColor: holiday_color,
                           ),
                         ),
+                        /// Leave ---------------------------------------
                         Positioned(
-                          top: 13,
                           //  left: 23,
                           child: CircularPercentIndicator(
                             reverse: true,
@@ -133,9 +130,8 @@ class _SecondhomePartScreenState extends State<SecondhomePartScreen> {
                             progressColor: leave_color,
                           ),
                         ),
+                        ///absent---------------------------------------
                         Positioned(
-
-                          top: 13,
                           //   left: 23,
                           child: CircularPercentIndicator(
                             reverse: true,
@@ -147,15 +143,16 @@ class _SecondhomePartScreenState extends State<SecondhomePartScreen> {
                             progressColor: absent_color,
                           ),
                         ),
+                        ///present ---------------------------------
                         Positioned(
-                          top: 10,
                           child: CircularPercentIndicator(
                             reverse: true,
                             rotateLinearGradient: true,
                             startAngle:  50,
-                            radius: 62.0,
-                            lineWidth: 22.0,
-                            percent:  widget.total_present ,
+                            radius: 63.5,
+                            lineWidth: 23.0,
+                            //   percent:  widget.total_present ,
+                            percent:  0.95 ,
                             backgroundColor: Colors.grey.withOpacity(0),
                             progressColor: presentsent_color,
                           ),
@@ -165,10 +162,9 @@ class _SecondhomePartScreenState extends State<SecondhomePartScreen> {
                       ],
                     ),
                   ),
-                  Positioned(
-                      bottom: 7,
-                      left: 10,
-                      right: 10,
+                  /// manpower----------------------------
+                  Container(
+                    height: 20,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,

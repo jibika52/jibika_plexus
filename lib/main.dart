@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
 
         /// ----------Home Screen---------
         //     home:BootomNatchBarScreen(),
-        //  home:MyHomePagefffff(),
+       home:BootomNatchBarScreen(),
 
         /// ----------SplashScreen--------
         //     home:MainSplashPageViewScreen(),
@@ -59,7 +59,7 @@ class MyApp extends StatelessWidget {
         //  home:EmployeeProfileScreen(),
 
         /// Self Screen=================
-        home:   SalfBootomNatchBarScreen(),
+        //     home:   SalfBootomNatchBarScreen(),
 
       )
 
