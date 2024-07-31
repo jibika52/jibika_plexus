@@ -83,25 +83,25 @@ class _BootomNatchBarScreenState extends State<BootomNatchBarScreen> {
                   height: 43,
                   child: Column(
                     children: [
-                      CustomImageSction2(height: 23, img_color: Main_Theme_WhiteCollor, width: 25, radius: 5, image: "Assets/DashBoardIcons/b_bar_home.png"),
+                      CustomImageSction2(height: 23, img_color:_currentIndex==0? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5), width: 25, radius: 5, image: "Assets/DashBoardIcons/b_bar_home.png"),
                       SizedBox(height: 2,),
-                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Home", letterSpacing: 0.3, textColor: Main_Theme_WhiteCollor),
+                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Employee", letterSpacing: 0.3, textColor: _currentIndex==0? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
                     ],
                   ),
                 )),
             InkWell(
                 onTap: () {
                   setState(() {
-                    _currentIndex=0;
+                    _currentIndex=1;
                   });
                 },
                 child: Container(
                   height: 44,
                   child: Column(
                     children: [
-                      CustomImageSction2(height: 25, img_color: Main_Theme_WhiteCollor, width: 25, radius: 5, image: "Assets/DashBoardIcons/b_bar_attendence.png"),
+                      CustomImageSction2(height: 25, img_color: _currentIndex==1? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5), width: 25, radius: 5, image: "Assets/DashBoardIcons/b_bar_attendence.png"),
                       SizedBox(height: 2,),
-                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Attendance", letterSpacing: 0.3, textColor: Main_Theme_WhiteCollor),
+                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Attendance", letterSpacing: 0.3, textColor: _currentIndex==1? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
                     ],
                   ),
                 )),
@@ -113,32 +113,32 @@ class _BootomNatchBarScreenState extends State<BootomNatchBarScreen> {
             InkWell(
                 onTap: () {
                   setState(() {
-                    _currentIndex=0;
+                    _currentIndex=2;
                   });
                 },
                 child: Container(
                   height: 44,
                   child: Column(
                     children: [
-                      CustomImageSction2(height: 25, img_color: Main_Theme_WhiteCollor, width: 25, radius: 5, image: "Assets/DashBoardIcons/b_bar_payroll.png"),
+                      CustomImageSction2(height: 25, img_color: _currentIndex==2? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5), width: 25, radius: 5, image: "Assets/DashBoardIcons/b_bar_payroll.png"),
                       SizedBox(height: 2,),
-                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Payroll", letterSpacing: 0.3, textColor: Main_Theme_WhiteCollor),
+                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Payroll", letterSpacing: 0.3, textColor: _currentIndex==2? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
                     ],
                   ),
                 )),
             InkWell(
                 onTap: () {
                   setState(() {
-                    _currentIndex=0;
+                    _currentIndex=3;
                   });
                 },
                 child: Container(
                   height: 44,
                   child: Column(
                     children: [
-                      CustomImageSction2(height: 25, img_color: Main_Theme_WhiteCollor, width: 25, radius: 5, image: "Assets/DashBoardIcons/b_bar_tricker.png"),
+                      CustomImageSction2(height: 25, img_color: _currentIndex==3? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5), width: 25, radius: 5, image: "Assets/DashBoardIcons/b_bar_tricker.png"),
                       SizedBox(height: 2,),
-                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Tracker", letterSpacing: 0.3, textColor: Main_Theme_WhiteCollor),
+                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Tracker", letterSpacing: 0.3, textColor: _currentIndex==3? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
                     ],
                   ),
                 )),
