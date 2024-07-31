@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
+import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
 import 'package:jibika_plexus/View/BootomNatchBar/BootomNavigationBarItemsScreen/BootomNavigationBarItemsAttendenceScreen/bootom_navigationar_Items_attendence_screen.dart';
 import 'package:jibika_plexus/View/BootomNatchBar/BootomNavigationBarItemsScreen/BootomNavigationBarItemsMainHomeScreen/bootom_navigation_barItems_main_home_screen.dart';
@@ -78,34 +79,69 @@ class _BootomNatchBarScreenState extends State<BootomNatchBarScreen> {
                     _currentIndex=0;
                   });
                 },
-                child: CustomImageSction(height: 35, width: 35, radius: 5, image: "Assets/DashBoardIcons/b_bar_home.png")),
-
+                child: Container(
+                  height: 43,
+                  child: Column(
+                    children: [
+                      CustomImageSction2(height: 23, img_color: Main_Theme_WhiteCollor, width: 25, radius: 5, image: "Assets/DashBoardIcons/b_bar_home.png"),
+                      SizedBox(height: 2,),
+                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Home", letterSpacing: 0.3, textColor: Main_Theme_WhiteCollor),
+                    ],
+                  ),
+                )),
             InkWell(
                 onTap: () {
                   setState(() {
-                    _currentIndex=1;
+                    _currentIndex=0;
                   });
                 },
-                child: CustomImageSction(height: 35, width: 35, radius: 5, image: "Assets/DashBoardIcons/b_bar_attendence.png")),
+                child: Container(
+                  height: 44,
+                  child: Column(
+                    children: [
+                      CustomImageSction2(height: 25, img_color: Main_Theme_WhiteCollor, width: 25, radius: 5, image: "Assets/DashBoardIcons/b_bar_attendence.png"),
+                      SizedBox(height: 2,),
+                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Attendance", letterSpacing: 0.3, textColor: Main_Theme_WhiteCollor),
+                    ],
+                  ),
+                )),
+
+
             Container(
-              width: 35,
+              width: MediaQuery.of(context).size.width*0.13,
             ),
-
             InkWell(
                 onTap: () {
                   setState(() {
-                    _currentIndex=2;
+                    _currentIndex=0;
                   });
                 },
-                child: CustomImageSction(height: 35, width: 35, radius: 5, image: "Assets/DashBoardIcons/b_bar_payroll.png")),
+                child: Container(
+                  height: 44,
+                  child: Column(
+                    children: [
+                      CustomImageSction2(height: 25, img_color: Main_Theme_WhiteCollor, width: 25, radius: 5, image: "Assets/DashBoardIcons/b_bar_payroll.png"),
+                      SizedBox(height: 2,),
+                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Payroll", letterSpacing: 0.3, textColor: Main_Theme_WhiteCollor),
+                    ],
+                  ),
+                )),
             InkWell(
                 onTap: () {
                   setState(() {
-
-                    _currentIndex=3;
+                    _currentIndex=0;
                   });
                 },
-                child: CustomImageSction(height: 35, width: 35, radius: 5, image: "Assets/DashBoardIcons/b_bar_tricker.png")),
+                child: Container(
+                  height: 44,
+                  child: Column(
+                    children: [
+                      CustomImageSction2(height: 25, img_color: Main_Theme_WhiteCollor, width: 25, radius: 5, image: "Assets/DashBoardIcons/b_bar_tricker.png"),
+                      SizedBox(height: 2,),
+                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Tracker", letterSpacing: 0.3, textColor: Main_Theme_WhiteCollor),
+                    ],
+                  ),
+                )),
           ],
         ),
       ),

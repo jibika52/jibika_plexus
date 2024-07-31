@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/self_bootom_navigation_bar.dart';
 
@@ -37,7 +38,15 @@ class CustomMainAppBar extends StatelessWidget {
 
                   ),
                   child: CustomImageSction(height: 33, width: 35, radius: 2, image: "Assets/Logo/jibikalogo3.png"))),
-          ColorCustomText(fontSize: 21, fontWeight: FontWeight.w600, text: "$appbar_text", letterSpacing: 1,textColor: Main_Theme_WhiteCollor.withOpacity(0.8), ),
+          SizedBox(width: 10,),
+          Expanded(
+            child: ColorCustomText(fontSize: 21, fontWeight: FontWeight.w600,
+              text: "$center_appbar_text",
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              letterSpacing: 1,textColor: Main_Theme_WhiteCollor.withOpacity(0.8), ),
+          ),
+          SizedBox(width: 10,),
     is_need_trailing==false?Container(): Container(
             height: 100,
             width: 80,

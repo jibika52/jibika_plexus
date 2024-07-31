@@ -45,8 +45,7 @@ const CompanyProfileDefaultColor = Color(0xffE6E6E6);
 const home_default_color = Color(0xffF2F2F2);
 
 
-/// --------------- AppBar NAme------------------  ///
- const appbar_text="jibika plexus";
+
 
 
  ///--------------Dashboard leave absent holidays count ------------------------///
