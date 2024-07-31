@@ -347,28 +347,13 @@ class _SelfBootomNavigationLeaveState extends State<SelfBootomNavigationLeave> {
                         child: Container(
                           width: 110,
                           child: CustomButton(onTap: () {
-
                           }, text: "Apply", fontWeight: FontWeight.w400,button_text_fontSize: 14, button_height: 40, custom_button_collor: CustomButtonColor.withOpacity(0.3), button_text_color: CustomButtonColor, borderRadius: 50),
                         ),
-                      )
-                      // Container(
-                      //   height: 70,
-                      //   width: double.infinity,
-                      //   child: Column(
-                      //     crossAxisAlignment: CrossAxisAlignment.start,
-                      //     children: [
-                      //       CustomText(fontSize: font12header, fontWeight: FontWeight.w400, text: "Comments", letterSpacing: 0.3),
-                      //
-                      //     ],
-                      //   ),
-                      // ),
+                      ),
                     ],
                   ),
                 ),
-
-
                 SizedBox(height: 100,),
-              
               ]
               ),
             ),

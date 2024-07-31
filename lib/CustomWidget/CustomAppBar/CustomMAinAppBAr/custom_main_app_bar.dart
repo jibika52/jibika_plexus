@@ -42,7 +42,7 @@ class CustomMainAppBar extends StatelessWidget {
             height: 100,
             width: 80,
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Stack(
@@ -60,6 +60,9 @@ class CustomMainAppBar extends StatelessWidget {
                         ))
                   ],
                 ),
+
+
+
                 InkWell(onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => SalfBootomNatchBarScreen(),));
                 }, child: Icon(Icons.more_vert,size: 30,color: Main_Theme_WhiteCollor.withOpacity(0.8) ,))

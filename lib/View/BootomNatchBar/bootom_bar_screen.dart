@@ -50,8 +50,8 @@ class _BootomNatchBarScreenState extends State<BootomNatchBarScreen> {
       appBar: PreferredSize(preferredSize: Size.fromHeight(80),
         /// ------------ Custom Main AppBAr -------------///
         child: CustomMainAppBar(
-            leading_image_route: "Assets/DashBoardIcons/appbar_leadin_menu.png", center_appbar_text: "Jibika Plexus",
-
+            leading_image_route: "Assets/DashBoardIcons/appbar_leadin_menu.png",
+            center_appbar_text: "China National Petroleum Corporation",
             leading_ontab: () {
           _key.currentState!.openDrawer();
         }, is_need_trailing: true),

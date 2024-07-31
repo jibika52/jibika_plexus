@@ -177,6 +177,7 @@ import 'package:flutter/material.dart';
 import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
 import 'package:jibika_plexus/View/BootomNatchBar/BootomNavigationBarItemsScreen/BootomNavigationBarItemsMainHomeScreen/bootom_navigation_barItems_main_home_screen.dart';
+import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/SelfBootomNavigationConvince/self_bootom_navigation_convience.dart';
 import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/SelfBootomNavigationLeave/self_bootom_navigation_leave.dart';
 import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/SelfBootomNavigatonJobCard/self_bootom_navigaton_jobcard.dart';
 import '../../CustomWidget/CustomAppBar/CustomMAinAppBAr/custom_main_app_bar.dart';
@@ -206,7 +207,7 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
     SelfBootomNavigatonBarHomeScreen(),
     SelfBootomNavigatonJobCard(),
     SelfBootomNavigationLeave(),
-    Text("CCCCCCCCCCCCCCCCCCC"),
+    SelfBootomNavigationConvienceScreen(),
   ];
   final _key=GlobalKey<ScaffoldState>();
   int _currentIndex = 0;
@@ -220,8 +221,8 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
       appBar: PreferredSize(preferredSize: Size.fromHeight(80),
         /// ------------ Custom Main AppBAr -------------///
         child: CustomMainAppBar(
-            leading_image_route: "Assets/DashBoardIcons/appbar_leadin_menu.png", center_appbar_text: "Jibika Plexus",
-
+            leading_image_route: "Assets/DashBoardIcons/appbar_leadin_menu.png",
+            center_appbar_text: "China National Petroleum Corporation",
             leading_ontab: () {
               _key.currentState!.openDrawer();
             }, is_need_trailing: true),
@@ -258,8 +259,8 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
                 },
                 child:
 
-                CustomImageSction(
-                    height: 35, width: 35, radius: 5, image: "Assets/SelfIcon/jobcard.png",)
+                CustomImageSction2(
+                    height: 35, width: 35, radius: 5, image: "Assets/SelfIcon/jobcard.png", img_color: Main_Theme_WhiteCollor,)
 
             ),
             Container(
@@ -279,11 +280,10 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
                     _currentIndex=3;
                   });
                 },
-                child: CustomImageSction(height: 35, width: 35, radius: 5, image: "Assets/DashBoardIcons/b_bar_payroll.png")),
+                child:  CustomImageSction2(height: 35, width: 35, radius: 5, image: "Assets/DashBoardIcons/convence.png", img_color: Main_Theme_WhiteCollor,)),
           ],
         ),
       ),
-
       floatingActionButton:keyboardOpen==true
           ? SizedBox(): CircleAvatar(
         radius: 30,
