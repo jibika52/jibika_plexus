@@ -35,7 +35,7 @@ class CustomButton extends StatelessWidget {
           color: custom_button_collor,
           borderRadius: BorderRadius.circular(borderRadius),
           border: Border.all(
-            color: Main_Theme_textColor
+            color: CustomButtonColor
           )
         ),
         child: Center(

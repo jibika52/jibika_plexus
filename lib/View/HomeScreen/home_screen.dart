@@ -635,7 +635,7 @@ class _HomeScreenState extends State<HomeScreen> {
           context: context,
           firstDate: DateTime(2015, 8),
           lastDate: DateTime(2101));
-      if (picked != null && picked != selected3Datee) {
+      if (picked != null && picked != selected4Datee) {
         final df = new DateFormat('dd-MMMM-yyyy');
         setState(() {
           selected4Datee = df.format(picked);

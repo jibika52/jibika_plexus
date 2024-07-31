@@ -79,7 +79,7 @@ class JibikaCustomTextFromField extends StatelessWidget {
                 //  label:CustomText(fontSize: 10, fontWeight: FontWeight.w500, text: '$hinttext', letterSpacing: 0.2),
                   labelStyle: GoogleFonts.poppins(
                       color: Main_Theme_textColor.withOpacity(0.4),
-                      fontSize: 16,
+                      fontSize: 13,
                       fontWeight: FontWeight.w400,
                       letterSpacing: 0.2
                   ),
@@ -177,7 +177,7 @@ class JibikaCustomTextFromField2 extends StatelessWidget {
                   //  label:CustomText(fontSize: 10, fontWeight: FontWeight.w500, text: '$hinttext', letterSpacing: 0.2),
                   labelStyle: GoogleFonts.poppins(
                       color: Main_Theme_textColor.withOpacity(0.4),
-                      fontSize: 16,
+                      fontSize: 13,
                       fontWeight: FontWeight.w400,
                       letterSpacing: 0.2
                   ),

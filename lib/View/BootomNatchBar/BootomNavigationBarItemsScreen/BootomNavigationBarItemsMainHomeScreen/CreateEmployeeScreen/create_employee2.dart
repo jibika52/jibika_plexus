@@ -433,7 +433,8 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                         )
                     ),
                     SizedBox(height: C_height+10,),
-                    Container(height: 139,width: double.infinity,
+                    Container(
+                      height: 139,width: double.infinity,
                       child: Row(
                         children: [
                           Expanded(
