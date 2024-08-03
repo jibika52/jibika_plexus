@@ -38,12 +38,6 @@ class _BootomNavBarItemsMainFloationHomeScreenState extends State<BootomNavBarIt
     double w=MediaQuery.of(context).size.width;
     print("ccccccccccccccccccc =============== ${_isActive}");
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(75),
-        child: CustomDefaultAppBar(onTap: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => BootomNatchBarScreen(),));
-        }, text: "Employee"),
-      ),
       body: Container(
         height: double.infinity,
         width: double.infinity,
