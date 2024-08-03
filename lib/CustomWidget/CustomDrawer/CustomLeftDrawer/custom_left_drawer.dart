@@ -8,6 +8,7 @@ import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
 import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
 import 'package:jibika_plexus/View/Auth/LoginScreen/login_screen_screen2.dart';
+import 'package:jibika_plexus/View/BootomNatchBar/bootom_bar_screen.dart';
 import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/self_bootom_navigation_bar.dart';
 class CustomLeftDrawer extends StatelessWidget {
   const CustomLeftDrawer({super.key});
@@ -76,6 +77,16 @@ class CustomLeftDrawer extends StatelessWidget {
                   CustomDrawerOption(image: "Assets/DrawerImage/drawer_tirmscondition_option.png", name: "Terms & Condition", size: 17,size2: 16,),
                   CustomDrawerOption(image: "Assets/DrawerImage/drawer_disclimer_option.png", name: "Disclaimer", size: 16, size2: 16,),
                   CustomDrawerOption(image: "Assets/DrawerImage/drawer_setting_option.png", name: "Setting", size: 17, size2: 16,),
+                  InkWell(
+                      onTap: () {
+                        Navigator.push(context, CupertinoPageRoute(builder: (context) => SalfBootomNatchBarScreen(),));
+                      },
+                      child: CustomDrawerOption(image: "Assets/DrawerImage/drawericonong.png", name: "Employee home", size: 17, size2: 16,)),
+                  InkWell(
+                      onTap: () {
+                        Navigator.push(context, CupertinoPageRoute(builder: (context) => BootomNatchBarScreen(),));
+                      },
+                      child: CustomDrawerOption(image: "Assets/DrawerImage/drawericonong.png", name: "Admin home", size: 17, size2: 16,)),
                   SizedBox(height: 60,)
                 ],
               ),

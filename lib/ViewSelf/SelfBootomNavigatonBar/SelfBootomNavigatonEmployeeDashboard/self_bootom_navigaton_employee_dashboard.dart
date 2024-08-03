@@ -12,14 +12,14 @@ import 'package:jibika_plexus/Utils/constants.dart';
 import 'package:pie_chart/pie_chart.dart';
 import '../../../CustomWidget/CustomImage/custom_image.dart';
 
-class SelfBootomNavigatonJobCard extends StatefulWidget {
-  const SelfBootomNavigatonJobCard({super.key});
+class SelfBootomNavigatonEmployeeDashboard extends StatefulWidget {
+  const SelfBootomNavigatonEmployeeDashboard({super.key});
 
   @override
-  State<SelfBootomNavigatonJobCard> createState() => _SelfBootomNavigatonJobCardState();
+  State<SelfBootomNavigatonEmployeeDashboard> createState() => _SelfBootomNavigatonEmployeeDashboardState();
 }
 
-class _SelfBootomNavigatonJobCardState extends State<SelfBootomNavigatonJobCard> {
+class _SelfBootomNavigatonEmployeeDashboardState extends State<SelfBootomNavigatonEmployeeDashboard> {
   double animatedheight=0;
   int selectedmonth=0;
   String? selectedValue;
