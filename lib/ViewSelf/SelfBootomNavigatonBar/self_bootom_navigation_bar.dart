@@ -199,22 +199,22 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
   dynamic getDynamicSliderData;
   @override
   void initState() {
-
     // TODO: implement initState
     super.initState();
   }
   /// widget list
   final List<Widget> bottomBarPages = [
-    BootomNavBarItemsMainFloationHomeScreen(),
-    SelfBootomNavigatonBarHomeScreen(),
+
     SelfBootomNavigatonJobCard(),
+    Container(child: Center(child: Text("dddddddddddddddddddddddddddd"),),),
     SelfBootomNavigationLeave(),
     SelfBootomNavigationConvienceScreen(),
+    SelfBootomNavigatonBarHomeScreen(),
   ];
   final _key=GlobalKey<ScaffoldState>();
-  int _currentIndex = 0;
-  double C_size=30;
-  double b_bar_h=50;
+  int _currentIndex = 4;
+  double b_bar_icon_size=30;
+  double b_bar_height=50;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -249,16 +249,16 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
             InkWell(
                 onTap: () {
                   setState(() {
-                    _currentIndex=4;
+                    _currentIndex=0;
                   });
                 },
                 child: Container(
-                  height: 43,
+                  height: b_bar_height,
                   child: Column(
                     children: [
-                      CustomImageSction2(height: C_size,width: 24, img_color:_currentIndex==4? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5),  radius: 5, image: "Assets/DashBoardIcons/b_bar_home.png"),
+                      CustomImageSction2(height: b_bar_icon_size,width: b_bar_icon_size, img_color:_currentIndex==0? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5),  radius: 5, image: "Assets/DashBoardIcons/b_bar_home.png"),
                       SizedBox(height: 2,),
-                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Employee", letterSpacing: 0.3, textColor: _currentIndex==4? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
+                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Employee", letterSpacing: 0.3, textColor: _currentIndex==0? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
                     ],
                   ),
                 )),
@@ -269,11 +269,11 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
                   });
                 },
                 child: Container(
-                  height: 44,
+                  height: b_bar_height,
                   child: Column(
                     children: [
-                      //    Icon(Icons.list_alt,size: 30,color: Colors.white,),
-                 CustomImageSction2(height: C_size,width: 24,  img_color: _currentIndex==1? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5),  radius: 5, image: "Assets/DashBoardIcons/b_bar_attendence.png"),
+                        Icon(Icons.list_alt,size: 30,color: _currentIndex==1? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.3),),
+              //   CustomImageSction2(height: b_bar_icon_size,width: b_bar_icon_size,  img_color: _currentIndex==1? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5),  radius: 5, image: "Assets/DashBoardIcons/b_bar_attendence.png"),
                       SizedBox(height: 2,),
                       ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Attendance", letterSpacing: 0.3, textColor: _currentIndex==1? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
                     ],
@@ -291,10 +291,10 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
                   });
                 },
                 child: Container(
-                  height: 44,
+                  height: b_bar_height,
                   child: Column(
                     children: [
-                      CustomImageSction2(height: 24,width: 24,  img_color: _currentIndex==2? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5),  radius: 5, image: "Assets/SelfIcon/Leave.png"),
+                      CustomImageSction2(height: b_bar_icon_size,width: b_bar_icon_size,  img_color: _currentIndex==2? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5),  radius: 5, image: "Assets/SelfIcon/Leave.png"),
                       SizedBox(height: 2,),
                       ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Leave", letterSpacing: 0.3, textColor: _currentIndex==2? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
                     ],
@@ -307,10 +307,10 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
                   });
                 },
                 child: Container(
-                  height: 44,
+                  height: b_bar_height,
                   child: Column(
                     children: [
-                      CustomImageSction2(height: 24,width: 24,  img_color: _currentIndex==3? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5), radius: 5, image: "Assets/SelfIcon/Conveyance.png"),
+                      CustomImageSction2(height: b_bar_icon_size,width: b_bar_icon_size,  img_color: _currentIndex==3? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5), radius: 5, image: "Assets/SelfIcon/Conveyance.png"),
                       SizedBox(height: 2,),
                       ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Conveyance", letterSpacing: 0.3, textColor: _currentIndex==3? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
                     ],
@@ -332,7 +332,7 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
           backgroundColor: Main_Theme_WhiteCollor,
           onPressed: () {
             setState(() {
-              _currentIndex=0;
+              _currentIndex=4;
             });
           }, child: Padding(
           padding: const EdgeInsets.all(2.0),
