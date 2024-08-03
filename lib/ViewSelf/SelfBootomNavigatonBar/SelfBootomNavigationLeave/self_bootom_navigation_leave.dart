@@ -36,7 +36,9 @@ class _SelfBootomNavigationLeaveState extends State<SelfBootomNavigationLeave> {
             width: double.infinity,
             child: SingleChildScrollView(
               child: Column(children: [
+                /// first Self part------------------------------------------------------------
                 SelfProfileSummaryPart(),
+                /// Second Self part------------------------------------------------------------
                 Container(
                   margin: EdgeInsets.only(left: 10,right: 10,top: 10),
                   padding: EdgeInsets.only(top: 10,left: 10,right: 10),
@@ -168,6 +170,7 @@ class _SelfBootomNavigationLeaveState extends State<SelfBootomNavigationLeave> {
                   ),
                 ),
                 SizedBox(height: apps_div_margin,),
+                /// Third Self part------------------------------------------------------------
                 Container(
                   color: Main_Theme_WhiteCollor,
                   padding: EdgeInsets.only(left: 10,right: 10,top: 5,bottom: 5),
@@ -194,6 +197,7 @@ class _SelfBootomNavigationLeaveState extends State<SelfBootomNavigationLeave> {
                   ),
                 ),
                 SizedBox(height: apps_div_margin,),
+                /// Four Self part------------------------------------------------------------
                 Container(
                   width: double.infinity,
                   margin: EdgeInsets.only(

@@ -28,10 +28,10 @@ class ShareMessagePdfPart extends StatelessWidget {
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(7),
           // color: Colors.red,
-          border: Border.all(
-              color: Main_Theme_textColor.withOpacity(0.15),
-              width: 1.5
-          )
+          // border: Border.all(
+          //     color: Main_Theme_textColor.withOpacity(0.15),
+          //     width: 1.5
+          // )
       ),
       padding: EdgeInsets.only(left: 7,right: 7),
       child: Row(
@@ -45,6 +45,19 @@ class ShareMessagePdfPart extends StatelessWidget {
             width: 1,
             color: Main_Theme_textColor.withOpacity(0.3),
           ):Container(),
+
+          // is_call?   InkWell(
+          //     onTap: callonTap,
+          //     child: CustomImageSction(height: 24, width: 24, radius: 1, image: "Assets/Icons/share2.png")):Container(),
+          // is_call?  Container(
+          //   height: 20,
+          //   width: 1,
+          //   color: Main_Theme_textColor.withOpacity(0.3),
+          // ):Container(),
+
+
+
+
           is_messsage?   InkWell(
               onTap: onTap2message,
               child: CustomImageSction(height: 24, width: 24, radius: 1, image: "Assets/Icons/sms.png")):Container(),
