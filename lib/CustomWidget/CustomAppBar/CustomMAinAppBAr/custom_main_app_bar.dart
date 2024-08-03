@@ -40,11 +40,16 @@ class CustomMainAppBar extends StatelessWidget {
                   child: CustomImageSction(height: 33, width: 35, radius: 2, image: "Assets/Logo/jibikalogo3.png"))),
           SizedBox(width: 10,),
           Expanded(
-            child: ColorCustomText(fontSize: 21, fontWeight: FontWeight.w600,
+            child: ColorCustomText(
+                fontSize: 18,
+                fontWeight:
+              FontWeight.w600,
               text: "$center_appbar_text",
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              letterSpacing: 1,textColor: Main_Theme_WhiteCollor.withOpacity(0.8), ),
+              letterSpacing: 1,
+              textColor: Main_Theme_WhiteCollor
+            ),
           ),
           SizedBox(width: 10,),
     is_need_trailing==false?Container(): Container(

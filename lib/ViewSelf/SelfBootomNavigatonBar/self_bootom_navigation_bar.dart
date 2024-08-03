@@ -182,6 +182,7 @@ import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/SelfBootomNavigati
 import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/SelfBootomNavigatonJobCard/self_bootom_navigaton_jobcard.dart';
 import '../../CustomWidget/CustomAppBar/CustomMAinAppBAr/custom_main_app_bar.dart';
 import '../../CustomWidget/CustomDrawer/CustomLeftDrawer/custom_left_drawer.dart';
+import '../../CustomWidget/CustomText/custom_text.dart';
 import 'SelfBootomNavigatonBarHomeScreen/self_bootom_navigaton_bar_home_screen.dart';
 
 class SalfBootomNatchBarScreen extends StatefulWidget {
@@ -204,6 +205,7 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
   }
   /// widget list
   final List<Widget> bottomBarPages = [
+    BootomNavBarItemsMainFloationHomeScreen(),
     SelfBootomNavigatonBarHomeScreen(),
     SelfBootomNavigatonJobCard(),
     SelfBootomNavigationLeave(),
@@ -211,8 +213,9 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
   ];
   final _key=GlobalKey<ScaffoldState>();
   int _currentIndex = 0;
+  double C_size=30;
+  double b_bar_h=50;
   @override
-
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -246,44 +249,77 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
             InkWell(
                 onTap: () {
                   setState(() {
-                    _currentIndex=0;
+                    _currentIndex=4;
                   });
                 },
-                child: CustomImageSction(height: 35, width: 35, radius: 5, image: "Assets/DashBoardIcons/b_bar_home.png")),
-
+                child: Container(
+                  height: 43,
+                  child: Column(
+                    children: [
+                      CustomImageSction2(height: C_size,width: 24, img_color:_currentIndex==4? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5),  radius: 5, image: "Assets/DashBoardIcons/b_bar_home.png"),
+                      SizedBox(height: 2,),
+                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Employee", letterSpacing: 0.3, textColor: _currentIndex==4? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
+                    ],
+                  ),
+                )),
             InkWell(
                 onTap: () {
                   setState(() {
                     _currentIndex=1;
                   });
                 },
-                child:
+                child: Container(
+                  height: 44,
+                  child: Column(
+                    children: [
+                      //    Icon(Icons.list_alt,size: 30,color: Colors.white,),
+                 CustomImageSction2(height: C_size,width: 24,  img_color: _currentIndex==1? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5),  radius: 5, image: "Assets/DashBoardIcons/b_bar_attendence.png"),
+                      SizedBox(height: 2,),
+                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Attendance", letterSpacing: 0.3, textColor: _currentIndex==1? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
+                    ],
+                  ),
+                )),
 
-                CustomImageSction2(
-                    height: 35, width: 35, radius: 5, image: "Assets/SelfIcon/jobcard.png", img_color: Main_Theme_WhiteCollor,)
 
-            ),
             Container(
-              width: 35,
+              width: MediaQuery.of(context).size.width*0.13,
             ),
             InkWell(
                 onTap: () {
                   setState(() {
-
                     _currentIndex=2;
                   });
                 },
-                child: CustomImageSction2(height: 40, width: 35, radius: 5, image: "Assets/DashBoardIcons/aireplane_leave.png", img_color: Main_Theme_WhiteCollor,)),
+                child: Container(
+                  height: 44,
+                  child: Column(
+                    children: [
+                      CustomImageSction2(height: 24,width: 24,  img_color: _currentIndex==2? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5),  radius: 5, image: "Assets/SelfIcon/Leave.png"),
+                      SizedBox(height: 2,),
+                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Leave", letterSpacing: 0.3, textColor: _currentIndex==2? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
+                    ],
+                  ),
+                )),
             InkWell(
                 onTap: () {
                   setState(() {
                     _currentIndex=3;
                   });
                 },
-                child:  CustomImageSction2(height: 35, width: 35, radius: 5, image: "Assets/DashBoardIcons/convence.png", img_color: Main_Theme_WhiteCollor,)),
+                child: Container(
+                  height: 44,
+                  child: Column(
+                    children: [
+                      CustomImageSction2(height: 24,width: 24,  img_color: _currentIndex==3? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5), radius: 5, image: "Assets/SelfIcon/Conveyance.png"),
+                      SizedBox(height: 2,),
+                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Conveyance", letterSpacing: 0.3, textColor: _currentIndex==3? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
+                    ],
+                  ),
+                )),
           ],
         ),
       ),
+
       floatingActionButton:keyboardOpen==true
           ? SizedBox(): CircleAvatar(
         radius: 30,
@@ -295,7 +331,9 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
           foregroundColor: Main_Theme_WhiteCollor,
           backgroundColor: Main_Theme_WhiteCollor,
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => BootomNavBarItemsMainFloationHomeScreen(),));
+            setState(() {
+              _currentIndex=0;
+            });
           }, child: Padding(
           padding: const EdgeInsets.all(2.0),
           child: Image.asset("Assets/Logo/leaff.png" ),

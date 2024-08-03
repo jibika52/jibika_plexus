@@ -34,15 +34,19 @@ class _BootomNatchBarScreenState extends State<BootomNatchBarScreen> {
   }
   /// widget list
   final List<Widget> bottomBarPages = [
-    HomeScreen(),
+
+    BootomNavBarItemsMainFloationHomeScreen(),
     BootomNavigationBarItemsAttendenceScreen(),
     BootomNavigationBarItemsPayrollScreen(),
     BootomNavigationBarItemsTrackingScreen(),
+    HomeScreen(),
+
   ];
   final _key=GlobalKey<ScaffoldState>();
-  int _currentIndex = 0;
+  int _currentIndex = 4;
+  double C_size=30;
+  double b_bar_h=50;
   @override
-
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -57,7 +61,6 @@ class _BootomNatchBarScreenState extends State<BootomNatchBarScreen> {
           _key.currentState!.openDrawer();
         }, is_need_trailing: true),
       ),
-
     body: bottomBarPages[_currentIndex],
       bottomNavigationBar: Container(
         height: 70,
@@ -80,31 +83,32 @@ class _BootomNatchBarScreenState extends State<BootomNatchBarScreen> {
                   });
                 },
                 child: Container(
-                  height: 43,
+                  height: b_bar_h,
                   child: Column(
                     children: [
-                      CustomImageSction2(height: 23, img_color:_currentIndex==0? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5), width: 25, radius: 5, image: "Assets/DashBoardIcons/b_bar_home.png"),
-                      SizedBox(height: 2,),
-                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Employee", letterSpacing: 0.3, textColor: _currentIndex==0? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
+                      CustomImageSction2(height: C_size, img_color:_currentIndex==0? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5), width: C_size, radius: 5, image: "Assets/DashBoardIcons/b_bar_home.png"),
+                      SizedBox(height: 3,),
+                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w500, text: "Employee", letterSpacing: 0.9, textColor: _currentIndex==0? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
                     ],
                   ),
                 )),
             InkWell(
                 onTap: () {
                   setState(() {
-                    _currentIndex=1;
+                    _currentIndex=2;
                   });
                 },
                 child: Container(
-                  height: 44,
+                  height: b_bar_h,
                   child: Column(
                     children: [
-                      CustomImageSction2(height: 25, img_color: _currentIndex==1? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5), width: 25, radius: 5, image: "Assets/DashBoardIcons/b_bar_attendence.png"),
-                      SizedBox(height: 2,),
-                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Attendance", letterSpacing: 0.3, textColor: _currentIndex==1? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
+                      CustomImageSction2(height: C_size, img_color: _currentIndex==2? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5), width: C_size, radius: 5, image: "Assets/DashBoardIcons/b_bar_payroll.png"),
+                      SizedBox(height: 3,),
+                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w500, text: "Payroll", letterSpacing: 0.9, textColor: _currentIndex==2? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
                     ],
                   ),
                 )),
+
 
 
             Container(
@@ -113,16 +117,16 @@ class _BootomNatchBarScreenState extends State<BootomNatchBarScreen> {
             InkWell(
                 onTap: () {
                   setState(() {
-                    _currentIndex=2;
+                    _currentIndex=1;
                   });
                 },
                 child: Container(
-                  height: 44,
+                  height: b_bar_h,
                   child: Column(
                     children: [
-                      CustomImageSction2(height: 25, img_color: _currentIndex==2? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5), width: 25, radius: 5, image: "Assets/DashBoardIcons/b_bar_payroll.png"),
-                      SizedBox(height: 2,),
-                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Payroll", letterSpacing: 0.3, textColor: _currentIndex==2? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
+                      CustomImageSction2(height: C_size, img_color: _currentIndex==1? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5), width: C_size, radius: 5, image: "Assets/DashBoardIcons/b_bar_attendence.png"),
+                      SizedBox(height: 3,),
+                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w500, text: "Attendance", letterSpacing:0.9, textColor: _currentIndex==1? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
                     ],
                   ),
                 )),
@@ -133,12 +137,12 @@ class _BootomNatchBarScreenState extends State<BootomNatchBarScreen> {
                   });
                 },
                 child: Container(
-                  height: 44,
+                  height: b_bar_h,
                   child: Column(
                     children: [
-                      CustomImageSction2(height: 25, img_color: _currentIndex==3? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5), width: 25, radius: 5, image: "Assets/DashBoardIcons/b_bar_tricker.png"),
-                      SizedBox(height: 2,),
-                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Tracker", letterSpacing: 0.3, textColor: _currentIndex==3? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
+                      CustomImageSction2(height: C_size, img_color: _currentIndex==3? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5), width: C_size, radius: 5, image: "Assets/DashBoardIcons/b_bar_tricker.png"),
+                      SizedBox(height: 3,),
+                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w500, text: "Tracker", letterSpacing: 0.9, textColor: _currentIndex==3? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
                     ],
                   ),
                 )),
@@ -157,7 +161,9 @@ class _BootomNatchBarScreenState extends State<BootomNatchBarScreen> {
           foregroundColor: Main_Theme_WhiteCollor,
           backgroundColor: Main_Theme_WhiteCollor,
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => BootomNavBarItemsMainFloationHomeScreen(),));
+            setState(() {
+              _currentIndex=4;
+            });
           }, child: Padding(
           padding: const EdgeInsets.all(2.0),
           child: Image.asset("Assets/Logo/leaff.png" ),
