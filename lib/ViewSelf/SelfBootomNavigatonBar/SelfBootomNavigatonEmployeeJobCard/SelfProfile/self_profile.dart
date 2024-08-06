@@ -332,7 +332,7 @@ class _SelfProfileScreenState extends State<SelfProfileScreen> {
                             selectedindex==index&&index==0?
                             SizedBox(height: 7,):Container()  ,
 
-                            selectedindex==index&&index==0?
+                            selectedindex==index&&index==0 && getindex  == "$index" ?
                             Row(
                               mainAxisAlignment:MainAxisAlignment.spaceEvenly ,
                               children: [
