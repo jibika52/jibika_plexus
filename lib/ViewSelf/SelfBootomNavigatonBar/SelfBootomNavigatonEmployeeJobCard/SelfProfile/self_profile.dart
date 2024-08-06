@@ -267,7 +267,7 @@ class _SelfProfileScreenState extends State<SelfProfileScreen> {
                                 animatedheight=0;
                                 getindex='';
                               }else{
-                                animatedheight=index==0?770:1000;
+                                animatedheight=index==0?785:index==1?740:index==2?750:400;
                                 getindex="$index";
                               }
                             });
@@ -277,7 +277,7 @@ class _SelfProfileScreenState extends State<SelfProfileScreen> {
                       child: Container(
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.all( Radius.circular(7)),
-                            //  color: Color(0xffF3FCFB)
+                            color: Main_Theme_textColor_tir_Condition.withOpacity(0.1),
                             //  color:  CustomButtonColor.withOpacity(0.05),
                             border: Border(bottom: BorderSide( color: CustomButtonColor))
                         ),
@@ -286,7 +286,7 @@ class _SelfProfileScreenState extends State<SelfProfileScreen> {
                           children: [
                             Container(
                               padding: EdgeInsets.only(left: 10,right: 10),
-                              height: 55,
+                              height: 51,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(7),
@@ -294,7 +294,7 @@ class _SelfProfileScreenState extends State<SelfProfileScreen> {
                                     bottomLeft: Radius.circular( selectedindex==index?0:7),
                                     bottomRight:Radius.circular( selectedindex==index?0:7),
                                   ),
-                                  color: Main_Theme_textColor_tir_Condition.withOpacity(0.1)
+                              //    color: Main_Theme_textColor_tir_Condition.withOpacity(0.1)
                               ),
                               width: double.infinity,
                               child: Row(
@@ -371,7 +371,6 @@ class _SelfProfileScreenState extends State<SelfProfileScreen> {
                                 CustomImageUpdateScetion2(width: 50,height:50 ,image: "Assets/PrimaryInformation/qrcode.png", heddintext: 'QR Code',),
                               ],
                             ) :Container(),
-
                           ],
                         ),
                       ),

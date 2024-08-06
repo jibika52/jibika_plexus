@@ -72,6 +72,7 @@ class _SelfBootomBarJobCardScreenState extends State<SelfBootomBarJobCardScreen>
                     crossAxisCount: 3,
                     mainAxisSpacing: 18,
                     crossAxisSpacing: 20,
+                    mainAxisExtent: 95
                   ),
                   scrollDirection: Axis.vertical,
                   itemCount: countList.length,
