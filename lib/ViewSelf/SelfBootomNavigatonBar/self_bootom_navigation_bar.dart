@@ -28,7 +28,7 @@
 //     Text("CCCCCCCCCCCCCCCCCCC"),
 //   ];
 //   final _key=GlobalKey<ScaffoldState>();
-//   int _currentIndex = 0;
+//   int widget.currentIndex = 0;
 //   @override
 //
 //   Widget build(BuildContext context) {
@@ -90,7 +90,7 @@
 //       key: _key,
 //
 //
-//       body: bottomBarPages[_currentIndex],
+//       body: bottomBarPages[widget.currentIndex],
 //       bottomNavigationBar: Container(
 //         height: 70,
 //         width: double.infinity,
@@ -108,7 +108,7 @@
 //             InkWell(
 //                 onTap: () {
 //                   setState(() {
-//                     _currentIndex=0;
+//                     widget.currentIndex=0;
 //                   });
 //                 },
 //                 child: CustomImageSction(height: 35, width: 35, radius: 5, image: "Assets/DashBoardIcons/b_bar_home.png")),
@@ -116,7 +116,7 @@
 //             InkWell(
 //                 onTap: () {
 //                   setState(() {
-//                     _currentIndex=1;
+//                     widget.currentIndex=1;
 //                   });
 //                 },
 //                 child: CustomImageSction(height: 35, width: 35, radius: 5, image: "Assets/DashBoardIcons/b_bar_attendence.png")),
@@ -127,7 +127,7 @@
 //             InkWell(
 //                 onTap: () {
 //                   setState(() {
-//                     _currentIndex=2;
+//                     widget.currentIndex=2;
 //                   });
 //                 },
 //                 child: CustomImageSction(height: 35, width: 35, radius: 5, image: "Assets/DashBoardIcons/b_bar_payroll.png")),
@@ -135,7 +135,7 @@
 //                 onTap: () {
 //                   setState(() {
 //
-//                     _currentIndex=3;
+//                     widget.currentIndex=3;
 //                   });
 //                 },
 //                 child: CustomImageSction(height: 35, width: 35, radius: 5, image: "Assets/DashBoardIcons/b_bar_tricker.png")),
@@ -188,8 +188,8 @@ import 'SelfBootomNavigatonBarHomeScreen/self_bootom_navigaton_bar_home_screen.d
 import 'SelfBootomNavigatonEmployeeDashboard/self_bootom_navigaton_employee_dashboard.dart';
 
 class SalfBootomNatchBarScreen extends StatefulWidget {
-  const SalfBootomNatchBarScreen({super.key});
-
+  SalfBootomNatchBarScreen({super.key,required this.currentIndex});
+  int  currentIndex;
   @override
   State<SalfBootomNatchBarScreen> createState() => _SalfBootomNatchBarScreenState();
 }
@@ -198,7 +198,7 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
 
   int maxCount = 5;
   bool is_get_profie=false;
-  dynamic getDynamicSliderData;
+  dynamic getDynamicSliderData;  
   @override
   void initState() {
     // TODO: implement initState
@@ -214,7 +214,7 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
     SelfBootomNavigatonBarHomeScreen(),
   ];
   final _key=GlobalKey<ScaffoldState>();
-  int _currentIndex = 4;
+
   double b_bar_icon_size=30;
   double b_bar_height=50;
   @override
@@ -233,7 +233,7 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
             }, is_need_trailing: true),
       ),
 
-      body: bottomBarPages[_currentIndex],
+      body: bottomBarPages[widget.currentIndex],
       bottomNavigationBar: Container(
         height: 70,
         width: double.infinity,
@@ -251,33 +251,33 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
             InkWell(
                 onTap: () {
                   setState(() {
-                    _currentIndex=0;
+                    widget.currentIndex=0;
                   });
                 },
                 child: Container(
                   height: b_bar_height,
                   child: Column(
                     children: [
-                      CustomImageSction2(height: b_bar_icon_size,width: b_bar_icon_size, img_color:_currentIndex==0? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5),  radius: 5, image: "Assets/DashBoardIcons/b_bar_home.png"),
+                      CustomImageSction2(height: b_bar_icon_size,width: b_bar_icon_size, img_color:widget.currentIndex==0? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5),  radius: 5, image: "Assets/DashBoardIcons/b_bar_home.png"),
                       SizedBox(height: 2,),
-                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Dashboard", letterSpacing: 0.3, textColor: _currentIndex==0? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
+                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Dashboard", letterSpacing: 0.3, textColor: widget.currentIndex==0? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
                     ],
                   ),
                 )),
             InkWell(
                 onTap: () {
                   setState(() {
-                    _currentIndex=1;
+                    widget.currentIndex=1;
                   });
                 },
                 child: Container(
                   height: b_bar_height,
                   child: Column(
                     children: [
-                        Icon(Icons.list_alt,size: 30,weight: 30,color: _currentIndex==1? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.3),),
-              //   CustomImageSction2(height: b_bar_icon_size,width: b_bar_icon_size,  img_color: _currentIndex==1? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5),  radius: 5, image: "Assets/DashBoardIcons/b_bar_attendence.png"),
+                        Icon(Icons.list_alt,size: 30,weight: 30,color: widget.currentIndex==1? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.3),),
+              //   CustomImageSction2(height: b_bar_icon_size,width: b_bar_icon_size,  img_color: widget.currentIndex==1? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5),  radius: 5, image: "Assets/DashBoardIcons/b_bar_attendence.png"),
                       SizedBox(height: 2,),
-                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Job Card", letterSpacing: 0.3, textColor: _currentIndex==1? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
+                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Job Card", letterSpacing: 0.3, textColor: widget.currentIndex==1? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
                     ],
                   ),
                 )),
@@ -289,32 +289,32 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
             InkWell(
                 onTap: () {
                   setState(() {
-                    _currentIndex=2;
+                    widget.currentIndex=2;
                   });
                 },
                 child: Container(
                   height: b_bar_height,
                   child: Column(
                     children: [
-                      CustomImageSction2(height: b_bar_icon_size,width: b_bar_icon_size,  img_color: _currentIndex==2? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5),  radius: 5, image: "Assets/SelfIcon/leave_icon.png"),
+                      CustomImageSction2(height: b_bar_icon_size,width: b_bar_icon_size,  img_color: widget.currentIndex==2? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5),  radius: 5, image: "Assets/SelfIcon/leave_icon.png"),
                       SizedBox(height: 2,),
-                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Leave", letterSpacing: 0.3, textColor: _currentIndex==2? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
+                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Leave", letterSpacing: 0.3, textColor: widget.currentIndex==2? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
                     ],
                   ),
                 )),
             InkWell(
                 onTap: () {
                   setState(() {
-                    _currentIndex=3;
+                    widget.currentIndex=3;
                   });
                 },
                 child: Container(
                   height: b_bar_height,
                   child: Column(
                     children: [
-                      CustomImageSction2(height: b_bar_icon_size,width: b_bar_icon_size,  img_color: _currentIndex==3? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5), radius: 5, image: "Assets/SelfIcon/Conveyance.png"),
+                      CustomImageSction2(height: b_bar_icon_size,width: b_bar_icon_size,  img_color: widget.currentIndex==3? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5), radius: 5, image: "Assets/SelfIcon/conveyance.png"),
                       SizedBox(height: 2,),
-                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Conveyance", letterSpacing: 0.3, textColor: _currentIndex==3? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
+                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Conveyance", letterSpacing: 0.3, textColor: widget.currentIndex==3? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
                     ],
                   ),
                 )),
@@ -334,7 +334,7 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
           backgroundColor: Main_Theme_WhiteCollor,
           onPressed: () {
             setState(() {
-              _currentIndex=4;
+              widget.currentIndex=4;
             });
           }, child: Padding(
           padding: const EdgeInsets.all(2.0),

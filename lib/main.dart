@@ -58,7 +58,9 @@ class MyApp extends StatelessWidget {
         //  home:EmployeeProfileScreen(),
 
         /// Self Screen=================
-      home:   SalfBootomNatchBarScreen(),
+      home:   SalfBootomNatchBarScreen(
+        currentIndex: 4,
+      ),
 
       )
 

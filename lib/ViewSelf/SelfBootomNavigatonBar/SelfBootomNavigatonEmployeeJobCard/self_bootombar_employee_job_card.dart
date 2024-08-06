@@ -7,6 +7,8 @@ import '../../../CustomWidget/CustomEmployeeProfile/custom_employee_profile.dart
 import '../../../CustomWidget/CustomImage/custom_image.dart';
 import '../../../CustomWidget/CustomText/custom_text.dart';
 import '../../../Utils/constants.dart';
+import '../SelfBootomNavigationLeave/self_bootom_navigation_leave.dart';
+import '../self_bootom_navigation_bar.dart';
 
 class SelfBootomBarJobCardScreen extends StatefulWidget {
   const SelfBootomBarJobCardScreen({super.key});
@@ -82,7 +84,17 @@ class _SelfBootomBarJobCardScreenState extends State<SelfBootomBarJobCardScreen>
                         if(index==0){
                           Navigator.push(context, CupertinoPageRoute(builder: (context) => SelfProfileScreen(),));
                         }
-                      },
+                        if(index==1){
+                        Navigator.push(context, CupertinoPageRoute(builder: (context) => SalfBootomNatchBarScreen(
+                        currentIndex: 1,
+                        ),));
+                        }
+                        if(index==2){
+                          Navigator.push(context, CupertinoPageRoute(builder: (context) => SalfBootomNatchBarScreen(
+                            currentIndex: 1,
+                          ),));
+                         }
+                        },
                       child: Container(
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),

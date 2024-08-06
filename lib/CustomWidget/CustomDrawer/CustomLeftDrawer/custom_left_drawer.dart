@@ -59,7 +59,9 @@ class CustomLeftDrawer extends StatelessWidget {
                   Align(
                     alignment: Alignment.centerRight,
                     child: CustomButton(onTap: () {
-                      Navigator.push(context, DialogRoute(context: context, builder: (context) => SalfBootomNatchBarScreen(),));
+                      Navigator.push(context, DialogRoute(context: context, builder: (context) => SalfBootomNatchBarScreen(
+                        currentIndex: 4,
+                      ),));
                     }, text: "Switch to Self mode", button_text_fontSize: 14, button_height: 35, custom_button_collor: CustomButtonColor, button_text_color: Main_Theme_WhiteCollor, borderRadius: 30),
                   ),
                   CustomDrawerOption(image: "Assets/DrawerImage/drawericonong.png", name: "Home", size: 16,size2: 16,),
@@ -79,7 +81,9 @@ class CustomLeftDrawer extends StatelessWidget {
                   CustomDrawerOption(image: "Assets/DrawerImage/drawer_setting_option.png", name: "Setting", size: 17, size2: 16,),
                   InkWell(
                       onTap: () {
-                        Navigator.push(context, CupertinoPageRoute(builder: (context) => SalfBootomNatchBarScreen(),));
+                        Navigator.push(context, CupertinoPageRoute(builder: (context) => SalfBootomNatchBarScreen(
+                          currentIndex: 4,
+                        ),));
                       },
                       child: CustomDrawerOption(image: "Assets/DrawerImage/drawericonong.png", name: "Employee home", size: 17, size2: 16,)),
                   InkWell(

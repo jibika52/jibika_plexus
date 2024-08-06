@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/self_bootom_navigation_bar.dart';
+import 'package:jibika_plexus/ViewSelf/SelfNotice/self_notice.dart';
 
 import '../../../Utils/constants.dart';
 import '../../CustomImage/custom_image.dart';
@@ -59,26 +61,33 @@ class CustomMainAppBar extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Stack(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 10.0,top: 10),
-                      child: CustomImageSction(height: 25, width: 25, radius: 1, image: "Assets/DashBoardIcons/notification_icon.png"),
-                    ),
-                    Positioned(
-                        top: 5,
-                        left: 9,
-                        child: CircleAvatar(
-                          radius: 7,
-                          child: ColorCustomText(fontSize: 9, fontWeight: FontWeight.w700, text: "7", letterSpacing: 1, textColor: notification_color),
-                        ))
-                  ],
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(context, CupertinoPageRoute(builder: (context) => SelfNoticeScreen(),));
+                  },
+                  child: Stack(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10.0,top: 10),
+                        child: CustomImageSction(height: 25, width: 25, radius: 1, image: "Assets/DashBoardIcons/notification_icon.png"),
+                      ),
+                      Positioned(
+                          top: 5,
+                          left: 9,
+                          child: CircleAvatar(
+                            radius: 7,
+                            child: ColorCustomText(fontSize: 9, fontWeight: FontWeight.w700, text: "7", letterSpacing: 1, textColor: notification_color),
+                          ))
+                    ],
+                  ),
                 ),
 
 
 
                 InkWell(onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => SalfBootomNatchBarScreen(),));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => SalfBootomNatchBarScreen(
+                    currentIndex: 4,
+                  ),));
                 }, child: Icon(Icons.more_vert,size: 30,color: Main_Theme_WhiteCollor.withOpacity(0.8) ,))
 
               ],
