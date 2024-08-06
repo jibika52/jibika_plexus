@@ -11,6 +11,8 @@ class MySelfLeaveStatus extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return    Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "${text1}", letterSpacing: 0.3,),
         ColorCustomText(fontSize: 12, fontWeight: FontWeight.w300, text: "${text2}", letterSpacing: 0.3, textColor: textColor,),

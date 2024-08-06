@@ -42,15 +42,14 @@ class MyApp extends StatelessWidget {
 
         /// ----------Home Screen---------
         //     home:BootomNatchBarScreen(),
-       home:BootomNatchBarScreen(),
+        //    home:BootomNatchBarScreen(),
 
         /// ----------SplashScreen--------
         //     home:MainSplashPageViewScreen(),
 
         /// ----------Working Screen--------
         //  home:LoginScreenSlide(),
-
-        //   home:testFile(),
+        //
 
         //  home:BootomNavigationBarItemsTrackingScreen(),
 
@@ -59,7 +58,7 @@ class MyApp extends StatelessWidget {
         //  home:EmployeeProfileScreen(),
 
         /// Self Screen=================
-        //     home:   SalfBootomNatchBarScreen(),
+      home:   SalfBootomNatchBarScreen(),
 
       )
 

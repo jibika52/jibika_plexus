@@ -22,7 +22,7 @@ class BootomNavBarItemsMainFloationHomeScreen extends StatefulWidget {
 }
 
 class _BootomNavBarItemsMainFloationHomeScreenState extends State<BootomNavBarItemsMainFloationHomeScreen> {
-  double animatedheight=0;
+
   double animatwidth=117;
   double lineWidth=7.0;
   double C_height=5;
