@@ -267,7 +267,7 @@ class _SelfProfileScreenState extends State<SelfProfileScreen> {
                                 animatedheight=0;
                                 getindex='';
                               }else{
-                                animatedheight=770;
+                                animatedheight=index==0?770:1000;
                                 getindex="$index";
                               }
                             });
@@ -301,7 +301,7 @@ class _SelfProfileScreenState extends State<SelfProfileScreen> {
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   CustomText(fontSize: font13, fontWeight: FontWeight.w500, text: "${profile_list[index]}", letterSpacing: 0.3),
-                                  selectedindex==index?
+                                  selectedindex==index && getindex  == "$index"?
                                   Icon(Icons.keyboard_arrow_up,)
                                       :
                                   Icon(Icons.keyboard_arrow_down,)
@@ -319,10 +319,29 @@ class _SelfProfileScreenState extends State<SelfProfileScreen> {
                                     physics: NeverScrollableScrollPhysics(),
                                     itemCount: SelfProfileInformationCardlist.length,
                                     itemBuilder: (context, index) {
-                                      return SelfProfileImageNameSubName(
+                                      return
+                                        selectedindex==0?
+                                        SelfProfileImageNameSubName(
                                         image: "${SelfProfileInformationCardlist[index].image}",
                                         text1: "${SelfProfileInformationCardlist[index].text1}",
                                         text2: "${SelfProfileInformationCardlist[index].text2}",
+                                      ) :
+                                        selectedindex==1?
+                                        SelfProfileImageNameSubName(
+                                        image: "${SelfOfficialInformationCardlist[index].image}",
+                                        text1: "${SelfOfficialInformationCardlist[index].text1}",
+                                        text2: "${SelfOfficialInformationCardlist[index].text2}",
+                                      ) :
+                                        selectedindex==2?
+                                        SelfProfileImageNameSubName(
+                                        image: "${SelfSalaryInformationCardlist[index].image}",
+                                        text1: "${SelfSalaryInformationCardlist[index].text1}",
+                                        text2: "${SelfSalaryInformationCardlist[index].text2}",
+                                      ):
+                                        SelfProfileImageNameSubName(
+                                        image: "${SelfReferrerInformationCardlist[index].image}",
+                                        text1: "${SelfSalaryInformationCardlist[index].text1}",
+                                        text2: "${SelfSalaryInformationCardlist[index].text2}",
                                       );
                                     },)
                               ) ,
@@ -438,5 +457,194 @@ class SelfProfileInformationCard{
         image: "Assets/DashBoardIcons/personalcard.png",
         text1: "Last Education",
         text2: "HSC",
+      ),
+    ];
+
+    List<SelfProfileInformationCard> SelfOfficialInformationCardlist=[
+      SelfProfileInformationCard(
+        image: "Assets/DashBoardIcons/personalcard.png",
+        text1: "Department",
+        text2: "CSE",
+      ),
+      SelfProfileInformationCard(
+        image: "Assets/DashBoardIcons/personalcard.png",
+        text1: "Designation",
+        text2: "Software Engineer",
+      ),
+      SelfProfileInformationCard(
+        image: "Assets/DashBoardIcons/personalcard.png",
+        text1: "Section",
+        text2: "Software",
+      ),
+      SelfProfileInformationCard(
+        image: "Assets/DashBoardIcons/personalcard.png",
+        text1: "Staff Category",
+        text2: "Full Time",
+      ),
+      SelfProfileInformationCard(
+        image: "Assets/DashBoardIcons/personalcard.png",
+        text1: "Work Station",
+        text2: "On Office",
+      ),
+      SelfProfileInformationCard(
+        image: "Assets/DashBoardIcons/personalcard.png",
+        text1: "Joining Date",
+        text2: "10-jun-2024",
+      ),
+      SelfProfileInformationCard(
+        image: "Assets/DashBoardIcons/personalcard.png",
+        text1: "Inactive Date",
+        text2: "None",
+      ),
+      SelfProfileInformationCard(
+        image: "Assets/DashBoardIcons/personalcard.png",
+        text1: "Roster Type",
+        text2: "Roster typem",
+      ),
+      SelfProfileInformationCard(
+        image: "Assets/DashBoardIcons/personalcard.png",
+        text1: "Shift Plan",
+        text2: "Morning Shift",
+      ),
+      SelfProfileInformationCard(
+        image: "Assets/DashBoardIcons/personalcard.png",
+        text1: "Employee Status",
+        text2: "Employee Status",
+      ),
+      SelfProfileInformationCard(
+        image: "Assets/DashBoardIcons/personalcard.png",
+        text1: "Employee Status",
+        text2: "Morning",
+      ),
+      SelfProfileInformationCard(
+        image: "Assets/DashBoardIcons/personalcard.png",
+        text1: "Second Weekend",
+        text2: "Night",
+      ),
+    ];
+
+    List<SelfProfileInformationCard> SelfSalaryInformationCardlist=[
+      SelfProfileInformationCard(
+        image: "Assets/DashBoardIcons/personalcard.png",
+        text1: "Gross Salary",
+        text2: "20000",
+      ),
+      SelfProfileInformationCard(
+        image: "Assets/DashBoardIcons/personalcard.png",
+        text1: "Basic",
+        text2: "12000",
+      ),
+      SelfProfileInformationCard(
+        image: "Assets/DashBoardIcons/personalcard.png",
+        text1: "House Rent",
+        text2: "123333",
+      ),
+      SelfProfileInformationCard(
+        image: "Assets/DashBoardIcons/personalcard.png",
+        text1: "Medical Allowance",
+        text2: "1300",
+      ),
+      SelfProfileInformationCard(
+        image: "Assets/DashBoardIcons/personalcard.png",
+        text1: "Food Allowance",
+        text2: "1000",
+      ),
+      SelfProfileInformationCard(
+        image: "Assets/DashBoardIcons/personalcard.png",
+        text1: "Convince Allowance",
+        text2: "13000",
+      ),
+      SelfProfileInformationCard(
+        image: "Assets/DashBoardIcons/personalcard.png",
+        text1: "Other Allowance",
+        text2: "1500",
+      ),
+      SelfProfileInformationCard(
+        image: "Assets/DashBoardIcons/personalcard.png",
+        text1: "Other Deduction",
+        text2: "4000",
+      ),
+      SelfProfileInformationCard(
+        image: "Assets/DashBoardIcons/personalcard.png",
+        text1: "Over Time Rate",
+        text2: "13000",
+      ),
+      SelfProfileInformationCard(
+        image: "Assets/DashBoardIcons/personalcard.png",
+        text1: "Mobile Number",
+        text2: "16000",
+      ),
+      SelfProfileInformationCard(
+        image: "Assets/DashBoardIcons/personalcard.png",
+        text1: "Bank & Branch Name",
+        text2: "16444",
+      ),
+      SelfProfileInformationCard(
+        image: "Assets/DashBoardIcons/personalcard.png",
+        text1: "Account Number",
+        text2: "1539025",
+      ),
+    ];
+
+    List<SelfProfileInformationCard> SelfReferrerInformationCardlist=[
+      SelfProfileInformationCard(
+        image: "Assets/DashBoardIcons/personalcard.png",
+        text1: "Gross Salary",
+        text2: "20000",
+      ),
+      SelfProfileInformationCard(
+        image: "Assets/DashBoardIcons/personalcard.png",
+        text1: "Basic",
+        text2: "12000",
+      ),
+      SelfProfileInformationCard(
+        image: "Assets/DashBoardIcons/personalcard.png",
+        text1: "House Rent",
+        text2: "123333",
+      ),
+      SelfProfileInformationCard(
+        image: "Assets/DashBoardIcons/personalcard.png",
+        text1: "Medical Allowance",
+        text2: "1300",
+      ),
+      SelfProfileInformationCard(
+        image: "Assets/DashBoardIcons/personalcard.png",
+        text1: "Food Allowance",
+        text2: "1000",
+      ),
+      SelfProfileInformationCard(
+        image: "Assets/DashBoardIcons/personalcard.png",
+        text1: "Convince Allowance",
+        text2: "13000",
+      ),
+      SelfProfileInformationCard(
+        image: "Assets/DashBoardIcons/personalcard.png",
+        text1: "Other Allowance",
+        text2: "1500",
+      ),
+      SelfProfileInformationCard(
+        image: "Assets/DashBoardIcons/personalcard.png",
+        text1: "Other Deduction",
+        text2: "4000",
+      ),
+      SelfProfileInformationCard(
+        image: "Assets/DashBoardIcons/personalcard.png",
+        text1: "Over Time Rate",
+        text2: "13000",
+      ),
+      SelfProfileInformationCard(
+        image: "Assets/DashBoardIcons/personalcard.png",
+        text1: "Mobile Number",
+        text2: "16000",
+      ),
+      SelfProfileInformationCard(
+        image: "Assets/DashBoardIcons/personalcard.png",
+        text1: "Bank & Branch Name",
+        text2: "16444",
+      ),
+      SelfProfileInformationCard(
+        image: "Assets/DashBoardIcons/personalcard.png",
+        text1: "Account Number",
+        text2: "1539025",
       ),
     ];
