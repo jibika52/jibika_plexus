@@ -308,8 +308,16 @@ class _SelfProfileScreenState extends State<SelfProfileScreen> {
                                 ],
                               ),
                             ),
-                            selectedindex==index?
-                            AnimatedContainer(
+                            selectedindex==index&&index==3? SizedBox(height: 7,):Container()  ,
+                            selectedindex==index&&index==3 && getindex  == "$index" ? Row(
+                              mainAxisAlignment:MainAxisAlignment.spaceEvenly ,
+                              children: [
+                                CustomImageUpdateScetion2(width: 100,height:50 ,image: "Assets/PrimaryInformation/email.png", heddintext: '',),
+                              ],
+                            ) :Container(),
+
+
+                            selectedindex==index? AnimatedContainer(
                               height: animatedheight,
                               width: double.infinity,
                               duration: Duration(milliseconds: 400),
@@ -317,7 +325,15 @@ class _SelfProfileScreenState extends State<SelfProfileScreen> {
                               child: Container(
                                   child:  ListView.builder(
                                     physics: NeverScrollableScrollPhysics(),
-                                    itemCount: SelfProfileInformationCardlist.length,
+                                    itemCount:
+                                    selectedindex==0? SelfProfileInformationCardlist.length
+                                    :
+                                    selectedindex==1? SelfOfficialInformationCardlist.length
+                                    :
+                                    selectedindex==2? SelfSalaryInformationCardlist.length
+                                    :
+                                    SelfReferrerInformationCardlist.length,
+
                                     itemBuilder: (context, index) {
                                       return
                                         selectedindex==0?
@@ -340,19 +356,14 @@ class _SelfProfileScreenState extends State<SelfProfileScreen> {
                                       ):
                                         SelfProfileImageNameSubName(
                                         image: "${SelfReferrerInformationCardlist[index].image}",
-                                        text1: "${SelfSalaryInformationCardlist[index].text1}",
-                                        text2: "${SelfSalaryInformationCardlist[index].text2}",
+                                        text1: "${SelfReferrerInformationCardlist[index].text1}",
+                                        text2: "${SelfReferrerInformationCardlist[index].text2}",
                                       );
                                     },)
                               ) ,
-                            )
-                                :
-                            Container(),
-                            selectedindex==index&&index==0?
-                            SizedBox(height: 7,):Container()  ,
-
-                            selectedindex==index&&index==0 && getindex  == "$index" ?
-                            Row(
+                            ) : Container(),
+                            selectedindex==index&&index==0? SizedBox(height: 7,):Container()  ,
+                            selectedindex==index&&index==0 && getindex  == "$index" ? Row(
                               mainAxisAlignment:MainAxisAlignment.spaceEvenly ,
                               children: [
                                 CustomImageUpdateScetion2(width: 100,height:50 ,image: "Assets/PrimaryInformation/email.png", heddintext: 'Signature',),
@@ -360,6 +371,7 @@ class _SelfProfileScreenState extends State<SelfProfileScreen> {
                                 CustomImageUpdateScetion2(width: 50,height:50 ,image: "Assets/PrimaryInformation/qrcode.png", heddintext: 'QR Code',),
                               ],
                             ) :Container(),
+
                           ],
                         ),
                       ),
@@ -589,62 +601,27 @@ class SelfProfileInformationCard{
     List<SelfProfileInformationCard> SelfReferrerInformationCardlist=[
       SelfProfileInformationCard(
         image: "Assets/DashBoardIcons/personalcard.png",
-        text1: "Gross Salary",
-        text2: "20000",
+        text1: "Referrer Name",
+        text2: "Uzzal Biswas",
       ),
       SelfProfileInformationCard(
         image: "Assets/DashBoardIcons/personalcard.png",
-        text1: "Basic",
-        text2: "12000",
-      ),
-      SelfProfileInformationCard(
-        image: "Assets/DashBoardIcons/personalcard.png",
-        text1: "House Rent",
-        text2: "123333",
-      ),
-      SelfProfileInformationCard(
-        image: "Assets/DashBoardIcons/personalcard.png",
-        text1: "Medical Allowance",
-        text2: "1300",
-      ),
-      SelfProfileInformationCard(
-        image: "Assets/DashBoardIcons/personalcard.png",
-        text1: "Food Allowance",
-        text2: "1000",
-      ),
-      SelfProfileInformationCard(
-        image: "Assets/DashBoardIcons/personalcard.png",
-        text1: "Convince Allowance",
-        text2: "13000",
-      ),
-      SelfProfileInformationCard(
-        image: "Assets/DashBoardIcons/personalcard.png",
-        text1: "Other Allowance",
-        text2: "1500",
-      ),
-      SelfProfileInformationCard(
-        image: "Assets/DashBoardIcons/personalcard.png",
-        text1: "Other Deduction",
-        text2: "4000",
-      ),
-      SelfProfileInformationCard(
-        image: "Assets/DashBoardIcons/personalcard.png",
-        text1: "Over Time Rate",
-        text2: "13000",
+        text1: "Referrer Address",
+        text2: "Mirpur -10",
       ),
       SelfProfileInformationCard(
         image: "Assets/DashBoardIcons/personalcard.png",
         text1: "Mobile Number",
-        text2: "16000",
+        text2: "01889173335",
       ),
       SelfProfileInformationCard(
         image: "Assets/DashBoardIcons/personalcard.png",
-        text1: "Bank & Branch Name",
-        text2: "16444",
+        text1: "Referrer E-mail",
+        text2: "uzzal.171.cse@gmail.com",
       ),
       SelfProfileInformationCard(
         image: "Assets/DashBoardIcons/personalcard.png",
-        text1: "Account Number",
-        text2: "1539025",
+        text1: "Relation with Referrer",
+        text2: "brother",
       ),
     ];
