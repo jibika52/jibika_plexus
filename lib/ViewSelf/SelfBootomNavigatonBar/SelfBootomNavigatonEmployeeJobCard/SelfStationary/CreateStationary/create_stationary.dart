@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:jibika_plexus/CustomWidget/CustomAppBar/CustomDefaultAppBar/custom_default_app_bar.dart';
 import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
@@ -130,7 +131,15 @@ class _CreateStationaryScreenState extends State<CreateStationaryScreen> {
                                          alignment: Alignment.centerLeft,
                                          child: TextFormField(
                                            decoration: InputDecoration(
+                                               style: GoogleFonts.poppins(
+                                                   fontSize: 12,
+                                                   fontWeight: FontWeight.w400
+                                               ),
                                                hintText: "Enter item",
+                                               hintStyle: GoogleFonts.poppins(
+                                                 fontSize: 12,
+                                                 fontWeight: FontWeight.w400
+                                               ),
                                                border: InputBorder.none,
                                                contentPadding: EdgeInsets.only(bottom: 10,left: 10)
                                            ),
@@ -150,9 +159,17 @@ class _CreateStationaryScreenState extends State<CreateStationaryScreen> {
                                          ),
                                          alignment: Alignment.centerLeft,
                                          child: TextFormField(
+                                           style: GoogleFonts.poppins(
+                                               fontSize: 12,
+                                               fontWeight: FontWeight.w400
+                                           ),
                                            keyboardType: TextInputType.number,
                                            decoration: InputDecoration(
                                                hintText: "Enter Quantity",
+                                               hintStyle: GoogleFonts.poppins(
+                                                   fontSize: 12,
+                                                   fontWeight: FontWeight.w400
+                                               ),
                                                border: InputBorder.none,
                                                contentPadding: EdgeInsets.only(bottom: 10,left: 10)
                                            ),
@@ -172,8 +189,16 @@ class _CreateStationaryScreenState extends State<CreateStationaryScreen> {
                                          ),
                                          alignment: Alignment.centerLeft,
                                          child: TextFormField(
+                                           style: GoogleFonts.poppins(
+                                               fontSize: 12,
+                                               fontWeight: FontWeight.w400
+                                           ),
                                            decoration: InputDecoration(
                                                hintText: "Enter ",
+                                               hintStyle: GoogleFonts.poppins(
+                                                   fontSize: 12,
+                                                   fontWeight: FontWeight.w400
+                                               ),
                                                border: InputBorder.none,
                                                contentPadding: EdgeInsets.only(bottom: 10,left: 10)
                                            ),
