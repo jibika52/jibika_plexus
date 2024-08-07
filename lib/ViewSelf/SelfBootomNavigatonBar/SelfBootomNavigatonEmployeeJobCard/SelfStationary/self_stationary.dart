@@ -9,6 +9,7 @@ import 'package:jibika_plexus/CustomWidget/CustomAppBar/CustomDefaultAppBar/cust
 import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 
 import '../../../../Utils/constants.dart';
+import 'CreateStationary/create_stationary.dart';
 
 class SelfStationary extends StatefulWidget {
   const SelfStationary({super.key});
@@ -186,6 +187,21 @@ class _SelfStationaryState extends State<SelfStationary> {
           ],
         ),
       ),
+      floatingActionButton:  InkWell(
+        onTap: () {
+          Navigator.push(context, CupertinoPageRoute(builder: (context) => CreateStationaryScreen(),));
+        },
+        child: Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(100)
+          ),
+          color: Main_Theme_WhiteCollor,
+          child: Padding(
+            padding: const EdgeInsets.all(5.0),
+            child: Icon(Icons.add,size: 33,color: CustomButtonColor,),
+          ),
+        ),
+      )
     );
   }
   List nameList=[
