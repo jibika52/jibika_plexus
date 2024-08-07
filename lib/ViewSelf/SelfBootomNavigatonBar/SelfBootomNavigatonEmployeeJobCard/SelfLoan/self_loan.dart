@@ -35,48 +35,50 @@ class _SelfLoanScreenState extends State<SelfLoanScreen> {
         height:double.infinity,
         width: double.infinity,
         padding: EdgeInsets.all(10),
-        child: Column(
-          children: [
-            Container(
-             height: 321,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(11),
-               color: Main_Theme_WhiteCollor,
-              ),
-              child: Column(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(top: h*0.033),
-                    child: CustomImageSction(height: 170, width: 205, radius: 5, image: "Assets/SelfIcon/loan.png"),
-                  ),
-                  SizedBox(height: h*0.020,),
-                  CustomText(fontSize: 13, fontWeight: FontWeight.w600, text: "You haven't applied for any loan", letterSpacing: 0.4)
-                 ,
-                  SizedBox(height: h*0.015,),
-                  Align(
-                    alignment: Alignment.center,
-                    child: Container(
-                        height: 40,
-                        width: 150,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(50),
-                            color: CustomButtonColor.withOpacity(0.2)
-                        ),
-                        child: ColorCustomText(fontSize: 12, fontWeight: FontWeight.w500, text: "Apply for loan", letterSpacing: 0.3, textColor: CustomButtonColor)
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+               height: 321,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(11),
+                 color: Main_Theme_WhiteCollor,
+                ),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(top: h*0.033),
+                      child: CustomImageSction(height: 170, width: 205, radius: 5, image: "Assets/SelfIcon/loan.png"),
                     ),
-                  )
-                ],
+                    SizedBox(height: h*0.020,),
+                    CustomText(fontSize: 13, fontWeight: FontWeight.w600, text: "You haven't applied for any loan", letterSpacing: 0.4)
+                   ,
+                    SizedBox(height: h*0.015,),
+                    Align(
+                      alignment: Alignment.center,
+                      child: Container(
+                          height: 40,
+                          width: 150,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(50),
+                              color: CustomButtonColor.withOpacity(0.2)
+                          ),
+                          child: ColorCustomText(fontSize: 12, fontWeight: FontWeight.w500, text: "Apply for loan", letterSpacing: 0.3, textColor: CustomButtonColor)
+                      ),
+                    )
+                  ],
+                ),
               ),
-            ),
-            Expanded(
-              child: Container(
-                margin: EdgeInsets.only(left: 10,right: 10),
-                width: 400,
+
+              Container(
+                margin: EdgeInsets.only(top: 10),
                 color: Main_Theme_WhiteCollor,
                 child: ListView.builder(
-                  itemCount: DateTime(DateTime.now().year, DateTime.now().month+1, 0).day,
+                  physics: NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: 11,
                   itemBuilder: (context, index) {
                     return InkWell(
                       onTap: () {
@@ -118,14 +120,22 @@ class _SelfLoanScreenState extends State<SelfLoanScreen> {
                                   bottomRight:Radius.circular( selectedindex==index?0:7),
                                 ),    ),
                               width: double.infinity,
-                              child:  Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              child:  Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
+                                  CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "General Loan", letterSpacing: 0.3),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      CustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "General Loan", letterSpacing: 0.3),
 
-                                  ///----------------- Third Part ------------------------------///
-                                  Container(
-                                      child:  Icon(Icons.keyboard_arrow_down,size: 25)),
+                                      Spacer(),
+                                      ///----------------- Third Part ------------------------------///
+                                      Container(
+                                          child:  Icon(Icons.keyboard_arrow_down,size: 25)),
 
+                                    ],
+                                  ),
                                 ],
                               ),
                             ),
@@ -194,8 +204,8 @@ class _SelfLoanScreenState extends State<SelfLoanScreen> {
                     );
                   },),
               ),
-            )
-          ],
+            ],
+          ),
         ),
       ),
     );
