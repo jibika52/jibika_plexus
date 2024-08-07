@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/SelfBootomNavigatonEmployeeJobCard/SelfProfile/self_profile.dart';
+import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/SelfBootomNavigatonEmployeeJobCard/SelfStationary/self_stationary.dart';
 
 import '../../../CustomWidget/CustomAppBar/CustomDefaultAppBar/custom_default_app_bar.dart';
 import '../../../CustomWidget/CustomEmployeeProfile/custom_employee_profile.dart';
@@ -84,15 +85,23 @@ class _SelfBootomBarJobCardScreenState extends State<SelfBootomBarJobCardScreen>
                         if(index==0){
                           Navigator.push(context, CupertinoPageRoute(builder: (context) => SelfProfileScreen(),));
                         }
-                        if(index==1){
+                      else if(index==1){
                         Navigator.push(context, CupertinoPageRoute(builder: (context) => SalfBootomNatchBarScreen(
                         currentIndex: 1,
                         ),));
                         }
-                        if(index==2){
+                        else if(index==2){
                           Navigator.push(context, CupertinoPageRoute(builder: (context) => SalfBootomNatchBarScreen(
                             currentIndex: 1,
                           ),));
+                         }
+                        else if(index==3){
+                          Navigator.push(context, CupertinoPageRoute(builder: (context) => SalfBootomNatchBarScreen(
+                            currentIndex: 1,
+                          ),));
+                         }
+                        else if(index==4){
+                          Navigator.push(context, CupertinoPageRoute(builder: (context) => SelfStationary()));
                          }
                         },
                       child: Container(

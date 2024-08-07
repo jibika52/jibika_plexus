@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:jibika_plexus/CustomWidget/CustomAppBar/CustomDefaultAppBar/custom_default_app_bar.dart';
 import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
-
 import '../../CustomWidget/CustomImage/custom_image.dart';
 
 class SelfNoticeScreen extends StatefulWidget {
@@ -18,7 +17,7 @@ class _SelfNoticeScreenState extends State<SelfNoticeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(preferredSize: Size.fromHeight(75), child: CustomDefaultAppBar(onTap: () {
-        
+        Navigator.pop(context);
       }, text: "Announcement")),
       body: Container(
         height: double.infinity,
@@ -46,9 +45,9 @@ class _SelfNoticeScreenState extends State<SelfNoticeScreen> {
                     children: [
                       Row(
                         children: [
-                          CustomImageSction(height: 25, width: 25, radius: 1, image: "Assets/DashBoardIcons/notification_icon.png"),
+                          CustomImageSction(height: 24, width: 24, radius: 1, image: "Assets/DashBoardIcons/notification_icon.png"),
                           SizedBox(width: 7,),
-                          CustomText(fontSize: 13, fontWeight: FontWeight.w700, text: "Notice for AGM 2023", letterSpacing: 0.3)
+                          CustomText(fontSize: 13, fontWeight: FontWeight.w500, text: "Notice for AGM 2023", letterSpacing: 0.3)
                         ],
                       ),
                       ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "20-apr-2024", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5))
@@ -79,9 +78,9 @@ class _SelfNoticeScreenState extends State<SelfNoticeScreen> {
                     children: [
                       Row(
                         children: [
-                          CustomImageSction2(height: 15, width: 16, radius: 1, image: "Assets/SelfIcon/url_lin.png",img_color: Main_Theme_textColor.withOpacity(0.5),),
+                          CustomImageSction2(height: 13, width: 14, radius: 1, image: "Assets/SelfIcon/url_lin.png",img_color: Main_Theme_textColor.withOpacity(0.4),),
                           SizedBox(width: 7,),
-                          ColorCustomText(fontSize: 13, fontWeight: FontWeight.w700, text: "image.jpg", letterSpacing: 0.3,textColor: Main_Theme_textColor.withOpacity(0.5),)
+                          ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "image.jpg", letterSpacing: 0.3,textColor: Main_Theme_textColor.withOpacity(0.5),)
                         ],
                       ),
                       ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "20-apr-2024", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5))

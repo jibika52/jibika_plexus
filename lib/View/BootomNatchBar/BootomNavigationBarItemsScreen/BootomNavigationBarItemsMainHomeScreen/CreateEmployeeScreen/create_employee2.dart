@@ -1015,7 +1015,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
     );
   }
 List nameList=[
-  "Persnal",
+  "Personal",
   "Official",
   "Salary",
   "Nominee",
