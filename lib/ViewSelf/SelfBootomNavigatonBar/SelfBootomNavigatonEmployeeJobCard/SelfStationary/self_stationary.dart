@@ -1,10 +1,12 @@
 import 'dart:math';
 
 import 'package:animated_toggle_switch/animated_toggle_switch.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jibika_plexus/CustomSelfWedget/myself_leave_status.dart';
 import 'package:jibika_plexus/CustomWidget/CustomAppBar/CustomDefaultAppBar/custom_default_app_bar.dart';
+import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 
 import '../../../../Utils/constants.dart';
 
@@ -41,11 +43,10 @@ class _SelfStationaryState extends State<SelfStationary> {
                 current: max(_selectedIndex, 0),
                 style: ToggleStyle(
                   backgroundColor: home_default_color,
-                  indicatorColor: presentsent_color,
+                  indicatorColor: _selectedIndex==0?presentsent_color:_selectedIndex==1?pending_color:absent_color,
                   borderColor: Colors.transparent,
                   borderRadius: BorderRadius.circular(30.0),
                   indicatorBorderRadius: BorderRadius.circular(30),
-
                 ),
                 values:  [0, 1, 2],
                 iconOpacity: 1.0,
@@ -87,8 +88,10 @@ class _SelfStationaryState extends State<SelfStationary> {
               child: ListView.builder(itemBuilder: (context, index) {
                 return Container(
                   margin: EdgeInsets.only(bottom: 10),
-                  padding: EdgeInsets.only(left: 10,right: 10,bottom: 5),
-
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(5),
+                  color: Main_Theme_WhiteCollor
+                  ),
                   child: Column(
                     children: [
                       Row(
@@ -98,6 +101,82 @@ class _SelfStationaryState extends State<SelfStationary> {
                           MySelfLeaveStatus2(text1: "Approval Status : ", text2: "Approved", textColor: Main_Theme_textColor, textColor2:_selectedIndex==0? presentsent_color:_selectedIndex==1?pending_color:absent_color, fontSize1: 12, fontSize2: 11, is_row: true, width_height: 0),
                         ],
                       ),
+                      Divider(
+                        color: Main_Theme_textColor.withOpacity(0.4),
+                     //   height: 10,
+                      ),
+                      Container(
+                        height: 87,
+                        width: double.infinity, 
+                        margin: EdgeInsets.only(top: 5),
+                        child: Row(
+                          children: [
+                            Container(
+                              height: 87,
+                              width: 87,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(7),
+                                border: Border.all(color: pending_color.withOpacity(0.6),),
+                              ),
+                              padding: EdgeInsets.all(3),
+                              child: Image.asset("Assets/SelfIcon/sofa.PNG",fit: BoxFit.fill,),
+                            ),
+                            SizedBox(width: 10,),
+                            Expanded(
+                              flex: 2,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Item Name", letterSpacing: 0.3),
+                                CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Quantity", letterSpacing: 0.3),
+                                CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Is Returnable", letterSpacing: 0.3),
+                                CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Brand Name", letterSpacing: 0.3),
+                                CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Configuration", letterSpacing: 0.3),
+
+                              ],
+                            )),
+                            Expanded(
+                              flex: 3,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: ":  Item Name", letterSpacing: 0.3),
+                                    CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: ":  Quantity", letterSpacing: 0.3),
+                                    CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: ":  Is Returnable", letterSpacing: 0.3),
+                                    CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: ":  Brand Name", letterSpacing: 0.3),
+                                    CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: ":  Configuration", letterSpacing: 0.3),
+
+                                  ],
+                                )),
+                          ],
+                        ),
+                      ),
+                      Divider(
+                        color: Main_Theme_textColor.withOpacity(0.4),
+                        //   height: 10,
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(top: 5),
+                        height: 30,
+                        child: Row(
+                          children: [
+                            CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Remarks: ", letterSpacing: 0.3),
+                            SizedBox(width: 10,),
+                            Expanded(
+                              child: Container(
+                                height: 30,
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                  border: Border.all(
+                                    color: Main_Theme_textColor.withOpacity(0.7)
+                                  )
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      )
                     ],
                   ),
                 );
