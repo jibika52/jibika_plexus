@@ -130,11 +130,12 @@ class _CreateStationaryScreenState extends State<CreateStationaryScreen> {
                                          ),
                                          alignment: Alignment.centerLeft,
                                          child: TextFormField(
+                                           style: GoogleFonts.poppins(
+                                             fontSize: 12,
+                                             fontWeight: FontWeight.w400
+                                         ),
                                            decoration: InputDecoration(
-                                               style: GoogleFonts.poppins(
-                                                   fontSize: 12,
-                                                   fontWeight: FontWeight.w400
-                                               ),
+
                                                hintText: "Enter item",
                                                hintStyle: GoogleFonts.poppins(
                                                  fontSize: 12,
