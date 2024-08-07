@@ -65,14 +65,14 @@ class _CreateStationaryScreenState extends State<CreateStationaryScreen> {
                            alignment: Alignment.centerRight,
                            child: Container(
                              margin: EdgeInsets.only(bottom: 10),
-                             height: 40,
-                             width: 45,
+                             height: 30,
+                             width: 30,
                              decoration: BoxDecoration(borderRadius: BorderRadius.circular(7),
                                  border: Border.all(
                                      color: Main_Theme_textColor.withOpacity(0.4)
                                  )
                              ),
-                             child: Image.asset("Assets/SelfIcon/delete.png",height: 20,width: 18,color: absent_color,),
+                             child: Image.asset("Assets/SelfIcon/delete.png",height: 17,width: 15,color: absent_color,),
                            ),
                          ),
                        ):Container(),
