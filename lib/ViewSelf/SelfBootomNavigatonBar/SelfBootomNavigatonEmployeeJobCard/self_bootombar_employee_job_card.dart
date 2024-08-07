@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/SelfBootomNavigatonEmployeeJobCard/SelfLoan/self_loan.dart';
 import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/SelfBootomNavigatonEmployeeJobCard/SelfProfile/self_profile.dart';
 import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/SelfBootomNavigatonEmployeeJobCard/SelfStationary/self_stationary.dart';
 
@@ -103,6 +104,20 @@ class _SelfBootomBarJobCardScreenState extends State<SelfBootomBarJobCardScreen>
                         else if(index==4){
                           Navigator.push(context, CupertinoPageRoute(builder: (context) => SelfStationary()));
                          }
+                        else if(index==5){
+                        }
+                        else if(index==6){
+                        }
+                        else if(index==7){
+                          Navigator.push(context, CupertinoPageRoute(builder: (context) => SelfLoanScreen(),));
+                        }
+                        else if(index==8){
+                        }
+                        else if(index==9){
+                        }
+                        else{
+
+                        }
                         },
                       child: Container(
                         decoration: BoxDecoration(
