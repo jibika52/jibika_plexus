@@ -79,7 +79,7 @@ dependencies:
   animated_toggle_switch: ^0.8.2
   duration_picker: ^1.2.0
   month_year_picker: ^0.3.0+1
-
+  syncfusion_flutter_charts: ^24.2.9
 
 dev_dependencies:
   flutter_test:

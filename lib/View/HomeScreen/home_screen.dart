@@ -16,6 +16,7 @@ import 'package:jibika_plexus/View/HomeScreen/HomeComponent/HomeThirdPartCompone
 import 'package:jibika_plexus/View/HomeScreen/HomeComponent/HomeSecondPartComponent/summary_status.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 import '../../CustomWidget/CustomText/custom_text.dart';
 import '../../Model/DashboardEmployeeLeaveListModel/dashboard_employee_leave_list_model.dart';
 import 'HomeComponent/HomeFirstPartComponent/home_header_partt.dart';
@@ -30,6 +31,8 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
     final _key=GlobalKey<ScaffoldState>();
+    late List<_ChartData> data;
+    late TooltipBehavior _tooltip;
     int total_Amount=10000;
     String value = "K";
     double animated_leave=0;
@@ -41,7 +44,21 @@ class _HomeScreenState extends State<HomeScreen> {
     Provider.of<HomeProvider>(context,listen: false).dashboardOnleaveEmployeeListProvider("${GetStorage().read("mobile_id")}", "$selected4Datee", context); //Person on leave
     Provider.of<HomeProvider>(context,listen: false).dashboardEmployeeInfoProvider("${GetStorage().read("mobile_id")}", "${DateFormat('dd-MMMM-yyyy').format(DateTime.now())}", context);//Dashboard Employee info
     Provider.of<HomeProvider>(context,listen: false).dashboardTodaysBirthdayEmployeeInfoProvider("${GetStorage().read("mobile_id")}", "", context); // Todays birthday
-
+    data = [
+      _ChartData('Jan', 12, 15),
+      _ChartData('Feb', 15, 10),
+      _ChartData('Mar', 30, 24),
+      _ChartData('Apr', 6.4, 11),
+      _ChartData('May', 60, 80),
+      _ChartData('Jun', 80, 20),
+      _ChartData('Jul', 30, 30),
+      _ChartData('Aug', 30, 15),
+      _ChartData('Sep', 80, 50),
+      _ChartData('Oct', 100, 90),
+      _ChartData('Nov', 80, 50),
+      _ChartData('Dec', 60, 60),
+    ];
+    _tooltip = TooltipBehavior(enable: true);
       // TODO: implement initState
     super.initState();
   }
@@ -256,50 +273,77 @@ class _HomeScreenState extends State<HomeScreen> {
                                   top4: total_Amount>10000? "0M": "0K",
                                   color:Main_Theme_textColor.withOpacity(0.6),
                                 ),
-      
+
                                 Expanded(
-                                    child: Container(
-                                  width: double.infinity,
-                                  height: double.infinity,
-                                  color: Colors.greenAccent.shade100.withOpacity(0.1),
-                                  child:  Container(
-                                    height: 90,
-                                    width: 500,
-                                    child:Scrollbar(
-                                      child: ListView.builder(
-                                        itemCount: 12,
-                                        scrollDirection: Axis.horizontal,
-                                        itemBuilder: (context, index) {
-                                        return  Container(
-                                          height: 90,
-                                            margin: EdgeInsets.only(right: 7),
-                                            child: Column(
-                                              children: [
-                                                Expanded(
-                                                    child: ThirdPartProgressBar( absenttheight:1, presentheight:index.isOdd? 50+double.parse("$index")+20  : 50+double.parse("$index")-20 , present_width: 15, Absent_width: 0.001, total_width: 21,)),
-                                                SizedBox(height: 5,),
-                                                Container(
-                                                  height: 27,
-                                                  width: 22,
-                                                  padding: EdgeInsets.only(right: 5),
-                                                  alignment: Alignment.center,
-                                                  child:RotatedBox(
-                                                          quarterTurns: 1,
-                                                          child: ColorCustomText(fontSize: font11, fontWeight: FontWeight.w400, text: "${MonthList[index]}", letterSpacing: 0.2, textColor: Main_Theme_textColor.withOpacity(0.6),)
-                                                          ),
-                                                ),
-                                                SizedBox(height: 10,),
-                                              ],
-                                            ));
-                                      },),
-                                    )
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Expanded(
+                                        child: Container(
+                                          height: 200,
+                                          width: 320,
+                                          child: SfCartesianChart(
+                                           plotAreaBorderColor: Main_Theme_WhiteCollor,
+                                            margin: EdgeInsets.only(left: 0,right: 0,bottom: 0),
+                                              primaryXAxis: CategoryAxis(
+                                                isVisible: false,
+                                              ),
+                                              primaryYAxis: NumericAxis(
+                                                minimum: 0,
+                                                maximum: 100,
+                                                interval: 10,
+                                                isVisible: false,
+                                              ),
+                                              tooltipBehavior: _tooltip,
+                                              series: <CartesianSeries<_ChartData, String>>[
+                                                ColumnSeries<_ChartData, String>(
+                                                  width: 0.5,
+                                                    dataSource: data,
+                                                    xValueMapper: (_ChartData data, _) => data.x,
+                                                    yValueMapper: (_ChartData data, _) => data.y,
+                                                    color: Color(0xff4475a7),),
+                                                LineSeries<_ChartData, String>(
+                                                    dataSource: data,
+                                                    width: 2.5,
+                                                    enableTooltip: true,
+                                                    initialIsVisible: true,
+                                                    isVisibleInLegend: true,
+                                                    markerSettings: MarkerSettings(
+                                                        isVisible: true,
+                                                        width: 8.0,
+                                                        height: 8.0,
+                                                        color: Colors.red
+                                                    ),
+                                                    xValueMapper: (_ChartData data, _) => data.x,
+                                                    yValueMapper: (_ChartData data, _) => data.y1,
+                                                    color: Colors.amber)
+                                              ]),
+                                        ),
+                                      ),
+                                      Container(
+                                        height: 42,
+                                        width: 400,
+                                        padding: EdgeInsets.only(left: 7,bottom: 8),
+                                        child:   ListView.builder(
+                                          itemCount: 12,
+                                          scrollDirection: Axis.horizontal,
+                                          itemBuilder: (context, index) {
+                                          return  Container(
+                                            height: 27,
+                                            padding: EdgeInsets.only(right:0),
+                                            alignment: Alignment.center,
+                                            margin: EdgeInsets.only(right: 10.5),
+                                            child:RotatedBox(
+                                                quarterTurns: 1,
+                                                child: ColorCustomText(fontSize: font11, fontWeight: FontWeight.w400, text: "${MonthList[index]}", letterSpacing: 0.2, textColor: Main_Theme_textColor.withOpacity(0.6),)
+                                            ),
+                                          );
+                                        },),
+                                      )
+                                    ],
                                   ),
-                                )),
-                                // Padding(
-                                //   padding: const EdgeInsets.only(top: 8.0),
-                                //   child: HomeThirdPartBodyLeftSide(top1: "180K", top2: "165K", top3: "80K", top4: "60K", color: absent_color,
-                                //   ),
-                                // ),
+                                )
+
                               ],
                             ),
                           )
@@ -307,47 +351,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
                 ),
-      
-               //  /// -----------------  Test Part -------------------///
-               // Container(
-               //   margin: EdgeInsets.only(left: 10,right: 10,top: apps_div_margin),
-               //   height: 200,
-               //   width: double.infinity,
-               //   decoration: BoxDecoration(
-               //     color: Main_Theme_WhiteCollor,
-               //     borderRadius: BorderRadius.circular(11),
-               //   ),
-               //
-               //   child: LineChart(
-               //     LineChartData(
-               //       minY: 0,
-               //       minX: 0,
-               //       maxX: 100,
-               //       maxY: 100,
-               //
-               //       lineBarsData: [
-               //         LineChartBarData(
-               //           spots: [
-               //             FlSpot(0, 10),
-               //             FlSpot(10, 70),
-               //             FlSpot(20, 20),
-               //             FlSpot(30, 50),
-               //             FlSpot(40, 30),
-               //             FlSpot(50, 50),
-               //             FlSpot(60, 40),
-               //             FlSpot(70, 70),
-               //             FlSpot(80, 10),
-               //             FlSpot(90, 50),
-               //             FlSpot(100, 10),
-               //           ],
-               //           color: absent_color,
-               //           barWidth: 2
-               //         ),
-               //       ]
-               //
-               //     ),
-               //   ),
-               // ),
+
                 /// ------------------- Five Part Start here  birthday------------------------///
                 HomeFivePartBodyScetion(
                   todayselectionbirthdaylist:"$dashboardtodaysBirthdayEmployeeinfo"=="null"?
@@ -645,3 +649,13 @@ class _HomeScreenState extends State<HomeScreen> {
     }
 }
 
+
+
+
+class _ChartData {
+  _ChartData(this.x, this.y, this.y1);
+
+  final String x;
+  final double y;
+  final double y1;
+}

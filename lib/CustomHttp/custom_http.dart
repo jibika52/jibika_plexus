@@ -41,7 +41,7 @@ class CustomHttpRequestClass{
         for(var i in data["rows"]){
            privacyPolicyModelClass = Rows.fromJson(i);
             prvacyPolicylist.add(privacyPolicyModelClass);
-          print("prvacyPolicylist------------------------------: ${prvacyPolicylist}");
+      //    print("prvacyPolicylist------------------------------: ${prvacyPolicylist}");
         }
       }
     //+  prvacyPolicylist=data["rows"];
@@ -143,6 +143,7 @@ class CustomHttpRequestClass{
         if(response.statusCode==200 && loginData["msg"]=="success"){
           GetStorage().write("id_token",loginData["id_token"]) ;
           GetStorage().write("refresh_token",loginData["refresh_token"]) ;
+          GetStorage().write("Company_name",loginData["Company"]) ;
           ElegantNotification(
             borderRadius: BorderRadius.circular(11),
             width: 340,

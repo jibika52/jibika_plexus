@@ -174,6 +174,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
 import 'package:jibika_plexus/View/BootomNatchBar/BootomNavigationBarItemsScreen/BootomNavigationBarItemsMainHomeScreen/bootom_navigation_barItems_main_home_screen.dart';
@@ -227,7 +228,7 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
         /// ------------ Custom Main AppBAr -------------///
         child: CustomMainAppBar(
             leading_image_route: "Assets/DashBoardIcons/appbar_leadin_menu.png",
-            center_appbar_text: "China National Petroleum Corporation",
+            center_appbar_text: "${GetStorage().read("Company_name")}",
             leading_ontab: () {
               _key.currentState!.openDrawer();
             }, is_need_trailing: true),
