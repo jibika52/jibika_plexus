@@ -35,10 +35,17 @@ class HomeProvider with ChangeNotifier{
     notifyListeners();
   }
 
-  /// dashboard On Leave Employee Data get here and return dashboardBarChartData
+  /// dashboardToday Birthday list
   dynamic dashboardtodaysBirthdayEmployeeinfo ;
   dashboardTodaysBirthdayEmployeeInfoProvider(String UserId,String AttDate , BuildContext context)async{
     dashboardtodaysBirthdayEmployeeinfo=await CustomHttpRequestClass().dashboardTodaysBirthDayEmployeeinfo(UserId, AttDate,  context);
+    notifyListeners();
+  }
+
+  /// dashboard Salary Comprison List
+  dynamic dashboardSalaryComparisanChartList ;
+  dashboardSalaryComprisonListProvider(String UserId,String AttDate, BuildContext context)async{
+    dashboardSalaryComparisanChartList=await CustomHttpRequestClass().dashboardComparisanChart(UserId,AttDate,  context);
     notifyListeners();
   }
 

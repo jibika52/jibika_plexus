@@ -7,6 +7,7 @@ import 'package:jibika_plexus/testfile.dart';
 import 'package:provider/provider.dart';
 import 'Controller/HomeController/home_controller.dart';
 import 'Controller/PrivacyPolicyController/privacy_policy.dart';
+import 'Controller/SelfDashboardController/self_dashboard_controller.dart';
 import 'View/BootomNatchBar/BootomNavigationBarItemsScreen/BootomNavigationBarItemsMainHomeScreen/EmployeeProfile/employee_profile_screen.dart';
 import 'View/BootomNatchBar/BootomNavigationBarItemsScreen/BootomNavigationBarItemsMainHomeScreen/bootom_navigation_barItems_main_home_screen.dart';
 import 'View/BootomNatchBar/bootom_bar_screen.dart';
@@ -25,7 +26,8 @@ class MyApp extends StatelessWidget {
     return MultiProvider(providers: [
       ChangeNotifierProvider<CounterProvider>(create: (context) => CounterProvider(),),
       ChangeNotifierProvider<HomeProvider>(create: (context) => HomeProvider(),),
-      ChangeNotifierProvider<PrivacyPolicyProvider>(create: (context) => PrivacyPolicyProvider(),)
+      ChangeNotifierProvider<PrivacyPolicyProvider>(create: (context) => PrivacyPolicyProvider(),),
+      ChangeNotifierProvider<SelfDashboardController>(create: (context) => SelfDashboardController(),)
     ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -41,14 +43,14 @@ class MyApp extends StatelessWidget {
         //     home:HomeFirstPartComponentAttendance(),
 
         /// ----------Home Screen---------
-        //     home:BootomNatchBarScreen(),
+        home:BootomNatchBarScreen(),
         //    home:BootomNatchBarScreen(),
 
         /// ----------SplashScreen--------
-        //     home:MainSplashPageViewScreen(),
+        //      home:MainSplashPageViewScreen(),
 
         /// ----------Working Screen--------
-        //  home:LoginScreenSlide(),
+        //     home:LoginScreenSlide(),
         //
 
         //  home:BootomNavigationBarItemsTrackingScreen(),
@@ -58,9 +60,9 @@ class MyApp extends StatelessWidget {
         //  home:EmployeeProfileScreen(),
 
         /// Self Screen=================
-      home:   SalfBootomNatchBarScreen(
-        currentIndex: 4,
-      ),
+        //   home:   SalfBootomNatchBarScreen(
+      //   currentIndex: 4,
+      // ),
 
       )
 

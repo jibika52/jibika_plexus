@@ -144,6 +144,7 @@ class CustomHttpRequestClass{
           GetStorage().write("id_token",loginData["id_token"]) ;
           GetStorage().write("refresh_token",loginData["refresh_token"]) ;
           GetStorage().write("Company_name",loginData["Company"]) ;
+          print("nnnnnnnnnnnnnnnnnnnnnnnnnnnn=================> ${loginData["Company"]}");
           ElegantNotification(
             borderRadius: BorderRadius.circular(11),
             width: 340,
@@ -316,6 +317,35 @@ class CustomHttpRequestClass{
       print("dashboardtodaysBirthdayEmployeeinfo Catch error ${e}");
     }
   }
+
+
+  ///  Home Dashboard Salary Comparison Chart List --------------------------------------------------------------------------
+  dashboardComparisanChart(String UserId,String AttDate, BuildContext context)async{
+    dynamic dashboardSalaryComparisanChartList ;
+    var body = jsonEncode({
+      "UserId":"$UserId",
+    });
+
+    try{
+      var data=await http.post(Uri.parse("${BASEURL}/${HomeDashboardSalaryComparisonList}"),
+          headers: {
+            "Content-Type": "application/json",
+            "username": "jibikaapps",
+            "password": "20jibika24",
+          },
+          body: body
+      ).then((http.Response response) {
+        dashboardSalaryComparisanChartList =jsonDecode(response.body)["data"];
+      });
+      return dashboardSalaryComparisanChartList;
+          }
+    catch(e){
+      print("dashboardSalaryComparisanChartList Catch error ${e}");
+    }
+  }
+
+
+
 
 
 

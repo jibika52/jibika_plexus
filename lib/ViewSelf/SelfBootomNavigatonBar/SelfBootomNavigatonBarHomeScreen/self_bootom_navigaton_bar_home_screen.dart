@@ -19,6 +19,7 @@ import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:provider/provider.dart';
 
 import '../../../Controller/HomeController/home_controller.dart';
+import '../../../Controller/SelfDashboardController/self_dashboard_controller.dart';
 import '../../../CustomWidget/CustomClockAnglebar/clock_angle_bar.dart';
 import '../../../View/HomeScreen/HomeComponent/HomeFivePartComponent/home_five_part_body_section.dart';
 
@@ -166,10 +167,14 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                              mainAxisAlignment: MainAxisAlignment.end,
                              children: [
                                CustomizeButton(text: "Check In", textColor: Main_Theme_textColor.withOpacity(0.5), presentsent_color: presentsent_color, fontSize: 12,
-                                 onTap: () {},),
+                                 onTap: () {
+                                   Provider.of<SelfDashboardController>(context,listen: false).dashboardSalaryComprisonListProvider("1002", "20240808", "172020", "1002", "Dhaka", "Dhaka", "Dhaka", "1229", "Dhaka", "38 no road", "2.5415455", "3.2541556", 60670, context);
+                                 },),
                                SizedBox(width: 10,),
                                 CustomizeButton(text: "Check Out", textColor: Main_Theme_textColor.withOpacity(0.5), presentsent_color: presentsent_color, fontSize: 12,
-                                  onTap: () {  },)
+                                  onTap: () {
+                                    Provider.of<SelfDashboardController>(context,listen: false).dashboardSalaryComprisonListProvider("1002", "20240808", "172020", "1002", "Dhaka", "Dhaka", "Dhaka", "1229", "Dhaka", "38 no road", "2.5415455", "3.2541556", 60670, context);
+                                  },)
            
                              ],
                            ),

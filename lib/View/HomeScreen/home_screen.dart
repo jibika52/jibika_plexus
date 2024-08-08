@@ -31,9 +31,9 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
     final _key=GlobalKey<ScaffoldState>();
-    late List<_ChartData> data;
+    late List<_ChartData> data=[];
     late TooltipBehavior _tooltip;
-    int total_Amount=10000;
+    double total_Amount=10000010.0;
     String value = "K";
     double animated_leave=0;
     double animated_height=0;
@@ -44,20 +44,8 @@ class _HomeScreenState extends State<HomeScreen> {
     Provider.of<HomeProvider>(context,listen: false).dashboardOnleaveEmployeeListProvider("${GetStorage().read("mobile_id")}", "$selected4Datee", context); //Person on leave
     Provider.of<HomeProvider>(context,listen: false).dashboardEmployeeInfoProvider("${GetStorage().read("mobile_id")}", "${DateFormat('dd-MMMM-yyyy').format(DateTime.now())}", context);//Dashboard Employee info
     Provider.of<HomeProvider>(context,listen: false).dashboardTodaysBirthdayEmployeeInfoProvider("${GetStorage().read("mobile_id")}", "", context); // Todays birthday
-    data = [
-      _ChartData('Jan', 12, 15),
-      _ChartData('Feb', 15, 10),
-      _ChartData('Mar', 30, 24),
-      _ChartData('Apr', 6.4, 11),
-      _ChartData('May', 60, 80),
-      _ChartData('Jun', 80, 20),
-      _ChartData('Jul', 30, 30),
-      _ChartData('Aug', 30, 15),
-      _ChartData('Sep', 80, 50),
-      _ChartData('Oct', 100, 90),
-      _ChartData('Nov', 80, 50),
-      _ChartData('Dec', 60, 60),
-    ];
+    Provider.of<HomeProvider>(context,listen: false).dashboardSalaryComprisonListProvider("${GetStorage().read("mobile_id")}", "", context); // Salary Comprison list
+
     _tooltip = TooltipBehavior(enable: true);
       // TODO: implement initState
     super.initState();
@@ -74,6 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final  dashboardOnLeaveEmployeeData =  Provider.of<HomeProvider>(context).dashboardOnleaveEmployeeList;
   final  dashboardEmployeeInfo=  Provider.of<HomeProvider>(context).dashboardEmployeeinfo;
   final  dashboardtodaysBirthdayEmployeeinfo=  Provider.of<HomeProvider>(context).dashboardtodaysBirthdayEmployeeinfo;
+  final  dashboardSalaryComparisanChartList=  Provider.of<HomeProvider>(context).dashboardSalaryComparisanChartList;
 
 
     double TP=double.parse(dashboardPieChartData == null ?"0":"${dashboardPieChartData["plist"]}"== "[]"?"0":"${dashboardPieChartData["plist"][0]??0 }");
@@ -98,8 +87,15 @@ class _HomeScreenState extends State<HomeScreen> {
     print("total_holiday_parsent2 ------- $total_holiday_parsent2");
 
 
-    //   total_present_parsent = total_present_parsent+100-total_absent_parsent-total_leave_parsent-total_holiday_parsent2;
 
+
+   //  print("ssssssssssssssssssssssssssssssssssssssssss ${dashboardSalaryComparisanChartList}");
+     for(int i=0;i<dashboardSalaryComparisanChartList.length;i++){
+      //      print("cccccccccccccccccccccccccc  ==  ${dashboardSalaryComparisanChartList??0}=== $i======${dashboardSalaryComparisanChartList[i]}");
+       data.add(_ChartData("${dashboardSalaryComparisanChartList}"=="[]" || "${dashboardSalaryComparisanChartList}"=="null"|| "${dashboardSalaryComparisanChartList}"=="0"?"${i}": "${dashboardSalaryComparisanChartList[i]["PayrollMonth"]??"$i"}","${dashboardSalaryComparisanChartList}"=="[]" || "${dashboardSalaryComparisanChartList}"=="null" || "${dashboardSalaryComparisanChartList}"=="0" ?0.0: double.parse("${dashboardSalaryComparisanChartList[i]["TotalNetPay"]??0.0}"),"${dashboardSalaryComparisanChartList}"=="[]" || "${dashboardSalaryComparisanChartList}"=="null"|| "${dashboardSalaryComparisanChartList}"=="0"?0.0:double.parse("${dashboardSalaryComparisanChartList[i]["TotalNetOt"]??0.0}")));
+        print("ssssssssssssssssssssssssssssssssssssssssss ${data}");
+     }
+  
     return WillPopScope(
       onWillPop: () => Future(() => false),
       child: Scaffold(
@@ -267,10 +263,10 @@ class _HomeScreenState extends State<HomeScreen> {
                             child: Row(
                               children: [
                                 HomeThirdPartBodyLeftSide(
-                                  top1:total_Amount>10000? "1000M": "1000K",
-                                  top2: total_Amount>10000? "120M": "120K",
-                                  top3: total_Amount>10000? "60M": "60K",
-                                  top4: total_Amount>10000? "0M": "0K",
+                                  top1:total_Amount> 10000000.0? "1000M": "1000K",
+                                  top2: total_Amount>1000000.0? "120M": "120K",
+                                  top3: total_Amount>100000.0? "60M": "60K",
+                                  top4: total_Amount>10000.0? "0M": "0K",
                                   color:Main_Theme_textColor.withOpacity(0.6),
                                 ),
 
@@ -290,33 +286,33 @@ class _HomeScreenState extends State<HomeScreen> {
                                               ),
                                               primaryYAxis: NumericAxis(
                                                 minimum: 0,
-                                                maximum: 100,
-                                                interval: 10,
+                                                maximum: total_Amount,
+                                                interval: total_Amount/5,
                                                 isVisible: false,
                                               ),
                                               tooltipBehavior: _tooltip,
                                               series: <CartesianSeries<_ChartData, String>>[
                                                 ColumnSeries<_ChartData, String>(
                                                   width: 0.5,
-                                                    dataSource: data,
+                                                    dataSource:data==null?[]: data,
                                                     xValueMapper: (_ChartData data, _) => data.x,
                                                     yValueMapper: (_ChartData data, _) => data.y,
                                                     color: Color(0xff4475a7),),
                                                 LineSeries<_ChartData, String>(
-                                                    dataSource: data,
+                                                    dataSource:data==null?[]: data,
                                                     width: 2.5,
                                                     enableTooltip: true,
                                                     initialIsVisible: true,
                                                     isVisibleInLegend: true,
                                                     markerSettings: MarkerSettings(
                                                         isVisible: true,
-                                                        width: 8.0,
-                                                        height: 8.0,
-                                                        color: Colors.red
+                                                        width: 5.0,
+                                                        height: 5.0,
+                                                        color: Color(0xff000080)
                                                     ),
                                                     xValueMapper: (_ChartData data, _) => data.x,
                                                     yValueMapper: (_ChartData data, _) => data.y1,
-                                                    color: Colors.amber)
+                                                    color: Color(0xff62c1e7))
                                               ]),
                                         ),
                                       ),

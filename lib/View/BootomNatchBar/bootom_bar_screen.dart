@@ -56,7 +56,7 @@ class _BootomNatchBarScreenState extends State<BootomNatchBarScreen> {
         /// ------------ Custom Main AppBAr -------------///
         child: CustomMainAppBar(
             leading_image_route: "Assets/DashBoardIcons/appbar_leadin_menu.png",
-            center_appbar_text: "China National Petroleum Corporation",
+            center_appbar_text: "${GetStorage().read("Company_name")}",
             leading_ontab: () {
           _key.currentState!.openDrawer();
         }, is_need_trailing: true),

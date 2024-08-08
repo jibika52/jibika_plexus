@@ -28,5 +28,13 @@
 
   /// Get Dash Boadr Pichart
     String HomeDashboardEmployeeInf="dashboard/DashboardEmployeeInfoSummary";
-  /// Get Dash Boadr Pichart
+
+  /// Get DashBoad Employee birthday list
     String HomeDashboardTodayBirthDay="dashboard/DashboardEmpBirthdayList";
+
+  /// Get DashBoad Salary Comparisan  list
+    String HomeDashboardSalaryComparisonList="Attendance/GetMonthlyTotalSalaryList";
+
+
+  /// Check in check out
+    String SelfCheckInCheckOut="Attendance/SaveMakeMePresent";
