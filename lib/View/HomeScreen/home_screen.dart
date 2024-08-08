@@ -90,7 +90,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
 
    //  print("ssssssssssssssssssssssssssssssssssssssssss ${dashboardSalaryComparisanChartList}");
-     for(int i=0;i<dashboardSalaryComparisanChartList.length;i++){
+     for(int i=0;i<12;i++){
       //      print("cccccccccccccccccccccccccc  ==  ${dashboardSalaryComparisanChartList??0}=== $i======${dashboardSalaryComparisanChartList[i]}");
        data.add(_ChartData("${dashboardSalaryComparisanChartList}"=="[]" || "${dashboardSalaryComparisanChartList}"=="null"|| "${dashboardSalaryComparisanChartList}"=="0"?"${i}": "${dashboardSalaryComparisanChartList[i]["PayrollMonth"]??"$i"}","${dashboardSalaryComparisanChartList}"=="[]" || "${dashboardSalaryComparisanChartList}"=="null" || "${dashboardSalaryComparisanChartList}"=="0" ?0.0: double.parse("${dashboardSalaryComparisanChartList[i]["TotalNetPay"]??0.0}"),"${dashboardSalaryComparisanChartList}"=="[]" || "${dashboardSalaryComparisanChartList}"=="null"|| "${dashboardSalaryComparisanChartList}"=="0"?0.0:double.parse("${dashboardSalaryComparisanChartList[i]["TotalNetOt"]??0.0}")));
         print("ssssssssssssssssssssssssssssssssssssssssss ${data}");
