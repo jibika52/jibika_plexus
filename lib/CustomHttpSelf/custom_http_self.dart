@@ -58,14 +58,14 @@ class CustomHttpSelf{
           progressIndicatorBackground: presentsent_color,
           progressIndicatorColor: absent_color,
           // position: Alignment.center,
-          title:  ColorCustomText(fontSize: 16, fontWeight: FontWeight.w500, text: "$selfCheckInCheckOut", letterSpacing: 0.3, textColor: Main_Theme_textColor),
+          title:  ColorCustomText(fontSize: 16, fontWeight: FontWeight.w500, text:
+          "${selfCheckInCheckOut["status"]}",
+              letterSpacing: 0.3, textColor: Main_Theme_textColor),
           description: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "Thanks from JIBIKA PAYSCALE!..", letterSpacing: 0.3, textColor: Main_Theme_textColor),
-
           onDismiss: () {
             print('Message when the notification is dismissed');
           }, icon: Icon(Icons.info_outlined,color:Colors.black,),
         ).show(context);
-
       });
       return selfCheckInCheckOut;
     }

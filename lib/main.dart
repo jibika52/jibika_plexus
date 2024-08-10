@@ -4,6 +4,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:jibika_plexus/Controller/CounterProvider/counter_provider.dart';
 import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/self_bootom_navigation_bar.dart';
 import 'package:jibika_plexus/testfile.dart';
+import 'package:jibika_plexus/testgoooglemap.dart';
 import 'package:provider/provider.dart';
 import 'Controller/HomeController/home_controller.dart';
 import 'Controller/PrivacyPolicyController/privacy_policy.dart';
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
     ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
+        title: 'Jibika Payscale',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
@@ -47,7 +48,8 @@ class MyApp extends StatelessWidget {
         //    home:BootomNatchBarScreen(),
 
         /// ----------SplashScreen--------
-           home:MainSplashPageViewScreen(),
+       home:MainSplashPageViewScreen(),
+        //        home:Googlemap(),
 
         /// ----------Working Screen--------
         //     home:LoginScreenSlide(),
