@@ -149,7 +149,7 @@ class CustomHttpRequestClass{
           GetStorage().write("RfIdCardNo",loginData["RfIdCardNo"]) ;
           GetStorage().write("Empcode",loginData["Empcode"]) ;
           GetStorage().write("user_type_id",loginData["user_type_id"]) ;
-       //   print("$loginData");
+          //   print("$loginData");
           ElegantNotification(
             borderRadius: BorderRadius.circular(11),
             width: 340,
@@ -167,16 +167,14 @@ class CustomHttpRequestClass{
 
           if(GetStorage().read("id_token")!=null && GetStorage().read("user_type_id")==1001){
             Navigator.push(context, MaterialPageRoute(builder: (context) => BootomNatchBarScreen(),));
-
           }
 
-          else if(GetStorage().read("id_token")!=null && GetStorage().read("user_type_id")==1002){
+          else if(GetStorage().read("id_token")!=null && GetStorage().read("user_type_id")==1003){
             Navigator.push(context, MaterialPageRoute(builder: (context) => SalfBootomNatchBarScreen(currentIndex: 4),));
           }else{
             print("AAA");
           }
-
-       //   Navigator.push(context, MaterialPageRoute(builder: (context) => BootomNatchBarScreen(),));
+          //   Navigator.push(context, MaterialPageRoute(builder: (context) => BootomNatchBarScreen(),));
         }else{
           ElegantNotification(
             borderRadius: BorderRadius.circular(11),

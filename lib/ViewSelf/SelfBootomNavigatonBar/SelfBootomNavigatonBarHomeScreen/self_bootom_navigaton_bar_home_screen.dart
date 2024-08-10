@@ -41,7 +41,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
     Timer.periodic(Duration(seconds: 1), (timer) {
     setState(() {
       second=  DateTime.now().second;
-    });
+      });
     });
     // TODO: implement initState
     super.initState();
@@ -85,8 +85,9 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                  children: [
                                    CustomText(fontSize: 13, fontWeight: FontWeight.w500, text: "  My Presence", letterSpacing: 0.3),
-                                   //     ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "${DateTime.now().hour}${DateTime.now().minute}${DateTime.now().second}", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
-                                ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "${DateFormat('dd-MMMM-yyyy').format(DateTime.now())}", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
+                                   // ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "${DateTime.now().hour}${DateTime.now().minute}${DateTime.now().second}", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
+                                   //      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: DateTime.now().second>9? "${DateTime.now().hour}${DateTime.now().minute}${DateTime.now().second}": "${DateTime.now().hour}${DateTime.now().minute}0${DateTime.now().second}", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
+                                  ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: " ${DateFormat('dd-MMMM-yyyy').format(DateTime.now())}", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
                                    Row(
                                      mainAxisAlignment: MainAxisAlignment.start,
                                      crossAxisAlignment: CrossAxisAlignment.center,
@@ -168,12 +169,12 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                              children: [
                                CustomizeButton(text: "Check In", textColor: Main_Theme_textColor.withOpacity(0.5), presentsent_color: presentsent_color, fontSize: 12,
                                  onTap: () {
-                                   Provider.of<SelfDashboardController>(context,listen: false).dashboardSalaryComprisonListProvider("${GetStorage().read("RfIdCardNo")}", "${DateFormat('dd-MMMM-yyyy').format(DateTime.now())}", "${DateTime.now().hour}${DateTime.now().minute}${DateTime.now().second}", "${GetStorage().read("RfIdCardNo")}", "Dhaka", "Dhaka", "Dhaka", "1229", "Dhaka", "38 no road", "2.5415455", "3.2541556", int.parse("${"${GetStorage().read("Empcode")}"}"), context);
+                                   Provider.of<SelfDashboardController>(context,listen: false).dashboardSalaryComprisonListProvider("${GetStorage().read("RfIdCardNo")}", "${DateFormat('yyyyMMdd').format(DateTime.now())}",DateTime.now().second>9? "${DateTime.now().hour}${DateTime.now().minute}${DateTime.now().second}": "${DateTime.now().hour}${DateTime.now().minute}0${DateTime.now().second}", "${GetStorage().read("RfIdCardNo")}", "Dhaka", "Dhaka", "Dhaka", "1229", "Dhaka", "38 no road", "2.5415455", "3.2541556", int.parse("${"${GetStorage().read("Empcode")}"}"), context);
                                  },),
                                SizedBox(width: 10,),
                                 CustomizeButton(text: "Check Out", textColor: Main_Theme_textColor.withOpacity(0.5), presentsent_color: presentsent_color, fontSize: 12,
                                   onTap: () {
-                                    Provider.of<SelfDashboardController>(context,listen: false).dashboardSalaryComprisonListProvider("${GetStorage().read("RfIdCardNo")}", "${DateFormat('dd-MMMM-yyyy').format(DateTime.now())}", "${DateTime.now().hour}${DateTime.now().minute}${DateTime.now().second}", "${GetStorage().read("RfIdCardNo")}", "Dhaka", "Dhaka", "Dhaka", "1229", "Dhaka", "38 no road", "2.5415455", "3.2541556", int.parse("${"${GetStorage().read("Empcode")}"}"), context);
+                                    Provider.of<SelfDashboardController>(context,listen: false).dashboardSalaryComprisonListProvider("${GetStorage().read("RfIdCardNo")}", "${DateFormat('yyyyMMdd').format(DateTime.now())}",DateTime.now().second>9? "${DateTime.now().hour}${DateTime.now().minute}${DateTime.now().second}": "${DateTime.now().hour}${DateTime.now().minute}0${DateTime.now().second}", "${GetStorage().read("RfIdCardNo")}", "Dhaka", "Dhaka", "Dhaka", "1229", "Dhaka", "38 no road", "2.5415455", "3.2541556", int.parse("${"${GetStorage().read("Empcode")}"}"), context);
                                   },)
            
                              ],

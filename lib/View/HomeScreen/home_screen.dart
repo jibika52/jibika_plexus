@@ -33,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
     final _key=GlobalKey<ScaffoldState>();
     late List<_ChartData> data=[];
     late TooltipBehavior _tooltip;
-    double total_Amount=100000.0;
+    double total_Amount=20.0;
     String value = "K";
     double animated_leave=0;
     double animated_height=0;
@@ -88,12 +88,21 @@ class _HomeScreenState extends State<HomeScreen> {
 
 
 
+    if(dashboardSalaryComparisanChartList != null)
+     for(int i=0;i<12;i++){
+       if( dashboardSalaryComparisanChartList.length < i+1){
+         data.add(_ChartData("${i}", 0.0, 0.0));
+       }else{
+         data.add(_ChartData(  "${dashboardSalaryComparisanChartList[i]["PayrollMonth"]??"$i"}" , double.parse("${dashboardSalaryComparisanChartList[i]["TotalNetPay"]??0.0}"), double.parse("${dashboardSalaryComparisanChartList[i]["TotalNetOt"]??0.0}")));
 
-    print("ssssssssssssssssssssssssssssssssssssssssss ${dashboardSalaryComparisanChartList}");
-     for(int i=0;i<dashboardSalaryComparisanChartList.length;i++){
-      //      print("cccccccccccccccccccccccccc  ==  ${dashboardSalaryComparisanChartList??0}=== $i======${dashboardSalaryComparisanChartList[i]}");
-       data.add(_ChartData("${dashboardSalaryComparisanChartList}"=="[]" || "${dashboardSalaryComparisanChartList}"=="null"|| "${dashboardSalaryComparisanChartList}"=="0"?"${i}": "${dashboardSalaryComparisanChartList[i]["PayrollMonth"]??"$i"}","${dashboardSalaryComparisanChartList}"=="[]" || "${dashboardSalaryComparisanChartList}"=="null" || "${dashboardSalaryComparisanChartList}"=="0" ?0.0: double.parse("${dashboardSalaryComparisanChartList[i]["TotalNetPay"]??0.0}"),"${dashboardSalaryComparisanChartList}"=="[]" || "${dashboardSalaryComparisanChartList}"=="null"|| "${dashboardSalaryComparisanChartList}"=="0"?0.0:double.parse("${dashboardSalaryComparisanChartList[i]["TotalNetOt"]??0.0}")));
-        print("ssssssssssssssssssssssssssssssssssssssssss ${data}");
+         if(total_Amount<double.parse("${dashboardSalaryComparisanChartList[i]["TotalNetPay"]}")){
+           total_Amount=double.parse("${dashboardSalaryComparisanChartList[i]["TotalNetPay"]}");
+         }
+       }
+
+
+
+
      }
   
     return WillPopScope(
@@ -264,9 +273,9 @@ class _HomeScreenState extends State<HomeScreen> {
                               children: [
                                 HomeThirdPartBodyLeftSide(
                                   top1:total_Amount> 10000000.0? "1000M": "1000K",
-                                  top2: total_Amount>1000000.0? "120M": "120K",
-                                  top3: total_Amount>100000.0? "60M": "60K",
-                                  top4: total_Amount>10000.0? "0M": "0K",
+                                  top2: total_Amount>10000000.0? "120M": "120K",
+                                  top3: total_Amount>10000000.0? "60M": "60K",
+                                  top4: total_Amount>10000000.0? "0M": "0K",
                                   color:Main_Theme_textColor.withOpacity(0.6),
                                 ),
 
@@ -286,7 +295,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                               ),
                                               primaryYAxis: NumericAxis(
                                                 minimum: 0,
-                                                maximum: total_Amount,
+                                                maximum: total_Amount+50000,
                                                 interval: total_Amount/5,
                                                 isVisible: false,
                                               ),
@@ -322,7 +331,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         padding: EdgeInsets.only(left: 7,bottom: 8),
                                         child:   ListView.builder(
                                           physics: NeverScrollableScrollPhysics(),
-                                          itemCount: 12,
+                                          itemCount:dashboardSalaryComparisanChartList==null?0: dashboardSalaryComparisanChartList.length,
                                           scrollDirection: Axis.horizontal,
                                           itemBuilder: (context, index) {
                                           return  Container(
@@ -332,7 +341,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             margin: EdgeInsets.only(right: 10.5),
                                             child:RotatedBox(
                                                 quarterTurns: 1,
-                                                child: ColorCustomText(fontSize: font11, fontWeight: FontWeight.w400, text: "${MonthList[index]}", letterSpacing: 0.2, textColor: Main_Theme_textColor.withOpacity(0.6),)
+                                                child: ColorCustomText(fontSize: font11, fontWeight: FontWeight.w400, text: "${dashboardSalaryComparisanChartList[index]["PayrollMonth"].split("-").elementAt(0)}", letterSpacing: 0.2, textColor: Main_Theme_textColor.withOpacity(0.6),)
                                             ),
                                           );
                                         },),
