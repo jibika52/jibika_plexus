@@ -18,6 +18,7 @@ import 'package:provider/provider.dart';
 
 import '../View/Auth/LoginScreen/login_screen_screen2.dart';
 import '../View/Auth/OtpScreen/otp_screen.dart';
+import '../ViewSelf/SelfBootomNavigatonBar/self_bootom_navigation_bar.dart';
 
 class CustomHttpRequestClass{
 
@@ -98,6 +99,7 @@ class CustomHttpRequestClass{
           body: body
       ).then((http.Response response) {
         var registration =jsonDecode(response.body);
+
         if(response.statusCode==200 && registration["msg"]=="success"){
           ElegantNotification(
             borderRadius: BorderRadius.circular(11),
@@ -144,7 +146,10 @@ class CustomHttpRequestClass{
           GetStorage().write("id_token",loginData["id_token"]) ;
           GetStorage().write("refresh_token",loginData["refresh_token"]) ;
           GetStorage().write("Company_name",loginData["Company"]) ;
-          print("nnnnnnnnnnnnnnnnnnnnnnnnnnnn=================> ${loginData["Company"]}");
+          GetStorage().write("RfIdCardNo",loginData["RfIdCardNo"]) ;
+          GetStorage().write("Empcode",loginData["Empcode"]) ;
+          GetStorage().write("user_type_id",loginData["user_type_id"]) ;
+       //   print("$loginData");
           ElegantNotification(
             borderRadius: BorderRadius.circular(11),
             width: 340,
@@ -159,7 +164,19 @@ class CustomHttpRequestClass{
               print('Message when the notification is dismissed');
             }, icon: Icon(Icons.info_outlined,color:Colors.black,),
           ).show(context);
-          Navigator.push(context, MaterialPageRoute(builder: (context) => BootomNatchBarScreen(),));
+
+          if(GetStorage().read("id_token")!=null && GetStorage().read("user_type_id")==1001){
+            Navigator.push(context, MaterialPageRoute(builder: (context) => BootomNatchBarScreen(),));
+
+          }
+
+          else if(GetStorage().read("id_token")!=null && GetStorage().read("user_type_id")==1002){
+            Navigator.push(context, MaterialPageRoute(builder: (context) => SalfBootomNatchBarScreen(currentIndex: 4),));
+          }else{
+            print("AAA");
+          }
+
+       //   Navigator.push(context, MaterialPageRoute(builder: (context) => BootomNatchBarScreen(),));
         }else{
           ElegantNotification(
             borderRadius: BorderRadius.circular(11),

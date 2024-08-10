@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:jibika_plexus/View/SplashScreen/splash_screen1.dart';
 import 'package:jibika_plexus/View/SplashScreen/splash_screen2.dart';
 import 'package:jibika_plexus/View/SplashScreen/splash_screen3.dart';
+import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/self_bootom_navigation_bar.dart';
+
+import '../BootomNatchBar/bootom_bar_screen.dart';
 
 class MainSplashPageViewScreen extends StatefulWidget {
   const MainSplashPageViewScreen({super.key});
@@ -11,6 +15,27 @@ class MainSplashPageViewScreen extends StatefulWidget {
 }
 
 class _MainSplashPageViewScreenState extends State<MainSplashPageViewScreen> {
+  @override
+  void initState() {
+    print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA ${GetStorage().read("id_token")}");
+    Future.delayed(Duration(seconds: 1),() {
+      if(GetStorage().read("id_token")!=null && GetStorage().read("user_type_id")==1001){
+        Navigator.push(context, MaterialPageRoute(builder: (context) => BootomNatchBarScreen(),));
+
+      }
+
+      else if(GetStorage().read("id_token")!=null && GetStorage().read("user_type_id")==1002){
+        Navigator.push(context, MaterialPageRoute(builder: (context) => SalfBootomNatchBarScreen(currentIndex: 4),));
+      }else{
+        print("AAA");
+      }
+
+
+    },);
+    
+    // TODO: implement initState
+    super.initState();
+  }
   /// Controller to handle PageView and also handles initial page
   final _pageController = PageController(initialPage:0);
 
@@ -21,7 +46,7 @@ class _MainSplashPageViewScreenState extends State<MainSplashPageViewScreen> {
         return Future(() => false);
       },
       child: Scaffold(
-        body: PageView(
+        body:GetStorage().read("id_token")!=null?Center(child: CircularProgressIndicator(),): PageView(
           children:[
             SplashScreen1(),
             SplashScreen2(),

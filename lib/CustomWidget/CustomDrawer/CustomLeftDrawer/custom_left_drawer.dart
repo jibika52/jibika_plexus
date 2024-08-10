@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:jibika_plexus/CustomWidget/CustomButton/custom_button.dart';
 import 'package:jibika_plexus/CustomWidget/CustomDrawer/CustomDrawerOption/custom_draweroption.dart';
 import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
@@ -102,6 +103,7 @@ class CustomLeftDrawer extends StatelessWidget {
               right: 20,
               child: InkWell(
                 onTap: () {
+                  GetStorage().erase();
                   Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreenSlide(),));
                 },
                 child: Container(
