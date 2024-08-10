@@ -86,7 +86,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                  children: [
                                    CustomText(fontSize: 13, fontWeight: FontWeight.w500, text: "  My Presence", letterSpacing: 0.3),
-                                   ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "  28-Sep-2023", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
+                                   ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "${DateFormat('dd-MMMM-yyyy').format(DateTime.now())}", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
                                    Row(
                                      mainAxisAlignment: MainAxisAlignment.start,
                                      crossAxisAlignment: CrossAxisAlignment.center,
@@ -168,7 +168,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                              children: [
                                CustomizeButton(text: "Check In", textColor: Main_Theme_textColor.withOpacity(0.5), presentsent_color: presentsent_color, fontSize: 12,
                                  onTap: () {
-                                   Provider.of<SelfDashboardController>(context,listen: false).dashboardSalaryComprisonListProvider("1002", "20240808", "172020", "1002", "Dhaka", "Dhaka", "Dhaka", "1229", "Dhaka", "38 no road", "2.5415455", "3.2541556", 60670, context);
+                                   Provider.of<SelfDashboardController>(context,listen: false).dashboardSalaryComprisonListProvider("1002", "${DateFormat('yyyyMMMMdd').format(DateTime.now())}20240808", "172020", "1002", "Dhaka", "Dhaka", "Dhaka", "1229", "Dhaka", "38 no road", "2.5415455", "3.2541556", 60670, context);
                                  },),
                                SizedBox(width: 10,),
                                 CustomizeButton(text: "Check Out", textColor: Main_Theme_textColor.withOpacity(0.5), presentsent_color: presentsent_color, fontSize: 12,
@@ -568,4 +568,20 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
        ),
     );
   }
+
+  String selected3Datee = DateFormat('dd-MMMM-yyyy').format(DateTime.now()).toString();
+  // Future<void> _select3Date(BuildContext context) async {
+  //   final DateTime? picked = await showDatePicker(
+  //       context: context,
+  //       firstDate: DateTime(2015, 8),
+  //       lastDate: DateTime(2101));
+  //   if (picked != null && picked != selected3Datee) {
+  //     final df = new DateFormat('dd-MMMM-yyyy');
+  //     setState(() {
+  //       selected3Datee = df.format(picked);
+  //       Provider.of<HomeProvider>(context,listen: false).dashboardPieChartDataProvider("${GetStorage().read("mobile_id")}", "$selected3Datee", context);
+  //     });
+  //   }
+  // }
+
 }

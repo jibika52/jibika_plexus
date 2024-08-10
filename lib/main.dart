@@ -43,11 +43,11 @@ class MyApp extends StatelessWidget {
         //     home:HomeFirstPartComponentAttendance(),
 
         /// ----------Home Screen---------
-        home:BootomNatchBarScreen(),
+        //  home:BootomNatchBarScreen(),
         //    home:BootomNatchBarScreen(),
 
         /// ----------SplashScreen--------
-        //      home:MainSplashPageViewScreen(),
+           home:MainSplashPageViewScreen(),
 
         /// ----------Working Screen--------
         //     home:LoginScreenSlide(),

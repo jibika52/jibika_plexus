@@ -53,8 +53,10 @@ class _SplashScreen1State extends State<SplashScreen1> {
                 Stack(
                   children: [
                     CustomImageSction(
-                        height: 390,
-                        width: 430,
+                        // height: 390,
+                        // width: 430,
+                        height: c_h*0.42,
+                        width: c_w*9,
                         radius: 11,
                         image: "Assets/Gif/first_splashcsreen.gif"),
         

@@ -208,11 +208,12 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
   /// widget list
   final List<Widget> bottomBarPages = [
 
-    SelfBootomNavigatonEmployeeDashboard(),
     SelfBootomBarJobCardScreen(),
+    SelfBootomNavigatonEmployeeDashboard(),
     SelfBootomNavigationLeave(),
     SelfBootomNavigationConvienceScreen(),
     SelfBootomNavigatonBarHomeScreen(),
+
   ];
   final _key=GlobalKey<ScaffoldState>();
 
@@ -261,7 +262,7 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
                     children: [
                       CustomImageSction2(height: b_bar_icon_size,width: b_bar_icon_size, img_color:widget.currentIndex==0? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5),  radius: 5, image: "Assets/DashBoardIcons/b_bar_home.png"),
                       SizedBox(height: 2,),
-                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Dashboard", letterSpacing: 0.3, textColor: widget.currentIndex==0? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
+                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "My Menu", letterSpacing: 0.3, textColor: widget.currentIndex==0? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
                     ],
                   ),
                 )),

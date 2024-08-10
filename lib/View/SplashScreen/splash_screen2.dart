@@ -59,15 +59,28 @@ class _SplashScreen2State extends State<SplashScreen2> {
                   alignment: Alignment.center,
                   children: [
                     Container(
-                        height: 500,
-                        width: 500,
+                        // height: 500,
+                        // width: 500,
+               //     padding: EdgeInsets.only(right: 10), //  Edit for pixel perfect
+                        height: c_h*0.54,                  //  Edit for pixel perfect
+                        width: c_w*1,                  //  Edit for pixel perfect
                         alignment: Alignment.center,
+
+                    ),
+                    Positioned(
+                        left: -10,
                         child: Image.asset(
-                          "Assets/Gif/second_splashcsreen.gif",
-                          height: 300,
-                          width: 400,
-                          fit: BoxFit.fill,
-                        )),
+                      "Assets/Gif/second_splashcsreen.gif",
+                      // "Assets/Gif/first_splashcsreen.gif",
+                      // height: 300,
+                      // width: double.infinity,
+
+                      height: c_h*0.30,                  //  Edit for pixel perfect
+                      width: c_w*1,                  //  Edit for pixel perfect
+
+                      fit: BoxFit.fill,
+                    )),
+
                     Positioned(
                       top: 0,
                       left: 0,
@@ -256,7 +269,7 @@ class _SplashScreen2State extends State<SplashScreen2> {
                   child:    Container(height: 20,width: 25,child: Image.asset("Assets/Gif/Orange_animated_right_arrow.gif",fit: BoxFit.fill,),),
                 ),
                 SizedBox(
-                  height: c_h * 0.035,
+                  height: c_h * 0.042,
                 ),
 
                 CustomTermsAndConditionPart(),

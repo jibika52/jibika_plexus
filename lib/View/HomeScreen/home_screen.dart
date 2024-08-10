@@ -33,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
     final _key=GlobalKey<ScaffoldState>();
     late List<_ChartData> data=[];
     late TooltipBehavior _tooltip;
-    double total_Amount=10000010.0;
+    double total_Amount=100000.0;
     String value = "K";
     double animated_leave=0;
     double animated_height=0;
@@ -89,8 +89,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
 
 
-   //  print("ssssssssssssssssssssssssssssssssssssssssss ${dashboardSalaryComparisanChartList}");
-     for(int i=0;i<12;i++){
+    print("ssssssssssssssssssssssssssssssssssssssssss ${dashboardSalaryComparisanChartList}");
+     for(int i=0;i<dashboardSalaryComparisanChartList.length;i++){
       //      print("cccccccccccccccccccccccccc  ==  ${dashboardSalaryComparisanChartList??0}=== $i======${dashboardSalaryComparisanChartList[i]}");
        data.add(_ChartData("${dashboardSalaryComparisanChartList}"=="[]" || "${dashboardSalaryComparisanChartList}"=="null"|| "${dashboardSalaryComparisanChartList}"=="0"?"${i}": "${dashboardSalaryComparisanChartList[i]["PayrollMonth"]??"$i"}","${dashboardSalaryComparisanChartList}"=="[]" || "${dashboardSalaryComparisanChartList}"=="null" || "${dashboardSalaryComparisanChartList}"=="0" ?0.0: double.parse("${dashboardSalaryComparisanChartList[i]["TotalNetPay"]??0.0}"),"${dashboardSalaryComparisanChartList}"=="[]" || "${dashboardSalaryComparisanChartList}"=="null"|| "${dashboardSalaryComparisanChartList}"=="0"?0.0:double.parse("${dashboardSalaryComparisanChartList[i]["TotalNetOt"]??0.0}")));
         print("ssssssssssssssssssssssssssssssssssssssssss ${data}");
@@ -242,7 +242,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
       
-                ///---------------- Fourth Part --------------------///
+                ///---------------- Fourth Part ------Salary Comparison Chart-------------///
                 Container(
                   height: 180,
                   width: double.infinity,
@@ -321,6 +321,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         width: 400,
                                         padding: EdgeInsets.only(left: 7,bottom: 8),
                                         child:   ListView.builder(
+                                          physics: NeverScrollableScrollPhysics(),
                                           itemCount: 12,
                                           scrollDirection: Axis.horizontal,
                                           itemBuilder: (context, index) {
@@ -576,19 +577,18 @@ class _HomeScreenState extends State<HomeScreen> {
                       scrollDirection: Axis.horizontal,
                       child: Row(
                         children: [
-                          HomeSeventhPartBodySection(image: "Assets/DashBoardIcons/employee.png", Head_text: "${dashboardEmployeeInfo}"=="null"?"0H": "${dashboardEmployeeInfo["TotalEmployee"]}H", body_text: "Total Active", footer_text: "Employee", color: Color(0xffE5B336),),
-                          HomeSeventhPartBodySection(image: "Assets/DashBoardIcons/male.png", Head_text: "${dashboardEmployeeInfo}"=="null"?"0H": "${dashboardEmployeeInfo["TotalMale"]}H", body_text: "Total Active", footer_text: "Male", color: Color(0xffCAAD18),),
-                          HomeSeventhPartBodySection(image: "Assets/DashBoardIcons/femalee.png", Head_text:"${dashboardEmployeeInfo}"=="null"?"0H": "${dashboardEmployeeInfo["TotalFemale"]}H", body_text: "Total Active", footer_text: "Female", color: Color(0xff26986B),),
-                          HomeSeventhPartBodySection(image: "Assets/DashBoardIcons/join.png", Head_text: "${dashboardEmployeeInfo}"=="null"?"0H": "${dashboardEmployeeInfo["ThisMonthJoin"]}H",body_text: "This Month", footer_text: "Join", color: Color(0xff427C65),),
-                          HomeSeventhPartBodySection(image: "Assets/DashBoardIcons/inactive.png", Head_text:"${dashboardEmployeeInfo}"=="null"?"0H": "${dashboardEmployeeInfo["ThisMonthInactive"]}H", body_text: "This Month", footer_text: "InActive", color: Color(0xff38745F),),
-                          HomeSeventhPartBodySection(image: "Assets/DashBoardIcons/conformation.png", Head_text: "${dashboardEmployeeInfo}"=="null"?"0H": "${dashboardEmployeeInfo["ThisMonthConfirmation"]}H", body_text: "This Month", footer_text: "Confirmation", color: Color(0xff064F42),),
+                          HomeSeventhPartBodySection(image: "Assets/DashBoardIcons/employee.png", Head_text: "${dashboardEmployeeInfo}"=="null"?"0": "${dashboardEmployeeInfo["TotalEmployee"]}", body_text: "Total Active", footer_text: "Employee", color: Color(0xffE5B336),),
+                          HomeSeventhPartBodySection(image: "Assets/DashBoardIcons/male.png", Head_text: "${dashboardEmployeeInfo}"=="null"?"0": "${dashboardEmployeeInfo["TotalMale"]}", body_text: "Total Active", footer_text: "Male", color: Color(0xffCAAD18),),
+                          HomeSeventhPartBodySection(image: "Assets/DashBoardIcons/femalee.png", Head_text:"${dashboardEmployeeInfo}"=="null"?"0": "${dashboardEmployeeInfo["TotalFemale"]}", body_text: "Total Active", footer_text: "Female", color: Color(0xff26986B),),
+                          HomeSeventhPartBodySection(image: "Assets/DashBoardIcons/join.png", Head_text: "${dashboardEmployeeInfo}"=="null"?"0": "${dashboardEmployeeInfo["ThisMonthJoin"]}",body_text: "This Month", footer_text: "Join", color: Color(0xff427C65),),
+                          HomeSeventhPartBodySection(image: "Assets/DashBoardIcons/inactive.png", Head_text:"${dashboardEmployeeInfo}"=="null"?"0": "${dashboardEmployeeInfo["ThisMonthInactive"]}", body_text: "This Month", footer_text: "InActive", color: Color(0xff38745F),),
+                          HomeSeventhPartBodySection(image: "Assets/DashBoardIcons/conformation.png", Head_text: "${dashboardEmployeeInfo}"=="null"?"0": "${dashboardEmployeeInfo["ThisMonthConfirmation"]}", body_text: "This Month", footer_text: "Confirmation", color: Color(0xff064F42),),
       
                         ],
                       ),
                     )
                 ),
-               SizedBox(height: 40,),
-
+                SizedBox(height: 40,),
               ],
             ),
           )
@@ -646,11 +646,8 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 
-
-
 class _ChartData {
   _ChartData(this.x, this.y, this.y1);
-
   final String x;
   final double y;
   final double y1;

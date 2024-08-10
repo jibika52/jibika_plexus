@@ -42,6 +42,7 @@ class _SplashScreen3State extends State<SplashScreen3> {
                 CustomImageSction(
                     height: 98,
                     width: 100,
+
                     radius: 11,
                     image: "Assets/Logo/jibikalogo.png"),
                 SizedBox(
@@ -54,39 +55,46 @@ class _SplashScreen3State extends State<SplashScreen3> {
                     text: "Auto Attendance Process",
                     letterSpacing: 0.1),
                 SizedBox(
-                  height: c_h * 0.025,
+                  height: c_h * 0.03,
                 ),
                 Stack(
                   alignment: Alignment.center,
                   children: [
                     Container(
-                      height: 400,
-                      width: 500,
-                      child: Container(
-                          height: 400,
-                          width: 500,
-                          decoration: BoxDecoration(
-                              image: DecorationImage(
-                                  image: AssetImage(
-                                      "Assets/SplashImage/splash_splash_sahdo.jpeg"),
-                                  fit: BoxFit.fill)),
-                          padding: EdgeInsets.all(60),
-                          child: Container(
-                            padding: EdgeInsets.only(top: 50),
-                            child: Image.asset(
-                              "Assets/Gif/third_splashcsreen.gif",
-                              height: 240,
-                              width: 278,
-                              fit: BoxFit.fill,
-                            ),
-                          )),
-                    ),
+                        // height: 400,
+                        // width: 500,
+                        //
+                        height: c_h*0.41,                  //  Edit for pixel perfect
+                        width: c_w*1,                  //  Edit for pixel perfect
+
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage(
+                                    "Assets/SplashImage/splash_splash_sahdo.jpeg"),
+                                fit: BoxFit.fill)),
+                        padding: EdgeInsets.all(60),
+                        child: Container(
+                          padding: EdgeInsets.only(top: 50),
+                          child: Image.asset(
+                            "Assets/Gif/third_splashcsreen.gif",
+                            // height: 240,
+                            // width: 278,
+                            height: c_h*0.26,                  //  Edit for pixel perfect
+                            width: c_w*0.3,                  //  Edit for pixel perfect
+                            fit: BoxFit.fill,
+                          ),
+                        )),
+
+
+
+
                     Positioned(
-                      top: 0,
+                      top: -5,
                       left: 0,
                       right: 0,
                       child: Container(
-                          width: 369,
+                         // width: 369,                  //  Edit for pixel perfect
+                          width: c_w*0.8,                  //  Edit for pixel perfect
                           padding: EdgeInsets.only(left: 20, right: 20),
                           child: CustomText(
                               fontSize: 14,
