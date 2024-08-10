@@ -272,10 +272,10 @@ class _HomeScreenState extends State<HomeScreen> {
                             child: Row(
                               children: [
                                 HomeThirdPartBodyLeftSide(
-                                  top1:total_Amount> 10000000.0? "1000M": "1000K",
-                                  top2: total_Amount>10000000.0? "120M": "120K",
-                                  top3: total_Amount>10000000.0? "60M": "60K",
-                                  top4: total_Amount>10000000.0? "0M": "0K",
+                                  top1:total_Amount > 999999.0? "${double.parse("${(total_Amount/4*4)/1000000}").toStringAsFixed(0)}M": "${double.parse("${(total_Amount/4*4)/1000}").toStringAsFixed(0)}K",
+                                  top2: total_Amount>999999.0? "${double.parse("${(total_Amount/4*3)/1000000}").toStringAsFixed(0)}M": "${double.parse("${(total_Amount/4*3)/1000}").toStringAsFixed(0)}K",
+                                  top3: total_Amount>999999.0? "${double.parse("${(total_Amount/4*2)/1000000}").toStringAsFixed(0)}M": "${double.parse("${(total_Amount/4*2)/1000}").toStringAsFixed(0)}K",
+                                  top4: total_Amount>999999.0? "${double.parse("${(total_Amount/4)/1000000}").toStringAsFixed(0)}M": "${double.parse("${(total_Amount/4)/1000}").toStringAsFixed(0)}K",
                                   color:Main_Theme_textColor.withOpacity(0.6),
                                 ),
 
@@ -295,7 +295,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                               ),
                                               primaryYAxis: NumericAxis(
                                                 minimum: 0,
-                                                maximum: total_Amount+50000,
+                                                maximum: total_Amount+total_Amount/4,
                                                 interval: total_Amount/5,
                                                 isVisible: false,
                                               ),
