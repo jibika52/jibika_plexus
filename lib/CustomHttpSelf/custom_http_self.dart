@@ -20,8 +20,14 @@ class CustomHttpSelf{
     'Authorization': 'Bearer ${GetStorage().read("api_token")}'
   };
 
+
+
+
+
   ///  self Dashboard Check In Check Out --------------------------------------------------------------------------
-  selfCheckInCheckOut(String UserId,String AttendanceDate, String AttendanceTime, String RefCardNo, String Location, String District, String Division, String PostalCode, String SubLocality, String StreetName, String lat,  String lng, int Empcode,  BuildContext context)async{
+  ///
+  ///
+  selfCheckInCheckOut(String UserId,String AttendanceDate, String AttendanceTime, String RefCardNo, String Location, String District, String Division, String PostalCode, String SubLocality, String StreetName, String lat,  String lng, int Empcode, String DutyDate,String Remarks, BuildContext context)async{
     dynamic selfCheckInCheckOut ;
     var body = jsonEncode({
       "UserId":"$UserId",
@@ -36,7 +42,9 @@ class CustomHttpSelf{
       "StreetName" : "$StreetName",
       "lat" : "$lat",
       "lng" : "$lng",
-      "Empcode": Empcode
+      "Empcode": Empcode,
+      "DutyDate" : "$DutyDate",
+      "Remarks" : "$Remarks"
     });
 
     try{
@@ -73,4 +81,68 @@ class CustomHttpSelf{
       print("selfCheckInCheckOut Catch error ${e}");
     }
   }
+
+
+
+
+
+
+
+
+  ///  self Dashboard self OneMonth Attendance List --------------------------------------------------------------------------
+  ///
+  ///
+  selfOneMonthAttendanceFunction(String UserId,String AttendanceDate, String RefCardNo, String attendanceType,BuildContext context)async{
+    dynamic selfOneMonthAttendanceList ;
+    print("${UserId} $AttendanceDate $RefCardNo $attendanceType");
+    var body = jsonEncode({
+        "UserId":"$UserId",
+        "AttDate" : "$AttendanceDate",
+        "ID_CARD_NO":"$RefCardNo",
+        "attendanceType" : "$attendanceType"
+        });
+
+    try{
+      var data=await http.post(Uri.parse("${BASEURL}/${SelfGetMonthlyAttendanceList}"),
+          headers: {
+            "Content-Type": "application/json",
+            "username": "jibikaapps",
+            "password": "20jibika24",
+          },
+          body: body
+      ).then((http.Response response) {
+        print("${response.body}");
+        selfOneMonthAttendanceList =jsonDecode(response.body)["data"];
+
+
+      });
+      return selfOneMonthAttendanceList;
+    }
+    catch(e){
+      print("selfOneMonthAttendanceList Catch error ${e}");
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

@@ -38,3 +38,7 @@
 
   /// Check in check out
     String SelfCheckInCheckOut="Attendance/SaveMakeMePresent";
+
+
+  /// Check Self Get Monthly Att List
+    String SelfGetMonthlyAttendanceList="Attendance/GetMonthlyAttList";
