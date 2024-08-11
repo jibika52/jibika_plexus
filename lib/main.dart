@@ -49,8 +49,7 @@ class MyApp extends StatelessWidget {
 
         /// ----------SplashScreen--------
        home:MainSplashPageViewScreen(),
-        //        home:Googlemap(),
-
+      //       home:Googlemap(),
         /// ----------Working Screen--------
         //     home:LoginScreenSlide(),
         //

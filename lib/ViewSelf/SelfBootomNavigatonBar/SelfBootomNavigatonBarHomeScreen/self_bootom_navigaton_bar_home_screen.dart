@@ -6,6 +6,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
+import 'package:geocoding/geocoding.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
@@ -32,11 +34,36 @@ class SelfBootomNavigatonBarHomeScreen extends StatefulWidget {
 
 class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBarHomeScreen> {
   TextEditingController _descriptionController=TextEditingController();
+  Position ? _currentPosition;
+  void permissionn()async{
+    LocationPermission permission = await Geolocator.requestPermission();
+    print(permission);
+  }
+  late Position position;
+  _getCurrentLocation() async{
+    position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    setState(() {
+      _currentPosition = position;
+    });
+    try {
+      List<Placemark> placemarks = await placemarkFromCoordinates(
+          _currentPosition!.latitude,
+          _currentPosition!.longitude
+      );
+      Placemark place = placemarks[0];
+      setState(() {
+        Provider.of<SelfDashboardController>(context,listen: false).dashboardSalaryComprisonListProvider("${GetStorage().read("mobile_id")}", "${DateFormat('yyyyMMdd').format(DateTime.now())}",DateTime.now().second>9? "${DateTime.now().hour}${DateTime.now().minute}${DateTime.now().second}": "${DateTime.now().hour}${DateTime.now().minute}0${DateTime.now().second}", "${GetStorage().read("RfIdCardNo")}", "${place.name}", "${place.locality}", "${place.administrativeArea}", "${place.postalCode}", "${place.subAdministrativeArea}", "${place.street.toString()}", "${_currentPosition!.latitude}", "${_currentPosition!.longitude}", int.parse("${"${GetStorage().read("Empcode")}"}"), context);
+      });
+    } catch (e) {
+      print(e);
+    }
 
+  }
   int second=0;
   bool is_select_Comment=false;
   @override
   void initState() {
+    permissionn();
     Provider.of<HomeProvider>(context,listen: false).dashboardTodaysBirthdayEmployeeInfoProvider("${GetStorage().read("mobile_id")}", "", context); // Todays birthday
     Timer.periodic(Duration(seconds: 1), (timer) {
     setState(() {
@@ -158,7 +185,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                        ),
                      ),
                  //    SizedBox(height: 5,),
-                     /// First Down Side Part------------------------------------------
+                     /// First Down Side Part---------------------Attendance Area ---------------------
                      Stack(
                        children: [
                          Container(
@@ -169,12 +196,16 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                              children: [
                                CustomizeButton(text: "Check In", textColor: Main_Theme_textColor.withOpacity(0.5), presentsent_color: presentsent_color, fontSize: 12,
                                  onTap: () {
-                                   Provider.of<SelfDashboardController>(context,listen: false).dashboardSalaryComprisonListProvider("${GetStorage().read("mobile_id")}", "${DateFormat('yyyyMMdd').format(DateTime.now())}",DateTime.now().second>9? "${DateTime.now().hour}${DateTime.now().minute}${DateTime.now().second}": "${DateTime.now().hour}${DateTime.now().minute}0${DateTime.now().second}", "${GetStorage().read("RfIdCardNo")}", "Dhaka", "Dhaka", "Dhaka", "1229", "Dhaka", "38 no road", "2.5415455", "3.2541556", int.parse("${"${GetStorage().read("Empcode")}"}"), context);
+                                 ///-Attendance Area ---------------------
+
+                                   _getCurrentLocation();
                                  },),
                                SizedBox(width: 10,),
                                 CustomizeButton(text: "Check Out", textColor: Main_Theme_textColor.withOpacity(0.5), presentsent_color: presentsent_color, fontSize: 12,
                                   onTap: () {
-                                    Provider.of<SelfDashboardController>(context,listen: false).dashboardSalaryComprisonListProvider("${GetStorage().read("mobile_id")}", "${DateFormat('yyyyMMdd').format(DateTime.now())}",DateTime.now().second>9? "${DateTime.now().hour}${DateTime.now().minute}${DateTime.now().second}": "${DateTime.now().hour}${DateTime.now().minute}0${DateTime.now().second}", "${GetStorage().read("RfIdCardNo")}", "Dhaka", "Dhaka", "Dhaka", "1229", "Dhaka", "38 no road", "2.5415455", "3.2541556", int.parse("${"${GetStorage().read("Empcode")}"}"), context);
+                                    ///-Attendance Area ---------------------
+
+                                    _getCurrentLocation();
                                   },)
            
                              ],

@@ -24,20 +24,12 @@ if (flutterVersionName == null) {
 
 android {
     namespace "com.example.jibika_plexus.jibika_plexus"
-    compileSdkVersion 34
+    compileSdk 34
     ndkVersion flutter.ndkVersion
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
-    }
-
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
-
-    sourceSets {
-        main.java.srcDirs += 'src/main/kotlin'
     }
 
     defaultConfig {
@@ -63,5 +55,3 @@ android {
 flutter {
     source '../..'
 }
-
-dependencies {}
