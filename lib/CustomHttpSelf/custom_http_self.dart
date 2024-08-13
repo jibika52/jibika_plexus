@@ -12,6 +12,7 @@ import 'package:jibika_plexus/Api/Routes/routes.dart';
 
 import '../CustomWidget/CustomText/custom_text.dart';
 import '../Utils/constants.dart';
+import '../ViewSelf/SelfBootomNavigatonBar/SelfBootomNavigatonBarHomeScreen/self_bootom_navigaton_bar_home_screen.dart';
 class CustomHttpSelf{
 
   ///  header Parts
@@ -93,7 +94,9 @@ class CustomHttpSelf{
   ///
   ///
   selfOneMonthAttendanceFunction(String UserId,String AttendanceDate, String RefCardNo, String attendanceType,BuildContext context)async{
-    dynamic selfOneMonthAttendanceList ;
+
+    dynamic monthlyAttendanceSummary;
+    List<Updated_attendance_summary> newdatalist = [];
     print("${UserId} $AttendanceDate $RefCardNo $attendanceType");
     var body = jsonEncode({
         "UserId":"$UserId",
@@ -111,12 +114,25 @@ class CustomHttpSelf{
           },
           body: body
       ).then((http.Response response) {
-        print("${response.body}");
-        selfOneMonthAttendanceList =jsonDecode(response.body)["data"];
-
-
+         monthlyAttendanceSummary = jsonDecode(response.body)["data"];
+         for(int i=0;i<31;i++){
+           final tempobj = Updated_attendance_summary();
+           tempobj.date = "${i}";
+           tempobj.Status = " ";
+           int tempday = 0;
+            for(var item in monthlyAttendanceSummary){
+              tempday = int.parse("${item["DUTY_DATE"].substring(0, 2)}");
+              if(tempday==i){
+                print("duty date:${int.parse("${item["DUTY_DATE"].substring(0, 2)}")}");
+                tempobj.Status = "${item["STATUS"]}";
+              }
+            }
+                newdatalist.add(tempobj);
+         }
+         return newdatalist;
       });
-      return selfOneMonthAttendanceList;
+
+     return newdatalist;
     }
     catch(e){
       print("selfOneMonthAttendanceList Catch error ${e}");

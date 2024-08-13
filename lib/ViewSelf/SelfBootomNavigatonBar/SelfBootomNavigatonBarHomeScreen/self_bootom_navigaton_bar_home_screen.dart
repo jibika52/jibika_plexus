@@ -84,7 +84,8 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
   double Animatedwidth=170;
   double animated_height=0;
   bool is_clicked=false;
-
+  String ? in_time;
+  String ? out_time;
 
   Future<void> _refreshData() async {
     await Future.delayed(Duration(seconds: 2));
@@ -95,42 +96,13 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
           "${GetStorage().read("RfIdCardNo")}",
           "GENERAL", context);
     });
+
+
   }
   @override
   Widget build(BuildContext context) {
-    List pdated_attendance_summary=[];
     final  dashboardtodaysBirthdayEmployeeinfo=  Provider.of<HomeProvider>(context).dashboardtodaysBirthdayEmployeeinfo;
-    final  selfOneMonthAttendanceList=  Provider.of<SelfDashboardController>(context).selfOneMonthAttendanceList;
-
-
-
-
-        //
-        // for(i=0;i<DateTime(DateTime.now().year, DateTime.now().month+1, 0).day;i++){
-        //   pdated_attendance_summary.add(updated_attendance_summary(date: "${i}",Status:  "$i"));
-        //
-        //
-        //   for(int j=0;j<selfOneMonthAttendanceList.length;j++){
-        //     if(i==selfOneMonthAttendanceList[j]["DUTY_DATE"].substring(0,2)){
-        //
-        //       print("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS $j");
-        //
-        //    //   pdated_attendance_summary.replaceRange(j, j + 1, [updated_attendance_summary(date: "$j",Status:  "P")]);
-        //    //   pdated_attendance_summary.replaceRange(j, j + 1, [updated_attendance_summary(date: "$j",Status:  "${selfOneMonthAttendanceList[j]["Status"]}")]);
-        //   //    pdated_attendance_summary.insert(j,updated_attendance_summary(date: "$j",Status:  "${selfOneMonthAttendanceList[j]["Status"]}") );
-        //
-        //
-        //     }
-        //   }
-        //
-        //
-        // }
-
-
-
-for(int k=0;k<pdated_attendance_summary.length;k++){
-  print("cccccccc$k cccccccccccc ${pdated_attendance_summary[k]}");
-}
+      List<Updated_attendance_summary>   selfOneMonthAttendanceList =  Provider.of<SelfDashboardController>(context).selfOneMonthAttendanceList;
 
     return Scaffold(
       backgroundColor: home_default_color,
@@ -166,7 +138,7 @@ for(int k=0;k<pdated_attendance_summary.length;k++){
                                    crossAxisAlignment: CrossAxisAlignment.start,
                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                    children: [
-                                     CustomText(fontSize: 13, fontWeight: FontWeight.w500, text: "  My Presence", letterSpacing: 0.3),
+                                     CustomText(fontSize: 13, fontWeight: FontWeight.w500, text: "  My Presence $in_time $out_time", letterSpacing: 0.3),
                                      // ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "${DateTime.now().hour}${DateTime.now().minute}${DateTime.now().second}", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
                                      //      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: DateTime.now().second>9? "${DateTime.now().hour}${DateTime.now().minute}${DateTime.now().second}": "${DateTime.now().hour}${DateTime.now().minute}0${DateTime.now().second}", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
                                     ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "${DateFormat('dd-MMM-yyyy').format(DateTime.now())}", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
@@ -178,7 +150,7 @@ for(int k=0;k<pdated_attendance_summary.length;k++){
                                          Image.asset("Assets/DashBoardIcons/b_bar_attendence.png",height: 18,width: 18,fit: BoxFit.fill,color: Colors.grey,),
                                          ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "   Check In : ", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
                                          //      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "10:10:10", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
-                                        ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text:selfOneMonthAttendanceList==null?"Processing":"${selfOneMonthAttendanceList[selfOneMonthAttendanceList.length-1]["IN_TIME"]}"==""?"": "${selfOneMonthAttendanceList.last["IN_TIME"].substring(selfOneMonthAttendanceList.last["IN_TIME"].length - 8)}", letterSpacing: 0.3, textColor: Main_Theme_textColor ,),
+                                    //    ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text:selfOneMonthAttendanceList==null?"Processing":"${selfOneMonthAttendanceList[selfOneMonthAttendanceList.length-1]["IN_TIME"]}"==""?"": "${selfOneMonthAttendanceList.last["IN_TIME"].substring(selfOneMonthAttendanceList.last["IN_TIME"].length - 8)}", letterSpacing: 0.3, textColor: Main_Theme_textColor ,),
              
                                        ],
                                      ),
@@ -191,7 +163,7 @@ for(int k=0;k<pdated_attendance_summary.length;k++){
                                          ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "  Check Out : ", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
                                          //      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "10:10:10", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
 
-                                           ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text:selfOneMonthAttendanceList==null?"Processing":"${selfOneMonthAttendanceList[selfOneMonthAttendanceList.length-1]["OUT_TIME"]}"==""?"": "${selfOneMonthAttendanceList.last["OUT_TIME"].substring(selfOneMonthAttendanceList.last["OUT_TIME"].length - 8)}", letterSpacing: 0.3, textColor: Main_Theme_textColor ,),
+                                       //    ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text:selfOneMonthAttendanceList==null?"Processing":"${selfOneMonthAttendanceList[selfOneMonthAttendanceList.length-1]["OUT_TIME"]}"==""?"": "${selfOneMonthAttendanceList.last["OUT_TIME"].substring(selfOneMonthAttendanceList.last["OUT_TIME"].length - 8)}", letterSpacing: 0.3, textColor: Main_Theme_textColor ,),
              
                                        ],
                                      ),
@@ -309,7 +281,7 @@ for(int k=0;k<pdated_attendance_summary.length;k++){
                                                color : Main_Theme_textColor.withOpacity(0.8),
                                              ),
                                              decoration: InputDecoration(
-                                               hintText:selfOneMonthAttendanceList==null?"Processing":"${selfOneMonthAttendanceList[selfOneMonthAttendanceList.length-1]["ATTENDANCE_REMARK"]}"==""?"Remarks here": "${selfOneMonthAttendanceList.last["ATTENDANCE_REMARK"]}",
+                                           //    hintText:selfOneMonthAttendanceList==null?"Processing":"${selfOneMonthAttendanceList[selfOneMonthAttendanceList.length-1]["ATTENDANCE_REMARK"]}"==""?"Remarks here": "${selfOneMonthAttendanceList.last["ATTENDANCE_REMARK"]}",
                                                contentPadding: EdgeInsets.only(top: -20,right: 10,left: 7),
                                                hintStyle: GoogleFonts.poppins(
                                                  fontSize : 10,
@@ -526,7 +498,7 @@ for(int k=0;k<pdated_attendance_summary.length;k++){
                            height: 175,
                            width: double.infinity,
                            child: GridView.builder(
-                             itemCount: pdated_attendance_summary.length,
+                             itemCount: selfOneMonthAttendanceList.length,
 
                              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                                  crossAxisCount: 7,
@@ -541,11 +513,11 @@ for(int k=0;k<pdated_attendance_summary.length;k++){
                                  padding: const EdgeInsets.all(2.0),
                                  child: CircleAvatar(
                                    radius: 26,
-                                   backgroundColor:pdated_attendance_summary[index].Status =="" ?Main_Theme_textColor:pdated_attendance_summary[index].Status =="P" ?presentsent_color :pdated_attendance_summary[index].Status =="AB" ?absent_color:pdated_attendance_summary[index].Status=="WH"?holiday_color:  Colors.red,
+                                   backgroundColor:selfOneMonthAttendanceList[index].Status =="" ?Main_Theme_textColor:selfOneMonthAttendanceList[index].Status =="P" ?presentsent_color :selfOneMonthAttendanceList[index].Status =="AB" ?absent_color:selfOneMonthAttendanceList[index].Status=="WH"?holiday_color:  Main_Theme_WhiteCollor,
                                     child: ColorCustomText(
                                      fontSize: 12, fontWeight: FontWeight.w400,
                                        //text: "${index+1}",
-                                       text: "${pdated_attendance_summary[index].Status}",
+                                       text: "${index+1}",
                                       letterSpacing: 0.3,
                                      textColor: Main_Theme_textColor
                                      ,),
@@ -674,11 +646,8 @@ for(int k=0;k<pdated_attendance_summary.length;k++){
 
 }
 
-class updated_attendance_summary{
-  updated_attendance_summary({
-    required this.date,
-    required this.Status
-});
-String ? date;
-  String ? Status;
+class Updated_attendance_summary{
+  String?  date;
+  String?  Status;
 }
+
