@@ -211,7 +211,7 @@ class _SecondhomePartScreenState extends State<SecondhomePartScreen> {
                                 fontSize: font11,
                                 fontWeight: FontWeight.w400, letterSpacing: 0.2,),
                             ),
-                            SizedBox(width: 10,),
+                            Spacer(),
                             /// ---------- Custom Calender Part --------- ///
                             CustomCalender(
                             onTap: widget.date_onTap,),

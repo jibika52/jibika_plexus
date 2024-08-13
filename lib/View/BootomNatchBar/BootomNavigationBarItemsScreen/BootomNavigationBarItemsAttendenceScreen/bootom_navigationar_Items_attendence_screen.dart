@@ -415,14 +415,14 @@ class _BootomNavigationBarItemsAttendenceScreenState extends State<BootomNavigat
                                 children: [
                                   ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400,  text: "8080", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.9)),
                                   SizedBox(height: C_height,),
-                                  ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400,  text: "Active", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.9)),
+                                  ColorCustomText(fontSize: 13, fontWeight: FontWeight.w400,  text: "Active", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.9)),
 
 
 
                                 ],
                               ),
                             ),
-                            SizedBox(width:20,),
+                            SizedBox(width:10,),
                             Expanded(
                               flex: 3,
                               child: Padding(
@@ -433,17 +433,17 @@ class _BootomNavigationBarItemsAttendenceScreenState extends State<BootomNavigat
                                   children: [
                                     Row(
                                       children: [
-                                        ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400,  text: "Present : ", letterSpacing: 0.3, textColor: presentsent_color),
+                                        ColorCustomText(fontSize: 13, fontWeight: FontWeight.w400,  text: "Present : ", letterSpacing: 0.3, textColor: presentsent_color),
                                         // SizedBox(width: 7,),
-                                        ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "8989", letterSpacing: 0.3, textColor: presentsent_color),
+                                        ColorCustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "8989", letterSpacing: 0.3, textColor: presentsent_color),
                                       ],
                                     ),
                                     SizedBox(height: C_height,),
                                     Row(
                                       children: [
-                                        ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400,  text: "Absent : ", letterSpacing: 0.3, textColor: absent_color.withOpacity(0.9)),
+                                        ColorCustomText(fontSize: 13, fontWeight: FontWeight.w400,  text: "Absent : ", letterSpacing: 0.3, textColor: absent_color.withOpacity(0.9)),
                                         //  SizedBox(width: 7,),
-                                        ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "8989", letterSpacing: 0.3, textColor: absent_color.withOpacity(0.9)),
+                                        ColorCustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "8989", letterSpacing: 0.3, textColor: absent_color.withOpacity(0.9)),
                                       ],
                                     ),
                                   ],
@@ -460,17 +460,17 @@ class _BootomNavigationBarItemsAttendenceScreenState extends State<BootomNavigat
                                   children: [
                                     Row(
                                       children: [
-                                        ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400,  text: "Leave : ", letterSpacing: 0.3, textColor: leave_color.withOpacity(0.9)),
+                                        ColorCustomText(fontSize: 13, fontWeight: FontWeight.w400,  text: "Leave : ", letterSpacing: 0.3, textColor: leave_color.withOpacity(0.9)),
                                         //  SizedBox(width: 7,),
-                                        ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "2020", letterSpacing: 0.3, textColor: leave_color.withOpacity(0.9)),
+                                        ColorCustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "2020", letterSpacing: 0.3, textColor: leave_color.withOpacity(0.9)),
                                       ],
                                     ),
                                     SizedBox(height: C_height,),
                                     Row(
                                       children: [
-                                        ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400,  text: "Holiday : ", letterSpacing: 0.3, textColor: holiday_color),
+                                        ColorCustomText(fontSize: 13, fontWeight: FontWeight.w400,  text: "Holiday : ", letterSpacing: 0.3, textColor: holiday_color),
                                         //   SizedBox(width: 7,),
-                                        ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "8989", letterSpacing: 0.3, textColor: holiday_color),
+                                        ColorCustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "8989", letterSpacing: 0.3, textColor: holiday_color),
                                       ],
                                     ),
                                   ],

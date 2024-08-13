@@ -299,7 +299,7 @@ Future.delayed(Duration(
                               obscureText: obscureText),
 
 
-                          SizedBox(height: h*0.05,),
+                          SizedBox(height: h*0.04,),
                           /// Save information section & Forget Password section
                           Container(
                             height: 40,
@@ -335,7 +335,7 @@ Future.delayed(Duration(
                           ),
 
 
-                          SizedBox(height: h*0.05,),
+                          SizedBox(height: h*0.03,),
                           /// Login
 
                           CustomButton(onTap: () {
@@ -351,7 +351,7 @@ Future.delayed(Duration(
                         ],
                       ),
                     ),
-                    SizedBox(height: h*0.061,),
+                    SizedBox(height: h*0.064,),
                     /// Forget Password section
                     Center(
                       child: InkWell(

@@ -13,9 +13,9 @@ class CustomTermsAndConditionPart extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(left: 20.0, right: 20.0),
           child: CustomText(
-              fontSize: 14,
+              fontSize: 13,
               fontWeight: FontWeight.w400,
-              text: "By proceeding further you are agreeing with our",
+              text: "By proceeding further you are agreeing with",
               letterSpacing: 0.2),
         ),
         Row(

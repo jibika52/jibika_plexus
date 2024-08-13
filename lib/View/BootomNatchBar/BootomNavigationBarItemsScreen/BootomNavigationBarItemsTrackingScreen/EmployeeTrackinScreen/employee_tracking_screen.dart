@@ -132,11 +132,13 @@ class _EmployeeTrackinScreenState extends State<EmployeeTrackinScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Check In -08:45:01", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.8)),
-                                  Text( "Gulshan Circle 01, Road No. 11, Plot No 8",style: GoogleFonts.poppins(
+                                  Text( "Gulshan Circle 01, Road No. 11, Plot No 8",
+                                    overflow: TextOverflow.ellipsis,
+                                    style: GoogleFonts.poppins(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w400,
                                       letterSpacing: 0.2,
-                                      color: Main_Theme_textColor
+                                      color: Main_Theme_textColor,
                                   ),
                                   ),
                                 ],
@@ -300,7 +302,7 @@ class _EmployeeTrackinScreenState extends State<EmployeeTrackinScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Check Out -08:45:01", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.8)),
-                                  Text( "Gulshan Circle 01, Road No. 11, Plot No 8",style: GoogleFonts.poppins(
+                                  Text( "Gulshan Circle 01, Road No.",style: GoogleFonts.poppins(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w400,
                                       letterSpacing: 0.2,

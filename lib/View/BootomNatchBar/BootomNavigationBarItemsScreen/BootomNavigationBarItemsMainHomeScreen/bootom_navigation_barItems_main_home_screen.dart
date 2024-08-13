@@ -279,13 +279,14 @@ class _BootomNavBarItemsMainFloationHomeScreenState extends State<BootomNavBarIt
                                             mainAxisAlignment: MainAxisAlignment.center,
                                             crossAxisAlignment: CrossAxisAlignment.center,
                                             children: [
-                                              CustomImageSction(height: 18, width: 18, radius: 1, image: "Assets/DashBoardIcons/rating.png"),
+                                              CustomImageSction(height: 15, width: 15, radius: 1, image: "Assets/DashBoardIcons/rating.png"),
                                               SizedBox(width: 5,),
-                                              CustomImageSction(height: 18, width: 18, radius: 1, image: "Assets/DashBoardIcons/rating.png"),
+                                              CustomImageSction(height: 15, width: 15, radius: 1, image: "Assets/DashBoardIcons/rating.png"),
                                               SizedBox(width: 5,),
-                                              CustomImageSction(height: 18, width: 18, radius: 1, image: "Assets/DashBoardIcons/rating.png"),
+                                              CustomImageSction(height: 15, width: 15, radius: 1, image: "Assets/DashBoardIcons/rating.png"),
                                               SizedBox(width: 5,),
-                                              CustomImageSction(height: 18, width: 18, radius: 1, image: "Assets/DashBoardIcons/rating.png"),
+                                              CustomImageSction(height: 15, width: 15, radius: 1, image: "Assets/DashBoardIcons/rating.png"),
+                                              Spacer(),
                                               IconButton(onPressed: () {
                           
                                               }, icon: Icon(Icons.arrow_forward_ios_rounded,size: 22,color: Main_Theme_textColor,))

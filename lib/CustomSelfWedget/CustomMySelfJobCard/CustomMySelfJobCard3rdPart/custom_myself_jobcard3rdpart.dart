@@ -5,8 +5,16 @@ import '../../../Utils/constants.dart';
 import '../../myself_leave_status.dart';
 
 class CustomMySelfJobCard3rdPart extends StatelessWidget {
-  const CustomMySelfJobCard3rdPart({super.key});
-
+  CustomMySelfJobCard3rdPart({super.key,
+    required this.late,
+    required this.Duration,
+    required this.OT,
+    required this.Shift_Plane,
+  });
+  String ? late;
+  String ? Duration;
+  String ? OT;
+  String ? Shift_Plane;
   @override
   Widget build(BuildContext context) {
     return  Row(
@@ -17,7 +25,7 @@ class CustomMySelfJobCard3rdPart extends StatelessWidget {
           height: 50,
           padding: EdgeInsets.all(5),
           alignment: Alignment.center,
-          child: MySelfLeaveStatus2(text1: "0:12:08",  width_height: 3.5,text2: "Late",fontWeight1:FontWeight.w400 ,fontWeight2: FontWeight.w400 ,textColor: Main_Theme_textColor, fontSize1: 12, fontSize2: 12, is_row: false,textColor2: Main_Theme_textColor.withOpacity(0.5)),
+          child: MySelfLeaveStatus2(text1: "$late",  width_height: 3.5,text2: "Late",fontWeight1:FontWeight.w400 ,fontWeight2: FontWeight.w400 ,textColor: Main_Theme_textColor, fontSize1: 12, fontSize2: 12, is_row: false,textColor2: Main_Theme_textColor.withOpacity(0.5)),
 
         ),
         Spacer(),
@@ -31,7 +39,7 @@ class CustomMySelfJobCard3rdPart extends StatelessWidget {
           height: 50,
           padding: EdgeInsets.all(5),
           alignment: Alignment.center,
-          child: MySelfLeaveStatus2(text1: "07:28:45",  width_height: 3.5,text2: "Duration",fontWeight1:FontWeight.w400 ,fontWeight2: FontWeight.w400 ,textColor: Main_Theme_textColor, fontSize1: 12, fontSize2: 12, is_row: false,textColor2: Main_Theme_textColor.withOpacity(0.5)),
+          child: MySelfLeaveStatus2(text1: "$Duration",  width_height: 3.5,text2: "Duration",fontWeight1:FontWeight.w400 ,fontWeight2: FontWeight.w400 ,textColor: Main_Theme_textColor, fontSize1: 12, fontSize2: 12, is_row: false,textColor2: Main_Theme_textColor.withOpacity(0.5)),
 
         ),
         Spacer(),
@@ -45,7 +53,7 @@ class CustomMySelfJobCard3rdPart extends StatelessWidget {
           height: 50,
           padding: EdgeInsets.all(5),
           alignment: Alignment.center,
-          child: MySelfLeaveStatus2(text1: "04:55:55",  width_height: 3.5,text2: "OT",fontWeight1:FontWeight.w400 ,fontWeight2: FontWeight.w400 ,textColor: Main_Theme_textColor, fontSize1: 12, fontSize2: 12, is_row: false,textColor2: Main_Theme_textColor.withOpacity(0.5)),
+          child: MySelfLeaveStatus2(text1: "$OT",  width_height: 3.5,text2: "OT",fontWeight1:FontWeight.w400 ,fontWeight2: FontWeight.w400 ,textColor: Main_Theme_textColor, fontSize1: 12, fontSize2: 12, is_row: false,textColor2: Main_Theme_textColor.withOpacity(0.5)),
 
         ),
         Spacer(),
@@ -59,7 +67,7 @@ class CustomMySelfJobCard3rdPart extends StatelessWidget {
           height: 50,
           padding: EdgeInsets.all(5),
           alignment: Alignment.center,
-          child: MySelfLeaveStatus2(text1: "General",  width_height: 3.5,text2: "Shift Plane",fontWeight1:FontWeight.w400 ,fontWeight2: FontWeight.w400 ,textColor: Main_Theme_textColor, fontSize1: 12, fontSize2: 12, is_row: false,textColor2: Main_Theme_textColor.withOpacity(0.5)),
+          child: MySelfLeaveStatus2(text1: "$Shift_Plane",  width_height: 3.5,text2: "Shift Plane",fontWeight1:FontWeight.w400 ,fontWeight2: FontWeight.w400 ,textColor: Main_Theme_textColor, fontSize1: 12, fontSize2: 12, is_row: false,textColor2: Main_Theme_textColor.withOpacity(0.5)),
 
         ),
         Spacer(),
@@ -74,9 +82,19 @@ class CustomMySelfJobCard3rdPart1 extends StatelessWidget {
   CustomMySelfJobCard3rdPart1({super.key,
     required this.selectedindex,
     required this.index,
+    required this.text2,
+    required this.intime,
+    required this.outTime,
+    required this.status,
+    required this.location,
   });
   bool selectedindex;
-  int  index;
+  String  index;
+  String ? text2;
+  String ? intime;
+  String ? outTime;
+  String ? status;
+  String ? location;
   @override
   Widget build(BuildContext context) {
     return  Row(
@@ -95,7 +113,12 @@ class CustomMySelfJobCard3rdPart1 extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              MySelfLeaveStatus2(text1: "${index+1}", width_height: 0,text2: "Sat",fontWeight1:FontWeight.w600 ,fontWeight2: FontWeight.w400 ,textColor: Main_Theme_textColor_tir_Condition, fontSize1: 16, fontSize2: 12, is_row: false, textColor2: Main_Theme_textColor,),
+              MySelfLeaveStatus2(
+                text1:
+              "${index}",
+                width_height: 0,
+                text2: "$text2",
+                fontWeight1:FontWeight.w600 ,fontWeight2: FontWeight.w400 ,textColor: Main_Theme_textColor_tir_Condition, fontSize1: 16, fontSize2: 12, is_row: false, textColor2: Main_Theme_textColor,),
             ],
           ),
         ),
@@ -110,7 +133,7 @@ class CustomMySelfJobCard3rdPart1 extends StatelessWidget {
           height: 62,
           padding: EdgeInsets.all(5),
           alignment: Alignment.center,
-          child: MySelfLeaveStatus2(text1: "00:00:00",  width_height: 3.5,text2: "In Time",fontWeight1:FontWeight.w400 ,fontWeight2: FontWeight.w400 ,textColor: Main_Theme_textColor, fontSize1: 12, fontSize2: 12, is_row: false,textColor2: Main_Theme_textColor.withOpacity(0.5)),
+          child: MySelfLeaveStatus2(text1: "$intime",  width_height: 3.5,text2: "In Time",fontWeight1:FontWeight.w400 ,fontWeight2: FontWeight.w400 ,textColor: Main_Theme_textColor, fontSize1: 12, fontSize2: 12, is_row: false,textColor2: Main_Theme_textColor.withOpacity(0.5)),
 
         ),
         Spacer(),
@@ -124,7 +147,7 @@ class CustomMySelfJobCard3rdPart1 extends StatelessWidget {
           height: 62,
           padding: EdgeInsets.all(5),
           alignment: Alignment.center,
-          child: MySelfLeaveStatus2(text1: "00:00:00",  width_height: 3.5,text2: "Out Time",fontWeight1:FontWeight.w400 ,fontWeight2: FontWeight.w400 ,textColor: Main_Theme_textColor, fontSize1: 12, fontSize2: 12, is_row: false,textColor2: Main_Theme_textColor.withOpacity(0.5)),
+          child: MySelfLeaveStatus2(text1: "$outTime",  width_height: 3.5,text2: "Out Time",fontWeight1:FontWeight.w400 ,fontWeight2: FontWeight.w400 ,textColor: Main_Theme_textColor, fontSize1: 12, fontSize2: 12, is_row: false,textColor2: Main_Theme_textColor.withOpacity(0.5)),
 
         ),
         Spacer(),
@@ -138,7 +161,7 @@ class CustomMySelfJobCard3rdPart1 extends StatelessWidget {
           height: 62,
           padding: EdgeInsets.all(5),
           alignment: Alignment.center,
-          child: MySelfLeaveStatus2(text1: "AB",  width_height: 3.5,text2: "Status",fontWeight1:FontWeight.w400 ,fontWeight2: FontWeight.w400 ,textColor: Main_Theme_textColor, fontSize1: 12, fontSize2: 12, is_row: false,textColor2: Main_Theme_textColor.withOpacity(0.5)),
+          child: MySelfLeaveStatus2(text1: "$status",  width_height: 3.5,text2: "Status",fontWeight1:FontWeight.w400 ,fontWeight2: FontWeight.w400 ,textColor: Main_Theme_textColor, fontSize1: 12, fontSize2: 12, is_row: false,textColor2: Main_Theme_textColor.withOpacity(0.5)),
 
         ),
         Spacer(),
@@ -149,7 +172,6 @@ class CustomMySelfJobCard3rdPart1 extends StatelessWidget {
         ),
         Spacer(),
         Container(
-          width: 80,
           padding: EdgeInsets.symmetric(vertical: 7),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -157,7 +179,7 @@ class CustomMySelfJobCard3rdPart1 extends StatelessWidget {
               Icon(Icons.location_on_outlined,size: 16,color: Main_Theme_textColor.withOpacity(0.6),),
               Padding(
                 padding: const EdgeInsets.only(left:5.0,),
-                child: ColorCustomText(fontSize: 12, fontWeight: FontWeight.w300,maxLines: 1 ,text: "Gulsha ndshf sdf sdf  ", overflow: TextOverflow.ellipsis,letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.6),),
+                child: ColorCustomText(fontSize: 12, fontWeight: FontWeight.w300,maxLines: 1 ,text: "$location  ", overflow: TextOverflow.ellipsis,letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.6),),
               ),
             ],
           ),

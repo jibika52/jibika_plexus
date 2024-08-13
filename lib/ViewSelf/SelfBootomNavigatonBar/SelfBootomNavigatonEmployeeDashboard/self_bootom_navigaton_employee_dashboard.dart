@@ -4,12 +4,16 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:intl/intl.dart';
 import 'package:jibika_plexus/CustomSelfWedget/CustomMySelfJobCard/CustomMySelfJobCard3rdPart/custom_myself_jobcard3rdpart.dart';
 import 'package:jibika_plexus/CustomSelfWedget/CustomMySelfJobCard/SelfCustomCalender/self_custom_calender.dart';
 import 'package:jibika_plexus/CustomSelfWedget/self_profile_summary.dart';
 import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
 import 'package:pie_chart/pie_chart.dart';
+import 'package:provider/provider.dart';
+import '../../../Controller/SelfDashboardController/self_dashboard_controller.dart';
 import '../../../CustomWidget/CustomImage/custom_image.dart';
 
 class SelfBootomNavigatonEmployeeDashboard extends StatefulWidget {
@@ -27,11 +31,24 @@ class _SelfBootomNavigatonEmployeeDashboardState extends State<SelfBootomNavigat
 
   int  selectedindex=-1;
   String ? getindex;
+  @override
+  void initState() {
+    Provider.of<SelfDashboardController>(context,listen: false).selfOneMonthAttendanceProvider(
+        "${GetStorage().read("mobile_id")}",
+        "${DateFormat('dd-MMM-yyyy').format(DateTime.now())}",
+        "${GetStorage().read("RfIdCardNo")}",
+        "GENERAL",
+        context
+    );
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     double h=MediaQuery.of(context).size.height;
     double w=MediaQuery.of(context).size.width;
+    final  selfOneMonthAttendanceList=  Provider.of<SelfDashboardController>(context).selfOneMonthAttendanceList;
     return Scaffold(
       backgroundColor: home_default_color,
       body: Container(
@@ -58,7 +75,7 @@ class _SelfBootomNavigatonEmployeeDashboardState extends State<SelfBootomNavigat
 
                   Container(
                     height: 170,
-                    width: 170,
+                    width: 150,
                     child: LayoutBuilder(
                       builder: (_, constraints) {
                         return PieChart(
@@ -100,7 +117,8 @@ class _SelfBootomNavigatonEmployeeDashboardState extends State<SelfBootomNavigat
                 width: 400,
                 color: Main_Theme_WhiteCollor,
                 child: ListView.builder(
-                  itemCount: DateTime(DateTime.now().year, DateTime.now().month+1, 0).day,
+                //  itemCount: DateTime(DateTime.now().year, DateTime.now().month+1, 0).day,
+                  itemCount:selfOneMonthAttendanceList.length,
                   itemBuilder: (context, index) {
                     return InkWell(
                       onTap: () {
@@ -144,7 +162,17 @@ class _SelfBootomNavigatonEmployeeDashboardState extends State<SelfBootomNavigat
                                       bottomRight:Radius.circular( selectedindex==index?0:7),
                                     ),    ),
                                   width: double.infinity,
-                                  child: CustomMySelfJobCard3rdPart1(selectedindex: selectedindex==index?true:false,index: index,),
+                                  child: CustomMySelfJobCard3rdPart1
+                                    (selectedindex: selectedindex==index?true:false,
+                                    index: "$index",
+                                    //  index: selfOneMonthAttendanceList==null?"Processing":"${selfOneMonthAttendanceList[index]["IN_TIME"]}"==""?"00.00.00": "${selfOneMonthAttendanceList[index]["IN_TIME"].substring(selfOneMonthAttendanceList[index]["IN_TIME"].length - 15)}",
+                                 //  index: selfOneMonthAttendanceList==null?"Processing":"${selfOneMonthAttendanceList[index]["DUTY_DATE"]}"==""?"00.00.00": "${selfOneMonthAttendanceList[index]["DUTY_DATE"].substring(selfOneMonthAttendanceList[index]["DUTY_DATE"].length - 9)}",
+                                    text2: "Sat",
+                                    intime: selfOneMonthAttendanceList==null?"Processing":"${selfOneMonthAttendanceList[index]["IN_TIME"]}"==""?"--:--:--": "${selfOneMonthAttendanceList[index]["IN_TIME"].substring(selfOneMonthAttendanceList[index]["IN_TIME"].length - 8)}",
+                                    outTime: selfOneMonthAttendanceList==null?"Processing":"${selfOneMonthAttendanceList[index]["OUT_TIME"]}"==""?"--:--:--": "${selfOneMonthAttendanceList[index]["OUT_TIME"].substring(selfOneMonthAttendanceList[index]["OUT_TIME"].length - 8)}",
+                                    status:  "${selfOneMonthAttendanceList[index]["STATUS"]}",
+                                    location:  " ",
+                                  ),
                                 ),
                                 selectedindex==index?
                                 AnimatedContainer(
@@ -158,7 +186,7 @@ class _SelfBootomNavigatonEmployeeDashboardState extends State<SelfBootomNavigat
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           Divider(height: 0.5,),
-                                          CustomMySelfJobCard3rdPart(),
+                                          CustomMySelfJobCard3rdPart(late: "${selfOneMonthAttendanceList[index]["LATE"]??""}", Duration:  "${selfOneMonthAttendanceList[index]["ACTUAL_WORK_DURATION"]??""}", OT: "${selfOneMonthAttendanceList[index]["OT"]??""}", Shift_Plane: "${selfOneMonthAttendanceList[index]["SHIFT_PLAN"]??""}"),
                                           Divider(height: 0.5,),
                                           Container(
                                             height: 20,
@@ -179,27 +207,39 @@ class _SelfBootomNavigatonEmployeeDashboardState extends State<SelfBootomNavigat
                                             ),
                                             margin: EdgeInsets.only(left: 10,right: 10),
                                             padding: EdgeInsets.all(10),
-                                            child: ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400,maxLines: 2 ,text: "$Loremtext", letterSpacing: 0.3,textAlign: TextAlign.justify, textColor: Main_Theme_textColor.withOpacity(0.6),),
+                                            child: ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400,maxLines: 2 ,text:   "${selfOneMonthAttendanceList[index]["ATTENDANCE_REMARK"]??""}", letterSpacing: 0.3,textAlign: TextAlign.justify, textColor: Main_Theme_textColor.withOpacity(0.6),),
                                           ),
                                           Padding(
                                             padding: const EdgeInsets.only(left: 10.0,top: 5),
                                             child: ColorCustomText(fontSize: 13, fontWeight: FontWeight.w300, text: "Movement punch", letterSpacing: 0.3,textAlign: TextAlign.left ,textColor: Main_Theme_textColor.withOpacity(0.7)),
                                           ),
+                                          // Container(
+                                          //   height: 100,
+                                          //   margin: EdgeInsets.only(top: 7,left: 10,right: 10),
+                                          //   width: double.infinity,
+                                          //   child:
+                                          //   GridView.builder(
+                                          //     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                          //         crossAxisCount: 2,mainAxisSpacing:5, crossAxisSpacing: 5,mainAxisExtent: 15),
+                                          //     itemCount: 4,
+                                          //     physics: NeverScrollableScrollPhysics(),
+                                          //     itemBuilder: (context, index) {
+                                          //         return ColorCustomText(fontSize:11, fontWeight: FontWeight.w300, text: "10-sep-2024 : 10:20:44 (A-101)", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5));
+                                          //       },
+                                          //   ),
+                                          // )
+
                                           Container(
-                                            height: 100,
-                                            margin: EdgeInsets.only(top: 7,left: 10,right: 10),
-                                            width: double.infinity,
-                                            child:
-                                            GridView.builder(
-                                              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                                                  crossAxisCount: 2,mainAxisSpacing:5, crossAxisSpacing: 5,mainAxisExtent: 15),
-                                              itemCount: 4,
-                                              physics: NeverScrollableScrollPhysics(),
-                                              itemBuilder: (context, index) {
-                                                  return ColorCustomText(fontSize:11, fontWeight: FontWeight.w300, text: "10-sep-2024 : 10:20:44 (A-101)", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5));
-                                                },
+                                            decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.circular(7),
+                                              border: Border.all(color: Main_Theme_textColor.withOpacity(0.5)),
                                             ),
-                                          )
+                                            margin: EdgeInsets.only(left: 10,right: 10),
+                                            padding: EdgeInsets.all(10),
+                                            child: ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400,maxLines: 2 ,text:   "${selfOneMonthAttendanceList[index]["MOVEMENT_PUNCH"]??""}", letterSpacing: 0.3,textAlign: TextAlign.justify, textColor: Main_Theme_textColor.withOpacity(0.6),),
+                                          ),
+
+
                                         ],
                                       ),
                                     ),

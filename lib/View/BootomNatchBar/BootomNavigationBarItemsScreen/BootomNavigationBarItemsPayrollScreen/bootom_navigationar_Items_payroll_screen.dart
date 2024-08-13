@@ -382,10 +382,10 @@ class _BootomNavigationBarItemsPayrollScreenState extends State<BootomNavigation
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
                                   ColorCustomText(fontSize: 14, fontWeight: FontWeight.w500, text: "168", letterSpacing: 0.2, textColor: Main_Theme_textColor),
-                                  ColorCustomText(fontSize: 12, fontWeight: FontWeight.w300, text: "Net Payable Amount", letterSpacing: 0.2, textColor: Main_Theme_textColor.withOpacity(0.5)),
+                                  ColorCustomText(fontSize: 12, fontWeight: FontWeight.w300, text: "Net P. Amount", letterSpacing: 0.2, textColor: Main_Theme_textColor.withOpacity(0.5)),
                                 ],
                               ),
-                              SizedBox(width: 15,),
+                              Spacer(),
                               Icon(Icons.arrow_forward_ios_rounded,size: 22,color: Main_Theme_textColor,)
                             ],
                           ),

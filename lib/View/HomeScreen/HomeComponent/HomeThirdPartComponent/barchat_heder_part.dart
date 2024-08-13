@@ -32,7 +32,7 @@ class _BarchatHeaderPartState extends State<BarchatHeaderPart> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          ColorCustomText(text: "${widget.name}", fontSize:13, fontWeight: FontWeight.w500,letterSpacing: 0.3,textColor: Main_Theme_textColor.withOpacity(0.9)),
+          ColorCustomText(overflow: TextOverflow.ellipsis,text: "${widget.name}", fontSize:13, fontWeight: FontWeight.w500,letterSpacing: 0.3,textColor: Main_Theme_textColor.withOpacity(0.9)),
           ColorCustomText(text: "${widget.money}", fontSize: 14, fontWeight: FontWeight.w600,letterSpacing: 0.2,textColor: Main_Theme_textColor.withOpacity(0.6) ),
           ColorCustomText(text: "${widget.parpose}", fontSize: font11, fontWeight: FontWeight.w400,letterSpacing: 0.2,textColor: Main_Theme_textColor.withOpacity(0.6)),
         ],

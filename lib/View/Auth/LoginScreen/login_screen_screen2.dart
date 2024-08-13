@@ -103,23 +103,30 @@ bool is_iconClick=false;
                      )),
                  Positioned(
                      bottom: position2.value,
-                     child: Container(
+                     child: Stack(
+                       children: [
+                         Container(
 
-                       height: 110,
-                       width:MediaQuery.of(context).size.width,
-                       decoration: BoxDecoration(
-                           image: DecorationImage(image: AssetImage("Assets/Gif/leafmove.gif"),fit: BoxFit.fill)
-                       ),
+                                             //   height: 110,
+                           height: MediaQuery.of(context).size.height*0.13,
+                           width:MediaQuery.of(context).size.width,
+                           decoration: BoxDecoration(
+                               image: DecorationImage(image: AssetImage("Assets/Gif/leafmove.gif"),fit: BoxFit.fill)
+                           ),
+                         ),
+                         Positioned(
+                           // bottom: logoanimation.value-20.0,
+                             top: -6,
+                             left: 0,
+                             right: 0,
+                             child: Center(child:InkWell(
+                                 onTap: () {
+                                   Navigator.push(context, MaterialPageRoute(builder: (context) => ChoosePackageScreen(),));
+                                 },
+                                 child: ColorCustomText(fontSize: 15, fontWeight: FontWeight.w500, text: "Register as a Company", letterSpacing: 0.2, textColor: CustomButtonColor,)))),
+                       ],
                      )),
-                 Positioned(
-                     bottom: logoanimation.value-20.0,
-                     left: 0,
-                     right: 0,
-                     child: Center(child:InkWell(
-                       onTap: () {
-                         Navigator.push(context, MaterialPageRoute(builder: (context) => ChoosePackageScreen(),));
-                       },
-                         child: ColorCustomText(fontSize: 15, fontWeight: FontWeight.w500, text: "Register as a Company", letterSpacing: 0.2, textColor: CustomButtonColor,)))),
+
 
         
                  // Positioned(

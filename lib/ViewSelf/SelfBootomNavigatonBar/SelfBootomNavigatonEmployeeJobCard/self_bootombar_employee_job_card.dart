@@ -31,7 +31,7 @@ class _SelfBootomBarJobCardScreenState extends State<SelfBootomBarJobCardScreen>
     "Conv.",
     "Loan",
     "Prod",
-    "Complaint.",
+    "Complain",
   ];
   List listimage=[
     "Assets/DashBoardIcons/employee_icon.png",

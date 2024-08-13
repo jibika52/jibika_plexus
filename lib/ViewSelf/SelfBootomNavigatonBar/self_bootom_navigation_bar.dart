@@ -314,7 +314,7 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
                   height: b_bar_height,
                   child: Column(
                     children: [
-                      CustomImageSction2(height: b_bar_icon_size,width: b_bar_icon_size,  img_color: widget.currentIndex==3? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5), radius: 5, image: "Assets/SelfIcon/conveyance.png"),
+                      CustomImageSction2(height: b_bar_icon_size,width: b_bar_icon_size,  img_color: widget.currentIndex==3? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5), radius: 5, image: "Assets/SelfIcon/Conveyance_edited1.png"),
                       SizedBox(height: 2,),
                       ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Conveyance", letterSpacing: 0.3, textColor: widget.currentIndex==3? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
                     ],

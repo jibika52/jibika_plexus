@@ -151,7 +151,7 @@ class _SelfLoanScreenState extends State<SelfLoanScreen> {
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Divider(height: 0.5,),
-                                      CustomMySelfJobCard3rdPart(),
+                                      CustomMySelfJobCard3rdPart(late: "10:00", Duration: "8:10:10", OT: "02.00.00", Shift_Plane: "General"),
                                       Divider(height: 0.5,),
                                       Container(
                                         height: 20,

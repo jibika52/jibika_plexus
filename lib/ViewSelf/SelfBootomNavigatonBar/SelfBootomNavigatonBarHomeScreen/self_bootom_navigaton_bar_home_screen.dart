@@ -52,7 +52,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
       );
       Placemark place = placemarks[0];
       setState(() {
-        Provider.of<SelfDashboardController>(context,listen: false).dashboardSalaryComprisonListProvider("${GetStorage().read("mobile_id")}", "${DateFormat('yyyyMMdd').format(DateTime.now())}",DateTime.now().second>9? "${DateTime.now().hour}${DateTime.now().minute}${DateTime.now().second}": "${DateTime.now().hour}${DateTime.now().minute}0${DateTime.now().second}", "${GetStorage().read("RfIdCardNo")}", "${place.name}", "${place.locality}", "${place.administrativeArea}", "${place.postalCode}", "${place.subAdministrativeArea}", "${place.street.toString()}", "${_currentPosition!.latitude}", "${_currentPosition!.longitude}", int.parse("${"${GetStorage().read("Empcode")}"}"), "${DateFormat('dd-MMM-yyyy').format(DateTime.now())}", "", context);
+        Provider.of<SelfDashboardController>(context,listen: false).dashboardSalaryComprisonListProvider("${GetStorage().read("mobile_id")}", "${DateFormat('yyyyMMdd').format(DateTime.now())}",DateTime.now().second>9? "${DateTime.now().hour}${DateTime.now().minute}${DateTime.now().second}": "${DateTime.now().hour}${DateTime.now().minute}0${DateTime.now().second}", "${GetStorage().read("RfIdCardNo")}", "${place.name}", "${place.locality}", "${place.administrativeArea}", "${place.postalCode}", "${place.subAdministrativeArea}", "${place.street.toString()}", "${_currentPosition!.latitude}", "${_currentPosition!.longitude}", int.parse("${"${GetStorage().read("Empcode")}"}"), "${DateFormat('dd-MMM-yyyy').format(DateTime.now())}", "${_descriptionController.text}", context);
       });
     } catch (e) {
       print(e);
@@ -61,10 +61,16 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
   }
   int second=0;
   bool is_select_Comment=false;
+  int i=0;
   @override
-  void initState() {
-
-    Provider.of<SelfDashboardController>(context,listen: false).selfOneMonthAttendanceProvider("${GetStorage().read("mobile_id")}", "${DateFormat('dd-MMM-yyyy').format(DateTime.now())}", "${GetStorage().read("RfIdCardNo")}", "GENERAL", context);
+  void initState() { 
+    Provider.of<SelfDashboardController>(context,listen: false).selfOneMonthAttendanceProvider(
+        "${GetStorage().read("mobile_id")}",
+        "${DateFormat('dd-MMM-yyyy').format(DateTime.now())}",
+        "${GetStorage().read("RfIdCardNo")}",
+        "GENERAL",
+        context
+    );
     Provider.of<HomeProvider>(context,listen: false).dashboardTodaysBirthdayEmployeeInfoProvider("${GetStorage().read("mobile_id")}", "", context); // Todays birthday
     permissionn();
     Timer.periodic(Duration(seconds: 1), (timer) {
@@ -78,16 +84,53 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
   double Animatedwidth=170;
   double animated_height=0;
   bool is_clicked=false;
+
+
   Future<void> _refreshData() async {
     await Future.delayed(Duration(seconds: 2));
     setState(() {
-      Provider.of<SelfDashboardController>(context,listen: false).selfOneMonthAttendanceProvider("${GetStorage().read("mobile_id")}", "${DateFormat('dd-MMM-yyyy').format(DateTime.now())}", "${GetStorage().read("RfIdCardNo")}", "GENERAL", context);
+      Provider.of<SelfDashboardController>(context,listen: false).selfOneMonthAttendanceProvider
+        ("${GetStorage().read("mobile_id")}",
+          "${DateFormat('dd-MMM-yyyy').format(DateTime.now())}",
+          "${GetStorage().read("RfIdCardNo")}",
+          "GENERAL", context);
     });
   }
   @override
   Widget build(BuildContext context) {
+    List pdated_attendance_summary=[];
     final  dashboardtodaysBirthdayEmployeeinfo=  Provider.of<HomeProvider>(context).dashboardtodaysBirthdayEmployeeinfo;
     final  selfOneMonthAttendanceList=  Provider.of<SelfDashboardController>(context).selfOneMonthAttendanceList;
+
+
+
+
+        //
+        // for(i=0;i<DateTime(DateTime.now().year, DateTime.now().month+1, 0).day;i++){
+        //   pdated_attendance_summary.add(updated_attendance_summary(date: "${i}",Status:  "$i"));
+        //
+        //
+        //   for(int j=0;j<selfOneMonthAttendanceList.length;j++){
+        //     if(i==selfOneMonthAttendanceList[j]["DUTY_DATE"].substring(0,2)){
+        //
+        //       print("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS $j");
+        //
+        //    //   pdated_attendance_summary.replaceRange(j, j + 1, [updated_attendance_summary(date: "$j",Status:  "P")]);
+        //    //   pdated_attendance_summary.replaceRange(j, j + 1, [updated_attendance_summary(date: "$j",Status:  "${selfOneMonthAttendanceList[j]["Status"]}")]);
+        //   //    pdated_attendance_summary.insert(j,updated_attendance_summary(date: "$j",Status:  "${selfOneMonthAttendanceList[j]["Status"]}") );
+        //
+        //
+        //     }
+        //   }
+        //
+        //
+        // }
+
+
+
+for(int k=0;k<pdated_attendance_summary.length;k++){
+  print("cccccccc$k cccccccccccc ${pdated_attendance_summary[k]}");
+}
 
     return Scaffold(
       backgroundColor: home_default_color,
@@ -134,7 +177,8 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                          SizedBox(width: 3,),
                                          Image.asset("Assets/DashBoardIcons/b_bar_attendence.png",height: 18,width: 18,fit: BoxFit.fill,color: Colors.grey,),
                                          ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "   Check In : ", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
-                                         ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "${selfOneMonthAttendanceList.last["IN_TIME"].substring(selfOneMonthAttendanceList.last["IN_TIME"].length - 8)}", letterSpacing: 0.3, textColor: Main_Theme_textColor ,),
+                                         //      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "10:10:10", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
+                                        ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text:selfOneMonthAttendanceList==null?"Processing":"${selfOneMonthAttendanceList[selfOneMonthAttendanceList.length-1]["IN_TIME"]}"==""?"": "${selfOneMonthAttendanceList.last["IN_TIME"].substring(selfOneMonthAttendanceList.last["IN_TIME"].length - 8)}", letterSpacing: 0.3, textColor: Main_Theme_textColor ,),
              
                                        ],
                                      ),
@@ -145,13 +189,15 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                        children: [
                                          Image.asset("Assets/DashBoardIcons/location.png",height: 24,width: 24,fit: BoxFit.fill,color: Colors.grey,),
                                          ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "  Check Out : ", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
-                                         ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "${selfOneMonthAttendanceList.last["OUT_TIME"].substring(selfOneMonthAttendanceList.last["IN_TIME"].length - 8)}", letterSpacing: 0.3, textColor: Main_Theme_textColor ,),
+                                         //      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "10:10:10", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
+
+                                           ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text:selfOneMonthAttendanceList==null?"Processing":"${selfOneMonthAttendanceList[selfOneMonthAttendanceList.length-1]["OUT_TIME"]}"==""?"": "${selfOneMonthAttendanceList.last["OUT_TIME"].substring(selfOneMonthAttendanceList.last["OUT_TIME"].length - 8)}", letterSpacing: 0.3, textColor: Main_Theme_textColor ,),
              
                                        ],
                                      ),
                                    ],
                                  ),
-                                 ),
+                              ),
                              ),
                              Expanded(
                                  flex: 2,
@@ -209,7 +255,6 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                  CustomizeButton(text: "Check In", textColor: Main_Theme_textColor.withOpacity(0.5), presentsent_color: presentsent_color, fontSize: 12,
                                    onTap: () {
                                    ///-Attendance Area ---------------------
-         
                                      _getCurrentLocation();
                                    },),
                                  SizedBox(width: 10,),
@@ -218,7 +263,6 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                       ///-Attendance Area ---------------------
                                       _getCurrentLocation();
                                     },)
-             
                                ],
                              ),
                            ),
@@ -240,26 +284,6 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                  ),
                                  child: Row(
                                    children: [
-                                     // InkWell(
-                                     //   onTap: () {
-                                     //     Future.delayed(Duration(milliseconds: 100),() {
-                                     //       setState(() {
-                                     //         Animatedwidth=MediaQuery.of(context).size.width*0.45;
-                                     //       });
-                                     //     },);
-                                     //   },
-                                     //   child: Container(
-                                     //    // margin: EdgeInsets.symmetric(horizontal: 5),
-                                     //     height: 24,
-                                     //     width: 36,
-                                     //     decoration: BoxDecoration(
-                                     //       color: Colors.green,
-                                     //       //  image: DecorationImage(image: AssetImage("Assets/PrimaryInformation/chat2.png"),fit: BoxFit.fill)
-                                     //     ),
-                                     //     alignment: Alignment.center,
-                                     //     child: Text("send",style: TextStyle(fontSize: 11),),
-                                     //   ),
-                                     // ),
                                      Expanded(
                                          child: Container(
                                            margin: EdgeInsets.only(bottom: 0),
@@ -285,7 +309,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                                color : Main_Theme_textColor.withOpacity(0.8),
                                              ),
                                              decoration: InputDecoration(
-                                               hintText: "Comments here",
+                                               hintText:selfOneMonthAttendanceList==null?"Processing":"${selfOneMonthAttendanceList[selfOneMonthAttendanceList.length-1]["ATTENDANCE_REMARK"]}"==""?"Remarks here": "${selfOneMonthAttendanceList.last["ATTENDANCE_REMARK"]}",
                                                contentPadding: EdgeInsets.only(top: -20,right: 10,left: 7),
                                                hintStyle: GoogleFonts.poppins(
                                                  fontSize : 10,
@@ -295,7 +319,8 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                                border: InputBorder.none,
                                              ),
                                            ),
-                                         )),
+                                         )
+                                     ),
                                      InkWell(
                                        onTap: () {
                                          _getCurrentLocation();
@@ -325,7 +350,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                          ],
                        ),
                        /// First Down Side Part------------------------------------------
-             
+
                      ],
                    ),
                  ),
@@ -459,6 +484,8 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                      ],
                    ),
                  ),
+
+
                   /// Animated Calender /...........Calender....................................
                  AnimatedContainer(
                    margin: EdgeInsets.only(left: 10,right: 10, top:is_clicked==false?0: apps_div_margin),
@@ -499,29 +526,33 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                            height: 175,
                            width: double.infinity,
                            child: GridView.builder(
-                             itemCount: DateTime.now().day,
+                             itemCount: pdated_attendance_summary.length,
+
                              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                                  crossAxisCount: 7,
                                  mainAxisExtent: 26,
                                  crossAxisSpacing: 0,
                                  mainAxisSpacing: 10
                              ), itemBuilder: (context, index) {
-                             return CircleAvatar(
+                              return   CircleAvatar(
                                radius: 26,
-                               backgroundColor: CustomButtonColor,
+                                backgroundColor:  CustomButtonColor ,
                                child: Padding(
                                  padding: const EdgeInsets.all(2.0),
                                  child: CircleAvatar(
                                    radius: 26,
-                                   backgroundColor:  Colors.white ,
-                                   child: ColorCustomText(
+                                   backgroundColor:pdated_attendance_summary[index].Status =="" ?Main_Theme_textColor:pdated_attendance_summary[index].Status =="P" ?presentsent_color :pdated_attendance_summary[index].Status =="AB" ?absent_color:pdated_attendance_summary[index].Status=="WH"?holiday_color:  Colors.red,
+                                    child: ColorCustomText(
                                      fontSize: 12, fontWeight: FontWeight.w400,
-                                     text: "${index+1}", letterSpacing: 0.3,
-                                     textColor: index>10? Main_Theme_WhiteCollor : Main_Theme_textColor
+                                       //text: "${index+1}",
+                                       text: "${pdated_attendance_summary[index].Status}",
+                                      letterSpacing: 0.3,
+                                     textColor: Main_Theme_textColor
                                      ,),
                                  ),
                                ),
                              );
+
                            },
                            ),
                          ),
@@ -529,6 +560,16 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                      ),
                    ),
                  ),
+
+
+
+
+
+
+
+
+
+
                   /// 3rd part---------My leave status--------------------------------------------------------
                  Container(
                    decoration: BoxDecoration(
@@ -631,4 +672,13 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
   //   }
   // }
 
+}
+
+class updated_attendance_summary{
+  updated_attendance_summary({
+    required this.date,
+    required this.Status
+});
+String ? date;
+  String ? Status;
 }
