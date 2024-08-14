@@ -90,8 +90,6 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
   double Animatedwidth=170;
   double animated_height=0;
   bool is_clicked=false;
-  String ? in_time;
-  String ? out_time;
 
   Future<void> _refreshData() async {
     await Future.delayed(Duration(seconds: 2));
@@ -105,11 +103,45 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
 
 
   }
+  String ? checkin;
+  String ? checkout;
   @override
   Widget build(BuildContext context) {
+    double P_Count=0;
+    double AB_Count=0;
+    double L_Count=0;
+    double HL_Count=0;
+    checkin="";
+    checkout="";
+    bool is_clicked=false;
     final  dashboardtodaysBirthdayEmployeeinfo=  Provider.of<HomeProvider>(context).dashboardtodaysBirthdayEmployeeinfo;
       List<Updated_attendance_summary>   selfOneMonthAttendanceList =  Provider.of<SelfDashboardController>(context).selfOneMonthAttendanceList;
+  print("ccccccccccccccccccccccccccccccccccccccccccccc ${DateTime.now().day}");
+    for(var i in selfOneMonthAttendanceList){
+      if("${i.date}"=="${DateTime.now().day}"){
+        checkin =i.iNTIME ;
+        checkout =i.oUTTIME ;
+      }
+    }
+    
+    for(var i in selfOneMonthAttendanceList){
 
+      if("${i.Status}"=="P"){
+        P_Count++;
+      }
+      else if("${i.Status}"=="AB"){
+        AB_Count++;
+      }
+      else if("${i.Status!.substring(i.Status!.length-1)}"=="L" ){
+        L_Count++;
+      }
+      else if("${i.Status!.substring(i.Status!.length-1)}"=="H" ){
+        HL_Count++;
+      }
+      else{
+        //   HL_Count++;
+      }
+    }
     return Scaffold(
       backgroundColor: home_default_color,
        body: RefreshIndicator(
@@ -144,7 +176,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                    crossAxisAlignment: CrossAxisAlignment.start,
                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                    children: [
-                                     CustomText(fontSize: 13, fontWeight: FontWeight.w500, text: "  My Presence $in_time $out_time", letterSpacing: 0.3),
+                                     CustomText(fontSize: 13, fontWeight: FontWeight.w500, text: "  My Presence  ", letterSpacing: 0.3),
                                      // ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "${DateTime.now().hour}${DateTime.now().minute}${DateTime.now().second}", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
                                      //      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: DateTime.now().second>9? "${DateTime.now().hour}${DateTime.now().minute}${DateTime.now().second}": "${DateTime.now().hour}${DateTime.now().minute}0${DateTime.now().second}", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
                                     ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "${DateFormat('dd-MMM-yyyy').format(DateTime.now())}", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
@@ -154,7 +186,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                        children: [
                                          SizedBox(width: 3,),
                                          Image.asset("Assets/DashBoardIcons/b_bar_attendence.png",height: 18,width: 18,fit: BoxFit.fill,color: Colors.grey,),
-                                         ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "   Check In : ", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
+                                         ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "   Check In : $checkin", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
                                          //      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "10:10:10", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
                                     //    ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text:selfOneMonthAttendanceList==null?"Processing":"${selfOneMonthAttendanceList[selfOneMonthAttendanceList.length-1]["IN_TIME"]}"==""?"": "${selfOneMonthAttendanceList.last["IN_TIME"].substring(selfOneMonthAttendanceList.last["IN_TIME"].length - 8)}", letterSpacing: 0.3, textColor: Main_Theme_textColor ,),
              
@@ -166,7 +198,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                        crossAxisAlignment: CrossAxisAlignment.center,
                                        children: [
                                          Image.asset("Assets/DashBoardIcons/location.png",height: 24,width: 24,fit: BoxFit.fill,color: Colors.grey,),
-                                         ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "  Check Out : ", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
+                                         ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "  Check Out : ${checkout}", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
                                          //      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "10:10:10", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
 
                                        //    ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text:selfOneMonthAttendanceList==null?"Processing":"${selfOneMonthAttendanceList[selfOneMonthAttendanceList.length-1]["OUT_TIME"]}"==""?"": "${selfOneMonthAttendanceList.last["OUT_TIME"].substring(selfOneMonthAttendanceList.last["OUT_TIME"].length - 8)}", letterSpacing: 0.3, textColor: Main_Theme_textColor ,),
@@ -231,13 +263,19 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                              child: Row(
                                mainAxisAlignment: MainAxisAlignment.end,
                                children: [
-                                 CustomizeButton(text: "Check In", textColor: Main_Theme_textColor.withOpacity(0.5), presentsent_color: presentsent_color, fontSize: 12,
+                                 CustomizeButton(text: "Check In", textColor: Main_Theme_textColor.withOpacity(0.5),
+                                   presentsent_color: presentsent_color, fontSize: 11,
+                                 is_clicked: is_clicked,
                                    onTap: () {
+                                   setState(() {
+                                     is_clicked=true;
+                                   });
                                    ///-Attendance Area ---------------------
                                      _getCurrentLocation();
                                    },),
                                  SizedBox(width: 10,),
-                                  CustomizeButton(text: "Check Out", textColor: Main_Theme_textColor.withOpacity(0.5), presentsent_color: presentsent_color, fontSize: 12,
+                                  CustomizeButton(text: "Check Out", textColor: Main_Theme_textColor.withOpacity(0.5),
+                                    presentsent_color: presentsent_color, fontSize: 11,
                                     onTap: () {
                                       ///-Attendance Area ---------------------
                                       _getCurrentLocation();
@@ -255,7 +293,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                  width: Animatedwidth,
                                  decoration: BoxDecoration(
                                    color: Main_Theme_WhiteCollor,
-                                   borderRadius: BorderRadius.circular(6),
+                                   borderRadius: BorderRadius.circular(50),
                                    border:Border.all(
                                      width: 1,
                                      color: Main_Theme_textColor.withOpacity(0.5),
@@ -275,7 +313,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                                  ),
                                                  () {
                                                    setState(() {
-                                                     Animatedwidth=MediaQuery.of(context).size.width*0.896;
+                                                     Animatedwidth=MediaQuery.of(context).size.width*0.905;
                                                    });
                                                  },
                                                  );
@@ -302,23 +340,30 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                      ),
                                      InkWell(
                                        onTap: () {
-                                         _getCurrentLocation();
-                                         Future.delayed(Duration(milliseconds: 100),() {
-                                           setState(() {
-                                             Animatedwidth=MediaQuery.of(context).size.width*0.43;
-                                           });
-                                         },);
+                                         if(_descriptionController.text.isNotEmpty){
+                                        //   _getCurrentLocation();
+                                           Future.delayed(Duration(milliseconds: 100),() {
+                                             setState(() {
+                                               Animatedwidth=MediaQuery.of(context).size.width*0.43;
+                                             });
+                                           },);
+                                         }
+
                                        },
                                        child: Container(
                                          // margin: EdgeInsets.symmetric(horizontal: 5),
                                          height: 24,
-                                         width: 36,
+                                         width: 55,
                                          decoration: BoxDecoration(
-                                           color: presentsent_color,
+                                           color: presentsent_color.withOpacity(0.7),
+                                           borderRadius: BorderRadius.only(
+                                             bottomRight: Radius.circular(50),
+                                             topRight: Radius.circular(50)
+                                           )
                                            //  image: DecorationImage(image: AssetImage("Assets/PrimaryInformation/chat2.png"),fit: BoxFit.fill)
                                          ),
                                          alignment: Alignment.center,
-                                         child: Text("send",style: TextStyle(fontSize: 11,fontWeight: FontWeight.w300,color: Colors.black,),
+                                         child: Text("Remarks",style: TextStyle(fontSize: 11,fontWeight: FontWeight.w400,color: Main_Theme_textColor,),
                                        ),
                                      ),
                                      ),
@@ -391,10 +436,10 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                  ),
                                ),
                                child: Row(
+                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                  children: [
                                  ColorCustomText(fontSize: 12, fontWeight: FontWeight.w500, text: "P", letterSpacing: 0.2,textColor: presentsent_color,),
-                                 Spacer(),
-                                 ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "69", letterSpacing: 0.2, textColor: Main_Theme_textColor.withOpacity(0.7), ),
+                                 ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "${double.parse("$P_Count").toStringAsFixed(0)}", letterSpacing: 0.2, textColor: Main_Theme_textColor.withOpacity(0.7), ),
                                ],),
                              ),
                              Spacer(),
@@ -406,10 +451,11 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                    bottom: BorderSide(width: 4,color: absent_color)
                                  ),
                                ),
-                               child: Row(children: [
+                               child: Row(
+                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                 children: [
                                  ColorCustomText(fontSize: 12, fontWeight: FontWeight.w500, text: "A", letterSpacing: 0.2,textColor: absent_color,),
-                                 Spacer(),
-                                 ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "69", letterSpacing: 0.2, textColor: Main_Theme_textColor.withOpacity(0.7), ),
+                                 ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "${double.parse("$AB_Count").toStringAsFixed(0)}", letterSpacing: 0.2, textColor: Main_Theme_textColor.withOpacity(0.7), ),
                                ],),
                              ),
                              Spacer(),
@@ -421,10 +467,11 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                    bottom: BorderSide(width: 4,color: leave_color)
                                  ),
                                ),
-                               child: Row(children: [
+                               child: Row(
+                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                 children: [
                                  ColorCustomText(fontSize: 12, fontWeight: FontWeight.w500, text: "L", letterSpacing: 0.2,textColor: leave_color,),
-                                 Spacer(),
-                                 ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "69", letterSpacing: 0.2, textColor: Main_Theme_textColor.withOpacity(0.7), ),
+                                 ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "${double.parse("$L_Count").toStringAsFixed(0)}", letterSpacing: 0.2, textColor: Main_Theme_textColor.withOpacity(0.7), ),
                                ],),
                              ),
                              Spacer(),
@@ -436,10 +483,12 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                    bottom: BorderSide(width: 4,color: holiday_color)
                                  ),
                                ),
-                               child: Row(children: [
+                               child: Row(
+                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                 children: [
                                  ColorCustomText(fontSize: 12, fontWeight: FontWeight.w500, text: "H", letterSpacing: 0.2,textColor: holiday_color,),
-                                 Spacer(),
-                                 ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "69", letterSpacing: 0.2, textColor: Main_Theme_textColor.withOpacity(0.7), ),
+
+                                 ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text:"${double.parse("$HL_Count").toStringAsFixed(0)}", letterSpacing: 0.2, textColor: Main_Theme_textColor.withOpacity(0.7), ),
                                ],),
                              ),
                              Spacer(),
@@ -520,11 +569,18 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                  padding: const EdgeInsets.all(2.0),
                                  child: CircleAvatar(
                                    radius: 26,
-                                   backgroundColor:selfOneMonthAttendanceList[index].Status =="" ?
-                                   Main_Theme_textColor:selfOneMonthAttendanceList[index].Status =="P" ?
-                                   presentsent_color :selfOneMonthAttendanceList[index].Status =="AB" ?
-                                   absent_color:selfOneMonthAttendanceList[index].Status=="WH"?
-                                   holiday_color:  Main_Theme_WhiteCollor,
+                                   backgroundColor:
+                                   selfOneMonthAttendanceList[index].Status =="" ? Main_Theme_textColor
+                                       :
+                                   selfOneMonthAttendanceList[index].Status =="P" ? presentsent_color
+                                       :
+                                   selfOneMonthAttendanceList[index].Status =="AB" ? absent_color
+                                       :
+                                   selfOneMonthAttendanceList[index].Status!.substring(selfOneMonthAttendanceList[index].Status!.length-1)=="H"   ? holiday_color
+                                       :
+                                   selfOneMonthAttendanceList[index].Status!.substring(selfOneMonthAttendanceList[index].Status!.length-1)=="L" ? leave_color
+                                       :
+                                   Main_Theme_WhiteCollor,
 
                                     child: ColorCustomText(
                                      fontSize: 12, fontWeight: FontWeight.w400,

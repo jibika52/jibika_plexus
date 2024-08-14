@@ -44,12 +44,35 @@ class _SelfBootomNavigatonEmployeeDashboardState extends State<SelfBootomNavigat
     // TODO: implement initState
     super.initState();
   }
-
   @override
   Widget build(BuildContext context) {
+    double P_Count=0;
+    double AB_Count=0;
+    double L_Count=0;
+    double HL_Count=0;
+
     double h=MediaQuery.of(context).size.height;
     double w=MediaQuery.of(context).size.width;
     List<Updated_attendance_summary>  selfOneMonthAttendanceList=  Provider.of<SelfDashboardController>(context).selfOneMonthAttendanceList;
+
+    for(var i in selfOneMonthAttendanceList){
+      if("${i.Status}"=="P"){
+        P_Count++;
+      }
+      else if("${i.Status}"=="AB"){
+        AB_Count++;
+      }
+      else if("${i.Status!.substring(i.Status!.length-1)}"=="L" ){
+        L_Count++;
+      }
+      else if("${i.Status!.substring(i.Status!.length-1)}"=="H" ){
+        HL_Count++;
+      }
+      else{
+     //   HL_Count++;
+      }
+    }
+
     return Scaffold(
       backgroundColor: home_default_color,
       body: Container(
@@ -88,12 +111,12 @@ class _SelfBootomNavigatonEmployeeDashboardState extends State<SelfBootomNavigat
                           /// Customize Right Side Option ----------------------------------P L H A----------.
                           legendOptions: LegendOptions(
                               legendTextStyle: TextStyle(fontSize: 10,fontWeight: FontWeight.w400,)),
-                          dataMap: {"P": 5, "A": 2, "L": 3, "H": 2,},
+                          dataMap: {"P(${double.parse("$P_Count").toStringAsFixed(0)}D) ": P_Count, "A(${double.parse("$AB_Count").toStringAsFixed(0)}D)": AB_Count, "L(${double.parse("$L_Count").toStringAsFixed(0)}D)": L_Count, "H ($HL_Count)D": HL_Count,},
                           animationDuration: const Duration(milliseconds: 800),
                           chartLegendSpacing: 10,
                           chartRadius: math.min(MediaQuery.of(context).size.width / 3.2, 300), // radius komay baray
                           colorList: [
-                            presentsent_color, absent_color, holiday_color, leave_color
+                            presentsent_color, absent_color,  leave_color,holiday_color
                           ],
                           initialAngleInDegree: 0,
                           ringStrokeWidth: -4,
@@ -186,8 +209,8 @@ class _SelfBootomNavigatonEmployeeDashboardState extends State<SelfBootomNavigat
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           Divider(height: 0.5,),
-                                       //   CustomMySelfJobCard3rdPart(late: "${selfOneMonthAttendanceList[index]["LATE"]??""}", Duration:  "${selfOneMonthAttendanceList[index]["ACTUAL_WORK_DURATION"]??""}", OT: "${selfOneMonthAttendanceList[index]["OT"]??""}", Shift_Plane: "${selfOneMonthAttendanceList[index]["SHIFT_PLAN"]??""}"),
-                                          CustomMySelfJobCard3rdPart(late: "   ", Duration:  "    ", OT: " ", Shift_Plane: " "),
+                                         CustomMySelfJobCard3rdPart(late: "${selfOneMonthAttendanceList[index].lATE??""}", Duration:  "${selfOneMonthAttendanceList[index].aCTUALWORKDURATION??""}", OT: "${selfOneMonthAttendanceList[index].oT??""}", Shift_Plane: "${selfOneMonthAttendanceList[index].sHIFTPLAN??""}"),
+                                          //  CustomMySelfJobCard3rdPart(late: "   ", Duration:  "    ", OT: " ", Shift_Plane: " "),
                                           Divider(height: 0.5,),
                                           Container(
                                             height: 20,
@@ -230,7 +253,6 @@ class _SelfBootomNavigatonEmployeeDashboardState extends State<SelfBootomNavigat
                                           //       },
                                           //   ),
                                           // )
-
                                           Container(
                                             decoration: BoxDecoration(
                                               borderRadius: BorderRadius.circular(7),
