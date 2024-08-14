@@ -133,10 +133,9 @@ class CustomHttpSelf{
               tempday = int.parse("${item["DUTY_DATE"].substring(0, 2)}");
               if(tempday==i){
                 print("duty date:${int.parse("${item["DUTY_DATE"].substring(0, 2)}")}");
-
                 tempobj.Status = "${item["STATUS"]}";
-                  tempobj.iNTIME ="${item["IN_TIME"]}"==""?"--:--:--" : "${item["IN_TIME"].substring(5, 10)}";
-                  tempobj.oUTTIME="${item["OUT_TIME"]}"==""?"--:--:--" : "${item["OUT_TIME"].substring(5, 10)}";
+                  tempobj.iNTIME ="${item["IN_TIME"]}"==""?"--:--:--" : "${item["IN_TIME"].substring(12, 20)}";
+                  tempobj.oUTTIME="${item["OUT_TIME"]}"==""?"--:--:--" : "${item["OUT_TIME"].substring(12, 20)}";
                   tempobj.lATE= "${item["LATE"]}";
                   tempobj.aCTUALWORKDURATION= "${item["ACTUAL_WORK_DURATION"]}";
                   tempobj.oT= "${item["OT"]}";
