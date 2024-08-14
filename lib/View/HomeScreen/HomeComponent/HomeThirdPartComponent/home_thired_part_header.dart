@@ -53,24 +53,32 @@ class _HomeThiredPartHeaderState extends State<HomeThiredPartHeader> {
           parpose: "Salary",
         ),
         Container(height: 50,width:1,color: Main_Theme_textColor.withOpacity(0.3),),
-        SizedBox(width: 5,),
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(11),
-                topLeft: Radius.circular(11)
-            ),
-          //  color: Main_Theme_textColor_tir_Condition.withOpacity(0.1),
+        SizedBox(width: 7,),
+        InkWell(
+          onTap: () {
+            _onPressed(context: context);
+          },
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(11),
+                  topLeft: Radius.circular(11)
+              ),
+            //  color: Main_Theme_textColor_tir_Condition.withOpacity(0.1),
             //   color: Colors.red,
-          ),
-          padding: EdgeInsets.symmetric(vertical: 6 ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-               CustomImageSction(height: 24, width: 24, radius: 3, image: "Assets/DashBoardIcons/clender.png"),
-             ColorCustomText(text:_selected_pick_month==null?"${DateFormat("MMM").format(DateTime.now())}":"${DateFormat('MMM').format(_selected_pick_month!)}", fontSize: 11, fontWeight: FontWeight.w400, letterSpacing: 0.3,textColor: Main_Theme_textColor.withOpacity(0.6),),
-             ColorCustomText(text:_selected_pick_month==null?"${DateFormat("yyyy").format(DateTime.now())}":"${DateFormat('MMM').format(_selected_pick_month!)}", fontSize: 11, fontWeight: FontWeight.w400, letterSpacing: 0.3,textColor: Main_Theme_textColor.withOpacity(0.6),),
-            ],
+            ),
+            padding: EdgeInsets.only( top: 2,bottom: 2),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+               CustomImageSction(height: 20, width: 20, radius: 3, image: "Assets/DashBoardIcons/clender.png"),
+               SizedBox(height: 2,),
+               ColorCustomText(text:_selected_pick_month==null?"${DateFormat("MMM").format(DateTime.now())}":"${DateFormat('MMM').format(_selected_pick_month!)}", fontSize: 14, fontWeight: FontWeight.w600, letterSpacing: 0.3,textColor: Main_Theme_textColor.withOpacity(0.6),),
+                SizedBox(height: 2,),
+                ColorCustomText(text:_selected_pick_month==null?"${DateFormat("yyyy").format(DateTime.now())}":"${DateFormat('yyyy').format(_selected_pick_month!)}", fontSize: 11, fontWeight: FontWeight.w400, letterSpacing: 0.3,textColor: Main_Theme_textColor.withOpacity(0.6),),
+                Spacer(),
+              ],
+            ),
           ),
         )
       ],

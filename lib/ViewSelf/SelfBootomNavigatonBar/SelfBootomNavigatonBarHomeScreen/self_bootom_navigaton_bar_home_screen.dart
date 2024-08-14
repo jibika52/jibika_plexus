@@ -664,20 +664,14 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
 // }
 
 class Updated_attendance_summary{
-
-
-
 String? date;
 String? Status;
 String? iNTIME;
 String? oUTTIME;
 String? lATE;
 String? aCTUALWORKDURATION;
-
 String? oT;
-
 String? sHIFTPLAN;
-
 String? aTTENDANCEREMARK;
 String? mOVEMENTPUNCH  ;
 }
