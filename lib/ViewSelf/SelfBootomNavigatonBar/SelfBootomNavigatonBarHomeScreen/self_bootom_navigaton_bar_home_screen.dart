@@ -5,6 +5,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
@@ -52,7 +53,10 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
       );
       Placemark place = placemarks[0];
       setState(() {
-        Provider.of<SelfDashboardController>(context,listen: false).dashboardSalaryComprisonListProvider("${GetStorage().read("mobile_id")}", "${DateFormat('yyyyMMdd').format(DateTime.now())}",DateTime.now().second>9? "${DateTime.now().hour}${DateTime.now().minute}${DateTime.now().second}": "${DateTime.now().hour}${DateTime.now().minute}0${DateTime.now().second}", "${GetStorage().read("RfIdCardNo")}", "${place.name}", "${place.locality}", "${place.administrativeArea}", "${place.postalCode}", "${place.subAdministrativeArea}", "${place.street.toString()}", "${_currentPosition!.latitude}", "${_currentPosition!.longitude}", int.parse("${"${GetStorage().read("Empcode")}"}"), "${DateFormat('dd-MMM-yyyy').format(DateTime.now())}", "${_descriptionController.text}", context);
+        Provider.of<SelfDashboardController>(context,listen: false).dashboardSalaryComprisonListProvider("${GetStorage().read("mobile_id")}",
+            "${DateFormat('yyyyMMdd').format(DateTime.now())}",
+            "${DateFormat('HHmmss').format(DateTime.now()).toString()}",
+            "${GetStorage().read("RfIdCardNo")}", "${place.name}", "${place.locality}", "${place.administrativeArea}", "${place.postalCode}", "${place.subAdministrativeArea}", "${place.street.toString()}", "${_currentPosition!.latitude}", "${_currentPosition!.longitude}", int.parse("${"${GetStorage().read("Empcode")}"}"), "${DateFormat('dd-MMM-yyyy').format(DateTime.now())}", "${_descriptionController.text}", context);
       });
     } catch (e) {
       print(e);
@@ -62,6 +66,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
   int second=0;
   bool is_select_Comment=false;
   int i=0;
+  String Now ="";
   @override
   void initState() { 
     Provider.of<SelfDashboardController>(context,listen: false).selfOneMonthAttendanceProvider(
@@ -76,6 +81,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
     Timer.periodic(Duration(seconds: 1), (timer) {
     setState(() {
       second=  DateTime.now().second;
+      Now=  DateFormat('HH:mm:ss').format(DateTime.now()).toString();
       });
     });
     // TODO: implement initState
@@ -187,7 +193,8 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                          center: Column(
                                            mainAxisAlignment: MainAxisAlignment.center,
                                            children: [
-                                             CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "${DateTime.now().hour}:${DateTime.now().minute}:${second}", letterSpacing: 0.3),
+                                        //     CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "${DateTime.now().hour}:${DateTime.now().minute}:${second}", letterSpacing: 0.3),
+                                             CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "${Now}", letterSpacing: 0.3),
                                              CustomText(fontSize: 10, fontWeight: FontWeight.w400, text: "5H  14M", letterSpacing: 0.3),
                                            ],
                                          ),
