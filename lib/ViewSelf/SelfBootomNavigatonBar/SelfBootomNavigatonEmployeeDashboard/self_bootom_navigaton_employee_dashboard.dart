@@ -165,15 +165,10 @@ class _SelfBootomNavigatonEmployeeDashboardState extends State<SelfBootomNavigat
                                   width: double.infinity,
                                   child: CustomMySelfJobCard3rdPart1
                                     (selectedindex: selectedindex==index?true:false,
-                                    index: "$index",
-                                    //  index: selfOneMonthAttendanceList==null?"Processing":"${selfOneMonthAttendanceList[index]["IN_TIME"]}"==""?"00.00.00": "${selfOneMonthAttendanceList[index]["IN_TIME"].substring(selfOneMonthAttendanceList[index]["IN_TIME"].length - 15)}",
-                                 //  index: selfOneMonthAttendanceList==null?"Processing":"${selfOneMonthAttendanceList[index]["DUTY_DATE"]}"==""?"00.00.00": "${selfOneMonthAttendanceList[index]["DUTY_DATE"].substring(selfOneMonthAttendanceList[index]["DUTY_DATE"].length - 9)}",
-                                    text2: "Sat",
-                                    // intime: selfOneMonthAttendanceList==null?"Processing":"${selfOneMonthAttendanceList[index]["IN_TIME"]}"==""?"--:--:--": "${selfOneMonthAttendanceList[index]["IN_TIME"].substring(selfOneMonthAttendanceList[index]["IN_TIME"].length - 8)}",
-                                    // outTime: selfOneMonthAttendanceList==null?"Processing":"${selfOneMonthAttendanceList[index]["OUT_TIME"]}"==""?"--:--:--": "${selfOneMonthAttendanceList[index]["OUT_TIME"].substring(selfOneMonthAttendanceList[index]["OUT_TIME"].length - 8)}",
-                                    //
-                                   intime :"",
-                                    outTime :"",
+                                    index: "${index + 1}",
+                                     text2: "${DateFormat('EEE ').format(DateTime.parse(DateTime.now().month >9 && index+1 >9 ? "${DateTime.now().year}${DateTime.now().month}${index + 1}" : DateTime.now().month >9 && index+1 <10 ?  "${DateTime.now().year}${DateTime.now().month}0${index + 1}" :DateTime.now().month <10 && index+1 >9 ?  "${DateTime.now().year}0${DateTime.now().month}${index + 1}"  :  "${DateTime.now().year}0${DateTime.now().month}0${index + 1}"             ))}",
+                                    intime :"${selfOneMonthAttendanceList[index].iNTIME}",
+                                    outTime :"${selfOneMonthAttendanceList[index].oUTTIME}",
 
                                     status:  "${selfOneMonthAttendanceList[index].Status}",
                                     location:  " ",
@@ -213,8 +208,8 @@ class _SelfBootomNavigatonEmployeeDashboardState extends State<SelfBootomNavigat
                                             ),
                                             margin: EdgeInsets.only(left: 10,right: 10),
                                             padding: EdgeInsets.all(10),
-                                         //   child: ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400,maxLines: 2 ,text:   "${selfOneMonthAttendanceList[index]["ATTENDANCE_REMARK"]??"You dont have comments Today"}", letterSpacing: 0.3,textAlign: TextAlign.justify, textColor: Main_Theme_textColor.withOpacity(0.6),),
-                                            child: ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400,maxLines: 2 ,text:   " You dont have comments Today", letterSpacing: 0.3,textAlign: TextAlign.justify, textColor: Main_Theme_textColor.withOpacity(0.6),),
+                                           child: ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400,maxLines: 2 ,text:   "${selfOneMonthAttendanceList[index].aTTENDANCEREMARK??"You dont have comments Today"}", letterSpacing: 0.3,textAlign: TextAlign.justify, textColor: Main_Theme_textColor.withOpacity(0.6),),
+                                              //   child: ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400,maxLines: 2 ,text:   " You dont have comments Today", letterSpacing: 0.3,textAlign: TextAlign.justify, textColor: Main_Theme_textColor.withOpacity(0.6),),
                                           ),
                                           Padding(
                                             padding: const EdgeInsets.only(left: 10.0,top: 5),
@@ -243,8 +238,8 @@ class _SelfBootomNavigatonEmployeeDashboardState extends State<SelfBootomNavigat
                                             ),
                                             margin: EdgeInsets.only(left: 10,right: 10),
                                             padding: EdgeInsets.all(10),
-                                          //  child: ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400,maxLines: 2 ,text:   "${selfOneMonthAttendanceList[index]["MOVEMENT_PUNCH"]??"You dont have movements punch today"}", letterSpacing: 0.3,textAlign: TextAlign.justify, textColor: Main_Theme_textColor.withOpacity(0.6),),
-                                            child: ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400,maxLines: 2 ,text:   "You dont have movements punch today", letterSpacing: 0.3,textAlign: TextAlign.justify, textColor: Main_Theme_textColor.withOpacity(0.6),),
+                                         child: ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400,maxLines: 2 ,text:   "${selfOneMonthAttendanceList[index].mOVEMENTPUNCH??"You dont have movements punch today"}", letterSpacing: 0.3,textAlign: TextAlign.justify, textColor: Main_Theme_textColor.withOpacity(0.6),),
+                                            //    child: ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400,maxLines: 2 ,text:   "You dont have movements punch today", letterSpacing: 0.3,textAlign: TextAlign.justify, textColor: Main_Theme_textColor.withOpacity(0.6),),
                                           ),
 
 

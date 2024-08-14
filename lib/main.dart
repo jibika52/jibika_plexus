@@ -5,6 +5,8 @@ import 'package:jibika_plexus/Controller/CounterProvider/counter_provider.dart';
 import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/self_bootom_navigation_bar.dart';
 import 'package:jibika_plexus/testfile.dart';
 import 'package:jibika_plexus/testgoooglemap.dart';
+import 'package:jibika_plexus/testmonth_picker.dart';
+import 'package:month_year_picker/month_year_picker.dart';
 import 'package:provider/provider.dart';
 import 'Controller/HomeController/home_controller.dart';
 import 'Controller/PrivacyPolicyController/privacy_policy.dart';
@@ -13,6 +15,7 @@ import 'View/BootomNatchBar/BootomNavigationBarItemsScreen/BootomNavigationBarIt
 import 'View/BootomNatchBar/BootomNavigationBarItemsScreen/BootomNavigationBarItemsMainHomeScreen/bootom_navigation_barItems_main_home_screen.dart';
 import 'View/BootomNatchBar/bootom_bar_screen.dart';
 import 'View/SplashScreen/main_splash_pageview_screen.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
   await GetStorage.init();
@@ -30,6 +33,7 @@ class MyApp extends StatelessWidget {
       ChangeNotifierProvider<PrivacyPolicyProvider>(create: (context) => PrivacyPolicyProvider(),),
       ChangeNotifierProvider<SelfDashboardController>(create: (context) => SelfDashboardController(),)
     ],
+
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Jibika Payscale',
@@ -48,7 +52,8 @@ class MyApp extends StatelessWidget {
         //    home:BootomNatchBarScreen(),
 
         /// ----------SplashScreen--------
-       home:MainSplashPageViewScreen(),
+    home:MainSplashPageViewScreen(),
+        //     home:MonthPicker(),
       //       home:Googlemap(),
         /// ----------Working Screen--------
         //     home:LoginScreenSlide(),
@@ -64,7 +69,11 @@ class MyApp extends StatelessWidget {
         //   home:   SalfBootomNatchBarScreen(
       //   currentIndex: 4,
       // ),
-
+        localizationsDelegates: [
+          GlobalWidgetsLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          MonthYearPickerLocalizations.delegate,
+        ],
       )
 
     );

@@ -72,19 +72,10 @@ class _HomeScreenState extends State<HomeScreen> {
     double TH2=double.parse(dashboardPieChartData == null?"0":"${dashboardPieChartData["plist"]}"== "[]"?"0":"${dashboardPieChartData["plist"][4]??0 }");
 
     int total_present_parsent=double.parse("${TP}").toInt();
-    print("total_holiday_parsent ----$TP--- $total_present_parsent");
-
     int total_absent_parsent=double.parse("${TA+TP}").toInt();
-    print("total_absent_parsent --$TA+$TP----- $total_absent_parsent");
-
     int total_leave_parsent=double.parse("${TA+TP+TL}").toInt();
-    print("total_leave_parsent ---$TA+ $TP+ $TL---- $total_leave_parsent");
-
     int total_holiday_parsent=double.parse("${TA+TP+TL+TH}").toInt();
-    print("total_holiday_parsent --$TA+$TP+$TL+$TH----- $total_holiday_parsent");
-
     int total_holiday_parsent2=double.parse("${TA+TP+TL+TH+TH2}").toInt();
-    print("total_holiday_parsent2 ------- $total_holiday_parsent2");
 
 
 

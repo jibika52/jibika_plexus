@@ -513,11 +513,16 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                  padding: const EdgeInsets.all(2.0),
                                  child: CircleAvatar(
                                    radius: 26,
-                                   backgroundColor:selfOneMonthAttendanceList[index].Status =="" ?Main_Theme_textColor:selfOneMonthAttendanceList[index].Status =="P" ?presentsent_color :selfOneMonthAttendanceList[index].Status =="AB" ?absent_color:selfOneMonthAttendanceList[index].Status=="WH"?holiday_color:  Main_Theme_WhiteCollor,
+                                   backgroundColor:selfOneMonthAttendanceList[index].Status =="" ?
+                                   Main_Theme_textColor:selfOneMonthAttendanceList[index].Status =="P" ?
+                                   presentsent_color :selfOneMonthAttendanceList[index].Status =="AB" ?
+                                   absent_color:selfOneMonthAttendanceList[index].Status=="WH"?
+                                   holiday_color:  Main_Theme_WhiteCollor,
+
                                     child: ColorCustomText(
                                      fontSize: 12, fontWeight: FontWeight.w400,
-                                       //text: "${index+1}",
-                                       text: "${index+1}",
+                                      text: "${index+1}",
+                                      // text:"${selfOneMonthAttendanceList[index].Status}"==""?"$index": "${selfOneMonthAttendanceList[index].Status}",
                                       letterSpacing: 0.3,
                                      textColor: Main_Theme_textColor
                                      ,),
@@ -646,8 +651,26 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
 
 }
 
-class Updated_attendance_summary{
-  String?  date;
-  String?  Status;
-}
+// class Updated_attendance_summary{
+//   String?  date;
+//   String?  Status;
+// }
 
+class Updated_attendance_summary{
+
+
+
+String? date;
+String? Status;
+String? iNTIME;
+String? oUTTIME;
+String? lATE;
+String? aCTUALWORKDURATION;
+
+String? oT;
+
+String? sHIFTPLAN;
+
+String? aTTENDANCEREMARK;
+String? mOVEMENTPUNCH  ;
+}

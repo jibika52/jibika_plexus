@@ -115,16 +115,34 @@ class CustomHttpSelf{
           body: body
       ).then((http.Response response) {
          monthlyAttendanceSummary = jsonDecode(response.body)["data"];
-         for(int i=0;i<31;i++){
+         for(int i=1;i<32;i++){
            final tempobj = Updated_attendance_summary();
            tempobj.date = "${i}";
-           tempobj.Status = " ";
+           tempobj.Status = "No Punch";
+           tempobj.iNTIME ="--:--:--";
+           tempobj.oUTTIME="--:--:--";
+           tempobj.lATE=" ";
+           tempobj.aCTUALWORKDURATION=" ";
+           tempobj.oT=" ";
+           tempobj.sHIFTPLAN=" ";
+           tempobj.aTTENDANCEREMARK=" ";
+           tempobj.mOVEMENTPUNCH=" ";
+
            int tempday = 0;
             for(var item in monthlyAttendanceSummary){
               tempday = int.parse("${item["DUTY_DATE"].substring(0, 2)}");
               if(tempday==i){
                 print("duty date:${int.parse("${item["DUTY_DATE"].substring(0, 2)}")}");
+
                 tempobj.Status = "${item["STATUS"]}";
+                  tempobj.iNTIME ="${item["IN_TIME"]}"==""?"--:--:--" : "${item["IN_TIME"].substring(5, 10)}";
+                  tempobj.oUTTIME="${item["OUT_TIME"]}"==""?"--:--:--" : "${item["OUT_TIME"].substring(5, 10)}";
+                  tempobj.lATE= "${item["LATE"]}";
+                  tempobj.aCTUALWORKDURATION= "${item["ACTUAL_WORK_DURATION"]}";
+                  tempobj.oT= "${item["OT"]}";
+                  tempobj.sHIFTPLAN= "${item["SHIFT_PLAN"]}";
+                  tempobj.aTTENDANCEREMARK= "${item["ATTENDANCE_REMARK"]}";
+                  tempobj.mOVEMENTPUNCH ="${item["MOVEMENT_PUNCH"]}";
               }
             }
                 newdatalist.add(tempobj);
