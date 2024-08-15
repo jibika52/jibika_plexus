@@ -171,29 +171,34 @@ class CustomMySelfJobCard3rdPart1 extends StatelessWidget {
           color: Main_Theme_textColor.withOpacity(0.1),
         ),
         Spacer(),
-        Container(
-          padding: EdgeInsets.symmetric(vertical: 7),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Icon(Icons.location_on_outlined,size: 16,color: Main_Theme_textColor.withOpacity(0.6),),
-              Padding(
-                padding: const EdgeInsets.only(left:5.0,),
-                child: ColorCustomText(fontSize: 12, fontWeight: FontWeight.w300,maxLines: 1 ,text: "$location  ", overflow: TextOverflow.ellipsis,letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.6),),
-              ),
-            ],
+        InkWell(
+          onTap: () {
+            showDialog(context: context, builder: (context) => AlertDialog(
+              title: Text("Attendance location was"),
+            ),);
+          },
+          child: Container(
+            padding: EdgeInsets.symmetric(vertical: 7),
+            child:  Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset("Assets/DashBoardIcons/map_view.png",height: 24,width: 24,fit: BoxFit.fill,
+                    color: Main_Theme_textColor_tir_Condition),
+                 CustomText(fontSize: 9, fontWeight: FontWeight.w300, text: "View map", letterSpacing: 0.3)
+              ],
+            ),
           ),
         ),
         Spacer(),
-        Container(
-          height: 25,
-          width: 1,
-          color: Main_Theme_textColor.withOpacity(0.1),
-        ),
-        Spacer(),
+        // Container(
+        //   height: 25,
+        //   width: 1,
+        //   color: Main_Theme_textColor.withOpacity(0.1),
+        // ),
+        // Spacer(),
         ///----------------- Third Part ------------------------------///
-        selectedindex?Container(
-            child: Icon(Icons.keyboard_arrow_up,size: 17,)) : Icon(Icons.keyboard_arrow_down,size: 17)
+        // selectedindex?Container(
+        //     child: Icon(Icons.keyboard_arrow_up,size: 17,)) : Icon(Icons.keyboard_arrow_down,size: 17)
 
       ],
     );

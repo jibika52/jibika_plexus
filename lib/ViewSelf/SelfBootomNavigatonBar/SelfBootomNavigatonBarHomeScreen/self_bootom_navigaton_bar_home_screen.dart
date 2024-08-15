@@ -78,12 +78,6 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
     );
     Provider.of<HomeProvider>(context,listen: false).dashboardTodaysBirthdayEmployeeInfoProvider("${GetStorage().read("mobile_id")}", "", context); // Todays birthday
     permissionn();
-    Timer.periodic(Duration(seconds: 1), (timer) {
-    setState(() {
-      second=  DateTime.now().second;
-      Now=  DateFormat('HH:mm:ss').format(DateTime.now()).toString();
-      });
-    });
     // TODO: implement initState
     super.initState();
   }
@@ -100,6 +94,14 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
           "${GetStorage().read("RfIdCardNo")}",
           "GENERAL", context);
     });
+
+
+  Timer.periodic(Duration(seconds: 1), (timer) {
+    setState(() {
+      second=  DateTime.now().second;
+      Now=  DateFormat('HH:mm:ss').format(DateTime.now()).toString();
+    });
+  });
 
 
   }
@@ -323,6 +325,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                                    ),
                                                    () {
                                                      setState(() {
+                                                       animated_height=0;
                                                        Animatedwidth=MediaQuery.of(context).size.width*0.905;
                                                      });
                                                    },
@@ -394,6 +397,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                        setState(() {
                          is_clicked=!is_clicked;
                          animated_height=is_clicked==true? 222:0;
+                         Animatedwidth=MediaQuery.of(context).size.width*0.3;
                        });
                      },
                      child: Container(
@@ -741,4 +745,17 @@ String? oT;
 String? sHIFTPLAN;
 String? aTTENDANCEREMARK;
 String? mOVEMENTPUNCH  ;
+
+String? IN_LATITUDE ;
+String? IN_LONGITUDE ;
+String? IN_LOCNAME ;
+String? IN_DISTRICT ;
+String? IN_STREET_NAME ;
+String? IN_DIVISION ;
+String? OUT_LATITUDE ;
+String? OUT_LONGITUDE ;
+String? OUT_LOCNAME ;
+String? OUT_DISTRICT ;
+String? OUT_STREET_NAME ;
+String? OUT_DIVISION ;
 }

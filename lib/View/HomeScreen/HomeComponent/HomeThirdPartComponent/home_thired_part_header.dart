@@ -122,14 +122,6 @@ Future<void> _onPressed({
     lastDate: DateTime(2130),
     locale: localeObj,
 
-    builder: (context, child) {
-      return Container(
-        height: 555,
-        padding: EdgeInsets.all(50),
-        child: child,
-      );
-    },
-
   );
 
   if (selected != null) {

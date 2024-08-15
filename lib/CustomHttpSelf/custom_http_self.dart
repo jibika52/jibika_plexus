@@ -127,6 +127,18 @@ class CustomHttpSelf{
            tempobj.sHIFTPLAN=" ";
            tempobj.aTTENDANCEREMARK=" ";
            tempobj.mOVEMENTPUNCH=" ";
+           tempobj.IN_LATITUDE=" ";
+           tempobj.IN_LONGITUDE=" ";
+           tempobj.IN_LOCNAME=" ";
+           tempobj.IN_DISTRICT=" ";
+           tempobj.IN_STREET_NAME=" ";
+           tempobj.IN_DIVISION=" ";
+           tempobj.OUT_LATITUDE=" ";
+           tempobj.OUT_LONGITUDE=" ";
+           tempobj.OUT_LOCNAME=" ";
+           tempobj.OUT_DISTRICT=" ";
+           tempobj.OUT_STREET_NAME=" ";
+           tempobj.OUT_DIVISION=" ";
 
            int tempday = 0;
             for(var item in monthlyAttendanceSummary){
@@ -142,6 +154,18 @@ class CustomHttpSelf{
                   tempobj.sHIFTPLAN= "${item["SHIFT_PLAN"]}";
                   tempobj.aTTENDANCEREMARK= "${item["ATTENDANCE_REMARK"]}";
                   tempobj.mOVEMENTPUNCH ="${item["MOVEMENT_PUNCH"]}";
+                  tempobj.IN_LATITUDE="${item["IN_LATITUDE"]}";
+                  tempobj.IN_LONGITUDE="${item["IN_LONGITUDE"]}";
+                  tempobj.IN_LOCNAME="${item["IN_LOCNAME"]}";
+                  tempobj.IN_DISTRICT="${item["IN_DISTRICT"]}";
+                  tempobj.IN_STREET_NAME="${item["IN_STREET_NAME"]}";
+                  tempobj.IN_DIVISION="${item["IN_DIVISION"]}";
+                  tempobj.OUT_LATITUDE="${item["OUT_LATITUDE"]}";
+                  tempobj.OUT_LONGITUDE="${item["OUT_LONGITUDE"]}";
+                  tempobj.OUT_LOCNAME="${item["OUT_LOCNAME"]}";
+                  tempobj.OUT_DISTRICT="${item["OUT_DISTRICT"]}";
+                  tempobj.OUT_STREET_NAME="${item["OUT_STREET_NAME"]}";
+                  tempobj.OUT_DIVISION="${item["OUT_DIVISION"]}";
               }
             }
                 newdatalist.add(tempobj);
