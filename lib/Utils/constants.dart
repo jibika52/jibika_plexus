@@ -54,7 +54,8 @@ Color presentsent_color=Color(0xff16be16);
 Color absent_color=Color(0xffEC4F4F);
 Color leave_color=Color(0xff685CF0);
 Color leave_approval_button_color=Color(0xffe7edbf);
-Color holiday_color=Color(0xff2C928C);
+ //  Color holiday_color=Color(0xff2C928C);
+Color holiday_color=Color(0xffF9E400);
 Color pending_color=Color(0xffE48E29);
 
 

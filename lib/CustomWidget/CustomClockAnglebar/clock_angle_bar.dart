@@ -20,7 +20,7 @@ class ClockPainter extends CustomPainter {
       ..strokeWidth = 1;
 
     var outerCircleRadius = radius;
-    var innerCircleRadius = radius - 3;
+    var innerCircleRadius = radius - 6;
     for (double i = 0; i < 360; i += 12) {
       var x1 = centerX + outerCircleRadius * cos(i * pi / 180);
       var y1 = centerX + outerCircleRadius * sin(i * pi / 180);

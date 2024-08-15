@@ -15,6 +15,7 @@ import 'package:intl/intl.dart';
 import 'package:jibika_plexus/CustomSelfWedget/custom_wedget_myself_new_face.dart';
 import 'package:jibika_plexus/CustomSelfWedget/myself_leave_status.dart';
 import 'package:jibika_plexus/CustomWidget/CustomButton/customize_button.dart';
+import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
  import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
 import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/SelfBootomNavigatonBarHomeScreen/SelfMyLeaveSatusScreen/self_my_leave_satus_screen.dart';
@@ -78,6 +79,12 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
     );
     Provider.of<HomeProvider>(context,listen: false).dashboardTodaysBirthdayEmployeeInfoProvider("${GetStorage().read("mobile_id")}", "", context); // Todays birthday
     permissionn();
+    Timer.periodic(Duration(seconds: 1), (timer) {
+      setState(() {
+        second=  DateTime.now().second;
+        Now=  DateFormat('HH:mm:ss').format(DateTime.now()).toString();
+      });
+    });
     // TODO: implement initState
     super.initState();
   }
@@ -96,12 +103,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
     });
 
 
-  Timer.periodic(Duration(seconds: 1), (timer) {
-    setState(() {
-      second=  DateTime.now().second;
-      Now=  DateFormat('HH:mm:ss').format(DateTime.now()).toString();
-    });
-  });
+
 
 
   }
@@ -168,7 +170,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                    Container(
                      margin: EdgeInsets.only(left:  10,right: 10,top: apps_div_margin),
                      padding: EdgeInsets.all(10),
-                     height: 150,
+                     height: 185,
                      width: double.infinity,
                      decoration: BoxDecoration(
                          color: Main_Theme_WhiteCollor,
@@ -204,7 +206,6 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
 
                                          ],
                                        ),
-
                                        Row(
                                          mainAxisAlignment: MainAxisAlignment.start,
                                          crossAxisAlignment: CrossAxisAlignment.center,
@@ -217,48 +218,83 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
 
                                          ],
                                        ),
+                                       Row(
+                                         mainAxisAlignment: MainAxisAlignment.start,
+                                         crossAxisAlignment: CrossAxisAlignment.center,
+                                         children: [
+                                           Image.asset("Assets/DashBoardIcons/location.png",height: 24,width: 24,fit: BoxFit.fill,color: Colors.grey,),
+                                           ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "  Duration : 7H 55M", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
+
+                                           //      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "10:10:10", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
+
+                                         //    ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text:selfOneMonthAttendanceList==null?"Processing":"${selfOneMonthAttendanceList[selfOneMonthAttendanceList.length-1]["OUT_TIME"]}"==""?"": "${selfOneMonthAttendanceList.last["OUT_TIME"].substring(selfOneMonthAttendanceList.last["OUT_TIME"].length - 8)}", letterSpacing: 0.3, textColor: Main_Theme_textColor ,),
+
+                                         ],
+                                       ),
+
                                      ],
                                    ),
                                 ),
                                ),
+                               Spacer(),
                                Expanded(
                                    flex: 2,
-                                   child: Stack(
-                                     alignment: Alignment.center,
-                                     children: [
-                                       Container(
-                                         alignment: Alignment.center, //  color: Colors.green,
-                                         child: CircularPercentIndicator(
-                                           radius: 45.0,
-                                           lineWidth: 5.5,
-                                           percent:0.7,
-                                           backgroundColor: home_default_color,
-                                           progressColor: presentsent_color,
-                                           center: Column(
-                                             mainAxisAlignment: MainAxisAlignment.center,
-                                             children: [
-                                          //     CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "${DateTime.now().hour}:${DateTime.now().minute}:${second}", letterSpacing: 0.3),
-                                               CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "${Now}", letterSpacing: 0.3),
-                                               CustomText(fontSize: 10, fontWeight: FontWeight.w400, text: "5H  14M", letterSpacing: 0.3),
-                                             ],
+                                   child: InkWell(
+                                     onTap: () {
+                                       _getCurrentLocation();
+                                     },
+                                     child: Padding(
+                                       padding: const EdgeInsets.only(bottom: 20.0),
+                                       child: Stack(
+                                         alignment: Alignment.center,
+                                         children: [
+                                           Container(
+                                             height: 100,
+                                             width: 100,
+                                             padding: EdgeInsets.all(25),
+                                            // child: CustomImageSction2(height: 70, width: 70, radius: 50, image: "Assets/DashBoardIcons/b_bar_attendence.png", img_color: Main_Theme_textColor.withOpacity(0.5)),
                                            ),
-                                         ),
-                                   ),
-                                       Positioned(
-                                           child: Container(
-                                             width: 72,
-                                             height: 72,
-                                             child: Transform.rotate(
-                                               angle: -pi / 2,
-                                               child: CustomPaint(
-                                                 painter: ClockPainter(),
+                                           Container(
+                                             alignment: Alignment.center, //  color: Colors.green,
+                                             child: CircularPercentIndicator(
+                                               radius: 60.0,
+                                               lineWidth: 5.5,
+                                               percent:0.7,
+                                               backgroundColor: home_default_color,
+                                               progressColor: presentsent_color,
+                                               center: Column(
+                                                 mainAxisAlignment: MainAxisAlignment.center,
+                                                 children: [
+                                                   CustomImageSction2(height: 40, width: 40, radius: 50, image: "Assets/DashBoardIcons/b_bar_attendence.png", img_color: Main_Theme_textColor.withOpacity(0.5)),
+                                              //     CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "${DateTime.now().hour}:${DateTime.now().minute}:${second}", letterSpacing: 0.3),
+                                                   CustomText(fontSize: 15, fontWeight: FontWeight.w400, text: "${Now}", letterSpacing: 0.3),
+                                                  // CustomText(fontSize: 10, fontWeight: FontWeight.w400, text: "5H  14M", letterSpacing: 0.3),
+                                                 ],
                                                ),
                                              ),
-                                           ) ,
                                        ),
+                                           Positioned(
+                                               child: Container(
+                                                 width: 99,
+                                                 height: 99,
+                                                 child: Transform.rotate(
+                                                   angle: -pi / 3,
+                                                   child: CustomPaint(
+                                                     painter: ClockPainter(),
+                                                   ),
+                                                 ),
+                                               ) ,
+                                           ),
+
+                                           // Positioned(
+                                           //   top: 0,
+                                           //     child:  CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "${Now}", letterSpacing: 0.3) ,
+                                           // ),
 
 
-                                     ],
+                                         ],
+                                       ),
+                                     ),
                                    )),
                                SizedBox(width: 20,)
                              ],
@@ -267,125 +303,108 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                          ),
                      //    SizedBox(height: 5,),
                          /// First Down Side Part---------------------Attendance Area ---------------------
-                         Stack(
-                           children: [
-                             Container(
-                               height: 25,
-                               width: double.infinity,
-                               child: Row(
-                                 mainAxisAlignment: MainAxisAlignment.end,
-                                 children: [
-                                   CustomizeButton(text: "Check In", textColor: Main_Theme_textColor.withOpacity(0.5),
-                                     presentsent_color: presentsent_color, fontSize: 11,
-                                   is_clicked: is_clicked,
-                                     onTap: () {
-                                     setState(() {
-                                       is_clicked=true;
-                                     });
-                                     ///-Attendance Area ---------------------
-                                       _getCurrentLocation();
-                                     },),
-                                   SizedBox(width: 10,),
-                                    CustomizeButton(text: "Check Out", textColor: Main_Theme_textColor.withOpacity(0.5),
-                                      presentsent_color: presentsent_color, fontSize: 11,
-                                      onTap: () {
-                                        ///-Attendance Area ---------------------
-                                        _getCurrentLocation();
-                                      },)
-                                 ],
-                               ),
-                             ),
-                             Positioned(
-                               top: 0,
-                                 left: 0,
-                                 child: AnimatedContainer(
-                                   duration: Duration(milliseconds: 800),
-                                   height: 25,
-                                  // width: MediaQuery.of(context).size.width*0.42,
-                                   width: Animatedwidth,
-                                   decoration: BoxDecoration(
-                                     color: Main_Theme_WhiteCollor,
-                                     borderRadius: BorderRadius.circular(50),
-                                     border:Border.all(
-                                       width: 1,
-                                       color: Main_Theme_textColor.withOpacity(0.5),
-                                     ),
-                                   ),
-                                   child: Row(
-                                     children: [
-                                       Expanded(
-                                           child: Container(
-                                             margin: EdgeInsets.only(bottom: 0),
-                                             height: 24,
-                                             child: TextFormField(
-                                               controller: _descriptionController,
-                                               onTap: () {
-                                                   Future.delayed(Duration(
-                                                     milliseconds: 100,
-                                                   ),
-                                                   () {
-                                                     setState(() {
-                                                       animated_height=0;
-                                                       Animatedwidth=MediaQuery.of(context).size.width*0.905;
-                                                     });
-                                                   },
-                                                   );
+                         Align(
+                             alignment: Alignment.centerLeft,
+                             child: CustomImageSction2(height: 20, width: 20, radius: 5, image: "Assets/DrawerImage/chat.png", img_color: Main_Theme_textColor.withOpacity(0.4))),
 
-                                               },
-                                               maxLines: 1,
-                                               style: GoogleFonts.poppins(
-                                                 fontSize : 10,
-                                                 fontWeight :FontWeight.w400,
-                                                 color : Main_Theme_textColor.withOpacity(0.8),
-                                               ),
-                                               decoration: InputDecoration(
-                                             //    hintText:selfOneMonthAttendanceList==null?"Processing":"${selfOneMonthAttendanceList[selfOneMonthAttendanceList.length-1]["ATTENDANCE_REMARK"]}"==""?"Remarks here": "${selfOneMonthAttendanceList.last["ATTENDANCE_REMARK"]}",
-                                                 contentPadding: EdgeInsets.only(top: -20,right: 10,left: 7),
-                                                 hintStyle: GoogleFonts.poppins(
-                                                   fontSize : 10,
-                                                   fontWeight :FontWeight.w400,
-                                                   color : Main_Theme_textColor.withOpacity(0.5),
-                                                 ),
-                                                 border: InputBorder.none,
-                                               ),
-                                             ),
-                                           )
-                                       ),
-                                       InkWell(
-                                         onTap: () {
-                                           if(_descriptionController.text.isNotEmpty){
-                                                _getCurrentLocation();
-                                             Future.delayed(Duration(milliseconds: 100),() {
-                                               setState(() {
-                                                 Animatedwidth=MediaQuery.of(context).size.width*0.3;
-                                               });
-                                             },);
-                                           }
+                         // Stack(
+                         //   children: [
+                         //     Container(
+                         //       height: 25,
+                         //       width: double.infinity,
+                         //     ),
+                         //     Positioned(
+                         //       top: 0,
+                         //       left: 0,
+                         //       child: AnimatedContainer(
+                         //         duration: Duration(milliseconds: 800),
+                         //         height: 25,
+                         //         // width: MediaQuery.of(context).size.width*0.42,
+                         //         width: Animatedwidth,
+                         //         decoration: BoxDecoration(
+                         //           color: Main_Theme_WhiteCollor,
+                         //           borderRadius: BorderRadius.circular(50),
+                         //           border:Border.all(
+                         //             width: 1,
+                         //             color: Main_Theme_textColor.withOpacity(0.5),
+                         //           ),
+                         //         ),
+                         //         child: Row(
+                         //           children: [
+                         //             Expanded(
+                         //                 child: Container(
+                         //                   margin: EdgeInsets.only(bottom: 0),
+                         //                   height: 24,
+                         //                   child: TextFormField(
+                         //                     controller: _descriptionController,
+                         //                     onTap: () {
+                         //                       Future.delayed(Duration(
+                         //                         milliseconds: 100,
+                         //                       ),
+                         //                             () {
+                         //                           setState(() {
+                         //                             animated_height=0;
+                         //                             Animatedwidth=MediaQuery.of(context).size.width*0.905;
+                         //                           });
+                         //                         },
+                         //                       );
+                         //
+                         //                     },
+                         //                     maxLines: 1,
+                         //                     style: GoogleFonts.poppins(
+                         //                       fontSize : 10,
+                         //                       fontWeight :FontWeight.w400,
+                         //                       color : Main_Theme_textColor.withOpacity(0.8),
+                         //                     ),
+                         //                     decoration: InputDecoration(
+                         //                       //    hintText:selfOneMonthAttendanceList==null?"Processing":"${selfOneMonthAttendanceList[selfOneMonthAttendanceList.length-1]["ATTENDANCE_REMARK"]}"==""?"Remarks here": "${selfOneMonthAttendanceList.last["ATTENDANCE_REMARK"]}",
+                         //                       contentPadding: EdgeInsets.only(top: -20,right: 10,left: 7),
+                         //                       hintStyle: GoogleFonts.poppins(
+                         //                         fontSize : 10,
+                         //                         fontWeight :FontWeight.w400,
+                         //                         color : Main_Theme_textColor.withOpacity(0.5),
+                         //                       ),
+                         //                       border: InputBorder.none,
+                         //                     ),
+                         //                   ),
+                         //                 )
+                         //             ),
+                         //             InkWell(
+                         //               onTap: () {
+                         //                 if(_descriptionController.text.isNotEmpty){
+                         //                   _getCurrentLocation();
+                         //                   Future.delayed(Duration(milliseconds: 100),() {
+                         //                     setState(() {
+                         //                       Animatedwidth=MediaQuery.of(context).size.width*0.3;
+                         //                     });
+                         //                   },);
+                         //                 }
+                         //
+                         //               },
+                         //               child: Container(
+                         //                 // margin: EdgeInsets.symmetric(horizontal: 5),
+                         //                 height: 24,
+                         //                 width: 55,
+                         //                 decoration: BoxDecoration(
+                         //                     color: presentsent_color.withOpacity(0.7),
+                         //                     borderRadius: BorderRadius.only(
+                         //                         bottomRight: Radius.circular(50),
+                         //                         topRight: Radius.circular(50)
+                         //                     )
+                         //                   //  image: DecorationImage(image: AssetImage("Assets/PrimaryInformation/chat2.png"),fit: BoxFit.fill)
+                         //                 ),
+                         //                 alignment: Alignment.center,
+                         //                 child: Text("Remarks",style: TextStyle(fontSize: 11,fontWeight: FontWeight.w400,color: Main_Theme_textColor,),
+                         //                 ),
+                         //               ),
+                         //             ),
+                         //           ],
+                         //         ),
+                         //       ),
+                         //     )
+                         //   ],
+                         // ),
 
-                                         },
-                                         child: Container(
-                                           // margin: EdgeInsets.symmetric(horizontal: 5),
-                                           height: 24,
-                                           width: 55,
-                                           decoration: BoxDecoration(
-                                             color: presentsent_color.withOpacity(0.7),
-                                             borderRadius: BorderRadius.only(
-                                               bottomRight: Radius.circular(50),
-                                               topRight: Radius.circular(50)
-                                             )
-                                             //  image: DecorationImage(image: AssetImage("Assets/PrimaryInformation/chat2.png"),fit: BoxFit.fill)
-                                           ),
-                                           alignment: Alignment.center,
-                                           child: Text("Remarks",style: TextStyle(fontSize: 11,fontWeight: FontWeight.w400,color: Main_Theme_textColor,),
-                                         ),
-                                       ),
-                                       ),
-                                     ],
-                                   ),
-                                 ),
-                             )
-                           ],
-                         ),
                          /// First Down Side Part------------------------------------------
 
                        ],
@@ -578,7 +597,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                ), itemBuilder: (context, index) {
                                 return   CircleAvatar(
                                  radius: 26,
-                                  backgroundColor:  CustomButtonColor ,
+                                  backgroundColor:  CustomButtonColor.withOpacity(0.5) ,
                                  child: Padding(
                                    padding: const EdgeInsets.all(2.0),
                                    child: CircleAvatar(
@@ -601,7 +620,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                         text: "${index+1}",
                                         // text:"${selfOneMonthAttendanceList[index].Status}"==""?"$index": "${selfOneMonthAttendanceList[index].Status}",
                                         letterSpacing: 0.3,
-                                       textColor: Main_Theme_textColor
+                                       textColor:selfOneMonthAttendanceList[index].Status =="AB" || selfOneMonthAttendanceList[index].Status =="P"|| selfOneMonthAttendanceList[index].Status!.substring(selfOneMonthAttendanceList[index].Status!.length-1)=="L"? Main_Theme_WhiteCollor: Main_Theme_textColor
                                        ,),
                                    ),
                                  ),
