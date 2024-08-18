@@ -32,7 +32,24 @@ class CustomLeftDrawer extends StatelessWidget {
                     width: double.infinity,
                     child: Row(
                       children: [
-                        CustomImageSction(height: 122, width: 100, radius: 0, image: "Assets/DrawerImage/testperson.png"),
+                        //  GetStorage().write("mobile_id","${_phoneController.text}") ;
+                        //  GetStorage().write("id_token",loginData["loginData"]) ;
+                        //  GetStorage().write("refresh_token",loginData["refresh_token"]) ;
+
+                        // GetStorage().write("id_token",loginData["id_token"]) ;
+                        // GetStorage().write("refresh_token",loginData["refresh_token"]) ;
+                        // GetStorage().write("Company_name",loginData["Company"]) ;
+                        // GetStorage().write("RfIdCardNo",loginData["RfIdCardNo"]) ;
+                        // GetStorage().write("Empcode",loginData["Empcode"]) ;
+                        // GetStorage().write("user_type_id",loginData["user_type_id"]) ;
+                        //GetStorage().write("APPS_IMG_BASEURL",loginData["AppsBaseUrl"]) ;
+                        // GetStorage().write("APPS_IMG_BASEURL",loginData["AppsBaseUrl"]) ;
+                        // GetStorage().write("APPS_IMG_Path",loginData["PhotoPath"]) ;
+                        //  GetStorage().write("APPS_User_Name",loginData["user_name"]) ;
+
+
+                        CustomImageSctionNetwork(height: 122, width: 100, radius: 0, image: "${GetStorage().read("APPS_IMG_BASEURL")}${GetStorage().read("APPS_IMG_Path")}"),
+
                         Expanded(child: Container(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -42,9 +59,10 @@ class CustomLeftDrawer extends StatelessWidget {
                                 alignment: Alignment.centerLeft,
                                 height: 42,
                                 color: Color(0xffACC027).withOpacity(0.6),
-                                child: ColorCustomText(fontSize: 20, fontWeight: FontWeight.w500, text: " jibika plexus", letterSpacing: 0.5, textColor: CustomButtonColor,),
+                                child: ColorCustomText(fontSize: 20, fontWeight: FontWeight.w500, text: " ${GetStorage().read("Company_name")}",
+                                  overflow: TextOverflow.ellipsis,letterSpacing: 0.5, textColor: CustomButtonColor,),
                               ),
-                              ColorCustomText(fontSize: 16, fontWeight: FontWeight.w600, text: " Abdur Rahman", letterSpacing: 0.5, textColor: presentsent_color.withOpacity(0.7),),
+                              ColorCustomText(fontSize: 16, fontWeight: FontWeight.w600, text: " ${GetStorage().read("APPS_User_Name")}", letterSpacing: 0.5, textColor: presentsent_color.withOpacity(0.7),),
                               ColorCustomText(fontSize: 10, fontWeight: FontWeight.w500, text: "  Software Eng.", letterSpacing: 0.5, textColor: Main_Theme_textColor,),
                               ColorCustomText(fontSize: 10, fontWeight: FontWeight.w300, text: "  ID 4531454", letterSpacing: 0.5, textColor: CustomButtonColor,),
                               ColorCustomText(fontSize: 10, fontWeight: FontWeight.w300, text: "  Service Length: 2Y 6M", letterSpacing: 0.5, textColor: Main_Theme_textColor,),

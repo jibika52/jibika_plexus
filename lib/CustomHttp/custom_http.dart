@@ -150,6 +150,9 @@ class CustomHttpRequestClass{
           GetStorage().write("Empcode",loginData["Empcode"]) ;
           GetStorage().write("user_type_id",loginData["user_type_id"]) ;
           GetStorage().write("APPS_IMG_BASEURL",loginData["AppsBaseUrl"]) ;
+          GetStorage().write("APPS_IMG_Path",loginData["PhotoPath"]) ;
+          GetStorage().write("APPS_User_Name",loginData["user_name"]) ;
+          GetStorage().write("APPS_User_ID_Card_No",loginData["id_card_no"]) ;
           //   print("$loginData");
           ElegantNotification(
             borderRadius: BorderRadius.circular(11),

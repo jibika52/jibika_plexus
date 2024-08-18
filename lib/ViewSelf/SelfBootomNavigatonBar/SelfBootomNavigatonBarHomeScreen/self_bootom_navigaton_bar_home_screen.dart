@@ -63,8 +63,8 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
     } catch (e) {
       print(e);
     }
-
   }
+
   int second=0;
   bool is_select_Comment=false;
   int i=0;
@@ -90,21 +90,13 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
     super.initState();
   }
 
-
-
-
 ///-----------------------------------------------------------------------
-
-  String action = "START";
   Timer? timer;
-  int number = 0;
-
+  bool is_open_textbox=false;
   ///-----------------------------------------------------------------------
-
   double Animatedwidth=100;
   double animated_height=0;
   bool is_clicked=false;
-
   Future<void> _refreshData() async {
     await Future.delayed(Duration(seconds: 2));
     setState(() {
@@ -114,11 +106,6 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
           "${GetStorage().read("RfIdCardNo")}",
           "GENERAL", context);
     });
-
-
-
-
-
   }
   String ? checkin;
   String ? checkout;
@@ -176,7 +163,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
            splashColor: Main_Theme_WhiteCollor.withOpacity(0.0),
            onTap: () {
              setState(() {
-               Animatedwidth=MediaQuery.of(context).size.width*0.3;
+               is_open_textbox=false;
                animated_height=0;
                FocusManager.instance.primaryFocus?.unfocus();
                _descriptionController.text="";
@@ -199,6 +186,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                        borderRadius: BorderRadius.circular(7)
                      ),
                      child: Column(
+                       crossAxisAlignment: CrossAxisAlignment.start,
                        children: [
                          /// First Top Part------------------------------------------
                          Expanded(
@@ -220,7 +208,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                          crossAxisAlignment: CrossAxisAlignment.center,
                                          children: [
                                            SizedBox(width: 3,),
-                                           Image.asset("Assets/DashBoardIcons/b_bar_attendence.png",height: 18,width: 18,fit: BoxFit.fill,color: Colors.grey,),
+                                           Image.asset("Assets/SelfIcon/in_punch.png",height: 18,width: 18,fit: BoxFit.fill,color: Colors.grey,),
                                            ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "   Check In : $checkin", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
                                            //      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "10:10:10", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
                                       //    ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text:selfOneMonthAttendanceList==null?"Processing":"${selfOneMonthAttendanceList[selfOneMonthAttendanceList.length-1]["IN_TIME"]}"==""?"": "${selfOneMonthAttendanceList.last["IN_TIME"].substring(selfOneMonthAttendanceList.last["IN_TIME"].length - 8)}", letterSpacing: 0.3, textColor: Main_Theme_textColor ,),
@@ -231,7 +219,8 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                          mainAxisAlignment: MainAxisAlignment.start,
                                          crossAxisAlignment: CrossAxisAlignment.center,
                                          children: [
-                                           Image.asset("Assets/DashBoardIcons/location.png",height: 24,width: 24,fit: BoxFit.fill,color: Colors.grey,),
+                                           SizedBox(width: 3,),
+                                           Image.asset("Assets/SelfIcon/out_pumch.png",height: 16,width: 16,fit: BoxFit.fill,color: Colors.grey,),
                                            ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "  Check Out : ${checkout}", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
                                            //      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "10:10:10", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
 
@@ -243,7 +232,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                          mainAxisAlignment: MainAxisAlignment.start,
                                          crossAxisAlignment: CrossAxisAlignment.center,
                                          children: [
-                                           Image.asset("Assets/DashBoardIcons/location.png",height: 24,width: 24,fit: BoxFit.fill,color: Colors.grey,),
+                                           Image.asset("Assets/SelfIcon/late_punch.png",height: 24,width: 24,fit: BoxFit.fill,color: Colors.grey,),
                                            ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "  Late : 00:20:00", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
 
                                            //      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "10:10:10", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
@@ -256,7 +245,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                          mainAxisAlignment: MainAxisAlignment.start,
                                          crossAxisAlignment: CrossAxisAlignment.center,
                                          children: [
-                                           Image.asset("Assets/DashBoardIcons/location.png",height: 24,width: 24,fit: BoxFit.fill,color: Colors.grey,),
+                                           Image.asset("Assets/SelfIcon/working_duration.png",height: 24,width: 24,fit: BoxFit.fill,color: Colors.grey,),
                                            ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "  Duration : 7H 55M", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
 
                                            //      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "10:10:10", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
@@ -307,10 +296,10 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                      }
                                    ),
 
-                                     // onLongPressEnd: (_) => setState(() {
-                                     //   increase_punch_progress_bar=0.0;
-                                     //   timer?.cancel();
-                                     // }),
+                                     onLongPressEnd: (_) => setState(() {
+                                       increase_punch_progress_bar=0.0;
+                                       timer?.cancel();
+                                     }),
 
                                      child: Padding(
                                        padding: const EdgeInsets.only(bottom: 20.0),
@@ -330,15 +319,17 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                                lineWidth: 5.5,
                                            //    percent:0.7,
                                                percent:increase_punch_progress_bar,
-                                               backgroundColor: home_default_color,
+                                               backgroundColor: Main_Theme_textColor_tir_Condition.withOpacity(0.8),
                                                progressColor: presentsent_color,
                                                center: Column(
                                                  mainAxisAlignment: MainAxisAlignment.center,
                                                  children: [
+                                                   SizedBox(height: 7,),
+                                                   CustomText(fontSize: 15, fontWeight: FontWeight.w400, text: "${Now}", letterSpacing: 0.3),
                                                    CustomImageSction2(height: 50, width: 50, radius: 50, image: "Assets/SelfIcon/test_fingerprint.png", img_color: Main_Theme_textColor.withOpacity(0.5)),
                                               //     CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "${DateTime.now().hour}:${DateTime.now().minute}:${second}", letterSpacing: 0.3),
-                                                   CustomText(fontSize: 15, fontWeight: FontWeight.w400, text: "${Now}", letterSpacing: 0.3),
-                                                  SizedBox(height: 10,),
+
+
                                                   // CustomText(fontSize: 10, fontWeight: FontWeight.w400, text: "5H  14M", letterSpacing: 0.3),
                                                  ],
                                                ),
@@ -373,116 +364,126 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                            ),
                          ),
                      //    SizedBox(height: 5,),
-                         /// First Down Side Part---------------------Attendance Area ---------------------
-                         Align(
-                             alignment: Alignment.centerLeft,
-                             child: Container(
-                               padding: EdgeInsets.all(4),
+                         /// First Down Side Part---------------------Comments  Area ---------------------
+                         is_open_textbox ==false ?
+                         Container(
+                           padding: EdgeInsets.all(4),
+                             decoration: BoxDecoration(
+                               borderRadius: BorderRadius.circular(5),
+                             ),
+                             child: Row(
+                               children: [
+                                 InkWell(
+                                     onTap: () {
+                                       setState(() {
+                                         is_open_textbox=!is_open_textbox;
+                                         Future.delayed(Duration(
+                                           milliseconds: 100,
+                                         ),
+                                               () {
+                                             setState(() {
+                                               animated_height=0;
+                                               Animatedwidth=MediaQuery.of(context).size.width*0.905;
+                                               _descriptionController.text="${selfOneMonthAttendanceList[DateTime.now().day-1].aTTENDANCEREMARK}";
+                                             });
+                                           },
+                                         );
+                                       });
+                                     },
+                                     child: CustomImageSction2(height: 19, width: 19, radius: 0, image: "Assets/SelfIcon/comments_edited.png", img_color: Main_Theme_textColor.withOpacity(0.4),)),
+                                 SizedBox(width: 7  ,),
+                                 Text("${selfOneMonthAttendanceList}"=="[]"?"" : "${selfOneMonthAttendanceList[DateTime.now().day-1].aTTENDANCEREMARK ??""}",style: TextStyle(
+                                   overflow: TextOverflow.ellipsis,
+                                 ),),
+                               ],
+                             ),) :
+
+                            Stack(
+                           children: [
+                             Container(
+                               height: 25,
+                               width: double.infinity,
+                             ),
+                             Positioned(
+                               top: 0,
+                               left: 0,
+                               child: AnimatedContainer(
+                                 duration: Duration(milliseconds: 800),
+                                 height: 25,
+                                 // width: MediaQuery.of(context).size.width*0.42,
+                                 width: Animatedwidth,
                                  decoration: BoxDecoration(
-                                   borderRadius: BorderRadius.circular(5),
-                                   color: home_default_color,
+                                   color: Main_Theme_WhiteCollor,
+                                   borderRadius: BorderRadius.circular(50),
+                                   border:Border.all(
+                                     width: 1,
+                                     color: Main_Theme_textColor.withOpacity(0.5),
+                                   ),
                                  ),
-                                 child: CustomImageSction2(height: 20, width: 20, radius: 0, image: "Assets/DrawerImage/chat.png", img_color: Main_Theme_textColor.withOpacity(0.4),),),
-                         )
+                                 child: Row(
+                                   children: [
+                                     Expanded(
+                                         child: Container(
+                                           margin: EdgeInsets.only(bottom: 0),
+                                           height: 24,
+                                           child: TextFormField(
+                                             controller: _descriptionController,
+                                             maxLines: 1,
+                                             style: GoogleFonts.poppins(
+                                               fontSize : 10,
+                                               fontWeight :FontWeight.w400,
+                                               color : Main_Theme_textColor.withOpacity(0.8),
+                                             ),
+                                             decoration: InputDecoration(
+                                                 hintText:selfOneMonthAttendanceList==null?"Processing":"${selfOneMonthAttendanceList[selfOneMonthAttendanceList.length-1].aTTENDANCEREMARK}"==""?"Remarks here": "${selfOneMonthAttendanceList.last.aTTENDANCEREMARK}",
+                                               contentPadding: EdgeInsets.only(top: -20,right: 10,left: 7),
+                                               hintStyle: GoogleFonts.poppins(
+                                                 fontSize : 10,
+                                                 fontWeight :FontWeight.w400,
+                                                 color : Main_Theme_textColor.withOpacity(0.5),
+                                               ),
+                                               border: InputBorder.none,
+                                             ),
+                                           ),
+                                         )
+                                     ),
+                                     InkWell(
+                                       onTap: () {
+                                         if(_descriptionController.text.isNotEmpty){
+                                           _getCurrentLocation();
+                                           Future.delayed(Duration(milliseconds: 100),() {
+                                             setState(() {
+                                               Animatedwidth=0;
+                                               is_open_textbox=false;
 
+                                             });
+                                           },);
+                                         }
 
-                         // Stack(
-                         //   children: [
-                         //     Container(
-                         //       height: 25,
-                         //       width: double.infinity,
-                         //     ),
-                         //     Positioned(
-                         //       top: 0,
-                         //       left: 0,
-                         //       child: AnimatedContainer(
-                         //         duration: Duration(milliseconds: 800),
-                         //         height: 25,
-                         //         // width: MediaQuery.of(context).size.width*0.42,
-                         //         width: Animatedwidth,
-                         //         decoration: BoxDecoration(
-                         //           color: Main_Theme_WhiteCollor,
-                         //           borderRadius: BorderRadius.circular(50),
-                         //           border:Border.all(
-                         //             width: 1,
-                         //             color: Main_Theme_textColor.withOpacity(0.5),
-                         //           ),
-                         //         ),
-                         //         child: Row(
-                         //           children: [
-                         //             Expanded(
-                         //                 child: Container(
-                         //                   margin: EdgeInsets.only(bottom: 0),
-                         //                   height: 24,
-                         //                   child: TextFormField(
-                         //                     controller: _descriptionController,
-                         //                     onTap: () {
-                         //                       Future.delayed(Duration(
-                         //                         milliseconds: 100,
-                         //                       ),
-                         //                             () {
-                         //                           setState(() {
-                         //                             animated_height=0;
-                         //                             Animatedwidth=MediaQuery.of(context).size.width*0.905;
-                         //                           });
-                         //                         },
-                         //                       );
-                         //
-                         //                     },
-                         //                     maxLines: 1,
-                         //                     style: GoogleFonts.poppins(
-                         //                       fontSize : 10,
-                         //                       fontWeight :FontWeight.w400,
-                         //                       color : Main_Theme_textColor.withOpacity(0.8),
-                         //                     ),
-                         //                     decoration: InputDecoration(
-                         //                       //    hintText:selfOneMonthAttendanceList==null?"Processing":"${selfOneMonthAttendanceList[selfOneMonthAttendanceList.length-1]["ATTENDANCE_REMARK"]}"==""?"Remarks here": "${selfOneMonthAttendanceList.last["ATTENDANCE_REMARK"]}",
-                         //                       contentPadding: EdgeInsets.only(top: -20,right: 10,left: 7),
-                         //                       hintStyle: GoogleFonts.poppins(
-                         //                         fontSize : 10,
-                         //                         fontWeight :FontWeight.w400,
-                         //                         color : Main_Theme_textColor.withOpacity(0.5),
-                         //                       ),
-                         //                       border: InputBorder.none,
-                         //                     ),
-                         //                   ),
-                         //                 )
-                         //             ),
-                         //             InkWell(
-                         //               onTap: () {
-                         //                 if(_descriptionController.text.isNotEmpty){
-                         //                   _getCurrentLocation();
-                         //                   Future.delayed(Duration(milliseconds: 100),() {
-                         //                     setState(() {
-                         //                       Animatedwidth=MediaQuery.of(context).size.width*0.3;
-                         //                     });
-                         //                   },);
-                         //                 }
-                         //
-                         //               },
-                         //               child: Container(
-                         //                 // margin: EdgeInsets.symmetric(horizontal: 5),
-                         //                 height: 24,
-                         //                 width: 55,
-                         //                 decoration: BoxDecoration(
-                         //                     color: presentsent_color.withOpacity(0.7),
-                         //                     borderRadius: BorderRadius.only(
-                         //                         bottomRight: Radius.circular(50),
-                         //                         topRight: Radius.circular(50)
-                         //                     )
-                         //                   //  image: DecorationImage(image: AssetImage("Assets/PrimaryInformation/chat2.png"),fit: BoxFit.fill)
-                         //                 ),
-                         //                 alignment: Alignment.center,
-                         //                 child: Text("Remarks",style: TextStyle(fontSize: 11,fontWeight: FontWeight.w400,color: Main_Theme_textColor,),
-                         //                 ),
-                         //               ),
-                         //             ),
-                         //           ],
-                         //         ),
-                         //       ),
-                         //     )
-                         //   ],
-                         // ),
+                                       },
+                                       child: Container(
+                                         // margin: EdgeInsets.symmetric(horizontal: 5),
+                                         height: 24,
+                                         width: 55,
+                                         decoration: BoxDecoration(
+                                             color: presentsent_color.withOpacity(0.7),
+                                             borderRadius: BorderRadius.only(
+                                                 bottomRight: Radius.circular(50),
+                                                 topRight: Radius.circular(50)
+                                             )
+                                           //  image: DecorationImage(image: AssetImage("Assets/PrimaryInformation/chat2.png"),fit: BoxFit.fill)
+                                         ),
+                                         alignment: Alignment.center,
+                                         child: Text("Remarks",style: TextStyle(fontSize: 11,fontWeight: FontWeight.w400,color: Main_Theme_textColor,),
+                                         ),
+                                       ),
+                                     ),
+                                   ],
+                                 ),
+                               ),
+                             )
+                           ],
+                         ),
 
                          /// First Down Side Part------------------------------------------
 
@@ -495,7 +496,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                        setState(() {
                          is_clicked=!is_clicked;
                          animated_height=is_clicked==true? 222:0;
-                         Animatedwidth=MediaQuery.of(context).size.width*0.3;
+                         Animatedwidth=0.0;
                        });
                      },
                      child: Container(

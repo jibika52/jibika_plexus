@@ -58,7 +58,7 @@ class CustomHttpSelf{
           body: body
       ).then((http.Response response) {
         selfCheckInCheckOut =jsonDecode(response.body);
-
+        print("ssssssssssssssssssssssssssssssssss ${selfCheckInCheckOut["status"]}");
         // ElegantNotification(
         //   borderRadius: BorderRadius.circular(11),
         //   width: 380,

@@ -14,7 +14,7 @@ class ClockPainter extends CustomPainter {
     var radius = min(centerX, centerY);
 
     var dashBrush = Paint()
-      ..color = Main_Theme_textColor.withOpacity(0.5)
+      ..color = presentsent_color
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.round
       ..strokeWidth = 1;
