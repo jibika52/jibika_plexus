@@ -119,5 +119,5 @@ String Loremtext="Lorem sed do eiusmod tempor incididunt ut labore et dolore mag
 // GetStorage().write("RfIdCardNo",loginData["RfIdCardNo"]) ;
 // GetStorage().write("Empcode",loginData["Empcode"]) ;
 // GetStorage().write("user_type_id",loginData["user_type_id"]) ;
-
+//GetStorage().write("APPS_IMG_BASEURL",loginData["AppsBaseUrl"]) ;
 

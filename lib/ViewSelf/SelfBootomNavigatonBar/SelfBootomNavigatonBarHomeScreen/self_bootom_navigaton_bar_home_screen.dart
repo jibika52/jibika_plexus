@@ -2,6 +2,7 @@
 import 'dart:async';
 import 'dart:math';
 import 'dart:ui';
+import 'package:elegant_notification/elegant_notification.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -88,6 +89,18 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
     // TODO: implement initState
     super.initState();
   }
+
+
+
+
+///-----------------------------------------------------------------------
+
+  String action = "START";
+  Timer? timer;
+  int number = 0;
+
+  ///-----------------------------------------------------------------------
+
   double Animatedwidth=100;
   double animated_height=0;
   bool is_clicked=false;
@@ -109,6 +122,13 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
   }
   String ? checkin;
   String ? checkout;
+  double increase_punch_progress_bar=0.0001;
+  @override
+  void dispose() {
+    timer?.cancel();
+    // TODO: implement dispose
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     double P_Count=0;
@@ -117,6 +137,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
     double HL_Count=0;
     checkin="";
     checkout="";
+
     bool is_clicked=false;
     final  dashboardtodaysBirthdayEmployeeinfo=  Provider.of<HomeProvider>(context).dashboardtodaysBirthdayEmployeeinfo;
       List<Updated_attendance_summary>   selfOneMonthAttendanceList =  Provider.of<SelfDashboardController>(context).selfOneMonthAttendanceList;
@@ -146,6 +167,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
         //   HL_Count++;
       }
     }
+
     return Scaffold(
       backgroundColor: home_default_color,
        body: RefreshIndicator(
@@ -170,7 +192,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                    Container(
                      margin: EdgeInsets.only(left:  10,right: 10,top: apps_div_margin),
                      padding: EdgeInsets.all(10),
-                     height: 185,
+                     height: 190,
                      width: double.infinity,
                      decoration: BoxDecoration(
                          color: Main_Theme_WhiteCollor,
@@ -190,10 +212,9 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                      crossAxisAlignment: CrossAxisAlignment.start,
                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                      children: [
-                                       CustomText(fontSize: 13, fontWeight: FontWeight.w500, text: "  My Presence  ", letterSpacing: 0.3),
+                                       CustomText(fontSize: 13, fontWeight: FontWeight.w500, text: "Today Presence  ", letterSpacing: 0.3),
                                        // ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "${DateTime.now().hour}${DateTime.now().minute}${DateTime.now().second}", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
                                        //      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: DateTime.now().second>9? "${DateTime.now().hour}${DateTime.now().minute}${DateTime.now().second}": "${DateTime.now().hour}${DateTime.now().minute}0${DateTime.now().second}", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
-                                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "${DateFormat('dd-MMM-yyyy').format(DateTime.now())}", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
                                        Row(
                                          mainAxisAlignment: MainAxisAlignment.start,
                                          crossAxisAlignment: CrossAxisAlignment.center,
@@ -223,6 +244,19 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                          crossAxisAlignment: CrossAxisAlignment.center,
                                          children: [
                                            Image.asset("Assets/DashBoardIcons/location.png",height: 24,width: 24,fit: BoxFit.fill,color: Colors.grey,),
+                                           ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "  Late : 00:20:00", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
+
+                                           //      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "10:10:10", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
+
+                                         //    ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text:selfOneMonthAttendanceList==null?"Processing":"${selfOneMonthAttendanceList[selfOneMonthAttendanceList.length-1]["OUT_TIME"]}"==""?"": "${selfOneMonthAttendanceList.last["OUT_TIME"].substring(selfOneMonthAttendanceList.last["OUT_TIME"].length - 8)}", letterSpacing: 0.3, textColor: Main_Theme_textColor ,),
+
+                                         ],
+                                       ),
+                                       Row(
+                                         mainAxisAlignment: MainAxisAlignment.start,
+                                         crossAxisAlignment: CrossAxisAlignment.center,
+                                         children: [
+                                           Image.asset("Assets/DashBoardIcons/location.png",height: 24,width: 24,fit: BoxFit.fill,color: Colors.grey,),
                                            ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "  Duration : 7H 55M", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
 
                                            //      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "10:10:10", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
@@ -237,12 +271,47 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                 ),
                                ),
                                Spacer(),
+                               /// Attendance Part Right side -------------------------------------------------------------
                                Expanded(
                                    flex: 2,
-                                   child: InkWell(
-                                     onTap: () {
-                                       _getCurrentLocation();
-                                     },
+                                   child: GestureDetector(
+                                     onLongPress: () => setState(() {
+                                       timer = Timer.periodic(Duration(microseconds: 1), (timer) {
+                                         setState(() {
+                                           if(increase_punch_progress_bar>=0.9999999){
+                                             increase_punch_progress_bar=0.0;
+                                            _getCurrentLocation();
+                                             ElegantNotification(
+                                               borderRadius: BorderRadius.circular(11),
+                                               width: 380,
+                                               iconSize: 25,
+                                               background: presentsent_color,
+                                               progressIndicatorBackground: presentsent_color,
+                                               progressIndicatorColor: absent_color,
+                                               // position: Alignment.center,
+                                               title:  ColorCustomText(fontSize: 16, fontWeight: FontWeight.w500, text:
+                                               "Attendance successfully with GPS tracking",
+                                                   letterSpacing: 0.3, textColor: Main_Theme_textColor),
+                                               description: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "Thanks from JIBIKA PAYSCALE!..", letterSpacing: 0.3, textColor: Main_Theme_textColor),
+                                               onDismiss: () {
+                                                 print('Message when the notification is dismissed');
+                                               }, icon: Icon(Icons.info_outlined,color:Colors.black,),
+                                             ).show(context);
+                                             timer.cancel();
+                                           }else{
+                                             increase_punch_progress_bar=increase_punch_progress_bar+0.0001;
+                                            }
+                                          });
+                                         }
+                                       );
+                                     }
+                                   ),
+
+                                     // onLongPressEnd: (_) => setState(() {
+                                     //   increase_punch_progress_bar=0.0;
+                                     //   timer?.cancel();
+                                     // }),
+
                                      child: Padding(
                                        padding: const EdgeInsets.only(bottom: 20.0),
                                        child: Stack(
@@ -259,15 +328,17 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                              child: CircularPercentIndicator(
                                                radius: 60.0,
                                                lineWidth: 5.5,
-                                               percent:0.7,
+                                           //    percent:0.7,
+                                               percent:increase_punch_progress_bar,
                                                backgroundColor: home_default_color,
                                                progressColor: presentsent_color,
                                                center: Column(
                                                  mainAxisAlignment: MainAxisAlignment.center,
                                                  children: [
-                                                   CustomImageSction2(height: 40, width: 40, radius: 50, image: "Assets/DashBoardIcons/b_bar_attendence.png", img_color: Main_Theme_textColor.withOpacity(0.5)),
+                                                   CustomImageSction2(height: 50, width: 50, radius: 50, image: "Assets/SelfIcon/test_fingerprint.png", img_color: Main_Theme_textColor.withOpacity(0.5)),
                                               //     CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "${DateTime.now().hour}:${DateTime.now().minute}:${second}", letterSpacing: 0.3),
                                                    CustomText(fontSize: 15, fontWeight: FontWeight.w400, text: "${Now}", letterSpacing: 0.3),
+                                                  SizedBox(height: 10,),
                                                   // CustomText(fontSize: 10, fontWeight: FontWeight.w400, text: "5H  14M", letterSpacing: 0.3),
                                                  ],
                                                ),
@@ -305,7 +376,15 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                          /// First Down Side Part---------------------Attendance Area ---------------------
                          Align(
                              alignment: Alignment.centerLeft,
-                             child: CustomImageSction2(height: 20, width: 20, radius: 5, image: "Assets/DrawerImage/chat.png", img_color: Main_Theme_textColor.withOpacity(0.4))),
+                             child: Container(
+                               padding: EdgeInsets.all(4),
+                                 decoration: BoxDecoration(
+                                   borderRadius: BorderRadius.circular(5),
+                                   color: home_default_color,
+                                 ),
+                                 child: CustomImageSction2(height: 20, width: 20, radius: 0, image: "Assets/DrawerImage/chat.png", img_color: Main_Theme_textColor.withOpacity(0.4),),),
+                         )
+
 
                          // Stack(
                          //   children: [
@@ -446,7 +525,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                   Icon(Icons.arrow_back_ios,size: 16, color: Main_Theme_textColor.withOpacity(0.8),),
                                   CustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "${DateFormat("MMM yyyy").format(DateTime.now())}", letterSpacing: 0.3),
                                   Icon(Icons.arrow_forward_ios_rounded,size: 16,color: Main_Theme_textColor.withOpacity(0.8)) ,
-                               
+
                                ],
                              ),
                            ),
@@ -545,8 +624,6 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                        ),
                      ),
                    ),
-
-
                     /// Animated Calender /...........Calender....................................
                    AnimatedContainer(
                      margin: EdgeInsets.only(left: 10,right: 10, top:is_clicked==false?0: apps_div_margin),
@@ -633,16 +710,6 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                        ),
                      ),
                    ),
-
-
-
-
-
-
-
-
-
-
                     /// 3rd part---------My leave status--------------------------------------------------------
                    Container(
                      decoration: BoxDecoration(
@@ -745,6 +812,9 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
   //     });
   //   }
   // }
+
+
+
 
 }
 

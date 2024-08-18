@@ -276,10 +276,10 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
                   height: b_bar_height,
                   child: Column(
                     children: [
-                        Icon(Icons.list_alt,size: 30,weight: 30,color: widget.currentIndex==1? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.3),),
-              //   CustomImageSction2(height: b_bar_icon_size,width: b_bar_icon_size,  img_color: widget.currentIndex==1? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5),  radius: 5, image: "Assets/DashBoardIcons/b_bar_attendence.png"),
+                   //     Icon(Icons.list_alt,size: 30,weight: 30,color: widget.currentIndex==1? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.3),),
+              CustomImageSction2(height: b_bar_icon_size,width: b_bar_icon_size,  img_color: widget.currentIndex==1? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5),  radius: 5, image: "Assets/SelfIcon/test_fingerprint.png"),
                       SizedBox(height: 2,),
-                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Job Card", letterSpacing: 0.3, textColor: widget.currentIndex==1? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
+                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Attendance", letterSpacing: 0.3, textColor: widget.currentIndex==1? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
                     ],
                   ),
                 )),

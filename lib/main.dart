@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:jibika_plexus/Controller/CounterProvider/counter_provider.dart';
 import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/self_bootom_navigation_bar.dart';
+import 'package:jibika_plexus/test_on_longpress.dart';
 import 'package:jibika_plexus/testfile.dart';
 import 'package:jibika_plexus/testgoooglemap.dart';
 import 'package:jibika_plexus/testmonth_picker.dart';
@@ -52,7 +53,9 @@ class MyApp extends StatelessWidget {
         //    home:BootomNatchBarScreen(),
 
         /// ----------SplashScreen--------
-    home:MainSplashPageViewScreen(),
+  //  home:MainSplashPageViewScreen(),
+   home:SalfBootomNatchBarScreen(currentIndex: 4,),
+        //  home:TestLongPress(),
         //     home:MonthPicker(),
       //       home:Googlemap(),
         /// ----------Working Screen--------
