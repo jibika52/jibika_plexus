@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jibika_plexus/CustomSelfWedget/self_profile_summary.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
+import 'package:provider/provider.dart';
 
+import '../../../../Controller/SelfDashboardController/self_dashboard_controller.dart';
 import '../../../../CustomSelfWedget/myself_leave_status.dart';
 import '../../../../CustomWidget/CustomAppBar/CustomDefaultAppBar/custom_default_app_bar.dart';
 import '../../../../CustomWidget/CustomImage/custom_image.dart';
@@ -18,6 +20,7 @@ class SelfMyLeaveSatusScreen extends StatefulWidget {
 class _SelfMyLeaveSatusScreenState extends State<SelfMyLeaveSatusScreen> {
   @override
   Widget build(BuildContext context) {
+    List leave_status=Provider.of<SelfDashboardController>(context).selfLeaveAllocationList ;
     return Scaffold(
       backgroundColor: home_default_color,
       appBar: PreferredSize(preferredSize: Size.fromHeight(75),
@@ -29,135 +32,137 @@ class _SelfMyLeaveSatusScreenState extends State<SelfMyLeaveSatusScreen> {
        child: Column(
          children: [
            SelfProfileSummaryPart(),
-         Container(
-           margin: EdgeInsets.only(left: 10,right: 10,top: 10),
-           padding: EdgeInsets.only(top: 10,left: 10,right: 10),
-           decoration: BoxDecoration(
-             border: Border(
-               bottom: BorderSide(
-                 color: Colors.black
-               )
-             ),
-             borderRadius: BorderRadius.circular(7),
-             color: Main_Theme_WhiteCollor
-           ),
-           child: SingleChildScrollView(
-           scrollDirection: Axis.horizontal,
-           child: DataTable(
-             horizontalMargin: 25,
-             headingRowHeight: 20,
-             dataRowHeight: 18,
-             columnSpacing: 15,
+           Container(
+             margin: EdgeInsets.only(left: 10,right: 10,top: 10),
+             padding: EdgeInsets.only(top: 10,left: 10,right: 10),
              decoration: BoxDecoration(
-               border: Border(
-                 bottom: BorderSide(color: Main_Theme_textColor.withOpacity(0.05))
-               )
+                 border: Border(
+                   // bottom: BorderSide(
+                   //     color: Colors.black
+                   // )
+                 ),
+                 borderRadius: BorderRadius.circular(7),
+                 color: Main_Theme_WhiteCollor
              ),
-             columns: <DataColumn>[
-               DataColumn(
-                 label: Text(
-                   'Leave',
-                   style: GoogleFonts.poppins(
-                       fontSize: 10,
-                       fontWeight: FontWeight.w400,
-                       ),
+             child: SingleChildScrollView(
+               scrollDirection: Axis.horizontal,
+               child: DataTable(
+                 horizontalMargin: 25,
+                 headingRowHeight: 20,
+                 dataRowHeight: 18,
+                 columnSpacing: 15,
+                 //  border: TableBorder.all(width: 1,color:  Main_Theme_textColor.withOpacity(0.05)),
+                 decoration: BoxDecoration(
+                     border: Border(
+                         bottom: BorderSide(color: Main_Theme_textColor.withOpacity(0.05))
+                     )
                  ),
-               ),
-               DataColumn(
-                 label: Text(
-                   'Entitle',
-                   style: GoogleFonts.poppins(
-                       fontSize: 10,
-                       fontWeight: FontWeight.w400,
+                 columns: <DataColumn>[
+                   DataColumn(
+                     label: Text(
+                       'Leave',
+                       style: GoogleFonts.poppins(
+                         fontSize: 10,
+                         fontWeight: FontWeight.w400,
                        ),
-                 ),
-               ),
-               DataColumn(
-                 label: Text(
-                   'Availed',
-                   style: GoogleFonts.poppins(
-                       fontSize: 10,
-                       fontWeight: FontWeight.w400,
-                       ),
-                 ),
-               ),
-               DataColumn(
-                 label: Text(
-                   'Encashment',
-                   style: GoogleFonts.poppins(
-                       fontSize: 10,
-                       fontWeight: FontWeight.w400,
-                       ),
-                 ),
-               ),
-               DataColumn(
-                 label: Text(
-                   'Dues',
-                   style: GoogleFonts.poppins(
-                       fontSize: 10,
-                       fontWeight: FontWeight.w400,
-                       ),
-                 ),
-               ),
-               DataColumn(
-                 label: Text(
-                   '    Date',
-                   style: GoogleFonts.poppins(
-                       fontSize: 10,
-                       fontWeight: FontWeight.w400,
-                       ),
-                 ),
-               ),
-             ],
-             rows: snapShot.map<DataRow>((e) {
-               return DataRow(
-                 cells: <DataCell>[
-                   DataCell(Center(
-                     child: Padding(
-                       padding: const EdgeInsets.all(3.0),
-                       child: Text('Sl',  style: GoogleFonts.poppins(
-                           fontSize: 9,
-                           fontWeight: FontWeight.w400,
-                           ),),
                      ),
-                   )),
-                   DataCell(Center(
-                     child: Text('12',  style: GoogleFonts.poppins(
-                         fontSize: 9,
+                   ),
+                   DataColumn(
+                     label: Text(
+                       'Entitle',
+                       style: GoogleFonts.poppins(
+                         fontSize: 10,
                          fontWeight: FontWeight.w400,
-                         ),),
-                   )),
-                   DataCell(Center(
-                     child: Text('12',  style: GoogleFonts.poppins(
-                         fontSize: 9,
+                       ),
+                     ),
+                   ),
+                   DataColumn(
+                     label: Text(
+                       'Availed',
+                       style: GoogleFonts.poppins(
+                         fontSize: 10,
                          fontWeight: FontWeight.w400,
-                         ),),
-                   )),
-                   DataCell(Center(
-                     child: Text('12',  style: GoogleFonts.poppins(
-                         fontSize: 9,
+                       ),
+                     ),
+                   ),
+                   DataColumn(
+                     label: Text(
+                       'Encashment',
+                       style: GoogleFonts.poppins(
+                         fontSize: 10,
                          fontWeight: FontWeight.w400,
-                         ),),
-                   )),
-                   DataCell(
-                       Center(
-                         child: Text('12',  style: GoogleFonts.poppins(
+                       ),
+                     ),
+                   ),
+                   DataColumn(
+                     label: Text(
+                       'Dues',
+                       style: GoogleFonts.poppins(
+                         fontSize: 10,
+                         fontWeight: FontWeight.w400,
+                       ),
+                     ),
+                   ),
+                   DataColumn(
+                     label: Text(
+                       '    Date',
+                       style: GoogleFonts.poppins(
+                         fontSize: 10,
+                         fontWeight: FontWeight.w400,
+                       ),
+                     ),
+                   ),
+                 ],
+                 rows: leave_status.map<DataRow>((e) {
+                   return DataRow(
+                     cells: <DataCell>[
+                       DataCell(Center(
+                         child: Padding(
+                           padding: const EdgeInsets.all(3.0),
+                           child: Text('${e["LeaveAbbre"]}',  style: GoogleFonts.poppins(
                              fontSize: 9,
                              fontWeight: FontWeight.w400,
-                             ),),
+                           ),),
+                         ),
                        )),
-                   DataCell(Center(
-                     child: Text('13-jun-2024',  style: GoogleFonts.poppins(
-                         fontSize: 9,
-                         fontWeight: FontWeight.w400,
+                       DataCell(Center(
+                         child: Text('${e["EntitleDays"]}',  style: GoogleFonts.poppins(
+                           fontSize: 9,
+                           fontWeight: FontWeight.w400,
                          ),),
-                   )),
-                 ],
-               );
-             }).toList(),
+                       )),
+                       DataCell(Center(
+                         child: Text('${e["AvailDays"]}',  style: GoogleFonts.poppins(
+                           fontSize: 9,
+                           fontWeight: FontWeight.w400,
+                         ),),
+                       )),
+                       DataCell(Center(
+                         child: Text('${e["EncashmentDays"]}',  style: GoogleFonts.poppins(
+                           fontSize: 9,
+                           fontWeight: FontWeight.w400,
+                         ),),
+                       )),
+                       DataCell(
+                           Center(
+                             child: Text('${e["BalanceDays"]}',  style: GoogleFonts.poppins(
+                               fontSize: 9,
+                               fontWeight: FontWeight.w400,
+                             ),),
+                           )),
+                       DataCell(Center(
+                         child: Text('${e["CreateDate"]}',
+                           style: GoogleFonts.poppins(
+                             fontSize: 9,
+                             fontWeight: FontWeight.w400,
+                           ),),
+                       )),
+                     ],
+                   );
+                 }).toList(),
+               ),
+             ),
            ),
-                  ),
-         ),
 
            SizedBox(height: apps_div_margin,),
            Expanded(

@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:jibika_plexus/Controller/HomeController/home_controller.dart';
 import 'package:jibika_plexus/Controller/SelfDashboardController/self_dashboard_controller.dart';
@@ -58,7 +60,6 @@ class SelfProfileSummaryPart extends StatelessWidget {
                         fontSize: 12,
                         fontWeight: FontWeight.w400,
                         text: "${selfORAdminShortInformationdata["IdCardNo"]??""}",
-                        overflow: TextOverflow.ellipsis,
                         letterSpacing: 0.3),
                   ],
                 ),
@@ -78,12 +79,12 @@ class SelfProfileSummaryPart extends StatelessWidget {
                 children: [
                   Spacer(),
                   CustomText(
-                    fontSize: 13,
+                    fontSize: 14,
                     fontWeight: FontWeight.w500,
                     maxLines: 1,
                     text: "${selfORAdminShortInformationdata["EmployeeNameEnglish"]??""}",
-                    overflow: TextOverflow.ellipsis,
                     letterSpacing: 0.3,
+                    overflow: TextOverflow.ellipsis,
                   ),
                   SizedBox(
                     height: 4,
@@ -98,12 +99,14 @@ class SelfProfileSummaryPart extends StatelessWidget {
                         textColor:
                         Main_Theme_textColor.withOpacity(0.5),
                       ),
-                      CustomText(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400,
-                          text:"${selfORAdminShortInformationdata["Department"]??""}",
-                          overflow: TextOverflow.ellipsis,
-                          letterSpacing: 0.3),
+                      Expanded(
+                        child: CustomText(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
+                            text:"${selfORAdminShortInformationdata["Department"]??""}",
+                            overflow: TextOverflow.ellipsis,
+                            letterSpacing: 0.3),
+                      ),
                     ],
                   ),
                   SizedBox(
@@ -119,12 +122,14 @@ class SelfProfileSummaryPart extends StatelessWidget {
                         textColor:
                         Main_Theme_textColor.withOpacity(0.5),
                       ),
-                      CustomText(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400,
-                          text: "${selfORAdminShortInformationdata["Designation"]??""}",
-                          overflow: TextOverflow.ellipsis,
-                          letterSpacing: 0.3),
+                      Expanded(
+                        child: CustomText(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
+                            text: "${selfORAdminShortInformationdata["Designation"]??""}",
+                            overflow: TextOverflow.ellipsis,
+                            letterSpacing: 0.3),
+                      ),
                     ],
                   ),
                   SizedBox(
@@ -135,7 +140,7 @@ class SelfProfileSummaryPart extends StatelessWidget {
                       ColorCustomText(
                         fontSize: 12,
                         fontWeight: FontWeight.w400,
-                        text: "JoiningDate : ",
+                        text: "DOJ : ",
                         letterSpacing: 0.3,
                         textColor:
                         Main_Theme_textColor.withOpacity(0.5),
@@ -144,7 +149,6 @@ class SelfProfileSummaryPart extends StatelessWidget {
                           fontSize: 12,
                           fontWeight: FontWeight.w400,
                           text: "${selfORAdminShortInformationdata["JoiningDate"]??""}",
-                          overflow: TextOverflow.ellipsis,
                           letterSpacing: 0.3),
                     ],
                   ),

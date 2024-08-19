@@ -80,55 +80,60 @@ class _SelfBootomNavigatonEmployeeDashboardState extends State<SelfBootomNavigat
         width: double.infinity,
         child: Column(
           children: [
-            Container(
-              height: 132,
-              width: double.infinity,
-              padding: EdgeInsets.only(left: 10,top: 10,bottom: 10),
-              color: Main_Theme_WhiteCollor,
-
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Container(
-                        height: 139,
-                        width: 170,
-                        child: SelfProfileSummaryPart()),
+            Stack(
+              children: [
+                Container(
+                  height: 115,
+                  width: double.infinity,
+                  padding: EdgeInsets.only(left: 0,top: 0,bottom: 0),
+                  color: Main_Theme_WhiteCollor,
+                  child:  SelfProfileSummaryPart()
+                ),
+                Positioned(
+                  right: 0,
+                  top: -10,
+                  child:  Container(color: Colors.white,
+                  height: 139,
+                  width: MediaQuery.of(context).size.width*0.45,
+                  child: LayoutBuilder(
+                    builder: (_, constraints) {
+                      return PieChart(
+                        key: ValueKey(key),
+                        chartValuesOptions: ChartValuesOptions(
+                            showChartValueBackground: false,
+                            showChartValues: false
+                        ),
+                        /// Customize Right Side Option ----------------------------------P L H A----------.
+                        legendOptions: LegendOptions(
+                            legendTextStyle: TextStyle(fontSize: 10,fontWeight: FontWeight.w400,)),
+                        dataMap: {
+                          "P(${double.parse("$P_Count").toStringAsFixed(0)}D) "
+                              :
+                          P_Count, "A(${double.parse("$AB_Count").toStringAsFixed(0)}D)"
+                              :
+                          AB_Count, "L(${double.parse("$L_Count").toStringAsFixed(0)}D)"
+                              :
+                          L_Count, "H (${double.parse("$HL_Count").toStringAsFixed(0)}D)"
+                              :
+                          HL_Count,
+                        },
+                        animationDuration: const Duration(milliseconds: 800),
+                        chartLegendSpacing: 10,
+                        chartRadius: math.min(MediaQuery.of(context).size.width / 3.2, 300), // radius komay baray
+                        colorList: [
+                          presentsent_color, absent_color,  leave_color,holiday_color
+                        ],
+                        initialAngleInDegree: 0,
+                        ringStrokeWidth: -4,
+                        baseChartColor: Colors.transparent,
+                      );
+                    },
                   ),
-
-
-
-                  Container(
-                    height: 170,
-                    width: 150,
-                    child: LayoutBuilder(
-                      builder: (_, constraints) {
-                        return PieChart(
-                          key: ValueKey(key),
-                          chartValuesOptions: ChartValuesOptions(
-                              showChartValueBackground: false,
-                              showChartValues: false
-                          ),
-                          /// Customize Right Side Option ----------------------------------P L H A----------.
-                          legendOptions: LegendOptions(
-                              legendTextStyle: TextStyle(fontSize: 10,fontWeight: FontWeight.w400,)),
-                          dataMap: {"P(${double.parse("$P_Count").toStringAsFixed(0)}D) ": P_Count, "A(${double.parse("$AB_Count").toStringAsFixed(0)}D)": AB_Count, "L(${double.parse("$L_Count").toStringAsFixed(0)}D)": L_Count, "H ($HL_Count)D": HL_Count,},
-                          animationDuration: const Duration(milliseconds: 800),
-                          chartLegendSpacing: 10,
-                          chartRadius: math.min(MediaQuery.of(context).size.width / 3.2, 300), // radius komay baray
-                          colorList: [
-                            presentsent_color, absent_color,  leave_color,holiday_color
-                          ],
-                          initialAngleInDegree: 0,
-                          ringStrokeWidth: -4,
-                          baseChartColor: Colors.transparent,
-                        );
-                      },
-                    ),
-                  ),
-                ],
-              ),
+                ),)
+              ],
             ),
             SizedBox(height: apps_div_margin,),
+
             CustomCalender(
                 width: 120, is_share: true, onTap: () {
             }, is_messsage: true, onTap2message: () {
