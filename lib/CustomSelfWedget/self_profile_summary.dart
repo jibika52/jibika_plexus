@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:jibika_plexus/Controller/HomeController/home_controller.dart';
+import 'package:jibika_plexus/Controller/SelfDashboardController/self_dashboard_controller.dart';
+import 'package:provider/provider.dart';
 
 import '../CustomWidget/CustomText/custom_text.dart';
 import '../Utils/constants.dart';
@@ -8,6 +12,7 @@ class SelfProfileSummaryPart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final selfORAdminShortInformationdata=Provider.of<HomeProvider>(context).selfORAdminShortInformationdata;
     return Container(
       height: 110,
       width: double.infinity,
@@ -33,8 +38,8 @@ class SelfProfileSummaryPart extends StatelessWidget {
                       topRight: Radius.circular(7),
                     ),
                     image: DecorationImage(
-                        image: AssetImage(
-                            "Assets/DashBoardIcons/man_picture.png"),
+                        image: NetworkImage(
+                            "${GetStorage().read("APPS_IMG_BASEURL")}${selfORAdminShortInformationdata["EmpImage"]??""}"),
                         fit: BoxFit.fill),
                   ),
                 ),
@@ -44,7 +49,7 @@ class SelfProfileSummaryPart extends StatelessWidget {
                     ColorCustomText(
                       fontSize: 12,
                       fontWeight: FontWeight.w400,
-                      text: "ID : ",
+                      text: "",
                       letterSpacing: 0.3,
                       textColor:
                       Main_Theme_textColor.withOpacity(0.5),
@@ -52,7 +57,8 @@ class SelfProfileSummaryPart extends StatelessWidget {
                     CustomText(
                         fontSize: 12,
                         fontWeight: FontWeight.w400,
-                        text: "171045",
+                        text: "${selfORAdminShortInformationdata["IdCardNo"]??""}",
+                        overflow: TextOverflow.ellipsis,
                         letterSpacing: 0.3),
                   ],
                 ),
@@ -75,9 +81,9 @@ class SelfProfileSummaryPart extends StatelessWidget {
                     fontSize: 13,
                     fontWeight: FontWeight.w500,
                     maxLines: 1,
-                    text: "UZZAL KUMAR BISWAS ",
-                    letterSpacing: 0.3,
+                    text: "${selfORAdminShortInformationdata["EmployeeNameEnglish"]??""}",
                     overflow: TextOverflow.ellipsis,
+                    letterSpacing: 0.3,
                   ),
                   SizedBox(
                     height: 4,
@@ -95,7 +101,8 @@ class SelfProfileSummaryPart extends StatelessWidget {
                       CustomText(
                           fontSize: 12,
                           fontWeight: FontWeight.w400,
-                          text: "Finishing",
+                          text:"${selfORAdminShortInformationdata["Department"]??""}",
+                          overflow: TextOverflow.ellipsis,
                           letterSpacing: 0.3),
                     ],
                   ),
@@ -115,7 +122,8 @@ class SelfProfileSummaryPart extends StatelessWidget {
                       CustomText(
                           fontSize: 12,
                           fontWeight: FontWeight.w400,
-                          text: "Sr. Operator",
+                          text: "${selfORAdminShortInformationdata["Designation"]??""}",
+                          overflow: TextOverflow.ellipsis,
                           letterSpacing: 0.3),
                     ],
                   ),
@@ -127,7 +135,7 @@ class SelfProfileSummaryPart extends StatelessWidget {
                       ColorCustomText(
                         fontSize: 12,
                         fontWeight: FontWeight.w400,
-                        text: "Age : ",
+                        text: "JoiningDate : ",
                         letterSpacing: 0.3,
                         textColor:
                         Main_Theme_textColor.withOpacity(0.5),
@@ -135,7 +143,8 @@ class SelfProfileSummaryPart extends StatelessWidget {
                       CustomText(
                           fontSize: 12,
                           fontWeight: FontWeight.w400,
-                          text: "25Y 8M",
+                          text: "${selfORAdminShortInformationdata["JoiningDate"]??""}",
+                          overflow: TextOverflow.ellipsis,
                           letterSpacing: 0.3),
                     ],
                   ),

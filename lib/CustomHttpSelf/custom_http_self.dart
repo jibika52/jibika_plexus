@@ -11,6 +11,7 @@ import 'package:http/http.dart';
 import 'package:jibika_plexus/Api/Routes/routes.dart';
 
 import '../CustomWidget/CustomText/custom_text.dart';
+import '../Model/EmpoyeeLeaveStatusModelClass/employee_leave_model_class.dart';
 import '../Utils/constants.dart';
 import '../ViewSelf/SelfBootomNavigatonBar/SelfBootomNavigatonBarHomeScreen/self_bootom_navigaton_bar_home_screen.dart';
 class CustomHttpSelf{
@@ -183,6 +184,32 @@ class CustomHttpSelf{
 
 
 
+  ///  Leave allocation --------------------------------------------------------------------------
+  selfLeaveAllocation(String UserId, String EMPCODE, BuildContext context)async{
+    dynamic  selfLeaveAllocationList  ;
+    var body = jsonEncode({
+      "UserId":"$UserId",
+      "EMPCODE":"$EMPCODE"
+    });
+
+    try{
+      var data=await http.post(Uri.parse("${BASEURL}/${Self_Admin_Leave_Allocation}"),
+          headers: {
+            "Content-Type": "application/json",
+            "username": "jibikaapps",
+            "password": "20jibika24",
+          },
+          body: body
+      ).then((http.Response response) {
+        selfLeaveAllocationList =jsonDecode(response.body)["data"];
+
+      });
+      return selfLeaveAllocationList;
+    }
+    catch(e){
+      print("self Leave Allocation Catch error ============================ ${e}");
+    }
+  }
 
 
 

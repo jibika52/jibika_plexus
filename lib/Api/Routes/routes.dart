@@ -46,3 +46,7 @@
 
   /// Get Employee Short description
     String Self_Admin_Short_Description="Employee/GetEmployeeShortInfoByIdCardNo";
+
+
+  /// Self My leave status leave allocation
+    String Self_Admin_Leave_Allocation="Leave/GetLeaveAllocationByEmployee";

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jibika_plexus/CustomSelfWedget/self_profile_summary.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
 
 import '../../../../CustomSelfWedget/myself_leave_status.dart';
@@ -27,6 +28,7 @@ class _SelfMyLeaveSatusScreenState extends State<SelfMyLeaveSatusScreen> {
        width: double.infinity,
        child: Column(
          children: [
+           SelfProfileSummaryPart(),
          Container(
            margin: EdgeInsets.only(left: 10,right: 10,top: 10),
            padding: EdgeInsets.only(top: 10,left: 10,right: 10),
@@ -156,130 +158,7 @@ class _SelfMyLeaveSatusScreenState extends State<SelfMyLeaveSatusScreen> {
            ),
                   ),
          ),
-           // SizedBox(height: apps_div_margin ),
-           // Container(
-           //   decoration: BoxDecoration(
-           //     borderRadius: BorderRadius.circular(7),
-           //     color: Main_Theme_WhiteCollor,
-           //   ),
-           //   padding: EdgeInsets.all(5),
-           //   margin: EdgeInsets.only(left: 9,right: 9),
-           //   width: double.infinity,
-           //   child: ListView.builder(
-           //     shrinkWrap: true,
-           //     scrollDirection: Axis.vertical,
-           //     itemCount: 5,
-           //     itemBuilder: (context, index) {
-           //     return Container(
-           //       padding: EdgeInsets.only(left: 5,right: 5,),
-           //       margin: EdgeInsets.only(left: 9,right: 9,bottom: 5),
-           //       decoration: BoxDecoration(
-           //         border: Border(
-           //           bottom: BorderSide(
-           //             color: Main_Theme_textColor.withOpacity(0.2),
-           //             width: 0.5,
-           //           )
-           //         )
-           //       ),
-           //       child: Row(
-           //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-           //         children: [
-           //           CustomText(text :index==0?"Leave":index==1?"SL": index==2?"SL": index==3?"LW":"OL", fontSize: 9, fontWeight: FontWeight.w400, letterSpacing: 0.2,),
-           //          Spacer(),
-           //           CustomText(text :index==0?"Entitle":"  9" ,fontSize: 9, fontWeight: FontWeight.w400, letterSpacing: 0.2,),
-           //           Spacer(),
-           //           CustomText(text :index==0?"Availed":"   20" ,fontSize: 9, fontWeight: FontWeight.w400, letterSpacing: 0.2,),
-           //           Spacer(),
-           //        CustomText(text :index==0?"Encashment":"  30" ,fontSize: 9, fontWeight: FontWeight.w400, letterSpacing: 0.2,),
-           //           Spacer(),
-           //           CustomText(text :index==0?"Dues":"  40" ,fontSize: 9, fontWeight: FontWeight.w400, letterSpacing: 0.2,),
-           //           Spacer(),
-           //        CustomText(text :index==0?"Date": "9-jun-2024", fontSize: 9, fontWeight: FontWeight.w400, letterSpacing: 0.2,),
-           //         ],
-           //       ),
-           //     );
-           //   },),
-           // ),
-           SizedBox(height: apps_div_margin ),
-           Container(
-             height: 39,
-             width: double.infinity,
-             padding: EdgeInsets.only(
-                right: 9,left: 9
-             ),
-             child: Row(
-               children: [
-                 Expanded(
-                     flex: 9,
-                     child: Container(
-                       height: 48,
-                       width: 300,
-                       decoration: BoxDecoration(
-                           borderRadius: BorderRadius.circular(7),
-                           color:Color.fromRGBO(245, 245, 245, 1),
-                           border: Border.all(width: 2,color: Main_Theme_textColor.withOpacity(0.1))
-                       ),
-                       child: Row(
-                         children: [
-                           Container(
-                             margin: EdgeInsets.only(
-                                 left: 9,right: 9
-                             ),
-                             height: 10,width: 10 ,
-                             child: CustomImageSction(height: 10, width: 10, radius: 1, image: "Assets/DashBoardIcons/searchnormal.png"),
-                           ),
-                           Container(
-                             margin: EdgeInsets.only(right: 9
-                             ),
-                             height: 12,
-                             width: 2,
-                             color: Main_Theme_textColor.withOpacity(0.1),
-                           ),
-                           Expanded(
-                             child: Container(
-                                 child: TextFormField(
-                                   style: GoogleFonts.poppins(
-                                     fontWeight: FontWeight.w400,
-                                     fontSize: 12,
-                                   ),
-                                   decoration: InputDecoration(
-                                       contentPadding: EdgeInsets.only(bottom: 9),
-                                       border: InputBorder.none,
-                                       hintStyle: TextStyle(
-                                           fontWeight: FontWeight.w400,
-                                           fontSize: 12,
-                                           color: Main_Theme_textColor.withOpacity(0.30)
-                                       ),
-                                       hintText: "Search Here"
-                                   ),
-                                 )
-                             ),
-                           )
-                         ],
-                       ),
-                     ),
-                 ),
 
-                 Container(
-                   height: 53,
-                   width: 40,
-                   margin: EdgeInsets.only(
-                       left: 9,right: 9
-                   ),
-                   padding: EdgeInsets.symmetric(
-                       horizontal: 9,
-                       vertical: 7.95
-                   ),
-                   decoration: BoxDecoration(
-                       borderRadius: BorderRadius.circular(7),
-                       color:Color.fromRGBO(245, 245, 245, 1),
-                       border: Border.all(width: 2,color: Main_Theme_textColor.withOpacity(0.1))
-                   ),
-                   child: CustomImageSction(height: 17, width: 15, radius: 1, image: "Assets/DrawerImage/search_filter.png"),
-                 ),
-               ],
-             ),
-           ),
            SizedBox(height: apps_div_margin,),
            Expanded(
                child: Container(

@@ -47,7 +47,7 @@ class CustomHttpRequestClass{
       }
     //+  prvacyPolicylist=data["rows"];
     }catch(e){
-      print("privacy Policy Error catch error $e");
+      print("privacy Policy Error catch error ============================  $e");
     }
     return prvacyPolicylist;
   }
@@ -120,7 +120,7 @@ class CustomHttpRequestClass{
       }
       );
    }catch(e){
-      print("Catch error $e");
+      print("Catch error ============================  $e");
     }
   }
 
@@ -198,7 +198,7 @@ class CustomHttpRequestClass{
       }
       );
     }catch(e){
-      print("Login employeee Catch error ${e}");
+      print("Login employeee Catch error ============================  ${e}");
     }
   }
 
@@ -224,7 +224,7 @@ class CustomHttpRequestClass{
       );
       return dashboardPieChartData;
     }catch(e){
-      print("dashboardPieChartData Catch error ${e}");
+      print("dashboardPieChartData Catch error ============================  ${e}");
     }
   }
 
@@ -251,7 +251,7 @@ class CustomHttpRequestClass{
       );
       return dashboardBarChartData;
     }catch(e){
-      print("dashboarBarChartData Catch error ${e}");
+      print("dashboarBarChartData Catch error ============================  ${e}");
     }
   }
 
@@ -280,7 +280,7 @@ class CustomHttpRequestClass{
       return dashboardOnleaveEmployeeList;
           }
     catch(e){
-      print("dashboardOnleaveEmployeeList Catch error ${e}");
+      print("dashboardOnleaveEmployeeList Catch error ============================  ${e}");
     }
   }
 
@@ -307,7 +307,7 @@ class CustomHttpRequestClass{
       return dashboardEmployeeinfo;
           }
     catch(e){
-      print("dashboardEmployeeinfo Catch error ${e}");
+      print("dashboardEmployeeinfo Catch error  ============================ ${e}");
     }
   }
 
@@ -333,7 +333,7 @@ class CustomHttpRequestClass{
       return dashboardtodaysBirthdayEmployeeinfo;
           }
     catch(e){
-      print("dashboardtodaysBirthdayEmployeeinfo Catch error ${e}");
+      print("dashboardtodaysBirthdayEmployeeinfo Catch error  ============================ ${e}");
     }
   }
 
@@ -359,7 +359,7 @@ class CustomHttpRequestClass{
       return dashboardSalaryComparisanChartList;
           }
     catch(e){
-      print("dashboardSalaryComparisanChartList Catch error ${e}");
+      print("dashboardSalaryComparisanChartList Catch error  ============================ ${e}");
     }
   }
 
@@ -386,9 +386,12 @@ class CustomHttpRequestClass{
       return self_OR_Admin_Short_Description;
           }
     catch(e){
-      print("self_OR_Admin_Short_Description Catch error ${e}");
+      print("self_OR_Admin_Short_Description Catch error  ============================ ${e}");
     }
   }
+
+
+
 
 
 

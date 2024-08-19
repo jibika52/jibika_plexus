@@ -2,17 +2,21 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:jibika_plexus/Controller/SelfDashboardController/self_dashboard_controller.dart';
 import 'package:jibika_plexus/CustomSelfWedget/CustomDropDown/custom_dropdown.dart';
 import 'package:jibika_plexus/CustomSelfWedget/MySelfCustomCalender/myself_custom_calender.dart';
 import 'package:jibika_plexus/CustomSelfWedget/ShareMessagePdf/share_message_pdf_summary.dart';
 import 'package:jibika_plexus/CustomSelfWedget/self_profile_summary.dart';
 import 'package:jibika_plexus/CustomWidget/CustomButton/custom_button.dart';
 import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/SelfBootomNavigatonBarHomeScreen/SelfMyLeaveSatusScreen/self_my_leave_satus_screen.dart';
+import 'package:provider/provider.dart';
 
 import '../../../CustomWidget/CustomTExtFormField/Jibika_custom_text_from_field.dart';
 import '../../../CustomWidget/CustomText/custom_text.dart';
+import '../../../Model/EmpoyeeLeaveStatusModelClass/employee_leave_model_class.dart';
 import '../../../Utils/constants.dart';
 
 class SelfBootomNavigationLeave extends StatefulWidget {
@@ -26,9 +30,16 @@ class SelfBootomNavigationLeave extends StatefulWidget {
 class _SelfBootomNavigationLeaveState extends State<SelfBootomNavigationLeave> {
   TextEditingController _commentsController=TextEditingController();
   @override
+  void initState() {
+    Provider.of<SelfDashboardController>(context,listen: false).selfLeaveAllocationProvider("${GetStorage().read("mobile_id")}", "${GetStorage().read("Empcode")}", context);
+    // TODO: implement initState
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
+    List leave_status=Provider.of<SelfDashboardController>(context).selfLeaveAllocationList ;
     return Scaffold(
         backgroundColor: home_default_color,
         body: Container(
@@ -120,45 +131,46 @@ class _SelfBootomNavigationLeaveState extends State<SelfBootomNavigationLeave> {
                           ),
                         ),
                       ],
-                      rows: lista.map<DataRow>((e) {
+                      rows: leave_status.map<DataRow>((e) {
                         return DataRow(
                           cells: <DataCell>[
                             DataCell(Center(
                               child: Padding(
                                 padding: const EdgeInsets.all(3.0),
-                                child: Text('Sl',  style: GoogleFonts.poppins(
+                                  child: Text('${e["LeaveAbbre"]}',  style: GoogleFonts.poppins(
                                   fontSize: 9,
                                   fontWeight: FontWeight.w400,
                                 ),),
                               ),
                             )),
                             DataCell(Center(
-                              child: Text('12',  style: GoogleFonts.poppins(
+                        child: Text('${e["EntitleDays"]}',  style: GoogleFonts.poppins(
                                 fontSize: 9,
                                 fontWeight: FontWeight.w400,
                               ),),
                             )),
                             DataCell(Center(
-                              child: Text('12',  style: GoogleFonts.poppins(
+                                child: Text('${e["AvailDays"]}',  style: GoogleFonts.poppins(
                                 fontSize: 9,
                                 fontWeight: FontWeight.w400,
                               ),),
                             )),
                             DataCell(Center(
-                              child: Text('12',  style: GoogleFonts.poppins(
+                               child: Text('${e["EncashmentDays"]}',  style: GoogleFonts.poppins(
                                 fontSize: 9,
                                 fontWeight: FontWeight.w400,
                               ),),
                             )),
                             DataCell(
                                 Center(
-                                  child: Text('12',  style: GoogleFonts.poppins(
+                                   child: Text('${e["BalanceDays"]}',  style: GoogleFonts.poppins(
                                     fontSize: 9,
                                     fontWeight: FontWeight.w400,
                                   ),),
                                 )),
                             DataCell(Center(
-                              child: Text('13-jun-2024',  style: GoogleFonts.poppins(
+                                child: Text('${e["CreateDate"]}',
+                                style: GoogleFonts.poppins(
                                 fontSize: 9,
                                 fontWeight: FontWeight.w400,
                               ),),

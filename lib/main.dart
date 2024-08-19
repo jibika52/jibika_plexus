@@ -12,6 +12,7 @@ import 'package:provider/provider.dart';
 import 'Controller/HomeController/home_controller.dart';
 import 'Controller/PrivacyPolicyController/privacy_policy.dart';
 import 'Controller/SelfDashboardController/self_dashboard_controller.dart';
+import 'View/Auth/LoginScreen/login_screen_screen2.dart';
 import 'View/BootomNatchBar/BootomNavigationBarItemsScreen/BootomNavigationBarItemsMainHomeScreen/EmployeeProfile/employee_profile_screen.dart';
 import 'View/BootomNatchBar/BootomNavigationBarItemsScreen/BootomNavigationBarItemsMainHomeScreen/bootom_navigation_barItems_main_home_screen.dart';
 import 'View/BootomNatchBar/bootom_bar_screen.dart';
@@ -49,17 +50,17 @@ class MyApp extends StatelessWidget {
         //     home:HomeFirstPartComponentAttendance(),
 
         /// ----------Home Screen---------
-        //  home:BootomNatchBarScreen(),
-        //    home:BootomNatchBarScreen(),
+        //     home:BootomNatchBarScreen(),
+        //      home:BootomNatchBarScreen(),
 
         /// ----------SplashScreen--------
-  home:MainSplashPageViewScreen(),
+          home:MainSplashPageViewScreen(),
         //   home:SalfBootomNatchBarScreen(currentIndex: 4,),
         //  home:TestLongPress(),
-        //     home:MonthPicker(),
-      //       home:Googlemap(),
+        //   home:MonthPicker(),
+        //    home:Googlemap(),
         /// ----------Working Screen--------
-        //     home:LoginScreenSlide(),
+        //   home:LoginScreenSlide(),
         //
 
         //  home:BootomNavigationBarItemsTrackingScreen(),
