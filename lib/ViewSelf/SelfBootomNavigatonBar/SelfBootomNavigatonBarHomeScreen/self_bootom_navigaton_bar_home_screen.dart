@@ -503,6 +503,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                          is_clicked=!is_clicked;
                          animated_height=is_clicked==true? 222:0;
                          Animatedwidth=0.0;
+                         is_open_textbox=false;
                        });
                      },
                      child: Container(
