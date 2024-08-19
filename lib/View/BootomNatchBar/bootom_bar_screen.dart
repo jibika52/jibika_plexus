@@ -1,12 +1,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:jibika_plexus/Controller/HomeController/home_controller.dart';
 import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
 import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
 import 'package:jibika_plexus/View/BootomNatchBar/BootomNavigationBarItemsScreen/BootomNavigationBarItemsAttendenceScreen/bootom_navigationar_Items_attendence_screen.dart';
 import 'package:jibika_plexus/View/BootomNatchBar/BootomNavigationBarItemsScreen/BootomNavigationBarItemsMainHomeScreen/bootom_navigation_barItems_main_home_screen.dart';
 import 'package:jibika_plexus/View/BootomNatchBar/BootomNavigationBarItemsScreen/BootomNavigationBarItemsPayrollScreen/bootom_navigationar_Items_payroll_screen.dart';
+import 'package:provider/provider.dart';
 
 import '../../CustomWidget/CustomAppBar/CustomMAinAppBAr/custom_main_app_bar.dart';
 import '../../CustomWidget/CustomDrawer/CustomLeftDrawer/custom_left_drawer.dart';
@@ -28,7 +30,7 @@ class _BootomNatchBarScreenState extends State<BootomNatchBarScreen> {
   dynamic getDynamicSliderData;
   @override
   void initState() {
-
+   Provider.of<HomeProvider>(context,listen: false).selfORAdminShortDescriptionProvider(GetStorage().read("mobile_id"), GetStorage().read("RfIdCardNo"), context);
     // TODO: implement initState
     super.initState();
   }
@@ -48,6 +50,7 @@ class _BootomNatchBarScreenState extends State<BootomNatchBarScreen> {
   double b_bar_h=50;
   @override
   Widget build(BuildContext context) {
+  final selfORAdminShortInformationdata=   Provider.of<HomeProvider>(context).selfORAdminShortInformationdata;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       drawer:CustomLeftDrawer(),

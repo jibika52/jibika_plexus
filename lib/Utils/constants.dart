@@ -36,7 +36,8 @@ const notification_color = Color(0xffEC4F4F);
 
 ///  Button color ///
 
-const CustomAppbarColor = Color(0xff267862);
+//  const CustomAppbarColor = Color(0xff267862);
+const CustomAppbarColor = Color(0xff075744);
 
 const CustomButtonColor = CustomAppbarColor;
 /// Company Profile default Color
@@ -118,7 +119,7 @@ String Loremtext="Lorem sed do eiusmod tempor incididunt ut labore et dolore mag
 // GetStorage().write("Company_name",loginData["Company"]) ;
 // GetStorage().write("RfIdCardNo",loginData["RfIdCardNo"]) ;
 // GetStorage().write("Empcode",loginData["Empcode"]) ;
-// GetStorage().write("user_type_id",loginData["user_type_id"]) ;
+// GetStorage().write("user_type_id",loginData["user_type_id"]) ; (get management / employee / admin (1001,1002,1003))
 // GetStorage().write("APPS_IMG_BASEURL",loginData["AppsBaseUrl"]) ;
 // GetStorage().write("APPS_IMG_BASEURL",loginData["AppsBaseUrl"]) ;
 // GetStorage().write("APPS_IMG_Path",loginData["PhotoPath"]) ;

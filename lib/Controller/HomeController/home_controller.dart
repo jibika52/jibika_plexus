@@ -50,5 +50,13 @@ class HomeProvider with ChangeNotifier{
   }
 
 
+  /// self / Admin Short Description List
+  dynamic selfORAdminShortInformationdata ;
+  selfORAdminShortDescriptionProvider(String UserId,String ID_CARD_NO, BuildContext context)async{
+    selfORAdminShortInformationdata=await CustomHttpRequestClass().selfORAdminShortDescription(UserId,ID_CARD_NO,  context);
+    notifyListeners();
+  }
+
+
 
 }

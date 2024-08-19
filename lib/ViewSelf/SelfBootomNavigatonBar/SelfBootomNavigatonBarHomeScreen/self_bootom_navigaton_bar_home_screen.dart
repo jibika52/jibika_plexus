@@ -128,7 +128,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
     bool is_clicked=false;
     final  dashboardtodaysBirthdayEmployeeinfo=  Provider.of<HomeProvider>(context).dashboardtodaysBirthdayEmployeeinfo;
       List<Updated_attendance_summary>   selfOneMonthAttendanceList =  Provider.of<SelfDashboardController>(context).selfOneMonthAttendanceList;
-  print("ccccccccccccccccccccccccccccccccccccccccccccc ${DateTime.now().day}");
+  //print("ccccccccccccccccccccccccccccccccccccccccccccc ${DateTime.now().day}");
     for(var i in selfOneMonthAttendanceList){
       if("${i.date}"=="${DateTime.now().day}"){
         checkin =i.iNTIME ;
@@ -270,6 +270,8 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                            if(increase_punch_progress_bar>=0.9999999){
                                              increase_punch_progress_bar=0.0;
                                             _getCurrentLocation();
+
+
                                              ElegantNotification(
                                                borderRadius: BorderRadius.circular(11),
                                                width: 380,
@@ -287,6 +289,9 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                                }, icon: Icon(Icons.info_outlined,color:Colors.black,),
                                              ).show(context);
                                              timer.cancel();
+
+
+
                                            }else{
                                              increase_punch_progress_bar=increase_punch_progress_bar+0.0001;
                                             }
@@ -319,7 +324,8 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                                lineWidth: 5.5,
                                            //    percent:0.7,
                                                percent:increase_punch_progress_bar,
-                                               backgroundColor: Main_Theme_textColor_tir_Condition.withOpacity(0.8),
+                                            //   backgroundColor: Main_Theme_textColor_tir_Condition.withOpacity(0.8),
+                                               backgroundColor: Main_Theme_textColor.withOpacity(0.2),
                                                progressColor: presentsent_color,
                                                center: Column(
                                                  mainAxisAlignment: MainAxisAlignment.center,

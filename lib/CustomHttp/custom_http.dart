@@ -364,6 +364,33 @@ class CustomHttpRequestClass{
   }
 
 
+  ///  Admin Or Self (Employee Short Information/Description) --------------------------------------------------------------------------
+  selfORAdminShortDescription(String UserId,String ID_CARD_NO, BuildContext context)async{
+    dynamic self_OR_Admin_Short_Description ;
+    var body = jsonEncode({
+      "UserId":"$UserId",
+      "ID_CARD_NO":"$ID_CARD_NO"
+    });
+
+    try{
+      var data=await http.post(Uri.parse("${BASEURL}/${Self_Admin_Short_Description}"),
+          headers: {
+            "Content-Type": "application/json",
+            "username": "jibikaapps",
+            "password": "20jibika24",
+          },
+          body: body
+      ).then((http.Response response) {
+        self_OR_Admin_Short_Description =jsonDecode(response.body)["data"];
+      });
+      return self_OR_Admin_Short_Description;
+          }
+    catch(e){
+      print("self_OR_Admin_Short_Description Catch error ${e}");
+    }
+  }
+
+
 
 
 

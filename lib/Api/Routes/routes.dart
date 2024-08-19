@@ -42,3 +42,7 @@
 
   /// Check Self Get Monthly Att List
     String SelfGetMonthlyAttendanceList="Attendance/GetMonthlyAttList";
+
+
+  /// Get Employee Short description
+    String Self_Admin_Short_Description="Employee/GetEmployeeShortInfoByIdCardNo";
