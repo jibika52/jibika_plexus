@@ -118,6 +118,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
   }
   @override
   Widget build(BuildContext context) {
+    List selfAdminGetLeaveEarlyCountList=Provider.of<SelfDashboardController>(context).selfAdminGetLeaveEarlyCountList ;
     double P_Count=0;
     double AB_Count=0;
     double L_Count=0;
@@ -221,7 +222,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                          children: [
                                            SizedBox(width: 3,),
                                            Image.asset("Assets/SelfIcon/out_pumch.png",height: 16,width: 16,fit: BoxFit.fill,color: Colors.grey,),
-                                           ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "  Check Out : ${checkout}", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
+                                           ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "   Check Out : ${checkout}", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
                                            //      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "10:10:10", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
 
                                          //    ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text:selfOneMonthAttendanceList==null?"Processing":"${selfOneMonthAttendanceList[selfOneMonthAttendanceList.length-1]["OUT_TIME"]}"==""?"": "${selfOneMonthAttendanceList.last["OUT_TIME"].substring(selfOneMonthAttendanceList.last["OUT_TIME"].length - 8)}", letterSpacing: 0.3, textColor: Main_Theme_textColor ,),
@@ -233,7 +234,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                          crossAxisAlignment: CrossAxisAlignment.center,
                                          children: [
                                            Image.asset("Assets/SelfIcon/late_punch.png",height: 24,width: 24,fit: BoxFit.fill,color: Colors.grey,),
-                                           ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "  Late : 00:20:00", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
+                                           ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "${selfOneMonthAttendanceList}"=="[]"?"  Late :" : "  Late :${selfOneMonthAttendanceList[DateTime.now().day-1].lATE ??""}" , letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
 
                                            //      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "10:10:10", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
 
@@ -246,7 +247,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                          crossAxisAlignment: CrossAxisAlignment.center,
                                          children: [
                                            Image.asset("Assets/SelfIcon/working_duration.png",height: 24,width: 24,fit: BoxFit.fill,color: Colors.grey,),
-                                           ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "  Duration : 7H 55M", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
+                                           ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "${selfOneMonthAttendanceList}"=="[]"?"  Duration : " : "  Duration : ${selfOneMonthAttendanceList[DateTime.now().day-1].aCTUALWORKDURATION ??""}", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
 
                                            //      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "10:10:10", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
 
@@ -768,14 +769,16 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                      //   // color: Main_Theme_textColor_tir_Condition.withOpacity(0.5),
                                      // ),
                                      alignment: Alignment.center,
-                                     child: ColorCustomText(fontSize: 15, fontWeight: FontWeight.w400, text: "CL", letterSpacing: 0.3,textColor: leave_color,),
+                                     child: ColorCustomText(fontSize: 15, fontWeight: FontWeight.w400, text: "${selfAdminGetLeaveEarlyCountList[0]["LeaveAbbreviation"]??""}", letterSpacing: 0.3,textColor: leave_color,),
                                    ),
                                  ),
-                                 MySelfLeaveStatus(text2: "2", text1: "Days", textColor: Main_Theme_textColor, fontSize: 12,),
-                                 MySelfLeaveStatus(text1: "Form Date", text2: "13-Sep-2023", textColor: Main_Theme_textColor, fontSize: 12,),
-                                 MySelfLeaveStatus(text1: "To Date", text2: "13-Sep-2023", textColor: Main_Theme_textColor, fontSize: 12,),
-                                 //    CustomText(fontSize: 12, fontWeight: FontWeight.w500, text: "13-Sep-2023 To 13-Sep-2023", letterSpacing: 0.3),
-                                 MySelfLeaveStatus(text2: "Pending", text1: "Status", textColor: presentsent_color, fontSize: 12,),
+                                 MySelfLeaveStatus(text2: "${selfAdminGetLeaveEarlyCountList[0]["LeaveDays"]??0}", text1: "Days",textColor: Main_Theme_textColor.withOpacity(0.5), fontSize: 12,),
+                                 Container(height: 20,width: 1,color: Main_Theme_textColor.withOpacity(0.1),),
+                                 MySelfLeaveStatus(text1: "Form Date", text2:'${DateFormat("dd MMM yyyy").format(DateFormat("yyyy-MM-dd'T'HH:mm:ss").parse("${selfAdminGetLeaveEarlyCountList[0]["FromDate"]??0}") )}', textColor: Main_Theme_textColor.withOpacity(0.5), fontSize: 12,),
+                                 Container(height: 20,width: 1,color: Main_Theme_textColor.withOpacity(0.1),),
+                                 MySelfLeaveStatus(text1: "To Date", text2:'${DateFormat("dd MMM yyyy").format(DateFormat("yyyy-MM-dd'T'HH:mm:ss").parse("${selfAdminGetLeaveEarlyCountList[0]["ToDate"]??0}") )}', textColor: Main_Theme_textColor.withOpacity(0.5), fontSize: 12,),
+                                 Container(height: 20,width: 1,color: Main_Theme_textColor.withOpacity(0.1),),
+                                 MySelfLeaveStatus(text2: "${selfAdminGetLeaveEarlyCountList[0]["LeaveDays"]??0}", text1: "Status", textColor: presentsent_color, fontSize: 12,),
                                ],
                              )
                          ),

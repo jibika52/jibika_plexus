@@ -174,7 +174,7 @@ class _SelfBootomNavigatonEmployeeDashboardState extends State<SelfBootomNavigat
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                       //    color: Main_Theme_WhiteCollor,
-                        color:Color((math.cos(index) * 0xFFFFFF).toInt()).withOpacity(0.5)
+                        color:Color((math.sin(index) * 0xFFFFFF).toInt()).withOpacity(0.5)
 
                         ),
                         child: Stack(
