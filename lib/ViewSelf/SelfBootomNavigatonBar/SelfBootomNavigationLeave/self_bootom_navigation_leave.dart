@@ -51,139 +51,6 @@ class _SelfBootomNavigationLeaveState extends State<SelfBootomNavigationLeave> {
               child: Column(children: [
                 /// first Self part------------------------------------------------------------
                 SelfProfileSummaryPart(),
-                /// Second Self part------------------------------------------------------------
-                Container(
-                  margin: EdgeInsets.only(left: 10,right: 10,top: 10),
-                  padding: EdgeInsets.only(top: 10,left: 10,right: 10),
-                  decoration: BoxDecoration(
-                      border: Border(
-                          // bottom: BorderSide(
-                          //     color: Colors.black
-                          // )
-                      ),
-                      borderRadius: BorderRadius.circular(7),
-                      color: Main_Theme_WhiteCollor
-                  ),
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: DataTable(
-                      horizontalMargin: 25,
-                      headingRowHeight: 20,
-                      dataRowHeight: 18,
-                      columnSpacing: 15,
-                    //  border: TableBorder.all(width: 1,color:  Main_Theme_textColor.withOpacity(0.05)),
-                      decoration: BoxDecoration(
-                          border: Border(
-                              bottom: BorderSide(color: Main_Theme_textColor.withOpacity(0.05))
-                          )
-                      ),
-                      columns: <DataColumn>[
-                        DataColumn(
-                          label: Text(
-                            'Leave',
-                            style: GoogleFonts.poppins(
-                              fontSize: 10,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                        ),
-                        DataColumn(
-                          label: Text(
-                            'Entitle',
-                            style: GoogleFonts.poppins(
-                              fontSize: 10,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                        ),
-                        DataColumn(
-                          label: Text(
-                            'Availed',
-                            style: GoogleFonts.poppins(
-                              fontSize: 10,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                        ),
-                        DataColumn(
-                          label: Text(
-                            'Encashment',
-                            style: GoogleFonts.poppins(
-                              fontSize: 10,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                        ),
-                        DataColumn(
-                          label: Text(
-                            'Dues',
-                            style: GoogleFonts.poppins(
-                              fontSize: 10,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                        ),
-                        DataColumn(
-                          label: Text(
-                            '    Date',
-                            style: GoogleFonts.poppins(
-                              fontSize: 10,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                        ),
-                      ],
-                      rows: leave_status.map<DataRow>((e) {
-                        return DataRow(
-                          cells: <DataCell>[
-                            DataCell(Center(
-                              child: Padding(
-                                padding: const EdgeInsets.all(3.0),
-                                  child: Text('${e["LeaveAbbre"]}',  style: GoogleFonts.poppins(
-                                  fontSize: 9,
-                                  fontWeight: FontWeight.w400,
-                                ),),
-                              ),
-                            )),
-                            DataCell(Center(
-                        child: Text('${e["EntitleDays"]}',  style: GoogleFonts.poppins(
-                                fontSize: 9,
-                                fontWeight: FontWeight.w400,
-                              ),),
-                            )),
-                            DataCell(Center(
-                                child: Text('${e["AvailDays"]}',  style: GoogleFonts.poppins(
-                                fontSize: 9,
-                                fontWeight: FontWeight.w400,
-                              ),),
-                            )),
-                            DataCell(Center(
-                               child: Text('${e["EncashmentDays"]}',  style: GoogleFonts.poppins(
-                                fontSize: 9,
-                                fontWeight: FontWeight.w400,
-                              ),),
-                            )),
-                            DataCell(
-                                Center(
-                                   child: Text('${e["BalanceDays"]}',  style: GoogleFonts.poppins(
-                                    fontSize: 9,
-                                    fontWeight: FontWeight.w400,
-                                  ),),
-                                )),
-                            DataCell(Center(
-                              //    child: Text('${e["CreateDate"].substring(0,10)}',
-                              child: Text('${DateFormat("dd MMM yyyy").format(DateFormat("yyyy-MM-dd'T'HH:mm:ss").parse("${e["CreateDate"]}") )}',
-                                style: GoogleFonts.poppins(
-                                  fontSize: 9,
-                                  fontWeight: FontWeight.w400,
-                                ),),
-                            )),
-                          ],
-                        );
-                      }).toList(),
-                    ),
-                  ),
-                ),
                 SizedBox(height: apps_div_margin,),
                 /// Third Self part------------------------------------------------------------
                 Container(
@@ -226,32 +93,100 @@ class _SelfBootomNavigationLeaveState extends State<SelfBootomNavigationLeave> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      CustomText(fontSize: font12header, fontWeight: FontWeight.w600, text: "Leave Entry", letterSpacing: 0.3),
-                      Divider(color: Main_Theme_textColor.withOpacity(0.1),),
-                      Container(
-                        height: 30,
-                        width: double.infinity,
-                        child: Row(
-                          children: [
-                            CustomText(fontSize: font12header, fontWeight: FontWeight.w300, text: "Leave Entry", letterSpacing: 0.3),
-                            SizedBox(width: 10,),
-                            Expanded(
-                              child: Container(
-                                  height: 30,
-                                  width: double.infinity,
-                                  padding: EdgeInsets.only(
-                                    left: 10,right: 10
+                      // CustomText(fontSize: font12header, fontWeight: FontWeight.w600, text: "Leave Entry", letterSpacing: 0.3),
+                      // Divider(color: Main_Theme_textColor.withOpacity(0.1),),
+                      // Container(
+                      //   height: 30,
+                      //   width: double.infinity,
+                      //   child: Row(
+                      //     children: [
+                      //       CustomText(fontSize: font12header, fontWeight: FontWeight.w300, text: "Leave Entry", letterSpacing: 0.3),
+                      //       SizedBox(width: 10,),
+                      //       Expanded(
+                      //         child: Container(
+                      //             height: 30,
+                      //             width: double.infinity,
+                      //             padding: EdgeInsets.only(
+                      //               left: 10,right: 10
+                      //             ),
+                      //             decoration: BoxDecoration(
+                      //                borderRadius: BorderRadius.circular(5),
+                      //               border: Border.all(
+                      //                  color: Main_Theme_textColor.withOpacity(0.2),
+                      //               )
+                      //             ),
+                      //             child: CustomDropDown(list: yearslist, titletext: "Select Leave Type", height: 120, width: MediaQuery.of(context).size.width-120, offset: Offset(-12,  0))),
+                      //       )
+                      //     ],
+                      //   ),
+                      // ),
+                      GridView.builder(gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisSpacing: 10,
+                          mainAxisSpacing: 10,
+                          crossAxisCount: 4,
+                      ),
+                          itemCount: 5,
+                          physics: NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemBuilder: (context, index) =>
+                              Column(
+                                children: [
+                                  Expanded(
+                                    child: ClipRRect(
+                                      borderRadius:BorderRadius.circular(100),
+                                      child: Container(
+                                        padding: EdgeInsets.all(8),
+                                                                  height: 100,
+                                                                  width: 100,
+                                                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(100),
+                                      gradient: LinearGradient(
+                                            colors:  [
+                                                                  index==0?  Color(0xfffc3801)  :   index==1?  Color(0xff7b01e9)  : index==2?  Color(0xff088f00)  : Colors.red,
+                                                                  index==0?  Color(0xfffec200)  :   index==1?  Color(0xffee1a67)  : index==2?  Color(0xff5bc700)  :Colors.green
+                                      ]
+                                      )
+                                                                  ),
+                                        child: Container(
+                                      
+                                          height: 100,
+                                          width: 100,
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                              borderRadius: BorderRadius.circular(100),
+                                          ),
+                                          padding: EdgeInsets.all(1),
+                                          child: Column(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                            children: [
+                                              Text("CL",style: TextStyle(
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 22,
+                                              ),),
+                                              Text("01",style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 16,
+                                              ),),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
                                   ),
+                                  Container(
+                                    height: 3,
+                                    width: 100,
                                   decoration: BoxDecoration(
-                                     borderRadius: BorderRadius.circular(5),
-                                    border: Border.all(
-                                       color: Main_Theme_textColor.withOpacity(0.2),
-                                    )
+                                    gradient: LinearGradient(colors:[
+                                      Colors.white,
+                                      Colors.grey.shade400,
+                                      Colors.white
+                                    ] )
                                   ),
-                                  child: CustomDropDown(list: yearslist, titletext: "Select Leave Type", height: 120, width: MediaQuery.of(context).size.width-120, offset: Offset(-12,  0))),
-                            )
-                          ],
-                        ),
+                                  )
+                                ],
+                              ),
                       ),
                       Container(
                           margin: EdgeInsets.only(top: 10),

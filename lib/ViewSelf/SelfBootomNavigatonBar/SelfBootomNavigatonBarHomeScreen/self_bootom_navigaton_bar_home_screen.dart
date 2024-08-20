@@ -13,6 +13,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:jibika_plexus/Controller/CounterProvider/counter_provider.dart';
 import 'package:jibika_plexus/CustomSelfWedget/custom_wedget_myself_new_face.dart';
 import 'package:jibika_plexus/CustomSelfWedget/myself_leave_status.dart';
 import 'package:jibika_plexus/CustomWidget/CustomButton/customize_button.dart';
@@ -68,7 +69,6 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
   int second=0;
   bool is_select_Comment=false;
   int i=0;
-  String Now ="";
   @override
   void initState() { 
     Provider.of<SelfDashboardController>(context,listen: false).selfOneMonthAttendanceProvider(
@@ -79,16 +79,23 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
         context
     );
     Provider.of<HomeProvider>(context,listen: false).dashboardTodaysBirthdayEmployeeInfoProvider("${GetStorage().read("mobile_id")}", "", context); // Todays birthday
+//    Provider.of<CounterProvider>(context,listen: false).setcountSecondfunction(); // Todays birthday
     permissionn();
-    Timer.periodic(Duration(seconds: 1), (timer) {
-      setState(() {
-        second=  DateTime.now().second;
-        Now=  DateFormat('HH:mm:ss').format(DateTime.now()).toString();
-      });
-    });
+    // Timer.periodic(Duration(seconds: 1), (timer) {
+    //   setState(() {
+    //     second=  DateTime.now().second;
+    //     Now=  DateFormat('HH:mm:ss').format(DateTime.now()).toString();
+    //   });
+    // });
+    functionx();
     // TODO: implement initState
     super.initState();
   }
+   functionx(){
+   Timer.periodic(Duration(seconds: 1), (timer) {
+     Provider.of<CounterProvider>(context,listen: false).setcountSecondfunction(); //
+   });
+ }
 
 ///-----------------------------------------------------------------------
   Timer? timer;
@@ -118,7 +125,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
   }
   @override
   Widget build(BuildContext context) {
-    List selfAdminGetLeaveEarlyCountList=Provider.of<SelfDashboardController>(context).selfAdminGetLeaveEarlyCountList ;
+    dynamic selfAdminGetLeaveEarlyCountList=Provider.of<SelfDashboardController>(context).selfAdminGetLeaveEarlyCountList ;
     double P_Count=0;
     double AB_Count=0;
     double L_Count=0;
@@ -155,6 +162,8 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
         //   HL_Count++;
       }
     }
+
+    print("objectsdgfg sdufg sugdf usdufg sudgf usdg f");
 
     return Scaffold(
       backgroundColor: home_default_color,
@@ -262,109 +271,109 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                ),
                                Spacer(),
                                /// Attendance Part Right side -------------------------------------------------------------
-                               Expanded(
-                                   flex: 2,
-                                   child: GestureDetector(
-                                     onLongPress: () => setState(() {
-                                       timer = Timer.periodic(Duration(microseconds: 1), (timer) {
-                                         setState(() {
-                                           if(increase_punch_progress_bar>=0.9999999){
-                                             increase_punch_progress_bar=0.0;
-                                            _getCurrentLocation();
+                               GestureDetector(
+                                 onLongPress: () => setState(() {
+                                   timer = Timer.periodic(Duration(microseconds: 1), (timer) {
+                                     setState(() {
+                                       if(increase_punch_progress_bar>=0.9999999){
+                                         increase_punch_progress_bar=0.0;
+                                        _getCurrentLocation();
 
 
-                                             ElegantNotification(
-                                               borderRadius: BorderRadius.circular(11),
-                                               width: 380,
-                                               iconSize: 25,
-                                               background: presentsent_color,
-                                               progressIndicatorBackground: presentsent_color,
-                                               progressIndicatorColor: absent_color,
-                                               // position: Alignment.center,
-                                               title:  ColorCustomText(fontSize: 16, fontWeight: FontWeight.w500, text:
-                                               "Attendance successfully with GPS tracking",
-                                                   letterSpacing: 0.3, textColor: Main_Theme_textColor),
-                                               description: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "Thanks from JIBIKA PAYSCALE!..", letterSpacing: 0.3, textColor: Main_Theme_textColor),
-                                               onDismiss: () {
-                                                 print('Message when the notification is dismissed');
-                                               }, icon: Icon(Icons.info_outlined,color:Colors.black,),
-                                             ).show(context);
-                                             timer.cancel();
+                                         ElegantNotification(
+                                           borderRadius: BorderRadius.circular(11),
+                                           width: 380,
+                                           iconSize: 25,
+                                           background: presentsent_color,
+                                           progressIndicatorBackground: presentsent_color,
+                                           progressIndicatorColor: absent_color,
+                                           // position: Alignment.center,
+                                           title:  ColorCustomText(fontSize: 16, fontWeight: FontWeight.w500, text:
+                                           "Attendance successfully with GPS tracking",
+                                               letterSpacing: 0.3, textColor: Main_Theme_textColor),
+                                           description: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "Thanks from JIBIKA PAYSCALE!..", letterSpacing: 0.3, textColor: Main_Theme_textColor),
+                                           onDismiss: () {
+                                             print('Message when the notification is dismissed');
+                                           }, icon: Icon(Icons.info_outlined,color:Colors.black,),
+                                         ).show(context);
+                                         timer.cancel();
 
 
 
-                                           }else{
-                                             increase_punch_progress_bar=increase_punch_progress_bar+0.0001;
-                                            }
-                                          });
-                                         }
-                                       );
+                                       }else{
+                                         increase_punch_progress_bar=increase_punch_progress_bar+0.0001;
+                                        }
+                                      });
                                      }
-                                   ),
+                                   );
+                                 }
+                               ),
 
-                                     onLongPressEnd: (_) => setState(() {
-                                       increase_punch_progress_bar=0.0;
-                                       timer?.cancel();
-                                     }),
+                                 onLongPressEnd: (_) => setState(() {
+                                   increase_punch_progress_bar=0.0;
+                                   timer?.cancel();
+                                 }),
 
-                                     child: Padding(
-                                       padding: const EdgeInsets.only(bottom: 20.0),
-                                       child: Stack(
-                                         alignment: Alignment.center,
-                                         children: [
-                                           Container(
-                                             height: 100,
-                                             width: 100,
-                                             padding: EdgeInsets.all(25),
-                                            // child: CustomImageSction2(height: 70, width: 70, radius: 50, image: "Assets/DashBoardIcons/b_bar_attendence.png", img_color: Main_Theme_textColor.withOpacity(0.5)),
-                                           ),
-                                           Container(
-                                             alignment: Alignment.center, //  color: Colors.green,
-                                             child: CircularPercentIndicator(
-                                               radius: 60.0,
-                                               lineWidth: 5.5,
-                                           //    percent:0.7,
-                                               percent:increase_punch_progress_bar,
-                                            //   backgroundColor: Main_Theme_textColor_tir_Condition.withOpacity(0.8),
-                                               backgroundColor: Main_Theme_textColor.withOpacity(0.2),
-                                               progressColor: presentsent_color,
-                                               center: Column(
-                                                 mainAxisAlignment: MainAxisAlignment.center,
-                                                 children: [
-                                                   SizedBox(height: 7,),
-                                                   CustomText(fontSize: 15, fontWeight: FontWeight.w400, text: "${Now}", letterSpacing: 0.3),
-                                                   CustomImageSction2(height: 50, width: 50, radius: 50, image: "Assets/SelfIcon/test_fingerprint.png", img_color: Main_Theme_textColor.withOpacity(0.5)),
+                                 child: Container(
+                                   padding: const EdgeInsets.only(bottom: 20.0),
+                                   child: Stack(
+                                     alignment: Alignment.center,
+                                     children: [
+                                       Container(
+                                         height: 100,
+                                         width: 100,
+                                         padding: EdgeInsets.all(25),
+                                        // child: CustomImageSction2(height: 70, width: 70, radius: 50, image: "Assets/DashBoardIcons/b_bar_attendence.png", img_color: Main_Theme_textColor.withOpacity(0.5)),
+                                       ),
+                                       Container(
+                                         alignment: Alignment.center, //  color: Colors.green,
+                                         child: CircularPercentIndicator(
+                                           radius: 60.0,
+                                           lineWidth: 5.5,
+                                       //    percent:0.7,
+                                           percent:increase_punch_progress_bar,
+                                        //   backgroundColor: Main_Theme_textColor_tir_Condition.withOpacity(0.8),
+                                           backgroundColor: Main_Theme_textColor.withOpacity(0.2),
+                                           progressColor: presentsent_color,
+                                           center: Column(
+                                             mainAxisAlignment: MainAxisAlignment.center,
+                                             children: [
+                                               SizedBox(height: 7,),
+
+                                               Consumer<CounterProvider>(
+                                                   builder: (context, value, child) =>
+                                                    CustomText(fontSize: 15, fontWeight: FontWeight.w400, text: "${value.setcountSecond}", letterSpacing: 0.3)),
+
+                                               CustomImageSction2(height: 50, width: 50, radius: 50, image: "Assets/SelfIcon/test_fingerprint.png", img_color: Main_Theme_textColor.withOpacity(0.5)),
                                               //     CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "${DateTime.now().hour}:${DateTime.now().minute}:${second}", letterSpacing: 0.3),
-
-
-                                                  // CustomText(fontSize: 10, fontWeight: FontWeight.w400, text: "5H  14M", letterSpacing: 0.3),
-                                                 ],
+                                              // CustomText(fontSize: 10, fontWeight: FontWeight.w400, text: "5H  14M", letterSpacing: 0.3),
+                                             ],
+                                           ),
+                                         ),
+                                   ),
+                                       Positioned(
+                                           child: Container(
+                                             width: 99,
+                                             height: 99,
+                                             child: Transform.rotate(
+                                               angle: -pi / 3,
+                                               child: CustomPaint(
+                                                 painter: ClockPainter(),
                                                ),
                                              ),
+                                           ) ,
                                        ),
-                                           Positioned(
-                                               child: Container(
-                                                 width: 99,
-                                                 height: 99,
-                                                 child: Transform.rotate(
-                                                   angle: -pi / 3,
-                                                   child: CustomPaint(
-                                                     painter: ClockPainter(),
-                                                   ),
-                                                 ),
-                                               ) ,
-                                           ),
 
-                                           // Positioned(
-                                           //   top: 0,
-                                           //     child:  CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "${Now}", letterSpacing: 0.3) ,
-                                           // ),
+                                       // Positioned(
+                                       //   top: 0,
+                                       //     child:  CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "${Now}", letterSpacing: 0.3) ,
+                                       // ),
 
 
-                                         ],
-                                       ),
-                                     ),
-                                   )),
+                                     ],
+                                   ),
+                                 ),
+                               ),
                                SizedBox(width: 20,)
                              ],
                            ),
@@ -769,16 +778,16 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                      //   // color: Main_Theme_textColor_tir_Condition.withOpacity(0.5),
                                      // ),
                                      alignment: Alignment.center,
-                                     child: ColorCustomText(fontSize: 15, fontWeight: FontWeight.w400, text: "${selfAdminGetLeaveEarlyCountList[0]["LeaveAbbreviation"]??""}", letterSpacing: 0.3,textColor: leave_color,),
+                                     child: ColorCustomText(fontSize: 15, fontWeight: FontWeight.w400, text:"${selfAdminGetLeaveEarlyCountList}"=="[]" || "${selfAdminGetLeaveEarlyCountList}"=="null"?"": "${selfAdminGetLeaveEarlyCountList[0]["LeaveAbbreviation"]??""}", letterSpacing: 0.3,textColor: leave_color,),
                                    ),
                                  ),
-                                 MySelfLeaveStatus(text2: "${selfAdminGetLeaveEarlyCountList[0]["LeaveDays"]??0}", text1: "Days",textColor: Main_Theme_textColor.withOpacity(0.5), fontSize: 12,),
+                                 MySelfLeaveStatus(text2:"${selfAdminGetLeaveEarlyCountList}"=="[]" || "${selfAdminGetLeaveEarlyCountList}"=="null"?"": "${selfAdminGetLeaveEarlyCountList[0]["LeaveDays"]??0}", text1: "Days",textColor: Main_Theme_textColor.withOpacity(0.5), fontSize: 12,),
                                  Container(height: 20,width: 1,color: Main_Theme_textColor.withOpacity(0.1),),
-                                 MySelfLeaveStatus(text1: "Form Date", text2:'${DateFormat("dd MMM yyyy").format(DateFormat("yyyy-MM-dd'T'HH:mm:ss").parse("${selfAdminGetLeaveEarlyCountList[0]["FromDate"]??0}") )}', textColor: Main_Theme_textColor.withOpacity(0.5), fontSize: 12,),
+                                 MySelfLeaveStatus(text1: "Form Date", text2:"${selfAdminGetLeaveEarlyCountList}"=="[]" || "${selfAdminGetLeaveEarlyCountList}"=="null"?"":'${DateFormat("dd MMM yyyy").format(DateFormat("yyyy-MM-dd'T'HH:mm:ss").parse("${selfAdminGetLeaveEarlyCountList[0]["FromDate"]??0}") )}', textColor: Main_Theme_textColor.withOpacity(0.5), fontSize: 12,),
                                  Container(height: 20,width: 1,color: Main_Theme_textColor.withOpacity(0.1),),
-                                 MySelfLeaveStatus(text1: "To Date", text2:'${DateFormat("dd MMM yyyy").format(DateFormat("yyyy-MM-dd'T'HH:mm:ss").parse("${selfAdminGetLeaveEarlyCountList[0]["ToDate"]??0}") )}', textColor: Main_Theme_textColor.withOpacity(0.5), fontSize: 12,),
+                                 MySelfLeaveStatus(text1: "To Date", text2:"${selfAdminGetLeaveEarlyCountList}"=="[]" || "${selfAdminGetLeaveEarlyCountList}"=="null"?"":'${DateFormat("dd MMM yyyy").format(DateFormat("yyyy-MM-dd'T'HH:mm:ss").parse("${selfAdminGetLeaveEarlyCountList[0]["ToDate"]??0}") )}', textColor: Main_Theme_textColor.withOpacity(0.5), fontSize: 12,),
                                  Container(height: 20,width: 1,color: Main_Theme_textColor.withOpacity(0.1),),
-                                 MySelfLeaveStatus(text2: "${selfAdminGetLeaveEarlyCountList[0]["LeaveDays"]??0}", text1: "Status", textColor: presentsent_color, fontSize: 12,),
+                                 MySelfLeaveStatus(text2:"${selfAdminGetLeaveEarlyCountList}"=="[]" || "${selfAdminGetLeaveEarlyCountList}"=="null"?"": "${selfAdminGetLeaveEarlyCountList[0]["LeaveDays"]??0}", text1: "Status", textColor: presentsent_color, fontSize: 12,),
                                ],
                              )
                          ),

@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
+import 'package:intl/intl.dart';
 
 class CounterProvider with ChangeNotifier{
   bool _islogin = false;
@@ -90,6 +93,19 @@ class CounterProvider with ChangeNotifier{
     _setOTP=otp;
     notifyListeners();
   }
+
+
+  /// for auto Counting second
+  String _setcountSecond="0";
+  String get   setcountSecond=>_setcountSecond;
+  void  setcountSecondfunction(){
+    print("DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD ");
+      _setcountSecond = "${DateFormat('HH:mm:ss').format(DateTime.now()).toString()}";
+    notifyListeners();
+  }
+
+
+
 
 
 }
