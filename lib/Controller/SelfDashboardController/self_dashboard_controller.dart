@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
+import '../../CustomHttp/custom_http.dart';
 import '../../CustomHttpSelf/custom_http_self.dart';
 import '../../Model/EmpoyeeLeaveStatusModelClass/employee_leave_model_class.dart';
 import '../../ViewSelf/SelfBootomNavigatonBar/SelfBootomNavigatonBarHomeScreen/self_bootom_navigaton_bar_home_screen.dart';
@@ -40,7 +41,12 @@ class SelfDashboardController with ChangeNotifier{
   }
 
 
-
+  /// self / Admin Short Description List
+  dynamic selfORAdminShortInformationdata ;
+  selfORAdminShortDescriptionProvider(String UserId,String ID_CARD_NO, BuildContext context)async{
+    selfORAdminShortInformationdata=await CustomHttpRequestClass().selfORAdminShortDescription(UserId,ID_CARD_NO,  context);
+    notifyListeners();
+  }
 
 
 
@@ -49,6 +55,20 @@ class SelfDashboardController with ChangeNotifier{
   dynamic selfLeaveAllocationList=[];
   selfLeaveAllocationProvider(String UserId, String EMPCODE, BuildContext context)async{
     selfLeaveAllocationList =await CustomHttpSelf().selfLeaveAllocation(UserId, EMPCODE , context);
+    notifyListeners();
+  }
+
+
+
+
+
+
+
+
+  ///  Leave allocation --------------------------------------------------------------------------
+  dynamic selfAdminGetLeaveEarlyCountList=[];
+  selfAdminGetLeaveEarlyCountProvider(String UserId, String EMPCODE, BuildContext context)async{
+    selfAdminGetLeaveEarlyCountList =await CustomHttpSelf().selfAdminGetLeaveEarlyCount(UserId, EMPCODE , context);
     notifyListeners();
   }
 

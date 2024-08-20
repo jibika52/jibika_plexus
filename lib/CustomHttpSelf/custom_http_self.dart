@@ -183,6 +183,32 @@ class CustomHttpSelf{
 
 
 
+  ///  Admin Or Self (Employee Short Information/Description) --------------------------------------------------------------------------
+  selfORAdminShortDescription(String UserId,String ID_CARD_NO, BuildContext context)async{
+    dynamic self_OR_Admin_Short_Description ;
+    var body = jsonEncode({
+      "UserId":"$UserId",
+      "ID_CARD_NO":"$ID_CARD_NO"
+    });
+
+    try{
+      var data=await http.post(Uri.parse("${BASEURL}/${Self_Admin_Short_Description}"),
+          headers: {
+            "Content-Type": "application/json",
+            "username": "jibikaapps",
+            "password": "20jibika24",
+          },
+          body: body
+      ).then((http.Response response) {
+        self_OR_Admin_Short_Description =jsonDecode(response.body)["data"];
+      });
+      return self_OR_Admin_Short_Description;
+    }
+    catch(e){
+      print("self_OR_Admin_Short_Description Catch error  ============================ ${e}");
+    }
+  }
+
 
   ///  Leave allocation --------------------------------------------------------------------------
   selfLeaveAllocation(String UserId, String EMPCODE, BuildContext context)async{
@@ -208,6 +234,35 @@ class CustomHttpSelf{
     }
     catch(e){
       print("self Leave Allocation Catch error ============================ ${e}");
+    }
+  }
+
+
+
+  ///  Self Or Admin Get Leave Early Count --------------------------------------------------------------------------
+    selfAdminGetLeaveEarlyCount(String UserId, String EMPCODE, BuildContext context)async{
+    dynamic  selfAdminGetLeaveEarlyCountList  ;
+    var body = jsonEncode({
+      "UserId":"$UserId",
+      "EMPCODE":"$EMPCODE"
+    });
+
+    try{
+      var data=await http.post(Uri.parse("${BASEURL}/${Self_Admin_Get_Leave_Register_By_Employee}"),
+          headers: {
+            "Content-Type": "application/json",
+            "username": "jibikaapps",
+            "password": "20jibika24",
+          },
+          body: body
+      ).then((http.Response response) {
+        selfAdminGetLeaveEarlyCountList =jsonDecode(response.body)["data"];
+
+      });
+      return selfAdminGetLeaveEarlyCountList;
+    }
+    catch(e){
+      print(" self Or Admin Get Leave Early Count Catch error ============================ ${e}");
     }
   }
 

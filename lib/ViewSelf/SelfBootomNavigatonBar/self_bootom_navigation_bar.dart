@@ -184,6 +184,7 @@ import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/SelfBootomNavigato
 import 'package:provider/provider.dart';
 //import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/SelfBootomNavigatonEmployeeDashboard/self_bootom_navigaton_employee_dashboard.dart';
 import '../../Controller/HomeController/home_controller.dart';
+import '../../Controller/SelfDashboardController/self_dashboard_controller.dart';
 import '../../CustomWidget/CustomAppBar/CustomMAinAppBAr/custom_main_app_bar.dart';
 import '../../CustomWidget/CustomDrawer/CustomLeftDrawer/custom_left_drawer.dart';
 import '../../CustomWidget/CustomText/custom_text.dart';
@@ -204,7 +205,9 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
   dynamic getDynamicSliderData;  
   @override
   void initState() {
-    Provider.of<HomeProvider>(context,listen: false).selfORAdminShortDescriptionProvider(GetStorage().read("mobile_id"), GetStorage().read("RfIdCardNo"), context);
+    Provider.of<SelfDashboardController>(context,listen: false).selfORAdminShortDescriptionProvider(GetStorage().read("mobile_id"), GetStorage().read("RfIdCardNo"), context);
+    Provider.of<SelfDashboardController>(context,listen: false).selfAdminGetLeaveEarlyCountProvider("${GetStorage().read("mobile_id")}", "${GetStorage().read("Empcode")}", context);
+
     // TODO: implement initState
     super.initState();
   }

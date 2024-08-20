@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:jibika_plexus/CustomSelfWedget/self_profile_summary.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
 import 'package:provider/provider.dart';
@@ -21,6 +22,7 @@ class _SelfMyLeaveSatusScreenState extends State<SelfMyLeaveSatusScreen> {
   @override
   Widget build(BuildContext context) {
     List leave_status=Provider.of<SelfDashboardController>(context).selfLeaveAllocationList ;
+    List selfAdminGetLeaveEarlyCountList=Provider.of<SelfDashboardController>(context).selfAdminGetLeaveEarlyCountList ;
     return Scaffold(
       backgroundColor: home_default_color,
       appBar: PreferredSize(preferredSize: Size.fromHeight(75),
@@ -150,8 +152,10 @@ class _SelfMyLeaveSatusScreenState extends State<SelfMyLeaveSatusScreen> {
                                fontWeight: FontWeight.w400,
                              ),),
                            )),
+
                        DataCell(Center(
-                         child: Text('${e["CreateDate"]}',
+                        //    child: Text('${e["CreateDate"].substring(0,10)}',
+                            child: Text('${DateFormat("dd MMM yyyy").format(DateFormat("yyyy-MM-dd'T'HH:mm:ss").parse("${e["CreateDate"]}") )}',
                            style: GoogleFonts.poppins(
                              fontSize: 9,
                              fontWeight: FontWeight.w400,
@@ -168,7 +172,7 @@ class _SelfMyLeaveSatusScreenState extends State<SelfMyLeaveSatusScreen> {
            Expanded(
                child: Container(
              child:ListView.builder(
-                 itemCount: 7,
+                 itemCount:selfAdminGetLeaveEarlyCountList==0 || selfAdminGetLeaveEarlyCountList==null?0: selfAdminGetLeaveEarlyCountList.length,
                  itemBuilder: (context, index) =>    Container(
                  width: double.infinity,
                  margin: EdgeInsets.only(left:  9,right: 9,bottom: 4),
@@ -193,14 +197,16 @@ class _SelfMyLeaveSatusScreenState extends State<SelfMyLeaveSatusScreen> {
                             //   // color: Main_Theme_textColor_tir_Condition.withOpacity(0.5),
                             // ),
                             alignment: Alignment.center,
-                            child: ColorCustomText(fontSize: 15, fontWeight: FontWeight.w400, text: "CL", letterSpacing: 0.3,textColor: leave_color,),
+                            child: ColorCustomText(fontSize: 15, fontWeight: FontWeight.w400, text: "${selfAdminGetLeaveEarlyCountList[index]["LeaveAbbreviation"]??""}", letterSpacing: 0.3,textColor: leave_color,),
                                                  ),
                         ),
-                     MySelfLeaveStatus(text2: "2", text1: "Days", textColor: Main_Theme_textColor,),
-                    MySelfLeaveStatus(text1: "Form Date", text2: "13-Sep-2023", textColor: Main_Theme_textColor,),
-                    MySelfLeaveStatus(text1: "To Date", text2: "13-Sep-2023", textColor: Main_Theme_textColor,),
-                 //    CustomText(fontSize: 12, fontWeight: FontWeight.w500, text: "13-Sep-2023 To 13-Sep-2023", letterSpacing: 0.3),
-                     MySelfLeaveStatus(text2: "Pending", text1: "Status", textColor: presentsent_color,),
+                     MySelfLeaveStatus(text2: "${selfAdminGetLeaveEarlyCountList[index]["LeaveDays"]??0}", text1: "Days",textColor: Main_Theme_textColor.withOpacity(0.5), fontSize: 12,),
+                     Container(height: 20,width: 1,color: Main_Theme_textColor.withOpacity(0.1),),
+                     MySelfLeaveStatus(text1: "Form Date", text2:'${DateFormat("dd MMM yyyy").format(DateFormat("yyyy-MM-dd'T'HH:mm:ss").parse("${selfAdminGetLeaveEarlyCountList[index]["FromDate"]??0}") )}', textColor: Main_Theme_textColor.withOpacity(0.5), fontSize: 12,),
+                     Container(height: 20,width: 1,color: Main_Theme_textColor.withOpacity(0.1),),
+                     MySelfLeaveStatus(text1: "To Date", text2:'${DateFormat("dd MMM yyyy").format(DateFormat("yyyy-MM-dd'T'HH:mm:ss").parse("${selfAdminGetLeaveEarlyCountList[index]["ToDate"]??0}") )}', textColor: Main_Theme_textColor.withOpacity(0.5), fontSize: 12,),
+                     Container(height: 20,width: 1,color: Main_Theme_textColor.withOpacity(0.1),),
+                     MySelfLeaveStatus(text2: "${selfAdminGetLeaveEarlyCountList[index]["LeaveDays"]??0}", text1: "Status", textColor: presentsent_color, fontSize: 12,),
                    ],
                  )
              )

@@ -32,6 +32,7 @@ class _SelfBootomNavigationLeaveState extends State<SelfBootomNavigationLeave> {
   @override
   void initState() {
     Provider.of<SelfDashboardController>(context,listen: false).selfLeaveAllocationProvider("${GetStorage().read("mobile_id")}", "${GetStorage().read("Empcode")}", context);
+    Provider.of<SelfDashboardController>(context,listen: false).selfAdminGetLeaveEarlyCountProvider("${GetStorage().read("mobile_id")}", "${GetStorage().read("Empcode")}", context);
     // TODO: implement initState
     super.initState();
   }
@@ -40,6 +41,7 @@ class _SelfBootomNavigationLeaveState extends State<SelfBootomNavigationLeave> {
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
     List leave_status=Provider.of<SelfDashboardController>(context).selfLeaveAllocationList ;
+
     return Scaffold(
         backgroundColor: home_default_color,
         body: Container(
@@ -169,11 +171,12 @@ class _SelfBootomNavigationLeaveState extends State<SelfBootomNavigationLeave> {
                                   ),),
                                 )),
                             DataCell(Center(
-                                child: Text('${e["CreateDate"]}',
+                              //    child: Text('${e["CreateDate"].substring(0,10)}',
+                              child: Text('${DateFormat("dd MMM yyyy").format(DateFormat("yyyy-MM-dd'T'HH:mm:ss").parse("${e["CreateDate"]}") )}',
                                 style: GoogleFonts.poppins(
-                                fontSize: 9,
-                                fontWeight: FontWeight.w400,
-                              ),),
+                                  fontSize: 9,
+                                  fontWeight: FontWeight.w400,
+                                ),),
                             )),
                           ],
                         );

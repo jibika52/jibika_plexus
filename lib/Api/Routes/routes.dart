@@ -50,3 +50,7 @@
 
   /// Self My leave status leave allocation
     String Self_Admin_Leave_Allocation="Leave/GetLeaveAllocationByEmployee";
+
+
+  /// Self My leave status leave allocation
+    String Self_Admin_Get_Leave_Register_By_Employee="Leave/GetLeaveRegisterByEmployee";
