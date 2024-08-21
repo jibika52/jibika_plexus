@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../CustomWidget/CustomText/custom_text.dart';
@@ -84,7 +85,7 @@ class HomeFivePartBodyScetion extends StatelessWidget {
                                   height: 75,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(9),
-                                      image: DecorationImage(image: AssetImage("$image"),fit: BoxFit.fill,)
+                                      image: DecorationImage(image: NetworkImage("${todayselectionbirthdaylist}"=="[]"?"": "${GetStorage().read("APPS_IMG_BASEURL")}${todayselectionbirthdaylist[index]["EmployeeImage"]}"),fit: BoxFit.fill,)
                                   ),
 
                                 ),),

@@ -11,6 +11,7 @@ import 'package:jibika_plexus/CustomSelfWedget/MySelfCustomCalender/myself_custo
 import 'package:jibika_plexus/CustomSelfWedget/ShareMessagePdf/share_message_pdf_summary.dart';
 import 'package:jibika_plexus/CustomSelfWedget/self_profile_summary.dart';
 import 'package:jibika_plexus/CustomWidget/CustomButton/custom_button.dart';
+import 'package:jibika_plexus/CustomWidget/CustomCircleDay/custom_circleday.dart';
 import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/SelfBootomNavigatonBarHomeScreen/SelfMyLeaveSatusScreen/self_my_leave_satus_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -36,11 +37,14 @@ class _SelfBootomNavigationLeaveState extends State<SelfBootomNavigationLeave> {
     // TODO: implement initState
     super.initState();
   }
+  int selected_index=-1;
+  int Leave_type_selected_index=0;
   @override
   Widget build(BuildContext context) {
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
     List leave_status=Provider.of<SelfDashboardController>(context).selfLeaveAllocationList ;
+
 
     return Scaffold(
         backgroundColor: home_default_color,
@@ -125,69 +129,98 @@ class _SelfBootomNavigationLeaveState extends State<SelfBootomNavigationLeave> {
                           mainAxisSpacing: 10,
                           crossAxisCount: 4,
                       ),
-                          itemCount: 5,
+                          itemCount: 4,
                           physics: NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
                           itemBuilder: (context, index) =>
-                              Column(
-                                children: [
-                                  Expanded(
-                                    child: ClipRRect(
-                                      borderRadius:BorderRadius.circular(100),
-                                      child: Container(
-                                        padding: EdgeInsets.all(8),
-                                                                  height: 100,
-                                                                  width: 100,
-                                                                  decoration: BoxDecoration(
+                              InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    selected_index=index;
+                                  });
+                                },
+                                child:  ClipRRect(
+                                  borderRadius:BorderRadius.circular(100),
+                                  child: Container(
+                                    padding: EdgeInsets.all(8),
+                                    decoration: BoxDecoration(
+                                      color: Main_Theme_textColor_tir_Condition,
                                       borderRadius: BorderRadius.circular(100),
-                                      gradient: LinearGradient(
-                                            colors:  [
-                                                                  index==0?  Color(0xfffc3801)  :   index==1?  Color(0xff7b01e9)  : index==2?  Color(0xff088f00)  : Colors.red,
-                                                                  index==0?  Color(0xfffec200)  :   index==1?  Color(0xffee1a67)  : index==2?  Color(0xff5bc700)  :Colors.green
-                                      ]
-                                      )
-                                                                  ),
-                                        child: Container(
-                                      
-                                          height: 100,
-                                          width: 100,
-                                          decoration: BoxDecoration(
-                                            color: Colors.white,
-                                              borderRadius: BorderRadius.circular(100),
-                                          ),
-                                          padding: EdgeInsets.all(1),
-                                          child: Column(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            crossAxisAlignment: CrossAxisAlignment.center,
-                                            children: [
-                                              Text("CL",style: TextStyle(
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: 22,
-                                              ),),
-                                              Text("01",style: TextStyle(
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: 16,
-                                              ),),
-                                            ],
-                                          ),
-                                        ),
+                                    ),
+                                    child: Container(
+                                      height: 100,
+                                      width: 100,
+                                      decoration: BoxDecoration(
+                                        color:selected_index==index?Colors.grey : Colors.white,
+                                        borderRadius: BorderRadius.circular(100),
+                                      ),
+                                      padding: EdgeInsets.all(1),
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          Text("CL",style: TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 22,
+                                            color: selected_index==index?Main_Theme_WhiteCollor:Main_Theme_textColor,
+                                          ),),
+                                          Text("01",style: TextStyle(
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 16,
+                                            color: selected_index==index?Main_Theme_WhiteCollor:Main_Theme_textColor,
+                                          ),),
+                                        ],
                                       ),
                                     ),
                                   ),
-                                  Container(
-                                    height: 3,
-                                    width: 100,
-                                  decoration: BoxDecoration(
-                                    gradient: LinearGradient(colors:[
-                                      Colors.white,
-                                      Colors.grey.shade400,
-                                      Colors.white
-                                    ] )
-                                  ),
-                                  )
-                                ],
+                                ),
                               ),
                       ),
+                      SizedBox(height: apps_div_margin+2,),
+                      /// Shift Are--------------------------------------------------------------
+                      Align(
+                          alignment: Alignment.centerLeft,
+                          child: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w500, text: "Leave Type", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),)),
+                      SizedBox(height: 7,),
+                      Container(
+                        height: 105,
+                        width: double.infinity,
+                        child: ListView.builder(
+                          itemCount: 3,
+                          scrollDirection: Axis.vertical,
+                          itemBuilder: (context, index) =>
+                              InkWell(
+                          onTap: () {
+                            setState(() {
+                              Leave_type_selected_index=index;
+                            });
+                          },
+                          child:  Container(
+                            padding: EdgeInsets.only(bottom: 10),
+                            child: Row(
+                              children: [
+                                Stack(
+                                  alignment: Alignment.center,
+                                  children: [
+                                    CircleAvatar(
+                                      radius: 13,
+                                      backgroundColor: Main_Theme_textColor_tir_Condition,
+                                    ),
+                                    Positioned(child: CircleAvatar(
+                                      radius: 8,
+                                      backgroundColor: Leave_type_selected_index==index?Colors.grey : Colors.white,
+                                    ),)
+                                  ],
+                                ),
+                                SizedBox(width: 10,),
+                                CustomText(fontSize: 14, fontWeight: FontWeight.w400, text: index==0?"Full day" :index==1?"First half day" :"Second half day", letterSpacing: 0.3),
+                              ],
+                            ),
+                          )
+                        ),),
+                      ),
+
+                      /// Frm Date --------------- To Date Select -------Area ------------------
                       Container(
                           margin: EdgeInsets.only(top: 10),
                         padding: EdgeInsets.only(left: 10,right: 10,),
@@ -256,6 +289,15 @@ class _SelfBootomNavigationLeaveState extends State<SelfBootomNavigationLeave> {
                           ],
                         ),
                       ),
+
+                      SizedBox(height: apps_div_margin-5,),
+                      JibikaCustomTextFromField(
+                          controller: _commentsController,
+                          height: 50,
+                          img: "Assets/PrimaryInformation/father.png",
+                          hinttext: "Duty carried by",
+                          keyboardType: TextInputType.text,
+                          obscureText: false),
                       SizedBox(height: apps_div_margin-5,),
                       JibikaCustomTextFromField(
                           controller: _commentsController,
@@ -350,4 +392,6 @@ class _SelfBootomNavigationLeaveState extends State<SelfBootomNavigationLeave> {
       });
     }
   }
+
+
 }

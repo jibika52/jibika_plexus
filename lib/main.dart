@@ -54,13 +54,13 @@ class MyApp extends StatelessWidget {
         //      home:BootomNatchBarScreen(),
 
         /// ----------SplashScreen--------
-        //     home:MainSplashPageViewScreen(),
+       home:MainSplashPageViewScreen(),
         //   home:SalfBootomNatchBarScreen(currentIndex: 4,),
         //  home:TestLongPress(),
         //   home:MonthPicker(),
         //    home:Googlemap(),
         /// ----------Working Screen--------
-        home:LoginScreenSlide(),
+        //    home:LoginScreenSlide(),
         //
 
         //  home:BootomNavigationBarItemsTrackingScreen(),

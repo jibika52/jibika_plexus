@@ -64,6 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final  dashboardtodaysBirthdayEmployeeinfo=  Provider.of<HomeProvider>(context).dashboardtodaysBirthdayEmployeeinfo;
   final  dashboardSalaryComparisanChartList=  Provider.of<HomeProvider>(context).dashboardSalaryComparisanChartList;
 
+print("Get Data--------------------------------------------------- ${dashboardOnLeaveEmployeeData}");
 
     double TP=double.parse(dashboardPieChartData == null ?"0":"${dashboardPieChartData["plist"]}"== "[]"?"0":"${dashboardPieChartData["plist"][0]??0 }");
     double TA=double.parse(dashboardPieChartData == null ?"0":"${dashboardPieChartData["plist"]}"== "[]"?"0":"${dashboardPieChartData["plist"][1]??0 }");
@@ -361,6 +362,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     email: "jibikaapps@gmail.com ",
                     phone: "01889173335"
                 ),
+
+
+
                 /// ------------------- Six Part Start here - Person on leave-----------------------///
                 Container(
                   margin: EdgeInsets.only(left: 10,right: 10,top: apps_div_margin),
@@ -468,7 +472,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             Expanded(child: Container(
                                               decoration: BoxDecoration(
                                                   borderRadius: BorderRadius.circular(8),
-                                                  image: DecorationImage(image: AssetImage("Assets/DashBoardIcons/man_picture.png"),fit: BoxFit.fill)
+                                                  image: DecorationImage(image: NetworkImage("${GetStorage().read("APPS_IMG_BASEURL")}${dashboardOnLeaveEmployeeData[index]["EmployeeImage"]}"),fit: BoxFit.fill)
                                               ),
                                             )),
                                             ColorCustomText(text: "${dashboardOnLeaveEmployeeData[index]["EmployeeCode"]}", fontSize: 14, textColor: Main_Theme_textColor.withOpacity(0.6),fontWeight: FontWeight.w800,letterSpacing: 0.2,)
@@ -527,28 +531,28 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     ),
                                                     SizedBox(height: 3,),
 
-                                                    Padding(
-                                                      padding: const EdgeInsets.only(left: 8.0,right: 8),
-                                                      child: Text("${dashboardOnLeaveEmployeeData[index]["LeaveDate"]}"),
+                                                    // Padding(
+                                                    //   padding: const EdgeInsets.only(left: 8.0,right: 8),
+                                                    //   child: Text("${dashboardOnLeaveEmployeeData[index]["LeaveDate"]}"),
+                                                    // ),
+                                                    Container(
+                                                      height: 12,
+                                                      width: animated_leave,
+                                                      alignment: Alignment.center,
+                                                      child:  CustomText(fontSize: font11, fontWeight: FontWeight.w500, text: "${dashboardOnLeaveEmployeeData[index]["FromDate"]}", letterSpacing: 0.5, ),
                                                     ),
-                                                    // Container(
-                                                    //   height: 12,
-                                                    //   width: animated_leave,
-                                                    //   alignment: Alignment.center,
-                                                    //   child:  CustomText(fontSize: font11, fontWeight: FontWeight.w500, text: "${dashboardOnLeaveEmployeeData[index]["LeaveDate"]}", letterSpacing: 0.5, ),
-                                                    // ),
-                                                    // Container(
-                                                    //   height: 20,
-                                                    //   width: animated_leave,
-                                                    //   alignment: Alignment.center,
-                                                    //   child:  CustomText(fontSize: font11, fontWeight: FontWeight.w600, text: "     To", letterSpacing: 0.5, ),
-                                                    // ),
-                                                    // Container(
-                                                    //   height: 20,
-                                                    //   width: animated_leave,
-                                                    //   alignment: Alignment.center,
-                                                    //   child:  CustomText(fontSize: font11, fontWeight: FontWeight.w500, text: "10 jul 2024", letterSpacing: 0.5, ),
-                                                    // ),
+                                                    Container(
+                                                      height: 20,
+                                                      width: animated_leave,
+                                                      alignment: Alignment.center,
+                                                      child:  CustomText(fontSize: font11, fontWeight: FontWeight.w600, text: "     To", letterSpacing: 0.5, ),
+                                                    ),
+                                                    Container(
+                                                      height: 20,
+                                                      width: animated_leave,
+                                                      alignment: Alignment.center,
+                                                      child:  CustomText(fontSize: font11, fontWeight: FontWeight.w500, text: "${dashboardOnLeaveEmployeeData[index]["ToDate"]}", letterSpacing: 0.5, ),
+                                                    ),
                                                   ],
                                                 ),
                                               ),
