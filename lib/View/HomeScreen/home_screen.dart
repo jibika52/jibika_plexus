@@ -165,53 +165,61 @@ print("Get Data--------------------------------------------------- ${dashboardOn
                                   height: double.infinity,
                                   color: Colors.greenAccent.shade100.withOpacity(0.1),
                                   child:  Container(
+                                    padding: EdgeInsets.only(top: 10),
                                     height: 90,
                                     width: 500,
                                     child:ListView.builder(
-                                      itemCount:dashboardBarChartData==null?0:"${dashboardBarChartData["tpls"]}"=="[]"?0: dashboardBarChartData["tpls"].length,
+                                      itemCount:dashboardBarChartData==null?0
+                                          :"${dashboardBarChartData["tpls"]}"=="[]"?0
+                                          : dashboardBarChartData["tpls"].length,
+
                                       scrollDirection: Axis.horizontal,
                                       itemBuilder: (context, index) {
-                                      // print("ffffffffffffffffffffff ${ dashboardBarChartData["tpls"][index].substring(0,2)}");
+                                      print("fffffffff ${index + 1} -------- tpls ---- ${ dashboardBarChartData["tpls"][index]}  -------- tabls ---- ${ dashboardBarChartData["tabls"][index]}");
                                       return  Container(
                                         height: 90,
                                           margin: EdgeInsets.only(right: 10),
                                           child: Column(
                                             children: [
-                                              Expanded(child: ThirdPartProgressBar(
-                                                absenttheight: dashboardBarChartData==null?0: double.parse(
+                                              Expanded(
+                                                  child: ThirdPartProgressBar(
+                                                absenttheight: dashboardBarChartData==null?0:
+                                                double.parse(dashboardBarChartData["tabls"][index]==0?
+                                          dashboardBarChartData["tabls"][index]   : "${int.parse("${dashboardBarChartData["tabls"][index]}")*100/int.parse("${dashboardEmployeeInfo["TotalEmployee"]}")}",
 
-                                          dashboardBarChartData["tabls"][index]==0?
-                                          dashboardBarChartData["tabls"][index]
-                                              :
-                                          dashboardBarChartData["tabls"][index].length==1?
-                                          dashboardBarChartData["tabls"][index].substring(0)
-                                              :
-                                          dashboardBarChartData["tabls"][index].length==2?
-                                      dashboardBarChartData["tabls"][index].substring(0,2)
-                                            :
-                                        dashboardBarChartData["tabls"][index].length==3?
-                                        dashboardBarChartData["tabls"][index].substring(0,2)
-                                            :
-                                        dashboardBarChartData["tabls"][index].length==4?
-                                        "100":"100"
 
+                                                  //         :
+                                      //     dashboardBarChartData["tabls"][index].length==1?
+                                      //     dashboardBarChartData["tabls"][index].substring(0)
+                                      //         :
+                                      //     dashboardBarChartData["tabls"][index].length==2?
+                                      // dashboardBarChartData["tabls"][index].substring(0,2)
+                                      //       :
+                                      //   dashboardBarChartData["tabls"][index].length==3?
+                                      //   dashboardBarChartData["tabls"][index].substring(0,2)
+                                      //       :
+                                      //   dashboardBarChartData["tabls"][index].length==4?
+                                      //   "100":"100"
                                                 ),
-                                                presentheight:dashboardBarChartData==null?0: double.parse(
 
+                                                presentheight:
+                                                dashboardBarChartData==null?0:
+                                                double.parse(
                                                     dashboardBarChartData["tpls"][index]==0?
-                                                    dashboardBarChartData["tpls"][index]
-                                                    :
-                                                    dashboardBarChartData["tpls"][index].length==1?
-                                                    dashboardBarChartData["tpls"][index].substring(0)
-                                                    :
-                                                    dashboardBarChartData["tpls"][index].length==2?
-                                                    dashboardBarChartData["tpls"][index].substring(0,2)
-                                                    :
-                                                    dashboardBarChartData["tpls"][index].length==3?
-                                                    dashboardBarChartData["tpls"][index].substring(0,2)
-                                                    :
-                                                    dashboardBarChartData["tpls"][index].length==4?
-                                                    "100":"100"
+                                                    dashboardBarChartData["tpls"][index]:
+                                                    "${int.parse("${dashboardBarChartData["tpls"][index]}")*100/int.parse("${dashboardEmployeeInfo["TotalEmployee"]}")}",
+                                               //     :
+                                                    // dashboardBarChartData["tpls"][index].length==1?
+                                                    // dashboardBarChartData["tpls"][index].substring(0)
+                                                    // :
+                                                    // dashboardBarChartData["tpls"][index].length==2?
+                                                    // dashboardBarChartData["tpls"][index].substring(0,2)
+                                                    // :
+                                                    // dashboardBarChartData["tpls"][index].length==3?
+                                                    // dashboardBarChartData["tpls"][index].substring(0,2)
+                                                    // :
+                                                    // dashboardBarChartData["tpls"][index].length==4?
+                                                    // "100":"100"
                                                 ),
                                                 present_width: 10,
                                                 Absent_width: 10,

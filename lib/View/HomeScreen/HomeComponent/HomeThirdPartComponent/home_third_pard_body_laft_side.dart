@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 
 import '../../../../CustomWidget/CustomText/custom_text.dart';
@@ -23,7 +25,7 @@ class HomeThirdPartBodyLeftSide extends StatelessWidget {
       width: 50,
       padding: EdgeInsets.only(right: 7),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           ColorCustomText(fontSize: 11, fontWeight: FontWeight.w500, text: "$top1", letterSpacing: 0.1, textColor: color,),
