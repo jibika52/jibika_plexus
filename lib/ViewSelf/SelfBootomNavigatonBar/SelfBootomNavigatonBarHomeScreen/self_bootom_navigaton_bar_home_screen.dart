@@ -572,6 +572,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                    ],),
                                  ),
                                  Spacer(),
+
                                  Container(
                                    height: 24,
                                    width: 28,
