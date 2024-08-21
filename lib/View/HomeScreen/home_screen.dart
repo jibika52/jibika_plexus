@@ -37,6 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
     String value = "K";
     double animated_leave=0;
     double animated_height=0;
+    int PASummary_select=DateTime.now().day;
     @override
   void initState() {
     Provider.of<HomeProvider>(context,listen: false).dashboardPieChartDataProvider("${GetStorage().read("mobile_id")}", "$selected3Datee", context);
@@ -185,21 +186,7 @@ print("Get Data--------------------------------------------------- ${dashboardOn
                                                   child: ThirdPartProgressBar(
                                                 absenttheight: dashboardBarChartData==null?0:
                                                 double.parse(dashboardBarChartData["tabls"][index]==0?
-                                          dashboardBarChartData["tabls"][index]   : "${int.parse("${dashboardBarChartData["tabls"][index]}")*100/int.parse("${dashboardEmployeeInfo["TotalEmployee"]}")}",
-
-
-                                                  //         :
-                                      //     dashboardBarChartData["tabls"][index].length==1?
-                                      //     dashboardBarChartData["tabls"][index].substring(0)
-                                      //         :
-                                      //     dashboardBarChartData["tabls"][index].length==2?
-                                      // dashboardBarChartData["tabls"][index].substring(0,2)
-                                      //       :
-                                      //   dashboardBarChartData["tabls"][index].length==3?
-                                      //   dashboardBarChartData["tabls"][index].substring(0,2)
-                                      //       :
-                                      //   dashboardBarChartData["tabls"][index].length==4?
-                                      //   "100":"100"
+                                                dashboardBarChartData["tabls"][index]   : "${int.parse("${dashboardBarChartData["tabls"][index]}")*100/int.parse("${dashboardEmployeeInfo["TotalEmployee"]}")}",
                                                 ),
 
                                                 presentheight:
@@ -208,33 +195,31 @@ print("Get Data--------------------------------------------------- ${dashboardOn
                                                     dashboardBarChartData["tpls"][index]==0?
                                                     dashboardBarChartData["tpls"][index]:
                                                     "${int.parse("${dashboardBarChartData["tpls"][index]}")*100/int.parse("${dashboardEmployeeInfo["TotalEmployee"]}")}",
-                                               //     :
-                                                    // dashboardBarChartData["tpls"][index].length==1?
-                                                    // dashboardBarChartData["tpls"][index].substring(0)
-                                                    // :
-                                                    // dashboardBarChartData["tpls"][index].length==2?
-                                                    // dashboardBarChartData["tpls"][index].substring(0,2)
-                                                    // :
-                                                    // dashboardBarChartData["tpls"][index].length==3?
-                                                    // dashboardBarChartData["tpls"][index].substring(0,2)
-                                                    // :
-                                                    // dashboardBarChartData["tpls"][index].length==4?
-                                                    // "100":"100"
                                                 ),
                                                 present_width: 10,
                                                 Absent_width: 10,
                                                 total_width: 21,)),
                                               SizedBox(height: 5,),
-                                              Container(
-                                                height: 20,
-                                                width: 22,
-                                                decoration: BoxDecoration(
-                                                    color:DateTime.now().day==index+1?
-                                                    presentsent_color:Main_Theme_textColor.withOpacity(0.05),
-                                                  borderRadius: BorderRadius.circular(2)
+
+
+                                              InkWell(
+                                                onTap: () {
+                                                  setState(() {
+                                                    PASummary_select=index+1;
+                                                    Provider.of<HomeProvider>(context,listen: false).dashboardPieChartDataProvider("${GetStorage().read("mobile_id")}", "$PASummary_select-${DateFormat('MMM').format(DateTime.now())}-${DateFormat('yyyy').format(DateTime.now())}", context);
+                                                  });
+                                                },
+                                                child: Container(
+                                                  height: 20,
+                                                  width: 22,
+                                                  decoration: BoxDecoration(
+                                                      color:PASummary_select==index+1?
+                                                      presentsent_color:Main_Theme_textColor.withOpacity(0.05),
+                                                    borderRadius: BorderRadius.circular(2)
+                                                  ),
+                                                  alignment: Alignment.center,
+                                                  child: CustomText(fontSize: 10, fontWeight: FontWeight.w400, text: "${index+1}", letterSpacing: 0.2)
                                                 ),
-                                                alignment: Alignment.center,
-                                                child: CustomText(fontSize: 10, fontWeight: FontWeight.w400, text: "${index+1}", letterSpacing: 0.2)
                                               ),
                                               SizedBox(height: 10,),
                                             ],
@@ -627,14 +612,14 @@ print("Get Data--------------------------------------------------- ${dashboardOn
 
     int leave_selected_index=-1;
     bool selected_indexnumber=false;
-    String selected3Datee = DateFormat('dd-MMMM-yyyy').format(DateTime.now()).toString();
+    String selected3Datee = DateFormat('dd-MMM-yyyy').format(DateTime.now()).toString();
     Future<void> _select3Date(BuildContext context) async {
       final DateTime? picked = await showDatePicker(
           context: context,
           firstDate: DateTime(2015, 8),
           lastDate: DateTime(2101));
       if (picked != null && picked != selected3Datee) {
-        final df = new DateFormat('dd-MMMM-yyyy');
+        final df = new DateFormat('dd-MMM-yyyy');
         setState(() {
           selected3Datee = df.format(picked);
           Provider.of<HomeProvider>(context,listen: false).dashboardPieChartDataProvider("${GetStorage().read("mobile_id")}", "$selected3Datee", context);
