@@ -15,6 +15,7 @@ class SelfProfileSummaryPart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final selfORAdminShortInformationdata=Provider.of<HomeProvider>(context).selfORAdminShortInformationdata;
+    print("ddddddddddddddddddddddddddddd -------------------- ${selfORAdminShortInformationdata}");
     return Container(
       height: 110,
       width: double.infinity,
@@ -41,7 +42,8 @@ class SelfProfileSummaryPart extends StatelessWidget {
                     ),
                     image: DecorationImage(
                         image: NetworkImage(
-                            "${GetStorage().read("APPS_IMG_BASEURL")}${selfORAdminShortInformationdata["EmpImage"]??""}"),
+                            "${GetStorage().read("APPS_IMG_BASEURL")}${selfORAdminShortInformationdata["EmpImage"]??""}"
+                        ),
                         fit: BoxFit.fill),
                   ),
                 ),
@@ -57,9 +59,10 @@ class SelfProfileSummaryPart extends StatelessWidget {
                       Main_Theme_textColor.withOpacity(0.5),
                     ),
                     CustomText(
-                        fontSize: 12,
+                        fontSize: 10,
                         fontWeight: FontWeight.w400,
                         text: "${selfORAdminShortInformationdata["IdCardNo"]??""}",
+                        overflow: TextOverflow.ellipsis,
                         letterSpacing: 0.3),
                   ],
                 ),

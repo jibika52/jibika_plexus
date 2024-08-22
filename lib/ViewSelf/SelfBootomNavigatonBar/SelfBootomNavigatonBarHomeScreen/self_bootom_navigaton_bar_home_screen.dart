@@ -57,10 +57,22 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
       );
       Placemark place = placemarks[0];
       setState(() {
-        Provider.of<SelfDashboardController>(context,listen: false).dashboardSalaryComprisonListProvider("${GetStorage().read("mobile_id")}",
+        Provider.of<SelfDashboardController>(context,listen: false).dashboardSalaryComprisonListProvider(
+            "${GetStorage().read("mobile_id")}",
             "${DateFormat('yyyyMMdd').format(DateTime.now())}",
             "${DateFormat('HHmmss').format(DateTime.now()).toString()}",
-            "${GetStorage().read("RfIdCardNo")}", "${place.name}", "${place.locality}", "${place.administrativeArea}", "${place.postalCode}", "${place.subAdministrativeArea}", "${place.street.toString()}", "${_currentPosition!.latitude}", "${_currentPosition!.longitude}", int.parse("${"${GetStorage().read("Empcode")}"}"), "${DateFormat('dd-MMM-yyyy').format(DateTime.now())}", "${_descriptionController.text}", context);
+            "${GetStorage().read("RfIdCardNo")}",
+            "${place.name}",
+            "${place.locality}",
+            "${place.administrativeArea}",
+            "${place.postalCode}",
+            "${place.subAdministrativeArea}",
+            "${place.street.toString()}",
+            "${_currentPosition!.latitude}",
+            "${_currentPosition!.longitude}",
+            int.parse("${"${GetStorage().read("Empcode")}"}"),
+            "${DateFormat('dd-MMM-yyyy').format(DateTime.now())}",
+            "${_descriptionController.text}", context);
       });
     } catch (e) {
       print(e);
@@ -78,7 +90,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
         DateTime.now().day,
         "${GetStorage().read("mobile_id")}",
         "${DateFormat('dd-MMM-yyyy').format(DateTime.now())}",
-        "${GetStorage().read("RfIdCardNo")}",
+        "${GetStorage().read("IdCardNo")}",
         "GENERAL",
         context
     );
@@ -118,7 +130,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
           DateTime.now().day,
           "${GetStorage().read("mobile_id")}",
           "${DateFormat('dd-MMM-yyyy').format(DateTime.now())}",
-          "${GetStorage().read("RfIdCardNo")}",
+          "${GetStorage().read("IdCardNo")}",
           "GENERAL", context);
     });
   }
@@ -548,21 +560,20 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                children: [
                                  CustomText(fontSize: 13, fontWeight: FontWeight.w500, text: "My Attendance", letterSpacing: 0.3),
                                 Spacer(),
-                                  InkWell(
-                                    onTap: () {
-                                 _onPressed(context: context);
-                                    },
-                                    child: Container(
-                                      child: Row(
-                                        children: [
-                                          Icon(Icons.arrow_back_ios,size: 16, color: Main_Theme_textColor.withOpacity(0.8),),
-                                          CustomText(fontSize: 13, fontWeight: FontWeight.w400, text:_selected_pick_month!=null? "${DateFormat("MMM-yyyy").format(_selected_pick_month!)}" : "${DateFormat("MMM-yyyy").format(DateTime.now())}", letterSpacing: 0.3),
-                                          Icon(Icons.arrow_forward_ios_rounded,size: 16,color: Main_Theme_textColor.withOpacity(0.8)) ,
-                                        ],
-                                      ),
-                                    ),
-                                  )
-
+                                 InkWell(
+                                   onTap: () {
+                                     _onPressed(context: context);
+                                   },
+                                   child: Container(
+                                     child: Row(
+                                       children: [
+                                         Icon(Icons.arrow_back_ios,size: 16, color: Main_Theme_textColor.withOpacity(0.8),),
+                                         CustomText(fontSize: 13, fontWeight: FontWeight.w400, text:_selected_pick_month!=null? "${DateFormat("MMM-yyyy").format(_selected_pick_month!)}" : "${DateFormat("MMM-yyyy").format(DateTime.now())}", letterSpacing: 0.3),
+                                         Icon(Icons.arrow_forward_ios_rounded,size: 16,color: Main_Theme_textColor.withOpacity(0.8)) ,
+                                       ],
+                                     ),
+                                   ),
+                                 )
                                ],
                              ),
                            ),
@@ -837,6 +848,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
        ),
     );
   }
+
   DateTime? _selected_pick_month  ;
   Future<void> _onPressed({
     required BuildContext context,
@@ -867,6 +879,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
       });
     }
   }
+
 }
 
 

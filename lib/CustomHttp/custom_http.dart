@@ -147,6 +147,7 @@ class CustomHttpRequestClass{
           GetStorage().write("refresh_token",loginData["refresh_token"]) ;
           GetStorage().write("Company_name",loginData["Company"]) ;
           GetStorage().write("RfIdCardNo",loginData["RfIdCardNo"]) ;
+          GetStorage().write("IdCardNo",loginData["id_card_no"]) ;
           GetStorage().write("Empcode",loginData["Empcode"]) ;
           GetStorage().write("user_type_id",loginData["user_type_id"]) ;
           GetStorage().write("APPS_IMG_BASEURL",loginData["AppsBaseUrl"]) ;

@@ -65,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final  dashboardtodaysBirthdayEmployeeinfo=  Provider.of<HomeProvider>(context).dashboardtodaysBirthdayEmployeeinfo;
   final  dashboardSalaryComparisanChartList=  Provider.of<HomeProvider>(context).dashboardSalaryComparisanChartList;
 
-print("Get Data--------------------------------------------------- ${dashboardOnLeaveEmployeeData}");
+   // print("Get Data--------------------------------------------------- ${dashboardOnLeaveEmployeeData}");
 
     double TP=double.parse(dashboardPieChartData == null ?"0":"${dashboardPieChartData["plist"]}"== "[]"?"0":"${dashboardPieChartData["plist"][0]??0 }");
     double TA=double.parse(dashboardPieChartData == null ?"0":"${dashboardPieChartData["plist"]}"== "[]"?"0":"${dashboardPieChartData["plist"][1]??0 }");
@@ -92,6 +92,10 @@ print("Get Data--------------------------------------------------- ${dashboardOn
            total_Amount=double.parse("${dashboardSalaryComparisanChartList[i]["TotalNetPay"]}");
          }
        }
+
+
+
+
      }
   
     return WillPopScope(
@@ -172,7 +176,7 @@ print("Get Data--------------------------------------------------- ${dashboardOn
 
                                       scrollDirection: Axis.horizontal,
                                       itemBuilder: (context, index) {
-                                //      print("fffffffff ${index + 1} -------- tpls ---- ${ dashboardBarChartData["tpls"][index]}  -------- tabls ---- ${ dashboardBarChartData["tabls"][index]}");
+                                    //  print("fffffffff ${index + 1} -------- tpls ---- ${ dashboardBarChartData["tpls"][index]}  -------- tabls ---- ${ dashboardBarChartData["tabls"][index]}");
                                       return  Container(
                                         height: 90,
                                           margin: EdgeInsets.only(right: 10),
@@ -180,13 +184,13 @@ print("Get Data--------------------------------------------------- ${dashboardOn
                                             children: [
                                               Expanded(
                                                   child: ThirdPartProgressBar(
-                                                absenttheight: dashboardBarChartData==null || "${dashboardEmployeeInfo}"=="null"?0:
+                                                absenttheight: dashboardBarChartData==null?0:
                                                 double.parse(dashboardBarChartData["tabls"][index]==0?
                                                 dashboardBarChartData["tabls"][index]   : "${int.parse("${dashboardBarChartData["tabls"][index]}")*100/int.parse("${dashboardEmployeeInfo["TotalEmployee"]}")}",
                                                 ),
 
                                                 presentheight:
-                                                dashboardBarChartData==null || "${dashboardEmployeeInfo}"=="null"?0:
+                                                dashboardBarChartData==null?0:
                                                 double.parse(
                                                     dashboardBarChartData["tpls"][index]==0?
                                                     dashboardBarChartData["tpls"][index]:

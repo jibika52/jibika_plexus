@@ -85,4 +85,16 @@ class SelfDashboardController with ChangeNotifier{
 
 
 
+
+
+  ///  Leave allocation --------------------------------------------------------------------------
+  dynamic selfAdminAdmin_Get_Monthly_Att_SummaryCountList;
+  selfAdminAdmin_Get_Monthly_Att_SummaryCountProvider(String SUMMARY_MONTH, BuildContext context)async{
+    selfAdminAdmin_Get_Monthly_Att_SummaryCountList =await CustomHttpSelf().selfAdminAdmin_Get_Monthly_Att_SummaryCount( SUMMARY_MONTH, context);
+    notifyListeners();
+  }
+
+
+
+
 }

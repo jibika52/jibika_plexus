@@ -54,3 +54,7 @@
 
   /// Self My leave status leave allocation
     String Self_Admin_Get_Leave_Register_By_Employee="Leave/GetLeaveRegisterByEmployee";
+
+
+  /// Self GetMonthlyAttSummary
+    String Self_Admin_Get_Monthly_Att_Summary_By_Employee="Attendance/GetMonthlyAttSummary";

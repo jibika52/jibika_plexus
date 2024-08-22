@@ -205,7 +205,7 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
   dynamic getDynamicSliderData;  
   @override
   void initState() {
-    Provider.of<SelfDashboardController>(context,listen: false).selfORAdminShortDescriptionProvider(GetStorage().read("mobile_id"), GetStorage().read("RfIdCardNo"), context);
+    Provider.of<SelfDashboardController>(context,listen: false).selfORAdminShortDescriptionProvider(GetStorage().read("mobile_id"), GetStorage().read("IdCardNo"), context);
     Provider.of<SelfDashboardController>(context,listen: false).selfAdminGetLeaveEarlyCountProvider("${GetStorage().read("mobile_id")}", "${GetStorage().read("Empcode")}", context);
 
     // TODO: implement initState

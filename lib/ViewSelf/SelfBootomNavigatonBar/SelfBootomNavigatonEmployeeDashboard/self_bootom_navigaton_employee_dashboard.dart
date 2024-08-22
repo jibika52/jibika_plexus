@@ -39,6 +39,9 @@ class _SelfBootomNavigatonEmployeeDashboardState extends State<SelfBootomNavigat
   void initState() {
 
     Provider.of<SelfDashboardController>(context,listen: false).selfOneMonthAttendanceProvider(
+        DateTime.now().year,
+        DateTime.now().month,
+        DateTime.now().day,
         "${GetStorage().read("mobile_id")}",
         "${DateFormat('dd-MMM-yyyy').format(DateTime.now())}",
         "${GetStorage().read("IdCardNo")}",
@@ -395,6 +398,9 @@ class _SelfBootomNavigatonEmployeeDashboardState extends State<SelfBootomNavigat
         );
 
         Provider.of<SelfDashboardController>(context,listen: false).selfOneMonthAttendanceProvider(
+            int.parse(DateFormat('yyyy').format(_selected_pick_month!)),
+            int.parse(DateFormat('MM').format(_selected_pick_month!)),
+            int.parse(DateFormat('dd').format(_selected_pick_month!)),
             "${GetStorage().read("mobile_id")}",
             "${DateFormat('dd-MMM-yyyy').format(_selected_pick_month)}",
             "${GetStorage().read("IdCardNo")}",

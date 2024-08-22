@@ -30,7 +30,7 @@ class _BootomNatchBarScreenState extends State<BootomNatchBarScreen> {
   dynamic getDynamicSliderData;
   @override
   void initState() {
-   Provider.of<HomeProvider>(context,listen: false).selfORAdminShortDescriptionProvider(GetStorage().read("mobile_id"), GetStorage().read("RfIdCardNo"), context);
+   Provider.of<HomeProvider>(context,listen: false).selfORAdminShortDescriptionProvider(GetStorage().read("mobile_id"), GetStorage().read("IdCardNo"), context);
     // TODO: implement initState
     super.initState();
   }

@@ -94,7 +94,11 @@ class CustomHttpSelf{
   ///  self Dashboard self OneMonth Attendance List --------------------------------------------------------------------------
   ///
   ///
-  selfOneMonthAttendanceFunction(String UserId,String AttendanceDate, String RefCardNo, String attendanceType,BuildContext context)async{
+  selfOneMonthAttendanceFunction(
+      int yyyy,
+      int MMMM,
+      int dd,
+      String UserId,String AttendanceDate, String RefCardNo, String attendanceType,BuildContext context)async{
 
     dynamic monthlyAttendanceSummary;
     List<Updated_attendance_summary> newdatalist = [];
@@ -116,7 +120,8 @@ class CustomHttpSelf{
           body: body
       ).then((http.Response response) {
          monthlyAttendanceSummary = jsonDecode(response.body)["data"];
-         for(int i=1;i<DateTime(DateTime.now().year, DateTime.now().month + 1, 0).day+1;i++){
+        // for(int i=1;i<DateTime(DateTime.now().year, DateTime.now().month + 1, 0).day+1;i++){
+           for(int i=1;i<DateTime(yyyy,MMMM + 1, 0).day+1;i++){
            final tempobj = Updated_attendance_summary();
            tempobj.date = "${i}";
            tempobj.Status = "No Punch";

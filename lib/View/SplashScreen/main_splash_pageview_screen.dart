@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:jibika_plexus/View/Auth/LoginScreen/login_screen_screen2.dart';
 import 'package:jibika_plexus/View/SplashScreen/splash_screen1.dart';
 import 'package:jibika_plexus/View/SplashScreen/splash_screen2.dart';
 import 'package:jibika_plexus/View/SplashScreen/splash_screen3.dart';
@@ -26,16 +25,16 @@ class _MainSplashPageViewScreenState extends State<MainSplashPageViewScreen> {
         Navigator.push(context, MaterialPageRoute(builder: (context) => SalfBootomNatchBarScreen(currentIndex: 4),));
       }
       else if(GetStorage().read("id_token")!=null){
-     //   Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreenSlide(),));
-            Navigator.push(context, MaterialPageRoute(builder: (context) => SplashScreen3(),));
+        //   Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreenSlide(),));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => SplashScreen3(),));
       }else{
-     //   Navigator.push(context, MaterialPageRoute(builder: (context) => SplashScreen3(),));
-     print(GetStorage().read("id_token")!=null);
+        //   Navigator.push(context, MaterialPageRoute(builder: (context) => SplashScreen3(),));
+        print(GetStorage().read("id_token")!=null);
       }
 
 
     },);
-    
+
     // TODO: implement initState
     super.initState();
   }
@@ -44,13 +43,18 @@ class _MainSplashPageViewScreenState extends State<MainSplashPageViewScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body:GetStorage().read("id_token")!=null?Center(child: CircularProgressIndicator(),): PageView(
-        children:[
-          SplashScreen1(),
-          SplashScreen2(),
-          SplashScreen3(),
-        ],
+    return WillPopScope(
+      onWillPop: () {
+        return Future(() => false);
+      },
+      child: Scaffold(
+        body:GetStorage().read("id_token")!=null?Center(child: CircularProgressIndicator(),): PageView(
+          children:[
+            SplashScreen1(),
+            SplashScreen2(),
+            SplashScreen3(),
+          ],
+        ),
       ),
     );
   }
