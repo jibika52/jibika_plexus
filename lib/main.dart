@@ -10,6 +10,8 @@ import 'Controller/SelfDashboardController/self_dashboard_controller.dart';
 import 'View/SplashScreen/main_splash_pageview_screen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
+import 'ViewSelf/SelfBootomNavigatonBar/self_bootom_navigation_bar.dart';
+
 void main() async {
   await GetStorage.init();
   runApp(MyApp());
@@ -41,12 +43,12 @@ class MyApp extends StatelessWidget {
         //     home:HomeFirstPartComponentAttendance(),
 
         /// ----------Home Screen---------
-        //     home:BootomNatchBarScreen(),
         //      home:BootomNatchBarScreen(),
+        //   home:BootomNatchBarScreen(),
 
         /// ----------SplashScreen--------
-       home:MainSplashPageViewScreen(),
-        //   home:SalfBootomNatchBarScreen(currentIndex: 4,),
+         home:MainSplashPageViewScreen(),
+        //    home:SalfBootomNatchBarScreen(currentIndex: 4,),
         //  home:TestLongPress(),
         //   home:MonthPicker(),
         //    home:Googlemap(),

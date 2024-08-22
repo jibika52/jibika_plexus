@@ -97,4 +97,21 @@ class SelfDashboardController with ChangeNotifier{
 
 
 
+
+
+
+
+
+  ///   selfAdminAdmin_Get_Emp_New_FaceList--------------------------------------------------------------------------
+  dynamic selfAdminAdmin_Get_Emp_New_FaceList;
+  selfAdminAdmin_Get_Emp_New_FaceListProvider(
+       BuildContext context)async{
+    selfAdminAdmin_Get_Emp_New_FaceList =await CustomHttpSelf().selfAdminAdmin_Get_Emp_New_Face_Get(
+       context);
+    notifyListeners();
+  }
+
+
+
+
 }

@@ -279,19 +279,9 @@ class CustomHttpSelf{
     var body = jsonEncode({
       "UserId":"${GetStorage().read("mobile_id")}",
       "ID_CARD_NO":"${GetStorage().read("IdCardNo")}",
-      // "attendanceType" : "$attendanceType",
-      // "SUMMARY_MONTH": "$SUMMARY_MONTH"
-
-
-
-        // "UserId":"01913048570",
-        // "ID_CARD_NO":"1000000629",
         "attendanceType" : "GENERAL",
         "SUMMARY_MONTH": "$SUMMARY_MONTH"
-
-
     });
-
     try{
       var data=await http.post(Uri.parse("${BASEURL}/${Self_Admin_Get_Monthly_Att_Summary_By_Employee}"),
           headers: {
@@ -308,6 +298,33 @@ class CustomHttpSelf{
     }
     catch(e){
       print(" self Or Admin Get selfAdminAdmin_Get_Monthly_Att_SummaryCountList Count Catch error ============================ ${e}");
+    }
+  }
+
+
+
+  ///  self Admin_Get_Emp_New_Face_Get --------------------------------------------------------------------------
+    selfAdminAdmin_Get_Emp_New_Face_Get(BuildContext context)async{
+    dynamic  selfAdminAdmin_Emp_New_Face_GetList  ;
+    var body = jsonEncode({
+      "UserId":"${GetStorage().read("mobile_id")}",
+    });
+    try{
+      var data=await http.post(Uri.parse("${BASEURL}/${Self_Admin_GetEmpNewFaceList_By_Employee}"),
+          headers: {
+            "Content-Type": "application/json",
+            "username": "jibikaapps",
+            "password": "20jibika24",
+          },
+          body: body
+      ).then((http.Response response) {
+        selfAdminAdmin_Emp_New_Face_GetList =jsonDecode(response.body)["data"];
+
+      });
+      return selfAdminAdmin_Emp_New_Face_GetList;
+    }
+    catch(e){
+      print(" self Or Admin Get selfAdminAdmin_selfAdminAdmin_Emp_New_Face_GetList Catch error ============================ ${e}");
     }
   }
 

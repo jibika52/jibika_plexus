@@ -209,7 +209,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                    Container(
                      margin: EdgeInsets.only(left:  10,right: 10,top: apps_div_margin),
                      padding: EdgeInsets.all(10),
-                     height: 190,
+                     height: 175,
                      width: double.infinity,
                      decoration: BoxDecoration(
                          color: Main_Theme_WhiteCollor,
@@ -237,9 +237,9 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                          mainAxisAlignment: MainAxisAlignment.start,
                                          crossAxisAlignment: CrossAxisAlignment.center,
                                          children: [
-                                           SizedBox(width: 3,),
-                                           Image.asset("Assets/SelfIcon/in_punch.png",height: 18,width: 18,fit: BoxFit.fill,color: Colors.grey,),
-                                           ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "   Check In : $checkin", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
+                                           Image.asset("Assets/SelfIcon/in_punch.png",height: 16,width: 16,fit: BoxFit.fill,color: Colors.grey,),
+                                           SizedBox(width:5),
+                                           ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Check In : $checkin", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
                                            //      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "10:10:10", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
                                       //    ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text:selfOneMonthAttendanceList==null?"Processing":"${selfOneMonthAttendanceList[selfOneMonthAttendanceList.length-1]["IN_TIME"]}"==""?"": "${selfOneMonthAttendanceList.last["IN_TIME"].substring(selfOneMonthAttendanceList.last["IN_TIME"].length - 8)}", letterSpacing: 0.3, textColor: Main_Theme_textColor ,),
 
@@ -249,9 +249,9 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                          mainAxisAlignment: MainAxisAlignment.start,
                                          crossAxisAlignment: CrossAxisAlignment.center,
                                          children: [
-                                           SizedBox(width: 3,),
                                            Image.asset("Assets/SelfIcon/out_pumch.png",height: 16,width: 16,fit: BoxFit.fill,color: Colors.grey,),
-                                           ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "   Check Out : ${checkout}", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
+                                           SizedBox(width:5),
+                                           ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Check Out : ${checkout}", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
                                            //      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "10:10:10", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
 
                                          //    ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text:selfOneMonthAttendanceList==null?"Processing":"${selfOneMonthAttendanceList[selfOneMonthAttendanceList.length-1]["OUT_TIME"]}"==""?"": "${selfOneMonthAttendanceList.last["OUT_TIME"].substring(selfOneMonthAttendanceList.last["OUT_TIME"].length - 8)}", letterSpacing: 0.3, textColor: Main_Theme_textColor ,),
@@ -262,8 +262,9 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                          mainAxisAlignment: MainAxisAlignment.start,
                                          crossAxisAlignment: CrossAxisAlignment.center,
                                          children: [
-                                           Image.asset("Assets/SelfIcon/late_punch.png",height: 24,width: 24,fit: BoxFit.fill,color: Colors.grey,),
-                                           ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "${selfOneMonthAttendanceList}"=="[]"?"  Late :" : "  Late :${selfOneMonthAttendanceList[DateTime.now().day-1].lATE ??""}" , letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
+                                           Image.asset("Assets/SelfIcon/late_punch.png",height: 18,width: 18,fit: BoxFit.fill,color: Colors.grey,),
+                                           SizedBox(width:5),
+                                           ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "${selfOneMonthAttendanceList}"=="[]"?"Late :" :  "Late :${selfOneMonthAttendanceList[DateTime.now().day-1].lATE ??""}" , letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
 
                                            //      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "10:10:10", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
 
@@ -275,8 +276,9 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                          mainAxisAlignment: MainAxisAlignment.start,
                                          crossAxisAlignment: CrossAxisAlignment.center,
                                          children: [
-                                           Image.asset("Assets/SelfIcon/working_duration.png",height: 24,width: 24,fit: BoxFit.fill,color: Colors.grey,),
-                                           ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "${selfOneMonthAttendanceList}"=="[]"?"  Duration : " : "  Duration : ${selfOneMonthAttendanceList[DateTime.now().day-1].aCTUALWORKDURATION ??""}", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
+                                           Image.asset("Assets/SelfIcon/working_duration.png",height: 18,width: 18,fit: BoxFit.fill,color: Colors.grey,),
+                                           SizedBox(width:5),
+                                           ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "${selfOneMonthAttendanceList}"=="[]"?"Duration : " : "Duration : ${selfOneMonthAttendanceList[DateTime.now().day-1].aCTUALWORKDURATION ??""}", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
 
                                            //      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "10:10:10", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
 
@@ -298,8 +300,6 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                        if(increase_punch_progress_bar>=0.9999999){
                                          increase_punch_progress_bar=0.0;
                                         _getCurrentLocation();
-
-
                                          ElegantNotification(
                                            borderRadius: BorderRadius.circular(11),
                                            width: 380,
@@ -317,9 +317,6 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                            }, icon: Icon(Icons.info_outlined,color:Colors.black,),
                                          ).show(context);
                                          timer.cancel();
-
-
-
                                        }else{
                                          increase_punch_progress_bar=increase_punch_progress_bar+0.0001;
                                         }
@@ -328,14 +325,12 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                    );
                                  }
                                ),
-
                                  onLongPressEnd: (_) => setState(() {
                                    increase_punch_progress_bar=0.0;
                                    timer?.cancel();
                                  }),
-
                                  child: Container(
-                                   padding: const EdgeInsets.only(bottom: 20.0),
+                                   padding: const EdgeInsets.only(bottom: 0.0),
                                    child: Stack(
                                      alignment: Alignment.center,
                                      children: [
@@ -383,13 +378,6 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                              ),
                                            ) ,
                                        ),
-
-                                       // Positioned(
-                                       //   top: 0,
-                                       //     child:  CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "${Now}", letterSpacing: 0.3) ,
-                                       // ),
-
-
                                      ],
                                    ),
                                  ),
@@ -403,7 +391,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                          /// First Down Side Part---------------------Comments  Area ---------------------
                          is_open_textbox ==false ?
                          Container(
-                           padding: EdgeInsets.all(4),
+                           padding: EdgeInsets.only(right: 4,top: 4,bottom: 4,left: 1),
                              decoration: BoxDecoration(
                                borderRadius: BorderRadius.circular(5),
                              ),
@@ -426,14 +414,14 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                          );
                                        });
                                      },
-                                     child: CustomImageSction2(height: 19, width: 19, radius: 0, image: "Assets/SelfIcon/comments_edited.png", img_color: Main_Theme_textColor.withOpacity(0.4),)),
+                                     child: CustomImageSction2(height: 16, width: 16, radius: 0, image: "Assets/SelfIcon/comments.png", img_color: Main_Theme_textColor.withOpacity(0.4),)),
                                  SizedBox(width: 7  ,),
                                  Text("${selfOneMonthAttendanceList}"=="[]"?"" : "${selfOneMonthAttendanceList[DateTime.now().day-1].aTTENDANCEREMARK ??""}",style: TextStyle(
                                    overflow: TextOverflow.ellipsis,
                                  ),),
                                ],
-                             ),) :
-
+                             ),)
+                             :
                             Stack(
                            children: [
                              Container(
@@ -558,7 +546,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                              ),
                              child: Row(
                                children: [
-                                 CustomText(fontSize: 13, fontWeight: FontWeight.w500, text: "My Attendance", letterSpacing: 0.3),
+                                 CustomText(fontSize: 13, fontWeight: FontWeight.w500, text: "My Presence", letterSpacing: 0.3),
                                 Spacer(),
                                  InkWell(
                                    onTap: () {
@@ -686,6 +674,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                      child: SingleChildScrollView(
                        child: Column(
                          children: [
+                           /// Day name ------------------------------------------------------------
                            Container(
                              margin: EdgeInsets.only(bottom: 10,top: 10),
                              height: 26,
@@ -698,13 +687,30 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                    crossAxisSpacing: 0,
                                    mainAxisSpacing: 10
                                ), itemBuilder: (context, index) {
+
                                return Container(
                                  height: 26,
                                  width: 26,
                                  alignment: Alignment.center,
                                  child: ColorCustomText(
                                    fontSize: 14, fontWeight: FontWeight.w400,
-                                   text:index==0? "Mo":index==1? "Tu":index==2? "We":index==3? "Th":index==4? "Fr":index==5? "Sa":"Su",
+                                   text:
+                                       //  index==0? "${DateFormat("E").format(DateFormat("yyyy-MM-dd").parse("${DateTime.now().year}-${DateTime.now().month}-01"))}"
+                                       // :index==1?"${DateFormat("E").format(DateFormat("yyyy-MM-dd").parse("${DateTime.now().year}-${DateTime.now().month}-02"))}"
+                                       // :index==2? "${DateFormat("E").format(DateFormat("yyyy-MM-dd").parse("${DateTime.now().year}-${DateTime.now().month}-03"))}"
+                                       // :index==3? "${DateFormat("E").format(DateFormat("yyyy-MM-dd").parse("${DateTime.now().year}-${DateTime.now().month}-04"))}"
+                                       // :index==4? "${DateFormat("E").format(DateFormat("yyyy-MM-dd").parse("${DateTime.now().year}-${DateTime.now().month}-05"))}"
+                                       // :index==5? "${DateFormat("E").format(DateFormat("yyyy-MM-dd").parse("${DateTime.now().year}-${DateTime.now().month}-06"))}"
+                                       // :"${DateFormat("E").format(DateFormat("yyyy-MM-dd").parse("${DateTime.now().year}-${DateTime.now().month}-01"))}",
+                                       //
+                                        index==0? "${DateFormat("E").format(DateFormat("yyyy-MM-dd").parse("${DateFormat("yyyy").format(_selected_pick_month!)}-${DateFormat("MM").format(_selected_pick_month!)}-01"))}"
+                                       :index==1?"${DateFormat("E").format(DateFormat("yyyy-MM-dd").parse("${DateFormat("yyyy").format(_selected_pick_month!)}-${DateFormat("MM").format(_selected_pick_month!)}-02"))}"
+                                       :index==2? "${DateFormat("E").format(DateFormat("yyyy-MM-dd").parse("${DateFormat("yyyy").format(_selected_pick_month!)}-${DateFormat("MM").format(_selected_pick_month!)}-03"))}"
+                                       :index==3? "${DateFormat("E").format(DateFormat("yyyy-MM-dd").parse("${DateFormat("yyyy").format(_selected_pick_month!)}-${DateFormat("MM").format(_selected_pick_month!)}-04"))}"
+                                       :index==4? "${DateFormat("E").format(DateFormat("yyyy-MM-dd").parse("${DateFormat("yyyy").format(_selected_pick_month!)}-${DateFormat("MM").format(_selected_pick_month!)}-05"))}"
+                                       :index==5? "${DateFormat("E").format(DateFormat("yyyy-MM-dd").parse("${DateFormat("yyyy").format(_selected_pick_month!)}-${DateFormat("MM").format(_selected_pick_month!)}-06"))}"
+                                       :"${DateFormat("E").format(DateFormat("yyyy-MM-dd").parse("${DateFormat("yyyy").format(_selected_pick_month!)}-${DateFormat("MM").format(_selected_pick_month!)}-07"))}",
+
                                    letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
                                );
                              },),
@@ -849,7 +855,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
     );
   }
 
-  DateTime? _selected_pick_month  ;
+  DateTime? _selected_pick_month=DateTime.now()  ;
   Future<void> _onPressed({
     required BuildContext context,
     String? locale,

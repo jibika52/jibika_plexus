@@ -58,3 +58,11 @@
 
   /// Self GetMonthlyAttSummary
     String Self_Admin_Get_Monthly_Att_Summary_By_Employee="Attendance/GetMonthlyAttSummary";
+
+  //
+  // /// Self GetMonthlyAttSummary
+  //   String Self_Admin_SaveLeaveRegister_By_Employee="Leave/SaveLeaveRegister";
+
+
+  /// Self GetMonthlyAttSummary
+    String Self_Admin_GetEmpNewFaceList_By_Employee="employee/GetEmpNewFaceList";
