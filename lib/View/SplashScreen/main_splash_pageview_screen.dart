@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:jibika_plexus/View/Auth/LoginScreen/login_screen_screen2.dart';
 import 'package:jibika_plexus/View/SplashScreen/splash_screen1.dart';
 import 'package:jibika_plexus/View/SplashScreen/splash_screen2.dart';
 import 'package:jibika_plexus/View/SplashScreen/splash_screen3.dart';
@@ -17,16 +18,19 @@ class MainSplashPageViewScreen extends StatefulWidget {
 class _MainSplashPageViewScreenState extends State<MainSplashPageViewScreen> {
   @override
   void initState() {
-    print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA ${GetStorage().read("id_token")}");
-    Future.delayed(Duration(seconds: 1),() {
+    Future.delayed(Duration(milliseconds: 500),() {
       if(GetStorage().read("id_token")!=null && GetStorage().read("user_type_id")==1001){
         Navigator.push(context, MaterialPageRoute(builder: (context) => BootomNatchBarScreen(),));
       }
-
       else if(GetStorage().read("id_token")!=null && GetStorage().read("user_type_id")==1003){
         Navigator.push(context, MaterialPageRoute(builder: (context) => SalfBootomNatchBarScreen(currentIndex: 4),));
+      }
+      else if(GetStorage().read("id_token")!=null){
+     //   Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreenSlide(),));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => SplashScreen3(),));
       }else{
-        print("AAA");
+     //   Navigator.push(context, MaterialPageRoute(builder: (context) => SplashScreen3(),));
+     print(GetStorage().read("id_token")!=null);
       }
 
 
@@ -40,18 +44,13 @@ class _MainSplashPageViewScreenState extends State<MainSplashPageViewScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () {
-        return Future(() => false);
-      },
-      child: Scaffold(
-        body:GetStorage().read("id_token")!=null?Center(child: CircularProgressIndicator(),): PageView(
-          children:[
-            SplashScreen1(),
-            SplashScreen2(),
-            SplashScreen3(),
-          ],
-        ),
+    return Scaffold(
+      body:GetStorage().read("id_token")!=null?Center(child: CircularProgressIndicator(),): PageView(
+        children:[
+          SplashScreen1(),
+          SplashScreen2(),
+          SplashScreen3(),
+        ],
       ),
     );
   }

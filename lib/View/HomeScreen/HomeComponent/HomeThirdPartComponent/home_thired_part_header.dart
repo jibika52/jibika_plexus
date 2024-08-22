@@ -127,7 +127,7 @@ Future<void> _onPressed({
   if (selected != null) {
     setState(() {
       _selected_pick_month = selected;
-   // Provider.of<HomeProvider>(context,listen: false).dashboardBarChartDataProvider("${GetStorage().read("mobile_id")}", "${DateFormat('dd-MMMM-yyyy').format(DateTime.now())}","$selectedValue", context);
+      Provider.of<HomeProvider>(context,listen: false).dashboardBarChartDataProvider("${GetStorage().read("mobile_id")}", "${DateFormat('dd-MMMM-yyyy').format(DateTime.now())}","${DateFormat('MMM-yyyy').format(_selected_pick_month!)}", context);
 
     });
   }

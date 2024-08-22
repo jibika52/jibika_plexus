@@ -116,7 +116,7 @@ class CustomHttpSelf{
           body: body
       ).then((http.Response response) {
          monthlyAttendanceSummary = jsonDecode(response.body)["data"];
-         for(int i=1;i<32;i++){
+         for(int i=1;i<DateTime(DateTime.now().year, DateTime.now().month + 1, 0).day+1;i++){
            final tempobj = Updated_attendance_summary();
            tempobj.date = "${i}";
            tempobj.Status = "No Punch";
@@ -263,6 +263,46 @@ class CustomHttpSelf{
     }
     catch(e){
       print(" self Or Admin Get Leave Early Count Catch error ============================ ${e}");
+    }
+  }
+
+
+
+  ///  Self Or Admin Get selfAdminAdmin Get Monthly Att SummaryCountList Count --------------------------------------------------------------------------
+    selfAdminAdmin_Get_Monthly_Att_SummaryCount( String SUMMARY_MONTH, BuildContext context)async{
+    dynamic  selfAdminAdmin_Get_Monthly_Att_SummaryCountList  ;
+    var body = jsonEncode({
+      "UserId":"${GetStorage().read("mobile_id")}",
+      "ID_CARD_NO":"${GetStorage().read("IdCardNo")}",
+      // "attendanceType" : "$attendanceType",
+      // "SUMMARY_MONTH": "$SUMMARY_MONTH"
+
+
+
+        // "UserId":"01913048570",
+        // "ID_CARD_NO":"1000000629",
+        "attendanceType" : "GENERAL",
+        "SUMMARY_MONTH": "$SUMMARY_MONTH"
+
+
+    });
+
+    try{
+      var data=await http.post(Uri.parse("${BASEURL}/${Self_Admin_Get_Monthly_Att_Summary_By_Employee}"),
+          headers: {
+            "Content-Type": "application/json",
+            "username": "jibikaapps",
+            "password": "20jibika24",
+          },
+          body: body
+      ).then((http.Response response) {
+        selfAdminAdmin_Get_Monthly_Att_SummaryCountList =jsonDecode(response.body)["data"];
+
+      });
+      return selfAdminAdmin_Get_Monthly_Att_SummaryCountList;
+    }
+    catch(e){
+      print(" self Or Admin Get selfAdminAdmin_Get_Monthly_Att_SummaryCountList Count Catch error ============================ ${e}");
     }
   }
 

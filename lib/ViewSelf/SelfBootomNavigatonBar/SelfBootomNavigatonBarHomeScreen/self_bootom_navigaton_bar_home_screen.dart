@@ -21,6 +21,7 @@ import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
  import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
 import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/SelfBootomNavigatonBarHomeScreen/SelfMyLeaveSatusScreen/self_my_leave_satus_screen.dart';
+import 'package:month_year_picker/month_year_picker.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:provider/provider.dart';
 
@@ -72,6 +73,9 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
   @override
   void initState() { 
     Provider.of<SelfDashboardController>(context,listen: false).selfOneMonthAttendanceProvider(
+        DateTime.now().year,
+        DateTime.now().month,
+        DateTime.now().day,
         "${GetStorage().read("mobile_id")}",
         "${DateFormat('dd-MMM-yyyy').format(DateTime.now())}",
         "${GetStorage().read("RfIdCardNo")}",
@@ -108,7 +112,11 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
     await Future.delayed(Duration(seconds: 2));
     setState(() {
       Provider.of<SelfDashboardController>(context,listen: false).selfOneMonthAttendanceProvider
-        ("${GetStorage().read("mobile_id")}",
+        (
+          DateTime.now().year,
+          DateTime.now().month,
+          DateTime.now().day,
+          "${GetStorage().read("mobile_id")}",
           "${DateFormat('dd-MMM-yyyy').format(DateTime.now())}",
           "${GetStorage().read("RfIdCardNo")}",
           "GENERAL", context);
@@ -540,9 +548,20 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                children: [
                                  CustomText(fontSize: 13, fontWeight: FontWeight.w500, text: "My Attendance", letterSpacing: 0.3),
                                 Spacer(),
-                                  Icon(Icons.arrow_back_ios,size: 16, color: Main_Theme_textColor.withOpacity(0.8),),
-                                  CustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "${DateFormat("MMM yyyy").format(DateTime.now())}", letterSpacing: 0.3),
-                                  Icon(Icons.arrow_forward_ios_rounded,size: 16,color: Main_Theme_textColor.withOpacity(0.8)) ,
+                                  InkWell(
+                                    onTap: () {
+                                 _onPressed(context: context);
+                                    },
+                                    child: Container(
+                                      child: Row(
+                                        children: [
+                                          Icon(Icons.arrow_back_ios,size: 16, color: Main_Theme_textColor.withOpacity(0.8),),
+                                          CustomText(fontSize: 13, fontWeight: FontWeight.w400, text:_selected_pick_month!=null? "${DateFormat("MMM-yyyy").format(_selected_pick_month!)}" : "${DateFormat("MMM-yyyy").format(DateTime.now())}", letterSpacing: 0.3),
+                                          Icon(Icons.arrow_forward_ios_rounded,size: 16,color: Main_Theme_textColor.withOpacity(0.8)) ,
+                                        ],
+                                      ),
+                                    ),
+                                  )
 
                                ],
                              ),
@@ -818,31 +837,38 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
        ),
     );
   }
+  DateTime? _selected_pick_month  ;
+  Future<void> _onPressed({
+    required BuildContext context,
+    String? locale,
+  }) async {
+    final localeObj = locale != null ? Locale(locale) : null;
+    final selected = await showMonthYearPicker(
+      context: context,
+      initialDate: _selected_pick_month ?? DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2130),
+      locale: localeObj,
 
-  String selected3Datee = DateFormat('dd-MMMM-yyyy').format(DateTime.now()).toString();
-  // Future<void> _select3Date(BuildContext context) async {
-  //   final DateTime? picked = await showDatePicker(
-  //       context: context,
-  //       firstDate: DateTime(2015, 8),
-  //       lastDate: DateTime(2101));
-  //   if (picked != null && picked != selected3Datee) {
-  //     final df = new DateFormat('dd-MMMM-yyyy');
-  //     setState(() {
-  //       selected3Datee = df.format(picked);
-  //       Provider.of<HomeProvider>(context,listen: false).dashboardPieChartDataProvider("${GetStorage().read("mobile_id")}", "$selected3Datee", context);
-  //     });
-  //   }
-  // }
+    );
 
-
-
-
+    if (selected != null) {
+      setState(() {
+        _selected_pick_month = selected;
+        Provider.of<SelfDashboardController>(context,listen: false).selfOneMonthAttendanceProvider
+          (
+            int.parse(DateFormat('yyyy').format(_selected_pick_month!)),
+            int.parse(DateFormat('MM').format(_selected_pick_month!)),
+            int.parse(DateFormat('dd').format(_selected_pick_month!)),
+            "${GetStorage().read("mobile_id")}",
+            "${DateFormat('dd-MMM-yyyy').format(_selected_pick_month!)}",
+            "${GetStorage().read("IdCardNo")}",
+            "GENERAL", context);
+      });
+    }
+  }
 }
 
-// class Updated_attendance_summary{
-//   String?  date;
-//   String?  Status;
-// }
 
 class Updated_attendance_summary{
 String? date;

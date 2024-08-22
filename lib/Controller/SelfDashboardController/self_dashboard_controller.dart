@@ -35,8 +35,16 @@ class SelfDashboardController with ChangeNotifier{
 
   /// self One Month Attendance List
   List<Updated_attendance_summary> selfOneMonthAttendanceList = [];
-  selfOneMonthAttendanceProvider(String UserId,String AttendanceDate, String RefCardNo, String attendanceType,BuildContext context)async{
-    selfOneMonthAttendanceList=await CustomHttpSelf().selfOneMonthAttendanceFunction(UserId, AttendanceDate, RefCardNo, attendanceType, context,);
+  selfOneMonthAttendanceProvider(
+      int yyyy,
+      int MMMM,
+      int dd,
+      String UserId,String AttendanceDate, String RefCardNo, String attendanceType,BuildContext context)async{
+    selfOneMonthAttendanceList=await CustomHttpSelf().selfOneMonthAttendanceFunction(
+      yyyy,
+      MMMM,
+      dd,
+      UserId, AttendanceDate, RefCardNo, attendanceType, context,);
     notifyListeners();
   }
 
