@@ -3,11 +3,14 @@ import 'dart:math' as math;
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:intl/intl.dart';
 import 'package:jibika_plexus/CustomSelfWedget/CustomMySelfJobCard/CustomMySelfJobCard3rdPart/custom_myself_jobcard3rdpart.dart';
 import 'package:jibika_plexus/CustomSelfWedget/CustomMySelfJobCard/SelfCustomCalender/self_custom_calender.dart';
+import 'package:jibika_plexus/CustomSelfWedget/MySelfCustomCalender/myself_custom_calender.dart';
 import 'package:jibika_plexus/CustomSelfWedget/selfAttendance/self_attendance_summary.dart';
 import 'package:jibika_plexus/CustomSelfWedget/self_profile_summary.dart';
 import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
@@ -170,34 +173,18 @@ class _SelfBootomNavigatonEmployeeDashboardState extends State<SelfBootomNavigat
               ),
               SizedBox(height: apps_div_margin,),
 
-              // CustomCalender(
-              //     width: 120, is_share: true, onTap: () {
-              // }, is_messsage: true, onTap2message: () {
-              // }, is_pdf: true, onTap3pdf: () {
-              // },
-              // ),
 
+/// Calender -------------------------------------------------------------------
 
-              InkWell(
-                onTap: () {
-                  _onPressed(context: context);
-                },
-                child: Align(
-                  alignment: Alignment.centerRight,
-                  child: Container(
-                    margin: EdgeInsets.only(right: 15,bottom: 10),
-                    height: 40,
-                    width: 100,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(11),
-                      border: Border.all(
-                        color: Main_Theme_textColor.withOpacity(0.3),
-                      )
-                    ),
-                    alignment: Alignment.center,
-                    child:CustomText(fontSize: 13, fontWeight: FontWeight.w400, text:_selected_pick_month==null?"${DateFormat("MMM-yyyy").format(DateTime.now())}": "${DateFormat("MMM-yyyy").format(_selected_pick_month)}" , letterSpacing:  0.3),
-                  ),
-                ),
+              Container(
+                margin: EdgeInsets.only(bottom: 10,right: 15),
+                alignment: Alignment.centerRight,
+                child: MyselfCustomCalender(
+                    onTap: () {
+                      _onPressed(context: context);
+                    },
+                    datetext: _selected_pick_month!=null? "${DateFormat("MMM-yyyy").format(_selected_pick_month!)}" : "${DateFormat("MMM-yyyy").format(DateTime.now())}", width: 100, height: 30)
+
               ),
 
               Padding(

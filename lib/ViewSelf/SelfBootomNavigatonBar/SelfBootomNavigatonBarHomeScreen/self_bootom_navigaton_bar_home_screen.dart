@@ -116,7 +116,9 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
 
 ///-----------------------------------------------------------------------
   Timer? timer;
+
   bool is_open_textbox=false;
+  bool is_timer=false;
   ///-----------------------------------------------------------------------
   double Animatedwidth=100;
   double animated_height=0;

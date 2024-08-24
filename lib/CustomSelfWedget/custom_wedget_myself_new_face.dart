@@ -55,7 +55,14 @@ class _MyselfNewFaceScreenState extends State<MyselfNewFaceScreen> {
                     padding: EdgeInsets.only(top: 10,left: 5,right: 5),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(11),
-                      color: CustomButtonColor.withOpacity(0.07),
+                   //   color: CustomButtonColor.withOpacity(0.07),
+                        gradient: LinearGradient(
+                            begin: Alignment.centerLeft,
+                            colors: [
+                          CustomButtonColor.withOpacity(0.3),
+                          CustomButtonColor.withOpacity(0.2),
+                          CustomButtonColor.withOpacity(0.1),
+                        ])
                     ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,

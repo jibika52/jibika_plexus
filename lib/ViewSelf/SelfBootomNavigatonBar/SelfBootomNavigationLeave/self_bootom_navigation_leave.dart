@@ -15,6 +15,7 @@ import 'package:jibika_plexus/CustomWidget/CustomCircleDay/custom_circleday.dart
 import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/SelfBootomNavigatonBarHomeScreen/SelfMyLeaveSatusScreen/self_my_leave_satus_screen.dart';
 import 'package:provider/provider.dart';
 
+import '../../../Controller/HomeController/home_controller.dart';
 import '../../../CustomWidget/CustomTExtFormField/Jibika_custom_text_from_field.dart';
 import '../../../CustomWidget/CustomText/custom_text.dart';
 import '../../../Model/EmpoyeeLeaveStatusModelClass/employee_leave_model_class.dart';
@@ -39,13 +40,14 @@ class _SelfBootomNavigationLeaveState extends State<SelfBootomNavigationLeave> {
   }
   int selected_index=-1;
   int Leave_type_selected_index=0;
+  int selest_leave=0;
+  dynamic get_status;
   @override
   Widget build(BuildContext context) {
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
     List leave_status=Provider.of<SelfDashboardController>(context).selfLeaveAllocationList ;
-
-
+    final selfORAdminShortInformationdata=Provider.of<HomeProvider>(context).selfORAdminShortInformationdata;
     return Scaffold(
         backgroundColor: home_default_color,
         body: Container(
@@ -124,70 +126,111 @@ class _SelfBootomNavigationLeaveState extends State<SelfBootomNavigationLeave> {
                       //     ],
                       //   ),
                       // ),
-                      GridView.builder(gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisSpacing: 10,
-                          mainAxisSpacing: 10,
-                          crossAxisCount: 4,
-                      ),
-                          itemCount: 4,
-                          physics: NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          itemBuilder: (context, index) =>
-                              InkWell(
-                                onTap: () {
-                                  setState(() {
-                                    selected_index=index;
-                                  });
-                                },
-                                child:  ClipRRect(
-                                  borderRadius:BorderRadius.circular(100),
-                                  child: Container(
-                                    padding: EdgeInsets.all(8),
-                                    decoration: BoxDecoration(
-                                      color: Main_Theme_textColor_tir_Condition,
-                                      borderRadius: BorderRadius.circular(100),
-                                    ),
-                                    child: Container(
-                                      height: 100,
-                                      width: 100,
-                                      decoration: BoxDecoration(
-                                        color:selected_index==index?Colors.grey : Colors.white,
-                                        borderRadius: BorderRadius.circular(100),
-                                      ),
-                                      padding: EdgeInsets.all(1),
-                                      child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        crossAxisAlignment: CrossAxisAlignment.center,
-                                        children: [
-                                          Text("CL",style: TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 22,
-                                            color: selected_index==index?Main_Theme_WhiteCollor:Main_Theme_textColor,
-                                          ),),
-                                          Text("01",style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 16,
-                                            color: selected_index==index?Main_Theme_WhiteCollor:Main_Theme_textColor,
-                                          ),),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
+                      // GridView.builder(
+                      //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      //   crossAxisSpacing: 10,
+                      //     mainAxisSpacing: 10,
+                      //     crossAxisCount: 4,
+                      // ),
+                      //     itemCount: leave_status !=null? leave_status.length :0,
+                      //     physics: NeverScrollableScrollPhysics(),
+                      //     shrinkWrap: true,
+                      //     itemBuilder: (context, index) =>
+                      //         InkWell(
+                      //           onTap: () {
+                      //             setState(() {
+                      //               selected_index=index;
+                      //             });
+                      //           },
+                      //           child:  ClipRRect(
+                      //             borderRadius:BorderRadius.circular(100),
+                      //             child: Container(
+                      //               padding: EdgeInsets.all(8),
+                      //               decoration: BoxDecoration(
+                      //                 color: Main_Theme_textColor_tir_Condition,
+                      //                 borderRadius: BorderRadius.circular(100),
+                      //               ),
+                      //               child: Container(
+                      //                 height: 100,
+                      //                 width: 100,
+                      //                 decoration: BoxDecoration(
+                      //                   color:selected_index==index?Colors.grey : Colors.white,
+                      //                   borderRadius: BorderRadius.circular(100),
+                      //                 ),
+                      //                 padding: EdgeInsets.all(1),
+                      //                 child: Column(
+                      //                   mainAxisAlignment: MainAxisAlignment.center,
+                      //                   crossAxisAlignment: CrossAxisAlignment.center,
+                      //                   children: [
+                      //                     Text("${leave_status[index]["LeaveAbbre"]}",style: TextStyle(
+                      //                       fontWeight: FontWeight.w600,
+                      //                       fontSize: 18,
+                      //                       color: selected_index==index?Main_Theme_WhiteCollor:Main_Theme_textColor,
+                      //                     ),),
+                      //                     Text("${leave_status[index]["BalanceDays"]}",style: TextStyle(
+                      //                       fontWeight: FontWeight.w500,
+                      //                       fontSize: 16,
+                      //                       color: selected_index==index?Main_Theme_WhiteCollor:Main_Theme_textColor,
+                      //                     ),),
+                      //                   ],
+                      //                 ),
+                      //               ),
+                      //             ),
+                      //           ),
+                      //         ),
+                      // ),
+                      /// Shift Are--------------------------------------------------------------
+                      Align(
+                          alignment: Alignment.centerLeft,
+                          child: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w500, text: "Select Leave", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),)),
+                      SizedBox(height: 7,),
+                      Container(
+                        height: 60,
+                        width: double.infinity,
+                        child: ListView.builder(
+                          itemCount:leave_status==null?0: leave_status.length,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) => InkWell(
+                            onTap: () {
+                             setState(() {
+                               selest_leave=index;
+                               get_status=leave_status[index]["LeaveTypeCode"];
+                             });
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(7),
+                                color:selest_leave==index?presentsent_color.withOpacity(1.0):home_default_color,
                               ),
+                            margin: EdgeInsets.only(right: 10),
+                            height: 30,
+                            width: 70,
+                          //  padding: EdgeInsets.only(left: 10,right: 10,bottom: 5,top: 5),
+                            alignment: Alignment.center,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                ColorCustomText(fontSize: 16, fontWeight: FontWeight.w500, text: "${leave_status[index]["LeaveAbbre"]}", letterSpacing: 0.3, textColor: selest_leave==index?Main_Theme_WhiteCollor:Main_Theme_textColor),
+                                ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "${leave_status[index]["BalanceDays"]}", letterSpacing: 0.3, textColor: selest_leave==index?Main_Theme_WhiteCollor:Main_Theme_textColor),
+                              ],
+                            ),
+                                                    ),
+                          ),),
                       ),
+
                       SizedBox(height: apps_div_margin+2,),
                       /// Shift Are--------------------------------------------------------------
                       Align(
                           alignment: Alignment.centerLeft,
-                          child: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w500, text: "Leave Type", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),)),
+                          child: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w500, text: "Select Leave Type", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),)),
                       SizedBox(height: 7,),
                       Container(
-                        height: 105,
+                        height: 30,
                         width: double.infinity,
                         child: ListView.builder(
                           itemCount: 3,
-                          scrollDirection: Axis.vertical,
+                          scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) =>
                               InkWell(
                           onTap: () {
@@ -196,6 +239,7 @@ class _SelfBootomNavigationLeaveState extends State<SelfBootomNavigationLeave> {
                             });
                           },
                           child:  Container(
+                            margin: EdgeInsets.only(right: 10),
                             padding: EdgeInsets.only(bottom: 10),
                             child: Row(
                               children: [
@@ -203,16 +247,16 @@ class _SelfBootomNavigationLeaveState extends State<SelfBootomNavigationLeave> {
                                   alignment: Alignment.center,
                                   children: [
                                     CircleAvatar(
-                                      radius: 13,
+                                      radius: 8,
                                       backgroundColor: Main_Theme_textColor_tir_Condition,
                                     ),
                                     Positioned(child: CircleAvatar(
-                                      radius: 8,
+                                      radius: 5,
                                       backgroundColor: Leave_type_selected_index==index?Colors.grey : Colors.white,
                                     ),)
                                   ],
                                 ),
-                                SizedBox(width: 10,),
+                                SizedBox(width:2,),
                                 CustomText(fontSize: 14, fontWeight: FontWeight.w400, text: index==0?"Full day" :index==1?"First half day" :"Second half day", letterSpacing: 0.3),
                               ],
                             ),
@@ -226,7 +270,7 @@ class _SelfBootomNavigationLeaveState extends State<SelfBootomNavigationLeave> {
                         padding: EdgeInsets.only(left: 10,right: 10,),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5),
-                          color: home_default_color,
+                         color: home_default_color,
                         ),
                         child: Row(
                           children: [
@@ -238,6 +282,7 @@ class _SelfBootomNavigationLeaveState extends State<SelfBootomNavigationLeave> {
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
+                                    //  MyselfCustomCalender(datetext: datetext, width: width, height: height)
                                       CustomText(fontSize: font12header, fontWeight: FontWeight.w400, text: "From Date", letterSpacing: 0.3),
                                       MyselfCustomCalender(datetext: "${selectedformDatee}", width: double.infinity, height: 30,onTap: () {
                                         _selectformDate(context);
@@ -343,7 +388,25 @@ class _SelfBootomNavigationLeaveState extends State<SelfBootomNavigationLeave> {
                         child: Container(
                           width: 110,
                           child: CustomButton(onTap: () {
+                            Provider.of<SelfDashboardController>(context,listen: false).selfAdminSaveLeaveRegisterProvider(
+                                "${get_status}",
+                                "1",
+                                "${DateFormat("dd-MMM-yyyy").format(DateFormat("dd-MMM-yyyy").parse("$selectedformDatee"))}",
+                                "${DateFormat("dd-MMM-yyyy").format(DateFormat("dd-MMM-yyyy").parse("$selectedtoDatee"))}",
+                                "${DateFormat("dd-MMM-yyyy").format(DateTime.now())}",
+                                "N",
+                                "0",
+                                "N",
+                              //  "${get_status[0]["LeaveAbbre"]}",
+                                "${_commentsController.text}",
+                                "",
+                                "1001",
+                                "${GetStorage().read("mobile_id")}",
+                                "${selfORAdminShortInformationdata["StaffCategory"]}",
+                                "${GetStorage().read("user_type_id")}",
+                                context);
                           }, text: "Apply", fontWeight: FontWeight.w400,button_text_fontSize: 14, button_height: 40, custom_button_collor: CustomButtonColor.withOpacity(0.3), button_text_color: CustomButtonColor, borderRadius: 50),
+
                         ),
                       ),
                     ],
