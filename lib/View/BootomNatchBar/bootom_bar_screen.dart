@@ -65,6 +65,7 @@ class _BootomNatchBarScreenState extends State<BootomNatchBarScreen> {
         }, is_need_trailing: true),
       ),
     body: bottomBarPages[_currentIndex],
+
       bottomNavigationBar: Container(
         height: 70,
         width: double.infinity,
@@ -153,26 +154,19 @@ class _BootomNatchBarScreenState extends State<BootomNatchBarScreen> {
         ),
       ),
 
+
       floatingActionButton:keyboardOpen==true
-          ? SizedBox(): CircleAvatar(
-        radius: 30,
-        backgroundColor: Colors.white,
-        child: FloatingActionButton(
-          isExtended: false,shape: CircleBorder(
-          side: BorderSide(color: Main_Theme_WhiteCollor),
-        ),
-          foregroundColor: Main_Theme_WhiteCollor,
-          backgroundColor: Main_Theme_WhiteCollor,
-          onPressed: () {
-            setState(() {
-              _currentIndex=4;
-            });
-          }, child: Padding(
-          padding: const EdgeInsets.all(2.0),
-          child: Image.asset("Assets/Logo/leaff.png" ),
-        ),),
+        ? SizedBox(): FloatingActionButton(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
+        onPressed: () {
+          setState(() {
+            _currentIndex=4;
+          });
+        },
+        child: Image.asset("Assets/Logo/leaff.png"),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+
 
     );
   }

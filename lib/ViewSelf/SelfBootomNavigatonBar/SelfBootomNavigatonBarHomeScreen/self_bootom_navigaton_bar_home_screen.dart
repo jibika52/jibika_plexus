@@ -14,6 +14,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:jibika_plexus/Controller/CounterProvider/counter_provider.dart';
+import 'package:jibika_plexus/CustomSelfWedget/MySelfCustomCalender/myself_custom_calender.dart';
 import 'package:jibika_plexus/CustomSelfWedget/custom_wedget_myself_new_face.dart';
 import 'package:jibika_plexus/CustomSelfWedget/myself_leave_status.dart';
 import 'package:jibika_plexus/CustomWidget/CustomButton/customize_button.dart';
@@ -262,7 +263,8 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                          mainAxisAlignment: MainAxisAlignment.start,
                                          crossAxisAlignment: CrossAxisAlignment.center,
                                          children: [
-                                           Image.asset("Assets/SelfIcon/late_punch.png",height: 18,width: 18,fit: BoxFit.fill,color: Colors.grey,),
+                                          // Image.asset("Assets/SelfIcon/late_punch.png",height: 18,width: 18,fit: BoxFit.fill,color: Colors.grey,),
+                                           Image.asset("Assets/SelfIcon/late.png",height: 18,width: 18,fit: BoxFit.fill,color: Main_Theme_textColor.withOpacity(0.4),),
                                            SizedBox(width:5),
                                            ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "${selfOneMonthAttendanceList}"=="[]"?"Late :" :  "Late :${selfOneMonthAttendanceList[DateTime.now().day-1].lATE ??""}" , letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
 
@@ -548,20 +550,12 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                children: [
                                  CustomText(fontSize: 13, fontWeight: FontWeight.w500, text: "My Presence", letterSpacing: 0.3),
                                 Spacer(),
-                                 InkWell(
-                                   onTap: () {
-                                     _onPressed(context: context);
-                                   },
-                                   child: Container(
-                                     child: Row(
-                                       children: [
-                                         Icon(Icons.arrow_back_ios,size: 16, color: Main_Theme_textColor.withOpacity(0.8),),
-                                         CustomText(fontSize: 13, fontWeight: FontWeight.w400, text:_selected_pick_month!=null? "${DateFormat("MMM-yyyy").format(_selected_pick_month!)}" : "${DateFormat("MMM-yyyy").format(DateTime.now())}", letterSpacing: 0.3),
-                                         Icon(Icons.arrow_forward_ios_rounded,size: 16,color: Main_Theme_textColor.withOpacity(0.8)) ,
-                                       ],
-                                     ),
-                                   ),
-                                 )
+                                 MyselfCustomCalender(
+                                     onTap: () {
+                                       _onPressed(context: context);
+                                     },
+                                     datetext: _selected_pick_month!=null? "${DateFormat("MMM-yyyy").format(_selected_pick_month!)}" : "${DateFormat("MMM-yyyy").format(DateTime.now())}", width: 100, height: 30)
+
                                ],
                              ),
                            ),
