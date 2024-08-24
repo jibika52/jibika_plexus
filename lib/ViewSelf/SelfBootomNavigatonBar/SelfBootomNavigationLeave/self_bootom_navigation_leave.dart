@@ -31,6 +31,7 @@ class SelfBootomNavigationLeave extends StatefulWidget {
 
 class _SelfBootomNavigationLeaveState extends State<SelfBootomNavigationLeave> {
   TextEditingController _commentsController=TextEditingController();
+  TextEditingController _dutycaridbyController=TextEditingController();
   @override
   void initState() {
     Provider.of<SelfDashboardController>(context,listen: false).selfLeaveAllocationProvider("${GetStorage().read("mobile_id")}", "${GetStorage().read("Empcode")}", context);
@@ -345,7 +346,7 @@ class _SelfBootomNavigationLeaveState extends State<SelfBootomNavigationLeave> {
                           obscureText: false),
                       SizedBox(height: apps_div_margin-5,),
                       JibikaCustomTextFromField(
-                          controller: _commentsController,
+                          controller: _dutycaridbyController,
                           height: 50,
                           img: "Assets/DrawerImage/chat.png",
                           hinttext: "Comments here",
