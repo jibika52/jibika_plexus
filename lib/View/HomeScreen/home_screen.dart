@@ -185,7 +185,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                               Expanded(
                                                   child: ThirdPartProgressBar(
                                                 absenttheight: dashboardBarChartData==null?0:
-                                                double.parse(dashboardBarChartData["tabls"][index]==0?
+                                                double.parse(
+                                                  dashboardBarChartData["tabls"][index]==0?
                                                 dashboardBarChartData["tabls"][index]   : "${int.parse("${dashboardBarChartData["tabls"][index]}")*100/int.parse("${dashboardEmployeeInfo["TotalEmployee"]}")}",
                                                 ),
 

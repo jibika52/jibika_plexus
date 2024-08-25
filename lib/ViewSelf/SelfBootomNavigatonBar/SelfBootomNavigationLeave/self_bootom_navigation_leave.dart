@@ -46,6 +46,7 @@ class _SelfBootomNavigationLeaveState extends State<SelfBootomNavigationLeave> {
     double w = MediaQuery.of(context).size.width;
     List leave_status=Provider.of<SelfDashboardController>(context).selfLeaveAllocationList ;
     final selfORAdminShortInformationdata=Provider.of<HomeProvider>(context).selfORAdminShortInformationdata;
+  //  print("${}");
     return Scaffold(
         backgroundColor: home_default_color,
         body: Container(
@@ -198,7 +199,7 @@ class _SelfBootomNavigationLeaveState extends State<SelfBootomNavigationLeave> {
                             child: Container(
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(7),
-                                color:selest_leave==index?presentsent_color.withOpacity(1.0):home_default_color,
+                                color:selest_leave==index?CustomButtonColor.withOpacity(1.0):home_default_color,
                               ),
                             margin: EdgeInsets.only(right: 10),
                             height: 30,

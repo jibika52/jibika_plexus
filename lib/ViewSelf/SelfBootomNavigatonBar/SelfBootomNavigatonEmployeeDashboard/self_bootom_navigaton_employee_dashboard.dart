@@ -336,13 +336,12 @@ class _SelfBootomNavigatonEmployeeDashboardState extends State<SelfBootomNavigat
                               top: 5,
                                 left: 40,
                                 child: CircleAvatar(
-                              radius: 8,
-                             backgroundColor:absent_color.withOpacity(0.4),
-                            // backgroundColor:Main_Theme_WhiteCollor,
-                                  child: Icon(Icons.location_on_outlined,color: Main_Theme_textColor.withOpacity(0.6),size: 12,),
+                              radius: 9,
+                           //  backgroundColor:absent_color.withOpacity(0.4),
+                             backgroundColor: "${selfOneMonthAttendanceList[index].Status}"=="P"?presentsent_color.withOpacity(1) : "${selfOneMonthAttendanceList[index].Status}"=="AB"?absent_color.withOpacity(1) : "${selfOneMonthAttendanceList[index].Status!.substring(selfOneMonthAttendanceList[index].Status!.length-1, selfOneMonthAttendanceList[index].Status!.length)}"=="H"?holiday_color.withOpacity(1) : "${selfOneMonthAttendanceList[index].Status!.substring(selfOneMonthAttendanceList[index].Status!.length-1,selfOneMonthAttendanceList[index].Status!.length )}"=="L"?leave_color.withOpacity(1) : Main_Theme_WhiteCollor,
 
 
-
+                    child: Icon(Icons.location_on_outlined,color: Main_Theme_WhiteCollor,size: 12,),
                                   // backgroundColor:Colors.red,
                             ),
                             )

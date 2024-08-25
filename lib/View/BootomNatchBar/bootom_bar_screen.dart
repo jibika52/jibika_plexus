@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:intl/intl.dart';
+import 'package:jibika_plexus/Controller/AttendanceController/attendance_controller.dart';
 import 'package:jibika_plexus/Controller/HomeController/home_controller.dart';
 import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
 import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
@@ -120,6 +122,8 @@ class _BootomNatchBarScreenState extends State<BootomNatchBarScreen> {
             ),
             InkWell(
                 onTap: () {
+                  Provider.of<AttendanceProvder>(context,listen: false).GetDailyAttendanceCounterListProvider("${GetStorage().read("mobile_id")}",
+                      "${DateFormat("dd-MMM-yyyy").format(DateTime.now())}", context);
                   setState(() {
                     _currentIndex=1;
                   });

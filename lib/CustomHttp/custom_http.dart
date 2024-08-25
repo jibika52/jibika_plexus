@@ -392,6 +392,31 @@ class CustomHttpRequestClass{
   }
 
 
+  ///  admin GetDaily Attendance Counter--------------------------------------------------------------------------
+  adminGetDailyAttendanceCounter(String UserId,String AttDate, BuildContext context)async{
+    dynamic GetDailyAttendanceCounter ;
+    var body = jsonEncode({
+      "UserId":"$UserId",
+      "AttDate":"$AttDate"
+    });
+
+    try{
+      var data=await http.post(Uri.parse("${BASEURL}/${Admin_GetDailyAttendanceCounter}"),
+          headers: {
+            "Content-Type": "application/json",
+            "username": "jibikaapps",
+            "password": "20jibika24",
+          },
+          body: body
+      ).then((http.Response response) {
+        GetDailyAttendanceCounter =jsonDecode(response.body)["attcounter"];
+      });
+      return GetDailyAttendanceCounter;
+          }
+    catch(e){
+      print("Admin Daily Attendance Counter Catch error  ============================ ${e}");
+    }
+  }
 
 
 
@@ -400,19 +425,8 @@ class CustomHttpRequestClass{
 
 
 
-}
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-f(){}
+      }
+    f(){}

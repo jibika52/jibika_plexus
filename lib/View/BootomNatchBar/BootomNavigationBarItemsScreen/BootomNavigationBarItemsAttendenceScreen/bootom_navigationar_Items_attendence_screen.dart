@@ -2,14 +2,22 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:intl/intl.dart';
+import 'package:jibika_plexus/Controller/AttendanceController/attendance_controller.dart';
 import 'package:jibika_plexus/CustomWidget/CustomAppBar/CustomDefaultAppBar/custom_default_app_bar.dart';
+import 'package:month_year_picker/month_year_picker.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:provider/provider.dart';
 
+import '../../../../Controller/HomeController/home_controller.dart';
+import '../../../../CustomSelfWedget/MySelfCustomCalender/myself_custom_calender.dart';
 import '../../../../CustomWidget/CustomImage/custom_image.dart';
 import '../../../../CustomWidget/CustomText/custom_text.dart';
 import '../../../../Utils/constants.dart';
 import '../../../HomeScreen/HomeComponent/HomeThirdPartComponent/home_third_pard_body_laft_side.dart';
 import '../../../HomeScreen/HomeComponent/HomeThirdPartComponent/home_third_part_progressbar.dart';
+import '../../../HomeScreen/HomeComponent/HomeThirdPartComponent/home_thired_part_header.dart';
 
 class BootomNavigationBarItemsAttendenceScreen extends StatefulWidget {
   const BootomNavigationBarItemsAttendenceScreen({super.key});
@@ -23,14 +31,12 @@ class _BootomNavigationBarItemsAttendenceScreenState extends State<BootomNavigat
   double animatwidth=130;
   double lineWidth=7.0;
   double C_height=5;
-  bool _is_click_date=false;
-  bool _is_tear_date=false;
   int selectedmonth=0;
-  List MonthList=[
-    "Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"
-  ];
+  int PASummary_select=DateTime.now().day;
   @override
   Widget build(BuildContext context) {
+    final  dashboardEmployeeInfo=  Provider.of<HomeProvider>(context).dashboardEmployeeinfo;
+    final  dashboardBarChartData =  Provider.of<HomeProvider>(context).dashboardBarChartData;
     double h=MediaQuery.of(context).size.height;
     double w=MediaQuery.of(context).size.width;
     return Scaffold(
@@ -44,56 +50,89 @@ class _BootomNavigationBarItemsAttendenceScreenState extends State<BootomNavigat
           children: [
             /// First part-----------------------
             Container(
-              height: 175,width: double.infinity,
-              padding: EdgeInsets.all(10),
-              margin: EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: Main_Theme_WhiteCollor
+              padding: EdgeInsets.only(top: 10),
+              height: 130,
+              width: double.infinity,
+              decoration:BoxDecoration(
+                  borderRadius: BorderRadius.circular(11),
+                  color: Colors.white
               ),
-              child:  Container(
-                child: Row(
-                  children: [
-                    /// Home Third Part  Body Left Side
-                    HomeThirdPartBodyLeftSide(top1: "100%", top2: "70%", top3: "30%", top4: "0%", color: Main_Theme_textColor.withOpacity(0.6),),
-                    /// Home Third Part  Body Right Side
-                    Expanded(
-                        child: Container(
-                          width: double.infinity,
-                          height: double.infinity,
-                          color: Colors.greenAccent.shade100.withOpacity(0.1),
-                          child:  Container(
-                              height: 90,
-                              width: 500,
-                              child:ListView.builder(
-                                itemCount: 30,
-                                scrollDirection: Axis.horizontal,
-                                itemBuilder: (context, index) {
-                                  return  Container(
+
+              margin: EdgeInsets.symmetric(horizontal: 11,vertical: apps_div_margin),
+              child: Column(
+                children: [
+                  Expanded(
+                      child: Container(
+                        child: Row(
+                          children: [
+                            /// Home Third Part  Body Left Side
+                            HomeThirdPartBodyLeftSide(top1: "100%", top2: "70%", top3: "30%", top4: "0%", color: Main_Theme_textColor.withOpacity(0.6),),
+                            /// Home Third Part  Body Right Side
+                            Expanded(
+                                child: Container(
+                                  width: double.infinity,
+                                  height: double.infinity,
+                                  color: Colors.greenAccent.shade100.withOpacity(0.1),
+                                  child:  Container(
+                                      padding: EdgeInsets.only(top: 10),
                                       height: 90,
-                                      margin: EdgeInsets.only(right: 10),
-                                      child: Column(
-                                        children: [
-                                          Expanded(child: ThirdPartProgressBar(  absenttheight: 30+double.parse("$index"), presentheight:70-double.parse("$index"), present_width: 10, Absent_width: 10, total_width: 21,)),
-                                          SizedBox(height: 5,),
-                                          Container(
-                                              height: 20,
-                                              width: 22,
-                                              decoration: BoxDecoration(
-                                                  color:DateTime.now().day==index? presentsent_color:Main_Theme_textColor.withOpacity(0.05),
-                                                  borderRadius: BorderRadius.circular(2)
-                                              ),
-                                              alignment: Alignment.center,
-                                              child: CustomText(fontSize: 10, fontWeight: FontWeight.w400, text: "${index+1}", letterSpacing: 0.2)
-                                          ),
-                                          SizedBox(height: 10,),
-                                        ],
-                                      ));
-                                },)
-                          ),
-                        )),
-                  ],
-                ),
+                                      width: 500,
+                                      child:ListView.builder(
+                                        itemCount:dashboardBarChartData==null?0
+                                            :"${dashboardBarChartData["tpls"]}"=="[]"?0
+                                            : dashboardBarChartData["tpls"].length,
+
+                                        scrollDirection: Axis.horizontal,
+                                        itemBuilder: (context, index) {
+                                          //  print("fffffffff ${index + 1} -------- tpls ---- ${ dashboardBarChartData["tpls"][index]}  -------- tabls ---- ${ dashboardBarChartData["tabls"][index]}");
+                                          return  Container(
+                                            height: 90,
+                                            margin: EdgeInsets.only(right: 10),
+                                            child: Column(
+                                              children: [
+                                                Expanded(
+                                                    child: ThirdPartProgressBar(
+                                                      absenttheight: dashboardBarChartData==null?0:
+                                                      double.parse(dashboardBarChartData["tabls"][index]==0?
+                                                      dashboardBarChartData["tabls"][index]   : "${int.parse("${dashboardBarChartData["tabls"][index]}")*100/int.parse("${dashboardEmployeeInfo["TotalEmployee"]}")}",
+                                                      ),
+
+                                                      presentheight:
+                                                      dashboardBarChartData==null?0:
+                                                      double.parse(
+                                                        dashboardBarChartData["tpls"][index]==0?
+                                                        dashboardBarChartData["tpls"][index]:
+                                                        "${int.parse("${dashboardBarChartData["tpls"][index]}")*100/int.parse("${dashboardEmployeeInfo["TotalEmployee"]}")}",
+                                                      ),
+                                                      present_width: 10,
+                                                      Absent_width: 10,
+                                                      total_width: 21,)),
+                                                SizedBox(height: 5,),
+
+
+                                                Container(
+                                                    height: 20,
+                                                    width: 22,
+                                                    decoration: BoxDecoration(
+                                                        color:PASummary_select==index+1?
+                                                        presentsent_color:Main_Theme_textColor.withOpacity(0.05),
+                                                        borderRadius: BorderRadius.circular(2)
+                                                    ),
+                                                    alignment: Alignment.center,
+                                                    child: CustomText(fontSize: 10, fontWeight: FontWeight.w400, text: "${index+1}", letterSpacing: 0.2)
+                                                ),
+                                                SizedBox(height: 10,),
+                                              ],
+                                            ),
+                                          );
+                                        },)
+                                  ),
+                                )),
+                          ],
+                        ),
+                      )
+                  ),
+                ],
               ),
             ),
             /// Second part Calender ----------------------
@@ -162,325 +201,254 @@ class _BootomNavigationBarItemsAttendenceScreenState extends State<BootomNavigat
                   Positioned(
                       right: 0,
                       bottom: 2,
-                      child: AnimatedContainer(
-                        duration: Duration(milliseconds: 300),
-                        height: 32,
-                        width: animatwidth,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(7),
-                            color: Main_Theme_WhiteCollor,
-                            border: Border.all(
-                                color: Main_Theme_textColor.withOpacity(0.7),
-                                width: 1
-                            )
-                        ),
-                        padding: EdgeInsets.only(left: 7,right: 7,top: 5,bottom: 5),
-                        child: InkWell(
+                      child:   MyselfCustomCalender(
                           onTap: () {
-                            setState(() {
-                              _is_click_date=!_is_click_date;
-                              if(_is_click_date==true){
-                                if(w>530){
-                                  animatwidth=530;
-                                }else{
-                                  animatwidth=w*0.90;
-                                }
-                              }else{
-                                animatwidth=100.0;
-                              }
-                            });
+                            _onPressed(context: context);
                           },
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              _is_click_date==false?  ColorCustomText(fontSize: font12header, fontWeight: FontWeight.w500, text: "${MonthList[selectedmonth]}", letterSpacing: 0.3,
-                                  textColor: CustomButtonColor) :
-                              Expanded(
-                                child: ListView.builder(
-                                itemCount: MonthList.length,
-                                scrollDirection: Axis.horizontal,
-                                itemBuilder: (context, index) {
-                                  return InkWell(
-                                    onTap: () {
-                                      setState(() {
-                                        selectedmonth=index;
-                                        _is_click_date=!_is_click_date;
-                                        if(_is_click_date==true){
-                                          animatwidth=w*0.95;
-                                        }else{
-                                          animatwidth=130.0;
-                                        }
-                                      },);
-                                    },
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(right: 10.0,left: 5,top: 0),
-                                      child: Text("${MonthList[index]}"),
-                                    ),
-                                  ) ;
-                                },),
-                              ),
-                              Container(
-                                height: 12,
-                                width: 1,
-                                color: Main_Theme_textColor,
-                                margin: EdgeInsets.only(left: 5,right: 7),
-                              ),
-                              Container(
-                                height: 42,
-                                width: 50,
-                                child: DropdownButtonHideUnderline(
-                                  child: DropdownButton2<String>(
-                                    isExpanded: true,
-                                    hint: Text(
-                                      '${DateTime.now().year}',
-                                      style: TextStyle(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.bold,
-                                        color: Main_Theme_textColor,
-                                      ),
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                    items: items
-                                        .map((String item) => DropdownMenuItem<String>(
-                                      value: item,
-                                      child: Text(
-                                        item,
-                                        style: const TextStyle(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black,
-                                        ),
-                                        overflow: TextOverflow.ellipsis,
-                                      ),
-                                    ))
-                                        .toList(),
-                                    value: selectedValue,
-                                    onChanged: (String? value) {
-                                      setState(() {
-                                        selectedValue = value;
-                                      });
-                                    },
-
-                                    iconStyleData: const IconStyleData(
-                                      icon: Icon(
-                                        Icons.arrow_downward,
-                                      ),
-                                      iconSize: 14,
-                                      iconEnabledColor: Main_Theme_textColor,
-                                      iconDisabledColor: Colors.grey,
-                                    ),
-                                    dropdownStyleData: DropdownStyleData(
-                                      scrollPadding: EdgeInsets.all(0.0),
-                                      decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(11),
-                                          border: Border.all(
-                                              color: Main_Theme_textColor.withOpacity(0.5),
-                                            width: 1
-                                          )
-                                      ),
-                                      direction: DropdownDirection.textDirection,
-                                      maxHeight: 200,
-                                      width: 65,
-                                      useRootNavigator: true,
-                                      padding: EdgeInsets.only(left: 2,right: 2),
-                                      offset:  Offset( -3, -6),
-                                      scrollbarTheme: ScrollbarThemeData(
-                                        radius:  Radius.circular(11),
-                                        trackBorderColor: MaterialStateProperty.all(Color(0xFF5D5F6E)),
-                                        thickness: MaterialStateProperty.all<double>(6),
-                                        thumbVisibility: MaterialStateProperty.all<bool>(true),
-                                      ),
-                                    ),
-                                    menuItemStyleData: const MenuItemStyleData(
-                                      height: 40,
-                                      padding: EdgeInsets.only(left: 14, right: 14),
-                                    ),
-                                  ),
-                                ),
-                              )
-
-
-                            ],
-                          ),
-                        ),
-                      ))
+                          datetext: _selected_pick_month!=null? "${DateFormat("MMM-yyyy").format(_selected_pick_month!)}" : "${DateFormat("MMM-yyyy").format(DateTime.now())}", width: 100, height: 30),)
                 ],
               ),
             ),
             /// Third part-----------------------
 
             Expanded(
-                child: Container(
-                  color:Main_Theme_WhiteCollor,
-                  padding: EdgeInsets.only(left: 10,right: 10),
-                  height: 150,
-                  width: double.infinity,
-                  child: ListView.builder(
-                    scrollDirection: Axis.vertical,
-                    itemBuilder: (context, index) => Card(
-                      color: Color(0xfff2f2ff),
-                      child: Container(
-                        height: 75,
-                        width: double.infinity,
-                        //  color: Colors.green,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          //  color: Color(0xffF2F2F2)
-                        ),
-                        margin: EdgeInsets.only(bottom: 7),
-                        child: Row(
-                          children: [
-                            Expanded(
-                              flex: 2,
-                              child: Container(
-                                //   color: Colo
-                                alignment: Alignment.topCenter,
-                                child: Stack(
-                                  alignment: Alignment.topCenter,
-                                  children: [
-                                    Positioned(
-                                      top: 22,
-                                      // left: 23,
-                                      child: CircularPercentIndicator(
-                                        radius: 21.0,
-                                        lineWidth: 1.5,
-                                        percent: 0.99999,
-                                        backgroundColor: Colors.grey.withOpacity(0),
-                                        progressColor: Main_Theme_textColor.withOpacity(0.7),
-                                        center: Column(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children: [
+                child: Consumer<AttendanceProvder>(
+                  builder: (context, value, child) {
+print("ssssssssssssssssssss ${value.GetDailyAttendanceCounter}");
+                   return value.GetDailyAttendanceCounter==null?Center(child: CircularProgressIndicator(backgroundColor: presentsent_color,)): Container(
+                      color:Main_Theme_WhiteCollor,
+                      padding: EdgeInsets.only(left: 10,right: 10),
+                      height: 150,
+                      width: double.infinity,
+                      child: ListView.builder(
+                        scrollDirection: Axis.vertical,
+                        itemCount: value.GetDailyAttendanceCounter.length,
+                        itemBuilder: (context, index) => Card(
+                          color: Color(0xfff2f2ff),
+                          child: Container(
+                            height: 75,
+                            width: double.infinity,
+                            //  color: Colors.green,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              //  color: Color(0xffF2F2F2)
+                            ),
+                            margin: EdgeInsets.only(bottom: 7),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  flex: 2,
+                                  child: Container(
+                                    //   color: Colo
+                                    alignment: Alignment.topCenter,
+                                    child: Stack(
+                                      alignment: Alignment.topCenter,
+                                      children: [
+                                        Positioned(
+                                          top: 22,
+                                          // left: 23,
+                                          child: CircularPercentIndicator(
+                                            radius: 21.0,
+                                            lineWidth: 1.5,
+                                            percent: 0.99999,
+                                            backgroundColor: Colors.grey.withOpacity(0),
+                                            progressColor: Main_Theme_textColor.withOpacity(0.7),
+                                            center: Column(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: [
 
-                                            ColorCustomText(fontSize: 15, fontWeight: FontWeight.w500, text: "01", letterSpacing: 0.1, textColor: Main_Theme_textColor),
-                                            ColorCustomText(fontSize: 10, fontWeight: FontWeight.w400, text: "Sat", letterSpacing: 0.1, textColor: Main_Theme_textColor),
+                                                ColorCustomText(fontSize: 15, fontWeight: FontWeight.w500, text: "${value.GetDailyAttendanceCounter[index]["duty_date"].toString().substring(0,2)}", letterSpacing: 0.1, textColor: Main_Theme_textColor),
+                                                ColorCustomText(fontSize: 10, fontWeight: FontWeight.w400, text: "${DateFormat("E").format(DateFormat("dd-MMM-yyyy").parse("${value.GetDailyAttendanceCounter[index]["duty_date"]}"))}", letterSpacing: 0.1, textColor: Main_Theme_textColor),
+                                              ],
+                                            ),
+
+                                          ),
+                                        ),
+                                        Positioned(
+                                          top: 13,
+                                          // left: 23,
+                                          child: CircularPercentIndicator(
+                                            radius: 30.0,
+                                            lineWidth: lineWidth,
+                                            // percent: 0.99999,
+                                            percent: double.parse("0.${double.parse("${int.parse("${value.GetDailyAttendanceCounter[index]["total_p"]}")*100/int.parse("${value.GetDailyAttendanceCounter[index]["total"]}")}",).toStringAsFixed(0)}")+double.parse("0.${double.parse("${int.parse("${value.GetDailyAttendanceCounter[index]["total_ab"]}")*100/int.parse("${value.GetDailyAttendanceCounter[index]["total"]}")}",).toStringAsFixed(0)}")+double.parse("0.${double.parse("${int.parse("${value.GetDailyAttendanceCounter[index]["total_l"]}")*100/int.parse("${value.GetDailyAttendanceCounter[index]["total"]}")}",).toStringAsFixed(0)}")+double.parse("0.${double.parse("${int.parse("${value.GetDailyAttendanceCounter[index]["total_wh"]}") + int.parse("${value.GetDailyAttendanceCounter[index]["total_awh"]}")*100/int.parse("${value.GetDailyAttendanceCounter[index]["total"]}")}",).toStringAsFixed(0)}") >1?1.0:double.parse("0.${double.parse("${int.parse("${value.GetDailyAttendanceCounter[index]["total_p"]}")*100/int.parse("${value.GetDailyAttendanceCounter[index]["total"]}")}",).toStringAsFixed(0)}")+double.parse("0.${double.parse("${int.parse("${value.GetDailyAttendanceCounter[index]["total_ab"]}")*100/int.parse("${value.GetDailyAttendanceCounter[index]["total"]}")}",).toStringAsFixed(0)}")+double.parse("0.${double.parse("${int.parse("${value.GetDailyAttendanceCounter[index]["total_l"]}")*100/int.parse("${value.GetDailyAttendanceCounter[index]["total"]}")}",).toStringAsFixed(0)}")+double.parse("0.${double.parse("${int.parse("${value.GetDailyAttendanceCounter[index]["total_wh"]}") + int.parse("${value.GetDailyAttendanceCounter[index]["total_awh"]}")*100/int.parse("${value.GetDailyAttendanceCounter[index]["total"]}")}",).toStringAsFixed(0)}"),
+                                            backgroundColor: Colors.grey.withOpacity(0),
+                                            progressColor: presentsent_color,
+                                          ),
+                                        ),
+                                        Positioned(
+                                          top: 13,
+                                          //  left: 23,
+                                          child: CircularPercentIndicator(
+                                            radius: 30.0,
+                                            lineWidth: lineWidth,
+                                            /// ------------------------- increase  holiday -----------------///
+                                           percent:double.parse("0.${double.parse("${int.parse("${value.GetDailyAttendanceCounter[index]["total_ab"]}")*100/int.parse("${value.GetDailyAttendanceCounter[index]["total"]}")}",).toStringAsFixed(0)}")+double.parse("0.${double.parse("${int.parse("${value.GetDailyAttendanceCounter[index]["total_l"]}")*100/int.parse("${value.GetDailyAttendanceCounter[index]["total"]}")}",).toStringAsFixed(0)}")+double.parse("0.${double.parse("${int.parse("${value.GetDailyAttendanceCounter[index]["total_wh"]}") + int.parse("${value.GetDailyAttendanceCounter[index]["total_awh"]}")*100/int.parse("${value.GetDailyAttendanceCounter[index]["total"]}")}",).toStringAsFixed(0)}"),
+                                            backgroundColor: Colors.grey.withOpacity(0),
+                                            progressColor: absent_color,
+                                          ),
+                                        ),
+                                        Positioned(
+                                          top: 13,
+                                          //   left: 23,
+                                          child: CircularPercentIndicator(
+                                            radius: 30.0,
+                                            lineWidth: lineWidth,
+                                          //  percent:0.30,
+                                              percent: double.parse("0.${double.parse("${int.parse("${value.GetDailyAttendanceCounter[index]["total_l"]}")*100/int.parse("${value.GetDailyAttendanceCounter[index]["total"]}")}",).toStringAsFixed(0)}")+double.parse("0.${double.parse("${int.parse("${value.GetDailyAttendanceCounter[index]["total_wh"]}") + int.parse("${value.GetDailyAttendanceCounter[index]["total_awh"]}")*100/int.parse("${value.GetDailyAttendanceCounter[index]["total"]}")}",).toStringAsFixed(0)}") ,
+                                            backgroundColor: Colors.grey.withOpacity(0),
+                                            progressColor: leave_color,
+                                          ),
+                                        ),
+                                        Positioned(
+                                          top: 13,
+                                          child: CircularPercentIndicator(
+                                            radius: 30.0,
+                                            lineWidth: lineWidth,
+                                            //   percent:0.30,
+                                             percent:
+                                             double.parse("0.${double.parse("${(int.parse("${value.GetDailyAttendanceCounter[index]["total_wh"]}") + int.parse("${value.GetDailyAttendanceCounter[index]["total_awh"]}"))*100/int.parse("${value.GetDailyAttendanceCounter[index]["total"]}")}",).toStringAsFixed(0)}") ,
+                                            backgroundColor: Colors.grey.withOpacity(0),
+                                            progressColor: holiday_color,
+                                          ),
+                                        ),
+                                        // Positioned(
+                                        //   top: 13,
+                                        //   // left: 23,
+                                        //   child: CircularPercentIndicator(
+                                        //     startAngle: 15,
+                                        //     radius: 30.0,
+                                        //     lineWidth: lineWidth,
+                                        //      percent: 1.0,
+                                        //   //  percent: double.parse("0.${double.parse("${int.parse("${value.GetDailyAttendanceCounter[index]["total_p"]}")*100/int.parse("${value.GetDailyAttendanceCounter[index]["total"]}")}",).toStringAsFixed(0)}"),
+                                        //     backgroundColor: Colors.grey.withOpacity(0),
+                                        //     progressColor: presentsent_color,
+                                        //   ),
+                                        // ),
+                                        //
+                                        // Positioned(
+                                        //   top: 13,
+                                        //   //  left: 23,
+                                        //   child: CircularPercentIndicator(
+                                        //     radius: 30.0,
+                                        //     lineWidth: lineWidth,
+                                        //     /// ------------------------- increase  holiday -----------------///
+                                        //     percent: 0.5,
+                                        //     //  percent:double.parse("0.${double.parse("${int.parse("${value.GetDailyAttendanceCounter[index]["total_ab"]}")*100/int.parse("${value.GetDailyAttendanceCounter[index]["total"]}")}",).toStringAsFixed(0)}"),
+                                        //     backgroundColor: Colors.grey.withOpacity(0),
+                                        //     progressColor: absent_color,
+                                        //   ),
+                                        // ),
+                                        // Positioned(
+                                        //   top: 13,
+                                        //   //   left: 23,
+                                        //   child: CircularPercentIndicator(
+                                        //     radius: 30.0,
+                                        //     lineWidth: lineWidth,
+                                        //    percent:0.3,
+                                        //     //    percent: double.parse("0.${double.parse("${int.parse("${value.GetDailyAttendanceCounter[index]["total_l"]}")*100/int.parse("${value.GetDailyAttendanceCounter[index]["total"]}")}",).toStringAsFixed(0)}") ,
+                                        //     backgroundColor: Colors.grey.withOpacity(0),
+                                        //     progressColor: leave_color,
+                                        //   ),
+                                        // ),
+                                        // Positioned(
+                                        //   top: 13,
+                                        //   child: CircularPercentIndicator(
+                                        //     radius: 30.0,
+                                        //     lineWidth: lineWidth,
+                                        //         percent:0.1,
+                                        //     //  percent:
+                                        //     //  double.parse("0.${double.parse("${int.parse("${value.GetDailyAttendanceCounter[index]["total_wh"]}") + int.parse("${value.GetDailyAttendanceCounter[index]["total_awh"]}")*100/int.parse("${value.GetDailyAttendanceCounter[index]["total"]}")}",).toStringAsFixed(0)}") ,
+                                        //     //
+                                        //     backgroundColor: Colors.grey.withOpacity(0),
+                                        //     progressColor: holiday_color,
+                                        //   ),
+                                        // ),
+
+
+                                      ],
+                                    ),
+                                  ),
+
+
+                                ),
+                                Container(
+                                  padding: const EdgeInsets.only(top: 6.0),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400,  text: "${value.GetDailyAttendanceCounter[index]["total"]}", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.9)),
+                                      SizedBox(height: C_height,),
+                                      ColorCustomText(fontSize: 13, fontWeight: FontWeight.w400,  text: "Active", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.9)),
+
+
+
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(width:10,),
+                                Expanded(
+                                  flex: 3,
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(top: 6.0),
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            ColorCustomText(fontSize: 13, fontWeight: FontWeight.w400,  text: "Present : ", letterSpacing: 0.3, textColor: presentsent_color),
+                                            // SizedBox(width: 7,),
+                                            ColorCustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "${value.GetDailyAttendanceCounter[index]["total_p"]}", letterSpacing: 0.3, textColor: presentsent_color),
                                           ],
                                         ),
-
-                                      ),
+                                        SizedBox(height: C_height,),
+                                        Row(
+                                          children: [
+                                            ColorCustomText(fontSize: 13, fontWeight: FontWeight.w400,  text: "Absent : ", letterSpacing: 0.3, textColor: absent_color.withOpacity(0.9)),
+                                            //  SizedBox(width: 7,),
+                                            ColorCustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "${value.GetDailyAttendanceCounter[index]["total_ab"]}", letterSpacing: 0.3, textColor: absent_color.withOpacity(0.9)),
+                                          ],
+                                        ),
+                                      ],
                                     ),
-                                    Positioned(
-                                      top: 13,
-                                      // left: 23,
-                                      child: CircularPercentIndicator(
-                                        radius: 30.0,
-                                        lineWidth: lineWidth,
-                                        percent: 0.99999,
-                                        backgroundColor: Colors.grey.withOpacity(0),
-                                        progressColor: presentsent_color,
-                                      ),
-                                    ),
-                                    Positioned(
-                                      top: 13,
-                                      //  left: 23,
-                                      child: CircularPercentIndicator(
-                                        radius: 30.0,
-                                        lineWidth: lineWidth,
-                                        /// ------------------------- increase  holiday -----------------///
-                                        percent:0.30,
-                                        backgroundColor: Colors.grey.withOpacity(0),
-                                        progressColor: absent_color,
-                                      ),
-                                    ),
-                                    Positioned(
-                                      top: 13,
-                                      //   left: 23,
-                                      child: CircularPercentIndicator(
-                                        radius: 30.0,
-                                        lineWidth: lineWidth,
-                                        percent:0.20,
-                                        backgroundColor: Colors.grey.withOpacity(0),
-                                        progressColor: leave_color,
-                                      ),
-                                    ),
-                                    Positioned(
-                                      top: 13,
-                                      child: CircularPercentIndicator(
-                                        radius: 30.0,
-                                        lineWidth: lineWidth,
-                                        percent: 0.20,
-                                        backgroundColor: Colors.grey.withOpacity(0),
-                                        progressColor: holiday_color,
-                                      ),
-                                    ),
-
-
-                                  ],
+                                  ),
                                 ),
-                              ),),
-                            Container(
-                              padding: const EdgeInsets.only(top: 6.0),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400,  text: "8080", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.9)),
-                                  SizedBox(height: C_height,),
-                                  ColorCustomText(fontSize: 13, fontWeight: FontWeight.w400,  text: "Active", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.9)),
-
-
-
-                                ],
-                              ),
-                            ),
-                            SizedBox(width:10,),
-                            Expanded(
-                              flex: 3,
-                              child: Padding(
-                                padding: const EdgeInsets.only(top: 6.0),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
+                                Expanded(
+                                  flex: 3,
+                                  child: Container(
+                                    padding: const EdgeInsets.only(top: 6.0),
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
-                                        ColorCustomText(fontSize: 13, fontWeight: FontWeight.w400,  text: "Present : ", letterSpacing: 0.3, textColor: presentsent_color),
-                                        // SizedBox(width: 7,),
-                                        ColorCustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "8989", letterSpacing: 0.3, textColor: presentsent_color),
+                                        Row(
+                                          children: [
+                                            ColorCustomText(fontSize: 13, fontWeight: FontWeight.w400,  text: "Leave : ", letterSpacing: 0.3, textColor: leave_color.withOpacity(0.9)),
+                                            //  SizedBox(width: 7,),
+                                            ColorCustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "${value.GetDailyAttendanceCounter[index]["total_l"]}", letterSpacing: 0.3, textColor: leave_color.withOpacity(0.9)),
+                                          ],
+                                        ),
+                                        SizedBox(height: C_height,),
+                                        Row(
+                                          children: [
+                                            ColorCustomText(fontSize: 13, fontWeight: FontWeight.w400,  text: "Holiday : ", letterSpacing: 0.3, textColor: holiday_color),
+                                            //   SizedBox(width: 7,),
+                                            ColorCustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "${int.parse("${value.GetDailyAttendanceCounter[index]["total_wh"]}") + int.parse("${value.GetDailyAttendanceCounter[index]["total_awh"]}")}", letterSpacing: 0.3, textColor: holiday_color),
+                                          ],
+                                        ),
                                       ],
                                     ),
-                                    SizedBox(height: C_height,),
-                                    Row(
-                                      children: [
-                                        ColorCustomText(fontSize: 13, fontWeight: FontWeight.w400,  text: "Absent : ", letterSpacing: 0.3, textColor: absent_color.withOpacity(0.9)),
-                                        //  SizedBox(width: 7,),
-                                        ColorCustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "8989", letterSpacing: 0.3, textColor: absent_color.withOpacity(0.9)),
-                                      ],
-                                    ),
-                                  ],
+                                  ),
                                 ),
-                              ),
+                              ],
                             ),
-                            Expanded(
-                              flex: 3,
-                              child: Container(
-                                padding: const EdgeInsets.only(top: 6.0),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        ColorCustomText(fontSize: 13, fontWeight: FontWeight.w400,  text: "Leave : ", letterSpacing: 0.3, textColor: leave_color.withOpacity(0.9)),
-                                        //  SizedBox(width: 7,),
-                                        ColorCustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "2020", letterSpacing: 0.3, textColor: leave_color.withOpacity(0.9)),
-                                      ],
-                                    ),
-                                    SizedBox(height: C_height,),
-                                    Row(
-                                      children: [
-                                        ColorCustomText(fontSize: 13, fontWeight: FontWeight.w400,  text: "Holiday : ", letterSpacing: 0.3, textColor: holiday_color),
-                                        //   SizedBox(width: 7,),
-                                        ColorCustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "8989", letterSpacing: 0.3, textColor: holiday_color),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),),
+                          ),
+                        ),),
+                    );
+                  }
+
                 ))
 
           ],
@@ -499,4 +467,27 @@ class _BootomNavigationBarItemsAttendenceScreenState extends State<BootomNavigat
     '2029',
   ];
   String? selectedValue;
+  DateTime? _selected_pick_month ;
+  Future<void> _onPressed({
+    required BuildContext context,
+    String? locale,
+  }) async {
+    final localeObj = locale != null ? Locale(locale) : null;
+    final selected = await showMonthYearPicker(
+      context: context,
+      initialDate: _selected_pick_month ?? DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2130),
+      locale: localeObj,
+
+    );
+
+    if (selected != null) {
+      setState(() {
+        _selected_pick_month = selected;
+        Provider.of<HomeProvider>(context,listen: false).dashboardBarChartDataProvider("${GetStorage().read("mobile_id")}", "${DateFormat('dd-MMMM-yyyy').format(DateTime.now())}","${DateFormat('MMM-yyyy').format(_selected_pick_month!)}", context);
+
+      });
+    }
+  }
 }

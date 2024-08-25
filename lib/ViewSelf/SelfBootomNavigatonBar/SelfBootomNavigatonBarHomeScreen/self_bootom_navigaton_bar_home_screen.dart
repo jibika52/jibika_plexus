@@ -186,7 +186,6 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
       }
     }
 
-    print("objectsdgfg sdufg sugdf usdufg sudgf usdg f");
 
     return Scaffold(
       backgroundColor: home_default_color,
