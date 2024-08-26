@@ -92,10 +92,6 @@ class _HomeScreenState extends State<HomeScreen> {
            total_Amount=double.parse("${dashboardSalaryComparisanChartList[i]["TotalNetPay"]}");
          }
        }
-
-
-
-
      }
   
     return WillPopScope(

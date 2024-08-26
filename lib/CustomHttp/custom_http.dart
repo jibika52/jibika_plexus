@@ -419,6 +419,38 @@ class CustomHttpRequestClass{
   }
 
 
+  ///  admin Get Employee List By Status--------------------------------------------------------------------------
+  adminGetEmployeeListByStatus(
+      String UserId,
+      String STATUS,
+      int PAGE,
+      BuildContext context)async{
+    dynamic GetEmployeeListByStatus ;
+    var body = jsonEncode({
+      "UserId":"$UserId",
+      "STATUS":"$STATUS"  ,
+    "PAGE":PAGE,
+    });
+
+    try{
+      var data=await http.post(Uri.parse("${BASEURL}/${Admin_GetEmployeeListByStatus}"),
+          headers: {
+            "Content-Type": "application/json",
+            "username": "jibikaapps",
+            "password": "20jibika24",
+          },
+          body: body
+      ).then((http.Response response) {
+        GetEmployeeListByStatus =jsonDecode(response.body)["data"];
+      });
+      return GetEmployeeListByStatus;
+          }
+    catch(e){
+      print("Admin Daily GetEmployeeListByStatus Catch error  ============================ ${e}");
+    }
+  }
+
+
 
 
 

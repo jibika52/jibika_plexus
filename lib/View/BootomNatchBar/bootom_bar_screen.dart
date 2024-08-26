@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:intl/intl.dart';
+import 'package:jibika_plexus/Controller/AdminEmployeeController/admin_employee_controller.dart';
 import 'package:jibika_plexus/Controller/AttendanceController/attendance_controller.dart';
 import 'package:jibika_plexus/Controller/HomeController/home_controller.dart';
 import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
@@ -84,6 +85,7 @@ class _BootomNatchBarScreenState extends State<BootomNatchBarScreen> {
           children: [
             InkWell(
                 onTap: () {
+                  Provider.of<EmployeeAdminProvider>(context,listen: false).GetDailyAttendanceCounterListProvider("${GetStorage().read("mobile_id")}", "Active", 1, context);
                   setState(() {
                     _currentIndex=0;
                   });

@@ -68,5 +68,9 @@
     String Self_Admin_GetEmpNewFaceList_By_Employee="employee/GetEmpNewFaceList";
 
 
-  /// Self  EmpNewFaceList
+  /// Admin  EmpNewFaceList
     String Admin_GetDailyAttendanceCounter="dashboard/GetDailyAttendanceCounter";
+
+
+  /// Admin  EmpNewFaceList
+    String Admin_GetEmployeeListByStatus="Employee/GetEmployeeListByStatus";
