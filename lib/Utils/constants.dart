@@ -118,6 +118,7 @@ String Loremtext="Lorem sed do eiusmod tempor incididunt ut labore et dolore mag
 // GetStorage().write("refresh_token",loginData["refresh_token"]) ;
 // GetStorage().write("Company_name",loginData["Company"]) ;
 // GetStorage().write("RfIdCardNo",loginData["RfIdCardNo"]) ;
+// GetStorage().write("IdCardNo",loginData["IdCardNo"]) ;
 // GetStorage().write("Empcode",loginData["Empcode"]) ;
 // GetStorage().write("user_type_id",loginData["user_type_id"]) ; (get management / employee / admin (1001,1002,1003))
 // GetStorage().write("APPS_IMG_BASEURL",loginData["AppsBaseUrl"]) ;

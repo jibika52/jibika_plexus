@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
 import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/SelfBootomNavigatonEmployeeJobCard/SelfLoan/self_loan.dart';
 import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/SelfBootomNavigatonEmployeeJobCard/SelfProfile/self_profile.dart';
 import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/SelfBootomNavigatonEmployeeJobCard/SelfStationary/self_stationary.dart';
@@ -27,10 +29,10 @@ class _SelfBootomBarJobCardScreenState extends State<SelfBootomBarJobCardScreen>
     "Leave",
     "Pay Slip",
     "Stationary",
-    "Doc",
-    "Conv.",
+    "Documents",
+    "Conveyance",
     "Loan",
-    "Prod",
+    "Production",
     "Complain",
   ];
   List listimage=[
@@ -68,14 +70,14 @@ class _SelfBootomBarJobCardScreenState extends State<SelfBootomBarJobCardScreen>
 
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.only(left: 40.0,right: 40,top: 20),
+                padding: const EdgeInsets.all(10),
                 child: GridView.builder(
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
-                    mainAxisSpacing: 18,
-                    crossAxisSpacing: 20,
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 10,
+                    crossAxisSpacing: 10,
                     mainAxisExtent: 95
                   ),
                   scrollDirection: Axis.vertical,
@@ -122,29 +124,31 @@ class _SelfBootomBarJobCardScreenState extends State<SelfBootomBarJobCardScreen>
                       child: Container(
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            border: Border.all(color: CustomButtonColor,width: 1.5),
-                            color: CustomButtonColor.withOpacity(0.04)
+                         //   border: Border.all(color: CustomButtonColor,width: 1.5),
+                            color: CustomButtonColor.withOpacity(1.0)
                         ),
                         child: Column(
                           children: [
                             SizedBox(height: 7),
-                            CustomImageSction(height: MediaQuery.of(context).size.height*0.05, width: MediaQuery.of(context).size.width*0.1, radius: 4, image: "${listimage[index]}"),
+                            Container(
+                              padding: EdgeInsets.only(right: 10),
+                                alignment: Alignment.centerRight,
+                                child: CustomImageSction2(height: MediaQuery.of(context).size.height*0.05, width: MediaQuery.of(context).size.width*0.1, radius: 4, image: "${listimage[index]}", img_color: Main_Theme_WhiteCollor,)),
                             Expanded(
                                 flex: 3,
                                 child: Align(
-                                  alignment: Alignment.centerRight,
+                                  alignment: Alignment.centerLeft,
                                   child: Container(
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.only(
                                         topLeft: Radius.circular(5),
                                         bottomLeft: Radius.circular(5),
                                       ),
-                                      color: CustomButtonColor,
                                     ),
                                     padding: EdgeInsets.only(
-                                        top: 2,bottom: 2,right: 5,left: 5
+                                        top: 10,bottom: 0,right: 5,left: 10
                                     ),
-                                    child: ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "${countList[index]}", letterSpacing: 0.2, textColor: Main_Theme_WhiteCollor),
+                                    child: ColorCustomText(fontSize: 18, fontWeight: FontWeight.w400, text: "${countList[index]}", letterSpacing: 0.2, textColor: Main_Theme_WhiteCollor),
                                   ),
                                 ),
                              ),

@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:intl/intl.dart';
+import 'package:jibika_plexus/Controller/AttendanceController/attendance_controller.dart';
 import 'package:jibika_plexus/Controller/HomeController/home_controller.dart';
 import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
 import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
@@ -30,7 +32,7 @@ class _BootomNatchBarScreenState extends State<BootomNatchBarScreen> {
   dynamic getDynamicSliderData;
   @override
   void initState() {
-   Provider.of<HomeProvider>(context,listen: false).selfORAdminShortDescriptionProvider(GetStorage().read("mobile_id"), GetStorage().read("RfIdCardNo"), context);
+   Provider.of<HomeProvider>(context,listen: false).selfORAdminShortDescriptionProvider(GetStorage().read("mobile_id"), GetStorage().read("IdCardNo"), context);
     // TODO: implement initState
     super.initState();
   }
@@ -65,6 +67,7 @@ class _BootomNatchBarScreenState extends State<BootomNatchBarScreen> {
         }, is_need_trailing: true),
       ),
     body: bottomBarPages[_currentIndex],
+
       bottomNavigationBar: Container(
         height: 70,
         width: double.infinity,
@@ -119,6 +122,8 @@ class _BootomNatchBarScreenState extends State<BootomNatchBarScreen> {
             ),
             InkWell(
                 onTap: () {
+                  Provider.of<AttendanceProvder>(context,listen: false).GetDailyAttendanceCounterListProvider("${GetStorage().read("mobile_id")}",
+                      "${DateFormat("dd-MMM-yyyy").format(DateTime.now())}", context);
                   setState(() {
                     _currentIndex=1;
                   });
@@ -153,26 +158,19 @@ class _BootomNatchBarScreenState extends State<BootomNatchBarScreen> {
         ),
       ),
 
+
       floatingActionButton:keyboardOpen==true
-          ? SizedBox(): CircleAvatar(
-        radius: 30,
-        backgroundColor: Colors.white,
-        child: FloatingActionButton(
-          isExtended: false,shape: CircleBorder(
-          side: BorderSide(color: Main_Theme_WhiteCollor),
-        ),
-          foregroundColor: Main_Theme_WhiteCollor,
-          backgroundColor: Main_Theme_WhiteCollor,
-          onPressed: () {
-            setState(() {
-              _currentIndex=4;
-            });
-          }, child: Padding(
-          padding: const EdgeInsets.all(2.0),
-          child: Image.asset("Assets/Logo/leaff.png" ),
-        ),),
+        ? SizedBox(): FloatingActionButton(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
+        onPressed: () {
+          setState(() {
+            _currentIndex=4;
+          });
+        },
+        child: Image.asset("Assets/Logo/leaff.png"),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+
 
     );
   }

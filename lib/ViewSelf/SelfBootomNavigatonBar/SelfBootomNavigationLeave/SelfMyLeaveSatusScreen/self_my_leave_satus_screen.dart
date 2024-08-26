@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
@@ -173,43 +174,61 @@ class _SelfMyLeaveSatusScreenState extends State<SelfMyLeaveSatusScreen> {
                child: Container(
              child:ListView.builder(
                  itemCount:"${selfAdminGetLeaveEarlyCountList}"=="[]" || "${selfAdminGetLeaveEarlyCountList}"=="null"?0: selfAdminGetLeaveEarlyCountList.length,
-                 itemBuilder: (context, index) =>    Container(
-                 width: double.infinity,
-                 margin: EdgeInsets.only(left:  9,right: 9,bottom: 4),
-                 padding: EdgeInsets.all(9),
-                 decoration: BoxDecoration(
-                   borderRadius: BorderRadius.circular(7),
-                   color: Main_Theme_WhiteCollor,
-                 ),
-                 child: Row(
-                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                   children: [
-                        Card(
-                          elevation: 0.7,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(7)
-                          ),
-                          child: Container(
-                           height: 35,
-                           width: 35,
-                            // decoration: BoxDecoration(
-                            //   borderRadius: BorderRadius.circular(5),
-                            //   // color: Main_Theme_textColor_tir_Condition.withOpacity(0.5),
-                            // ),
-                            alignment: Alignment.center,
-                            child: ColorCustomText(fontSize: 15, fontWeight: FontWeight.w400, text:"${selfAdminGetLeaveEarlyCountList}"=="[]" || "${selfAdminGetLeaveEarlyCountList}"=="null"?"": "${selfAdminGetLeaveEarlyCountList[index]["LeaveAbbreviation"]??""}", letterSpacing: 0.3,textColor: leave_color,),
-                                                 ),
-                        ),
-                     MySelfLeaveStatus(text2:"${selfAdminGetLeaveEarlyCountList}"=="[]" || "${selfAdminGetLeaveEarlyCountList}"=="null"?"": "${selfAdminGetLeaveEarlyCountList[index]["LeaveDays"]??0}", text1: "Days",textColor: Main_Theme_textColor.withOpacity(0.5), fontSize: 12,),
-                     Container(height: 20,width: 1,color: Main_Theme_textColor.withOpacity(0.1),),
-                     MySelfLeaveStatus(text1: "Form Date", text2:"${selfAdminGetLeaveEarlyCountList}"=="[]" || "${selfAdminGetLeaveEarlyCountList}"=="null"?"":'${DateFormat("dd MMM yyyy").format(DateFormat("yyyy-MM-dd'T'HH:mm:ss").parse("${selfAdminGetLeaveEarlyCountList[index]["FromDate"]??0}") )}', textColor: Main_Theme_textColor.withOpacity(0.5), fontSize: 12,),
-                     Container(height: 20,width: 1,color: Main_Theme_textColor.withOpacity(0.1),),
-                     MySelfLeaveStatus(text1: "To Date", text2:"${selfAdminGetLeaveEarlyCountList}"=="[]" || "${selfAdminGetLeaveEarlyCountList}"=="null"?"":'${DateFormat("dd MMM yyyy").format(DateFormat("yyyy-MM-dd'T'HH:mm:ss").parse("${selfAdminGetLeaveEarlyCountList[index]["ToDate"]??0}") )}', textColor: Main_Theme_textColor.withOpacity(0.5), fontSize: 12,),
-                     Container(height: 20,width: 1,color: Main_Theme_textColor.withOpacity(0.1),),
-                     MySelfLeaveStatus(text2: "${selfAdminGetLeaveEarlyCountList}"=="[]" || "${selfAdminGetLeaveEarlyCountList}"=="null"?"":"${selfAdminGetLeaveEarlyCountList[index]["LeaveDays"]??0}", text1: "Status", textColor: presentsent_color, fontSize: 12,),
-                   ],
-                 )
-             )
+                 itemBuilder: (context, index) =>
+                     Stack(
+                       children: [
+                         Container(
+                           width: double.infinity,
+                           decoration: BoxDecoration(
+                               borderRadius: BorderRadius.circular(11),
+                               color: Colors.white
+                             // gradient: LinearGradient(colors: [
+                             //   CustomButtonColor.withOpacity(0.2),
+                             //   CustomButtonColor.withOpacity(0.1),
+                             //
+                             // ]),
+                           ),
+                           margin: EdgeInsets.only(left:  9,right: 9,bottom: 4),
+                           padding: EdgeInsets.all(9),
+                           child: Column(
+                             crossAxisAlignment: CrossAxisAlignment.start,
+                             children: [
+                               CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Date", letterSpacing: 0.3),
+                               SizedBox(height: 2,),
+                               CustomText(fontSize: 12, fontWeight: FontWeight.w500, text:"${selfAdminGetLeaveEarlyCountList}"=="[]" || "${selfAdminGetLeaveEarlyCountList}"=="null"?"":'${DateFormat("dd MMM yyyy").format(DateFormat("yyyy-MM-dd'T'HH:mm:ss").parse("${selfAdminGetLeaveEarlyCountList[index]["FromDate"]??0}") )} TO ${DateFormat("dd MMM yyyy").format(DateFormat("yyyy-MM-dd'T'HH:mm:ss").parse("${selfAdminGetLeaveEarlyCountList[index]["ToDate"]??0}") )}', letterSpacing: 0.4),
+                               Divider(
+                                 //height: 10,
+                               ),
+                               Row(
+                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                 children: [
+                                   MySelfLeaveStatus2(text1: "Apply days", text2:"${selfAdminGetLeaveEarlyCountList}"=="[]" || "${selfAdminGetLeaveEarlyCountList}"=="null"?"": "${selfAdminGetLeaveEarlyCountList[index]["LeaveDays"]??0}", textColor: Main_Theme_textColor.withOpacity(0.7),
+                                       textColor2:  Main_Theme_textColor, fontSize1: 11, fontSize2: 13, is_row: false,
+                                       width_height: 2),
+                                   MySelfLeaveStatus2(text1: "Leave type", text2: "${selfAdminGetLeaveEarlyCountList}"=="[]" || "${selfAdminGetLeaveEarlyCountList}"=="null"?"": "${selfAdminGetLeaveEarlyCountList[index]["LeaveAbbreviation"]??""}", textColor: Main_Theme_textColor.withOpacity(0.7),
+                                       textColor2:  Main_Theme_textColor, fontSize1: 11, fontSize2: 13, is_row: false,
+                                       width_height: 2),
+                                   MySelfLeaveStatus2(text1: "Approved by", text2: "Admin", textColor: Main_Theme_textColor.withOpacity(0.7),
+                                     textColor2:  Main_Theme_textColor, fontSize1: 11, fontSize2: 13, is_row: false,
+                                     width_height: 2,fontWeight2: FontWeight.w400,),
+                                 ],
+                               )
+                             ],
+                           ),
+                         ),
+                         Positioned(
+                             right: 20,
+                             top: 10,
+                             child: Container(
+                               padding: EdgeInsets.only(left: 10,right: 10,top: 3,bottom: 3),
+                               decoration: BoxDecoration(borderRadius: BorderRadius.circular(5),
+                                 //  color: CustomButtonColor.withOpacity(0.1),
+                                 color: CustomAppbarColor,
+                               ),
+                               child: ColorCustomText(textColor: Main_Theme_WhiteCollor,fontSize: 11, fontWeight: FontWeight.w400, text: "${selfAdminGetLeaveEarlyCountList}"=="[]" || "${selfAdminGetLeaveEarlyCountList}"=="null"?"": "${selfAdminGetLeaveEarlyCountList[index]["LeaveStatus"]??"Pending"}", letterSpacing: 0.3),
+                             ))
+                       ],
+                     ),
              ) ,
            ))
          ],

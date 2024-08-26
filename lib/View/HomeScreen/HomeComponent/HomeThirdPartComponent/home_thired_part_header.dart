@@ -108,29 +108,28 @@ class _HomeThiredPartHeaderState extends State<HomeThiredPartHeader> {
     "Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec","","",""
   ];
   invalidfunction (){}
+  DateTime? _selected_pick_month ;
+  Future<void> _onPressed({
+    required BuildContext context,
+    String? locale,
+  }) async {
+    final localeObj = locale != null ? Locale(locale) : null;
+    final selected = await showMonthYearPicker(
+      context: context,
+      initialDate: _selected_pick_month ?? DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2130),
+      locale: localeObj,
 
-DateTime? _selected_pick_month ;
-Future<void> _onPressed({
-  required BuildContext context,
-  String? locale,
-}) async {
-  final localeObj = locale != null ? Locale(locale) : null;
-  final selected = await showMonthYearPicker(
-    context: context,
-    initialDate: _selected_pick_month ?? DateTime.now(),
-    firstDate: DateTime(2000),
-    lastDate: DateTime(2130),
-    locale: localeObj,
+    );
 
-  );
+    if (selected != null) {
+      setState(() {
+        _selected_pick_month = selected;
+        Provider.of<HomeProvider>(context,listen: false).dashboardBarChartDataProvider("${GetStorage().read("mobile_id")}", "${DateFormat('dd-MMMM-yyyy').format(DateTime.now())}","${DateFormat('MMM-yyyy').format(_selected_pick_month!)}", context);
 
-  if (selected != null) {
-    setState(() {
-      _selected_pick_month = selected;
-   // Provider.of<HomeProvider>(context,listen: false).dashboardBarChartDataProvider("${GetStorage().read("mobile_id")}", "${DateFormat('dd-MMMM-yyyy').format(DateTime.now())}","$selectedValue", context);
-
-    });
+      });
+    }
   }
-}
 
 }

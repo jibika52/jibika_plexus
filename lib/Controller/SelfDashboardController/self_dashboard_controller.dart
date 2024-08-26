@@ -35,8 +35,16 @@ class SelfDashboardController with ChangeNotifier{
 
   /// self One Month Attendance List
   List<Updated_attendance_summary> selfOneMonthAttendanceList = [];
-  selfOneMonthAttendanceProvider(String UserId,String AttendanceDate, String RefCardNo, String attendanceType,BuildContext context)async{
-    selfOneMonthAttendanceList=await CustomHttpSelf().selfOneMonthAttendanceFunction(UserId, AttendanceDate, RefCardNo, attendanceType, context,);
+  selfOneMonthAttendanceProvider(
+      int yyyy,
+      int MMMM,
+      int dd,
+      String UserId,String AttendanceDate, String RefCardNo, String attendanceType,BuildContext context)async{
+    selfOneMonthAttendanceList=await CustomHttpSelf().selfOneMonthAttendanceFunction(
+      yyyy,
+      MMMM,
+      dd,
+      UserId, AttendanceDate, RefCardNo, attendanceType, context,);
     notifyListeners();
   }
 
@@ -73,6 +81,54 @@ class SelfDashboardController with ChangeNotifier{
   }
 
 
+
+
+
+
+
+
+  ///  Leave allocation --------------------------------------------------------------------------
+  dynamic selfAdminAdmin_Get_Monthly_Att_SummaryCountList;
+  selfAdminAdmin_Get_Monthly_Att_SummaryCountProvider(String SUMMARY_MONTH, BuildContext context)async{
+    selfAdminAdmin_Get_Monthly_Att_SummaryCountList =await CustomHttpSelf().selfAdminAdmin_Get_Monthly_Att_SummaryCount( SUMMARY_MONTH, context);
+    notifyListeners();
+  }
+
+
+
+
+
+
+
+
+
+  ///   selfAdminAdmin_Get_Emp_New_FaceList--------------------------------------------------------------------------
+  dynamic selfAdminAdmin_Get_Emp_New_FaceList;
+  selfAdminAdmin_Get_Emp_New_FaceListProvider(
+       BuildContext context)async{
+    selfAdminAdmin_Get_Emp_New_FaceList =await CustomHttpSelf().selfAdminAdmin_Get_Emp_New_Face_Get(
+       context);
+    notifyListeners();
+  }
+
+
+
+
+
+
+
+  ///   self Admin Save Leave Register Provider--------------------------------------------------------------------------
+  dynamic SaveLeaveRegister;
+  selfAdminSaveLeaveRegisterProvider(
+      String LEAVETYPECODE,String LEAVEDAYS,String FROMDATE,
+      String TODATE,String APPLYDATE,String HALFDAY,String HOLIDAYFOND,
+      String ATEENBONUSFLAG,String LEAVEREASON,String ADDRESSDURINGLEAVE,
+      String DUTYCARRIEDOUTBY,String MOBILENO,
+      String STAFFCATEGORYCODE,String USERTYPEID, BuildContext context)async{
+    SaveLeaveRegister =await CustomHttpSelf().selfAdminSaveLeaveRegister_By_Employee(LEAVETYPECODE, LEAVEDAYS, FROMDATE, TODATE, APPLYDATE, HALFDAY, HOLIDAYFOND, ATEENBONUSFLAG, LEAVEREASON, ADDRESSDURINGLEAVE, DUTYCARRIEDOUTBY, MOBILENO, STAFFCATEGORYCODE, USERTYPEID, context);
+
+    notifyListeners();
+  }
 
 
 

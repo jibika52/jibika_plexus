@@ -37,6 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
     String value = "K";
     double animated_leave=0;
     double animated_height=0;
+    int PASummary_select=DateTime.now().day;
     @override
   void initState() {
     Provider.of<HomeProvider>(context,listen: false).dashboardPieChartDataProvider("${GetStorage().read("mobile_id")}", "$selected3Datee", context);
@@ -64,6 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final  dashboardtodaysBirthdayEmployeeinfo=  Provider.of<HomeProvider>(context).dashboardtodaysBirthdayEmployeeinfo;
   final  dashboardSalaryComparisanChartList=  Provider.of<HomeProvider>(context).dashboardSalaryComparisanChartList;
 
+   // print("Get Data--------------------------------------------------- ${dashboardOnLeaveEmployeeData}");
 
     double TP=double.parse(dashboardPieChartData == null ?"0":"${dashboardPieChartData["plist"]}"== "[]"?"0":"${dashboardPieChartData["plist"][0]??0 }");
     double TA=double.parse(dashboardPieChartData == null ?"0":"${dashboardPieChartData["plist"]}"== "[]"?"0":"${dashboardPieChartData["plist"][1]??0 }");
@@ -164,68 +166,61 @@ class _HomeScreenState extends State<HomeScreen> {
                                   height: double.infinity,
                                   color: Colors.greenAccent.shade100.withOpacity(0.1),
                                   child:  Container(
+                                    padding: EdgeInsets.only(top: 10),
                                     height: 90,
                                     width: 500,
                                     child:ListView.builder(
-                                      itemCount:dashboardBarChartData==null?0:"${dashboardBarChartData["tpls"]}"=="[]"?0: dashboardBarChartData["tpls"].length,
+                                      itemCount:dashboardBarChartData==null?0
+                                          :"${dashboardBarChartData["tpls"]}"=="[]"?0
+                                          : dashboardBarChartData["tpls"].length,
+
                                       scrollDirection: Axis.horizontal,
                                       itemBuilder: (context, index) {
-                                      // print("ffffffffffffffffffffff ${ dashboardBarChartData["tpls"][index].substring(0,2)}");
+                                    //  print("fffffffff ${index + 1} -------- tpls ---- ${ dashboardBarChartData["tpls"][index]}  -------- tabls ---- ${ dashboardBarChartData["tabls"][index]}");
                                       return  Container(
                                         height: 90,
                                           margin: EdgeInsets.only(right: 10),
                                           child: Column(
                                             children: [
-                                              Expanded(child: ThirdPartProgressBar(
-                                                absenttheight: dashboardBarChartData==null?0: double.parse(
-
-                                          dashboardBarChartData["tabls"][index]==0?
-                                          dashboardBarChartData["tabls"][index]
-                                              :
-                                          dashboardBarChartData["tabls"][index].length==1?
-                                          dashboardBarChartData["tabls"][index].substring(0)
-                                              :
-                                          dashboardBarChartData["tabls"][index].length==2?
-                                      dashboardBarChartData["tabls"][index].substring(0,2)
-                                            :
-                                        dashboardBarChartData["tabls"][index].length==3?
-                                        dashboardBarChartData["tabls"][index].substring(0,2)
-                                            :
-                                        dashboardBarChartData["tabls"][index].length==4?
-                                        "100":"100"
-
+                                              Expanded(
+                                                  child: ThirdPartProgressBar(
+                                                absenttheight: dashboardBarChartData==null?0:
+                                                double.parse(
+                                                  dashboardBarChartData["tabls"][index]==0?
+                                                dashboardBarChartData["tabls"][index]   : "${int.parse("${dashboardBarChartData["tabls"][index]}")*100/int.parse("${dashboardEmployeeInfo["TotalEmployee"]}")}",
                                                 ),
-                                                presentheight:dashboardBarChartData==null?0: double.parse(
 
+                                                presentheight:
+                                                dashboardBarChartData==null?0:
+                                                double.parse(
                                                     dashboardBarChartData["tpls"][index]==0?
-                                                    dashboardBarChartData["tpls"][index]
-                                                    :
-                                                    dashboardBarChartData["tpls"][index].length==1?
-                                                    dashboardBarChartData["tpls"][index].substring(0)
-                                                    :
-                                                    dashboardBarChartData["tpls"][index].length==2?
-                                                    dashboardBarChartData["tpls"][index].substring(0,2)
-                                                    :
-                                                    dashboardBarChartData["tpls"][index].length==3?
-                                                    dashboardBarChartData["tpls"][index].substring(0,2)
-                                                    :
-                                                    dashboardBarChartData["tpls"][index].length==4?
-                                                    "100":"100"
+                                                    dashboardBarChartData["tpls"][index]:
+                                                    "${int.parse("${dashboardBarChartData["tpls"][index]}")*100/int.parse("${dashboardEmployeeInfo["TotalEmployee"]}")}",
                                                 ),
                                                 present_width: 10,
                                                 Absent_width: 10,
                                                 total_width: 21,)),
                                               SizedBox(height: 5,),
-                                              Container(
-                                                height: 20,
-                                                width: 22,
-                                                decoration: BoxDecoration(
-                                                    color:DateTime.now().day==index+1?
-                                                    presentsent_color:Main_Theme_textColor.withOpacity(0.05),
-                                                  borderRadius: BorderRadius.circular(2)
+
+
+                                              InkWell(
+                                                onTap: () {
+                                                  setState(() {
+                                                    PASummary_select=index+1;
+                                                    Provider.of<HomeProvider>(context,listen: false).dashboardPieChartDataProvider("${GetStorage().read("mobile_id")}", "$PASummary_select-${DateFormat('MMM').format(DateTime.now())}-${DateFormat('yyyy').format(DateTime.now())}", context);
+                                                  });
+                                                },
+                                                child: Container(
+                                                  height: 20,
+                                                  width: 22,
+                                                  decoration: BoxDecoration(
+                                                      color:PASummary_select==index+1?
+                                                      presentsent_color:Main_Theme_textColor.withOpacity(0.05),
+                                                    borderRadius: BorderRadius.circular(2)
+                                                  ),
+                                                  alignment: Alignment.center,
+                                                  child: CustomText(fontSize: 10, fontWeight: FontWeight.w400, text: "${index+1}", letterSpacing: 0.2)
                                                 ),
-                                                alignment: Alignment.center,
-                                                child: CustomText(fontSize: 10, fontWeight: FontWeight.w400, text: "${index+1}", letterSpacing: 0.2)
                                               ),
                                               SizedBox(height: 10,),
                                             ],
@@ -361,6 +356,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     email: "jibikaapps@gmail.com ",
                     phone: "01889173335"
                 ),
+
+
+
                 /// ------------------- Six Part Start here - Person on leave-----------------------///
                 Container(
                   margin: EdgeInsets.only(left: 10,right: 10,top: apps_div_margin),
@@ -468,7 +466,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             Expanded(child: Container(
                                               decoration: BoxDecoration(
                                                   borderRadius: BorderRadius.circular(8),
-                                                  image: DecorationImage(image: AssetImage("Assets/DashBoardIcons/man_picture.png"),fit: BoxFit.fill)
+                                                  image: DecorationImage(image: NetworkImage("${GetStorage().read("APPS_IMG_BASEURL")}${dashboardOnLeaveEmployeeData[index]["EmployeeImage"]}"),fit: BoxFit.fill)
                                               ),
                                             )),
                                             ColorCustomText(text: "${dashboardOnLeaveEmployeeData[index]["EmployeeCode"]}", fontSize: 14, textColor: Main_Theme_textColor.withOpacity(0.6),fontWeight: FontWeight.w800,letterSpacing: 0.2,)
@@ -527,28 +525,28 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     ),
                                                     SizedBox(height: 3,),
 
-                                                    Padding(
-                                                      padding: const EdgeInsets.only(left: 8.0,right: 8),
-                                                      child: Text("${dashboardOnLeaveEmployeeData[index]["LeaveDate"]}"),
+                                                    // Padding(
+                                                    //   padding: const EdgeInsets.only(left: 8.0,right: 8),
+                                                    //   child: Text("${dashboardOnLeaveEmployeeData[index]["LeaveDate"]}"),
+                                                    // ),
+                                                    Container(
+                                                      height: 12,
+                                                      width: animated_leave,
+                                                      alignment: Alignment.center,
+                                                      child:  CustomText(fontSize: font11, fontWeight: FontWeight.w500, text: "${dashboardOnLeaveEmployeeData[index]["FromDate"]}", letterSpacing: 0.5, ),
                                                     ),
-                                                    // Container(
-                                                    //   height: 12,
-                                                    //   width: animated_leave,
-                                                    //   alignment: Alignment.center,
-                                                    //   child:  CustomText(fontSize: font11, fontWeight: FontWeight.w500, text: "${dashboardOnLeaveEmployeeData[index]["LeaveDate"]}", letterSpacing: 0.5, ),
-                                                    // ),
-                                                    // Container(
-                                                    //   height: 20,
-                                                    //   width: animated_leave,
-                                                    //   alignment: Alignment.center,
-                                                    //   child:  CustomText(fontSize: font11, fontWeight: FontWeight.w600, text: "     To", letterSpacing: 0.5, ),
-                                                    // ),
-                                                    // Container(
-                                                    //   height: 20,
-                                                    //   width: animated_leave,
-                                                    //   alignment: Alignment.center,
-                                                    //   child:  CustomText(fontSize: font11, fontWeight: FontWeight.w500, text: "10 jul 2024", letterSpacing: 0.5, ),
-                                                    // ),
+                                                    Container(
+                                                      height: 20,
+                                                      width: animated_leave,
+                                                      alignment: Alignment.center,
+                                                      child:  CustomText(fontSize: font11, fontWeight: FontWeight.w600, text: "     To", letterSpacing: 0.5, ),
+                                                    ),
+                                                    Container(
+                                                      height: 20,
+                                                      width: animated_leave,
+                                                      alignment: Alignment.center,
+                                                      child:  CustomText(fontSize: font11, fontWeight: FontWeight.w500, text: "${dashboardOnLeaveEmployeeData[index]["ToDate"]}", letterSpacing: 0.5, ),
+                                                    ),
                                                   ],
                                                 ),
                                               ),
@@ -615,14 +613,14 @@ class _HomeScreenState extends State<HomeScreen> {
 
     int leave_selected_index=-1;
     bool selected_indexnumber=false;
-    String selected3Datee = DateFormat('dd-MMMM-yyyy').format(DateTime.now()).toString();
+    String selected3Datee = DateFormat('dd-MMM-yyyy').format(DateTime.now()).toString();
     Future<void> _select3Date(BuildContext context) async {
       final DateTime? picked = await showDatePicker(
           context: context,
           firstDate: DateTime(2015, 8),
           lastDate: DateTime(2101));
       if (picked != null && picked != selected3Datee) {
-        final df = new DateFormat('dd-MMMM-yyyy');
+        final df = new DateFormat('dd-MMM-yyyy');
         setState(() {
           selected3Datee = df.format(picked);
           Provider.of<HomeProvider>(context,listen: false).dashboardPieChartDataProvider("${GetStorage().read("mobile_id")}", "$selected3Datee", context);

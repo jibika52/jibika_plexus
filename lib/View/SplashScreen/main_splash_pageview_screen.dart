@@ -17,21 +17,24 @@ class MainSplashPageViewScreen extends StatefulWidget {
 class _MainSplashPageViewScreenState extends State<MainSplashPageViewScreen> {
   @override
   void initState() {
-    print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA ${GetStorage().read("id_token")}");
-    Future.delayed(Duration(seconds: 1),() {
+    Future.delayed(Duration(milliseconds: 500),() {
       if(GetStorage().read("id_token")!=null && GetStorage().read("user_type_id")==1001){
         Navigator.push(context, MaterialPageRoute(builder: (context) => BootomNatchBarScreen(),));
       }
-
       else if(GetStorage().read("id_token")!=null && GetStorage().read("user_type_id")==1003){
         Navigator.push(context, MaterialPageRoute(builder: (context) => SalfBootomNatchBarScreen(currentIndex: 4),));
+      }
+      else if(GetStorage().read("id_token")!=null){
+        //   Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreenSlide(),));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => SplashScreen3(),));
       }else{
-        print("AAA");
+        //   Navigator.push(context, MaterialPageRoute(builder: (context) => SplashScreen3(),));
+        print(GetStorage().read("id_token")!=null);
       }
 
 
     },);
-    
+
     // TODO: implement initState
     super.initState();
   }

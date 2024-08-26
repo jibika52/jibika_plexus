@@ -118,7 +118,8 @@ class CustomMySelfJobCard3rdPart1 extends StatelessWidget {
               "${index}",
                 width_height: 0,
                 text2: "$text2",
-                fontWeight1:FontWeight.w600 ,fontWeight2: FontWeight.w400 ,textColor: Main_Theme_textColor_tir_Condition, fontSize1: 16, fontSize2: 12, is_row: false, textColor2: Main_Theme_textColor,),
+                fontWeight1:FontWeight.w600 ,fontWeight2: FontWeight.w400 ,textColor: Main_Theme_textColor.withOpacity(0.8), fontSize1: 16, fontSize2: 12, is_row: false, textColor2: Main_Theme_textColor,),
+
             ],
           ),
         ),
@@ -183,7 +184,7 @@ class CustomMySelfJobCard3rdPart1 extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset("Assets/DashBoardIcons/map_view.png",height: 24,width: 24,fit: BoxFit.fill,
-                    color: Main_Theme_textColor_tir_Condition),
+                    color: Main_Theme_textColor.withOpacity(0.6)),
                  CustomText(fontSize: 9, fontWeight: FontWeight.w300, text: "View map", letterSpacing: 0.3)
               ],
             ),

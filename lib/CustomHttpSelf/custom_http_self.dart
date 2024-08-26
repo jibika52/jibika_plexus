@@ -94,7 +94,11 @@ class CustomHttpSelf{
   ///  self Dashboard self OneMonth Attendance List --------------------------------------------------------------------------
   ///
   ///
-  selfOneMonthAttendanceFunction(String UserId,String AttendanceDate, String RefCardNo, String attendanceType,BuildContext context)async{
+  selfOneMonthAttendanceFunction(
+      int yyyy,
+      int MMMM,
+      int dd,
+      String UserId,String AttendanceDate, String RefCardNo, String attendanceType,BuildContext context)async{
 
     dynamic monthlyAttendanceSummary;
     List<Updated_attendance_summary> newdatalist = [];
@@ -116,7 +120,8 @@ class CustomHttpSelf{
           body: body
       ).then((http.Response response) {
          monthlyAttendanceSummary = jsonDecode(response.body)["data"];
-         for(int i=1;i<32;i++){
+        // for(int i=1;i<DateTime(DateTime.now().year, DateTime.now().month + 1, 0).day+1;i++){
+           for(int i=1;i<DateTime(yyyy,MMMM + 1, 0).day+1;i++){
            final tempobj = Updated_attendance_summary();
            tempobj.date = "${i}";
            tempobj.Status = "No Punch";
@@ -263,6 +268,145 @@ class CustomHttpSelf{
     }
     catch(e){
       print(" self Or Admin Get Leave Early Count Catch error ============================ ${e}");
+    }
+  }
+
+
+
+  ///  Self Or Admin Get selfAdminAdmin Get Monthly Att SummaryCountList Count --------------------------------------------------------------------------
+    selfAdminAdmin_Get_Monthly_Att_SummaryCount( String SUMMARY_MONTH, BuildContext context)async{
+    dynamic  selfAdminAdmin_Get_Monthly_Att_SummaryCountList  ;
+    var body = jsonEncode({
+      "UserId":"${GetStorage().read("mobile_id")}",
+      "ID_CARD_NO":"${GetStorage().read("IdCardNo")}",
+        "attendanceType" : "GENERAL",
+        "SUMMARY_MONTH": "$SUMMARY_MONTH"
+    });
+    try{
+      var data=await http.post(Uri.parse("${BASEURL}/${Self_Admin_Get_Monthly_Att_Summary_By_Employee}"),
+          headers: {
+            "Content-Type": "application/json",
+            "username": "jibikaapps",
+            "password": "20jibika24",
+          },
+          body: body
+      ).then((http.Response response) {
+        selfAdminAdmin_Get_Monthly_Att_SummaryCountList =jsonDecode(response.body)["data"];
+
+      });
+      return selfAdminAdmin_Get_Monthly_Att_SummaryCountList;
+    }
+    catch(e){
+      print(" self Or Admin Get selfAdminAdmin_Get_Monthly_Att_SummaryCountList Count Catch error ============================ ${e}");
+    }
+  }
+
+
+
+  ///  self Admin_Get_Emp_New_Face_Get --------------------------------------------------------------------------
+    selfAdminAdmin_Get_Emp_New_Face_Get(BuildContext context)async{
+    dynamic  selfAdminAdmin_Emp_New_Face_GetList  ;
+    var body = jsonEncode({
+      "UserId":"${GetStorage().read("mobile_id")}",
+    });
+    try{
+      var data=await http.post(Uri.parse("${BASEURL}/${Self_Admin_GetEmpNewFaceList_By_Employee}"),
+          headers: {
+            "Content-Type": "application/json",
+            "username": "jibikaapps",
+            "password": "20jibika24",
+          },
+          body: body
+      ).then((http.Response response) {
+        selfAdminAdmin_Emp_New_Face_GetList =jsonDecode(response.body)["data"];
+
+      });
+      return selfAdminAdmin_Emp_New_Face_GetList;
+    }
+    catch(e){
+      print(" self Or Admin Get selfAdminAdmin_selfAdminAdmin_Emp_New_Face_GetList Catch error ============================ ${e}");
+    }
+  }
+
+
+
+
+  ///  Save Leave Register By Employee --------------------------------------------------------------------------
+    selfAdminSaveLeaveRegister_By_Employee(
+        String LEAVETYPECODE,String LEAVEDAYS,String FROMDATE,
+        String TODATE,String APPLYDATE,String HALFDAY,String HOLIDAYFOND,
+        String ATEENBONUSFLAG,String LEAVEREASON,String ADDRESSDURINGLEAVE,
+        String DUTYCARRIEDOUTBY,String MOBILENO,
+        String STAFFCATEGORYCODE,String USERTYPEID, BuildContext context)async{
+
+  print("AAAAAAAAAAAAAAAA===> ${GetStorage().read("mobile_id")}",);
+  print("AAAAAAAAAAAAAAAA===> ${GetStorage().read("IdCardNo")}",);
+  print("AAAAAAAAAAAAAAAA===> ${GetStorage().read("Empcode")}",);
+  print("AAAAAAAAAAAAAAAA= LEAVETYPECODE==> ${LEAVETYPECODE}",);
+  print("AAAAAAAAAAAAAAAA=LEAVEDAYS==> ${LEAVEDAYS}",);
+  print("AAAAAAAAAAAAAAAA==FROMDATE=> ${FROMDATE}",);
+  print("AAAAAAAAAAAAAAAA=TODATE==> ${TODATE}",);
+  print("AAAAAAAAAAAAAAAA=APPLYDATE==> ${APPLYDATE}",);
+  print("AAAAAAAAAAAAAAAA=HALFDAY==> ${HALFDAY}",);
+  print("AAAAAAAAAAAAAAAA==HOLIDAYFOND=> ${HOLIDAYFOND}",);
+  print("AAAAAAAAAAAAAAAA==ATEENBONUSFLAG=> ${ATEENBONUSFLAG}",);
+  print("AAAAAAAAAAAAAAAA==LEAVEREASON=> ${LEAVEREASON}",);
+  print("AAAAAAAAAAAAAAAA=ADDRESSDURINGLEAVE==> ${ADDRESSDURINGLEAVE}",);
+  print("AAAAAAAAAAAAAAAA==DUTYCARRIEDOUTBY=> ${DUTYCARRIEDOUTBY}",);
+  print("AAAAAAAAAAAAAAAA=MOBILENO==> ${MOBILENO}",);
+  print("AAAAAAAAAAAAAAAA=STAFFCATEGORYCODE==> ${STAFFCATEGORYCODE}",);
+  print("AAAAAAAAAAAAAAAA=USERTYPEID==> ${USERTYPEID}",);
+
+    dynamic  SaveLeaveRegister  ;
+    var body = jsonEncode({
+        "USERID":"${GetStorage().read("mobile_id")}",
+        "IDCARDNO":"${GetStorage().read("IdCardNo")}",
+        "EMPCODE" : "${GetStorage().read("Empcode")}",
+        "LEAVETYPECODE": "$LEAVETYPECODE",
+        "LEAVEDAYS":"$LEAVEDAYS",
+        "FROMDATE":"$FROMDATE",
+        "TODATE":"$TODATE",
+        "APPLYDATE":"$APPLYDATE",
+        "HALFDAY":"$HALFDAY",
+        "HOLIDAYFOND":"$HOLIDAYFOND",
+        "ATEENBONUSFLAG":"$ATEENBONUSFLAG",
+        "LEAVEREASON":"$LEAVEREASON",
+        "ADDRESSDURINGLEAVE" : "$ADDRESSDURINGLEAVE",
+        "DUTYCARRIEDOUTBY":"$DUTYCARRIEDOUTBY",
+        "MOBILENO": "$MOBILENO",
+        "STAFFCATEGORYCODE" : "$STAFFCATEGORYCODE",
+        "USERTYPEID" : "$USERTYPEID"
+    });
+    try{
+      var data=await http.post(Uri.parse("${BASEURL}/${Self_Admin_SaveLeaveRegister_By_Employee}"),
+          headers: {
+            "Content-Type": "application/json",
+            "username": "jibikaapps",
+            "password": "20jibika24",
+          },
+          body: body
+      ).then((http.Response response) {
+        SaveLeaveRegister =jsonDecode(response.body);
+        print(" sydgf gsudf usd fsdf gusyd=====================>   ${SaveLeaveRegister}");
+        ElegantNotification(
+          borderRadius: BorderRadius.circular(11),
+          width: 380,
+          iconSize: 25,
+          background: presentsent_color,
+          progressIndicatorBackground: presentsent_color,
+          progressIndicatorColor: absent_color,
+          // position: Alignment.center,
+          title:  ColorCustomText(fontSize: 16, fontWeight: FontWeight.w500, text: "${SaveLeaveRegister["status"]}", letterSpacing: 0.3, textColor: Main_Theme_textColor),
+          description: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "Thanks for Apply", letterSpacing: 0.3, textColor: Main_Theme_textColor),
+          onDismiss: () {
+            print('Message when the notification is dismissed');
+          }, icon: Icon(Icons.info_outlined,color:Colors.black,),
+        ).show(context);
+      });
+      return SaveLeaveRegister;
+    }
+    catch(e){
+      print(" self Or Admin Save Leave Registert Catch error ============================ ${e}");
     }
   }
 

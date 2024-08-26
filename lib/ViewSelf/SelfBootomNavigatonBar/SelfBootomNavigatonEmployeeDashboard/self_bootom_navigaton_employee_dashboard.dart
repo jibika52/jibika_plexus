@@ -3,17 +3,23 @@ import 'dart:math' as math;
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:intl/intl.dart';
 import 'package:jibika_plexus/CustomSelfWedget/CustomMySelfJobCard/CustomMySelfJobCard3rdPart/custom_myself_jobcard3rdpart.dart';
 import 'package:jibika_plexus/CustomSelfWedget/CustomMySelfJobCard/SelfCustomCalender/self_custom_calender.dart';
+import 'package:jibika_plexus/CustomSelfWedget/MySelfCustomCalender/myself_custom_calender.dart';
+import 'package:jibika_plexus/CustomSelfWedget/selfAttendance/self_attendance_summary.dart';
 import 'package:jibika_plexus/CustomSelfWedget/self_profile_summary.dart';
 import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
+import 'package:month_year_picker/month_year_picker.dart';
 import 'package:pie_chart/pie_chart.dart';
 import 'package:provider/provider.dart';
 import '../../../Controller/SelfDashboardController/self_dashboard_controller.dart';
+import '../../../CustomSelfWedget/myself_leave_status.dart';
 import '../../../CustomWidget/CustomImage/custom_image.dart';
 import '../SelfBootomNavigatonBarHomeScreen/self_bootom_navigaton_bar_home_screen.dart';
 
@@ -34,11 +40,19 @@ class _SelfBootomNavigatonEmployeeDashboardState extends State<SelfBootomNavigat
   String ? getindex;
   @override
   void initState() {
+
     Provider.of<SelfDashboardController>(context,listen: false).selfOneMonthAttendanceProvider(
+        DateTime.now().year,
+        DateTime.now().month,
+        DateTime.now().day,
         "${GetStorage().read("mobile_id")}",
         "${DateFormat('dd-MMM-yyyy').format(DateTime.now())}",
-        "${GetStorage().read("RfIdCardNo")}",
+        "${GetStorage().read("IdCardNo")}",
         "GENERAL",
+        context
+    );
+    Provider.of<SelfDashboardController>(context,listen: false).selfAdminAdmin_Get_Monthly_Att_SummaryCountProvider(
+        "${DateFormat("MMM-yyyy").format(DateTime.now())}",
         context
     );
     // TODO: implement initState
@@ -54,6 +68,8 @@ class _SelfBootomNavigatonEmployeeDashboardState extends State<SelfBootomNavigat
     double h=MediaQuery.of(context).size.height;
     double w=MediaQuery.of(context).size.width;
     List<Updated_attendance_summary>  selfOneMonthAttendanceList=  Provider.of<SelfDashboardController>(context).selfOneMonthAttendanceList;
+    dynamic selfAdminAdmin_Get_Monthly_Att_SummaryCountList=Provider.of<SelfDashboardController>(context).selfAdminAdmin_Get_Monthly_Att_SummaryCountList;
+
 
     for(var i in selfOneMonthAttendanceList){
       if("${i.Status}"=="P"){
@@ -74,78 +90,108 @@ class _SelfBootomNavigatonEmployeeDashboardState extends State<SelfBootomNavigat
     }
 
     return Scaffold(
-      backgroundColor: home_default_color,
+    //  backgroundColor: home_default_color,
       body: Container(
         height: double.infinity,
         width: double.infinity,
-        child: Column(
-          children: [
-            Stack(
-              children: [
-                Container(
-                  height: 115,
-                  width: double.infinity,
-                  padding: EdgeInsets.only(left: 0,top: 0,bottom: 0),
-                  color: Main_Theme_WhiteCollor,
-                  child:  SelfProfileSummaryPart()
-                ),
-                Positioned(
-                  right: 0,
-                  top: -10,
-                  child:  Container(color: Colors.white,
-                  height: 139,
-                  width: MediaQuery.of(context).size.width*0.45,
-                  child: LayoutBuilder(
-                    builder: (_, constraints) {
-                      return PieChart(
-                        key: ValueKey(key),
-                        chartValuesOptions: ChartValuesOptions(
-                            showChartValueBackground: false,
-                            showChartValues: false
-                        ),
-                        /// Customize Right Side Option ----------------------------------P L H A----------.
-                        legendOptions: LegendOptions(
-                            legendTextStyle: TextStyle(fontSize: 10,fontWeight: FontWeight.w400,)),
-                        dataMap: {
-                          "P(${double.parse("$P_Count").toStringAsFixed(0)}D) "
-                              :
-                          P_Count, "A(${double.parse("$AB_Count").toStringAsFixed(0)}D)"
-                              :
-                          AB_Count, "L(${double.parse("$L_Count").toStringAsFixed(0)}D)"
-                              :
-                          L_Count, "H (${double.parse("$HL_Count").toStringAsFixed(0)}D)"
-                              :
-                          HL_Count,
-                        },
-                        animationDuration: const Duration(milliseconds: 800),
-                        chartLegendSpacing: 10,
-                        chartRadius: math.min(MediaQuery.of(context).size.width / 3.2, 300), // radius komay baray
-                        colorList: [
-                          presentsent_color, absent_color,  leave_color,holiday_color
-                        ],
-                        initialAngleInDegree: 0,
-                        ringStrokeWidth: -4,
-                        baseChartColor: Colors.transparent,
-                      );
-                    },
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            children: [
+              Stack(
+                children: [
+                  Container(
+                    height: 115,
+                    width: double.infinity,
+                    padding: EdgeInsets.only(left: 0,top: 0,bottom: 0),
+                    color: Main_Theme_WhiteCollor,
+                    child:  SelfProfileSummaryPart()
                   ),
-                ),)
-              ],
-            ),
-            SizedBox(height: apps_div_margin,),
+                  Positioned(
+                    right: 0,
+                    top: -10,
+                    child:  Container(color: Colors.white,
+                    height: 139,
+                    width: MediaQuery.of(context).size.width*0.45,
+                    child: LayoutBuilder(
+                      builder: (_, constraints) {
+                        return PieChart(
+                          key: ValueKey(key),
+                          chartValuesOptions: ChartValuesOptions(
+                              showChartValueBackground: false,
+                              showChartValues: false
+                          ),
+                          /// Customize Right Side Option ----------------------------------P L H A----------.
+                          legendOptions: LegendOptions(
+                              legendTextStyle: TextStyle(fontSize: 10,fontWeight: FontWeight.w400,)),
+                          dataMap: {
+                            "P(${double.parse("$P_Count").toStringAsFixed(0)}D) "
+                                :
+                            P_Count, "A(${double.parse("$AB_Count").toStringAsFixed(0)}D)"
+                                :
+                            AB_Count, "L(${double.parse("$L_Count").toStringAsFixed(0)}D)"
+                                :
+                            L_Count, "H (${double.parse("$HL_Count").toStringAsFixed(0)}D)"
+                                :
+                            HL_Count,
+                          },
+                          animationDuration: const Duration(milliseconds: 800),
+                          chartLegendSpacing: 10,
+                          chartRadius: math.min(MediaQuery.of(context).size.width / 3.2, 300), // radius komay baray
+                          colorList: [
+                            presentsent_color.withOpacity(0.75),
+                            absent_color.withOpacity(0.75),
+                            leave_color.withOpacity(0.75) ,
+                            holiday_color.withOpacity(0.75)
+                          ],
+                          initialAngleInDegree: 0,
+                          ringStrokeWidth: -4,
+                          baseChartColor: Colors.transparent,
+                        );
+                      },
+                    ),
+                  ),)
+                ],
+              ),
+              Container(
+                height: 90,
+                width: double.infinity,
+                color: Main_Theme_WhiteCollor,
+                padding: EdgeInsets.only(
+                  bottom: 10
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                     SelfAttendanceSummarySecondPart(image: "Assets/SelfIcon/late_punch.png", text1: "Total late", text2:selfAdminAdmin_Get_Monthly_Att_SummaryCountList==null?"": "${selfAdminAdmin_Get_Monthly_Att_SummaryCountList["LATE_MINUTE"]??""}", image_h: 20, image_w: 20),
+                     SelfAttendanceSummarySecondPart(image: "Assets/SelfIcon/late_punch.png", text1: "Total Early", text2:selfAdminAdmin_Get_Monthly_Att_SummaryCountList==null?"":"${selfAdminAdmin_Get_Monthly_Att_SummaryCountList["EARLY_MINUTE"]??""}", image_h: 20, image_w: 20),
+                     SelfAttendanceSummarySecondPart(image: "Assets/SelfIcon/late_punch.png", text1: "Total Duration", text2:selfAdminAdmin_Get_Monthly_Att_SummaryCountList==null?"": "${selfAdminAdmin_Get_Monthly_Att_SummaryCountList["WORK_DURATION"]??""}", image_h: 20, image_w: 20),
+                     SelfAttendanceSummarySecondPart(image: "Assets/SelfIcon/late_punch.png", text1: "Total OT", text2:selfAdminAdmin_Get_Monthly_Att_SummaryCountList==null?"": "${selfAdminAdmin_Get_Monthly_Att_SummaryCountList["OVER_TIME"]??""}", image_h: 20, image_w: 20),
+                  ],
+                ),
+              ),
+              SizedBox(height: apps_div_margin,),
 
-            CustomCalender(
-                width: 120, is_share: true, onTap: () {
-            }, is_messsage: true, onTap2message: () {
-            }, is_pdf: true, onTap3pdf: () {
-            },
-            ),
-            Expanded(
-              child: Container(
-                margin: EdgeInsets.only(left: 10,right: 10),
-                width: 400,
-                color: home_default_color,
+
+/// Calender -------------------------------------------------------------------
+
+              Container(
+                margin: EdgeInsets.only(bottom: 10,right: 15),
+                alignment: Alignment.centerRight,
+                child: MyselfCustomCalender(
+                    onTap: () {
+                      _onPressed(context: context);
+                    },
+                    datetext: _selected_pick_month!=null? "${DateFormat("MMM-yyyy").format(_selected_pick_month!)}" : "${DateFormat("MMM-yyyy").format(DateTime.now())}", width: 100, height: 30)
+
+              ),
+
+              Padding(
+                padding: const EdgeInsets.only(left: 10.0,right: 10,bottom: 10),
                 child: ListView.builder(
+                  shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
                 //  itemCount: DateTime(DateTime.now().year, DateTime.now().month+1, 0).day,
                   itemCount:selfOneMonthAttendanceList.length,
                   itemBuilder: (context, index) {
@@ -170,12 +216,10 @@ class _SelfBootomNavigatonEmployeeDashboardState extends State<SelfBootomNavigat
                       },
                       child: Container(
                         margin: EdgeInsets.only(bottom: 5),
-
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                      //    color: Main_Theme_WhiteCollor,
-                        color:Color((math.sin(index) * 0xFFFFFF).toInt()).withOpacity(0.5)
-
+                     color:"${selfOneMonthAttendanceList[index].Status}"=="P"?presentsent_color.withOpacity(0.3) : "${selfOneMonthAttendanceList[index].Status}"=="AB"?absent_color.withOpacity(0.3) : "${selfOneMonthAttendanceList[index].Status!.substring(selfOneMonthAttendanceList[index].Status!.length-1, selfOneMonthAttendanceList[index].Status!.length)}"=="H"?holiday_color.withOpacity(0.3) : "${selfOneMonthAttendanceList[index].Status!.substring(selfOneMonthAttendanceList[index].Status!.length-1,selfOneMonthAttendanceList[index].Status!.length )}"=="L"?leave_color.withOpacity(0.3) : Main_Theme_WhiteCollor,
+                          //     color:Color((math.sin(index) * 0xFFFFFF).toInt()).withOpacity(0.5)
                         ),
                         child: Stack(
                           children: [
@@ -280,8 +324,6 @@ class _SelfBootomNavigatonEmployeeDashboardState extends State<SelfBootomNavigat
                                               child: ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400,maxLines: 2 ,text:   "${selfOneMonthAttendanceList[index].mOVEMENTPUNCH??"You dont have movements punch today"}", letterSpacing: 0.3,textAlign: TextAlign.justify, textColor: Main_Theme_textColor.withOpacity(0.6),),
                                               //    child: ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400,maxLines: 2 ,text:   "You dont have movements punch today", letterSpacing: 0.3,textAlign: TextAlign.justify, textColor: Main_Theme_textColor.withOpacity(0.6),),
                                             ),
-
-
                                           ],
                                         ),
                                       ),
@@ -294,27 +336,67 @@ class _SelfBootomNavigatonEmployeeDashboardState extends State<SelfBootomNavigat
                               top: 5,
                                 left: 40,
                                 child: CircleAvatar(
-                              radius: 8,
-                             backgroundColor:absent_color.withOpacity(0.4),
-                            // backgroundColor:Main_Theme_WhiteCollor,
-                                  child: Icon(Icons.location_on_outlined,color: Main_Theme_textColor.withOpacity(0.6),size: 12,),
+                              radius: 9,
+                           //  backgroundColor:absent_color.withOpacity(0.4),
+                             backgroundColor: "${selfOneMonthAttendanceList[index].Status}"=="P"?presentsent_color.withOpacity(1) : "${selfOneMonthAttendanceList[index].Status}"=="AB"?absent_color.withOpacity(1) : "${selfOneMonthAttendanceList[index].Status!.substring(selfOneMonthAttendanceList[index].Status!.length-1, selfOneMonthAttendanceList[index].Status!.length)}"=="H"?holiday_color.withOpacity(1) : "${selfOneMonthAttendanceList[index].Status!.substring(selfOneMonthAttendanceList[index].Status!.length-1,selfOneMonthAttendanceList[index].Status!.length )}"=="L"?leave_color.withOpacity(1) : Main_Theme_WhiteCollor,
 
 
-
+                    child: Icon(Icons.location_on_outlined,color: Main_Theme_WhiteCollor,size: 12,),
                                   // backgroundColor:Colors.red,
                             ),
-
                             )
                           ],
                         ),
                       ),
                     );
                   },),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );
   }
+
+  ///------------------- Month Picker ---------------------------
+  DateTime   _selected_pick_month =DateTime.now();
+  Future<void> _onPressed({
+    required BuildContext context,
+    String? locale,
+  }) async {
+    final localeObj = locale != null ? Locale(locale) : null;
+    final selected = await showMonthYearPicker(
+      context: context,
+      initialDate: _selected_pick_month ?? DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2130),
+      locale: localeObj,
+
+    );
+
+    if (selected != null) {
+      setState(() {
+        _selected_pick_month = selected;
+        // Provider.of<HomeProvider>(context,listen: false).dashboardBarChartDataProvider("${GetStorage().read("mobile_id")}", "${DateFormat('dd-MMMM-yyyy').format(DateTime.now())}","$selectedValue", context);
+        Provider.of<SelfDashboardController>(context,listen: false).selfAdminAdmin_Get_Monthly_Att_SummaryCountProvider(
+            "${DateFormat("MMM-yyyy").format(_selected_pick_month)}",
+            context
+        );
+
+        Provider.of<SelfDashboardController>(context,listen: false).selfOneMonthAttendanceProvider(
+            int.parse(DateFormat('yyyy').format(_selected_pick_month!)),
+            int.parse(DateFormat('MM').format(_selected_pick_month!)),
+            int.parse(DateFormat('dd').format(_selected_pick_month!)),
+            "${GetStorage().read("mobile_id")}",
+            "${DateFormat('dd-MMM-yyyy').format(_selected_pick_month)}",
+            "${GetStorage().read("IdCardNo")}",
+            "GENERAL",
+            context
+        );
+      });
+    }
+  }
+  ///------------------- Month Picker ---------------------------
+
+
 }
