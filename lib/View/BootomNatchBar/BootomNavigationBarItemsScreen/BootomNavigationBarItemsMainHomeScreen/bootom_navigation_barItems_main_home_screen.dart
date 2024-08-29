@@ -266,22 +266,24 @@ class _BootomNavBarItemsMainFloationHomeScreenState extends State<BootomNavBarIt
                                               SizedBox(width: 5,),
                                               Expanded(
                                                 flex: 4,
-                                                child: Column(
-                                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                                  mainAxisAlignment: MainAxisAlignment.center,
-                                                  children: [
-                                                    Text(value.Admin_GetEmployeeListByStatus[index]["EmployeeNameEnglish"]??"",
-                                                      overflow: TextOverflow.ellipsis
-                                                      ,style: GoogleFonts.poppins(
-                                                        fontSize: 13,
-                                                        fontWeight: FontWeight.w500,
-                                                        letterSpacing: 0.3,
-                                                      ),),
-                                                    SizedBox(height: 1,),
-                                                    CustomText(fontSize: 12, fontWeight: FontWeight.w300, text:value.Admin_GetEmployeeListByStatus[index]["Designation"]??"", letterSpacing: 0.3,  ),
-                                                    SizedBox(height: 1,),
-                                                    CustomText(fontSize: 12, fontWeight: FontWeight.w300, text: value.Admin_GetEmployeeListByStatus[index]["Department"]??"", letterSpacing: 0.3,  ),
-                                                  ],
+                                                child: SingleChildScrollView(
+                                                  child: Column(
+                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                    mainAxisAlignment: MainAxisAlignment.center,
+                                                    children: [
+                                                      Text(value.Admin_GetEmployeeListByStatus[index]["EmployeeNameEnglish"]??"",
+                                                        overflow: TextOverflow.ellipsis
+                                                        ,style: GoogleFonts.poppins(
+                                                          fontSize: 13,
+                                                          fontWeight: FontWeight.w500,
+                                                          letterSpacing: 0.3,
+                                                        ),),
+                                                      SizedBox(height: 1,),
+                                                      CustomText(fontSize: 12, fontWeight: FontWeight.w300, text:value.Admin_GetEmployeeListByStatus[index]["Designation"]??"", letterSpacing: 0.3,  ),
+                                                      SizedBox(height: 1,),
+                                                      CustomText(fontSize: 12, fontWeight: FontWeight.w300, text: value.Admin_GetEmployeeListByStatus[index]["Department"]??"", letterSpacing: 0.3,  ),
+                                                    ],
+                                                  ),
                                                 ),
                                               ),
                                               SizedBox(width: 10,),
