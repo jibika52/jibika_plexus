@@ -41,10 +41,7 @@ class SelfBootomNavigatonBarHomeScreen extends StatefulWidget {
 class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBarHomeScreen> {
   TextEditingController _descriptionController=TextEditingController();
   Position ? _currentPosition;
-  void permissionn()async{
-    LocationPermission permission = await Geolocator.requestPermission();
-    print(permission);
-  }
+
   late Position position;
   _getCurrentLocation() async{
     position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
@@ -96,8 +93,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
         context
     );
     Provider.of<HomeProvider>(context,listen: false).dashboardTodaysBirthdayEmployeeInfoProvider("${GetStorage().read("mobile_id")}", "", context); // Todays birthday
-//    Provider.of<CounterProvider>(context,listen: false).setcountSecondfunction(); // Todays birthday
-    permissionn();
+    //    Provider.of<CounterProvider>(context,listen: false).setcountSecondfunction(); // Todays birthday
     // Timer.periodic(Duration(seconds: 1), (timer) {
     //   setState(() {
     //     second=  DateTime.now().second;

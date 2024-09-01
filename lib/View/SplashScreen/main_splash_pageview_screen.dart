@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:jibika_plexus/View/SplashScreen/splash_screen1.dart';
 import 'package:jibika_plexus/View/SplashScreen/splash_screen2.dart';
@@ -15,8 +16,13 @@ class MainSplashPageViewScreen extends StatefulWidget {
 }
 
 class _MainSplashPageViewScreenState extends State<MainSplashPageViewScreen> {
+  void permissionn()async{
+    LocationPermission permission = await Geolocator.requestPermission();
+    print(permission);
+  }
   @override
   void initState() {
+    permissionn();
     Future.delayed(Duration(milliseconds: 500),() {
       if(GetStorage().read("id_token")!=null && GetStorage().read("user_type_id")==1001){
         Navigator.push(context, MaterialPageRoute(builder: (context) => BootomNatchBarScreen(),));
@@ -31,8 +37,6 @@ class _MainSplashPageViewScreenState extends State<MainSplashPageViewScreen> {
         //   Navigator.push(context, MaterialPageRoute(builder: (context) => SplashScreen3(),));
         print(GetStorage().read("id_token")!=null);
       }
-
-
     },);
 
     // TODO: implement initState

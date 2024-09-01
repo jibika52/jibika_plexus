@@ -89,7 +89,7 @@ dependencies:
   device_info_plus: any
   flutter_local_notifications: any
   receive_intent: any
-
+  karmm_callkit: any
 
 dev_dependencies:
   flutter_test:

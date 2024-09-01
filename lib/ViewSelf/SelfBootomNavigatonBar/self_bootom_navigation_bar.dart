@@ -172,7 +172,19 @@
 
 
 
+import 'dart:async';
+import 'dart:io';
+import 'dart:math';
+import 'dart:ui';
 
+import 'package:flutter/foundation.dart';
+import 'package:karmm_callkit/karmm_callkit.dart';
+import 'package:device_info_plus/device_info_plus.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_background_service/flutter_background_service.dart';
+import 'package:flutter_background_service_android/flutter_background_service_android.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
@@ -205,6 +217,7 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
   dynamic getDynamicSliderData;  
   @override
   void initState() {
+    startService();
     Provider.of<SelfDashboardController>(context,listen: false).selfORAdminShortDescriptionProvider(GetStorage().read("mobile_id"), GetStorage().read("IdCardNo"), context);
     Provider.of<SelfDashboardController>(context,listen: false).selfAdminGetLeaveEarlyCountProvider("${GetStorage().read("mobile_id")}", "${GetStorage().read("Empcode")}", context);
 
@@ -358,3 +371,210 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
   }
   bool keyboardOpen = false;
 }
+
+
+/// Background processing is running form here below now check the code-----------------------------------------------------------------------------------
+void   startService() async {
+  await initializeService();
+}
+
+void stopService() {
+  service.invoke("stopService");
+}
+
+void initCallPushListeners() {
+  ConnectycubeFlutterCallKit.setOnLockScreenVisibility(isVisible: true);
+  ConnectycubeFlutterCallKit.instance.init(
+  );
+}
+
+// https://github.com/flutter/flutter/blob/master/docs/platforms/android/Upgrading-pre-1.12-Android-projects.md
+
+void initCallPush() {
+  print("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz---------------1------------------------");
+  ConnectycubeFlutterCallKit.getLastCallId().then((value) {
+    ConnectycubeFlutterCallKit.reportCallEnded(sessionId: value);
+  });
+
+  var sessionId = DateTime.now().microsecondsSinceEpoch.toString();
+  // CallEvent callEvent = CallEvent(
+  //     sessionId: sessionId,
+  //     callType: 0,
+  //     callerId: randomIds(),
+  //     callerName: randomString(5),
+  //     opponentsIds: {randomIds(), randomIds()},
+  //     callPhoto: 'https://i.imgur.com/KwrDil8b.jpg',
+  //     userInfo: {'user_id': '${randomIds()}'});
+  // ConnectycubeFlutterCallKit.showCallNotification(callEvent);
+}
+
+void showToast(String message) {
+  Fluttertoast.showToast(
+      msg: message,
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.BOTTOM,
+      timeInSecForIosWeb: 1,
+      backgroundColor: Colors.red,
+      textColor: Colors.white,
+      fontSize: 16.0);
+}
+
+int randomIds() {
+  var rng = new Random();
+  var randomNumber = rng.nextInt(100000) + 1;
+  return randomNumber;
+}
+
+// genrate randomstring function
+String randomString(int length) {
+  var rng = new Random();
+  var codeUnits =
+  List.generate(length, (index) => rng.nextInt(33) + 89); // 33 to 122
+  return String.fromCharCodes(codeUnits);
+}
+
+void checkFullScreenIntentPermission() async {
+  var canUseFullScreenIntent =
+  await ConnectycubeFlutterCallKit.canUseFullScreenIntent();
+  print("boolValue: $canUseFullScreenIntent");
+  if (canUseFullScreenIntent == false) {
+    ConnectycubeFlutterCallKit.provideFullScreenIntentAccess();
+  }
+}
+
+// this will be used as notification channel id
+const notificationChannelId = 'my_foreground';
+
+// this will be used for notification id, So you can update your custom notification with this id.
+const notificationId = 888;
+final service = FlutterBackgroundService();
+Future<void> initializeService() async {
+  /// OPTIONAL, using custom notification channel id
+  const AndroidNotificationChannel channel = AndroidNotificationChannel(
+    'my_foreground', // id
+    'MY FOREGROUND SERVICE', // title
+    description:
+    'This channel is used for important notifications.', // description
+    importance: Importance.low, // importance must be at low or higher level
+  );
+
+  final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+  FlutterLocalNotificationsPlugin();
+
+  if (Platform.isIOS || Platform.isAndroid) {
+    await flutterLocalNotificationsPlugin.initialize(
+      const InitializationSettings(
+        iOS: DarwinInitializationSettings(),
+        android: AndroidInitializationSettings('ic_bg_service_small'),
+      ),
+    );
+  }
+
+  await flutterLocalNotificationsPlugin
+      .resolvePlatformSpecificImplementation<
+      AndroidFlutterLocalNotificationsPlugin>()
+      ?.createNotificationChannel(channel);
+
+  await service.configure(
+    androidConfiguration: AndroidConfiguration(
+      // this will be executed when app is in foreground or background in separated isolate
+      onStart: onStart,
+
+      // auto start service
+      autoStart: true,
+      isForegroundMode: true,
+
+      notificationChannelId: 'my_foreground',
+      initialNotificationTitle: 'AWESOME SERVICE',
+      initialNotificationContent: 'Initializing',
+      foregroundServiceNotificationId: 888,
+    ),
+    iosConfiguration: IosConfiguration(
+      // auto start service
+      autoStart: true,
+
+      // this will be executed when app is in foreground in separated isolate
+      onForeground: onStart,
+    ),
+  );
+}
+
+@pragma('vm:entry-point')
+void onStart(ServiceInstance service) async {
+  DartPluginRegistrant.ensureInitialized();
+  if (service is AndroidServiceInstance) {
+    service.on('setAsForeground').listen((event) {
+      service.setAsForegroundService();
+    });
+
+    service.on('setAsBackground').listen((event) {
+      service.setAsBackgroundService();
+    });
+  }
+
+  service.on('stopService').listen((event) {
+    service.stopSelf();
+  });
+
+  ConnectycubeFlutterCallKit.setOnLockScreenVisibility(isVisible: true);
+  int countt=0;
+  // bring to foreground
+  Timer.periodic(Duration(seconds: 10), (timer) async {
+    print("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz------------------2---------------------");
+    if (service is AndroidServiceInstance) {
+      print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx--------------------3-------------------");
+      if (await service.isForegroundService()) {
+        countt++;
+        print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa---------------------4${countt}--------${DateTime.now()}----------");
+
+      }
+    }
+
+    /// you can see this log in logcat
+    print('FLUTTER BACKGROUND SERVICE: ${DateTime.now()}');
+
+    // test using external plugin
+    final deviceInfo = DeviceInfoPlugin();
+    String? device;
+    if (Platform.isAndroid) {
+      final androidInfo = await deviceInfo.androidInfo;
+      device = androidInfo.model;
+    }
+
+    if (Platform.isIOS) {
+      final iosInfo = await deviceInfo.iosInfo;
+      device = iosInfo.model;
+    }
+
+    service.invoke(
+      'update',
+      {
+        "current_date": DateTime.now().toIso8601String(),
+        "device": device,
+      },
+    );
+  });
+}
+
+Future<void> _isAndroidPermissionGranted() async {
+  bool canUseFullScreenIntent =  await ConnectycubeFlutterCallKit.canUseFullScreenIntent();
+  if(canUseFullScreenIntent == false){
+    ConnectycubeFlutterCallKit.provideFullScreenIntentAccess();
+  } else{
+    bool canDisplayOverOtherApps =  await ConnectycubeFlutterCallKit.canDisplayOverOtherApps();
+    if (canDisplayOverOtherApps == false){
+      ConnectycubeFlutterCallKit.provideDisplayOverOtherApps();
+    }
+  }
+}
+/// Background processing is running form here below now check the code-----------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
