@@ -4,6 +4,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:jibika_plexus/Controller/CounterProvider/counter_provider.dart';
 import 'package:month_year_picker/month_year_picker.dart';
 import 'package:provider/provider.dart';
+import 'Controller/AdminEmployeeController/admin_employee_controller.dart';
 import 'Controller/AttendanceController/attendance_controller.dart';
 import 'Controller/HomeController/home_controller.dart';
 import 'Controller/PrivacyPolicyController/privacy_policy.dart';
@@ -28,7 +29,8 @@ class MyApp extends StatelessWidget {
       ChangeNotifierProvider<HomeProvider>(create: (context) => HomeProvider(),),
       ChangeNotifierProvider<PrivacyPolicyProvider>(create: (context) => PrivacyPolicyProvider(),),
       ChangeNotifierProvider<SelfDashboardController>(create: (context) => SelfDashboardController(),),
-      ChangeNotifierProvider<AttendanceProvder>(create: (context) => AttendanceProvder(),)
+      ChangeNotifierProvider<AttendanceProvder>(create: (context) => AttendanceProvder(),),
+      ChangeNotifierProvider<EmployeeAdminProvider>(create: (context) => EmployeeAdminProvider(),),
     ],
 
       child: MaterialApp(

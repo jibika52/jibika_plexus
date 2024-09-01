@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 
 class CustomImageSction extends StatelessWidget {
     CustomImageSction({super.key,
@@ -43,7 +44,7 @@ class CustomImageSctionNetwork extends StatelessWidget {
       width: width,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(radius),
-         image: DecorationImage(image: NetworkImage("$image"),fit: BoxFit.fill),
+         image: DecorationImage(image: NetworkImage("${GetStorage().read("APPS_IMG_BASEURL")}$image"),fit: BoxFit.fill),
       ),
    //   child: Image.asset("$image",fit: BoxFit.fill,color: Colors.white,),
     );

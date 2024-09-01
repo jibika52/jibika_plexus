@@ -68,7 +68,7 @@ class CustomLeftDrawer extends StatelessWidget {
                         decoration: BoxDecoration(
                             color: home_default_color,
                             borderRadius: BorderRadius.circular(50)),
-                           child:CustomImageSctionNetwork(height: 100, width: 100, radius: 100, image: "${GetStorage().read("APPS_IMG_BASEURL")}${GetStorage().read("APPS_IMG_Path")}"),
+                           child:CustomImageSctionNetwork(height: 100, width: 100, radius: 100, image: "${GetStorage().read("APPS_IMG_Path")}"),
                       ),
                       ),
                       // Positioned(

@@ -241,7 +241,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                          children: [
                                            Image.asset("Assets/SelfIcon/in_punch.png",height: 16,width: 16,fit: BoxFit.fill,color: Colors.grey,),
                                            SizedBox(width:5),
-                                           ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Check In : $checkin", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
+                                           ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "Check In : $checkin", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
                                            //      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "10:10:10", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
                                       //    ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text:selfOneMonthAttendanceList==null?"Processing":"${selfOneMonthAttendanceList[selfOneMonthAttendanceList.length-1]["IN_TIME"]}"==""?"": "${selfOneMonthAttendanceList.last["IN_TIME"].substring(selfOneMonthAttendanceList.last["IN_TIME"].length - 8)}", letterSpacing: 0.3, textColor: Main_Theme_textColor ,),
 
@@ -253,7 +253,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                          children: [
                                            Image.asset("Assets/SelfIcon/out_pumch.png",height: 16,width: 16,fit: BoxFit.fill,color: Colors.grey,),
                                            SizedBox(width:5),
-                                           ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Check Out : ${checkout}", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
+                                           ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "Check Out : ${checkout}", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
                                            //      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "10:10:10", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
 
                                          //    ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text:selfOneMonthAttendanceList==null?"Processing":"${selfOneMonthAttendanceList[selfOneMonthAttendanceList.length-1]["OUT_TIME"]}"==""?"": "${selfOneMonthAttendanceList.last["OUT_TIME"].substring(selfOneMonthAttendanceList.last["OUT_TIME"].length - 8)}", letterSpacing: 0.3, textColor: Main_Theme_textColor ,),
@@ -267,7 +267,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                           // Image.asset("Assets/SelfIcon/late_punch.png",height: 18,width: 18,fit: BoxFit.fill,color: Colors.grey,),
                                            Image.asset("Assets/SelfIcon/late.png",height: 18,width: 18,fit: BoxFit.fill,color: Main_Theme_textColor.withOpacity(0.4),),
                                            SizedBox(width:5),
-                                           ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "${selfOneMonthAttendanceList}"=="[]"?"Late :" :  "Late :${selfOneMonthAttendanceList[DateTime.now().day-1].lATE ??""}" , letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
+                                           ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "${selfOneMonthAttendanceList}"=="[]"?"Late :" :  "Late :${selfOneMonthAttendanceList[DateTime.now().day-1].lATE ??""}" , letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
 
                                            //      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "10:10:10", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
 
@@ -281,15 +281,11 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
                                          children: [
                                            Image.asset("Assets/SelfIcon/working_duration.png",height: 18,width: 18,fit: BoxFit.fill,color: Colors.grey,),
                                            SizedBox(width:5),
-                                           ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "${selfOneMonthAttendanceList}"=="[]"?"Duration : " : "Duration : ${selfOneMonthAttendanceList[DateTime.now().day-1].aCTUALWORKDURATION ??""}", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
-
+                                           ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "${selfOneMonthAttendanceList}"=="[]"?"Duration : " : "Duration : ${selfOneMonthAttendanceList[DateTime.now().day-1].aCTUALWORKDURATION ??""}", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
                                            //      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "10:10:10", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
-
                                          //    ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text:selfOneMonthAttendanceList==null?"Processing":"${selfOneMonthAttendanceList[selfOneMonthAttendanceList.length-1]["OUT_TIME"]}"==""?"": "${selfOneMonthAttendanceList.last["OUT_TIME"].substring(selfOneMonthAttendanceList.last["OUT_TIME"].length - 8)}", letterSpacing: 0.3, textColor: Main_Theme_textColor ,),
-
                                          ],
                                        ),
-
                                      ],
                                    ),
                                 ),

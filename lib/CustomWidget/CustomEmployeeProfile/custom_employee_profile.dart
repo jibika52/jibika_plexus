@@ -43,7 +43,7 @@ class CustomEmployeeProfile extends StatelessWidget {
       ),
       child: Row(
         children: [
-          CustomImageSction(height: 94, width: 78, radius: 7, image: "$image"),
+          CustomImageSctionNetwork(height: 94, width: 78, radius: 7, image: "$image"),
           Expanded(child: Container(
             margin: EdgeInsets.only(left: 15),
             child: Column(
