@@ -10,7 +10,9 @@ class SelfDashboardController with ChangeNotifier{
 
   /// dashboard Salary Comprison List
   dynamic dashboardSalaryComparisanChartList ;
-  dashboardSalaryComprisonListProvider(String UserId,String AttendanceDate, String AttendanceTime, String RefCardNo, String Location, String District, String Division, String PostalCode, String SubLocality, String StreetName, String lat,  String lng, int Empcode, String DutyDate,String Remarks, BuildContext context)async{
+  selfCheckInCheckOutProvider(String UserId,String AttendanceDate, String AttendanceTime, String RefCardNo, String Location,
+      String District, String Division, String PostalCode, String SubLocality, String StreetName, String lat,
+      String lng, int Empcode, String DutyDate,String Remarks,String IsTrack)async{
     dashboardSalaryComparisanChartList=await CustomHttpSelf().selfCheckInCheckOut(
         UserId,
         AttendanceDate,
@@ -27,7 +29,7 @@ class SelfDashboardController with ChangeNotifier{
         Empcode,
       DutyDate,
       Remarks,
-        context,
+        IsTrack,
     );
     notifyListeners();
   }

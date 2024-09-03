@@ -383,6 +383,7 @@ class CustomHttpRequestClass{
           body: body
       ).then((http.Response response) {
         self_OR_Admin_Short_Description =jsonDecode(response.body)["data"];
+        GetStorage().write("IsTrack", "${self_OR_Admin_Short_Description["IsTrack"]}");
       });
       return self_OR_Admin_Short_Description;
           }

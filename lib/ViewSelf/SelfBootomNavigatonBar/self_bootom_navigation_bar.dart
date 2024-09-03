@@ -178,6 +178,10 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/foundation.dart';
+import 'package:geocoding/geocoding.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
+import 'package:intl/intl.dart';
 import 'package:karmm_callkit/karmm_callkit.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
@@ -197,6 +201,7 @@ import 'package:provider/provider.dart';
 //import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/SelfBootomNavigatonEmployeeDashboard/self_bootom_navigaton_employee_dashboard.dart';
 import '../../Controller/HomeController/home_controller.dart';
 import '../../Controller/SelfDashboardController/self_dashboard_controller.dart';
+import '../../CustomHttpSelf/custom_http_self.dart';
 import '../../CustomWidget/CustomAppBar/CustomMAinAppBAr/custom_main_app_bar.dart';
 import '../../CustomWidget/CustomDrawer/CustomLeftDrawer/custom_left_drawer.dart';
 import '../../CustomWidget/CustomText/custom_text.dart';
@@ -217,10 +222,21 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
   dynamic getDynamicSliderData;  
   @override
   void initState() {
-    startService();
+
     Provider.of<SelfDashboardController>(context,listen: false).selfORAdminShortDescriptionProvider(GetStorage().read("mobile_id"), GetStorage().read("IdCardNo"), context);
     Provider.of<SelfDashboardController>(context,listen: false).selfAdminGetLeaveEarlyCountProvider("${GetStorage().read("mobile_id")}", "${GetStorage().read("Empcode")}", context);
-
+    Provider.of<SelfDashboardController>(context,listen: false).selfOneMonthAttendanceProvider
+      (
+        DateTime.now().year,
+        DateTime.now().month,
+        DateTime.now().day,
+        "${GetStorage().read("mobile_id")}",
+        "${DateFormat('dd-MMM-yyyy').format(DateTime.now())}",
+        "${GetStorage().read("IdCardNo")}",
+        "GENERAL", context);
+    Future.delayed(Duration(seconds: 2),() {
+    startService();
+    },);
     // TODO: implement initState
     super.initState();
   }
@@ -240,6 +256,17 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
   double b_bar_height=50;
   @override
   Widget build(BuildContext context) {
+    List<Updated_attendance_summary>   selfOneMonthAttendanceList =  Provider.of<SelfDashboardController>(context).selfOneMonthAttendanceList;
+
+    for(var i in selfOneMonthAttendanceList){
+      if("${i.date}"=="${DateTime.now().day}"){
+        GetStorage().write("SHIFT_IN_TIME", i.SHIFT_IN_TIME);
+        GetStorage().write("SHIFT_OUT_TIME", i.SHIFT_OUT_TIME);
+        GetStorage().write("ATTENDANCE_START_TIME", i.ATTENDANCE_START_TIME);
+        GetStorage().write("ATTENDANCE_Status", i.Status);
+      }
+    }
+//    print(" shift_time ${GetStorage().read("SHIFT_IN_TIME")}---------SHIFT_OUT_TIME --${GetStorage().read("SHIFT_OUT_TIME")}-----ATTENDANCE_Status --${GetStorage().read("ATTENDANCE_Status")}---------IsTrack --${GetStorage().read("IsTrack")}---------------");
     return Scaffold(
       resizeToAvoidBottomInset: false,
       drawer:CustomLeftDrawer(),
@@ -425,7 +452,7 @@ int randomIds() {
   return randomNumber;
 }
 
-// genrate randomstring function
+// generate random string function
 String randomString(int length) {
   var rng = new Random();
   var codeUnits =
@@ -449,6 +476,7 @@ const notificationChannelId = 'my_foreground';
 const notificationId = 888;
 final service = FlutterBackgroundService();
 Future<void> initializeService() async {
+  print("--- ----------------------------------${GetStorage().read("SHIFT_IN_TIME")} -----------------------");
   /// OPTIONAL, using custom notification channel id
   const AndroidNotificationChannel channel = AndroidNotificationChannel(
     'my_foreground', // id
@@ -501,6 +529,7 @@ Future<void> initializeService() async {
 
 @pragma('vm:entry-point')
 void onStart(ServiceInstance service) async {
+  print("--- shift_time ${GetStorage().read("SHIFT_IN_TIME")}---------SHIFT_OUT_TIME --${GetStorage().read("SHIFT_OUT_TIME")}-----ATTENDANCE_Status --${GetStorage().read("ATTENDANCE_Status")}---------IsTrack --${GetStorage().read("IsTrack")}-----------------------");
   DartPluginRegistrant.ensureInitialized();
   if (service is AndroidServiceInstance) {
     service.on('setAsForeground').listen((event) {
@@ -517,17 +546,43 @@ void onStart(ServiceInstance service) async {
   });
 
   ConnectycubeFlutterCallKit.setOnLockScreenVisibility(isVisible: true);
-  int countt=0;
   // bring to foreground
-  Timer.periodic(Duration(seconds: 10), (timer) async {
-    print("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz------------------2---------------------");
-    if (service is AndroidServiceInstance) {
-      print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx--------------------3-------------------");
-      if (await service.isForegroundService()) {
-        countt++;
-        print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa---------------------4${countt}--------${DateTime.now()}----------");
+  Timer.periodic(Duration(seconds: 60), (timer) async {
+    bool is_internet_available = await InternetConnection().hasInternetAccess;
+    print("is internet available-- ${is_internet_available}--- shift_time ${GetStorage().read("SHIFT_IN_TIME")}---------SHIFT_OUT_TIME --${GetStorage().read("SHIFT_OUT_TIME")}-----ATTENDANCE_Status --${GetStorage().read("ATTENDANCE_Status")}---------IsTrack --${GetStorage().read("IsTrack")}--------${timer.tick}----------------------");
+///---------------------------------------------------------------------------
 
-      }
+    late Position position;
+      position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+
+        List<Placemark> placemarks = await placemarkFromCoordinates(
+            position.latitude,
+            position.longitude
+        );
+        Placemark place = placemarks[0];
+        CustomHttpSelf().selfCheckInCheckOut(
+            "${GetStorage().read("mobile_id")}",
+            "${DateFormat('yyyyMMdd').format(DateTime.now())}",
+            "${DateFormat('HHmmss').format(DateTime.now()).toString()}",
+            "${GetStorage().read("RfIdCardNo")}",
+            "${place.name}",
+            "${place.locality}",
+            "${place.administrativeArea}",
+            "${place.postalCode}",
+            "${place.subAdministrativeArea}",
+            "${place.street.toString()}",
+            "${position.latitude}",
+            "${position.longitude}",
+            int.parse("${"${GetStorage().read("Empcode")}"}"),
+            "${DateFormat('dd-MMM-yyyy').format(DateTime.now())}",
+            "",
+          "true",
+
+
+          );
+    ///---------------------------------------------------------------------------
+    if (service is AndroidServiceInstance) {
+   //   print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa----------------------------${DateTime.now()}----------");
     }
 
     /// you can see this log in logcat
@@ -556,17 +611,6 @@ void onStart(ServiceInstance service) async {
   });
 }
 
-Future<void> _isAndroidPermissionGranted() async {
-  bool canUseFullScreenIntent =  await ConnectycubeFlutterCallKit.canUseFullScreenIntent();
-  if(canUseFullScreenIntent == false){
-    ConnectycubeFlutterCallKit.provideFullScreenIntentAccess();
-  } else{
-    bool canDisplayOverOtherApps =  await ConnectycubeFlutterCallKit.canDisplayOverOtherApps();
-    if (canDisplayOverOtherApps == false){
-      ConnectycubeFlutterCallKit.provideDisplayOverOtherApps();
-    }
-  }
-}
 /// Background processing is running form here below now check the code-----------------------------------------------------------------------------------
 
 
