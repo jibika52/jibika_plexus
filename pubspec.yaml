@@ -90,6 +90,7 @@ dependencies:
   flutter_local_notifications: any
   receive_intent: any
   karmm_callkit: any
+  internet_connection_checker_plus: any
 
 dev_dependencies:
   flutter_test:

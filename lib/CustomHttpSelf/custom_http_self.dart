@@ -29,7 +29,13 @@ class CustomHttpSelf{
   ///  self Dashboard Check In Check Out --------------------------------------------------------------------------
   ///
   ///
-  selfCheckInCheckOut(String UserId,String AttendanceDate, String AttendanceTime, String RefCardNo, String Location, String District, String Division, String PostalCode, String SubLocality, String StreetName, String lat,  String lng, int Empcode, String DutyDate,String Remarks, BuildContext context)async{
+  selfCheckInCheckOut(String UserId,String AttendanceDate, String AttendanceTime, String RefCardNo, String Location,
+      String District, String Division, String PostalCode, String SubLocality, String StreetName, String lat,
+      String lng, int Empcode, String DutyDate,String Remarks,
+      String IsTrack,
+      )async{
+    print("$UserId---$AttendanceDate---$AttendanceTime---$RefCardNo---$Location---$lng---$Empcode---$DutyDate---$Remarks---"
+        "$District---$Division---$PostalCode---$SubLocality---$StreetName---$lat---$IsTrack---");
     dynamic selfCheckInCheckOut ;
     var body = jsonEncode({
       "UserId":"$UserId",
@@ -46,10 +52,12 @@ class CustomHttpSelf{
       "lng" : "$lng",
       "Empcode": Empcode,
       "DutyDate" : "$DutyDate",
-      "Remarks" : "$Remarks"
+      "Remarks" : "$Remarks",
+      "IsTrack":"$IsTrack"
     });
 
     try{
+      print("Check ------------------------------------- Status----------------------------------");
       var data=await http.post(Uri.parse("${BASEURL}/${SelfCheckInCheckOut}"),
           headers: {
             "Content-Type": "application/json",
@@ -60,22 +68,6 @@ class CustomHttpSelf{
       ).then((http.Response response) {
         selfCheckInCheckOut =jsonDecode(response.body);
         print("ssssssssssssssssssssssssssssssssss ${selfCheckInCheckOut["status"]}");
-        // ElegantNotification(
-        //   borderRadius: BorderRadius.circular(11),
-        //   width: 380,
-        //   iconSize: 25,
-        //   background: presentsent_color,
-        //   progressIndicatorBackground: presentsent_color,
-        //   progressIndicatorColor: absent_color,
-        //   // position: Alignment.center,
-        //   title:  ColorCustomText(fontSize: 16, fontWeight: FontWeight.w500, text:
-        //   "${selfCheckInCheckOut["status"]}",
-        //       letterSpacing: 0.3, textColor: Main_Theme_textColor),
-        //   description: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "Thanks from JIBIKA PAYSCALE!..", letterSpacing: 0.3, textColor: Main_Theme_textColor),
-        //   onDismiss: () {
-        //     print('Message when the notification is dismissed');
-        //   }, icon: Icon(Icons.info_outlined,color:Colors.black,),
-        // ).show(context);
       });
       return selfCheckInCheckOut;
     }
@@ -145,6 +137,9 @@ class CustomHttpSelf{
            tempobj.OUT_DISTRICT=" ";
            tempobj.OUT_STREET_NAME=" ";
            tempobj.OUT_DIVISION=" ";
+           tempobj.SHIFT_IN_TIME=" ";
+           tempobj.SHIFT_OUT_TIME=" ";
+           tempobj.ATTENDANCE_START_TIME=" ";
 
            int tempday = 0;
             for(var item in monthlyAttendanceSummary){
@@ -172,6 +167,9 @@ class CustomHttpSelf{
                   tempobj.OUT_DISTRICT="${item["OUT_DISTRICT"]}";
                   tempobj.OUT_STREET_NAME="${item["OUT_STREET_NAME"]}";
                   tempobj.OUT_DIVISION="${item["OUT_DIVISION"]}";
+                  tempobj.SHIFT_IN_TIME="${item["SHIFT_IN_TIME"]}";
+                  tempobj.SHIFT_OUT_TIME="${item["SHIFT_OUT_TIME"]}";
+                  tempobj.ATTENDANCE_START_TIME="${item["ATTENDANCE_START_TIME"]}";
               }
             }
                 newdatalist.add(tempobj);
@@ -185,6 +183,7 @@ class CustomHttpSelf{
       print("selfOneMonthAttendanceList Catch error ${e}");
     }
   }
+
 
 
 
@@ -213,7 +212,6 @@ class CustomHttpSelf{
       print("self_OR_Admin_Short_Description Catch error  ============================ ${e}");
     }
   }
-
 
   ///  Leave allocation --------------------------------------------------------------------------
   selfLeaveAllocation(String UserId, String EMPCODE, BuildContext context)async{

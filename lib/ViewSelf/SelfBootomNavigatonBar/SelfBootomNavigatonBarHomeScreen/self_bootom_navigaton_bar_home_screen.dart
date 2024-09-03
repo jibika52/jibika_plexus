@@ -41,7 +41,6 @@ class SelfBootomNavigatonBarHomeScreen extends StatefulWidget {
 class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBarHomeScreen> {
   TextEditingController _descriptionController=TextEditingController();
   Position ? _currentPosition;
-
   late Position position;
   _getCurrentLocation() async{
     position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
@@ -55,7 +54,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
       );
       Placemark place = placemarks[0];
       setState(() {
-        Provider.of<SelfDashboardController>(context,listen: false).dashboardSalaryComprisonListProvider(
+        Provider.of<SelfDashboardController>(context,listen: false).selfCheckInCheckOutProvider(
             "${GetStorage().read("mobile_id")}",
             "${DateFormat('yyyyMMdd').format(DateTime.now())}",
             "${DateFormat('HHmmss').format(DateTime.now()).toString()}",
@@ -70,7 +69,10 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
             "${_currentPosition!.longitude}",
             int.parse("${"${GetStorage().read("Empcode")}"}"),
             "${DateFormat('dd-MMM-yyyy').format(DateTime.now())}",
-            "${_descriptionController.text}", context);
+            "${_descriptionController.text}",
+            "false"
+
+        );
       });
     } catch (e) {
       print(e);
@@ -138,6 +140,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
   double increase_punch_progress_bar=0.0001;
   @override
   void dispose() {
+    functionx();
     timer?.cancel();
     // TODO: implement dispose
     super.dispose();
@@ -922,4 +925,8 @@ String? OUT_LOCNAME ;
 String? OUT_DISTRICT ;
 String? OUT_STREET_NAME ;
 String? OUT_DIVISION ;
+
+String? SHIFT_IN_TIME ;
+String? SHIFT_OUT_TIME ;
+String? ATTENDANCE_START_TIME ;
 }
