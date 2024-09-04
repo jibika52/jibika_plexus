@@ -453,7 +453,33 @@ class CustomHttpRequestClass{
 
 
 
+  ///  Get Employee Localtion Info List--------------------------------------------------------------------------
+  GetEmployeeLocaltionInfoHttpFunction(String UserId,String AttDate,BuildContext context)async{
+    dynamic  getEmployeeLocaltionInfoList  ;
+    var body = jsonEncode({
+      "UserId":"$UserId",
+      "AttDate":"$AttDate",
+      "EMPCODE": "${GetStorage().read("Empcode")}"
+    });
+    try{
+      var data=await http.post(Uri.parse("${BASEURL}/${GetEmployeeLocaltionInfo}"),
+          headers: {
+            "Content-Type": "application/json",
+            "username": "jibikaapps",
+            "password": "20jibika24",
+          },
+          body: body
+      ).then((http.Response response) {
+        getEmployeeLocaltionInfoList =jsonDecode(response.body)["data"];
 
+        print("-----------------------------$getEmployeeLocaltionInfoList");
+      });
+      return getEmployeeLocaltionInfoList;
+    }
+    catch(e){
+      print(" self Or Admin Get selfAdminAdmin_selfAdminAdmin_Emp_New_Face_GetList Catch error ============================ ${e}");
+    }
+  }
 
 
 

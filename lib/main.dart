@@ -9,6 +9,7 @@ import 'Controller/AttendanceController/attendance_controller.dart';
 import 'Controller/HomeController/home_controller.dart';
 import 'Controller/PrivacyPolicyController/privacy_policy.dart';
 import 'Controller/SelfDashboardController/self_dashboard_controller.dart';
+import 'Controller/TrackingController/tracking_controller.dart';
 import 'View/SplashScreen/main_splash_pageview_screen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
       ChangeNotifierProvider<SelfDashboardController>(create: (context) => SelfDashboardController(),),
       ChangeNotifierProvider<AttendanceProvder>(create: (context) => AttendanceProvder(),),
       ChangeNotifierProvider<EmployeeAdminProvider>(create: (context) => EmployeeAdminProvider(),),
+      ChangeNotifierProvider<TrackingController>(create: (context) => TrackingController(),),
     ],
 
       child: MaterialApp(

@@ -99,9 +99,11 @@ class CounterProvider with ChangeNotifier{
   String _setcountSecond="0";
   String get   setcountSecond=>_setcountSecond;
   void  setcountSecondfunction(){
-    print("DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD ");
-      _setcountSecond = "${DateFormat('HH:mm:ss').format(DateTime.now()).toString()}";
+    print("time--- ${setcountSecond}");
+    _setcountSecond = "${DateFormat('HH:mm:ss').format(DateTime.now()).toString()}";
     notifyListeners();
+
+
   }
 
 

@@ -74,3 +74,7 @@
 
   ///  Get Employee List By Status
     String Admin_GetEmployeeListByStatus="Employee/GetEmployeeListByStatus";
+
+
+  ///  Get Employee Localtion Info
+    String GetEmployeeLocaltionInfo="Attendance/GetEmployeeLocaltionInfo";

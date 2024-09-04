@@ -1,183 +1,8 @@
-// import 'package:flutter/material.dart';
-// import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
-// import 'package:jibika_plexus/Utils/constants.dart';
-// import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/SelfBootomNavigatonBarHomeScreen/self_bootom_navigaton_bar_home_screen.dart';
-// import '../../CustomWidget/CustomDrawer/CustomLeftDrawer/custom_left_drawer.dart';
-// import '../../CustomWidget/CustomText/custom_text.dart';
-//
-// class SalfBootomNatchBarScreen extends StatefulWidget {
-//   const SalfBootomNatchBarScreen({super.key});
-//   @override
-//   State<SalfBootomNatchBarScreen> createState() => _SalfBootomNatchBarScreenState();
-// }
-//
-// class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
-//   int maxCount = 5;
-//   bool is_get_profie=false;
-//   dynamic getDynamicSliderData;
-//   @override
-//   void initState() {
-//     // TODO: implement initState
-//     super.initState();
-//   }
-//   /// widget list
-//   final List<Widget> bottomBarPages = [
-//     SelfBootomNavigatonBarHomeScreen(),
-//     Text("AAAAAAAAA"),
-//     Text("BBBBBBBBBBBB"),
-//     Text("CCCCCCCCCCCCCCCCCCC"),
-//   ];
-//   final _key=GlobalKey<ScaffoldState>();
-//   int widget.currentIndex = 0;
-//   @override
-//
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: PreferredSize(preferredSize: Size.fromHeight(90), child: Container(
-//         color: CustomAppbarColor,
-//         height: 75,
-//         width: double.infinity,
-//         padding: EdgeInsets.only(top: 10,left: 15,right: 5),
-//         child: Row(
-//           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//           crossAxisAlignment: CrossAxisAlignment.center,
-//           children: [
-//             InkWell(
-//                 onTap:  () {
-//
-//                 },
-//                 child: Container(
-//                     padding: EdgeInsets.all(3) ,
-//                     decoration: BoxDecoration(
-//                       borderRadius: BorderRadius.circular(40),
-//                       color: Main_Theme_WhiteCollor,
-//
-//                     ),
-//                     child: CustomImageSction(height: 33, width: 35, radius: 2, image: "Assets/Logo/jibikalogo3.png"))),
-//             ColorCustomText(fontSize: 18, fontWeight: FontWeight.w600, text: "$appbar_text", letterSpacing: 1,textColor: Main_Theme_WhiteCollor.withOpacity(0.8), ),
-//              Container(
-//               height: 100,
-//               width: 80,
-//               child: Row(
-//                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                 crossAxisAlignment: CrossAxisAlignment.center,
-//                 children: [
-//                   Stack(
-//                     children: [
-//                       Padding(
-//                         padding: const EdgeInsets.only(left: 10.0,top: 10),
-//                         child: CustomImageSction(height: 25, width: 25, radius: 1, image: "Assets/DashBoardIcons/notification_icon.png"),
-//                       ),
-//                       Positioned(
-//                           top: 5,
-//                           left: 9,
-//                           child: CircleAvatar(
-//                             radius: 7,
-//                             child: ColorCustomText(fontSize: 9, fontWeight: FontWeight.w700, text: "7", letterSpacing: 1, textColor: notification_color),
-//                           ))
-//                     ],
-//                   ),
-//                   Icon(Icons.more_vert,size: 30,color: Main_Theme_WhiteCollor.withOpacity(0.8) ,)
-//                 ],
-//               ),
-//             )
-//
-//           ],
-//         ),
-//       )),
-//       resizeToAvoidBottomInset: false,
-//       drawer:CustomLeftDrawer(),
-//       key: _key,
-//
-//
-//       body: bottomBarPages[widget.currentIndex],
-//       bottomNavigationBar: Container(
-//         height: 70,
-//         width: double.infinity,
-//         decoration: BoxDecoration(
-//           borderRadius: BorderRadius.only(
-//             topLeft: Radius.circular(11),
-//             topRight: Radius.circular(11),
-//           ),
-//           color: CustomButtonColor,
-//         ),
-//         padding: EdgeInsets.symmetric(horizontal: 15),
-//         child: Row(
-//           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//           children: [
-//             InkWell(
-//                 onTap: () {
-//                   setState(() {
-//                     widget.currentIndex=0;
-//                   });
-//                 },
-//                 child: CustomImageSction(height: 35, width: 35, radius: 5, image: "Assets/DashBoardIcons/b_bar_home.png")),
-//
-//             InkWell(
-//                 onTap: () {
-//                   setState(() {
-//                     widget.currentIndex=1;
-//                   });
-//                 },
-//                 child: CustomImageSction(height: 35, width: 35, radius: 5, image: "Assets/DashBoardIcons/b_bar_attendence.png")),
-//             Container(
-//               width: 35,
-//             ),
-//
-//             InkWell(
-//                 onTap: () {
-//                   setState(() {
-//                     widget.currentIndex=2;
-//                   });
-//                 },
-//                 child: CustomImageSction(height: 35, width: 35, radius: 5, image: "Assets/DashBoardIcons/b_bar_payroll.png")),
-//             InkWell(
-//                 onTap: () {
-//                   setState(() {
-//
-//                     widget.currentIndex=3;
-//                   });
-//                 },
-//                 child: CustomImageSction(height: 35, width: 35, radius: 5, image: "Assets/DashBoardIcons/b_bar_tricker.png")),
-//           ],
-//         ),
-//       ),
-//
-//       floatingActionButton:keyboardOpen==true
-//           ? SizedBox(): CircleAvatar(
-//         radius: 30,
-//         backgroundColor: Colors.white,
-//         child: FloatingActionButton(
-//           isExtended: false,shape: CircleBorder(
-//           side: BorderSide(color: Main_Theme_WhiteCollor),
-//         ),
-//           foregroundColor: Main_Theme_WhiteCollor,
-//           backgroundColor: Main_Theme_WhiteCollor,
-//           onPressed: () {
-//        //     Navigator.push(context, MaterialPageRoute(builder: (context) => BootomNavBarItemsMainFloationHomeScreen(),));
-//           }, child: Padding(
-//           padding: const EdgeInsets.all(2.0),
-//           child: Image.asset("Assets/Logo/leaff.png" ),
-//         ),),
-//       ),
-//       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-//
-//     );
-//   }
-//   bool keyboardOpen = false;
-// }
-
-
-
-
-
 
 import 'dart:async';
 import 'dart:io';
 import 'dart:math';
 import 'dart:ui';
-
-import 'package:flutter/foundation.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
@@ -189,19 +14,14 @@ import 'package:flutter_background_service/flutter_background_service.dart';
 import 'package:flutter_background_service_android/flutter_background_service_android.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
-import 'package:jibika_plexus/View/BootomNatchBar/BootomNavigationBarItemsScreen/BootomNavigationBarItemsMainHomeScreen/bootom_navigation_barItems_main_home_screen.dart';
 import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/SelfBootomNavigationConvince/self_bootom_navigation_convience.dart';
 import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/SelfBootomNavigationLeave/self_bootom_navigation_leave.dart';
 import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/SelfBootomNavigatonEmployeeJobCard/self_bootombar_employee_job_card.dart';
 import 'package:provider/provider.dart';
-//import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/SelfBootomNavigatonEmployeeDashboard/self_bootom_navigaton_employee_dashboard.dart';
-import '../../Controller/HomeController/home_controller.dart';
 import '../../Controller/SelfDashboardController/self_dashboard_controller.dart';
-import '../../CustomHttpSelf/custom_http_self.dart';
 import '../../CustomWidget/CustomAppBar/CustomMAinAppBAr/custom_main_app_bar.dart';
 import '../../CustomWidget/CustomDrawer/CustomLeftDrawer/custom_left_drawer.dart';
 import '../../CustomWidget/CustomText/custom_text.dart';
@@ -215,6 +35,8 @@ class SalfBootomNatchBarScreen extends StatefulWidget {
   State<SalfBootomNatchBarScreen> createState() => _SalfBootomNatchBarScreenState();
 }
 
+
+Position ? position;
 class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
 
   int maxCount = 5;
@@ -222,7 +44,6 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
   dynamic getDynamicSliderData;  
   @override
   void initState() {
-
     Provider.of<SelfDashboardController>(context,listen: false).selfORAdminShortDescriptionProvider(GetStorage().read("mobile_id"), GetStorage().read("IdCardNo"), context);
     Provider.of<SelfDashboardController>(context,listen: false).selfAdminGetLeaveEarlyCountProvider("${GetStorage().read("mobile_id")}", "${GetStorage().read("Empcode")}", context);
     Provider.of<SelfDashboardController>(context,listen: false).selfOneMonthAttendanceProvider
@@ -234,6 +55,7 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
         "${DateFormat('dd-MMM-yyyy').format(DateTime.now())}",
         "${GetStorage().read("IdCardNo")}",
         "GENERAL", context);
+
     Future.delayed(Duration(seconds: 2),() {
     startService();
     },);
@@ -242,22 +64,18 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
   }
   /// widget list
   final List<Widget> bottomBarPages = [
-
     SelfBootomBarJobCardScreen(),
     SelfBootomNavigatonEmployeeDashboard(),
     SelfBootomNavigationLeave(),
     SelfBootomNavigationConvienceScreen(),
     SelfBootomNavigatonBarHomeScreen(),
-
   ];
   final _key=GlobalKey<ScaffoldState>();
-
   double b_bar_icon_size=30;
   double b_bar_height=50;
   @override
   Widget build(BuildContext context) {
     List<Updated_attendance_summary>   selfOneMonthAttendanceList =  Provider.of<SelfDashboardController>(context).selfOneMonthAttendanceList;
-
     for(var i in selfOneMonthAttendanceList){
       if("${i.date}"=="${DateTime.now().day}"){
         GetStorage().write("SHIFT_IN_TIME", i.SHIFT_IN_TIME);
@@ -407,6 +225,7 @@ void   startService() async {
 
 void stopService() {
   service.invoke("stopService");
+  print("Stopppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp");
 }
 
 void initCallPushListeners() {
@@ -476,7 +295,7 @@ const notificationChannelId = 'my_foreground';
 const notificationId = 888;
 final service = FlutterBackgroundService();
 Future<void> initializeService() async {
-  print("--- ----------------------------------${GetStorage().read("SHIFT_IN_TIME")} -----------------------");
+  print("--- ----------${GetStorage().read("mobile_id")} --- ${GetStorage().read("RfIdCardNo")}------------------------${GetStorage().read("SHIFT_IN_TIME")} -----------------------");
   /// OPTIONAL, using custom notification channel id
   const AndroidNotificationChannel channel = AndroidNotificationChannel(
     'my_foreground', // id
@@ -529,7 +348,7 @@ Future<void> initializeService() async {
 
 @pragma('vm:entry-point')
 void onStart(ServiceInstance service) async {
-  print("--- shift_time ${GetStorage().read("SHIFT_IN_TIME")}---------SHIFT_OUT_TIME --${GetStorage().read("SHIFT_OUT_TIME")}-----ATTENDANCE_Status --${GetStorage().read("ATTENDANCE_Status")}---------IsTrack --${GetStorage().read("IsTrack")}-----------------------");
+  print("-${GetStorage().read("mobile_id")} --- ${GetStorage().read("RfIdCardNo")}-- shift_time ${GetStorage().read("SHIFT_IN_TIME")}---------SHIFT_OUT_TIME --${GetStorage().read("SHIFT_OUT_TIME")}-----ATTENDANCE_Status --${GetStorage().read("ATTENDANCE_Status")}---------IsTrack --${GetStorage().read("IsTrack")}-----------------------");
   DartPluginRegistrant.ensureInitialized();
   if (service is AndroidServiceInstance) {
     service.on('setAsForeground').listen((event) {
@@ -545,46 +364,45 @@ void onStart(ServiceInstance service) async {
     service.stopSelf();
   });
 
+
+
   ConnectycubeFlutterCallKit.setOnLockScreenVisibility(isVisible: true);
   // bring to foreground
-  Timer.periodic(Duration(seconds: 60), (timer) async {
+  Timer.periodic(Duration(seconds: 10), (timer) async {
     bool is_internet_available = await InternetConnection().hasInternetAccess;
-    print("is internet available-- ${is_internet_available}--- shift_time ${GetStorage().read("SHIFT_IN_TIME")}---------SHIFT_OUT_TIME --${GetStorage().read("SHIFT_OUT_TIME")}-----ATTENDANCE_Status --${GetStorage().read("ATTENDANCE_Status")}---------IsTrack --${GetStorage().read("IsTrack")}--------${timer.tick}----------------------");
-///---------------------------------------------------------------------------
-
-    late Position position;
-      position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-
-        List<Placemark> placemarks = await placemarkFromCoordinates(
-            position.latitude,
-            position.longitude
-        );
-        Placemark place = placemarks[0];
-        CustomHttpSelf().selfCheckInCheckOut(
-            "${GetStorage().read("mobile_id")}",
-            "${DateFormat('yyyyMMdd').format(DateTime.now())}",
-            "${DateFormat('HHmmss').format(DateTime.now()).toString()}",
-            "${GetStorage().read("RfIdCardNo")}",
-            "${place.name}",
-            "${place.locality}",
-            "${place.administrativeArea}",
-            "${place.postalCode}",
-            "${place.subAdministrativeArea}",
-            "${place.street.toString()}",
-            "${position.latitude}",
-            "${position.longitude}",
-            int.parse("${"${GetStorage().read("Empcode")}"}"),
-            "${DateFormat('dd-MMM-yyyy').format(DateTime.now())}",
-            "",
-          "true",
-
-
-          );
+    print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx $is_internet_available");
+   Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    List<Placemark> placemarks = await placemarkFromCoordinates(
+        position.latitude,
+        position.longitude
+    );
+    Placemark place = placemarks[0];
+    Future.delayed(Duration(seconds: 10),() {
+      print( "---${position.latitude} - ${place.postalCode}-${GetStorage().read("mobile_id")} --- ${GetStorage().read("RfIdCardNo")} is internet available-- ${is_internet_available}--- shift_time ${GetStorage().read("SHIFT_IN_TIME")}---------SHIFT_OUT_TIME --${GetStorage().read("SHIFT_OUT_TIME")}-----ATTENDANCE_Status --${GetStorage().read("ATTENDANCE_Status")}---------IsTrack --${GetStorage().read("IsTrack")}--------${timer.tick}----------------------");
+    },);
+        // CustomHttpSelf().selfCheckInCheckOut(
+        //     "${GetStorage().read("mobile_id")}",
+        //     "${DateFormat('yyyyMMdd').format(DateTime.now())}",
+        //     "${DateFormat('HHmmss').format(DateTime.now()).toString()}",
+        //     "${GetStorage().read("RfIdCardNo")}",
+        //     "${place.name}",
+        //     "${place.locality}",
+        //     "${place.administrativeArea}",
+        //     "${place.postalCode}",
+        //     "${place.subAdministrativeArea}",
+        //     "${place.street.toString()}",
+        //     "${position.latitude}",
+        //     "${position.longitude}",
+        //     int.parse("${"${GetStorage().read("Empcode")}"}"),
+        //     "${DateFormat('dd-MMM-yyyy').format(DateTime.now())}",
+        //     "",
+        //     "true",
+        //   );
     ///---------------------------------------------------------------------------
     if (service is AndroidServiceInstance) {
-   //   print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa----------------------------${DateTime.now()}----------");
-    }
-
+      // Position? position = await Geolocator.getLastKnownPosition();
+      // print("ppppppppppppppppppppppppppppppppppppppppppp---${position}");
+   }
     /// you can see this log in logcat
     print('FLUTTER BACKGROUND SERVICE: ${DateTime.now()}');
 

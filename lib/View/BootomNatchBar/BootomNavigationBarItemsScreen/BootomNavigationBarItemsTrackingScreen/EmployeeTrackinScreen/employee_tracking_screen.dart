@@ -8,6 +8,9 @@ import 'package:jibika_plexus/CustomWidget/CustomAppBar/CustomDefaultAppBar/cust
 import 'package:jibika_plexus/CustomWidget/CustomButton/custom_button.dart';
 import 'package:jibika_plexus/CustomWidget/CustomEmployeeProfile/custom_employee_profile.dart';
 import 'package:jibika_plexus/View/BootomNatchBar/BootomNavigationBarItemsScreen/BootomNavigationBarItemsTrackingScreen/EmployeeConvinceTrackinScreen/employee_convince_tracking_screen.dart';
+import 'package:jibika_plexus/tracking_google_map.dart';
+import 'package:provider/provider.dart';
+import '../../../../../Controller/TrackingController/tracking_controller.dart';
 import '../../../../../CustomWidget/CustomImage/custom_image.dart';
 import '../../../../../CustomWidget/CustomText/custom_text.dart';
 import '../../../../../Utils/constants.dart';
@@ -169,117 +172,160 @@ class _EmployeeTrackinScreenState extends State<EmployeeTrackinScreen> {
                         ],
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 10.0,right: 10),
-                      child: ListView.builder(
-                        physics: NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemCount: 7,
-                        itemBuilder: (context, index) {
-                          return Container(
-                              decoration: BoxDecoration(
-                                //   borderRadius: BorderRadius.all( Radius.circular(7)),
-                                //  color:  CustomButtonColor.withOpacity(0.05),
-                                  color:  home_default_color
-                              ),
-                              child: Row(
-                                children: [
-                                  /// left part
-                                  Container(
-                                    height: 89,
-                                    width: 50,
-                                    child: Column(
-                                      children: [
-                                        Expanded(
-                                          child: ListView.builder(
-                                            scrollDirection: Axis.vertical,
-                                            itemBuilder: (context, index) {
-                                            return Container(
-                                              margin: EdgeInsets.only(
-                                                left: 24.5,
-                                                right: 24.5,
-                                                bottom: 2,
+                    Consumer<TrackingController>(
+                      builder: (context, value, child) {
+                        return value.EmployeeLocaltionInfoList==null?Center(child: CircleAvatar(backgroundColor: Colors.red,),): Padding(
+                          padding: const EdgeInsets.only(left: 10.0, right: 10),
+                          child: ListView.builder(
+                            physics: NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            itemCount: value.EmployeeLocaltionInfoList.length,
+                            itemBuilder: (context, index) {
+                              return Container(
+                                  decoration: BoxDecoration(
+                                      color: home_default_color),
+                                  child: Row(
+                                    children: [
+                                      /// left part
+                                      Container(
+                                        height: 89,
+                                        width: 50,
+                                        child: Column(
+                                          children: [
+                                            Expanded(
+                                              child: ListView.builder(
+                                                scrollDirection: Axis.vertical,
+                                                itemBuilder: (context, index) {
+                                                  return Container(
+                                                    margin: EdgeInsets.only(
+                                                      left: 24.5,
+                                                      right: 24.5,
+                                                      bottom: 2,
+                                                    ),
+                                                    width: 2,
+                                                    height: 5,
+                                                    color:
+                                                        Main_Theme_textColor_tir_Condition,
+                                                  );
+                                                },
                                               ),
-                                              width: 2,height: 5,
-                                              color: Main_Theme_textColor_tir_Condition,
-                                            );
-                                          },),
-                                        ),
-                                        CircleAvatar(
-                                          radius: 15,
-                                          backgroundColor: Main_Theme_textColor_tir_Condition.withOpacity(0.7),
-                                          child:Padding(
-                                            padding: const EdgeInsets.all(4.0),
-                                            // child: Image.asset("Assets/DashBoardIcons/location.png",color: Main_Theme_WhiteCollor,),
-                                           child: Icon(Icons.location_on_outlined,color: Main_Theme_WhiteCollor,size: 22,),
-                                          )
-                                        ),
-                                        Expanded(
-                                          child: ListView.builder(
-                                            scrollDirection: Axis.vertical,
-                                            itemBuilder: (context, index) {
-                                              return Container(
-                                                margin: EdgeInsets.only(
-                                                  left: 24.5,
-                                                  right: 24.5,
-                                                  bottom: 2,
-                                                ),
-                                                width: 2,height: 5,
-                                                color:  Main_Theme_textColor_tir_Condition,
-                                              );
-                                            },),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-
-                                  /// Right part
-                                  Expanded(
-                                    child: Container(
-                                      margin: EdgeInsets.only(
-                                          top: 5,
-                                          bottom: 5,
-                                          left: 10
-                                      ),
-
-                                      padding: EdgeInsets.all(10),
-                                      decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(7),
-                                          color: Main_Theme_WhiteCollor
-                                      ),
-                                      child: Row(
-                                        children: [
-                                          Expanded(
-                                            child: Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: [
-                                                ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "09-11-00",
-                                                    letterSpacing: 0.2, textColor: Main_Theme_textColor.withOpacity(0.8)),
-                                                Text( "Gulshan Circle 01, Road No. 11, Plot No 8",style: GoogleFonts.poppins(
-                                                    fontSize: 14,
-                                                    fontWeight: FontWeight.w400,
-                                                    letterSpacing: 0.2,
-                                                    color: Main_Theme_textColor
-                                                ),
-                                                ),
-                                              ],
                                             ),
-                                          ),
-                                          SizedBox(width: 10,),
-                                          Column(
+                                            CircleAvatar(
+                                                radius: 15,
+                                                backgroundColor:
+                                                    Main_Theme_textColor_tir_Condition
+                                                        .withOpacity(0.7),
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(4.0),
+                                                  // child: Image.asset("Assets/DashBoardIcons/location.png",color: Main_Theme_WhiteCollor,),
+                                                  child: Icon(
+                                                    Icons.location_on_outlined,
+                                                    color:
+                                                        Main_Theme_WhiteCollor,
+                                                    size: 22,
+                                                  ),
+                                                )),
+                                            Expanded(
+                                              child: ListView.builder(
+                                                scrollDirection: Axis.vertical,
+                                                itemBuilder: (context, index) {
+                                                  return Container(
+                                                    margin: EdgeInsets.only(
+                                                      left: 24.5,
+                                                      right: 24.5,
+                                                      bottom: 2,
+                                                    ),
+                                                    width: 2,
+                                                    height: 5,
+                                                    color:
+                                                        Main_Theme_textColor_tir_Condition,
+                                                  );
+                                                },
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+
+                                      /// Right part
+                                      Expanded(
+                                        child: Container(
+                                          margin: EdgeInsets.only(
+                                              top: 5, bottom: 5, left: 10),
+                                          padding: EdgeInsets.all(10),
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(7),
+                                              color: Main_Theme_WhiteCollor),
+                                          child: Row(
                                             children: [
-                                              Image.asset("Assets/DashBoardIcons/map_view.png",height: 25,width: 25,fit: BoxFit.fill,color: Main_Theme_textColor_tir_Condition,),
-                                              CustomText(fontSize: 9, fontWeight: FontWeight.w300, text: "View map", letterSpacing: 0.3)
+                                              Expanded(
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    ColorCustomText(
+                                                        fontSize: 12,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        text: "${DateFormat("dd-MMM-yyyy").format(DateTime.now())}",
+                                                        letterSpacing: 0.2,
+                                                        textColor:
+                                                            Main_Theme_textColor
+                                                                .withOpacity(
+                                                                    0.8)),
+                                                    Text(
+                                                      "${value.EmployeeLocaltionInfoList[index]["AdArea"]}, ${value.EmployeeLocaltionInfoList[index]["SubLocality"]}",
+                                                      style: GoogleFonts.poppins(
+                                                          fontSize: 14,
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          letterSpacing: 0.2,
+                                                          color:
+                                                              Main_Theme_textColor),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: 10,
+                                              ),
+                                              InkWell(
+                                                onTap: () {
+                                                  Navigator.push(context, CupertinoPageRoute(builder: (context) => TrackingMapScreen(
+                                                      lat: double.parse("${value.EmployeeLocaltionInfoList[index]["Latitude"]}"),
+                                                      lon: double.parse("${value.EmployeeLocaltionInfoList[index]["Longitude"]}"),)));
+                                                },
+                                                child: Column(
+                                                  children: [
+                                                    Image.asset(
+                                                      "Assets/DashBoardIcons/map_view.png",
+                                                      height: 25,
+                                                      width: 25,
+                                                      fit: BoxFit.fill,
+                                                      color:
+                                                          Main_Theme_textColor_tir_Condition,
+                                                    ),
+                                                    CustomText(
+                                                        fontSize: 9,
+                                                        fontWeight:
+                                                            FontWeight.w300,
+                                                        text: "View map",
+                                                        letterSpacing: 0.3)
+                                                  ],
+                                                ),
+                                              ),
                                             ],
                                           ),
-                                        ],
+                                        ),
                                       ),
-                                    ),
-                                  ),
-
-                                ],)
-                          );
-                        },),
+                                    ],
+                                  ));
+                            },
+                          ),
+                        );
+                      },
                     ),
                     Container(
                       width: double.infinity,

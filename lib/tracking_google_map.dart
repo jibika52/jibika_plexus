@@ -5,83 +5,34 @@ import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class Googlemap extends StatefulWidget {
-  const Googlemap({super.key});
-
+class TrackingMapScreen extends StatefulWidget {
+   TrackingMapScreen({super.key,required this.lat, required this.lon});
+   double lat;
+   double lon;
   @override
-  State<Googlemap> createState() => _GooglemapState();
+  State<TrackingMapScreen> createState() => _TrackingMapScreenState();
 }
 
-class _GooglemapState extends State<Googlemap> {
-
-
-  Position ? _currentPosition;
-  String ?  _currentAddress;
-  void permissionn()async{
-    LocationPermission permission = await Geolocator.requestPermission();
-    print(permission);
-  }
+class _TrackingMapScreenState extends State<TrackingMapScreen> {
   late Position position;
-  _getCurrentLocation() async{
-    position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-    setState(() {
-      _currentPosition = position;
-      print("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhh ${_currentPosition!.longitude}");
-      print("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhh ${_currentPosition}");
-    });
-    try {
-      List<Placemark> placemarks = await placemarkFromCoordinates(
-          _currentPosition!.latitude,
-          _currentPosition!.longitude
-      );
-      Placemark place = placemarks[0];
-      setState(() {
-        _kGoogle = CameraPosition(
-          target: LatLng(_currentPosition!.latitude,_currentPosition!.latitude),
-          zoom: 14,
-        );
-        _currentAddress = "name = ${place.name}, street =${place.street.toString()}, subThoroughfare=${place.subThoroughfare}, subLocality=${place.subLocality}, administrativeArea=${place.administrativeArea}, isoCountryCode=${place.isoCountryCode},locality=${place.locality}, postalCode=${place.postalCode}, subAdministrativeArea=${place.subAdministrativeArea}, thoroughfare${place.thoroughfare}, country=${place.country},";
-        print(_currentAddress);
-      });
-    } catch (e) {
-      print(e);
-    }
-
-  }
-
-
-
-
-
-// created controller to display Google Maps
-  Completer<GoogleMapController> _controller = Completer();
-  //on below line we have set the camera position
+  Completer<GoogleMapController> _controller = Completer(); 
   static late CameraPosition _kGoogle =   CameraPosition(
     target:  LatLng(23.8100645, 90.4221128),
-    zoom: 12,
+    zoom: 16,
   );
-
   final Set<Marker> _markers = {};
   final Set<Polyline> _polyline = {};
-
   // list of locations to display polylines
+  double dd=20.66;
   List<LatLng> latLen = [
-    LatLng(23.812989,90.412717),
-    LatLng(23.819585,90.420420),
-    LatLng(23.814421,90.424980),
-    LatLng(23.810402,90.421405),
-    // LatLng(16.166700, 74.833298),
+    //  LatLng(widget.lat,widget.lon),
+    LatLng(23.8100645, 90.4221128),
     //  LatLng(12.971599, 77.594563),
   ];
-
   @override
   void initState() {
     // TODO: implement initState
-    super.initState();
-    permissionn();
-    _getCurrentLocation();
-
-    // declared for loop for various locations
+    super.initState(); 
     for(int i=0; i<latLen.length; i++){
       _markers.add(
         // added markers
@@ -142,7 +93,4 @@ class _GooglemapState extends State<Googlemap> {
       ),
     );
   }
-
-
-
 }

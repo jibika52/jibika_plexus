@@ -2,9 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:jibika_plexus/Controller/TrackingController/tracking_controller.dart';
 import 'package:jibika_plexus/CustomWidget/CustomAppBar/CustomDefaultAppBar/custom_default_app_bar.dart';
 import 'package:jibika_plexus/CustomWidget/CustomTrackNowButton/custom_tracknow_button.dart';
 import 'package:jibika_plexus/View/BootomNatchBar/BootomNavigationBarItemsScreen/BootomNavigationBarItemsTrackingScreen/EmployeeTrackinScreen/employee_tracking_screen.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../CustomWidget/CustomImage/custom_image.dart';
 import '../../../../CustomWidget/CustomText/custom_text.dart';
@@ -260,6 +262,7 @@ class _BootomNavigationBarItemsTrackingScreenState extends State<BootomNavigatio
                                     ),
                                     SizedBox(width: 10,),
                                     CustomTrackNowButton(b_text: "Track history",  onTap: () {
+                                      Provider.of<TrackingController>(context,listen: false).GetEmployeeLocaltionInfoProvider("01889173335", "${DateFormat("dd-MMM-yyyy").format(DateTime.now())}", context);
                                       Navigator.push(context, CupertinoPageRoute(builder: (context) => EmployeeTrackinScreen(),));
                                       }, )
 
