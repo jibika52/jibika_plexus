@@ -16,8 +16,12 @@ import '../../../../../CustomWidget/CustomText/custom_text.dart';
 import '../../../../../Utils/constants.dart';
 
 class EmployeeTrackinScreen extends StatefulWidget {
-  const EmployeeTrackinScreen({super.key});
-
+   EmployeeTrackinScreen({super.key,required this.image,required this.name,required this.e_code,required this.e_deg,required this.e_dep});
+  String image;
+  String name;
+  String e_code;
+  String e_deg;
+  String e_dep;
   @override
   State<EmployeeTrackinScreen> createState() => _EmployeeTrackinScreenState();
 }
@@ -29,7 +33,7 @@ class _EmployeeTrackinScreenState extends State<EmployeeTrackinScreen> {
     return Scaffold(
       backgroundColor: home_default_color,
       appBar: PreferredSize(preferredSize: Size.fromHeight(75), child: CustomDefaultAppBar(onTap: () => Navigator.pop(context),
-          text: "Uzzal Biswas")),
+          text: "${widget.name}")),
       body: Container(
         height: double.infinity,
         width: double.infinity,
@@ -39,8 +43,8 @@ class _EmployeeTrackinScreenState extends State<EmployeeTrackinScreen> {
             Stack(
               children: [
                 CustomEmployeeProfile(
-                  image: "Assets/DrawerImage/testperson.png", id: "89899898", name: "Abdur Rahaman", designation: "Software Engineer",
-                    time: "30Y 6M", onTap1: () {
+                  image: "${widget.image}", id: "${widget.e_code}", name: "${widget.name}", designation: "${widget.e_deg}",
+                    time: "${widget.e_dep}", onTap1: () {
 
                     }, onTap2: () {
 
@@ -174,7 +178,7 @@ class _EmployeeTrackinScreenState extends State<EmployeeTrackinScreen> {
                     ),
                     Consumer<TrackingController>(
                       builder: (context, value, child) {
-                        return value.EmployeeLocaltionInfoList==null?Center(child: CircleAvatar(backgroundColor: Colors.red,),): Padding(
+                        return value.EmployeeLocaltionInfoList==null?Center(child: CircularProgressIndicator(backgroundColor: Colors.red,),): Padding(
                           padding: const EdgeInsets.only(left: 10.0, right: 10),
                           child: ListView.builder(
                             physics: NeverScrollableScrollPhysics(),
@@ -269,7 +273,7 @@ class _EmployeeTrackinScreenState extends State<EmployeeTrackinScreen> {
                                                         fontSize: 12,
                                                         fontWeight:
                                                             FontWeight.w400,
-                                                        text: "${DateFormat("dd-MMM-yyyy").format(DateTime.now())}",
+                                                        text:  "${value.EmployeeLocaltionInfoList[index]["datetime"]}",
                                                         letterSpacing: 0.2,
                                                         textColor:
                                                             Main_Theme_textColor

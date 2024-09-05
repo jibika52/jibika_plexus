@@ -78,3 +78,11 @@
 
   ///  Get Employee Localtion Info
     String GetEmployeeLocaltionInfo="Attendance/GetEmployeeLocaltionInfo";
+
+
+  ///  Get Employee Localtion Info
+    String GetMovementTrackableEmployeeList="Employee/GetMovementTrackableEmployeeList";
+
+
+  ///  GetMovementTrackableEmployeeByDate
+    String GetMovementTrackableEmployeeByDate="Attendance/GetAttByDate";

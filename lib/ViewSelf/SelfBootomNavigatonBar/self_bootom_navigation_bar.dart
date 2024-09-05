@@ -1,8 +1,9 @@
-
 import 'dart:async';
 import 'dart:io';
 import 'dart:math';
 import 'dart:ui';
+
+import 'package:flutter/foundation.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
@@ -14,14 +15,19 @@ import 'package:flutter_background_service/flutter_background_service.dart';
 import 'package:flutter_background_service_android/flutter_background_service_android.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
+import 'package:jibika_plexus/View/BootomNatchBar/BootomNavigationBarItemsScreen/BootomNavigationBarItemsMainHomeScreen/bootom_navigation_barItems_main_home_screen.dart';
 import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/SelfBootomNavigationConvince/self_bootom_navigation_convience.dart';
 import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/SelfBootomNavigationLeave/self_bootom_navigation_leave.dart';
 import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/SelfBootomNavigatonEmployeeJobCard/self_bootombar_employee_job_card.dart';
 import 'package:provider/provider.dart';
+//import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/SelfBootomNavigatonEmployeeDashboard/self_bootom_navigaton_employee_dashboard.dart';
+import '../../Controller/HomeController/home_controller.dart';
 import '../../Controller/SelfDashboardController/self_dashboard_controller.dart';
+import '../../CustomHttpSelf/custom_http_self.dart';
 import '../../CustomWidget/CustomAppBar/CustomMAinAppBAr/custom_main_app_bar.dart';
 import '../../CustomWidget/CustomDrawer/CustomLeftDrawer/custom_left_drawer.dart';
 import '../../CustomWidget/CustomText/custom_text.dart';
@@ -35,15 +41,14 @@ class SalfBootomNatchBarScreen extends StatefulWidget {
   State<SalfBootomNatchBarScreen> createState() => _SalfBootomNatchBarScreenState();
 }
 
-
-Position ? position;
 class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
 
   int maxCount = 5;
   bool is_get_profie=false;
-  dynamic getDynamicSliderData;  
+  dynamic getDynamicSliderData;
   @override
   void initState() {
+
     Provider.of<SelfDashboardController>(context,listen: false).selfORAdminShortDescriptionProvider(GetStorage().read("mobile_id"), GetStorage().read("IdCardNo"), context);
     Provider.of<SelfDashboardController>(context,listen: false).selfAdminGetLeaveEarlyCountProvider("${GetStorage().read("mobile_id")}", "${GetStorage().read("Empcode")}", context);
     Provider.of<SelfDashboardController>(context,listen: false).selfOneMonthAttendanceProvider
@@ -55,27 +60,30 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
         "${DateFormat('dd-MMM-yyyy').format(DateTime.now())}",
         "${GetStorage().read("IdCardNo")}",
         "GENERAL", context);
-
     Future.delayed(Duration(seconds: 2),() {
-    startService();
+      startService();
     },);
     // TODO: implement initState
     super.initState();
   }
   /// widget list
   final List<Widget> bottomBarPages = [
+
     SelfBootomBarJobCardScreen(),
     SelfBootomNavigatonEmployeeDashboard(),
     SelfBootomNavigationLeave(),
     SelfBootomNavigationConvienceScreen(),
     SelfBootomNavigatonBarHomeScreen(),
+
   ];
   final _key=GlobalKey<ScaffoldState>();
+
   double b_bar_icon_size=30;
   double b_bar_height=50;
   @override
   Widget build(BuildContext context) {
     List<Updated_attendance_summary>   selfOneMonthAttendanceList =  Provider.of<SelfDashboardController>(context).selfOneMonthAttendanceList;
+
     for(var i in selfOneMonthAttendanceList){
       if("${i.date}"=="${DateTime.now().day}"){
         GetStorage().write("SHIFT_IN_TIME", i.SHIFT_IN_TIME);
@@ -142,8 +150,8 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
                   height: b_bar_height,
                   child: Column(
                     children: [
-                   //     Icon(Icons.list_alt,size: 30,weight: 30,color: widget.currentIndex==1? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.3),),
-              CustomImageSction2(height: b_bar_icon_size,width: b_bar_icon_size,  img_color: widget.currentIndex==1? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5),  radius: 5, image: "Assets/SelfIcon/test_fingerprint.png"),
+                      //     Icon(Icons.list_alt,size: 30,weight: 30,color: widget.currentIndex==1? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.3),),
+                      CustomImageSction2(height: b_bar_icon_size,width: b_bar_icon_size,  img_color: widget.currentIndex==1? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5),  radius: 5, image: "Assets/SelfIcon/test_fingerprint.png"),
                       SizedBox(height: 2,),
                       ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Attendance", letterSpacing: 0.3, textColor: widget.currentIndex==1? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
                     ],
@@ -180,7 +188,7 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
                   height: b_bar_height,
                   child: Column(
                     children: [
-                    Icon(Icons.time_to_leave,color: widget.currentIndex==3? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5),size: 30,),
+                      Icon(Icons.time_to_leave,color: widget.currentIndex==3? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5),size: 30,),
                       //    CustomImageSction2(height: b_bar_icon_size,width: b_bar_icon_size,  img_color: widget.currentIndex==3? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5), radius: 5, image: "Assets/SelfIcon/Conveyance_edited1.png"),
                       SizedBox(height: 2,),
                       ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Conveyance", letterSpacing: 0.3, textColor: widget.currentIndex==3? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
@@ -225,7 +233,6 @@ void   startService() async {
 
 void stopService() {
   service.invoke("stopService");
-  print("Stopppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp");
 }
 
 void initCallPushListeners() {
@@ -295,7 +302,7 @@ const notificationChannelId = 'my_foreground';
 const notificationId = 888;
 final service = FlutterBackgroundService();
 Future<void> initializeService() async {
-  print("--- ----------${GetStorage().read("mobile_id")} --- ${GetStorage().read("RfIdCardNo")}------------------------${GetStorage().read("SHIFT_IN_TIME")} -----------------------");
+  print("--- ----------------------------------${GetStorage().read("SHIFT_IN_TIME")} -----------------------");
   /// OPTIONAL, using custom notification channel id
   const AndroidNotificationChannel channel = AndroidNotificationChannel(
     'my_foreground', // id
@@ -348,7 +355,7 @@ Future<void> initializeService() async {
 
 @pragma('vm:entry-point')
 void onStart(ServiceInstance service) async {
-  print("-${GetStorage().read("mobile_id")} --- ${GetStorage().read("RfIdCardNo")}-- shift_time ${GetStorage().read("SHIFT_IN_TIME")}---------SHIFT_OUT_TIME --${GetStorage().read("SHIFT_OUT_TIME")}-----ATTENDANCE_Status --${GetStorage().read("ATTENDANCE_Status")}---------IsTrack --${GetStorage().read("IsTrack")}-----------------------");
+  print("--- shift_time ${GetStorage().read("SHIFT_IN_TIME")}---------SHIFT_OUT_TIME --${GetStorage().read("SHIFT_OUT_TIME")}-----ATTENDANCE_Status --${GetStorage().read("ATTENDANCE_Status")}---------IsTrack --${GetStorage().read("IsTrack")}-----------------------");
   DartPluginRegistrant.ensureInitialized();
   if (service is AndroidServiceInstance) {
     service.on('setAsForeground').listen((event) {
@@ -364,45 +371,58 @@ void onStart(ServiceInstance service) async {
     service.stopSelf();
   });
 
-
-
   ConnectycubeFlutterCallKit.setOnLockScreenVisibility(isVisible: true);
+
+  late Position position;
+
+  Timer.periodic(Duration(minutes: 9), (timer) async {
+
+    position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    print("Location--------------- ${position.latitude} ${position.longitude}");
+    // List<Placemark> placemarks = await placemarkFromCoordinates(
+    //     position.latitude,
+    //     position.longitude
+    // );
+    // Placemark place = placemarks[0];
+  });
   // bring to foreground
-  Timer.periodic(Duration(seconds: 10), (timer) async {
+  Timer.periodic(Duration(minutes: 20), (timer) async {
     bool is_internet_available = await InternetConnection().hasInternetAccess;
-    print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx $is_internet_available");
-   Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-    List<Placemark> placemarks = await placemarkFromCoordinates(
-        position.latitude,
-        position.longitude
+    print("Location---------------${position.latitude} ${position.longitude} \nis_internet available-- ${is_internet_available}\n--- shift_time ${GetStorage().read("SHIFT_IN_TIME")}\n---------SHIFT_OUT_TIME --${GetStorage().read("SHIFT_OUT_TIME")}\n-----ATTENDANCE_Status --${GetStorage().read("ATTENDANCE_Status")}\n---------IsTrack --${GetStorage().read("IsTrack")}\n--------${timer.tick}----------------------");
+    ///---------------------------------------------------------------------------
+    CustomHttpSelf().selfCheckInCheckOut(
+      "${GetStorage().read("mobile_id")}",
+      "${DateFormat('yyyyMMdd').format(DateTime.now())}",
+      "${DateFormat('HHmmss').format(DateTime.now()).toString()}",
+      "${GetStorage().read("RfIdCardNo")}",
+
+      // "${place.name}",
+      // "${place.locality}",
+      // "${place.administrativeArea}",
+      // "${place.postalCode}",
+      // "${place.subAdministrativeArea}",
+      // "${place.street.toString()}",
+      " ",
+      " ",
+      " ",
+      " ",
+      " ",
+      " ",
+
+      "${position.latitude}",
+      "${position.longitude}",
+      int.parse("${"${GetStorage().read("Empcode")}"}"),
+      "${DateFormat('dd-MMM-yyyy').format(DateTime.now())}",
+      "",
+      "true",
+
+
     );
-    Placemark place = placemarks[0];
-    Future.delayed(Duration(seconds: 10),() {
-      print( "---${position.latitude} - ${place.postalCode}-${GetStorage().read("mobile_id")} --- ${GetStorage().read("RfIdCardNo")} is internet available-- ${is_internet_available}--- shift_time ${GetStorage().read("SHIFT_IN_TIME")}---------SHIFT_OUT_TIME --${GetStorage().read("SHIFT_OUT_TIME")}-----ATTENDANCE_Status --${GetStorage().read("ATTENDANCE_Status")}---------IsTrack --${GetStorage().read("IsTrack")}--------${timer.tick}----------------------");
-    },);
-        // CustomHttpSelf().selfCheckInCheckOut(
-        //     "${GetStorage().read("mobile_id")}",
-        //     "${DateFormat('yyyyMMdd').format(DateTime.now())}",
-        //     "${DateFormat('HHmmss').format(DateTime.now()).toString()}",
-        //     "${GetStorage().read("RfIdCardNo")}",
-        //     "${place.name}",
-        //     "${place.locality}",
-        //     "${place.administrativeArea}",
-        //     "${place.postalCode}",
-        //     "${place.subAdministrativeArea}",
-        //     "${place.street.toString()}",
-        //     "${position.latitude}",
-        //     "${position.longitude}",
-        //     int.parse("${"${GetStorage().read("Empcode")}"}"),
-        //     "${DateFormat('dd-MMM-yyyy').format(DateTime.now())}",
-        //     "",
-        //     "true",
-        //   );
     ///---------------------------------------------------------------------------
     if (service is AndroidServiceInstance) {
-      // Position? position = await Geolocator.getLastKnownPosition();
-      // print("ppppppppppppppppppppppppppppppppppppppppppp---${position}");
-   }
+      //   print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa----------------------------${DateTime.now()}----------");
+    }
+
     /// you can see this log in logcat
     print('FLUTTER BACKGROUND SERVICE: ${DateTime.now()}');
 
@@ -428,15 +448,3 @@ void onStart(ServiceInstance service) async {
     );
   });
 }
-
-/// Background processing is running form here below now check the code-----------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-

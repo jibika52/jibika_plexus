@@ -16,14 +16,10 @@ class TrackingMapScreen extends StatefulWidget {
 class _TrackingMapScreenState extends State<TrackingMapScreen> {
   late Position position;
   Completer<GoogleMapController> _controller = Completer(); 
-  static late CameraPosition _kGoogle =   CameraPosition(
-    target:  LatLng(23.8100645, 90.4221128),
-    zoom: 16,
-  );
+  static late CameraPosition _kGoogle ;
   final Set<Marker> _markers = {};
   final Set<Polyline> _polyline = {};
   // list of locations to display polylines
-  double dd=20.66;
   List<LatLng> latLen = [
     //  LatLng(widget.lat,widget.lon),
     LatLng(23.8100645, 90.4221128),
@@ -32,6 +28,10 @@ class _TrackingMapScreenState extends State<TrackingMapScreen> {
   @override
   void initState() {
     // TODO: implement initState
+    _kGoogle =   CameraPosition(
+      target:  LatLng(widget.lat, widget.lon),
+      zoom: 16,
+    );
     super.initState(); 
     for(int i=0; i<latLen.length; i++){
       _markers.add(

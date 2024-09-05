@@ -483,6 +483,66 @@ class CustomHttpRequestClass{
 
 
 
+  ///  Get Movement Trackable Employee List-------------------------------------------------------------------------
+  GetMovementTrackableEmployeeListHttpFunction(String UserId,String AttDate,BuildContext context)async{
+    dynamic  getMovementTrackableEmployeeList  ;
+    var body = jsonEncode({
+      "UserId":"$UserId",
+      "STATUS":"Y"
+    });
+    try{
+      var data=await http.post(Uri.parse("${BASEURL}/${GetMovementTrackableEmployeeList}"),
+          headers: {
+            "Content-Type": "application/json",
+            "username": "jibikaapps",
+            "password": "20jibika24",
+          },
+          body: body
+      ).then((http.Response response) {
+        getMovementTrackableEmployeeList =jsonDecode(response.body)["data"];
+
+        print("-----------------------------$getMovementTrackableEmployeeList");
+      });
+      return getMovementTrackableEmployeeList;
+    }
+    catch(e){
+      print("  getMovementTrackableEmployeeList Catch error ============================ ${e}");
+    }
+  }
+
+
+
+  ///  Get Movement Trackable Employee List-------------------------------------------------------------------------
+  GetMovementTrackableEmployeeByDateHttpFunction(String UserId,String AttDate,String ID_CARD_NO,BuildContext context)async{
+    dynamic  GetMovementTrackableEmployeeByDate  ;
+    var body = jsonEncode({
+      "UserId":"$UserId",
+      "AttDate":"$AttDate",
+      "attendanceType": "GENERAL",
+      "ID_CARD_NO" : "$ID_CARD_NO"
+    });
+    try{
+      var data=await http.post(Uri.parse("${BASEURL}/${GetMovementTrackableEmployeeByDate}"),
+          headers: {
+            "Content-Type": "application/json",
+            "username": "jibikaapps",
+            "password": "20jibika24",
+          },
+          body: body
+      ).then((http.Response response) {
+        GetMovementTrackableEmployeeByDate =jsonDecode(response.body)["data"];
+
+        print("-----------------------------$GetMovementTrackableEmployeeByDate");
+      });
+      return GetMovementTrackableEmployeeByDate;
+    }
+    catch(e){
+      print("  GetMovementTrackableEmployeeByDate Catch error ============================ ${e}");
+    }
+  }
+
+
+
 
 
 
