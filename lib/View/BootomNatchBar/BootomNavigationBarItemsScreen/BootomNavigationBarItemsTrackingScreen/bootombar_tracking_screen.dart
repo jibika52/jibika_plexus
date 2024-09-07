@@ -269,9 +269,11 @@ class _BootomNavigationBarItemsTrackingScreenState extends State<BootomNavigatio
                                   ),
                                   SizedBox(width: 10,),
                                   CustomTrackNowButton(b_text: "Track history",  onTap: () {
-                                    Provider.of<TrackingController>(context,listen: false).GetEmployeeLocaltionInfoProvider("01889173335", "${DateFormat("dd-MMM-yyyy").format(DateTime.now())}", context);
+
+                                    Provider.of<TrackingController>(context,listen: false).GetEmployeeLocaltionInfoProvider("${GetStorage().read("mobile_id")}", "${selected2Datee}","${value.GetMovementTrackableEmployeeList[index]["EMPCODE"]}", context);
                                     Navigator.push(context, CupertinoPageRoute(builder: (context) => EmployeeTrackinScreen(image: "${value.GetMovementTrackableEmployeeList[index]["EMP_PHOTO_PATH"]}", name: "${value.GetMovementTrackableEmployeeList[index]["EMPLOYEE_NAME"]}", e_code: "${value.GetMovementTrackableEmployeeList[index]["EMPCODE"]}",
-                                        e_deg:"${value.GetMovementTrackableEmployeeList[index]["DESIG_NAME"]}", e_dep: "${value.GetMovementTrackableEmployeeList[index]["DEPT_NAME"]}",),));
+                                        e_deg:"${value.GetMovementTrackableEmployeeList[index]["DESIG_NAME"]}", e_dep: "${value.GetMovementTrackableEmployeeList[index]["DEPT_NAME"]}",
+                                        selectedDate: "$selected2Datee",ID_CARD_NO: "${value.GetMovementTrackableEmployeeList[index]["ID_CARD_NO"]}",),));
                                     }, )
 
 
@@ -294,7 +296,7 @@ class _BootomNavigationBarItemsTrackingScreenState extends State<BootomNavigatio
     );
 
   }
-  String selected2Datee = DateFormat.yMMMd().format(DateTime.now()).toString();
+  String selected2Datee = DateFormat("dd-MMM-yyyy").format(DateTime.now()).toString();
 
   Future<void> _select2Date(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
@@ -302,7 +304,7 @@ class _BootomNavigationBarItemsTrackingScreenState extends State<BootomNavigatio
         firstDate: DateTime(2015, 8),
         lastDate: DateTime(2101));
     if (picked != null && picked != selected2Datee) {
-      final df = new DateFormat.yMMMd();
+      final df = new DateFormat("dd-MMM-yyyy");
       setState(() {
         selected2Datee = df.format(picked);
       });

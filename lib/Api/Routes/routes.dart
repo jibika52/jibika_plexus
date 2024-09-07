@@ -84,5 +84,5 @@
     String GetMovementTrackableEmployeeList="Employee/GetMovementTrackableEmployeeList";
 
 
-  ///  GetMovementTrackableEmployeeByDate
-    String GetMovementTrackableEmployeeByDate="Attendance/GetAttByDate";
+  ///  Get Att By Date
+    String GetMovementTrackableEmployeeByAttendanceDate="Attendance/GetAttByDate";

@@ -63,11 +63,11 @@ class _TrackingMapScreenState extends State<TrackingMapScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color(0xFF0F9D58),
-        // title of app
-        title: Text("GFG"),
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: Color(0xFF0F9D58),
+      //   // title of app
+      //   title: Text("GFG"),
+      // ),
       body: Container(
         child: SafeArea(
           child: GoogleMap(

@@ -1,5 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:geocoding/geocoding.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:intl/intl.dart';
+import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/SelfBootomNavigationConvince/CreateConvieyance/create_convieyance.dart';
 
 import '../../../CustomWidget/CustomAppBar/CustomDefaultAppBar/custom_default_app_bar.dart';
 import '../../../CustomWidget/CustomImage/custom_image.dart';
@@ -13,6 +17,24 @@ class SelfBootomNavigationConvienceScreen extends StatefulWidget {
 }
 
 class _SelfBootomNavigationConvienceScreenState extends State<SelfBootomNavigationConvienceScreen> {
+
+  late Position position;
+  _getCurrentLocation() async{
+    position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+  }
+  @override
+  void initState(){
+    _getCurrentLocation();
+
+    // TODO: implement initState
+    super.initState();
+  }
+  @override
+  void didChangeDependencies() {
+    _getCurrentLocation();
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,9 +44,7 @@ class _SelfBootomNavigationConvienceScreenState extends State<SelfBootomNavigati
         width: double.infinity,
         child: Column(
           children: [
-
             /// Second part -----------------------------
-
             InkWell(
               onTap: () {
                 _select2Date(context);
@@ -190,9 +210,18 @@ class _SelfBootomNavigationConvienceScreenState extends State<SelfBootomNavigati
                   ],
                 ),
               ),
-            )
+            ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        shape:CircleBorder(),
+        backgroundColor: CustomButtonColor,
+        onPressed: () {
+        Navigator.push(context, CupertinoPageRoute(builder: (context) => CreateConveyanceScreen(
+          lat: position!.latitude,lon:position!.longitude ,
+        ),));
+      },child: Icon(Icons.add,size: 30,color: Main_Theme_WhiteCollor,),
       ),
     );
   }

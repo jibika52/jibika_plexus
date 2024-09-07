@@ -454,12 +454,12 @@ class CustomHttpRequestClass{
 
 
   ///  Get Employee Localtion Info List--------------------------------------------------------------------------
-  GetEmployeeLocaltionInfoHttpFunction(String UserId,String AttDate,BuildContext context)async{
+  GetEmployeeLocaltionInfoHttpFunction(String UserId,String AttDate, String EMPCODE,BuildContext context)async{
     dynamic  getEmployeeLocaltionInfoList  ;
     var body = jsonEncode({
       "UserId":"$UserId",
       "AttDate":"$AttDate",
-      "EMPCODE": "${GetStorage().read("Empcode")}"
+      "EMPCODE": "$EMPCODE"
     });
     try{
       var data=await http.post(Uri.parse("${BASEURL}/${GetEmployeeLocaltionInfo}"),
@@ -513,8 +513,8 @@ class CustomHttpRequestClass{
 
 
   ///  Get Movement Trackable Employee List-------------------------------------------------------------------------
-  GetMovementTrackableEmployeeByDateHttpFunction(String UserId,String AttDate,String ID_CARD_NO,BuildContext context)async{
-    dynamic  GetMovementTrackableEmployeeByDate  ;
+  GetMovementTrackableEmployeeByAttendanceDateHttpFunction(String UserId,String AttDate,String ID_CARD_NO,BuildContext context)async{
+    dynamic  GetMovementTrackableEmployeeByAttendanceDatelist  ;
     var body = jsonEncode({
       "UserId":"$UserId",
       "AttDate":"$AttDate",
@@ -522,7 +522,7 @@ class CustomHttpRequestClass{
       "ID_CARD_NO" : "$ID_CARD_NO"
     });
     try{
-      var data=await http.post(Uri.parse("${BASEURL}/${GetMovementTrackableEmployeeByDate}"),
+      var data=await http.post(Uri.parse("${BASEURL}/${GetMovementTrackableEmployeeByAttendanceDate}"),
           headers: {
             "Content-Type": "application/json",
             "username": "jibikaapps",
@@ -530,14 +530,14 @@ class CustomHttpRequestClass{
           },
           body: body
       ).then((http.Response response) {
-        GetMovementTrackableEmployeeByDate =jsonDecode(response.body)["data"];
+        GetMovementTrackableEmployeeByAttendanceDatelist =jsonDecode(response.body)["data"];
 
-        print("-----------------------------$GetMovementTrackableEmployeeByDate");
+        print("-----------------------------$GetMovementTrackableEmployeeByAttendanceDatelist");
       });
-      return GetMovementTrackableEmployeeByDate;
+      return GetMovementTrackableEmployeeByAttendanceDatelist;
     }
     catch(e){
-      print("  GetMovementTrackableEmployeeByDate Catch error ============================ ${e}");
+      print("  GetMovementTrackableEmployeeByAttendanceDatelist Catch error ============================ ${e}");
     }
   }
 

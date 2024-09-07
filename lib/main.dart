@@ -51,7 +51,6 @@ class MyApp extends StatelessWidget {
         /// ----------Home Screen---------
         //      home:BootomNatchBarScreen(),
         //   home:BootomNatchBarScreen(),
-
         /// ----------SplashScreen--------
          home:MainSplashPageViewScreen(),
         //    home:SalfBootomNatchBarScreen(currentIndex: 4,),
