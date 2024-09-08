@@ -45,7 +45,7 @@ class _MyselfNewFaceScreenState extends State<MyselfNewFaceScreen> {
               width: double.infinity,
               padding: EdgeInsets.only(bottom: 8),
               child: ListView.builder(
-                itemCount: 5,
+                itemCount: value.selfAdminAdmin_Get_Emp_New_FaceList==null?0:value.selfAdminAdmin_Get_Emp_New_FaceList.length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
                   return Container(
@@ -92,7 +92,7 @@ class _MyselfNewFaceScreenState extends State<MyselfNewFaceScreen> {
                               height: 75,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(7),
-                                  image: DecorationImage(image: NetworkImage("${GetStorage().read("APPS_IMG_BASEURL")}${value.selfAdminAdmin_Get_Emp_New_FaceList[index]["EmployeeImage"]}"),fit: BoxFit.fill,)
+                                  image:value.selfAdminAdmin_Get_Emp_New_FaceList==null?DecorationImage(image: AssetImage("Assets/SelfIcon/test_attendance.png")) : DecorationImage(image: NetworkImage("${GetStorage().read("APPS_IMG_BASEURL")}${value.selfAdminAdmin_Get_Emp_New_FaceList[index]["EmployeeImage"]??""}"),fit: BoxFit.fill,)
                               ),
 
                             ),

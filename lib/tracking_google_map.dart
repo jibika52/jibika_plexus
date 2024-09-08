@@ -23,7 +23,7 @@ class _TrackingMapScreenState extends State<TrackingMapScreen> {
   List<LatLng> latLen = [
     //  LatLng(widget.lat,widget.lon),
     LatLng(23.8100645, 90.4221128),
-    //  LatLng(12.971599, 77.594563),
+    LatLng(23.8200145, 90.4321000),
   ];
   @override
   void initState() {
