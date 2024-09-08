@@ -131,3 +131,5 @@ String Loremtext="Lorem sed do eiusmod tempor incididunt ut labore et dolore mag
 // GetStorage().write("ATTENDANCE_START_TIME", i.ATTENDANCE_START_TIME);
 // GetStorage().write("ATTENDANCE_Status", i.Status);
 // GetStorage().write("IsTrack", "${self_OR_Admin_Short_Description["IsTrack"]}");
+// GetStorage().write("is_Start_Journey","false");
+// GetStorage().write("select_conveyance", "");

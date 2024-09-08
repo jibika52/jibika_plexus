@@ -93,7 +93,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
         "${DateFormat('dd-MMM-yyyy').format(DateTime.now())}",
         "${GetStorage().read("IdCardNo")}",
         "GENERAL",
-        context
+         context
     );
     Provider.of<HomeProvider>(context,listen: false).dashboardTodaysBirthdayEmployeeInfoProvider("${GetStorage().read("mobile_id")}", "", context); // Todays birthday
     //    Provider.of<CounterProvider>(context,listen: false).setcountSecondfunction(); // Todays birthday

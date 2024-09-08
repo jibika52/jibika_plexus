@@ -35,11 +35,17 @@ class _CreateConveyanceScreenState extends State<CreateConveyanceScreen> {
   TextEditingController _noteController=TextEditingController();
   Timer? timer;
   double increase_punch_progress_bar=0.0001;
-
+  @override
+  void initState() {
+   _amountController.text= GetStorage().read("select_conveyance")??"00";
+   selected_car_index= int.parse("${GetStorage().read("select_car_type")}");
+    // TODO: implement initState
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: home_default_color,
+  backgroundColor: Main_Theme_WhiteCollor,
       appBar: PreferredSize(preferredSize: Size.fromHeight(70), child: CustomDefaultAppBar(onTap: () {
         Navigator.pop(context);
       }, text: "Conveyance")),
@@ -57,15 +63,28 @@ class _CreateConveyanceScreenState extends State<CreateConveyanceScreen> {
           children: [
             Expanded(
                 child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50)
+                  ),
                   height:200,
                   width: double.infinity,
-                  color: Colors.red,
+                  padding: EdgeInsets.only(bottom: 10),
                   child:  TrackingMapScreen(lat: widget.lat, lon: widget.lon),
                 )),
 
-            SizedBox(height: 50) ,
+
+            //SizedBox(height: 30) ,
+            GetStorage().read("is_Start_Journey")==null || GetStorage().read("is_Start_Journey")=="false"?Container(): Container(
+              height: 100,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10),bottomRight: Radius.circular(10)),
+                image: DecorationImage(image: AssetImage("Assets/SelfIcon/car_conveyance_gif.gif"),fit: BoxFit.fill),
+              ),
+            ),
+            SizedBox(height: 10) ,
             Container(
-              height: 120,
+              height: 100,
               width: double.infinity,
               decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(10),),
               ),
@@ -77,6 +96,7 @@ class _CreateConveyanceScreenState extends State<CreateConveyanceScreen> {
                     onTap: () {
                       setState(() {
                         selected_car_index=index;
+                        GetStorage().write("select_car_type", "$index");
                       });
                     },
                     child: Container(
@@ -84,7 +104,7 @@ class _CreateConveyanceScreenState extends State<CreateConveyanceScreen> {
                         color:selected_car_index==index?presentsent_color: home_default_color
                       ),
                       height: 150,
-                      width: 110,
+                      width: 85,
                       padding: EdgeInsets.all(5),
                       margin: EdgeInsets.only(right: 10),
                       child: Column(
@@ -102,7 +122,7 @@ class _CreateConveyanceScreenState extends State<CreateConveyanceScreen> {
                     ),
                   )),
             ),
-            SizedBox(height: apps_div_margin+30),
+            SizedBox(height: apps_div_margin+20),
           //  CustomTextFormFieldd(maxline: 1, height: 60, hintext: "Enter Amount", controller: _amountController,keyboardType: TextInputType.number, obscureText: false,suffix: Text("data"),onChanged: (value) {
             // },),
            Column(
@@ -111,11 +131,28 @@ class _CreateConveyanceScreenState extends State<CreateConveyanceScreen> {
                Padding(
                  padding:  EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*0.3),
                  child: TextFormField(
+
+                   controller: _amountController,
+                   onChanged: (value) {
+                     setState(() {
+                       GetStorage().write("select_conveyance", "${_amountController.text}");
+                     });
+                   },
+                   style: GoogleFonts.poppins(
+                    fontSize: 30,
+                    fontWeight: FontWeight.w600,
+                    color: Main_Theme_textColor,
+                    ),
                    keyboardType: TextInputType.number,
                    textAlign: TextAlign.center,
                    decoration: InputDecoration(
+                     enabledBorder:UnderlineInputBorder(
+                         borderSide: BorderSide(
+                           color: Main_Theme_textColor.withOpacity(0.3),
+                         )
+                     ),
                      hintText: "Fare",
-                     hintStyle: TextStyle(
+                     hintStyle: GoogleFonts.poppins(
                        fontSize: 30,
                        fontWeight: FontWeight.w600,
                        color: Main_Theme_textColor.withOpacity(0.5)
@@ -124,38 +161,71 @@ class _CreateConveyanceScreenState extends State<CreateConveyanceScreen> {
                    ),
                  ),
                ),
-               SizedBox(height: apps_div_margin+40),
+               SizedBox(height: 15),
+               TextFormField(
+                 controller: _noteController,
+                 decoration: InputDecoration(
+                 enabledBorder:UnderlineInputBorder(
+                   borderSide: BorderSide(
+                     color: Main_Theme_textColor.withOpacity(0.3),
+                   )
+                 ),
+                   hintText: "Enter Note",
+                   hintStyle: TextStyle(
+                       fontSize: 16,
+                       fontWeight: FontWeight.w400,
+                       color: Main_Theme_textColor.withOpacity(0.5)
+                   ),
+                   contentPadding: EdgeInsets.only(left: 10),
+                 ),
+               ),
+               SizedBox(height: apps_div_margin+30),
 
                GestureDetector(
                  onLongPress: () => setState(() {
-                    timer = Timer.periodic(Duration(microseconds: 1), (timer) {
-                     setState(() {
-                       if(increase_punch_progress_bar>=0.9999999){
-                         increase_punch_progress_bar=0.0;
-                         GetStorage().write("is_Start_Journey","true");
-                         ElegantNotification(
-                           borderRadius: BorderRadius.circular(11),
-                           width: 380,
-                           iconSize: 25,
-                           background: presentsent_color,
-                           progressIndicatorBackground: presentsent_color,
-                           progressIndicatorColor: absent_color,
-                           // position: Alignment.center,
-                           title:  ColorCustomText(fontSize: 16, fontWeight: FontWeight.w500, text:
-                           "Start Journey Successful",
-                               letterSpacing: 0.3, textColor: Main_Theme_textColor),
-                           description: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "Thanks from JIBIKA PAYSCALE!..", letterSpacing: 0.3, textColor: Main_Theme_textColor),
-                           onDismiss: () {
-                             print('Message when the notification is dismissed');
-                           }, icon: Icon(Icons.info_outlined,color:Colors.black,),
-                         ).show(context);
-                         timer.cancel();
-                       }else{
-                         increase_punch_progress_bar=increase_punch_progress_bar+0.0001;
-                       }
-                     });
+                  if(selected_car_index==-1 &&   GetStorage().read("is_Start_Journey")=="false"){
+                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(duration: Duration(seconds: 1), content: Text("Please Select vehicle")));
                    }
-                   );
+                  else if(_amountController.text.isEmpty &&   GetStorage().read("is_Start_Journey")=="true"){
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(duration: Duration(seconds: 1), content: Text("Enter Fare Amount")));
+                  }
+                   else{
+                     timer = Timer.periodic(Duration(microseconds: 1), (timer) {
+                       setState(() {
+                         if(increase_punch_progress_bar>=0.9999999){
+                           increase_punch_progress_bar=0.0;
+                           if(GetStorage().read("is_Start_Journey")=="false" || GetStorage().read("is_Start_Journey")==null){
+                             GetStorage().write("is_Start_Journey","true");
+                           }else{
+                             GetStorage().write("is_Start_Journey","false");
+                             GetStorage().write("select_conveyance", "");
+                             GetStorage().write("select_car_type", "-1");
+                            _amountController.text="";
+                             selected_car_index=-1;
+                           }
+                           ElegantNotification(
+                             borderRadius: BorderRadius.circular(11),
+                             width: 380,
+                             iconSize: 25,
+                             background: presentsent_color,
+                             progressIndicatorBackground: presentsent_color,
+                             progressIndicatorColor: absent_color,
+                             // position: Alignment.center,
+                             title:  ColorCustomText(fontSize: 16, fontWeight: FontWeight.w500, text:
+                             "Start Journey Successful",
+                                 letterSpacing: 0.3, textColor: Main_Theme_textColor),
+                             description: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "Thanks from JIBIKA PAYSCALE!..", letterSpacing: 0.3, textColor: Main_Theme_textColor),
+                             onDismiss: () {
+                               print('Message when the notification is dismissed');
+                             }, icon: Icon(Icons.info_outlined,color:Colors.black,),
+                           ).show(context);
+                           timer.cancel();
+                         }else{
+                           increase_punch_progress_bar=increase_punch_progress_bar+0.0001;
+                         }
+                       });
+                     } );
+                   }
                  }
                  ),
                  onLongPressEnd: (_) => setState(() {
@@ -186,7 +256,7 @@ class _CreateConveyanceScreenState extends State<CreateConveyanceScreen> {
                            center: Column(
                              mainAxisAlignment: MainAxisAlignment.center,
                              children: [
-                              Text("Start",textAlign: TextAlign.center,style: GoogleFonts.poppins(
+                              Text(GetStorage().read("is_Start_Journey")==null || GetStorage().read("is_Start_Journey")=="false"?"Start":"End",textAlign: TextAlign.center,style: GoogleFonts.poppins(
                                 fontWeight: FontWeight.w600,fontSize: 22,
                                 color:CustomAppbarColor,
                               ),),
