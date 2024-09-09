@@ -8,6 +8,7 @@ import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 import 'package:intl/intl.dart';
+import 'package:jibika_plexus/Controller/TrackingController/tracking_controller.dart';
 import 'package:karmm_callkit/karmm_callkit.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
@@ -182,6 +183,7 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
                 onTap: () {
                   setState(() {
                     widget.currentIndex=3;
+                    Provider.of<TrackingController>(context,listen: false).GetVehicleListHttpFunctionProvider("${GetStorage().read("mobile_id")}", "10/04/2024", context);
                   });
                 },
                 child: Container(
@@ -373,12 +375,18 @@ void onStart(ServiceInstance service) async {
 
   ConnectycubeFlutterCallKit.setOnLockScreenVisibility(isVisible: true);
 
+
   late Position position;
+  _getCurrentLocation() async{
+    position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+  }
 
   Timer.periodic(Duration(minutes: 9), (timer) async {
 
-    position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    _getCurrentLocation();
     print("Location--------------- ${position.latitude} ${position.longitude}");
+
+
     // List<Placemark> placemarks = await placemarkFromCoordinates(
     //     position.latitude,
     //     position.longitude

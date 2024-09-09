@@ -547,6 +547,35 @@ class CustomHttpRequestClass{
 
 
 
+  ///  GetVehicleList List-------------------------------------------------------------------------
+  GetVehicleListHttpFunction(String UserId,String AttDate,BuildContext context)async{
+    dynamic  getVehicleList  ;
+    var body = jsonEncode({
+      "UserId":"$UserId",
+    });
+    try{
+      var data=await http.post(Uri.parse("${BASEURL}/${GetVehicleList}"),
+          headers: {
+            "Content-Type": "application/json",
+            "username": "jibikaapps",
+            "password": "20jibika24",
+          },
+          body: body
+      ).then((http.Response response) {
+        getVehicleList =jsonDecode(response.body)["data"];
+
+        print("-----------------------------$getVehicleList");
+      });
+      return getVehicleList;
+    }
+    catch(e){
+      print("  get Vehicle List Catch error ============================ ${e}");
+    }
+  }
+
+
+
+
 
 
 

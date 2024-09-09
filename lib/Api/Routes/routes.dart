@@ -84,5 +84,9 @@
     String GetMovementTrackableEmployeeList="Employee/GetMovementTrackableEmployeeList";
 
 
-  ///  Get Att By Date
+  ///  Get Att By Date for tracking screen Design
     String GetMovementTrackableEmployeeByAttendanceDate="Attendance/GetAttByDate";
+
+
+  ///  Get Vehicles or vehicle list
+    String GetVehicleList="Employee/GetVehicles";

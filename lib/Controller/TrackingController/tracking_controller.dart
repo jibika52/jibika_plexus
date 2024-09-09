@@ -24,4 +24,11 @@ class TrackingController with ChangeNotifier{
     GetMovementTrackableEmployeeByAttendanceDatelist =await CustomHttpRequestClass().GetMovementTrackableEmployeeByAttendanceDateHttpFunction(UserId,AttDate,ID_CARD_NO,context);
     notifyListeners();
   }
+
+  ///   GetVehicle List-------------------------------------------------------------------------
+  dynamic GetVehicleList;
+  GetVehicleListHttpFunctionProvider(String UserId,String AttDate ,BuildContext context)async{
+    GetVehicleList =await CustomHttpRequestClass().GetVehicleListHttpFunction(UserId,AttDate,context);
+    notifyListeners();
+  }
 }

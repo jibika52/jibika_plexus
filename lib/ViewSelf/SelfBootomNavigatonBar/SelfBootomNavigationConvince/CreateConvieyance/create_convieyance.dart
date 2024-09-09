@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jibika_plexus/Controller/TrackingController/tracking_controller.dart';
 import 'package:jibika_plexus/CustomWidget/CustomAppBar/CustomDefaultAppBar/custom_default_app_bar.dart';
 import 'package:jibika_plexus/CustomWidget/CustomButton/custom_button.dart';
 import 'package:jibika_plexus/CustomWidget/CustomTExtFormField/CustomTextFromField/custom_text_from_fild.dart';
@@ -83,44 +84,59 @@ class _CreateConveyanceScreenState extends State<CreateConveyanceScreen> {
               ),
             ),
             SizedBox(height: 10) ,
-            Container(
-              height: 100,
-              width: double.infinity,
-              decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(10),),
-              ),
-              padding: EdgeInsets.only(left: 10),
-              child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: vehicle_image_list.length,
-                  itemBuilder: (context, index) => InkWell(
-                    onTap: () {
-                      setState(() {
-                        selected_car_index=index;
-                        GetStorage().write("select_car_type", "$index");
-                      });
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(10)),
-                        color:selected_car_index==index?presentsent_color: home_default_color
-                      ),
-                      height: 150,
-                      width: 85,
-                      padding: EdgeInsets.all(5),
-                      margin: EdgeInsets.only(right: 10),
-                      child: Column(
-                        children: [
-                          Expanded(
-                            child: Container(
-                                decoration: BoxDecoration(border: Border.all(color: selected_car_index==index?Main_Theme_WhiteCollor:Main_Theme_textColor.withOpacity(0.3)),borderRadius: BorderRadius.circular(10)),
-                                padding: EdgeInsets.all(7),
-                                child: Image.asset("${vehicle_image_list[index]}",color: selected_car_index==index?Main_Theme_WhiteCollor:Main_Theme_textColor,)),
-                          ),
+            Consumer<TrackingController>(
+              builder: (context, value, child) =>
+                  Container(
+                height: 100,
+                width: double.infinity,
+                decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(10),),
+                ),
+                padding: EdgeInsets.only(left: 10),
+                child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    //    itemCount: vehicle_image_list.length,
+                  itemCount:value.GetVehicleList==null?0: value.GetVehicleList.length,
+                    itemBuilder: (context, index) => InkWell(
+                      onTap: () {
+                        setState(() {
+                          GetStorage().read("select_car_type")=="-1"?
+                          selected_car_index=index:selected_car_index=int.parse("${GetStorage().read("select_car_type")}");
+                        });
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                          //    color:  home_default_color
+                        ),
+                        height: 150,
+                        width: 85,
+                        padding: EdgeInsets.all(5),
+                        margin: EdgeInsets.only(right: 10),
+                        child: Column(
+                          children: [
+                            Expanded(
+                              child: Container(
+                                  decoration: BoxDecoration(
+                                      color:selected_car_index==index?presentsent_color: home_default_color,
+                                      border: Border.all(
+                                      color:  Main_Theme_textColor.withOpacity(0.3)
+                                  ),
+                                      borderRadius: BorderRadius.circular(10)),
+                                  padding: EdgeInsets.all(7),
+                                  child: Image.asset("${vehicle_image_list[index]}"
+                                    ,
+                                    color: Main_Theme_textColor,
 
-                          ColorCustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "${care_name_list[index]}", letterSpacing: 0.3, textColor: selected_car_index==index?Main_Theme_WhiteCollor:Main_Theme_textColor,),
-                        ],
+                                  )
+                              ),
+                            ),
+
+                            ColorCustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "${care_name_list[index]}", letterSpacing: 0.3, textColor:  Main_Theme_textColor,),
+                          ],
+                        ),
                       ),
-                    ),
-                  )),
+                    )),
+              ),
             ),
             SizedBox(height: apps_div_margin+20),
           //  CustomTextFormFieldd(maxline: 1, height: 60, hintext: "Enter Amount", controller: _amountController,keyboardType: TextInputType.number, obscureText: false,suffix: Text("data"),onChanged: (value) {
@@ -181,7 +197,8 @@ class _CreateConveyanceScreenState extends State<CreateConveyanceScreen> {
                ),
                SizedBox(height: apps_div_margin+30),
 
-               GestureDetector(
+               /// Start Conveyance and End Conveyance Punch Section  ----------------------
+                GestureDetector(
                  onLongPress: () => setState(() {
                   if(selected_car_index==-1 &&   GetStorage().read("is_Start_Journey")=="false"){
                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(duration: Duration(seconds: 1), content: Text("Please Select vehicle")));
@@ -196,12 +213,14 @@ class _CreateConveyanceScreenState extends State<CreateConveyanceScreen> {
                            increase_punch_progress_bar=0.0;
                            if(GetStorage().read("is_Start_Journey")=="false" || GetStorage().read("is_Start_Journey")==null){
                              GetStorage().write("is_Start_Journey","true");
+                             GetStorage().write("select_car_type", "$selected_car_index");
                            }else{
                              GetStorage().write("is_Start_Journey","false");
                              GetStorage().write("select_conveyance", "");
                              GetStorage().write("select_car_type", "-1");
                             _amountController.text="";
                              selected_car_index=-1;
+                             Navigator.pop(context);
                            }
                            ElegantNotification(
                              borderRadius: BorderRadius.circular(11),
@@ -301,7 +320,11 @@ class _CreateConveyanceScreenState extends State<CreateConveyanceScreen> {
     "CAR",
     "BUS",
     "TRAIN",
-    "pLANE", 
+    "BOAT",
+    "LAUNCH",
+    "FERRY",
+    "HELICOPTER"
+    "PLANE",
   ];
   int selected_car_index=-1;
 }
