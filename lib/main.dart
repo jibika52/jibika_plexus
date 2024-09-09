@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:jibika_plexus/Controller/CounterProvider/counter_provider.dart';
+import 'package:jibika_plexus/tracking_google_map_test.dart';
 import 'package:month_year_picker/month_year_picker.dart';
 import 'package:provider/provider.dart';
 import 'Controller/AdminEmployeeController/admin_employee_controller.dart';
@@ -52,7 +53,8 @@ class MyApp extends StatelessWidget {
         //      home:BootomNatchBarScreen(),
         //   home:BootomNatchBarScreen(),
         /// ----------SplashScreen--------
-         home:MainSplashPageViewScreen(),
+        home:MainSplashPageViewScreen(),
+        //     home:TrackingMapScreenTEstPoliline(),
         //    home:SalfBootomNatchBarScreen(currentIndex: 4,),
         //  home:TestLongPress(),
         //   home:MonthPicker(),

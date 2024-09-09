@@ -268,9 +268,13 @@ class _SelfBootomNavigationConvienceScreenState extends State<SelfBootomNavigati
         shape:CircleBorder(),
         backgroundColor: CustomButtonColor,
         onPressed: () {
-        Navigator.push(context, CupertinoPageRoute(builder: (context) => CreateConveyanceScreen(
-          lat: position!.latitude,lon:position!.longitude ,
-        ),));
+
+          Future.delayed(Duration(seconds: 2),() {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => CreateConveyanceScreen(
+              lat: position!.latitude,lon:position!.longitude ,
+            ),));
+          },);
+
       },child: Icon(Icons.add,size: 30,color: Main_Theme_WhiteCollor,),
       ),
     );

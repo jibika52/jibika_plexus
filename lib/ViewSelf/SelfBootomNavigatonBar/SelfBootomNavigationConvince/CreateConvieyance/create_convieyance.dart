@@ -80,7 +80,7 @@ class _CreateConveyanceScreenState extends State<CreateConveyanceScreen> {
               width: double.infinity,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10),bottomRight: Radius.circular(10)),
-                image: DecorationImage(image: AssetImage("Assets/SelfIcon/car_conveyance_gif.gif"),fit: BoxFit.fill),
+                image: DecorationImage(image: AssetImage("Assets/SelfIcon/jibika_conveyancegiff.gif"),fit: BoxFit.fill),
               ),
             ),
             SizedBox(height: 10) ,
