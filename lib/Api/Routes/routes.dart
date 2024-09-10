@@ -90,3 +90,7 @@
 
   ///  Get Vehicles or vehicle list
     String GetVehicleList="Employee/GetVehicles";
+
+
+  ///  Create Conveyance
+    String SaveConveyance="Attendance/SaveConveyance";

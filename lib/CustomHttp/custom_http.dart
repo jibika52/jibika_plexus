@@ -157,6 +157,7 @@ class CustomHttpRequestClass{
           GetStorage().write("is_Start_Journey","false");
           GetStorage().write("select_conveyance", "");
           GetStorage().write("select_car_type","-1");
+          GetStorage().write("for_end_conveyance_code","0");
           //   print("$loginData");
           ElegantNotification(
             borderRadius: BorderRadius.circular(11),

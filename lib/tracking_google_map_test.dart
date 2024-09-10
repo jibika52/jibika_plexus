@@ -39,10 +39,6 @@ class _TrackingMapScreenTEstPolilineState extends State<TrackingMapScreenTEstPol
     }
   }
 
-  void permissionn()async{
-    LocationPermission permission = await Geolocator.requestPermission();
-    print(permission);
-  }
   _getCurrentLocation() async{
     position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
 
@@ -86,19 +82,27 @@ class _TrackingMapScreenTEstPolilineState extends State<TrackingMapScreenTEstPol
   @override
   void initState() {
     Provider.of<TrackingController>(context,listen: false).GetEmployeeLocaltionInfoProvider("${GetStorage().read("mobile_id")}", "09-Sep-2024","60670", context);
-
-    permissionn();
     _getCurrentLocation();
     // TODO: implement initState
     super.initState(); 
 
   }
-
+  int count = 0;
+  late Timer timer;
   @override
   Widget build(BuildContext context) {
+    timer = Timer.periodic(Duration(seconds: 1), (timer) {
+      print("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk  $Position");
+      if(count==5){
+        timer.cancel();
+      }else{
+        count++;
+      }
+    });
     dynamic locationdata=Provider.of<TrackingController>(context).EmployeeLocaltionInfoList;
     print("$locationdata");
-    return _kGoogle==null?Center(child: CircularProgressIndicator(),): Container(
+
+    return count<4?Center(child: CircularProgressIndicator(),): Container(
       child: GoogleMap(
         //given camera position
         initialCameraPosition: _kGoogle,

@@ -62,6 +62,8 @@ Color pending_color=Color(0xffE48E29);
 
 ///--------------- Custom TExt font size -----------------------///
 
+late double  d_height;
+late double  d_width;
 
 const font11=11.0;
 const font12header=13.0;
@@ -133,3 +135,4 @@ String Loremtext="Lorem sed do eiusmod tempor incididunt ut labore et dolore mag
 // GetStorage().write("IsTrack", "${self_OR_Admin_Short_Description["IsTrack"]}");
 // GetStorage().write("is_Start_Journey","false");
 // GetStorage().write("select_conveyance", "");
+// GetStorage().write("for_end_conveyance_code", "");

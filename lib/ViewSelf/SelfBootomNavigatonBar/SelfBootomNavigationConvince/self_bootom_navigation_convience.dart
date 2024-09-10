@@ -21,22 +21,7 @@ class SelfBootomNavigationConvienceScreen extends StatefulWidget {
 
 class _SelfBootomNavigationConvienceScreenState extends State<SelfBootomNavigationConvienceScreen> {
 
-  late Position position;
-  _getCurrentLocation() async{
-    position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-  }
-  @override
-  void initState(){
-    _getCurrentLocation();
-    // TODO: implement initState
-    super.initState();
-  }
-  @override
-  void didChangeDependencies() {
-    _getCurrentLocation();
-    // TODO: implement didChangeDependencies
-    super.didChangeDependencies();
-  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -268,12 +253,9 @@ class _SelfBootomNavigationConvienceScreenState extends State<SelfBootomNavigati
         shape:CircleBorder(),
         backgroundColor: CustomButtonColor,
         onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => CreateConveyanceScreen(
 
-          Future.delayed(Duration(seconds: 2),() {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => CreateConveyanceScreen(
-              lat: position!.latitude,lon:position!.longitude ,
-            ),));
-          },);
+          ),));
 
       },child: Icon(Icons.add,size: 30,color: Main_Theme_WhiteCollor,),
       ),

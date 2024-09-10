@@ -415,6 +415,73 @@ class CustomHttpSelf{
 
 
 
+  ///  Create Conveyance --------------------------------------------------------------------------
+    createConveyance_By_Employee(
+        String AttendanceDate,
+        String AttendanceTime,
+        String Location,
+        String District,
+        String Division,
+        String PostalCode,
+        String SubLocality,
+        String StreetName,
+        String lat,
+        String lng,
+        int Empcode,
+        String Note,
+        String IsTrack,
+        int Amount,
+        int VehicleType,
+        int Code,
+        int Distance,
+        BuildContext context
+        )async{
+
+    dynamic  SaveLeaveRegister  ;
+    var body = jsonEncode({
+      "UserId":"${GetStorage().read("mobile_id")}",
+      "AttendanceDate":"$AttendanceDate",
+      "AttendanceTime":"$AttendanceTime",
+      "RefCardNo" : "${GetStorage().read("RfIdCardNo")}",
+      "Location" : "$Location",
+      "District" : "$District",
+      "Division" : "$Division",
+      "PostalCode" : "$PostalCode",
+      "SubLocality": "$SubLocality",
+      "StreetName" : "$StreetName",
+      "lat" : "$lat",
+      "lng" : "$lng",
+      "Empcode": Empcode,
+      "Note" : "$Note",
+      "IsTrack":"$IsTrack",
+      "Amount": Amount,
+      "VehicleType": VehicleType,
+      "Code":Code,
+      "Distance" :Distance
+    });
+    try{
+      var data=await http.post(Uri.parse("${BASEURL}/${SaveConveyance}"),
+          headers: {
+            "Content-Type": "application/json",
+            "username": "jibikaapps",
+            "password": "20jibika24",
+          },
+          body: body
+      ).then((http.Response response) {
+        SaveLeaveRegister =jsonDecode(response.body);
+        GetStorage().write("for_end_conveyance_code", "${SaveLeaveRegister["code"]}");
+      });
+      return SaveLeaveRegister;
+    }
+    catch(e){
+      print(" Create Conveyance Catch error ============================ ${e}");
+    }
+  }
+
+
+
+
+
 
 
 

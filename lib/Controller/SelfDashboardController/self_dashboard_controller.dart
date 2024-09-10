@@ -87,6 +87,36 @@ class SelfDashboardController with ChangeNotifier{
       String DUTYCARRIEDOUTBY,String MOBILENO,
       String STAFFCATEGORYCODE,String USERTYPEID, BuildContext context)async{
     SaveLeaveRegister =await CustomHttpSelf().selfAdminSaveLeaveRegister_By_Employee(LEAVETYPECODE, LEAVEDAYS, FROMDATE, TODATE, APPLYDATE, HALFDAY, HOLIDAYFOND, ATEENBONUSFLAG, LEAVEREASON, ADDRESSDURINGLEAVE, DUTYCARRIEDOUTBY, MOBILENO, STAFFCATEGORYCODE, USERTYPEID, context);
+    notifyListeners();
+  }
+
+
+  ///   self Admin Save Leave Register Provider--------------------------------------------------------------------------
+  dynamic createConveyance;
+  selfcreateConveyanceProvider(
+      String AttendanceDate,
+      String AttendanceTime,
+      String Location,
+      String District,
+      String Division,
+      String PostalCode,
+      String SubLocality,
+      String StreetName,
+      String lat,
+      String lng,
+      int Empcode,
+      String Note,
+      String IsTrack,
+      int Amount,
+      int VehicleType,
+      int Code,
+      int Distance,
+      BuildContext context
+      )
+
+  async{
+    SaveLeaveRegister =await CustomHttpSelf().createConveyance_By_Employee(AttendanceDate, AttendanceTime, Location, District, Division, PostalCode, SubLocality, StreetName, lat, lng, Empcode, Note, IsTrack, Amount, VehicleType, Code, Distance, context
+    );
 
     notifyListeners();
   }
