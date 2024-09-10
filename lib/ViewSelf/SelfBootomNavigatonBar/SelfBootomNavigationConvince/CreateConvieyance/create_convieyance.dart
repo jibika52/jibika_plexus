@@ -70,7 +70,8 @@ class _CreateConveyanceScreenState extends State<CreateConveyanceScreen> {
         zoom: 16,
       );
       latlonglistgret();
-      Future.delayed(Duration(seconds: 5),() {
+
+      Future.delayed(Duration(seconds: 3),() {
         print("bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
         for(int i=0; i<latLen.length; i++){
           _markers.add(
@@ -124,7 +125,7 @@ class _CreateConveyanceScreenState extends State<CreateConveyanceScreen> {
         position.longitude
     );
     Placemark place = placemarks[0];
-    Provider.of<SelfDashboardController>(context).selfcreateConveyanceProvider(
+    Provider.of<SelfDashboardController>(context,listen: false).selfcreateConveyanceProvider(
         "${DateFormat('yyyyMMdd').format(DateTime.now())}",
         "${DateFormat('HHmmss').format(DateTime.now()).toString()}",
         "${place.name}",
@@ -139,7 +140,7 @@ class _CreateConveyanceScreenState extends State<CreateConveyanceScreen> {
         "conveyance track",
         "true",
         int.parse("${GetStorage().read("select_conveyance")}"),
-        55,
+        int.parse("${GetStorage().read("conveyance_car_code")}"),
         int.parse("${GetStorage().read("for_end_conveyance_code")}"),
         0,
         context
@@ -148,8 +149,8 @@ class _CreateConveyanceScreenState extends State<CreateConveyanceScreen> {
 
   @override
   Widget build(BuildContext context) {
+    print("conveyance_car_code--------------------------------------- ${GetStorage().read("for_end_conveyance_code")}");
     timer22 = Timer.periodic(Duration(seconds: 1), (timer) {
-      print("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk  $Position");
       if(count22==5){
         timer22.cancel();
       }else{
@@ -226,6 +227,9 @@ class _CreateConveyanceScreenState extends State<CreateConveyanceScreen> {
                                 setState(() {
                                   GetStorage().read("select_car_type")=="-1"?
                                   selected_car_index=index:selected_car_index=int.parse("${GetStorage().read("select_car_type")}");
+
+                                  GetStorage().read("conveyance_car_code")=="0"?
+                                  selected_car_code_index=index:selected_car_code_index=int.parse("${GetStorage().read("conveyance_car_code")}");
                                 });
                               },
                               child: Container(
@@ -342,15 +346,23 @@ class _CreateConveyanceScreenState extends State<CreateConveyanceScreen> {
                                   createConveyance();
                                   GetStorage().write("is_Start_Journey","true");
                                   GetStorage().write("select_car_type", "$selected_car_index");
+                                  GetStorage().write("conveyance_car_code","${selected_car_code_index}");
                                   Navigator.push(context, MaterialPageRoute(builder: (context) => SalfBootomNatchBarScreen(currentIndex: 3),));
 
                                 }else{
+                                  createConveyance();
+
+                                Future.delayed(Duration(seconds: 1),() {
+                                  GetStorage().write("conveyance_car_code","0");
+                                  GetStorage().write("for_end_conveyance_code","0");
                                   GetStorage().write("is_Start_Journey","false");
-                                  GetStorage().write("select_conveyance", "");
+                                  GetStorage().write("select_conveyance", "0");
                                   GetStorage().write("select_car_type", "-1");
                                   _amountController.text="";
                                   selected_car_index=-1;
                                   Navigator.push(context, MaterialPageRoute(builder: (context) => SalfBootomNatchBarScreen(currentIndex: 3),));
+
+                                },);
                                 }
                                 ElegantNotification(
                                   borderRadius: BorderRadius.circular(11),
@@ -486,4 +498,5 @@ class _CreateConveyanceScreenState extends State<CreateConveyanceScreen> {
     "PLANE",
   ];
   int selected_car_index=-1;
+  int selected_car_code_index=-1;
 }

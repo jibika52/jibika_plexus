@@ -85,6 +85,7 @@ dependencies:
   internet_connection_checker_plus: any
   google_maps_flutter: ^2.5.0
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

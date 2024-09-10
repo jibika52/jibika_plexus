@@ -155,9 +155,10 @@ class CustomHttpRequestClass{
           GetStorage().write("APPS_User_Name",loginData["user_name"]) ;
           GetStorage().write("APPS_User_ID_Card_No",loginData["id_card_no"]) ;
           GetStorage().write("is_Start_Journey","false");
-          GetStorage().write("select_conveyance", "");
+          GetStorage().write("select_conveyance", "0");
           GetStorage().write("select_car_type","-1");
           GetStorage().write("for_end_conveyance_code","0");
+          GetStorage().write("conveyance_car_code","0");
           //   print("$loginData");
           ElegantNotification(
             borderRadius: BorderRadius.circular(11),
