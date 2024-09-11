@@ -149,7 +149,7 @@ class _CreateConveyanceScreenState extends State<CreateConveyanceScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print("conveyance_car_code--------------------------------------- ${GetStorage().read("for_end_conveyance_code")}");
+  //  print("conveyance_car_code--------------------------------------- ${GetStorage().read("for_end_conveyance_code")}");
     timer22 = Timer.periodic(Duration(seconds: 1), (timer) {
       if(count22==5){
         timer22.cancel();

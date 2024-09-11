@@ -74,8 +74,8 @@ class MyApp extends StatelessWidget {
 
         /// Self Screen=================
         //   home:   SalfBootomNatchBarScreen(
-      //   currentIndex: 4,
-      // ),
+        //   currentIndex: 4,
+        // ),
         localizationsDelegates: [
           GlobalWidgetsLocalizations.delegate,
           GlobalMaterialLocalizations.delegate,

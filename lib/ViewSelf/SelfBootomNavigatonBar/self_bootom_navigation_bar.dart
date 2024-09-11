@@ -381,24 +381,26 @@ void onStart(ServiceInstance service) async {
 
 
   late Position position;
+  late  Placemark place;
   _getCurrentLocation() async{
     position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    List<Placemark> placemarks = await placemarkFromCoordinates(
+        position.latitude,
+        position.longitude
+    );
+   place = placemarks[0];
   }
 
-  Timer.periodic(Duration(minutes: 9), (timer) async {
+  Timer.periodic(Duration(seconds: 30), (timer) async {
 
     _getCurrentLocation();
     print("Location--------------- ${position.latitude} ${position.longitude}");
 
 
-    // List<Placemark> placemarks = await placemarkFromCoordinates(
-    //     position.latitude,
-    //     position.longitude
-    // );
-    // Placemark place = placemarks[0];
+
   });
   // bring to foreground
-  Timer.periodic(Duration(minutes: 20), (timer) async {
+  Timer.periodic(Duration(minutes: 1), (timer) async {
     bool is_internet_available = await InternetConnection().hasInternetAccess;
     print("Location---------------${position.latitude} ${position.longitude} \nis_internet available-- ${is_internet_available}\n--- shift_time ${GetStorage().read("SHIFT_IN_TIME")}\n---------SHIFT_OUT_TIME --${GetStorage().read("SHIFT_OUT_TIME")}\n-----ATTENDANCE_Status --${GetStorage().read("ATTENDANCE_Status")}\n---------IsTrack --${GetStorage().read("IsTrack")}\n--------${timer.tick}----------------------");
     ///---------------------------------------------------------------------------
@@ -408,27 +410,26 @@ void onStart(ServiceInstance service) async {
       "${DateFormat('HHmmss').format(DateTime.now()).toString()}",
       "${GetStorage().read("RfIdCardNo")}",
 
-      // "${place.name}",
-      // "${place.locality}",
-      // "${place.administrativeArea}",
-      // "${place.postalCode}",
-      // "${place.subAdministrativeArea}",
-      // "${place.street.toString()}",
-      " ",
-      " ",
-      " ",
-      " ",
-      " ",
-      " ",
+      "${place.name}",
+      "${place.locality}",
+      "${place.administrativeArea}",
+      "${place.postalCode}",
+      "${place.subAdministrativeArea}",
+      "${place.street.toString()}",
+      // " ",
+      // " ",
+      // " ",
+      // " ",
+      // " ",
+      // " ",
 
       "${position.latitude}",
       "${position.longitude}",
       int.parse("${"${GetStorage().read("Empcode")}"}"),
       "${DateFormat('dd-MMM-yyyy').format(DateTime.now())}",
-      "",
+      GetStorage().read("select_car_type") == "-1"?"GPS track":"conveyance track",
       "true",
-
-
+      GetStorage().read("select_car_type") == "-1"?"GPS track":"conveyance track",
     );
     ///---------------------------------------------------------------------------
     if (service is AndroidServiceInstance) {

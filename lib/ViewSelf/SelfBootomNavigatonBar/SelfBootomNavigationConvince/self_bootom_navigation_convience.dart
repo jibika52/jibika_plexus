@@ -6,7 +6,9 @@ import 'package:flutter/widgets.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:intl/intl.dart';
+import 'package:jibika_plexus/Controller/SelfDashboardController/self_dashboard_controller.dart';
 import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/SelfBootomNavigationConvince/CreateConvieyance/create_convieyance.dart';
+import 'package:provider/provider.dart';
 
 import '../../../CustomWidget/CustomAppBar/CustomDefaultAppBar/custom_default_app_bar.dart';
 import '../../../CustomWidget/CustomImage/custom_image.dart';
@@ -20,8 +22,14 @@ class SelfBootomNavigationConvienceScreen extends StatefulWidget {
 }
 
 class _SelfBootomNavigationConvienceScreenState extends State<SelfBootomNavigationConvienceScreen> {
-
-
+  @override
+  void initState() {
+    Provider.of<SelfDashboardController>(context,listen: false).showConveyanceSelfProvider(
+        "AttendanceDate", "AttendanceTime", context
+    );
+    // TODO: implement initState
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,43 +40,44 @@ class _SelfBootomNavigationConvienceScreenState extends State<SelfBootomNavigati
         child: Column(
           children: [
             /// Second part -----------------------------
-            // InkWell(
-            //   onTap: () {
-            //     _select2Date(context);
-            //   },
-            //   child: Container(
-            //       decoration: BoxDecoration(
-            //           borderRadius: BorderRadius.circular(5),
-            //           color: Colors.white
-            //       ),
-            //       height: 40,
-            //       width: double.infinity,
-            //       alignment: Alignment.center,
-            //       padding: EdgeInsets.only(
-            //           right: 10
-            //       ),
-            //       //  child: Icon(Icons.calendar_month,size: 18,color: Main_Theme_textColor.withOpacity(0.4),)
-            //       child:Row(
-            //         mainAxisAlignment: MainAxisAlignment.end,
-            //         children: [
-            //           CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "$selected2Datee", letterSpacing: 0.3),
-            //           SizedBox(width: 7,),
-            //           CustomImageSction(height: 30, width: 30, radius: 3, image: "Assets/DashBoardIcons/clender.png"),
-            //         ],
-            //       )
-            //   ),
-            // ),
+            InkWell(
+              onTap: () {
+                _select2Date(context);
+              },
+              child: Container(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5),
+                      color: Colors.white
+                  ),
+                  height: 40,
+                  width: double.infinity,
+                  alignment: Alignment.center,
+                  padding: EdgeInsets.only(
+                      right: 10
+                  ),
+                  //  child: Icon(Icons.calendar_month,size: 18,color: Main_Theme_textColor.withOpacity(0.4),)
+                  child:Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "$selected2Datee", letterSpacing: 0.3),
+                      SizedBox(width: 7,),
+                      CustomImageSction(height: 30, width: 30, radius: 3, image: "Assets/DashBoardIcons/clender.png"),
+                    ],
+                  )
+              ),
+            ),
             Expanded(
               child: SingleChildScrollView(
                 scrollDirection: Axis.vertical,
-                child: Container(
-                  child: Column(
+                child: Consumer<SelfDashboardController>(
+                  builder: (context, value, child) =>value.showConveyancelist==null?Center(child: CircularProgressIndicator(),) :
+                  Column(
                     children: [
                       ListView.builder(
                         shrinkWrap: true,
                         scrollDirection: Axis.vertical,
                         physics: NeverScrollableScrollPhysics(),
-                        itemCount:4,
+                        itemCount:value.showConveyancelist.length,
                         itemBuilder: (context, index) =>   Container(
                           padding: const EdgeInsets.only(left: 5,right: 5,top: 10),
                           child: Container(
@@ -86,16 +95,17 @@ class _SelfBootomNavigationConvienceScreenState extends State<SelfBootomNavigati
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
-                                      ColorCustomText(fontSize: 13,textColor: Main_Theme_textColor ,fontWeight: FontWeight.w600, text: "Tue 12-sep-2024", letterSpacing: 0.3),
-                                      ColorCustomText(fontSize: 13,textColor: Main_Theme_textColor ,fontWeight: FontWeight.w600, text: "BDT : 58000", letterSpacing: 0.3),
+                                      ColorCustomText(fontSize: 13,textColor: Main_Theme_textColor ,fontWeight: FontWeight.w600, text: "${value.showConveyancelist[index]["DutyDate"]}", letterSpacing: 0.3),
+                                      ColorCustomText(fontSize: 13,textColor: Main_Theme_textColor ,fontWeight: FontWeight.w600, text: "BDT : ${value.showConveyancelist[index]["TotalAmount"]}", letterSpacing: 0.3),
                                     ],
                                   ),
                                 ),
+                                value.showConveyancelist[index]["dailyConveyancels"]==null?Center(child: CircularProgressIndicator(),) :
                                 ListView.builder(
                                   physics: NeverScrollableScrollPhysics(),
                                   shrinkWrap: true,
-                                  itemCount: 2,
-                                  itemBuilder: (context, index) {
+                                  itemCount: value.showConveyancelist[index]["dailyConveyancels"].length,
+                                  itemBuilder: (context, dailyConveyancels) {
                                     return Container(
                                         decoration: BoxDecoration(
                                           borderRadius: BorderRadius.circular(11),
@@ -120,17 +130,17 @@ class _SelfBootomNavigationConvienceScreenState extends State<SelfBootomNavigati
                                                       //     color: Main_Theme_textColor),
 
                                                       Icon(Icons.location_on_outlined,size: 24,color: Main_Theme_textColor.withOpacity(0.7)),
-                                                      SizedBox(height: 4,),
-                                                      ColorCustomText(fontSize: 10, fontWeight: FontWeight.w400, text: "Gulshan", letterSpacing: 0.2,
+                                                      SizedBox(height: 3,),
+                                                      ColorCustomText(fontSize: 10, fontWeight: FontWeight.w400, text: "${value.showConveyancelist[index]["dailyConveyancels"][dailyConveyancels]["Location"]??"${value.showConveyancelist[index]["dailyConveyancels"][dailyConveyancels]["StreetName"]}"}", letterSpacing: 0.2,
                                                         textColor: Main_Theme_textColor.withOpacity(0.7),),
-                                                      SizedBox(height: 10,),
+                                                      SizedBox(height: 6,),
                                                     ],
                                                   ),
                                                   Expanded(
                                                     child: ListView.builder(
                                                       scrollDirection: Axis.horizontal,
                                                       physics: NeverScrollableScrollPhysics(),
-                                                      itemBuilder: (context, index) {
+                                                      itemBuilder: (context, j) {
                                                         return Container(
                                                           margin: EdgeInsets.only(
                                                             top:14.5,
@@ -156,7 +166,7 @@ class _SelfBootomNavigationConvienceScreenState extends State<SelfBootomNavigati
                                                     child: ListView.builder(
                                                       physics: NeverScrollableScrollPhysics(),
                                                       scrollDirection: Axis.horizontal,
-                                                      itemBuilder: (context, index) {
+                                                      itemBuilder: (context, i) {
                                                         return Container(
                                                           margin: EdgeInsets.only(
                                                             top:14.5,
@@ -174,16 +184,15 @@ class _SelfBootomNavigationConvienceScreenState extends State<SelfBootomNavigati
                                                       // Image.asset("Assets/DashBoardIcons/location.png",height: 24,width: 24, fit: BoxFit.fill,
                                                       //     color: Main_Theme_textColor),
                                                       Icon(Icons.location_on_outlined,size: 24,color: Main_Theme_textColor.withOpacity(0.7)),
-                                                      SizedBox(height: 4,),
-                                                      ColorCustomText(fontSize: 10, fontWeight: FontWeight.w400, text: "Gulshan", letterSpacing: 0.2,
+                                                      SizedBox(height: 3,),
+                                                      ColorCustomText(fontSize: 10, fontWeight: FontWeight.w400, text: "${value.showConveyancelist[index]["dailyConveyancels"][dailyConveyancels]["Location"]??"${value.showConveyancelist[index]["dailyConveyancels"][dailyConveyancels]["tStreetName"]}"}", letterSpacing: 0.2,
                                                         textColor: Main_Theme_textColor.withOpacity(0.7),),
-                                                      SizedBox(height: 10,),
+                                                      SizedBox(height: 6,),
                                                     ],
                                                   ),
                                                 ],
                                               ),
                                             ),
-
                                             Divider(
                                               height: 3,
                                               color: Main_Theme_textColor.withOpacity(0.1),
@@ -194,8 +203,8 @@ class _SelfBootomNavigationConvienceScreenState extends State<SelfBootomNavigati
                                               child: Row(
                                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                 children: [
-                                                  ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "Distance : 07 KM", letterSpacing: 0.2, textColor: Main_Theme_textColor),
-                                                  ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Total Amount : 48496", letterSpacing: 0.2, textColor: Main_Theme_textColor),
+                                                  ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "${value.showConveyancelist[index]["dailyConveyancels"][dailyConveyancels]["Distance"]??"coming soon"}", letterSpacing: 0.2, textColor: Main_Theme_textColor),
+                                                  ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Total Amount : ${value.showConveyancelist[index]["dailyConveyancels"][dailyConveyancels]["Amount"]??"0"}", letterSpacing: 0.2, textColor: Main_Theme_textColor),
                                                 ],
                                               ),
                                             ),
@@ -204,7 +213,7 @@ class _SelfBootomNavigationConvienceScreenState extends State<SelfBootomNavigati
                                               child: Row(
                                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                 children: [
-                                                  ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "Duration : 10H 30M", letterSpacing: 0.2, textColor: Main_Theme_textColor),
+                                                  ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "Duration : ${value.showConveyancelist[index]["dailyConveyancels"][dailyConveyancels]["Amount"]??"0"}", letterSpacing: 0.2, textColor: Main_Theme_textColor),
                                                 ],
                                               ),
                                             ),
@@ -212,7 +221,7 @@ class _SelfBootomNavigationConvienceScreenState extends State<SelfBootomNavigati
                                             Container(
                                               width: double.infinity,
                                               child:
-                                              ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "Purpose: Meeting", letterSpacing: 0.2, textColor: Main_Theme_textColor),
+                                              ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "Purpose: ${value.showConveyancelist[index]["dailyConveyancels"][dailyConveyancels]["Remarks"]??"No Comments"}", letterSpacing: 0.2, textColor: Main_Theme_textColor),
                                             ),
                                           ],)
                                     );
@@ -261,14 +270,14 @@ class _SelfBootomNavigationConvienceScreenState extends State<SelfBootomNavigati
       ),
     );
   }
-  String selected2Datee = DateFormat.yMMMEd().format(DateTime.now()).toString();
+  String selected2Datee = DateFormat("MMM-yyyy").format(DateTime.now()).toString();
   Future<void> _select2Date(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
         context: context,
         firstDate: DateTime(2015, 8),
         lastDate: DateTime(2101));
     if (picked != null && picked != selected2Datee) {
-      final df = new DateFormat.yMMMEd();
+      final df = new DateFormat("MMM-yyyy");
       setState(() {
         selected2Datee = df.format(picked);
       });

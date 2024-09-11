@@ -70,7 +70,8 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
             int.parse("${"${GetStorage().read("Empcode")}"}"),
             "${DateFormat('dd-MMM-yyyy').format(DateTime.now())}",
             "${_descriptionController.text}",
-            "false"
+            "false",
+            "GPS track"
 
         );
       });

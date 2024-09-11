@@ -12,7 +12,7 @@ class SelfDashboardController with ChangeNotifier{
   dynamic dashboardSalaryComparisanChartList ;
   selfCheckInCheckOutProvider(String UserId,String AttendanceDate, String AttendanceTime, String RefCardNo, String Location,
       String District, String Division, String PostalCode, String SubLocality, String StreetName, String lat,
-      String lng, int Empcode, String DutyDate,String Remarks,String IsTrack)async{
+      String lng, int Empcode, String DutyDate,String Remarks,String IsTrack, String Note)async{
     dashboardSalaryComparisanChartList=await CustomHttpSelf().selfCheckInCheckOut(
         UserId,
         AttendanceDate,
@@ -27,9 +27,10 @@ class SelfDashboardController with ChangeNotifier{
         lat,
         lng,
         Empcode,
-      DutyDate,
-      Remarks,
+        DutyDate,
+        Remarks,
         IsTrack,
+        Note
     );
     notifyListeners();
   }
@@ -117,6 +118,22 @@ class SelfDashboardController with ChangeNotifier{
   async{
     SaveLeaveRegister =await CustomHttpSelf().createConveyance_By_Employee(AttendanceDate, AttendanceTime, Location, District, Division, PostalCode, SubLocality, StreetName, lat, lng, Empcode, Note, IsTrack, Amount, VehicleType, Code, Distance, context
     );
+
+    notifyListeners();
+  }
+
+
+  ///   self Admin Save Leave Register Provider--------------------------------------------------------------------------
+  dynamic showConveyancelist;
+  showConveyanceSelfProvider(
+      String AttendanceDate,
+      String AttendanceTime,
+      BuildContext context
+      )
+
+  async{
+    showConveyancelist =await CustomHttpSelf().showConveyanceSelfHttp(
+        AttendanceDate, AttendanceTime,  context);
 
     notifyListeners();
   }

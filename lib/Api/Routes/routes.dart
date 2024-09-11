@@ -94,3 +94,7 @@
 
   ///  Create Conveyance
     String SaveConveyance="Attendance/SaveConveyance";
+
+
+  ///  Show Conveyance by employee self
+    String showConveyanceLisByEmployee="Attendance/GetEmployeeConveyanceInfo";
