@@ -33,15 +33,15 @@ class _TrackingMapScreenState extends State<TrackingMapScreen> {
       zoom: 16,
     );
     super.initState(); 
-    for(int i=0; i<latLen.length; i++){
+    for(int i=0; i<1; i++){
       _markers.add(
         // added markers
           Marker(
             markerId: MarkerId(i.toString()),
-            position: latLen[i],
+            position: LatLng(widget.lat, widget.lon),
             infoWindow: InfoWindow(
               title: 'HOTEL',
-              snippet: '${latLen[i]}',
+              snippet: '${LatLng(widget.lat, widget.lon)}',
             ),
             icon: BitmapDescriptor.defaultMarker,
           )
@@ -49,14 +49,14 @@ class _TrackingMapScreenState extends State<TrackingMapScreen> {
       setState(() {
 
       });
-      _polyline.add(
-          Polyline(
-            polylineId: PolylineId('1'),
-            points: latLen,
-            width: 2,
-            color: Colors.red,
-          )
-      );
+      // _polyline.add(
+      //     Polyline(
+      //       polylineId: PolylineId('1'),
+      //       points: latLen,
+      //       width: 2,
+      //       color: Colors.red,
+      //     )
+      // );
     }
   }
 

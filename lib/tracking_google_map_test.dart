@@ -10,8 +10,8 @@ import 'package:provider/provider.dart';
 import 'Controller/TrackingController/tracking_controller.dart';
 
 class TrackingMapScreenTEstPoliline extends StatefulWidget {
-   TrackingMapScreenTEstPoliline({super.key});
-
+   TrackingMapScreenTEstPoliline({super.key,this.list_of_location});
+    dynamic list_of_location;
   @override
   State<TrackingMapScreenTEstPoliline> createState() => _TrackingMapScreenTEstPolilineState();
 }
@@ -35,11 +35,14 @@ class _TrackingMapScreenTEstPolilineState extends State<TrackingMapScreenTEstPol
   void latlonglistgret(){
     for(i=0;i<aa.length;i++){
       latLen.add(LatLng(aa[i], bb[i]));
-      print("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS $latLen");
+   //   print("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS $latLen");
+      print("dddddddddddddddd-------------------------------------------------------------------- ${widget.list_of_location[i]["Latitude"]}  --  ${widget.list_of_location[i]["Longitude"]}");
     }
   }
 
   _getCurrentLocation() async{
+
+
     position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
 
     setState(() {

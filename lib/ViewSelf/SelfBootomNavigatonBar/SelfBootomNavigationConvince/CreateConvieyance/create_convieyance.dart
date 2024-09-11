@@ -185,6 +185,7 @@ class _CreateConveyanceScreenState extends State<CreateConveyanceScreen> {
                 markers: _markers,
                 // on below line we have enabled location
                 myLocationEnabled: true,
+
                 myLocationButtonEnabled: true,
                 // on below line we have enabled compass location
                 compassEnabled: true,

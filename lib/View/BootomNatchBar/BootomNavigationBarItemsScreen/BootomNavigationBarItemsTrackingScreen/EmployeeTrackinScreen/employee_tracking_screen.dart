@@ -10,6 +10,7 @@ import 'package:jibika_plexus/CustomWidget/CustomButton/custom_button.dart';
 import 'package:jibika_plexus/CustomWidget/CustomEmployeeProfile/custom_employee_profile.dart';
 import 'package:jibika_plexus/View/BootomNatchBar/BootomNavigationBarItemsScreen/BootomNavigationBarItemsTrackingScreen/EmployeeConvinceTrackinScreen/employee_convince_tracking_screen.dart';
 import 'package:jibika_plexus/tracking_google_map.dart';
+import 'package:jibika_plexus/tracking_google_map_test.dart';
 import 'package:provider/provider.dart';
 import '../../../../../Controller/TrackingController/tracking_controller.dart';
 import '../../../../../CustomWidget/CustomImage/custom_image.dart';
@@ -60,37 +61,48 @@ class _EmployeeTrackinScreenState extends State<EmployeeTrackinScreen> {
 
                     },
                 onTap3: () {
-
                 },
                   need_location: false,
                 ),
                 Positioned(
                     right: 15,
                     bottom: 8,
-                    child: Container(
-                  height: 30,
-                  width: 100,
-                  decoration: BoxDecoration(
-                      gradient: LinearGradient(colors: [
-                        Main_Theme_textColor_tir_Condition.withOpacity(0.5),
-                        Main_Theme_textColor_tir_Condition.withOpacity(0.6),
-                        // Main_Theme_textColor_tir_Condition,
-                      ]),
-                    borderRadius: BorderRadius.circular(7),
-                    border: Border.all(
-                      color: Main_Theme_WhiteCollor.withOpacity(0.7),
-                      width: 1.5,
-                    )
-                  ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                       Icon(Icons.location_on_outlined,size: 17,color: Main_Theme_WhiteCollor.withOpacity(0.7),),
-                          //   Image.asset("Assets/DashBoardIcons/location.png",height: 18,width: 18,fit: BoxFit.fill,color: Main_Theme_WhiteCollor,),
-                          ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Track Now", letterSpacing: 0.2,textColor: Main_Theme_WhiteCollor,),
-                        ],
-                      ),
-                ))
+                    child: InkWell(
+                      onTap: () {
+                      //   Navigator.push(context, MaterialPageRoute(builder: (context) => EmployeeConvinceTrackinScreen(
+                      // //    list_of_location: Provider.of<TrackingController>(context).EmployeeLocaltionInfoList,
+                      //   ),
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => TrackingMapScreenTEstPoliline(
+                              list_of_location: Provider.of<TrackingController>(context).EmployeeLocaltionInfoList,
+                        ),
+
+                        ));
+                      },
+                      child: Container(
+                                        height: 30,
+                                        width: 100,
+                                        decoration: BoxDecoration(
+                        gradient: LinearGradient(colors: [
+                          Main_Theme_textColor_tir_Condition.withOpacity(0.5),
+                          Main_Theme_textColor_tir_Condition.withOpacity(0.6),
+                          // Main_Theme_textColor_tir_Condition,
+                        ]),
+                      borderRadius: BorderRadius.circular(7),
+                      border: Border.all(
+                        color: Main_Theme_WhiteCollor.withOpacity(0.7),
+                        width: 1.5,
+                      )
+                                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                         Icon(Icons.location_on_outlined,size: 17,color: Main_Theme_WhiteCollor.withOpacity(0.7),),
+                            //   Image.asset("Assets/DashBoardIcons/location.png",height: 18,width: 18,fit: BoxFit.fill,color: Main_Theme_WhiteCollor,),
+                            ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Track Now", letterSpacing: 0.2,textColor: Main_Theme_WhiteCollor,),
+                          ],
+                        ),
+                                      ),
+                    ))
               ],
             ),
             InkWell(

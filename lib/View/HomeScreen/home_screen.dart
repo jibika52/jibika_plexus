@@ -65,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final  dashboardtodaysBirthdayEmployeeinfo=  Provider.of<HomeProvider>(context).dashboardtodaysBirthdayEmployeeinfo;
   final  dashboardSalaryComparisanChartList=  Provider.of<HomeProvider>(context).dashboardSalaryComparisanChartList;
 
-   // print("Get Data--------------------------------------------------- ${dashboardOnLeaveEmployeeData}");
+ //   print("Get Data--------------------------------------------------- ${dashboardPieChartData}");
 
     double TP=double.parse(dashboardPieChartData == null ?"0":"${dashboardPieChartData["plist"]}"== "[]"?"0":"${dashboardPieChartData["plist"][0]??0 }");
     double TA=double.parse(dashboardPieChartData == null ?"0":"${dashboardPieChartData["plist"]}"== "[]"?"0":"${dashboardPieChartData["plist"][1]??0 }");
