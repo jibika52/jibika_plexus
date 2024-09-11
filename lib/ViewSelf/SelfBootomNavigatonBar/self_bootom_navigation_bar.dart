@@ -1,177 +1,3 @@
-// import 'package:flutter/material.dart';
-// import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
-// import 'package:jibika_plexus/Utils/constants.dart';
-// import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/SelfBootomNavigatonBarHomeScreen/self_bootom_navigaton_bar_home_screen.dart';
-// import '../../CustomWidget/CustomDrawer/CustomLeftDrawer/custom_left_drawer.dart';
-// import '../../CustomWidget/CustomText/custom_text.dart';
-//
-// class SalfBootomNatchBarScreen extends StatefulWidget {
-//   const SalfBootomNatchBarScreen({super.key});
-//   @override
-//   State<SalfBootomNatchBarScreen> createState() => _SalfBootomNatchBarScreenState();
-// }
-//
-// class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
-//   int maxCount = 5;
-//   bool is_get_profie=false;
-//   dynamic getDynamicSliderData;
-//   @override
-//   void initState() {
-//     // TODO: implement initState
-//     super.initState();
-//   }
-//   /// widget list
-//   final List<Widget> bottomBarPages = [
-//     SelfBootomNavigatonBarHomeScreen(),
-//     Text("AAAAAAAAA"),
-//     Text("BBBBBBBBBBBB"),
-//     Text("CCCCCCCCCCCCCCCCCCC"),
-//   ];
-//   final _key=GlobalKey<ScaffoldState>();
-//   int widget.currentIndex = 0;
-//   @override
-//
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: PreferredSize(preferredSize: Size.fromHeight(90), child: Container(
-//         color: CustomAppbarColor,
-//         height: 75,
-//         width: double.infinity,
-//         padding: EdgeInsets.only(top: 10,left: 15,right: 5),
-//         child: Row(
-//           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//           crossAxisAlignment: CrossAxisAlignment.center,
-//           children: [
-//             InkWell(
-//                 onTap:  () {
-//
-//                 },
-//                 child: Container(
-//                     padding: EdgeInsets.all(3) ,
-//                     decoration: BoxDecoration(
-//                       borderRadius: BorderRadius.circular(40),
-//                       color: Main_Theme_WhiteCollor,
-//
-//                     ),
-//                     child: CustomImageSction(height: 33, width: 35, radius: 2, image: "Assets/Logo/jibikalogo3.png"))),
-//             ColorCustomText(fontSize: 18, fontWeight: FontWeight.w600, text: "$appbar_text", letterSpacing: 1,textColor: Main_Theme_WhiteCollor.withOpacity(0.8), ),
-//              Container(
-//               height: 100,
-//               width: 80,
-//               child: Row(
-//                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                 crossAxisAlignment: CrossAxisAlignment.center,
-//                 children: [
-//                   Stack(
-//                     children: [
-//                       Padding(
-//                         padding: const EdgeInsets.only(left: 10.0,top: 10),
-//                         child: CustomImageSction(height: 25, width: 25, radius: 1, image: "Assets/DashBoardIcons/notification_icon.png"),
-//                       ),
-//                       Positioned(
-//                           top: 5,
-//                           left: 9,
-//                           child: CircleAvatar(
-//                             radius: 7,
-//                             child: ColorCustomText(fontSize: 9, fontWeight: FontWeight.w700, text: "7", letterSpacing: 1, textColor: notification_color),
-//                           ))
-//                     ],
-//                   ),
-//                   Icon(Icons.more_vert,size: 30,color: Main_Theme_WhiteCollor.withOpacity(0.8) ,)
-//                 ],
-//               ),
-//             )
-//
-//           ],
-//         ),
-//       )),
-//       resizeToAvoidBottomInset: false,
-//       drawer:CustomLeftDrawer(),
-//       key: _key,
-//
-//
-//       body: bottomBarPages[widget.currentIndex],
-//       bottomNavigationBar: Container(
-//         height: 70,
-//         width: double.infinity,
-//         decoration: BoxDecoration(
-//           borderRadius: BorderRadius.only(
-//             topLeft: Radius.circular(11),
-//             topRight: Radius.circular(11),
-//           ),
-//           color: CustomButtonColor,
-//         ),
-//         padding: EdgeInsets.symmetric(horizontal: 15),
-//         child: Row(
-//           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//           children: [
-//             InkWell(
-//                 onTap: () {
-//                   setState(() {
-//                     widget.currentIndex=0;
-//                   });
-//                 },
-//                 child: CustomImageSction(height: 35, width: 35, radius: 5, image: "Assets/DashBoardIcons/b_bar_home.png")),
-//
-//             InkWell(
-//                 onTap: () {
-//                   setState(() {
-//                     widget.currentIndex=1;
-//                   });
-//                 },
-//                 child: CustomImageSction(height: 35, width: 35, radius: 5, image: "Assets/DashBoardIcons/b_bar_attendence.png")),
-//             Container(
-//               width: 35,
-//             ),
-//
-//             InkWell(
-//                 onTap: () {
-//                   setState(() {
-//                     widget.currentIndex=2;
-//                   });
-//                 },
-//                 child: CustomImageSction(height: 35, width: 35, radius: 5, image: "Assets/DashBoardIcons/b_bar_payroll.png")),
-//             InkWell(
-//                 onTap: () {
-//                   setState(() {
-//
-//                     widget.currentIndex=3;
-//                   });
-//                 },
-//                 child: CustomImageSction(height: 35, width: 35, radius: 5, image: "Assets/DashBoardIcons/b_bar_tricker.png")),
-//           ],
-//         ),
-//       ),
-//
-//       floatingActionButton:keyboardOpen==true
-//           ? SizedBox(): CircleAvatar(
-//         radius: 30,
-//         backgroundColor: Colors.white,
-//         child: FloatingActionButton(
-//           isExtended: false,shape: CircleBorder(
-//           side: BorderSide(color: Main_Theme_WhiteCollor),
-//         ),
-//           foregroundColor: Main_Theme_WhiteCollor,
-//           backgroundColor: Main_Theme_WhiteCollor,
-//           onPressed: () {
-//        //     Navigator.push(context, MaterialPageRoute(builder: (context) => BootomNavBarItemsMainFloationHomeScreen(),));
-//           }, child: Padding(
-//           padding: const EdgeInsets.all(2.0),
-//           child: Image.asset("Assets/Logo/leaff.png" ),
-//         ),),
-//       ),
-//       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-//
-//     );
-//   }
-//   bool keyboardOpen = false;
-// }
-
-
-
-
-
-
 import 'dart:async';
 import 'dart:io';
 import 'dart:math';
@@ -182,6 +8,8 @@ import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 import 'package:intl/intl.dart';
+import 'package:jibika_plexus/Controller/TrackingController/tracking_controller.dart';
+import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/SelfBootomNavigationConvince/CreateConvieyance/create_convieyance.dart';
 import 'package:karmm_callkit/karmm_callkit.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
@@ -219,7 +47,7 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
 
   int maxCount = 5;
   bool is_get_profie=false;
-  dynamic getDynamicSliderData;  
+  dynamic getDynamicSliderData;
   @override
   void initState() {
 
@@ -235,7 +63,7 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
         "${GetStorage().read("IdCardNo")}",
         "GENERAL", context);
     Future.delayed(Duration(seconds: 2),() {
-    startService();
+      startService();
     },);
     // TODO: implement initState
     super.initState();
@@ -246,7 +74,7 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
     SelfBootomBarJobCardScreen(),
     SelfBootomNavigatonEmployeeDashboard(),
     SelfBootomNavigationLeave(),
-    SelfBootomNavigationConvienceScreen(),
+    GetStorage().read("is_Start_Journey")=="true" ?CreateConveyanceScreen():  SelfBootomNavigationConvienceScreen(),
     SelfBootomNavigatonBarHomeScreen(),
 
   ];
@@ -267,133 +95,137 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
       }
     }
 //    print(" shift_time ${GetStorage().read("SHIFT_IN_TIME")}---------SHIFT_OUT_TIME --${GetStorage().read("SHIFT_OUT_TIME")}-----ATTENDANCE_Status --${GetStorage().read("ATTENDANCE_Status")}---------IsTrack --${GetStorage().read("IsTrack")}---------------");
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      drawer:CustomLeftDrawer(),
-      key: _key,
-      appBar: PreferredSize(preferredSize: Size.fromHeight(80),
-        /// ------------ Custom Main AppBAr -------------///
-        child: CustomMainAppBar(
-            leading_image_route: "Assets/DashBoardIcons/appbar_leadin_menu.png",
-            center_appbar_text: "${GetStorage().read("Company_name")}",
-            leading_ontab: () {
-              _key.currentState!.openDrawer();
-            }, is_need_trailing: true),
-      ),
-
-      body: bottomBarPages[widget.currentIndex],
-      bottomNavigationBar: Container(
-        height: 70,
-        width: double.infinity,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(11),
-            topRight: Radius.circular(11),
-          ),
-          color: CustomButtonColor,
+    return WillPopScope(
+      onWillPop: () => Future(() => false),
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        drawer:CustomLeftDrawer(),
+        key: _key,
+        appBar: PreferredSize(preferredSize: Size.fromHeight(60),
+          /// ------------ Custom Main AppBAr -------------///
+          child: CustomMainAppBar(
+              leading_image_route: "Assets/DashBoardIcons/appbar_leadin_menu.png",
+              center_appbar_text: "${GetStorage().read("Company_name")}",
+              leading_ontab: () {
+                _key.currentState!.openDrawer();
+              }, is_need_trailing: true),
         ),
-        padding: EdgeInsets.symmetric(horizontal: 15),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            InkWell(
-                onTap: () {
-                  setState(() {
-                    widget.currentIndex=0;
-                  });
-                },
-                child: Container(
-                  height: b_bar_height,
-                  child: Column(
-                    children: [
-                      Icon(Icons.category_rounded,color: widget.currentIndex==0? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5),size: 30,),
-
-                      //    CustomImageSction2(height: b_bar_icon_size,width: b_bar_icon_size, img_color:widget.currentIndex==0? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5),  radius: 5, image: "Assets/DashBoardIcons/b_bar_home.png"),
-                      SizedBox(height: 2,),
-                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "My Menu", letterSpacing: 0.3, textColor: widget.currentIndex==0? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
-                    ],
-                  ),
-                )),
-            InkWell(
-                onTap: () {
-                  setState(() {
-                    widget.currentIndex=1;
-                  });
-                },
-                child: Container(
-                  height: b_bar_height,
-                  child: Column(
-                    children: [
-                   //     Icon(Icons.list_alt,size: 30,weight: 30,color: widget.currentIndex==1? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.3),),
-              CustomImageSction2(height: b_bar_icon_size,width: b_bar_icon_size,  img_color: widget.currentIndex==1? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5),  radius: 5, image: "Assets/SelfIcon/test_fingerprint.png"),
-                      SizedBox(height: 2,),
-                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Attendance", letterSpacing: 0.3, textColor: widget.currentIndex==1? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
-                    ],
-                  ),
-                )),
-
-
-            Container(
-              width: MediaQuery.of(context).size.width*0.13,
+      
+        body: bottomBarPages[widget.currentIndex],
+        bottomNavigationBar: Container(
+          height: 70,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(11),
+              topRight: Radius.circular(11),
             ),
-            InkWell(
-                onTap: () {
-                  setState(() {
-                    widget.currentIndex=2;
-                  });
-                },
-                child: Container(
-                  height: b_bar_height,
-                  child: Column(
-                    children: [
-                      CustomImageSction2(height: b_bar_icon_size,width: b_bar_icon_size,  img_color: widget.currentIndex==2? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5),  radius: 5, image: "Assets/SelfIcon/leave_icon.png"),
-                      SizedBox(height: 2,),
-                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Leave", letterSpacing: 0.3, textColor: widget.currentIndex==2? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
-                    ],
-                  ),
-                )),
-            InkWell(
-                onTap: () {
-                  setState(() {
-                    widget.currentIndex=3;
-                  });
-                },
-                child: Container(
-                  height: b_bar_height,
-                  child: Column(
-                    children: [
-                    Icon(Icons.time_to_leave,color: widget.currentIndex==3? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5),size: 30,),
-                      //    CustomImageSction2(height: b_bar_icon_size,width: b_bar_icon_size,  img_color: widget.currentIndex==3? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5), radius: 5, image: "Assets/SelfIcon/Conveyance_edited1.png"),
-                      SizedBox(height: 2,),
-                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Conveyance", letterSpacing: 0.3, textColor: widget.currentIndex==3? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
-                    ],
-                  ),
-                )),
-          ],
+            color: CustomButtonColor,
+          ),
+          padding: EdgeInsets.symmetric(horizontal: 15),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              InkWell(
+                  onTap: () {
+                    setState(() {
+                      widget.currentIndex=0;
+                    });
+                  },
+                  child: Container(
+                    height: b_bar_height,
+                    child: Column(
+                      children: [
+                        Icon(Icons.category_rounded,color: widget.currentIndex==0? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5),size: 30,),
+                        //    CustomImageSction2(height: b_bar_icon_size,width: b_bar_icon_size, img_color:widget.currentIndex==0? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5),  radius: 5, image: "Assets/DashBoardIcons/b_bar_home.png"),
+                        SizedBox(height: 2,),
+                        ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "My Menu", letterSpacing: 0.3, textColor: widget.currentIndex==0? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
+                      ],
+                    ),
+                  )
+              ),
+              InkWell(
+                  onTap: () {
+                    setState(() {
+                      widget.currentIndex=1;
+                    });
+                  },
+                  child: Container(
+                    height: b_bar_height,
+                    child: Column(
+                      children: [
+                        //     Icon(Icons.list_alt,size: 30,weight: 30,color: widget.currentIndex==1? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.3),),
+                        CustomImageSction2(height: b_bar_icon_size,width: b_bar_icon_size,  img_color: widget.currentIndex==1? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5),  radius: 5, image: "Assets/SelfIcon/test_fingerprint.png"),
+                        SizedBox(height: 2,),
+                        ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Attendance", letterSpacing: 0.3, textColor: widget.currentIndex==1? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
+                      ],
+                    ),
+                  )),
+      
+      
+              Container(
+                width: MediaQuery.of(context).size.width*0.13,
+              ),
+              InkWell(
+                  onTap: () {
+                    setState(() {
+                      widget.currentIndex=2;
+                    });
+                  },
+                  child: Container(
+                    height: b_bar_height,
+                    child: Column(
+                      children: [
+                        CustomImageSction2(height: b_bar_icon_size,width: b_bar_icon_size,  img_color: widget.currentIndex==2? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5),  radius: 5, image: "Assets/SelfIcon/leave_icon.png"),
+                        SizedBox(height: 2,),
+                        ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Leave", letterSpacing: 0.3, textColor: widget.currentIndex==2? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
+                      ],
+                    ),
+                  )),
+              InkWell(
+                  onTap: () {
+                    setState(() {
+                      widget.currentIndex=3;
+                      Provider.of<TrackingController>(context,listen: false).GetVehicleListHttpFunctionProvider("${GetStorage().read("mobile_id")}", "10/04/2024", context);
+                    });
+                  },
+                  child: Container(
+                    height: b_bar_height,
+                    child: Column(
+                      children: [
+                        Icon(Icons.time_to_leave,color: widget.currentIndex==3? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5),size: 30,),
+                        //    CustomImageSction2(height: b_bar_icon_size,width: b_bar_icon_size,  img_color: widget.currentIndex==3? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5), radius: 5, image: "Assets/SelfIcon/Conveyance_edited1.png"),
+                        SizedBox(height: 2,),
+                        ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Conveyance", letterSpacing: 0.3, textColor: widget.currentIndex==3? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
+                      ],
+                    ),
+                  )),
+            ],
+          ),
         ),
-      ),
-
-      floatingActionButton:keyboardOpen==true
-          ? SizedBox(): CircleAvatar(
-        radius: 30,
-        backgroundColor: Colors.white,
-        child: FloatingActionButton(
-          isExtended: false,shape: CircleBorder(
-          side: BorderSide(color: Main_Theme_WhiteCollor),
+      
+        floatingActionButton:keyboardOpen==true
+            ? SizedBox(): CircleAvatar(
+          radius: 30,
+          backgroundColor: Colors.white,
+          child: FloatingActionButton(
+            isExtended: false,shape: CircleBorder(
+            side: BorderSide(color: Main_Theme_WhiteCollor),
+          ),
+            foregroundColor: Main_Theme_WhiteCollor,
+            backgroundColor: Main_Theme_WhiteCollor,
+            onPressed: () {
+              setState(() {
+                widget.currentIndex=4;
+              });
+            }, child: Padding(
+            padding: const EdgeInsets.all(2.0),
+            child: Image.asset("Assets/Logo/leaff.png" ),
+          ),),
         ),
-          foregroundColor: Main_Theme_WhiteCollor,
-          backgroundColor: Main_Theme_WhiteCollor,
-          onPressed: () {
-            setState(() {
-              widget.currentIndex=4;
-            });
-          }, child: Padding(
-          padding: const EdgeInsets.all(2.0),
-          child: Image.asset("Assets/Logo/leaff.png" ),
-        ),),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-
     );
   }
   bool keyboardOpen = false;
@@ -546,43 +378,62 @@ void onStart(ServiceInstance service) async {
   });
 
   ConnectycubeFlutterCallKit.setOnLockScreenVisibility(isVisible: true);
+
+
+  late Position position;
+  late  Placemark place;
+  _getCurrentLocation() async{
+    position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    List<Placemark> placemarks = await placemarkFromCoordinates(
+        position.latitude,
+        position.longitude
+    );
+   place = placemarks[0];
+  }
+
+  Timer.periodic(Duration(seconds: 30), (timer) async {
+
+    _getCurrentLocation();
+    print("Location--------------- ${position.latitude} ${position.longitude}");
+
+
+
+  });
   // bring to foreground
-  Timer.periodic(Duration(seconds: 60), (timer) async {
+  Timer.periodic(Duration(minutes: 1), (timer) async {
     bool is_internet_available = await InternetConnection().hasInternetAccess;
-    print("is internet available-- ${is_internet_available}--- shift_time ${GetStorage().read("SHIFT_IN_TIME")}---------SHIFT_OUT_TIME --${GetStorage().read("SHIFT_OUT_TIME")}-----ATTENDANCE_Status --${GetStorage().read("ATTENDANCE_Status")}---------IsTrack --${GetStorage().read("IsTrack")}--------${timer.tick}----------------------");
-///---------------------------------------------------------------------------
+    print("Location---------------${position.latitude} ${position.longitude} \nis_internet available-- ${is_internet_available}\n--- shift_time ${GetStorage().read("SHIFT_IN_TIME")}\n---------SHIFT_OUT_TIME --${GetStorage().read("SHIFT_OUT_TIME")}\n-----ATTENDANCE_Status --${GetStorage().read("ATTENDANCE_Status")}\n---------IsTrack --${GetStorage().read("IsTrack")}\n--------${timer.tick}----------------------");
+    ///---------------------------------------------------------------------------
+    CustomHttpSelf().selfCheckInCheckOut(
+      "${GetStorage().read("mobile_id")}",
+      "${DateFormat('yyyyMMdd').format(DateTime.now())}",
+      "${DateFormat('HHmmss').format(DateTime.now()).toString()}",
+      "${GetStorage().read("RfIdCardNo")}",
 
-    late Position position;
-      position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+      "${place.name}",
+      "${place.locality}",
+      "${place.administrativeArea}",
+      "${place.postalCode}",
+      "${place.subAdministrativeArea}",
+      "${place.street.toString()}",
+      // " ",
+      // " ",
+      // " ",
+      // " ",
+      // " ",
+      // " ",
 
-        List<Placemark> placemarks = await placemarkFromCoordinates(
-            position.latitude,
-            position.longitude
-        );
-        Placemark place = placemarks[0];
-        CustomHttpSelf().selfCheckInCheckOut(
-            "${GetStorage().read("mobile_id")}",
-            "${DateFormat('yyyyMMdd').format(DateTime.now())}",
-            "${DateFormat('HHmmss').format(DateTime.now()).toString()}",
-            "${GetStorage().read("RfIdCardNo")}",
-            "${place.name}",
-            "${place.locality}",
-            "${place.administrativeArea}",
-            "${place.postalCode}",
-            "${place.subAdministrativeArea}",
-            "${place.street.toString()}",
-            "${position.latitude}",
-            "${position.longitude}",
-            int.parse("${"${GetStorage().read("Empcode")}"}"),
-            "${DateFormat('dd-MMM-yyyy').format(DateTime.now())}",
-            "",
-          "true",
-
-
-          );
+      "${position.latitude}",
+      "${position.longitude}",
+      int.parse("${"${GetStorage().read("Empcode")}"}"),
+      "${DateFormat('dd-MMM-yyyy').format(DateTime.now())}",
+      GetStorage().read("select_car_type") == "-1"?"GPS track":"conveyance track",
+      "true",
+      GetStorage().read("select_car_type") == "-1"?"GPS track":"conveyance track",
+    );
     ///---------------------------------------------------------------------------
     if (service is AndroidServiceInstance) {
-   //   print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa----------------------------${DateTime.now()}----------");
+      //   print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa----------------------------${DateTime.now()}----------");
     }
 
     /// you can see this log in logcat
@@ -610,15 +461,3 @@ void onStart(ServiceInstance service) async {
     );
   });
 }
-
-/// Background processing is running form here below now check the code-----------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-

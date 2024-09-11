@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:jibika_plexus/Controller/CounterProvider/counter_provider.dart';
+import 'package:jibika_plexus/Utils/constants.dart';
+import 'package:jibika_plexus/tracking_google_map_test.dart';
 import 'package:month_year_picker/month_year_picker.dart';
 import 'package:provider/provider.dart';
 import 'Controller/AdminEmployeeController/admin_employee_controller.dart';
@@ -9,6 +11,7 @@ import 'Controller/AttendanceController/attendance_controller.dart';
 import 'Controller/HomeController/home_controller.dart';
 import 'Controller/PrivacyPolicyController/privacy_policy.dart';
 import 'Controller/SelfDashboardController/self_dashboard_controller.dart';
+import 'Controller/TrackingController/tracking_controller.dart';
 import 'View/SplashScreen/main_splash_pageview_screen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -24,6 +27,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    d_height = MediaQuery.of(context).size.height;
+    d_width = MediaQuery.of(context).size.width;
     return MultiProvider(providers: [
       ChangeNotifierProvider<CounterProvider>(create: (context) => CounterProvider(),),
       ChangeNotifierProvider<HomeProvider>(create: (context) => HomeProvider(),),
@@ -31,6 +36,7 @@ class MyApp extends StatelessWidget {
       ChangeNotifierProvider<SelfDashboardController>(create: (context) => SelfDashboardController(),),
       ChangeNotifierProvider<AttendanceProvder>(create: (context) => AttendanceProvder(),),
       ChangeNotifierProvider<EmployeeAdminProvider>(create: (context) => EmployeeAdminProvider(),),
+      ChangeNotifierProvider<TrackingController>(create: (context) => TrackingController(),),
     ],
 
       child: MaterialApp(
@@ -49,9 +55,9 @@ class MyApp extends StatelessWidget {
         /// ----------Home Screen---------
         //      home:BootomNatchBarScreen(),
         //   home:BootomNatchBarScreen(),
-
         /// ----------SplashScreen--------
-         home:MainSplashPageViewScreen(),
+        home:MainSplashPageViewScreen(),
+        //     home:TrackingMapScreenTEstPoliline(),
         //    home:SalfBootomNatchBarScreen(currentIndex: 4,),
         //  home:TestLongPress(),
         //   home:MonthPicker(),
@@ -68,8 +74,8 @@ class MyApp extends StatelessWidget {
 
         /// Self Screen=================
         //   home:   SalfBootomNatchBarScreen(
-      //   currentIndex: 4,
-      // ),
+        //   currentIndex: 4,
+        // ),
         localizationsDelegates: [
           GlobalWidgetsLocalizations.delegate,
           GlobalMaterialLocalizations.delegate,

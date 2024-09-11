@@ -70,7 +70,8 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
             int.parse("${"${GetStorage().read("Empcode")}"}"),
             "${DateFormat('dd-MMM-yyyy').format(DateTime.now())}",
             "${_descriptionController.text}",
-            "false"
+            "false",
+            "GPS track"
 
         );
       });
@@ -83,7 +84,8 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
   bool is_select_Comment=false;
   int i=0;
   @override
-  void initState() { 
+  void initState() {
+    timer2?.cancel();
     Provider.of<SelfDashboardController>(context,listen: false).selfOneMonthAttendanceProvider(
         DateTime.now().year,
         DateTime.now().month,
@@ -92,7 +94,7 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
         "${DateFormat('dd-MMM-yyyy').format(DateTime.now())}",
         "${GetStorage().read("IdCardNo")}",
         "GENERAL",
-        context
+         context
     );
     Provider.of<HomeProvider>(context,listen: false).dashboardTodaysBirthdayEmployeeInfoProvider("${GetStorage().read("mobile_id")}", "", context); // Todays birthday
     //    Provider.of<CounterProvider>(context,listen: false).setcountSecondfunction(); // Todays birthday
@@ -106,14 +108,15 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
     // TODO: implement initState
     super.initState();
   }
-   functionx(){
-   Timer.periodic(Duration(seconds: 1), (timer) {
-     Provider.of<CounterProvider>(context,listen: false).setcountSecondfunction(); //
-   });
+  functionx(){
+     timer2 = Timer.periodic(Duration(seconds: 1), (timer) {
+       Provider.of<CounterProvider>(context,listen: false).setcountSecondfunction();
+     });
  }
 
 ///-----------------------------------------------------------------------
   Timer? timer;
+  Timer? timer2;
 
   bool is_open_textbox=false;
   bool is_timer=false;
@@ -140,11 +143,17 @@ class _SelfBootomNavigatonBarHomeScreenState extends State<SelfBootomNavigatonBa
   double increase_punch_progress_bar=0.0001;
   @override
   void dispose() {
-    functionx();
-    timer?.cancel();
+    print("ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+     timer?.cancel();
+     timer2?.cancel();
+     timer?.cancel();
+     timer2?.cancel();
+     timer?.cancel();
+     timer2?.cancel();
     // TODO: implement dispose
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     dynamic selfAdminGetLeaveEarlyCountList=Provider.of<SelfDashboardController>(context).selfAdminGetLeaveEarlyCountList ;

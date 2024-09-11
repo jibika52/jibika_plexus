@@ -91,14 +91,14 @@ bool is_iconClick=false;
                  ),
         
                  Positioned(
-                     top: logoanimation.value-15,
+                     top:d_height>700? logoanimation.value-15:logoanimation.value-60,
                      left: 0,
                      right: 0,
                      child: Center(
                        child: Image.asset(
                          'Assets/Logo/jibikalogo.png',
-                         height: logosize.value,
-                         width: logosize.value,
+                         height:d_height>700?logosize.value: logosize.value-40,
+                         width:d_height>700? logosize.value: logosize.value-40,
                        ),
                      )),
                  Positioned(

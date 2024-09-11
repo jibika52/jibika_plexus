@@ -105,7 +105,7 @@ Future.delayed(Duration(
                 key: _formKey,
                 child: Column(
                   children: [
-                    SizedBox(height: h*0.030),
+                    SizedBox(  height: h*0.030),
                   GetStorage().read("val")=="false"?Container(height: 35):  Container(
                       width: logosize.value,
                       height: 35,
@@ -187,7 +187,7 @@ Future.delayed(Duration(
                     ),
 
                     SizedBox(
-                      height: h*0.28,
+                      height:d_height>700? h*0.28 :h*0.2,
                     ),
                     /// Login Section
                     Container(

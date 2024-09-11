@@ -74,3 +74,27 @@
 
   ///  Get Employee List By Status
     String Admin_GetEmployeeListByStatus="Employee/GetEmployeeListByStatus";
+
+
+  ///  Get Employee Localtion Info
+    String GetEmployeeLocaltionInfo="Attendance/GetEmployeeLocaltionInfo";
+
+
+  ///  Get Employee Localtion Info
+    String GetMovementTrackableEmployeeList="Employee/GetMovementTrackableEmployeeList";
+
+
+  ///  Get Att By Date for tracking screen Design
+    String GetMovementTrackableEmployeeByAttendanceDate="Attendance/GetAttByDate";
+
+
+  ///  Get Vehicles or vehicle list
+    String GetVehicleList="Employee/GetVehicles";
+
+
+  ///  Create Conveyance
+    String SaveConveyance="Attendance/SaveConveyance";
+
+
+  ///  Show Conveyance by employee self
+    String showConveyanceLisByEmployee="Attendance/GetEmployeeConveyanceInfo";

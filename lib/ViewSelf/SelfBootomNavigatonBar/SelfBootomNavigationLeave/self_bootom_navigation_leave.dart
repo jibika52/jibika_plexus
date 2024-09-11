@@ -44,7 +44,7 @@ class _SelfBootomNavigationLeaveState extends State<SelfBootomNavigationLeave> {
   Widget build(BuildContext context) {
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
-    List leave_status=Provider.of<SelfDashboardController>(context).selfLeaveAllocationList ;
+    dynamic leave_status=Provider.of<SelfDashboardController>(context).selfLeaveAllocationList ;
     final selfORAdminShortInformationdata=Provider.of<HomeProvider>(context).selfORAdminShortInformationdata;
   //  print("${}");
     return Scaffold(
@@ -85,7 +85,7 @@ class _SelfBootomNavigationLeaveState extends State<SelfBootomNavigationLeave> {
                 ),
                 SizedBox(height: apps_div_margin,),
                 /// Four Self part------------------------------------------------------------
-                Container(
+                leave_status==null?Center(child: CircularProgressIndicator(),):     Container(
                   width: double.infinity,
                   margin: EdgeInsets.only(
                     left: 10,right: 10,

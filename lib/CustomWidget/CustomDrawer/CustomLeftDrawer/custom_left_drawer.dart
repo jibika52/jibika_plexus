@@ -214,6 +214,7 @@ class CustomLeftDrawer extends StatelessWidget {
               child: InkWell(
                 onTap: () {
                   GetStorage().erase();
+                  stopService();
                   Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreenSlide(),));
                 },
                 child: Container(

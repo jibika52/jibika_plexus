@@ -154,6 +154,11 @@ class CustomHttpRequestClass{
           GetStorage().write("APPS_IMG_Path",loginData["PhotoPath"]) ;
           GetStorage().write("APPS_User_Name",loginData["user_name"]) ;
           GetStorage().write("APPS_User_ID_Card_No",loginData["id_card_no"]) ;
+          GetStorage().write("is_Start_Journey","false");
+          GetStorage().write("select_conveyance", "0");
+          GetStorage().write("select_car_type","-1");
+          GetStorage().write("for_end_conveyance_code","0");
+          GetStorage().write("conveyance_car_code","0");
           //   print("$loginData");
           ElegantNotification(
             borderRadius: BorderRadius.circular(11),
@@ -453,7 +458,122 @@ class CustomHttpRequestClass{
 
 
 
+  ///  Get Employee Localtion Info List--------------------------------------------------------------------------
+  GetEmployeeLocaltionInfoHttpFunction(String UserId,String AttDate, String EMPCODE,BuildContext context)async{
+    dynamic  getEmployeeLocaltionInfoList  ;
+    var body = jsonEncode({
+      "UserId":"$UserId",
+      "AttDate":"$AttDate",
+      "EMPCODE": "$EMPCODE"
+    });
+    try{
+      var data=await http.post(Uri.parse("${BASEURL}/${GetEmployeeLocaltionInfo}"),
+          headers: {
+            "Content-Type": "application/json",
+            "username": "jibikaapps",
+            "password": "20jibika24",
+          },
+          body: body
+      ).then((http.Response response) {
+        getEmployeeLocaltionInfoList =jsonDecode(response.body)["data"];
 
+        print("-----------------------------$getEmployeeLocaltionInfoList");
+      });
+      return getEmployeeLocaltionInfoList;
+    }
+    catch(e){
+      print(" self Or Admin Get selfAdminAdmin_selfAdminAdmin_Emp_New_Face_GetList Catch error ============================ ${e}");
+    }
+  }
+
+
+
+  ///  Get Movement Trackable Employee List-------------------------------------------------------------------------
+  GetMovementTrackableEmployeeListHttpFunction(String UserId,String AttDate,BuildContext context)async{
+    dynamic  getMovementTrackableEmployeeList  ;
+    var body = jsonEncode({
+      "UserId":"$UserId",
+      "STATUS":"Y"
+    });
+    try{
+      var data=await http.post(Uri.parse("${BASEURL}/${GetMovementTrackableEmployeeList}"),
+          headers: {
+            "Content-Type": "application/json",
+            "username": "jibikaapps",
+            "password": "20jibika24",
+          },
+          body: body
+      ).then((http.Response response) {
+        getMovementTrackableEmployeeList =jsonDecode(response.body)["data"];
+
+        print("-----------------------------$getMovementTrackableEmployeeList");
+      });
+      return getMovementTrackableEmployeeList;
+    }
+    catch(e){
+      print("  getMovementTrackableEmployeeList Catch error ============================ ${e}");
+    }
+  }
+
+
+
+  ///  Get Movement Trackable Employee List-------------------------------------------------------------------------
+  GetMovementTrackableEmployeeByAttendanceDateHttpFunction(String UserId,String AttDate,String ID_CARD_NO,BuildContext context)async{
+    dynamic  GetMovementTrackableEmployeeByAttendanceDatelist  ;
+    var body = jsonEncode({
+      "UserId":"$UserId",
+      "AttDate":"$AttDate",
+      "attendanceType": "GENERAL",
+      "ID_CARD_NO" : "$ID_CARD_NO"
+    });
+    try{
+      var data=await http.post(Uri.parse("${BASEURL}/${GetMovementTrackableEmployeeByAttendanceDate}"),
+          headers: {
+            "Content-Type": "application/json",
+            "username": "jibikaapps",
+            "password": "20jibika24",
+          },
+          body: body
+      ).then((http.Response response) {
+        GetMovementTrackableEmployeeByAttendanceDatelist =jsonDecode(response.body)["data"];
+
+        print("-----------------------------$GetMovementTrackableEmployeeByAttendanceDatelist");
+      });
+      return GetMovementTrackableEmployeeByAttendanceDatelist;
+    }
+    catch(e){
+      print("  GetMovementTrackableEmployeeByAttendanceDatelist Catch error ============================ ${e}");
+    }
+  }
+
+
+
+
+  ///  GetVehicleList List-------------------------------------------------------------------------
+  GetVehicleListHttpFunction(String UserId,String AttDate,BuildContext context)async{
+    dynamic  getVehicleList  ;
+    var body = jsonEncode({
+      "UserId":"$UserId",
+    });
+    try{
+      var data=await http.post(Uri.parse("${BASEURL}/${GetVehicleList}"),
+          headers: {
+            "Content-Type": "application/json",
+            "username": "jibikaapps",
+            "password": "20jibika24",
+          },
+          body: body
+      ).then((http.Response response) {
+        getVehicleList =jsonDecode(response.body)["data"];
+
+        print("-----------------------------$getVehicleList");
+      });
+      return getVehicleList;
+    }
+    catch(e){
+      print("  get Vehicle List Catch error ============================ ${e}");
+    }
+  }
 
 
 

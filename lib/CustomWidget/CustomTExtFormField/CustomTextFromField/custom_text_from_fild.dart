@@ -9,6 +9,7 @@ class CustomTExtFromField extends StatelessWidget {
     required this.fontWeight,
     required this.text_color,
       this.suffixIcon,
+      this.keyboardType,
     required this.obscureText,
   }) : super(key: key);
    TextEditingController controller;
@@ -18,11 +19,13 @@ class CustomTExtFromField extends StatelessWidget {
   final Color?  text_color;
   final Widget?  suffixIcon;
   bool obscureText;
+  TextInputType? keyboardType;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       obscureText:obscureText ,
       controller: controller,
+      keyboardType: keyboardType,
       decoration: InputDecoration(
           labelText: "$hintText",
           hintStyle: GoogleFonts.roboto(
@@ -33,12 +36,11 @@ class CustomTExtFromField extends StatelessWidget {
           ),
         fillColor: Colors.white,
         border: new OutlineInputBorder(
-          borderRadius: new BorderRadius.circular(25.0),
+          borderRadius: new BorderRadius.circular(15.0),
           borderSide: new BorderSide(),
         ),
               suffixIcon: suffixIcon,
               contentPadding: EdgeInsets.only(left: 15),
-
       ),
     );
   }

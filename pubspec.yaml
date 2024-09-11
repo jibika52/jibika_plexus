@@ -41,8 +41,6 @@ dependencies:
   google_fonts: ^5.1.0
   # For SVG in=mage Image from this package
   flutter_svg: ^2.0.10+1
-  # Slide Shado from this package
-  carousel_slider: ^4.2.1
   # State managed  from this package
   provider: ^6.1.2
   #for get provider path
@@ -55,8 +53,6 @@ dependencies:
   get_storage: ^2.1.1
   # Check NetworkStatus  from this package
   connectivity_plus: ^5.0.2
-  # formte date from this package
-  # intl: ^0.19.0
   # GEt Image from this package
   image_picker: ^1.0.7
   # Slide image from this package
@@ -73,24 +69,22 @@ dependencies:
   fl_chart: ^0.68.0
   pie_chart: ^5.4.0
   intl: ^0.18.0
-
-  web: 0.5.0
   dropdown_button2: ^2.3.9
   animated_toggle_switch: ^0.8.2
-  duration_picker: ^1.2.0
   month_year_picker: ^0.3.0+1
   syncfusion_flutter_charts: ^24.2.9
   # Geo Locator---------------------------
+  flutter_polyline_points: ^2.0.0
   geolocator: ^11.0.0
   geocoding: ^3.0.0
-
-  fluttertoast: any
   flutter_background_service: any
   device_info_plus: any
   flutter_local_notifications: any
   receive_intent: any
   karmm_callkit: any
   internet_connection_checker_plus: any
+  google_maps_flutter: ^2.5.0
+
 
 dev_dependencies:
   flutter_test:
