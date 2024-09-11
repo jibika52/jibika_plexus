@@ -33,8 +33,8 @@ class _TrackingMapScreenTEstPolilineState extends State<TrackingMapScreenTEstPol
 
   int i=0;
   void latlonglistgret(){
-    for(i=0;i<aa.length;i++){
-      latLen.add(LatLng(aa[i], bb[i]));
+    for(i=0;i<3;i++){
+      latLen.add(LatLng(double.parse("${widget.list_of_location[i]["Latitude"]}"), double.parse("${widget.list_of_location[i]["Longitude"]}")));
    //   print("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS $latLen");
       print("dddddddddddddddd-------------------------------------------------------------------- ${widget.list_of_location[i]["Latitude"]}  --  ${widget.list_of_location[i]["Longitude"]}");
     }
