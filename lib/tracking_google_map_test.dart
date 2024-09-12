@@ -33,10 +33,10 @@ class _TrackingMapScreenTEstPolilineState extends State<TrackingMapScreenTEstPol
 
   int i=0;
   void latlonglistgret(){
-    for(i=0;i<3;i++){
+    for(i=0;i<widget.list_of_location.length;i++){
       latLen.add(LatLng(double.parse("${widget.list_of_location[i]["Latitude"]}"), double.parse("${widget.list_of_location[i]["Longitude"]}")));
    //   print("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS $latLen");
-      print("dddddddddddddddd-------------------------------------------------------------------- ${widget.list_of_location[i]["Latitude"]}  --  ${widget.list_of_location[i]["Longitude"]}");
+     print("dddddddddddddddd-------------------------------------------------------------------- ${widget.list_of_location[i]["Latitude"]}  --  ${widget.list_of_location[i]["Longitude"]}");
     }
   }
 
@@ -47,11 +47,11 @@ class _TrackingMapScreenTEstPolilineState extends State<TrackingMapScreenTEstPol
 
     setState(() {
       _kGoogle =   CameraPosition(
-        target:  LatLng(position.latitude, position.longitude),
+        target:  LatLng(double.parse("${widget.list_of_location.last["Latitude"]}"), double.parse("${widget.list_of_location.last["Longitude"]}") ),
         zoom: 16,
       );
        latlonglistgret();
-      Future.delayed(Duration(seconds: 5),() {
+      Future.delayed(Duration(seconds: 2),() {
         print("bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
         for(int i=0; i<latLen.length; i++){
           _markers.add(
@@ -60,8 +60,8 @@ class _TrackingMapScreenTEstPolilineState extends State<TrackingMapScreenTEstPol
                 markerId: MarkerId(i.toString()),
                 position: latLen[i],
                 infoWindow: InfoWindow(
-                  title: 'HOTEL',
-                  snippet: '${latLen[i]}',
+                  title: '${widget.list_of_location[i]["datetime"]}',
+                  snippet: '${widget.list_of_location[i]["Address"]} & ${widget.list_of_location[i]["Street"]}',
                 ),
                 icon: BitmapDescriptor.defaultMarker,
               )
@@ -84,7 +84,7 @@ class _TrackingMapScreenTEstPolilineState extends State<TrackingMapScreenTEstPol
 
   @override
   void initState() {
-    Provider.of<TrackingController>(context,listen: false).GetEmployeeLocaltionInfoProvider("${GetStorage().read("mobile_id")}", "09-Sep-2024","60670", context);
+  //  Provider.of<TrackingController>(context,listen: false).GetEmployeeLocaltionInfoProvider("${GetStorage().read("mobile_id")}", "09-Sep-2024","60670", context);
     _getCurrentLocation();
     // TODO: implement initState
     super.initState(); 
@@ -105,7 +105,7 @@ class _TrackingMapScreenTEstPolilineState extends State<TrackingMapScreenTEstPol
     dynamic locationdata=Provider.of<TrackingController>(context).EmployeeLocaltionInfoList;
     print("$locationdata");
 
-    return count<4?Center(child: CircularProgressIndicator(),): Container(
+    return count<2?Center(child: CircularProgressIndicator(),): Container(
       child: GoogleMap(
         //given camera position
         initialCameraPosition: _kGoogle,

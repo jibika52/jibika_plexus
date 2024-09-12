@@ -54,126 +54,129 @@ class _BootomNatchBarScreenState extends State<BootomNatchBarScreen> {
   @override
   Widget build(BuildContext context) {
   final selfORAdminShortInformationdata=   Provider.of<HomeProvider>(context).selfORAdminShortInformationdata;
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      drawer:CustomLeftDrawer(),
-      key: _key,
-      appBar: PreferredSize(preferredSize: Size.fromHeight(80),
-        /// ------------ Custom Main AppBAr -------------///
-        child: CustomMainAppBar(
-            leading_image_route: "Assets/DashBoardIcons/appbar_leadin_menu.png",
-            center_appbar_text: "${GetStorage().read("Company_name")}",
-            leading_ontab: () {
-          _key.currentState!.openDrawer();
-        }, is_need_trailing: true),
-      ),
-    body: bottomBarPages[_currentIndex],
-
-      bottomNavigationBar: Container(
-        height: 70,
-        width: double.infinity,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(11),
-            topRight: Radius.circular(11),
-          ),
-          color: CustomButtonColor,
+    return WillPopScope(
+      onWillPop: () => Future(() => false),
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        drawer:CustomLeftDrawer(),
+        key: _key,
+        appBar: PreferredSize(preferredSize: Size.fromHeight(80),
+          /// ------------ Custom Main AppBAr -------------///
+          child: CustomMainAppBar(
+              leading_image_route: "Assets/DashBoardIcons/appbar_leadin_menu.png",
+              center_appbar_text: "${GetStorage().read("Company_name")}",
+              leading_ontab: () {
+            _key.currentState!.openDrawer();
+          }, is_need_trailing: true),
         ),
-        padding: EdgeInsets.symmetric(horizontal: 15),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            InkWell(
-                onTap: () {
-                  Provider.of<EmployeeAdminProvider>(context,listen: false).GetDailyAttendanceCounterListProvider("${GetStorage().read("mobile_id")}", "Active", 1, context);
-                  setState(() {
-                    _currentIndex=0;
-                  });
-                },
-                child: Container(
-                  height: b_bar_h,
-                  child: Column(
-                    children: [
-                      CustomImageSction2(height: C_size, img_color:_currentIndex==0? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5), width: C_size, radius: 5, image: "Assets/DashBoardIcons/b_bar_home.png"),
-                      SizedBox(height: 3,),
-                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w500, text: "Employee", letterSpacing: 0.9, textColor: _currentIndex==0? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
-                    ],
-                  ),
-                )),
-            InkWell(
-                onTap: () {
-                  setState(() {
-                    _currentIndex=2;
-                  });
-                },
-                child: Container(
-                  height: b_bar_h,
-                  child: Column(
-                    children: [
-                      CustomImageSction2(height: C_size, img_color: _currentIndex==2? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5), width: C_size, radius: 5, image: "Assets/DashBoardIcons/b_bar_payroll.png"),
-                      SizedBox(height: 3,),
-                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w500, text: "Payroll", letterSpacing: 0.9, textColor: _currentIndex==2? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
-                    ],
-                  ),
-                )),
-
-
-
-            Container(
-              width: MediaQuery.of(context).size.width*0.13,
+      body: bottomBarPages[_currentIndex],
+      
+        bottomNavigationBar: Container(
+          height: 70,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(11),
+              topRight: Radius.circular(11),
             ),
-            InkWell(
-                onTap: () {
-                  Provider.of<AttendanceProvder>(context,listen: false).GetDailyAttendanceCounterListProvider("${GetStorage().read("mobile_id")}",
-                      "${DateFormat("dd-MMM-yyyy").format(DateTime.now())}", context);
-                  setState(() {
-                    _currentIndex=1;
-                  });
-                },
-                child: Container(
-                  height: b_bar_h,
-                  child: Column(
-                    children: [
-                      CustomImageSction2(height: C_size, img_color: _currentIndex==1? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5), width: C_size, radius: 5, image: "Assets/DashBoardIcons/b_bar_attendence.png"),
-                      SizedBox(height: 3,),
-                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w500, text: "Attendance", letterSpacing:0.9, textColor: _currentIndex==1? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
-                    ],
-                  ),
-                )),
-            InkWell(
-                onTap: () {
-                  setState(() {
-                    _currentIndex=3;
-                  });
-                },
-                child: Container(
-                  height: b_bar_h,
-                  child: Column(
-                    children: [
-                      CustomImageSction2(height: C_size, img_color: _currentIndex==3? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5), width: C_size, radius: 5, image: "Assets/DashBoardIcons/b_bar_tricker.png"),
-                      SizedBox(height: 3,),
-                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w500, text: "Tracker", letterSpacing: 0.9, textColor: _currentIndex==3? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
-                    ],
-                  ),
-                )),
-          ],
+            color: CustomButtonColor,
+          ),
+          padding: EdgeInsets.symmetric(horizontal: 15),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              InkWell(
+                  onTap: () {
+                    Provider.of<EmployeeAdminProvider>(context,listen: false).GetDailyAttendanceCounterListProvider("${GetStorage().read("mobile_id")}", "Active", 1, context);
+                    setState(() {
+                      _currentIndex=0;
+                    });
+                  },
+                  child: Container(
+                    height: b_bar_h,
+                    child: Column(
+                      children: [
+                        CustomImageSction2(height: C_size, img_color:_currentIndex==0? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5), width: C_size, radius: 5, image: "Assets/DashBoardIcons/b_bar_home.png"),
+                        SizedBox(height: 3,),
+                        ColorCustomText(fontSize: 12, fontWeight: FontWeight.w500, text: "Employee", letterSpacing: 0.9, textColor: _currentIndex==0? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
+                      ],
+                    ),
+                  )),
+              InkWell(
+                  onTap: () {
+                    setState(() {
+                      _currentIndex=2;
+                    });
+                  },
+                  child: Container(
+                    height: b_bar_h,
+                    child: Column(
+                      children: [
+                        CustomImageSction2(height: C_size, img_color: _currentIndex==2? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5), width: C_size, radius: 5, image: "Assets/DashBoardIcons/b_bar_payroll.png"),
+                        SizedBox(height: 3,),
+                        ColorCustomText(fontSize: 12, fontWeight: FontWeight.w500, text: "Payroll", letterSpacing: 0.9, textColor: _currentIndex==2? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
+                      ],
+                    ),
+                  )),
+      
+      
+      
+              Container(
+                width: MediaQuery.of(context).size.width*0.13,
+              ),
+              InkWell(
+                  onTap: () {
+                    Provider.of<AttendanceProvder>(context,listen: false).GetDailyAttendanceCounterListProvider("${GetStorage().read("mobile_id")}",
+                        "${DateFormat("dd-MMM-yyyy").format(DateTime.now())}", context);
+                    setState(() {
+                      _currentIndex=1;
+                    });
+                  },
+                  child: Container(
+                    height: b_bar_h,
+                    child: Column(
+                      children: [
+                        CustomImageSction2(height: C_size, img_color: _currentIndex==1? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5), width: C_size, radius: 5, image: "Assets/DashBoardIcons/b_bar_attendence.png"),
+                        SizedBox(height: 3,),
+                        ColorCustomText(fontSize: 12, fontWeight: FontWeight.w500, text: "Attendance", letterSpacing:0.9, textColor: _currentIndex==1? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
+                      ],
+                    ),
+                  )),
+              InkWell(
+                  onTap: () {
+                    setState(() {
+                      _currentIndex=3;
+                    });
+                  },
+                  child: Container(
+                    height: b_bar_h,
+                    child: Column(
+                      children: [
+                        CustomImageSction2(height: C_size, img_color: _currentIndex==3? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5), width: C_size, radius: 5, image: "Assets/DashBoardIcons/b_bar_tricker.png"),
+                        SizedBox(height: 3,),
+                        ColorCustomText(fontSize: 12, fontWeight: FontWeight.w500, text: "Tracker", letterSpacing: 0.9, textColor: _currentIndex==3? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
+                      ],
+                    ),
+                  )),
+            ],
+          ),
         ),
+      
+      
+        floatingActionButton:keyboardOpen==true
+          ? SizedBox(): FloatingActionButton(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
+          onPressed: () {
+            setState(() {
+              _currentIndex=4;
+            });
+          },
+          child: Image.asset("Assets/Logo/leaff.png"),
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      
+      
       ),
-
-
-      floatingActionButton:keyboardOpen==true
-        ? SizedBox(): FloatingActionButton(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
-        onPressed: () {
-          setState(() {
-            _currentIndex=4;
-          });
-        },
-        child: Image.asset("Assets/Logo/leaff.png"),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-
-
     );
   }
   bool keyboardOpen = false;

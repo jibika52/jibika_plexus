@@ -447,6 +447,8 @@ class _EmployeeTrackinScreenState extends State<EmployeeTrackinScreen> {
       final df = new DateFormat("dd-MMM-yyyy");
       setState(() {
         selected2Datee = df.format(picked);
+        Provider.of<TrackingController>(context,listen: false).GetEmployeeLocaltionInfoProvider("${GetStorage().read("mobile_id")}", "${selected2Datee}","${widget.e_code}", context);
+
       });
     }
   }
