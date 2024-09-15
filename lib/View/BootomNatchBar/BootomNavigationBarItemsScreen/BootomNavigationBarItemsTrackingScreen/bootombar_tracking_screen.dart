@@ -269,11 +269,24 @@ class _BootomNavigationBarItemsTrackingScreenState extends State<BootomNavigatio
                                   ),
                                   SizedBox(width: 10,),
                                   CustomTrackNowButton(b_text: "Track history",  onTap: () {
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => EmployeeTrackinScreen(image: "${value.GetMovementTrackableEmployeeList[index]["EMP_PHOTO_PATH"]}", name: "${value.GetMovementTrackableEmployeeList[index]["EMPLOYEE_NAME"]}", e_code: "${value.GetMovementTrackableEmployeeList[index]["EMPCODE"]}",
-                                      e_deg:"${value.GetMovementTrackableEmployeeList[index]["DESIG_NAME"]}", e_dep: "${value.GetMovementTrackableEmployeeList[index]["DEPT_NAME"]}",
-                                      selectedDate: "$selected2Datee",ID_CARD_NO: "${value.GetMovementTrackableEmployeeList[index]["ID_CARD_NO"]}",),));
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => EmployeeTrackinScreen(
 
-                                    Provider.of<TrackingController>(context,listen: false).GetEmployeeLocaltionInfoProvider("${GetStorage().read("mobile_id")}", "${selected2Datee}","${value.GetMovementTrackableEmployeeList[index]["EMPCODE"]}", context);
+                                      image: "${value.GetMovementTrackableEmployeeList[index]["EMP_PHOTO_PATH"]}",
+                                      name: "${value.GetMovementTrackableEmployeeList[index]["EMPLOYEE_NAME"]}",
+                                      e_code: "${value.GetMovementTrackableEmployeeList[index]["EMPCODE"]}",
+                                      e_deg:"${value.GetMovementTrackableEmployeeList[index]["DESIG_NAME"]}",
+                                      e_dep: "${value.GetMovementTrackableEmployeeList[index]["DEPT_NAME"]}",
+                                      selectedDate: "$selected2Datee",
+                                      ID_CARD_NO: "${value.GetMovementTrackableEmployeeList[index]["ID_CARD_NO"]}",
+                                    ),));
+                                    Provider.of<TrackingController>(context,listen: false).GetMovementTrackableEmployeeByAttendanceDateProvider(
+                                        "${GetStorage().read("mobile_id")}",
+                                        "${selected2Datee}", "${value.GetMovementTrackableEmployeeList[index]["ID_CARD_NO"]}", context);
+                                    Provider.of<TrackingController>(context,listen: false).GetEmployeeLocaltionInfoProvider(
+                                        "${GetStorage().read("mobile_id")}",
+                                        "${selected2Datee}",
+                                        "${value.GetMovementTrackableEmployeeList[index]["EMPCODE"]}",
+                                        context);
 
 
                                     }, )

@@ -6,9 +6,11 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class TrackingMapScreen extends StatefulWidget {
-   TrackingMapScreen({super.key,required this.lat, required this.lon});
+   TrackingMapScreen({super.key,required this.lat, required this.lon,required this.address,required this.time});
    double lat;
    double lon;
+   String address;
+   String time;
   @override
   State<TrackingMapScreen> createState() => _TrackingMapScreenState();
 }
@@ -40,8 +42,8 @@ class _TrackingMapScreenState extends State<TrackingMapScreen> {
             markerId: MarkerId(i.toString()),
             position: LatLng(widget.lat, widget.lon),
             infoWindow: InfoWindow(
-              title: 'HOTEL',
-              snippet: '${LatLng(widget.lat, widget.lon)}',
+              title: '${widget.time}',
+              snippet: '${widget.address}',
             ),
             icon: BitmapDescriptor.defaultMarker,
           )

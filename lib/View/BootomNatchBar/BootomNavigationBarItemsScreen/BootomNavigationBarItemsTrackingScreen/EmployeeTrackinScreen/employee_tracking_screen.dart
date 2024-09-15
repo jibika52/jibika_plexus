@@ -34,8 +34,6 @@ class _EmployeeTrackinScreenState extends State<EmployeeTrackinScreen> {
   int selected_index=0;
   @override
   void initState() {
-    Provider.of<TrackingController>(context,listen: false).GetMovementTrackableEmployeeByAttendanceDateProvider("${GetStorage().read("mobile_id")}",
-        "${widget.selectedDate}", "${widget.ID_CARD_NO}", context);
     // TODO: implement initState
     super.initState();
   }
@@ -323,9 +321,12 @@ class _EmployeeTrackinScreenState extends State<EmployeeTrackinScreen> {
                                             ),
                                             InkWell(
                                               onTap: () {
-                                                Navigator.push(context, CupertinoPageRoute(builder: (context) => TrackingMapScreen(
+                                                Navigator.push(context, MaterialPageRoute(builder: (context) => TrackingMapScreen(
                                                     lat: double.parse("${value.EmployeeLocaltionInfoList[index]["Latitude"]}"),
-                                                    lon: double.parse("${value.EmployeeLocaltionInfoList[index]["Longitude"]}"),)));
+                                                    lon: double.parse("${value.EmployeeLocaltionInfoList[index]["Longitude"]}"),
+                                                     address: "${value.EmployeeLocaltionInfoList[index]["AdArea"]}, ${value.EmployeeLocaltionInfoList[index]["SubLocality"]}",
+                                                  time: "${value.EmployeeLocaltionInfoList[index]["datetime"]}",
+                                                )));
                                               },
                                               child: Column(
                                                 children: [
@@ -447,7 +448,11 @@ class _EmployeeTrackinScreenState extends State<EmployeeTrackinScreen> {
       final df = new DateFormat("dd-MMM-yyyy");
       setState(() {
         selected2Datee = df.format(picked);
-        Provider.of<TrackingController>(context,listen: false).GetEmployeeLocaltionInfoProvider("${GetStorage().read("mobile_id")}", "${selected2Datee}","${widget.e_code}", context);
+        Provider.of<TrackingController>(context,listen: false).GetEmployeeLocaltionInfoProvider(
+            "${GetStorage().read("mobile_id")}",
+            "${selected2Datee}",
+            "${widget.e_code}",
+            context);
 
       });
     }
