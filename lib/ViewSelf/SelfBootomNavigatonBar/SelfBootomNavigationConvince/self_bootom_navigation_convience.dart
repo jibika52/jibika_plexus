@@ -121,81 +121,114 @@ class _SelfBootomNavigationConvienceScreenState extends State<SelfBootomNavigati
                                         padding: EdgeInsets.all( 10),
                                         child: Column(
                                           children: [
-                                            Container(
-                                              height: 52,
-                                              width: double.infinity,
-                                              color: Colors.white,
+                                            Stack(
+                                              alignment: Alignment.center,
+                                              children: [
+                                                Container(
+                                                  height: 52,
+                                                  width: double.infinity,
+                                                  color: Colors.white,
 
-                                              child: Row(
-                                                children: [
-                                                  Column(   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                  child: Row(
                                                     children: [
-                                                      // Image.asset("Assets/DashBoardIcons/location.png",height: 24,width: 24,fit: BoxFit.fill,
-                                                      //     color: Main_Theme_textColor),
+                                                      Column(   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                        children: [
+                                                          // Image.asset("Assets/DashBoardIcons/location.png",height: 24,width: 24,fit: BoxFit.fill,
+                                                          //     color: Main_Theme_textColor),
 
-                                                      Icon(Icons.location_on_outlined,size: 24,color: Main_Theme_textColor.withOpacity(0.7)),
-                                                      SizedBox(height: 3,),
-                                                      ColorCustomText(fontSize: 10, fontWeight: FontWeight.w400, text: "${value.showConveyancelist[index]["dailyConveyancels"][dailyConveyancels]["Location"]??"${value.showConveyancelist[index]["dailyConveyancels"][dailyConveyancels]["StreetName"]}"}", letterSpacing: 0.2,
-                                                        textColor: Main_Theme_textColor.withOpacity(0.7),),
-                                                      SizedBox(height: 6,),
+                                                          Icon(Icons.location_on_outlined,size: 24,color: Main_Theme_textColor.withOpacity(0.7)),
+                                                          SizedBox(height: 3,),
+                                                          ColorCustomText(fontSize: 10, fontWeight: FontWeight.w400, text: "${value.showConveyancelist[index]["dailyConveyancels"][dailyConveyancels]["Location"]??"${value.showConveyancelist[index]["dailyConveyancels"][dailyConveyancels]["StreetName"]}"}", letterSpacing: 0.2,
+                                                            textColor: Main_Theme_textColor.withOpacity(0.7),),
+                                                          SizedBox(height: 6,),
+                                                        ],
+                                                      ),
+                                                      Expanded(
+                                                        child: ListView.builder(
+                                                          scrollDirection: Axis.horizontal,
+                                                          physics: NeverScrollableScrollPhysics(),
+                                                          itemBuilder: (context, j) {
+                                                            return Container(
+                                                              margin: EdgeInsets.only(
+                                                                top:14.5,
+                                                                right: 2.5,
+                                                                bottom: 36.8,
+                                                              ),
+                                                              width: 5,height:2,
+                                                              color:  Main_Theme_textColor_tir_Condition,
+                                                            );
+                                                          },),
+                                                      ),
+
+                                                      Expanded(
+                                                        child: ListView.builder(
+                                                          physics: NeverScrollableScrollPhysics(),
+                                                          scrollDirection: Axis.horizontal,
+                                                          itemBuilder: (context, i) {
+                                                            return Container(
+                                                              margin: EdgeInsets.only(
+                                                                top:14.5,
+                                                                left: 2.5,
+                                                                bottom: 36.8,
+                                                              ),
+                                                              width: 5,height:2,
+                                                              color:  Main_Theme_textColor_tir_Condition,
+                                                            );
+                                                          },),
+                                                      ),
+                                                      Column(
+                                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                        children: [
+                                                          // Image.asset("Assets/DashBoardIcons/location.png",height: 24,width: 24, fit: BoxFit.fill,
+                                                          //     color: Main_Theme_textColor),
+                                                          Icon(Icons.location_on_outlined,size: 24,color: Main_Theme_textColor.withOpacity(0.7)),
+                                                          SizedBox(height: 3,),
+                                                          ColorCustomText(fontSize: 10, fontWeight: FontWeight.w400, text: "${value.showConveyancelist[index]["dailyConveyancels"][dailyConveyancels]["Location"]??"${value.showConveyancelist[index]["dailyConveyancels"][dailyConveyancels]["tStreetName"]}"}", letterSpacing: 0.2,
+                                                            textColor: Main_Theme_textColor.withOpacity(0.7),),
+                                                          SizedBox(height: 6,),
+                                                        ],
+                                                      ),
                                                     ],
                                                   ),
-                                                  Expanded(
-                                                    child: ListView.builder(
-                                                      scrollDirection: Axis.horizontal,
-                                                      physics: NeverScrollableScrollPhysics(),
-                                                      itemBuilder: (context, j) {
-                                                        return Container(
-                                                          margin: EdgeInsets.only(
-                                                            top:14.5,
-                                                            right: 2.5,
-                                                            bottom: 36.8,
-                                                          ),
-                                                          width: 5,height:2,
-                                                          color:  Main_Theme_textColor_tir_Condition,
-                                                        );
-                                                      },),
-                                                  ),
-                                                  Column(
-                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                    children: [
-                                                      //  Image.asset("Assets/DashBoardIcons/convence.png",height: 27,width: 40,fit: BoxFit.fill,
-                                                      Image.asset("Assets/SelfIcon/cng.png",height: 30,width: 40,fit: BoxFit.fill,
-                                                          color: Main_Theme_textColor),
-                                                      ColorCustomText(fontSize: 10, fontWeight: FontWeight.w500, text: "", letterSpacing: 0.2,textColor: Main_Theme_textColor.withOpacity(0.7),),
+                                                ),
+                                                Positioned(
+                                                  child:   Column(
+                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                  children: [
+                                                    //  Image.asset("Assets/DashBoardIcons/convence.png",height: 27,width: 40,fit: BoxFit.fill,
+                                                    Image.asset(
+                                                    "${value.showConveyancelist[index]["dailyConveyancels"][dailyConveyancels]["VehicleType"]}" == "1001"?
+                                                       "Assets/SelfIcon/taxi.png"
+                                                            : "${value.showConveyancelist[index]["dailyConveyancels"][dailyConveyancels]["VehicleType"]}" == "1002"?
+                                                        "Assets/SelfIcon/cng.png"
+                                                            : "${value.showConveyancelist[index]["dailyConveyancels"][dailyConveyancels]["VehicleType"]}" == "1003"?
+                                                        "Assets/SelfIcon/bus.png"
+                                                            : "${value.showConveyancelist[index]["dailyConveyancels"][dailyConveyancels]["VehicleType"]}" == "1004"?
+                                                        "Assets/SelfIcon/car.png"
+                                                            : "${value.showConveyancelist[index]["dailyConveyancels"][dailyConveyancels]["VehicleType"]}" == "1005"?
+                                                        "Assets/SelfIcon/rickshaw.png"
+                                                            : "${value.showConveyancelist[index]["dailyConveyancels"][dailyConveyancels]["VehicleType"]}" == "1006"?
+                                                        "Assets/SelfIcon/bike.png"
+                                                            : "${value.showConveyancelist[index]["dailyConveyancels"][dailyConveyancels]["VehicleType"]}" == "1007"?
+                                                        "Assets/SelfIcon/transport.png"
+                                                            : "${value.showConveyancelist[index]["dailyConveyancels"][dailyConveyancels]["VehicleType"]}" == "1008"?
+                                                        "Assets/SelfIcon/man-in-canoe.png"
+                                                            : "${value.showConveyancelist[index]["dailyConveyancels"][dailyConveyancels]["VehicleType"]}" == "1009"?
+                                                        "Assets/SelfIcon/launch.png"
+                                                            : "${value.showConveyancelist[index]["dailyConveyancels"][dailyConveyancels]["VehicleType"]}" == "1010"?
+                                                        "Assets/SelfIcon/ferry-boat.png"
+                                                            : "${value.showConveyancelist[index]["dailyConveyancels"][dailyConveyancels]["VehicleType"]}" == "1011"?
+                                                        "Assets/SelfIcon/airplane.png"
+                                                            :
+                                                        "Assets/SelfIcon/helicopter.png"
 
-                                                    ],
-                                                  ),
-                                                  Expanded(
-                                                    child: ListView.builder(
-                                                      physics: NeverScrollableScrollPhysics(),
-                                                      scrollDirection: Axis.horizontal,
-                                                      itemBuilder: (context, i) {
-                                                        return Container(
-                                                          margin: EdgeInsets.only(
-                                                            top:14.5,
-                                                            left: 2.5,
-                                                            bottom: 36.8,
-                                                          ),
-                                                          width: 5,height:2,
-                                                          color:  Main_Theme_textColor_tir_Condition,
-                                                        );
-                                                      },),
-                                                  ),
-                                                  Column(
-                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                    children: [
-                                                      // Image.asset("Assets/DashBoardIcons/location.png",height: 24,width: 24, fit: BoxFit.fill,
-                                                      //     color: Main_Theme_textColor),
-                                                      Icon(Icons.location_on_outlined,size: 24,color: Main_Theme_textColor.withOpacity(0.7)),
-                                                      SizedBox(height: 3,),
-                                                      ColorCustomText(fontSize: 10, fontWeight: FontWeight.w400, text: "${value.showConveyancelist[index]["dailyConveyancels"][dailyConveyancels]["Location"]??"${value.showConveyancelist[index]["dailyConveyancels"][dailyConveyancels]["tStreetName"]}"}", letterSpacing: 0.2,
-                                                        textColor: Main_Theme_textColor.withOpacity(0.7),),
-                                                      SizedBox(height: 6,),
-                                                    ],
-                                                  ),
-                                                ],
-                                              ),
+                                                        ,height: 40,width: 40,fit: BoxFit.fill,
+                                                        color: Main_Theme_textColor),
+                                                    ColorCustomText(fontSize: 10, fontWeight: FontWeight.w500, text: "", letterSpacing: 0.2,textColor: Main_Theme_textColor.withOpacity(0.7),),
+
+                                                  ],
+                                                ),)
+                                              ],
                                             ),
                                             Divider(
                                               height: 3,

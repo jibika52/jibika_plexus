@@ -394,7 +394,8 @@ void onStart(ServiceInstance service) async {
   Timer.periodic(Duration(seconds: 30), (timer) async {
 
     _getCurrentLocation();
-    print("Location--------------- ${position.latitude} ${position.longitude}");
+    print("Location--------------- ${position.latitude} ${position.longitude} ");
+    print("select_car_type------------------> ${GetStorage().read("select_car_type")} ");
 
 
 
@@ -422,7 +423,6 @@ void onStart(ServiceInstance service) async {
       // " ",
       // " ",
       // " ",
-
       "${position.latitude}",
       "${position.longitude}",
       int.parse("${"${GetStorage().read("Empcode")}"}"),

@@ -149,7 +149,7 @@ class _CreateConveyanceScreenState extends State<CreateConveyanceScreen> {
 
   @override
   Widget build(BuildContext context) {
-  //  print("conveyance_car_code--------------------------------------- ${GetStorage().read("for_end_conveyance_code")}");
+  print("conveyance_car_code--------------------------------------- conveyance_car_code---->  ${GetStorage().read("conveyance_car_code")}");
     timer22 = Timer.periodic(Duration(seconds: 1), (timer) {
       if(count22==5){
         timer22.cancel();
@@ -230,7 +230,9 @@ class _CreateConveyanceScreenState extends State<CreateConveyanceScreen> {
                                   selected_car_index=index:selected_car_index=int.parse("${GetStorage().read("select_car_type")}");
 
                                   GetStorage().read("conveyance_car_code")=="0"?
-                                  selected_car_code_index=index:selected_car_code_index=int.parse("${GetStorage().read("conveyance_car_code")}");
+                                  selected_car_code_index=int.parse("${value.GetVehicleList[index]["Code"]}")
+                                      :
+                                  selected_car_code_index=int.parse("${GetStorage().read("conveyance_car_code")}");
                                 });
                               },
                               child: Container(
