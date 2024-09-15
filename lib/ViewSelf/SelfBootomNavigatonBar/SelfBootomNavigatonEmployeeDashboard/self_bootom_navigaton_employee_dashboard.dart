@@ -246,8 +246,8 @@ class _SelfBootomNavigatonEmployeeDashboardState extends State<SelfBootomNavigat
 
                                     ),
                                     width: double.infinity,
-                                    child: CustomMySelfJobCard3rdPart1
-                                      (selectedindex: selectedindex==index?true:false,
+                                    child: CustomMySelfJobCard3rdPart1(
+                                      selectedindex: selectedindex==index?true:false,
                                       index: "${index + 1}",
                                        text2: "${DateFormat('EEE ').format(DateTime.parse(DateTime.now().month >9 && index+1 >9 ? "${DateTime.now().year}${DateTime.now().month}${index + 1}" : DateTime.now().month >9 && index+1 <10 ?  "${DateTime.now().year}${DateTime.now().month}0${index + 1}" :DateTime.now().month <10 && index+1 >9 ?  "${DateTime.now().year}0${DateTime.now().month}${index + 1}"  :  "${DateTime.now().year}0${DateTime.now().month}0${index + 1}"             ))}",
                                       intime :"${selfOneMonthAttendanceList[index].iNTIME}",
@@ -255,6 +255,19 @@ class _SelfBootomNavigatonEmployeeDashboardState extends State<SelfBootomNavigat
 
                                       status:  "${selfOneMonthAttendanceList[index].Status}",
                                       location:  " ",
+
+                                       IN_LATITUDE : "${selfOneMonthAttendanceList[index].IN_LATITUDE}",
+                                       IN_LONGITUDE : "${selfOneMonthAttendanceList[index].IN_LONGITUDE}",
+                                       IN_LOCNAME : "${selfOneMonthAttendanceList[index].IN_LOCNAME}",
+                                       IN_DISTRICT : "${selfOneMonthAttendanceList[index].IN_DISTRICT}",
+                                       IN_STREET_NAME : "${selfOneMonthAttendanceList[index].IN_STREET_NAME}",
+                                       IN_DIVISION : "${selfOneMonthAttendanceList[index].IN_DIVISION}",
+                                       OUT_LATITUDE : "${selfOneMonthAttendanceList[index].OUT_LATITUDE}",
+                                       OUT_LONGITUDE : "${selfOneMonthAttendanceList[index].OUT_LONGITUDE}",
+                                       OUT_LOCNAME : "${selfOneMonthAttendanceList[index].OUT_LOCNAME}",
+                                       OUT_DISTRICT : "${selfOneMonthAttendanceList[index].OUT_DISTRICT}",
+                                       OUT_STREET_NAME : "${selfOneMonthAttendanceList[index].OUT_STREET_NAME}",
+                                       OUT_DIVISION : "${selfOneMonthAttendanceList[index].OUT_DIVISION}",
                                     ),
                                   ),
                                   selectedindex==index?
@@ -321,7 +334,8 @@ class _SelfBootomNavigatonEmployeeDashboardState extends State<SelfBootomNavigat
                                               ),
                                               margin: EdgeInsets.only(left: 10,right: 10),
                                               padding: EdgeInsets.all(10),
-                                              child: ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400,maxLines: 2 ,text:   "${selfOneMonthAttendanceList[index].mOVEMENTPUNCH??"You dont have movements punch today"}", letterSpacing: 0.3,textAlign: TextAlign.justify, textColor: Main_Theme_textColor.withOpacity(0.6),),
+                                              child: ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400,maxLines: 2 ,
+                                                text:   "${selfOneMonthAttendanceList[index].mOVEMENTPUNCH??"You dont have movements punch today"}", letterSpacing: 0.3,textAlign: TextAlign.justify, textColor: Main_Theme_textColor.withOpacity(0.6),),
                                               //    child: ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400,maxLines: 2 ,text:   "You dont have movements punch today", letterSpacing: 0.3,textAlign: TextAlign.justify, textColor: Main_Theme_textColor.withOpacity(0.6),),
                                             ),
                                           ],
@@ -341,7 +355,7 @@ class _SelfBootomNavigatonEmployeeDashboardState extends State<SelfBootomNavigat
                              backgroundColor: "${selfOneMonthAttendanceList[index].Status}"=="P"?presentsent_color.withOpacity(1) : "${selfOneMonthAttendanceList[index].Status}"=="AB"?absent_color.withOpacity(1) : "${selfOneMonthAttendanceList[index].Status!.substring(selfOneMonthAttendanceList[index].Status!.length-1, selfOneMonthAttendanceList[index].Status!.length)}"=="H"?holiday_color.withOpacity(1) : "${selfOneMonthAttendanceList[index].Status!.substring(selfOneMonthAttendanceList[index].Status!.length-1,selfOneMonthAttendanceList[index].Status!.length )}"=="L"?leave_color.withOpacity(1) : Main_Theme_WhiteCollor,
 
 
-                    child: Icon(Icons.location_on_outlined,color: Main_Theme_WhiteCollor,size: 12,),
+                           child: Icon(Icons.location_on_outlined,color: Main_Theme_WhiteCollor,size: 12,),
                                   // backgroundColor:Colors.red,
                             ),
                             )

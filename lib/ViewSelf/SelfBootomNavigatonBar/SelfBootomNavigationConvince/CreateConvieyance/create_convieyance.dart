@@ -476,27 +476,19 @@ class _CreateConveyanceScreenState extends State<CreateConveyanceScreen> {
     );
   }
   List vehicle_image_list=[
+    "Assets/SelfIcon/taxi.png",
+    "Assets/SelfIcon/cng.png",
+    "Assets/SelfIcon/bus.png",
+    "Assets/SelfIcon/car.png",
     "Assets/SelfIcon/rickshaw.png",
     "Assets/SelfIcon/bike.png",
-    "Assets/SelfIcon/cng.png",
-    "Assets/SelfIcon/conveyance.png",
-    "Assets/SelfIcon/bus.png",
     "Assets/SelfIcon/transport.png",
-    "Assets/SelfIcon/plane.png",
+    "Assets/SelfIcon/man-in-canoe.png",
+    "Assets/SelfIcon/launch.png",
+    "Assets/SelfIcon/ferry-boat.png",
+    "Assets/SelfIcon/airplane.png",
+    "Assets/SelfIcon/helicopter.png",
 
-  ];
-  List care_name_list=[
-    "RICKSHAW",
-    "BIKE",
-    "CNG",
-    "CAR",
-    "BUS",
-    "TRAIN",
-    "BOAT",
-    "LAUNCH",
-    "FERRY",
-    "HELICOPTER"
-    "PLANE",
   ];
   int selected_car_index=-1;
   int selected_car_code_index=-1;

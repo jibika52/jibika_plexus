@@ -1,4 +1,8 @@
+import 'dart:ui';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 import '../../../CustomWidget/CustomText/custom_text.dart';
 import '../../../Utils/constants.dart';
@@ -87,6 +91,20 @@ class CustomMySelfJobCard3rdPart1 extends StatelessWidget {
     required this.outTime,
     required this.status,
     required this.location,
+
+    required this.IN_LATITUDE,
+    required this.IN_LONGITUDE,
+    required this.IN_LOCNAME,
+    required this.IN_DISTRICT,
+    required this.IN_STREET_NAME,
+    required this.IN_DIVISION,
+    required this.OUT_LATITUDE,
+    required this.OUT_LONGITUDE,
+    required this.OUT_LOCNAME,
+    required this.OUT_DISTRICT,
+    required this.OUT_STREET_NAME,
+    required this.OUT_DIVISION,
+
   });
   bool selectedindex;
   String  index;
@@ -95,6 +113,20 @@ class CustomMySelfJobCard3rdPart1 extends StatelessWidget {
   String ? outTime;
   String ? status;
   String ? location;
+
+  String? IN_LATITUDE ;
+  String? IN_LONGITUDE ;
+  String? IN_LOCNAME ;
+  String? IN_DISTRICT ;
+  String? IN_STREET_NAME ;
+  String? IN_DIVISION ;
+  String? OUT_LATITUDE ;
+  String? OUT_LONGITUDE ;
+  String? OUT_LOCNAME ;
+  String? OUT_DISTRICT ;
+  String? OUT_STREET_NAME ;
+  String? OUT_DIVISION ;
+
   @override
   Widget build(BuildContext context) {
     return  Row(
@@ -175,7 +207,84 @@ class CustomMySelfJobCard3rdPart1 extends StatelessWidget {
         InkWell(
           onTap: () {
             showDialog(context: context, builder: (context) => AlertDialog(
-              title: Text("Attendance location was"),
+              title: Text("Attendance Summary"),
+              content: Container(
+                height: 230,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                   Stack(
+                     children: [
+                       Column(
+                         crossAxisAlignment: CrossAxisAlignment.center,
+                         children: [
+                           Container(
+                             alignment: Alignment.center,
+                             height: 20,
+                             width: double.infinity,
+                             color: CustomButtonColor,
+                             child: ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "In Punch Info", letterSpacing: 0.3, textColor: Main_Theme_WhiteCollor),
+                           ),
+                           CustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "$IN_LOCNAME", letterSpacing: 0.3),
+                           CustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "$IN_DIVISION", letterSpacing: 0.3),
+                           CustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "$IN_DISTRICT", letterSpacing: 0.3),
+                           CustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "$IN_STREET_NAME", letterSpacing: 0.3),
+                         ],
+                       ),
+                       Positioned(
+                           right: 5,
+                           bottom: -5,
+                           child: Container(
+                         padding: EdgeInsets.symmetric(vertical: 7),
+                         child:  Column(
+                           mainAxisAlignment: MainAxisAlignment.center,
+                           children: [
+                             Image.asset("Assets/DashBoardIcons/map_view.png",height: 24,width: 24,fit: BoxFit.fill,
+                                 color: CustomButtonColor),
+                             ColorCustomText(fontSize: 9, fontWeight: FontWeight.w300, text: "View map", letterSpacing: 0.3, textColor: CustomButtonColor,)
+                           ],
+                         ),
+                       )),
+                     ],
+                   ),
+                    Divider(),
+                    Stack(
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              alignment: Alignment.center,
+                              height: 20,
+                              width: double.infinity,
+                              color: CustomButtonColor,
+                              child: ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Out Punch Info", letterSpacing: 0.3, textColor: Main_Theme_WhiteCollor),
+                            ),
+                            CustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "$OUT_LOCNAME", letterSpacing: 0.3),
+                            CustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "$OUT_DIVISION", letterSpacing: 0.3),
+                            CustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "$OUT_DISTRICT", letterSpacing: 0.3),
+                            CustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "$OUT_STREET_NAME", letterSpacing: 0.3),
+                          ],
+                        ),
+                        Positioned(
+                            right: 5,
+                            bottom: -5,
+                            child: Container(
+                          padding: EdgeInsets.symmetric(vertical: 7),
+                          child:  Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image.asset("Assets/DashBoardIcons/map_view.png",height: 24,width: 24,fit: BoxFit.fill,
+                                  color: CustomButtonColor),
+                              ColorCustomText(fontSize: 9, fontWeight: FontWeight.w300, text: "View map", letterSpacing: 0.3, textColor: CustomButtonColor,)
+                            ],
+                          ),
+                        )),
+                      ],
+                    )
+                  ],
+                )
+              ),
             ),);
           },
           child: Container(

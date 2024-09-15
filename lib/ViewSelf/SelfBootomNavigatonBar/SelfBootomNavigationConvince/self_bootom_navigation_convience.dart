@@ -70,7 +70,11 @@ class _SelfBootomNavigationConvienceScreenState extends State<SelfBootomNavigati
               child: SingleChildScrollView(
                 scrollDirection: Axis.vertical,
                 child: Consumer<SelfDashboardController>(
-                  builder: (context, value, child) =>value.showConveyancelist==null?Center(child: CircularProgressIndicator(),) :
+                  builder: (context, value, child) =>value.showConveyancelist==null?    Center(
+                    child: CircularProgressIndicator(
+                      backgroundColor: absent_color,
+                    ),
+                  )   :
                   Column(
                     children: [
                       ListView.builder(
@@ -229,8 +233,8 @@ class _SelfBootomNavigationConvienceScreenState extends State<SelfBootomNavigati
                               ],
                             ),
                           ),
-                        ), ),
-
+                        ),
+                      ),
                       Container(
                         height: 60,
                         width: double.infinity,
@@ -280,7 +284,8 @@ class _SelfBootomNavigationConvienceScreenState extends State<SelfBootomNavigati
       final df = new DateFormat("MMM-yyyy");
       setState(() {
         selected2Datee = df.format(picked);
-      });
+        }
+      );
     }
   }
 }
