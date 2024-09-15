@@ -34,6 +34,14 @@ class _EmployeeTrackinScreenState extends State<EmployeeTrackinScreen> {
   int selected_index=0;
   @override
   void initState() {
+    Provider.of<TrackingController>(context,listen: false).GetMovementTrackableEmployeeByAttendanceDateProvider(
+        "${GetStorage().read("mobile_id")}",
+        "${selected2Datee}", "${widget.ID_CARD_NO}", context);
+    Provider.of<TrackingController>(context,listen: false).GetEmployeeLocaltionInfoProvider(
+        "${GetStorage().read("mobile_id")}",
+        "${selected2Datee}",
+        "${widget.e_code}",
+        context);
     // TODO: implement initState
     super.initState();
   }
@@ -72,6 +80,8 @@ class _EmployeeTrackinScreenState extends State<EmployeeTrackinScreen> {
                       //   ),
                         Navigator.push(context, MaterialPageRoute(builder: (context) => TrackingMapScreenTEstPoliline(
                               list_of_location: Provider.of<TrackingController>(context).EmployeeLocaltionInfoList,
+                          lat: double.parse("${Provider.of<TrackingController>(context).EmployeeLocaltionInfoList.last["Latitude"]}"),
+                          lon: double.parse("${Provider.of<TrackingController>(context).EmployeeLocaltionInfoList.last["Longitude"]}"),
                         ),
 
                         ));
@@ -448,13 +458,15 @@ class _EmployeeTrackinScreenState extends State<EmployeeTrackinScreen> {
       final df = new DateFormat("dd-MMM-yyyy");
       setState(() {
         selected2Datee = df.format(picked);
-        Provider.of<TrackingController>(context,listen: false).GetEmployeeLocaltionInfoProvider(
-            "${GetStorage().read("mobile_id")}",
-            "${selected2Datee}",
-            "${widget.e_code}",
-            context);
-
+        get_location_info();
       });
     }
+  }
+  get_location_info(){
+    Provider.of<TrackingController>(context,listen: false).GetEmployeeLocaltionInfoProvider(
+        "${GetStorage().read("mobile_id")}",
+        "${selected2Datee}",
+        "${widget.e_code}",
+        context);
   }
 }

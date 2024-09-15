@@ -10,8 +10,16 @@ import 'package:provider/provider.dart';
 import 'Controller/TrackingController/tracking_controller.dart';
 
 class TrackingMapScreenTEstPoliline extends StatefulWidget {
-   TrackingMapScreenTEstPoliline({super.key,this.list_of_location});
+   TrackingMapScreenTEstPoliline({
+     super.key,
+     this.list_of_location,
+     required this.lat,
+     required this.lon
+   });
     dynamic list_of_location;
+   double lat;
+   double lon;
+
   @override
   State<TrackingMapScreenTEstPoliline> createState() => _TrackingMapScreenTEstPolilineState();
 }
@@ -33,52 +41,47 @@ class _TrackingMapScreenTEstPolilineState extends State<TrackingMapScreenTEstPol
 
   int i=0;
   void latlonglistgret(){
-    for(i=0;i<widget.list_of_location.length;i++){
-      latLen.add(LatLng(double.parse("${widget.list_of_location[i]["Latitude"]}"), double.parse("${widget.list_of_location[i]["Longitude"]}")));
-   //   print("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS $latLen");
-     print("dddddddddddddddd-------------------------------------------------------------------- ${widget.list_of_location[i]["Latitude"]}  --  ${widget.list_of_location[i]["Longitude"]}");
+    for(int i=0; i<latLen.length; i++){
+      _markers.add(
+          Marker(
+            markerId: MarkerId(i.toString()),
+            position: latLen[i],
+            infoWindow: InfoWindow(
+              title: '${widget.list_of_location[i]["datetime"]}',
+              snippet: '${widget.list_of_location[i]["Address"]} & ${widget.list_of_location[i]["Street"]}',
+            ),
+            icon: BitmapDescriptor.defaultMarker,
+          )
+      );
+      _polyline.add(
+          Polyline(
+            polylineId: PolylineId('1'),
+            points: latLen,
+            width: 2,
+            color: Colors.red,
+          )
+      );
+      setState(() {
+
+      });
     }
+
   }
 
   _getCurrentLocation() async{
 
-
-    position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-
     setState(() {
       _kGoogle =   CameraPosition(
-        target:  LatLng(double.parse("${widget.list_of_location.last["Latitude"]}"), double.parse("${widget.list_of_location.last["Longitude"]}") ),
+        target:  LatLng(widget.lat , widget.lon),
         zoom: 16,
       );
+      for(i=0;i<widget.list_of_location.length;i++){
+        latLen.add(LatLng(double.parse("${widget.list_of_location[i]["Latitude"]}"), double.parse("${widget.list_of_location[i]["Longitude"]}")));
+        //   print("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS $latLen");
+        print("dddddddddddddddd-------------------------------------------------------------------- ${widget.list_of_location[i]["Latitude"]}  --  ${widget.list_of_location[i]["Longitude"]}");
+      }
        latlonglistgret();
-      Future.delayed(Duration(seconds: 2),() {
-        print("bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
-        for(int i=0; i<latLen.length; i++){
-          _markers.add(
-            // added markers
-              Marker(
-                markerId: MarkerId(i.toString()),
-                position: latLen[i],
-                infoWindow: InfoWindow(
-                  title: '${widget.list_of_location[i]["datetime"]}',
-                  snippet: '${widget.list_of_location[i]["Address"]} & ${widget.list_of_location[i]["Street"]}',
-                ),
-                icon: BitmapDescriptor.defaultMarker,
-              )
-          );
-          setState(() {
 
-          });
-          _polyline.add(
-              Polyline(
-                polylineId: PolylineId('1'),
-                points: latLen,
-                width: 2,
-                color: Colors.red,
-              )
-          );
-        }
-      },);
     });
   }
 
@@ -94,18 +97,18 @@ class _TrackingMapScreenTEstPolilineState extends State<TrackingMapScreenTEstPol
   late Timer timer;
   @override
   Widget build(BuildContext context) {
-    timer = Timer.periodic(Duration(seconds: 1), (timer) {
-      print("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk  $Position");
-      if(count==5){
-        timer.cancel();
-      }else{
-        count++;
-      }
-    });
+    // timer = Timer.periodic(Duration(seconds: 1), (timer) {
+    //   print("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk  $Position");
+    //   if(count==5){
+    //     timer.cancel();
+    //   }else{
+    //     count++;
+    //   }
+    // });
     dynamic locationdata=Provider.of<TrackingController>(context).EmployeeLocaltionInfoList;
     print("$locationdata");
 
-    return count<2?Center(child: CircularProgressIndicator(),): Container(
+    return   Container(
       child: GoogleMap(
         //given camera position
         initialCameraPosition: _kGoogle,
