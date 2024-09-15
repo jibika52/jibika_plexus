@@ -92,69 +92,29 @@ class SelfProfileSummaryPart extends StatelessWidget {
                   SizedBox(
                     height: 4,
                   ),
-                  Row(
-                    children: [
-                      ColorCustomText(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                        text: "Dep : ",
-                        letterSpacing: 0.3,
-                        textColor:
-                        Main_Theme_textColor.withOpacity(0.5),
-                      ),
-                      Expanded(
-                        child: CustomText(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w400,
-                            text:"${selfORAdminShortInformationdata["Department"]??""}",
-                            overflow: TextOverflow.ellipsis,
-                            letterSpacing: 0.3),
-                      ),
-                    ],
-                  ),
+                  CustomText(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                      text:"${selfORAdminShortInformationdata["Department"]??""}",
+                      overflow: TextOverflow.ellipsis,
+                      letterSpacing: 0.3),
                   SizedBox(
                     height: 3,
                   ),
-                  Row(
-                    children: [
-                      ColorCustomText(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                        text: "Deg : ",
-                        letterSpacing: 0.3,
-                        textColor:
-                        Main_Theme_textColor.withOpacity(0.5),
-                      ),
-                      Expanded(
-                        child: CustomText(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w400,
-                            text: "${selfORAdminShortInformationdata["Designation"]??""}",
-                            overflow: TextOverflow.ellipsis,
-                            letterSpacing: 0.3),
-                      ),
-                    ],
-                  ),
+                  CustomText(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                      text: "${selfORAdminShortInformationdata["Designation"]??""}",
+                      overflow: TextOverflow.ellipsis,
+                      letterSpacing: 0.3),
                   SizedBox(
                     height: 3,
                   ),
-                  Row(
-                    children: [
-                      ColorCustomText(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                        text: "DOJ : ",
-                        letterSpacing: 0.3,
-                        textColor:
-                        Main_Theme_textColor.withOpacity(0.5),
-                      ),
-                      CustomText(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400,
-                          text: "${selfORAdminShortInformationdata["JoiningDate"]??""}",
-                          letterSpacing: 0.3),
-                    ],
-                  ),
+                  CustomText(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                      text: "${selfORAdminShortInformationdata["JoiningDate"]??""}",
+                      letterSpacing: 0.3),
                   Spacer(),
                 ],
               ),
