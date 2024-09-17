@@ -13,7 +13,7 @@ class BackgroundTrackingApiModelClass{
   String ? StreetName;
   String ? lat;
   String ? lng;
-  String ? Empcode;
+  int ? Empcode;
   String ? DutyDate;
   String ? Remarks;
   String ? IsTrack;

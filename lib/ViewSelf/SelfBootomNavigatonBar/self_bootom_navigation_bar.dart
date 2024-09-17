@@ -1,14 +1,16 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
 import 'dart:ui';
-
-import 'package:flutter/foundation.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:http/http.dart' as http;
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 import 'package:intl/intl.dart';
+import 'package:jibika_plexus/Api/Routes/routes.dart';
 import 'package:jibika_plexus/Controller/TrackingController/tracking_controller.dart';
+import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/BackgroundTrackingApiModelClass/background_tracking_api_modelclass.dart';
 import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/SelfBootomNavigationConvince/CreateConvieyance/create_convieyance.dart';
 import 'package:karmm_callkit/karmm_callkit.dart';
 import 'package:device_info_plus/device_info_plus.dart';
@@ -42,7 +44,7 @@ class SalfBootomNatchBarScreen extends StatefulWidget {
   @override
   State<SalfBootomNatchBarScreen> createState() => _SalfBootomNatchBarScreenState();
 }
-
+List<BackgroundTrackingApiModelClass> GpstrackingList =[];
 class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
 
   int maxCount = 5;
@@ -391,66 +393,80 @@ void onStart(ServiceInstance service) async {
    place = placemarks[0];
   }
 
-  Timer.periodic(Duration(seconds: 30), (timer) async {
+  Timer.periodic(Duration(seconds: 10), (timer) async {
 
     _getCurrentLocation();
-    print("Location--------------- ${position.latitude} ${position.longitude} ");
+    print( "Location--------------- ${position.latitude} ${position.longitude} ");
     print("select_car_type------------------> ${GetStorage().read("select_car_type")} ");
 
 
 
   });
   // bring to foreground
+
   Timer.periodic(Duration(minutes: 10), (timer) async {
+
     bool is_internet_available = await InternetConnection().hasInternetAccess;
-    print("Location---------------${position.latitude} ${position.longitude} \nis_internet available-- ${is_internet_available}\n--- shift_time ${GetStorage().read("SHIFT_IN_TIME")}\n---------SHIFT_OUT_TIME --${GetStorage().read("SHIFT_OUT_TIME")}\n-----ATTENDANCE_Status --${GetStorage().read("ATTENDANCE_Status")}\n---------IsTrack --${GetStorage().read("IsTrack")}\n--------${timer.tick}----------------------");
-    ///---------------------------------------------------------------------------
-    CustomHttpSelf().selfCheckInCheckOut(
-      "${GetStorage().read("mobile_id")}",
-      "${DateFormat('yyyyMMdd').format(DateTime.now())}",
-      "${DateFormat('HHmmss').format(DateTime.now()).toString()}",
-      "${GetStorage().read("RfIdCardNo")}",
-
-      "${place.name}",
-      "${place.locality}",
-      "${place.administrativeArea}",
-      "${place.postalCode}",
-      "${place.subAdministrativeArea}",
-      "${place.street.toString()}",
-      // " ",
-      // " ",
-      // " ",
-      // " ",
-      // " ",
-      // " ",
-      "${position.latitude}",
-      "${position.longitude}",
-      int.parse("${"${GetStorage().read("Empcode")}"}"),
-      "${DateFormat('dd-MMM-yyyy').format(DateTime.now())}",
-      GetStorage().read("select_car_type") == "-1"?"GPS track":"conveyance track",
-      "true",
-      GetStorage().read("select_car_type") == "-1"?"GPS track":"conveyance track",
-    );
+    print( "Location---------------${position.latitude} ${position.longitude} \n");
+        print("is_internet available-- ${is_internet_available}\n--- shift_time ${GetStorage().read("SHIFT_IN_TIME")}\n---------SHIFT_OUT_TIME --${GetStorage().read("SHIFT_OUT_TIME")}\n-----ATTENDANCE_Status --${GetStorage().read("ATTENDANCE_Status")}\n---------IsTrack --${GetStorage().read("IsTrack")}\n--------${timer.tick}----------------------");
+    ///---------------------------------------------------------------------------\
 
 
+    GpstrackingList.add(
+        BackgroundTrackingApiModelClass(
+        UserId: "${GetStorage().read("mobile_id")}",
+        AttendanceDate:  "${DateFormat('yyyyMMdd').format(DateTime.now())}",
+        AttendanceTime: "${DateFormat('HHmmss').format(DateTime.now()).toString()}",
+        RefCardNo: "${GetStorage().read("RfIdCardNo")}",
+        Location: "${place.name}",
+        District: "${place.locality}",
+        Division: "${place.administrativeArea}",
+        PostalCode: "${place.postalCode}",
+        SubLocality: "${place.subAdministrativeArea}",
+        StreetName:  "${place.street.toString()}",
+        lat: "${position.latitude}",
+        lng: "${position.longitude}",
+        Empcode: int.parse("${"${GetStorage().read("Empcode")}"}"),
+        DutyDate: "${DateFormat('dd-MMM-yyyy').format(DateTime.now())}", Remarks: GetStorage().read("select_car_type") == "-1"?"GPS track":"conveyance track",
+        IsTrack:  "true", Note: GetStorage().read("select_car_type") == "-1"?"GPS track":"conveyance track"));
+        Future.delayed(Duration(seconds: 2),() {
+          selfOffLineDataSync();
+        },);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+   // for(int i=0;i<GpstrackingList.length;i++){
+   //   print("////////////////////////////////////////////////////////////////////////////////");
+   //   print("${GpstrackingList[i].UserId}---${GpstrackingList[i].AttendanceDate}---${GpstrackingList[i].AttendanceTime}--${GpstrackingList[i].RefCardNo}--${GpstrackingList[i].Location}--${GpstrackingList[i].District}");
+   //   print("${GpstrackingList[i].PostalCode} --- ${GpstrackingList[i].Division} --- ${GpstrackingList[i].SubLocality}--${GpstrackingList[i].StreetName}--${GpstrackingList[i].lat}---${GpstrackingList[i].lng}");
+   //   print("${GpstrackingList[i].Empcode}--${GpstrackingList[i].DutyDate}---${GpstrackingList[i].Remarks}---${GpstrackingList[i].IsTrack}---${GpstrackingList[i].Note}");
+   //   print("////////////////////////////////////////////////////////////////////////////////");
+   // }
+    // CustomHttpSelf().selfCheckInCheckOut(
+    //   "${GetStorage().read("mobile_id")}",
+    //   "${DateFormat('yyyyMMdd').format(DateTime.now())}",
+    //   "${DateFormat('HHmmss').format(DateTime.now()).toString()}",
+    //   "${GetStorage().read("RfIdCardNo")}",
+    //
+    //   "${place.name}",
+    //   "${place.locality}",
+    //   "${place.administrativeArea}",
+    //   "${place.postalCode}",
+    //   "${place.subAdministrativeArea}",
+    //   "${place.street.toString()}",
+    //   // " ",
+    //   // " ",
+    //   // " ",
+    //   // " ",
+    //   // " ",
+    //   // " ",
+    //   "${position.latitude}",
+    //   "${position.longitude}",
+    //   int.parse("${"${GetStorage().read("Empcode")}"}"),
+    //   "${DateFormat('dd-MMM-yyyy').format(DateTime.now())}",
+    //   GetStorage().read("select_car_type") == "-1"?"GPS track":"conveyance track",
+    //   "true",
+    //   GetStorage().read("select_car_type") == "-1"?"GPS track":"conveyance track",
+    // );
 
     ///---------------------------------------------------------------------------
     if (service is AndroidServiceInstance) {
@@ -472,7 +488,6 @@ void onStart(ServiceInstance service) async {
       final iosInfo = await deviceInfo.iosInfo;
       device = iosInfo.model;
     }
-
     service.invoke(
       'update',
       {
@@ -481,4 +496,52 @@ void onStart(ServiceInstance service) async {
       },
     );
   });
+}
+
+var fmap={};
+List ddddddd=[];
+selfOffLineDataSync()async{
+  dynamic selfCheckInCheckOut ;
+  for(int i=0;i<GpstrackingList.length;i++){
+  fmap["UserId"]="${GpstrackingList[i].UserId}";
+  fmap["AttendanceDate"]="${GpstrackingList[i].AttendanceDate}";
+  fmap["AttendanceTime"]= "${GpstrackingList[i].AttendanceDate}";
+  fmap["RefCardNo"]= "${GpstrackingList[i].RefCardNo}";
+  fmap["Location"]="${GpstrackingList[i].Location}";
+  fmap["District"]= "${GpstrackingList[i].District}";
+  fmap["Division"]="${GpstrackingList[i].Division}";
+  fmap["PostalCode"]="${GpstrackingList[i].PostalCode}";
+  fmap["SubLocality"]= "${GpstrackingList[i].SubLocality}";
+  fmap["StreetName"]= "${GpstrackingList[i].StreetName}";
+  fmap["lat"]= "${GpstrackingList[i].lat}";
+  fmap["lng"]= "${GpstrackingList[i].lng}";
+  fmap["Empcode"]= GpstrackingList[i].Empcode;
+  fmap["DutyDate"]= "${GpstrackingList[i].DutyDate}";
+  fmap["Remarks"]= "${GpstrackingList[i].Remarks}";
+  fmap["IsTrack"]= "${GpstrackingList[i].IsTrack}";
+  fmap["Note"]="${GpstrackingList[i].Note}";
+  }
+
+    try{
+     print("Check ---------------- Status----------------- ${jsonEncode([fmap])}");
+    var data=await http.post(Uri.parse("${BASEURL}/Attendance/OffLineDataSync"),
+        headers: {
+          "Content-Type": "application/json",
+          "username": "jibikaapps",
+          "password": "20jibika24",
+        },
+          body: jsonEncode( [fmap]
+          )
+    ).then((http.Response response) {
+      selfCheckInCheckOut =jsonDecode(response.body);
+      print("---------------------------------------------------------------------------  ${selfCheckInCheckOut}");
+      if(response.statusCode==200){
+    //    GpstrackingList.clear();
+      }
+    });
+    return selfCheckInCheckOut;
+  }
+  catch(e){
+    print("selfCheckInCheckOut Catch error ${e}");
+  }
 }

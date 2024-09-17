@@ -29,7 +29,8 @@ class CustomHttpSelf{
   ///  self Dashboard Check In Check Out --------------------------------------------------------------------------
   ///
   ///
-  selfCheckInCheckOut(String UserId,String AttendanceDate, String AttendanceTime, String RefCardNo, String Location,
+  selfCheckInCheckOut(
+      String UserId,String AttendanceDate, String AttendanceTime, String RefCardNo, String Location,
       String District, String Division, String PostalCode, String SubLocality, String StreetName, String lat,
       String lng, int Empcode, String DutyDate,
 
@@ -37,11 +38,9 @@ class CustomHttpSelf{
       String IsTrack,
       String Note
       )async{
-
     print("$UserId---$AttendanceDate---$AttendanceTime---$RefCardNo---$Location---$lng---$Empcode---$DutyDate"
         "--rrrrrrrrrrrrrrrrrrrrr-$Remarks---"
         "$District---$Division---$PostalCode---$SubLocality---$StreetName---$lat---$IsTrack---");
-
     dynamic selfCheckInCheckOut ;
     var body = jsonEncode({
       "UserId":"$UserId",
