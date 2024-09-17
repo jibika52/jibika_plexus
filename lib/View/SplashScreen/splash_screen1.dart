@@ -31,31 +31,31 @@ class _SplashScreen1State extends State<SplashScreen1> {
               children: [
                 // SizedBox(height: 69,),
                 SizedBox(
-                  height: c_h * 0.084,
+                  height: c_h<700? c_h * 0.044 : c_h * 0.084,
                 ),
                 CustomImageSction(
-                    height: 98,
-                    width: 100,
-                    radius: 11,
+                    height:c_h<700? 70 :  98,
+                    width:c_h<700? 65 : 100,
+                    radius: 9,
                     image: "Assets/Logo/jibikalogo.png"),
                 SizedBox(
-                  height: c_h * 0.025,
+                  height:c_h<700? c_h * 0.015: c_h * 0.025,
                 ),
                 // SizedBox(height: 20,),
                 CustomText(
-                    fontSize: 18,
+                    fontSize:c_h<700?16: 18,
                     fontWeight: FontWeight.w500,
                     text: "Welcome to Jibika Plexus, HRM",
                     letterSpacing: 0.1),
                 SizedBox(
-                  height: c_h * 0.024,
+                  height:c_h<700? c_h * 0.024:c_h * 0.024,
                 ),
                 Stack(
                   children: [
                     CustomImageSction(
                         // height: 390,
                         // width: 430,
-                        height: c_h*0.42,
+                        height:c_h<700? c_h*0.42 : c_h*0.42,
                         width: c_w*9,
                         radius: 11,
                         image: "Assets/Gif/first_splashcsreen.gif"),
@@ -73,13 +73,13 @@ class _SplashScreen1State extends State<SplashScreen1> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             CustomText(
-                                fontSize: 16,
+                                fontSize: c_h<700? 12 :16,
                                 fontWeight: FontWeight.w400,
                                 textAlign: TextAlign.center,
                                 text: "Next Generation HR & Payroll",
                                 letterSpacing: 0.1),
                             CustomText(
-                                fontSize: 16,
+                                fontSize:c_h<700? 12 : 16,
                                 fontWeight: FontWeight.w400,
                                 textAlign: TextAlign.center,
                                 text: "Software On your hand",

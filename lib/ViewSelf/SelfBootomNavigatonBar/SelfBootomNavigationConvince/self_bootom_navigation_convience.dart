@@ -250,11 +250,11 @@ class _SelfBootomNavigationConvienceScreenState extends State<SelfBootomNavigati
                                               child: Row(
                                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                 children: [
-                                                  ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "Duration : ${value.showConveyancelist[index]["dailyConveyancels"][dailyConveyancels]["Amount"]??"0"}", letterSpacing: 0.2, textColor: Main_Theme_textColor),
+                                                  ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "Duration : ${value.showConveyancelist[index]["dailyConveyancels"][dailyConveyancels]["Hour"]??"0"} ${value.showConveyancelist[index]["dailyConveyancels"][dailyConveyancels]["Minute"]??"0"}", letterSpacing: 0.2, textColor: Main_Theme_textColor),
                                                 ],
                                               ),
                                             ),
-                                            SizedBox(height: 2,),
+                                            SizedBox(height: 1,),
                                             Container(
                                               width: double.infinity,
                                               child:

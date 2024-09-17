@@ -401,7 +401,7 @@ void onStart(ServiceInstance service) async {
 
   });
   // bring to foreground
-  Timer.periodic(Duration(minutes: 1), (timer) async {
+  Timer.periodic(Duration(minutes: 10), (timer) async {
     bool is_internet_available = await InternetConnection().hasInternetAccess;
     print("Location---------------${position.latitude} ${position.longitude} \nis_internet available-- ${is_internet_available}\n--- shift_time ${GetStorage().read("SHIFT_IN_TIME")}\n---------SHIFT_OUT_TIME --${GetStorage().read("SHIFT_OUT_TIME")}\n-----ATTENDANCE_Status --${GetStorage().read("ATTENDANCE_Status")}\n---------IsTrack --${GetStorage().read("IsTrack")}\n--------${timer.tick}----------------------");
     ///---------------------------------------------------------------------------
@@ -431,6 +431,27 @@ void onStart(ServiceInstance service) async {
       "true",
       GetStorage().read("select_car_type") == "-1"?"GPS track":"conveyance track",
     );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     ///---------------------------------------------------------------------------
     if (service is AndroidServiceInstance) {
       //   print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa----------------------------${DateTime.now()}----------");

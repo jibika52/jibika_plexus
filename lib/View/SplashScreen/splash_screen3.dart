@@ -37,11 +37,11 @@ class _SplashScreen3State extends State<SplashScreen3> {
               children: [
                 // SizedBox(height: 69,),
                 SizedBox(
-                  height: c_h * 0.084,
+                  height:c_h<700 ? c_h * 0.044 : c_h * 0.084,
                 ),
                 CustomImageSction(
-                    height: 98,
-                    width: 100,
+                    height: c_h<700 ?73 :  98,
+                    width:  c_h<700 ?75 : 100,
 
                     radius: 11,
                     image: "Assets/Logo/jibikalogo.png"),
