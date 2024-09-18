@@ -1,18 +1,17 @@
 
+import 'dart:convert';
 import 'dart:io';
-import 'dart:math';
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
+import 'package:jibika_plexus/Api/Routes/routes.dart';
 import 'package:jibika_plexus/CustomWidget/CustomAppBar/CustomDefaultAppBar/custom_default_app_bar.dart';
-import 'package:jibika_plexus/CustomWidget/CustomAppBar/CustomMAinAppBAr/custom_main_app_bar.dart';
-import 'package:jibika_plexus/CustomWidget/CustomButton/custom_button.dart';
-import 'package:jibika_plexus/CustomWidget/CustomCheckBox/custom_check_box.dart';
 import 'package:jibika_plexus/CustomWidget/CustomCircleDay/custom_circleday.dart';
 import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
 import 'package:jibika_plexus/CustomWidget/CustomImageButton/custom_imagebutton.dart';
@@ -34,9 +33,18 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
   TextEditingController _phoneController = TextEditingController();
   final _fromKey=GlobalKey<FormState>();
   File ? _image;
-
+  File ? _NID;
   final picker = ImagePicker();
   ///NID font
+  Future getNIDImageFromGallery() async {
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+    setState(() {
+      if (pickedFile != null) {
+        _NID = File(pickedFile.path);
+      }
+    });
+  }
+  ///image font
   Future getImageFromGallery() async {
     final pickedFile = await picker.pickImage(source: ImageSource.gallery);
     setState(() {
@@ -45,6 +53,10 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
       }
     });
   }
+
+
+
+
   @override
   Widget build(BuildContext context) {
     double h = MediaQuery.of(context).size.height;
@@ -79,127 +91,146 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
                   width: double.infinity,
                   child: Row(
                     children: [
-                      Column(
-                        children: [
-                          Container(
-                            height: 80,
-                            width:80,
-                            decoration: BoxDecoration(
-                              borderRadius:BorderRadius.circular(7),
-                              border: Border.all(
-                                color: Main_Theme_textColor.withOpacity(0.4),
-                                width: 1.2
-                              )
-                            ),
-                            alignment: Alignment.center,
-                            child: Stack(
-                              alignment: Alignment.topCenter,
-                              children: [
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(56),
-                                  child: Container(
-                                    height: 56,
-                                    width: 56,
-                                    color:  Main_Theme_textColor.withOpacity(0.07),
-                                    padding: EdgeInsets.all(10),
-                                    child: CustomImageSction(height: 20, width: 15, radius: 1, image: "Assets/DashBoardIcons/person1.png"),
-                                  ),
-                                ),
-                                Positioned(
-                                  bottom: -1.5,
-                                  left: 0,
-                                  right: 0,
-                                  child: Padding(
-                                    padding:
-                                    EdgeInsets.only(bottom: 1, left: 1.0, right:1.0),
+                      InkWell(
+                        onTap: () {
+                          getImageFromGallery();
+                        },
+                        child: Column(
+                          children: [
+                            _image!=null?ClipRRect(
+                                borderRadius: BorderRadius.circular(50),
+                                child: Image.file(_image!.renameSync(_image!.path),height: 80,width: 80, fit: BoxFit.fill,))
+                                :  Container(
+                              height: 80,
+                              width:80,
+                              decoration: BoxDecoration(
+                                borderRadius:BorderRadius.circular(7),
+                                border: Border.all(
+                                  color: Main_Theme_textColor.withOpacity(0.4),
+                                  width: 1.2
+                                )
+                              ),
+                              alignment: Alignment.center,
+                              child:
+                              Stack(
+                                alignment: Alignment.topCenter,
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(56),
                                     child: Container(
-                                      decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                            image: AssetImage("Assets/Icons/subtract.png"),
-                                            fit: BoxFit.fill),
-                                      ),
-                                      height: 20,
-                                      width: 50,
+                                      height: 56,
+                                      width: 56,
+                                      color:  Main_Theme_textColor.withOpacity(0.07),
+                                      padding: EdgeInsets.all(10),
+                                      child:
+
+                                      CustomImageSction(height: 20, width: 15, radius: 1, image: "Assets/DashBoardIcons/person1.png" ),
                                     ),
                                   ),
-                                ),
-                                 
-          
-          
-                              ],
+                                  Positioned(
+                                    bottom: -1.5,
+                                    left: 0,
+                                    right: 0,
+                                    child: Padding(
+                                      padding:
+                                      EdgeInsets.only(bottom: 1, left: 1.0, right:1.0),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                              image: AssetImage("Assets/Icons/subtract.png"),
+                                              fit: BoxFit.fill),
+                                        ),
+                                        height: 20,
+                                        width: 50,
+                                      ),
+                                    ),
+                                  ),
+
+
+
+                                ],
+                              ),
                             ),
-                          ),
-                          SizedBox(height: 5,),
-                          CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Upload / Take photo", letterSpacing: 0.3),
-          
-                        ],
+                            SizedBox(height: 5,),
+                            CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Upload / Take photo", letterSpacing: 0.3),
+
+                          ],
+                        ),
                       ),
                       Spacer(),
                       Column(
                         children: [
-                          Stack(
-                            alignment: Alignment.center,
-                            children: [
-                              Container(
-                                height: 80,
-                                width:126,
-                                decoration: BoxDecoration(
-                                    borderRadius:BorderRadius.circular(7),
-                                    border: Border.all(
-                                        color: absent_color.withOpacity(0.3),
-                                        width: 1.2
-                                    )
-                                ),
-                                alignment: Alignment.center,
-                                child: Container(
-                                  height: 40,
-                                  width: 50,
-                                  padding: EdgeInsets.only(top: 7),
-                                  color:  Main_Theme_WhiteCollor,
-                                  child: CustomImageSction2(height: 27, width: 47, radius: 1, image: "Assets/DashBoardIcons/empoloyee_card.png",img_color: Main_Theme_textColor.withOpacity(0.7),),
-                                ),
-                              ),
-                              Positioned(
-                                  top: 80/2-2 ,
+                          InkWell(
+                            onTap: () {
+                              getNIDImageFromGallery();
+                            },
+                            child: _NID!=null?ClipRRect(
+                                borderRadius: BorderRadius.circular(7),
+                                child: Image.file(_NID!.renameSync(_NID!.path),height: 80,width: 126, fit: BoxFit.fill,))
+                                : Stack(
+                              alignment: Alignment.center,
+                              children: [
+                                Container(
+                                  height: 80,
+                                  width:126,
+                                  decoration: BoxDecoration(
+                                      borderRadius:BorderRadius.circular(7),
+                                      border: Border.all(
+                                          color: absent_color.withOpacity(0.3),
+                                          width: 1.2
+                                      )
+                                  ),
+                                  alignment: Alignment.center,
                                   child: Container(
-                                    decoration: BoxDecoration(
-                                      boxShadow:[
-                                        BoxShadow(
-                                          color: absent_color.withOpacity(0.8),
-                                          spreadRadius: 1,
-                                          blurRadius: 9,
-                                          offset: Offset(0, 2), // changes position of shadow
-                                        ),
-                                      ],
+                                    height: 40,
+                                    width: 50,
+                                    padding: EdgeInsets.only(top: 7),
+                                    color:  Main_Theme_WhiteCollor,
+                                    child: CustomImageSction2(height: 27, width: 47, radius: 1, image: "Assets/DashBoardIcons/empoloyee_card.png",img_color: Main_Theme_textColor.withOpacity(0.7),),
+                                  ),
+                                ),
+                                Positioned(
+                                    top: 80/2-2 ,
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        boxShadow:[
+                                          BoxShadow(
+                                            color: absent_color.withOpacity(0.8),
+                                            spreadRadius: 1,
+                                            blurRadius: 9,
+                                            offset: Offset(0, 2), // changes position of shadow
+                                          ),
+                                        ],
+                                        color: absent_color.withOpacity(0.7),
+                                      ),
+                                  height: 1,
+                                  width: 126,
+
+                                )),
+
+                                Positioned(
+                                    top: 80/2+2,
+                                    child: Container(
+                                  height: 1,
+                                  width: 126,
                                       color: absent_color.withOpacity(0.7),
-                                    ),
-                                height: 1,
-                                width: 126,
-          
-                              )),
-          
-                              Positioned(
-                                  top: 80/2+2,
-                                  child: Container(
-                                height: 1,
-                                width: 126,
-                                    color: absent_color.withOpacity(0.7),
-                              )),
-                              Positioned(
-                                  top: 80/2+2,
-                                  child: Container(
-                                height: 36.5,
-                                width: 126,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.only(
-                                        bottomLeft: Radius.circular(7),
-                                        bottomRight: Radius.circular(7)
-                                      ) ,
-                                      color: absent_color.withOpacity(0.07),
-                                    ),
-          
-                              ))
-                            ],
+                                )),
+                                Positioned(
+                                    top: 80/2+2,
+                                    child: Container(
+                                  height: 36.5,
+                                  width: 126,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.only(
+                                          bottomLeft: Radius.circular(7),
+                                          bottomRight: Radius.circular(7)
+                                        ) ,
+                                        color: absent_color.withOpacity(0.07),
+                                      ),
+
+                                ))
+                              ],
+                            ),
                           ),
                           SizedBox(height: 5,),
                           CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Scan NID Card", letterSpacing: 0.3),
@@ -386,10 +417,15 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
                     child: ColorCustomText(fontSize: 13, fontWeight: FontWeight.w500, text: "More info...", letterSpacing: 0.3, textColor: Main_Theme_textColor_tir_Condition)),
               ),
               SizedBox(height: C_height+10,),
-              Padding(
-                padding: const EdgeInsets.only(left: 70.0,right: 70),
-                child: CustomImageButton(height: 45, img: "Assets/PrimaryInformation/save 1.png", text: "Save",
-                    textColor: Colors.white, b_color: CustomButtonColor),
+              InkWell(
+                onTap: () {
+                  SaveOnBoarding();
+                },
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 70.0,right: 70),
+                  child: CustomImageButton(height: 45, img: "Assets/PrimaryInformation/save 1.png", text: "Save",
+                      textColor: Colors.white, b_color: CustomButtonColor),
+                ),
               ),
 
               SizedBox(height: C_height+20,),
@@ -411,5 +447,44 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
   bool m=false;
   bool f=false;
   bool o=false;
+
+
+
+  functionval()async{
+    var nid_cardd = await http.MultipartFile.fromPath('EmpImageFile', _image!.path.toString());
+   // var image = await http.MultipartFile.fromPath('EmpImageFile', _NID!.path.toString());
+    request.files.add(nid_cardd);
+  //  request.files.add(image);
+  }
+  dun(){}
+
+  var request = http.MultipartRequest("POST", Uri.parse("${BASEURL}${EmployeeOnBoarding}"));
+
+  SaveOnBoarding() async {
+    try{
+      request.headers.addAll({
+        "accept": "application/json",
+        'Authorization': 'Bearer ${GetStorage().read("api_token")}'
+      });
+
+      request.fields['GENDER'] = "M" ;
+      request.fields['ID_CARD_NO'] = "10016" ;
+      request.fields['USERID'] = "01889173335" ;
+      request.fields['EMPLOYEE_NAME_ENGLISH'] = "Uzzal Biswas";
+      request.fields['JOINING_DATE'] = "18-Sep-2024";
+      request.fields['BIRTH_DATE'] = "11-Apr-1997";
+      request.fields['RF_ID_NO'] = "015186812";
+      request.fields['EMPLOYEE_STATUS'] = "3";
+      request.fields['CLIENTBASE_URL'] = "${BASEURL}";
+      "${_image}"=="null"?dun(): functionval();
+      var response = await request.send();
+      var responseData = await response.stream.toBytes();
+      var responseString = String.fromCharCodes(responseData);
+      var  data = jsonDecode(responseString);
+      print("dddddddddddddddddddddddddddddddddddddddddddd=============================> ${data}");
+    }catch(erroe){
+      print("Catch Error $erroe");
+    }
+  }
 
 }

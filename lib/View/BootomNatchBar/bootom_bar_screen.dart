@@ -40,7 +40,7 @@ class _BootomNatchBarScreenState extends State<BootomNatchBarScreen> {
   /// widget list
   final List<Widget> bottomBarPages = [
 
-    BootomNavBarItemsMainFloationHomeScreen(),
+    BootomNavBarItemsEmployeeHomeScreen(),
     BootomNavigationBarItemsAttendenceScreen(),
     BootomNavigationBarItemsPayrollScreen(),
     BootomNavigationBarItemsTrackingScreen(),

@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
         // home:PrivacyPolicyScreen(phone_or_email: '01889173335',),
         //  home:TEstHeroAnimation(),
         //     home:CompanyRegistrationScreen(),
-        //  home:BootomNavBarItemsMainFloationHomeScreen(),
+        //  home:BootomNavBarItemsEmployeeHomeScreen(),
         //     home:HomeFirstPartComponentAttendance(),
 
         /// ----------Home Screen---------

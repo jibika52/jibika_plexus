@@ -17,14 +17,14 @@ import '../../../../CustomWidget/CustomImage/custom_image.dart';
 import '../../../../CustomWidget/CustomText/custom_text.dart';
 import '../../../../Utils/constants.dart';
 
-class BootomNavBarItemsMainFloationHomeScreen extends StatefulWidget {
-  const BootomNavBarItemsMainFloationHomeScreen({super.key});
+class BootomNavBarItemsEmployeeHomeScreen extends StatefulWidget {
+  const BootomNavBarItemsEmployeeHomeScreen({super.key});
 
   @override
-  State<BootomNavBarItemsMainFloationHomeScreen> createState() => _BootomNavBarItemsMainFloationHomeScreenState();
+  State<BootomNavBarItemsEmployeeHomeScreen> createState() => _BootomNavBarItemsEmployeeHomeScreenState();
 }
 
-class _BootomNavBarItemsMainFloationHomeScreenState extends State<BootomNavBarItemsMainFloationHomeScreen> {
+class _BootomNavBarItemsEmployeeHomeScreenState extends State<BootomNavBarItemsEmployeeHomeScreen> {
 
   double animatwidth=117;
   double lineWidth=7.0;

@@ -98,3 +98,7 @@
 
   ///  Show Conveyance by employee self
     String showConveyanceLisByEmployee="Attendance/GetEmployeeConveyanceInfo";
+
+
+  ///  Employee On boarding
+    String EmployeeOnBoarding="/Employee/OnBoardEmployee";

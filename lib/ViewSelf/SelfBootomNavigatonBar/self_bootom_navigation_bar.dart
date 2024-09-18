@@ -502,6 +502,7 @@ var fmap={};
 List ddddddd=[];
 selfOffLineDataSync()async{
   dynamic selfCheckInCheckOut ;
+  /// ------- for loop ------------------------------------------------------
   for(int i=0;i<GpstrackingList.length;i++){
   fmap["UserId"]="${GpstrackingList[i].UserId}";
   fmap["AttendanceDate"]="${GpstrackingList[i].AttendanceDate}";
@@ -521,8 +522,8 @@ selfOffLineDataSync()async{
   fmap["IsTrack"]= "${GpstrackingList[i].IsTrack}";
   fmap["Note"]="${GpstrackingList[i].Note}";
   }
-
-    try{
+  /// ------- for loop ------------------------------------------------------
+  try{
      print("Check ---------------- Status----------------- ${jsonEncode([fmap])}");
     var data=await http.post(Uri.parse("${BASEURL}/Attendance/OffLineDataSync"),
         headers: {
@@ -536,7 +537,7 @@ selfOffLineDataSync()async{
       selfCheckInCheckOut =jsonDecode(response.body);
       print("---------------------------------------------------------------------------  ${selfCheckInCheckOut}");
       if(response.statusCode==200){
-    //    GpstrackingList.clear();
+       GpstrackingList.clear();
       }
     });
     return selfCheckInCheckOut;
