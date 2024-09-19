@@ -17,7 +17,7 @@ import 'package:jibika_plexus/CustomWidget/CustomCircleDay/custom_circleday.dart
 import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
 import 'package:jibika_plexus/CustomWidget/CustomImageButton/custom_imagebutton.dart';
 import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
-
+import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
 import '../../../../../CustomWidget/CustomTExtFormField/Jibika_custom_text_from_field.dart';
 import '../../../../../Utils/constants.dart';
 import 'create_employee2.dart';
@@ -43,7 +43,7 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
   final picker = ImagePicker();
   ///NID font
   Future getNIDImageFromGallery() async {
-    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+    final pickedFile = await picker.pickImage(source: ImageSource.camera);
     setState(() {
       if (pickedFile != null) {
         _NID = File(pickedFile.path);
@@ -61,6 +61,54 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
   }
 
 
+  Widget _extractTextView() {
+    if (_NID == null) {
+      return const Center(
+        child: Text("No result."),
+      );
+    }
+    return FutureBuilder(
+      future: _extractText(_NID!),
+      builder: (context, snapshot) {
+        return Column(
+          children: [
+            Text(
+              "${snapshot.data!.split('Date of Birth')[0] ?? ""}" ,
+              style: const TextStyle(
+                fontSize: 25,
+              ),
+            ),
+            Text(
+              "${snapshot.data!.split('Date of Birth')[1].split('N')[0] ?? ""}" ,
+              style: const TextStyle(
+                fontSize: 25,
+              ),
+            ),
+            Text(
+              "${snapshot.data!.split('Date of Birth')[1].split('NO')[1] ?? ""}" ,
+              style: const TextStyle(
+                fontSize: 25,
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Future<String?> _extractText(File file) async {
+
+    final textRecognizer = TextRecognizer(
+      script: TextRecognitionScript.latin,
+    );
+    final InputImage inputImage = InputImage.fromFile(file);
+    final RecognizedText recognizedText =
+    await textRecognizer.processImage(inputImage);
+    String text = recognizedText.text.substring(82, recognizedText.text.length).replaceAll(":", "").replaceAll("Nam", "").replaceAll("ID", "").replaceAll("NID", "");
+    print("cccccccccccccccccccc------------------ ${text}-----------------------------");
+    textRecognizer.close();
+    return text;
+  }
 
 
   @override
@@ -258,10 +306,12 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
                 /// Registration part ---------------------------------------------------------
 
 
-              child: Column(
+              child:
+              _NID == null?
+              Column(
                 children: [
                   JibikaCustomTextFromField(
-                        readOnly: false,
+                      readOnly: false,
                       controller: _nIDController,
                       height: 50,
                       img: "Assets/DashBoardIcons/personalcard.png",
@@ -270,7 +320,7 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
                       obscureText: false),
                   SizedBox(height: C_height,),
                   JibikaCustomTextFromField(
-                        readOnly: false,
+                      readOnly: false,
                       controller: _employeeIdController,
                       height: 50,
                       img: "Assets/PrimaryInformation/people (1).png",
@@ -279,7 +329,7 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
                       obscureText: false),
                   SizedBox(height: C_height,),
                   JibikaCustomTextFromField(
-                        readOnly: false,
+                      readOnly: false,
                       controller: _employeeNameController,
                       height: 50,
                       img: "Assets/PrimaryInformation/people (2).png",
@@ -288,9 +338,9 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
                       obscureText: false),
                   SizedBox(height: C_height,),
                   JibikaCustomTextFromField(
-                    onTap: () {
-                      _joiningDate(context);
-                    },
+                      onTap: () {
+                        _joiningDate(context);
+                      },
                       readOnly: true,
                       controller: _companyAddressController,
                       height: 50,
@@ -325,9 +375,9 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
                   SizedBox(height: C_height,),
 
                   JibikaCustomTextFromField(
-                    onTap: () {
-                      _joiningDate(context);
-                    },
+                      onTap: () {
+                        _joiningDate(context);
+                      },
                       readOnly: true,
                       controller: _companyAddressController,
                       height: 50,
@@ -337,6 +387,99 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
                       obscureText: false),
 
                 ],
+              )
+                  :
+
+
+                  FutureBuilder(
+                future: _extractText(_NID!),
+                builder: (BuildContext context, AsyncSnapshot<String?> snapshot) {
+                  _NID == null ? _employeeNameController :_employeeNameController.text="${snapshot.data!.split('Date of Birth')[0] ?? ""}";
+                  _NID == null ? birthdate : birthdate="${snapshot.data!.split('Date of Birth')[1].split('N')[0] ?? ""}";
+                  _NID == null ? _nIDController : _nIDController.text="${snapshot.data!.split('Date of Birth')[1].split('NO')[1] ?? ""}";
+
+                  return Column(
+                    children: [
+                      JibikaCustomTextFromField(
+                          readOnly: false,
+                          controller: _nIDController,
+                          height: 50,
+                          img: "Assets/DashBoardIcons/personalcard.png",
+                          hinttext: "Employee NID",
+                          keyboardType: TextInputType.text,
+                          obscureText: false),
+                      SizedBox(height: C_height,),
+                      JibikaCustomTextFromField(
+                          readOnly: false,
+                          controller: _employeeIdController,
+                          height: 50,
+                          img: "Assets/PrimaryInformation/people (1).png",
+                          hinttext: "Employee ID",
+                          keyboardType: TextInputType.text,
+                          obscureText: false),
+                      SizedBox(height: C_height,),
+                      JibikaCustomTextFromField(
+                          readOnly: false,
+                          controller: _employeeNameController,
+                          height: 50,
+                          img: "Assets/PrimaryInformation/people (2).png",
+                          hinttext: "Employee name",
+                          keyboardType: TextInputType.text,
+                          obscureText: false),
+                      SizedBox(height: C_height,),
+                      JibikaCustomTextFromField(
+                          onTap: () {
+                            _joiningDate(context);
+                          },
+                          readOnly: true,
+                          controller: _companyAddressController,
+                          height: 50,
+                          img: "Assets/PrimaryInformation/calendar.png",
+                          hinttext: "Date of barth",
+                          keyboardType: TextInputType.text,
+                          obscureText: false),
+                      SizedBox(height: C_height,),
+                      JibikaCustomTextFromField2(
+                          controller: _phoneController,
+                          height: 50,
+                          img: "Assets/PrimaryInformation/phone.png",
+                          hinttext: "Mobile number",
+                          keyboardType: TextInputType.text,
+                          obscureText: false),
+                      SizedBox(height: C_height,),
+                      JibikaCustomTextFromField2(
+                          controller: _siftplaneController,
+                          height: 50,
+                          img: "Assets/PrimaryInformation/work-shift 1.png",
+                          hinttext: "Shift plane",
+                          keyboardType: TextInputType.text,
+                          obscureText: false),
+                      SizedBox(height: C_height,),
+                      JibikaCustomTextFromField2(
+                          controller: _growsSalaryController,
+                          height: 50,
+                          img: "Assets/PrimaryInformation/money_payment.png",
+                          hinttext: "Grows Salary",
+                          keyboardType: TextInputType.text,
+                          obscureText: false),
+                      SizedBox(height: C_height,),
+
+                      JibikaCustomTextFromField(
+                          onTap: () {
+                            _joiningDate(context);
+                          },
+                          readOnly: true,
+                          controller: _companyAddressController,
+                          height: 50,
+                          img: "Assets/PrimaryInformation/calendar.png",
+                          hinttext: "Joining date",
+                          keyboardType: TextInputType.text,
+                          obscureText: false),
+
+                    ],
+                  );
+                },
+
               ),
               ),
               SizedBox(height: C_height+18,),
@@ -522,6 +665,7 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
   }
 
   String joiningDate = DateFormat("dd-MMM-yyyy").format(DateTime.now()).toString();
+  String birthdate = "Enter";
   Future<void> _joiningDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
         context: context,
