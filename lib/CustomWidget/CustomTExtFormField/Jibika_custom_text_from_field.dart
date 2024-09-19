@@ -41,8 +41,8 @@ class JibikaCustomTextFromField extends StatelessWidget {
               alignment: Alignment.center,
               child: Row(
                 children: [
-                  Image.asset("$img",height: 25,width:"$img"=="Assets/Icons/lock.png"?20: 25,fit: BoxFit.fill,color: Main_Theme_textColor.withOpacity(0.8),),
 
+                  Image.asset("$img",height: 25,width:"$img"=="Assets/Icons/lock.png"?20: 25,fit: BoxFit.fill,color: Main_Theme_textColor.withOpacity(0.8),),
 
                 ],
               ),
