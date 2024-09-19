@@ -273,6 +273,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                     child: Column(
                       children: [
                         JibikaCustomTextFromField(
+                            readOnly: false,
                             controller: _companyAddressController,
                             height: 50,
                             img: "Assets/DashBoardIcons/personalcard.png",
@@ -281,6 +282,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                             obscureText: false),
                         SizedBox(height: C_height,),
                         JibikaCustomTextFromField(
+                            readOnly: false,
                             controller: _companyAddressController,
                             height: 50,
                             img: "Assets/PrimaryInformation/people (1).png",
@@ -289,6 +291,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                             obscureText: false),
                         SizedBox(height: C_height,),
                         JibikaCustomTextFromField(
+                            readOnly: false,
                             controller: _companyAddressController,
                             height: 50,
                             img: "Assets/PrimaryInformation/people (2).png",
@@ -297,6 +300,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                             obscureText: false),
                         SizedBox(height: C_height,),
                         JibikaCustomTextFromField(
+                            readOnly: false,
                             controller: _companyAddressController,
                             height: 50,
                             img: "Assets/PrimaryInformation/calendar.png",
@@ -305,6 +309,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                             obscureText: false),
                         SizedBox(height: C_height,),
                         JibikaCustomTextFromField(
+                            readOnly: false,
                             controller: _companyAddressController,
                             height: 50,
                             img: "Assets/PrimaryInformation/father.png",
@@ -543,6 +548,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                       child: Column(
                         children: [
                           JibikaCustomTextFromField(
+                              readOnly: false,
                               controller: _companyAddressController,
                               height: 50,
                               img: "Assets/PrimaryInformation/people (2).png",
@@ -551,6 +557,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                               obscureText: false),
                           SizedBox(height: C_height,),
                           JibikaCustomTextFromField(
+                        readOnly: false,
                               controller: _companyAddressController,
                               height: 50,
                               img: "Assets/PrimaryInformation/people (1).png",
@@ -559,6 +566,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                               obscureText: false),
                           SizedBox(height: C_height,),
                           JibikaCustomTextFromField(
+                        readOnly: false,
                               controller: _companyAddressController,
                               height: 50,
                               img: "Assets/PrimaryInformation/calendar.png",
@@ -567,6 +575,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                               obscureText: false),
                           SizedBox(height: C_height,),
                           JibikaCustomTextFromField(
+                        readOnly: false,
                               controller: _companyAddressController,
                               height: 50,
                               img: "Assets/PrimaryInformation/father.png",
@@ -726,6 +735,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                       child: Column(
                         children: [
                           JibikaCustomTextFromField(
+                        readOnly: false,
                               controller: _companyAddressController,
                               height: 50,
                               img: "Assets/PrimaryInformation/money_payment.png",
@@ -734,6 +744,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                               obscureText: false),
                           SizedBox(height: C_height,),
                           JibikaCustomTextFromField(
+                        readOnly: false,
                               controller: _companyAddressController,
                               height: 50,
                               img: "Assets/PrimaryInformation/money_payment.png",
@@ -742,6 +753,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                               obscureText: false),
                           SizedBox(height: C_height,),
                           JibikaCustomTextFromField(
+                        readOnly: false,
                               controller: _companyAddressController,
                               height: 50,
                               img: "Assets/PrimaryInformation/home-svgrepo-com 1.png",
@@ -751,6 +763,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                           SizedBox(height: C_height,),
 
                           JibikaCustomTextFromField(
+                        readOnly: false,
                               controller: _companyAddressController,
                               height: 50,
                               img: "Assets/PrimaryInformation/people.png",
@@ -759,6 +772,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                               obscureText: false),
                           SizedBox(height: C_height,),
                           JibikaCustomTextFromField(
+                        readOnly: false,
                               controller: _companyAddressController,
                               height: 50,
                               img: "Assets/PrimaryInformation/gender-7 1.png",
@@ -952,6 +966,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                           ),
                           SizedBox(height: 15,),
                           JibikaCustomTextFromField(
+                        readOnly: false,
                               controller: _companyAddressController,
                               height: 50,
                               img: "Assets/PrimaryInformation/people (2).png",
@@ -960,6 +975,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                               obscureText: false),
                           SizedBox(height: C_height,),
                           JibikaCustomTextFromField(
+                        readOnly: false,
                               controller: _companyAddressController,
                               height: 50,
                               img: "Assets/PrimaryInformation/people (1).png",
@@ -976,6 +992,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                               obscureText: false),
                           SizedBox(height: C_height,),
                           JibikaCustomTextFromField(
+                        readOnly: false,
                               controller: _companyAddressController,
                               height: 50,
                               img: "Assets/PrimaryInformation/sms.png",

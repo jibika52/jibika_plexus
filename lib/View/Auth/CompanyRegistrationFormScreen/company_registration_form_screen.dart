@@ -267,6 +267,7 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                   ),
                   SizedBox(height: h * 0.01),
                   JibikaCustomTextFromField(
+                        readOnly: false,
                       controller: _companyNameController,
                       height: 50,
                       img: "Assets/Icons/crppol.png",
@@ -275,6 +276,7 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                       obscureText: false),
                   SizedBox(height: h * 0.02),
                   JibikaCustomTextFromField(
+                        readOnly: false,
                       controller: _companyAddressController,
                       height: 50,
                       img: "Assets/DashBoardIcons/location.png",
@@ -285,6 +287,7 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
 
                   SizedBox(height: h * 0.02),
                   JibikaCustomTextFromField(
+                        readOnly: false,
                       controller: _NumberOfEmployeeController,
                       height: 50,
                       img: "Assets/Icons/crppol.png",
@@ -301,6 +304,7 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                       obscureText: false),
                   SizedBox(height: h * 0.02),
                   JibikaCustomTextFromField(
+                        readOnly: false,
                       controller: _companyEmailController,
                       height: 50,
                       img: "Assets/Icons/cr_email.png",
@@ -309,6 +313,7 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                       obscureText: false),
                   SizedBox(height: h * 0.02),
                   JibikaCustomTextFromField(
+                        readOnly: false,
                       suffixIcon: IconButton(
                           onPressed: () {
                             setState(() {
@@ -329,6 +334,7 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                       obscureText: obscureText),
                   SizedBox(height: h * 0.02),
                   JibikaCustomTextFromField(
+                      readOnly: false,
                       suffixIcon: IconButton(
                           onPressed: () {
                             setState(() {

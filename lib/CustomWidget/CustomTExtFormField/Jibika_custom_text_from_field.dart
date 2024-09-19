@@ -6,6 +6,8 @@ import '../../Utils/constants.dart';
 
 class JibikaCustomTextFromField extends StatelessWidget {
  JibikaCustomTextFromField({super.key,
+   required this.readOnly,
+   this.onTap,
  required this.controller, required this.height,required this.img,required this.hinttext, required this.keyboardType , required this.obscureText,this.suffixIcon,this.is_phone
  });
   String img;
@@ -14,6 +16,8 @@ class JibikaCustomTextFromField extends StatelessWidget {
   double height;
   TextEditingController controller;
   bool obscureText;
+  bool readOnly;
+ GestureTapCallback? onTap;
  final Widget? suffixIcon;
  String ? is_phone;
   @override
@@ -57,6 +61,8 @@ class JibikaCustomTextFromField extends StatelessWidget {
               ),
               padding: EdgeInsets.only(top: 10),
               child: TextFormField(
+                onTap: onTap,
+                readOnly: readOnly,
                 obscureText: obscureText,
                 keyboardType: keyboardType,
                 style: GoogleFonts.poppins(

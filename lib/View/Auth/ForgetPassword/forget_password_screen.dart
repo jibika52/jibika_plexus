@@ -85,6 +85,7 @@ final _foromkey=GlobalKey<FormState>();
                           height: 20,
                         ),
                         JibikaCustomTextFromField(
+                        readOnly: false,
                             suffixIcon: IconButton(
                                 onPressed: () {
                                 },
@@ -99,6 +100,7 @@ final _foromkey=GlobalKey<FormState>();
                           height: 20,
                         ),
                         JibikaCustomTextFromField(
+                        readOnly: false,
                             suffixIcon: IconButton(
                                 onPressed: () {
                                 },

@@ -10,6 +10,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
+import 'package:intl/intl.dart';
 import 'package:jibika_plexus/Api/Routes/routes.dart';
 import 'package:jibika_plexus/CustomWidget/CustomAppBar/CustomDefaultAppBar/custom_default_app_bar.dart';
 import 'package:jibika_plexus/CustomWidget/CustomCircleDay/custom_circleday.dart';
@@ -30,7 +31,12 @@ class CreateNewEmployeeScreen extends StatefulWidget {
 
 class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
   TextEditingController _companyAddressController = TextEditingController();
+  TextEditingController _employeeIdController = TextEditingController();
+  TextEditingController _nIDController = TextEditingController();
+  TextEditingController _employeeNameController = TextEditingController();
   TextEditingController _phoneController = TextEditingController();
+  TextEditingController _siftplaneController = TextEditingController();
+  TextEditingController _growsSalaryController = TextEditingController();
   final _fromKey=GlobalKey<FormState>();
   File ? _image;
   File ? _NID;
@@ -46,7 +52,7 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
   }
   ///image font
   Future getImageFromGallery() async {
-    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+    final pickedFile = await picker.pickImage(source: ImageSource.camera);
     setState(() {
       if (pickedFile != null) {
         _image = File(pickedFile.path);
@@ -255,23 +261,26 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
               child: Column(
                 children: [
                   JibikaCustomTextFromField(
-                      controller: _companyAddressController,
+                        readOnly: false,
+                      controller: _nIDController,
                       height: 50,
                       img: "Assets/DashBoardIcons/personalcard.png",
-                      hinttext: "Employee id",
-                      keyboardType: TextInputType.text,
-                      obscureText: false),
-                  SizedBox(height: C_height,),
-                  JibikaCustomTextFromField(
-                      controller: _companyAddressController,
-                      height: 50,
-                      img: "Assets/PrimaryInformation/people (1).png",
                       hinttext: "Employee NID",
                       keyboardType: TextInputType.text,
                       obscureText: false),
                   SizedBox(height: C_height,),
                   JibikaCustomTextFromField(
-                      controller: _companyAddressController,
+                        readOnly: false,
+                      controller: _employeeIdController,
+                      height: 50,
+                      img: "Assets/PrimaryInformation/people (1).png",
+                      hinttext: "Employee ID",
+                      keyboardType: TextInputType.text,
+                      obscureText: false),
+                  SizedBox(height: C_height,),
+                  JibikaCustomTextFromField(
+                        readOnly: false,
+                      controller: _employeeNameController,
                       height: 50,
                       img: "Assets/PrimaryInformation/people (2).png",
                       hinttext: "Employee name",
@@ -279,6 +288,10 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
                       obscureText: false),
                   SizedBox(height: C_height,),
                   JibikaCustomTextFromField(
+                    onTap: () {
+                      _joiningDate(context);
+                    },
+                      readOnly: true,
                       controller: _companyAddressController,
                       height: 50,
                       img: "Assets/PrimaryInformation/calendar.png",
@@ -295,7 +308,7 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
                       obscureText: false),
                   SizedBox(height: C_height,),
                   JibikaCustomTextFromField2(
-                      controller: _phoneController,
+                      controller: _siftplaneController,
                       height: 50,
                       img: "Assets/PrimaryInformation/work-shift 1.png",
                       hinttext: "Shift plane",
@@ -303,20 +316,26 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
                       obscureText: false),
                   SizedBox(height: C_height,),
                   JibikaCustomTextFromField2(
-                      controller: _phoneController,
+                      controller: _growsSalaryController,
                       height: 50,
                       img: "Assets/PrimaryInformation/money_payment.png",
                       hinttext: "Grows Salary",
                       keyboardType: TextInputType.text,
                       obscureText: false),
                   SizedBox(height: C_height,),
-                  JibikaCustomTextFromField2(
-                      controller: _phoneController,
+
+                  JibikaCustomTextFromField(
+                    onTap: () {
+                      _joiningDate(context);
+                    },
+                      readOnly: true,
+                      controller: _companyAddressController,
                       height: 50,
                       img: "Assets/PrimaryInformation/calendar.png",
                       hinttext: "Joining date",
                       keyboardType: TextInputType.text,
                       obscureText: false),
+
                 ],
               ),
               ),
@@ -467,23 +486,53 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
         'Authorization': 'Bearer ${GetStorage().read("api_token")}'
       });
 
-      request.fields['GENDER'] = "M" ;
-      request.fields['ID_CARD_NO'] = "10016" ;
-      request.fields['USERID'] = "01889173335" ;
-      request.fields['EMPLOYEE_NAME_ENGLISH'] = "Uzzal Biswas";
-      request.fields['JOINING_DATE'] = "18-Sep-2024";
-      request.fields['BIRTH_DATE'] = "11-Apr-1997";
-      request.fields['RF_ID_NO'] = "015186812";
-      request.fields['EMPLOYEE_STATUS'] = "3";
-      request.fields['CLIENTBASE_URL'] = "${BASEURL}";
-      "${_image}"=="null"?dun(): functionval();
+      // request.fields['GENDER'] = "M" ;
+      // request.fields['ID_CARD_NO'] = "10016" ;
+      // request.fields['USERID'] = "01889173335" ;
+      // request.fields['EMPLOYEE_NAME_ENGLISH'] = "Uzzal Biswas";
+      // request.fields['JOINING_DATE'] = "18-Sep-2024";
+      // request.fields['BIRTH_DATE'] = "11-Apr-1997";
+      // request.fields['RF_ID_NO'] = "015186812";
+      // request.fields['EMPLOYEE_STATUS'] = "3";
+      // request.fields['CLIENTBASE_URL'] = "${BASEURL}";
+
+    "${_image}"=="null"?dun(): functionval();
+      request.fields["GENDER"] = m==true? "M" :f==true? "F": "O" ;
+      request.fields["ID_CARD_NO"] = "01889173335" ;
+      request.fields["USERID"] = "01889173335" ;
+      request.fields["EMPLOYEE_NAME_ENGLISH"] = "TEST ARMY" ;
+      request.fields["JOINING_DATE"] = "18-Sep-2024" ;
+      request.fields["BIRTH_DATE"] = "01-Sep-1992" ;
+      request.fields["RF_ID_NO"] = "10015" ;
+      request.fields["EMPLOYEE_STATUS"] = "3" ;
+      request.fields["CLIENTBASE_URL"] = "${GetStorage().read("APPS_IMG_BASEURL")}" ;
+
       var response = await request.send();
+      print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa=============================> ${response.stream}");
       var responseData = await response.stream.toBytes();
+      print("bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb=============================> ${responseData}");
+
       var responseString = String.fromCharCodes(responseData);
+      print("ccccccccccccccccccccccccccccccccccccccccccc=============================> ${responseData}");
       var  data = jsonDecode(responseString);
-      print("dddddddddddddddddddddddddddddddddddddddddddd=============================> ${data}");
+
     }catch(erroe){
       print("Catch Error $erroe");
+    }
+  }
+
+  String joiningDate = DateFormat("dd-MMM-yyyy").format(DateTime.now()).toString();
+  Future<void> _joiningDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+        context: context,
+        firstDate: DateTime(2015, 8),
+        lastDate: DateTime(2101));
+    if (picked != null && picked != joiningDate) {
+      final df = new DateFormat("dd-MMM-yyyy");
+      setState(() {
+        joiningDate = df.format(picked);
+        _companyAddressController.text=joiningDate;
+      });
     }
   }
 

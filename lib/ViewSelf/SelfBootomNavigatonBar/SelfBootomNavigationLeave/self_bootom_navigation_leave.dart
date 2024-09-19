@@ -336,6 +336,7 @@ class _SelfBootomNavigationLeaveState extends State<SelfBootomNavigationLeave> {
 
                       SizedBox(height: apps_div_margin-5,),
                       JibikaCustomTextFromField(
+                        readOnly: false,
                           controller: _commentsController,
                           height: 50,
                           img: "Assets/PrimaryInformation/father.png",
@@ -344,6 +345,7 @@ class _SelfBootomNavigationLeaveState extends State<SelfBootomNavigationLeave> {
                           obscureText: false),
                       SizedBox(height: apps_div_margin-5,),
                       JibikaCustomTextFromField(
+                          readOnly: false,
                           controller: _dutycaridbyController,
                           height: 50,
                           img: "Assets/DrawerImage/chat.png",

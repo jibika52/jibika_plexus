@@ -271,6 +271,7 @@ Future.delayed(Duration(
                                 ),
                                 Expanded(
                                   child: JibikaCustomTextFromField(
+                        readOnly: false,
                                       is_phone: "login",controller: _phoneController, height: 50, img: " ",
                                       hinttext: "Mobile number", keyboardType: TextInputType.number, obscureText: false),
                                 ),
@@ -279,6 +280,7 @@ Future.delayed(Duration(
                           ),
                           SizedBox(height: h*0.03,),
                           JibikaCustomTextFromField(
+                        readOnly: false,
                               suffixIcon: IconButton(
                                   onPressed: () {
                                     setState(() {
