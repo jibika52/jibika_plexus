@@ -25,7 +25,9 @@ class _MainSplashPageViewScreenState extends State<MainSplashPageViewScreen> {
     permissionn();
     Future.delayed(Duration(milliseconds: 500),() {
       if(GetStorage().read("id_token")!=null && GetStorage().read("user_type_id")==1001){
-        Navigator.push(context, MaterialPageRoute(builder: (context) => BootomNatchBarScreen(),));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => BootomNatchBarScreen(
+          index: 4,
+        ),));
       }
       else if(GetStorage().read("id_token")!=null && GetStorage().read("user_type_id")==1003){
         Navigator.push(context, MaterialPageRoute(builder: (context) => SalfBootomNatchBarScreen(currentIndex: 4),));

@@ -26,11 +26,9 @@ class CustomSplashMenue extends StatelessWidget {
           child: Row(
             mainAxisAlignment:MainAxisAlignment.end,
             children: [
-
               CustomText(fontSize: 11, fontWeight: FontWeight.w300,textAlign: TextAlign.center, text: "$text1", letterSpacing: 0.1),
               SizedBox(width: 8,),
               CustomImageSction(height: 14, width: 14, radius: 1, image: "$image1"),
-
             ],
           ),
         ),

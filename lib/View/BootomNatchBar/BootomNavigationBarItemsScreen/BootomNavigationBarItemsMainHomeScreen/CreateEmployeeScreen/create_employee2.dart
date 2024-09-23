@@ -6,9 +6,34 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:jibika_plexus/CustomWidget/CustomAppBar/CustomDefaultAppBar/custom_default_app_bar.dart';
 import 'package:jibika_plexus/CustomWidget/CustomAppBar/CustomMAinAppBAr/custom_main_app_bar.dart';
@@ -23,29 +48,125 @@ import '../../../../../CustomWidget/CustomTExtFormField/Jibika_custom_text_from_
 import '../../../../../Utils/constants.dart';
 
 class CreateNewEmployeeScreen2 extends StatefulWidget {
-  const CreateNewEmployeeScreen2({super.key});
+  CreateNewEmployeeScreen2({super.key,
+    required this.employeeID,
+    required this.employeeNID,
+    required this.employeeName,
+    required this.employeeDateOfBirth,
+    required this.employeeMobileNumber,
+    required this.ShiftPlane,
+    required this.employeeGrowssallary,
+    required this.employeeJoiningDate,
 
+  });
+  String employeeID;
+  String employeeNID;
+  String employeeName;
+  String employeeDateOfBirth;
+  String employeeMobileNumber;
+  String ShiftPlane;
+  String employeeGrowssallary;
+  String employeeJoiningDate;
   @override
   State<CreateNewEmployeeScreen2> createState() => _CreateNewEmployeeScreen2State();
 }
 
 class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
-  TextEditingController _companyAddressController = TextEditingController();
+  TextEditingController _joiningDateController = TextEditingController();
+  TextEditingController _birthDateController = TextEditingController();
+  TextEditingController _employeeIdController = TextEditingController();
+  TextEditingController _nIDController = TextEditingController();
+  TextEditingController _employeeNameController = TextEditingController();
+  TextEditingController _fatherNameController = TextEditingController();
   TextEditingController _phoneController = TextEditingController();
+  TextEditingController _gmailController = TextEditingController();
+  TextEditingController _presentAddressController = TextEditingController();
+  TextEditingController _parmenentAddressController = TextEditingController();
+  TextEditingController _maraitalStatus = TextEditingController();
+  TextEditingController _religeonStatus = TextEditingController();
+  TextEditingController _siftplaneController = TextEditingController();
+  TextEditingController _DepartmentController = TextEditingController();
+  TextEditingController _DesignationController = TextEditingController();
+  TextEditingController _SectionAddressController = TextEditingController();
+  TextEditingController _StafCategoryController = TextEditingController();
+  TextEditingController _workStationController = TextEditingController();
+  TextEditingController _InactiveDateController = TextEditingController();
+  TextEditingController _RosterTypeController = TextEditingController();
+  TextEditingController _EmployeestatusController = TextEditingController();
+  TextEditingController _GrossSalaryController = TextEditingController();
+  TextEditingController _BasicSalaryController = TextEditingController();
+  TextEditingController _HouserentController = TextEditingController();
+  TextEditingController _MedicalAllowanceController = TextEditingController();
+  TextEditingController _FoodAllowanceController = TextEditingController();
+  TextEditingController _ConvinceAllowanceController = TextEditingController();
+  TextEditingController _OtherAllowanceController = TextEditingController();
+  TextEditingController _OtherDeductionController = TextEditingController();
+  TextEditingController _OverTimeRateController = TextEditingController();
+  TextEditingController _BankBranchNameController = TextEditingController();
+  TextEditingController _AccountnumberController = TextEditingController();
+  TextEditingController _NomineeNameController = TextEditingController();
+  TextEditingController _NomineeAddressController = TextEditingController();
+  TextEditingController _NomineephoneController = TextEditingController();
+  TextEditingController _NomineeEmailController = TextEditingController();
+  TextEditingController _RelationwithNomineeController = TextEditingController();
   final _fromKey=GlobalKey<FormState>();
   File ? _image;
-
+  File ? _NID;
   final picker = ImagePicker();
   ///NID font
+  Future getNIDImageFromGallery() async {
+    final pickedFile = await picker.pickImage(source: ImageSource.camera);
+    setState(() {
+      if (pickedFile != null) {
+        _NID = File(pickedFile.path);
+        Future.delayed(Duration(seconds: 2),() {
+          _extractText(_NID!);
+        },);
+      }
+    });
+  }
+  ///image font
   Future getImageFromGallery() async {
-    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+    final pickedFile = await picker.pickImage(source: ImageSource.camera);
     setState(() {
       if (pickedFile != null) {
         _image = File(pickedFile.path);
       }
     });
   }
+
+
+  Future<String?> _extractText(File file) async {
+    final textRecognizer = TextRecognizer(
+      script: TextRecognitionScript.latin,
+    );
+    final InputImage inputImage = InputImage.fromFile(file);
+    final RecognizedText recognizedText =
+    await textRecognizer.processImage(inputImage);
+    String text = recognizedText.text.substring(82, recognizedText.text.length).replaceAll(":", "").replaceAll("Nam", "").replaceAll("ID", "").replaceAll("NID", "");
+    print("cccccccccccccccccccc------------------ ${text}-----------------------------");
+    textRecognizer.close();
+    _NID == null ? _employeeNameController :_employeeNameController.text="${text.split('Date of Birth')[0] ?? ""}";
+    _NID == null ? _birthDateController : _birthDateController.text="${text.split('Date of Birth')[1].split('N')[0] ?? ""}";
+    _NID == null ? _nIDController : _nIDController.text="${text.split('Date of Birth')[1].split('NO')[1] ?? ""}";
+    return text;
+  }
   int _selectedIndex=0;
+
+  @override
+  void initState() {
+    _employeeIdController.text =widget.employeeID;
+     _nIDController.text =widget.employeeNID;
+    _employeeNameController.text =widget.employeeName;
+      _birthDateController.text =widget.employeeDateOfBirth;
+     _phoneController.text =widget.employeeMobileNumber;
+    _siftplaneController.text =widget.ShiftPlane;
+    _GrossSalaryController.text =widget.employeeGrowssallary;
+   _joiningDateController.text =widget.employeeJoiningDate;
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     double h = MediaQuery.of(context).size.height;
@@ -274,7 +395,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                       children: [
                         JibikaCustomTextFromField(
                             readOnly: false,
-                            controller: _companyAddressController,
+                            controller: _employeeIdController,
                             height: 50,
                             img: "Assets/DashBoardIcons/personalcard.png",
                             hinttext: "Employee id",
@@ -283,7 +404,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                         SizedBox(height: C_height,),
                         JibikaCustomTextFromField(
                             readOnly: false,
-                            controller: _companyAddressController,
+                            controller: _nIDController,
                             height: 50,
                             img: "Assets/PrimaryInformation/people (1).png",
                             hinttext: "Employee NID",
@@ -292,7 +413,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                         SizedBox(height: C_height,),
                         JibikaCustomTextFromField(
                             readOnly: false,
-                            controller: _companyAddressController,
+                            controller: _employeeNameController,
                             height: 50,
                             img: "Assets/PrimaryInformation/people (2).png",
                             hinttext: "Employee name",
@@ -301,7 +422,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                         SizedBox(height: C_height,),
                         JibikaCustomTextFromField(
                             readOnly: false,
-                            controller: _companyAddressController,
+                            controller: _birthDateController,
                             height: 50,
                             img: "Assets/PrimaryInformation/calendar.png",
                             hinttext: "Date of barth",
@@ -310,7 +431,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                         SizedBox(height: C_height,),
                         JibikaCustomTextFromField(
                             readOnly: false,
-                            controller: _companyAddressController,
+                            controller: _fatherNameController,
                             height: 50,
                             img: "Assets/PrimaryInformation/father.png",
                             hinttext: "Father name",
@@ -327,7 +448,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                         SizedBox(height: C_height,),
 
                         JibikaCustomTextFromField2(
-                            controller: _phoneController,
+                            controller: _gmailController,
                             height: 50,
                             img: "Assets/DashBoardIcons/messagetext.png",
                             hinttext: "Gmail",
@@ -336,7 +457,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                         SizedBox(height: C_height,),
 
                         JibikaCustomTextFromField2(
-                            controller: _phoneController,
+                            controller: _presentAddressController,
                             height: 50,
                             img: "Assets/DashBoardIcons/location.png",
                             hinttext: "Present address",
@@ -345,7 +466,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                         SizedBox(height: C_height,),
 
                         JibikaCustomTextFromField2(
-                            controller: _phoneController,
+                            controller: _parmenentAddressController,
                             height: 50,
                             img: "Assets/DashBoardIcons/location.png",
                             hinttext: "Permanent address",
@@ -354,7 +475,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                         SizedBox(height: C_height,),
 
                         JibikaCustomTextFromField2(
-                            controller: _phoneController,
+                            controller: _siftplaneController,
                             height: 50,
                             img: "Assets/PrimaryInformation/work-shift 1.png",
                             hinttext: "Shift plane",
@@ -362,7 +483,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                             obscureText: false),
                         SizedBox(height: C_height,),
                         JibikaCustomTextFromField2(
-                            controller: _phoneController,
+                            controller: _maraitalStatus,
                             height: 50,
                             img: "Assets/PrimaryInformation/money_payment.png",
                             hinttext: "Marital status",
@@ -370,7 +491,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                             obscureText: false),
                         SizedBox(height: C_height,),
                         JibikaCustomTextFromField2(
-                            controller: _phoneController,
+                            controller: _joiningDateController,
                             height: 50,
                             img: "Assets/PrimaryInformation/calendar.png",
                             hinttext: "Joining date",
@@ -378,18 +499,10 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                             obscureText: false),
                         SizedBox(height: C_height,),
                         JibikaCustomTextFromField2(
-                            controller: _phoneController,
+                            controller: _religeonStatus,
                             height: 50,
                             img: "Assets/PrimaryInformation/religion 1.png",
                             hinttext: "Religion",
-                            keyboardType: TextInputType.text,
-                            obscureText: false),
-                        SizedBox(height: C_height,),
-                        JibikaCustomTextFromField2(
-                            controller: _phoneController,
-                            height: 50,
-                            img: "Assets/PrimaryInformation/education-182 1.png",
-                            hinttext: "Education",
                             keyboardType: TextInputType.text,
                             obscureText: false),
                       ],
@@ -549,7 +662,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                         children: [
                           JibikaCustomTextFromField(
                               readOnly: false,
-                              controller: _companyAddressController,
+                              controller: _DepartmentController,
                               height: 50,
                               img: "Assets/PrimaryInformation/people (2).png",
                               hinttext: "Department",
@@ -558,7 +671,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                           SizedBox(height: C_height,),
                           JibikaCustomTextFromField(
                         readOnly: false,
-                              controller: _companyAddressController,
+                              controller: _DesignationController,
                               height: 50,
                               img: "Assets/PrimaryInformation/people (1).png",
                               hinttext: "Designation",
@@ -567,7 +680,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                           SizedBox(height: C_height,),
                           JibikaCustomTextFromField(
                         readOnly: false,
-                              controller: _companyAddressController,
+                              controller: _SectionAddressController,
                               height: 50,
                               img: "Assets/PrimaryInformation/calendar.png",
                               hinttext: "Section",
@@ -576,7 +689,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                           SizedBox(height: C_height,),
                           JibikaCustomTextFromField(
                         readOnly: false,
-                              controller: _companyAddressController,
+                              controller: _StafCategoryController,
                               height: 50,
                               img: "Assets/PrimaryInformation/father.png",
                               hinttext: "Staff Category",
@@ -584,7 +697,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                               obscureText: false),
                           SizedBox(height: C_height,),
                           JibikaCustomTextFromField2(
-                              controller: _phoneController,
+                              controller: _workStationController,
                               height: 50,
                               img: "Assets/PrimaryInformation/gender.png",
                               hinttext: "Work Station",
@@ -593,16 +706,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                           SizedBox(height: C_height,),
 
                           JibikaCustomTextFromField2(
-                              controller: _phoneController,
-                              height: 50,
-                              img: "Assets/PrimaryInformation/calendar.png",
-                              hinttext: "Joining Date",
-                              keyboardType: TextInputType.text,
-                              obscureText: false),
-                          SizedBox(height: C_height,),
-
-                          JibikaCustomTextFromField2(
-                              controller: _phoneController,
+                              controller: _InactiveDateController,
                               height: 50,
                               img: "Assets/PrimaryInformation/calendar.png",
                               hinttext: "Inactive Date",
@@ -611,7 +715,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                           SizedBox(height: C_height,),
 
                           JibikaCustomTextFromField2(
-                              controller: _phoneController,
+                              controller: _RosterTypeController,
                               height: 50,
                               img: "Assets/DashBoardIcons/messagetext.png",
                               hinttext: "Roster Type",
@@ -620,74 +724,12 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                           SizedBox(height: C_height,),
 
                           JibikaCustomTextFromField2(
-                              controller: _phoneController,
-                              height: 50,
-                              img: "Assets/PrimaryInformation/work-shift 1.png",
-                              hinttext: "Shift Plan",
-                              keyboardType: TextInputType.text,
-                              obscureText: false),
-                          SizedBox(height: C_height,),
-
-                          JibikaCustomTextFromField2(
-                              controller: _phoneController,
-                              height: 50,
-                              img: "Assets/PrimaryInformation/work-shift 1.png",
-                              hinttext: "Shift plane",
-                              keyboardType: TextInputType.text,
-                              obscureText: false),
-                          SizedBox(height: C_height,),
-                          JibikaCustomTextFromField2(
-                              controller: _phoneController,
+                              controller: _EmployeestatusController,
                               height: 50,
                               img: "Assets/PrimaryInformation/work-shift 2.png",
                               hinttext: "Employee status",
                               keyboardType: TextInputType.text,
                               obscureText: false),
-                          SizedBox(height: C_height+10,),
-                          Align(
-                              alignment: Alignment.centerLeft,
-                              child: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w500, text: "Weekend", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),)),
-                          SizedBox(height: C_height,),
-                          Container(
-                              height: 35,
-                              width: double.infinity,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  CustomCircleDay(day: "Sa", onTap: () {
-                                    setState(() =>sat=!sat);
-                                  }, backgroundColor:sat==true?Main_Theme_textColor_tir_Condition : home_default_color,textColor:sat==true?Main_Theme_WhiteCollor: Main_Theme_textColor.withOpacity(0.4),),
-
-                                  CustomCircleDay(day: "Su", onTap: () {
-                                    setState(() =>sun=!sun);
-                                  }, backgroundColor:sun==true?Main_Theme_textColor_tir_Condition : home_default_color,textColor:sun==true?Main_Theme_WhiteCollor: Main_Theme_textColor.withOpacity(0.4),),
-
-                                  CustomCircleDay(day: "Mo", onTap: () {
-                                    setState(() =>mon=!mon);
-                                  }, backgroundColor:mon==true?Main_Theme_textColor_tir_Condition : home_default_color,textColor:mon==true?Main_Theme_WhiteCollor: Main_Theme_textColor.withOpacity(0.4),),
-
-                                  CustomCircleDay(day: "Tu", onTap: () {
-                                    setState(() =>Tue=!Tue);
-                                  }, backgroundColor:Tue==true?Main_Theme_textColor_tir_Condition : home_default_color,textColor:Tue==true?Main_Theme_WhiteCollor: Main_Theme_textColor.withOpacity(0.4),),
-                                  CustomCircleDay(day: "We", onTap: () {
-                                    setState(() =>Wed=!Wed);
-                                  }, backgroundColor:Wed==true?Main_Theme_textColor_tir_Condition : home_default_color,textColor:Wed==true?Main_Theme_WhiteCollor: Main_Theme_textColor.withOpacity(0.4),),
-
-                                  CustomCircleDay(day: "Th", onTap: () {
-                                    setState(() =>Thu=!Thu);
-                                  }, backgroundColor:Thu==true?Main_Theme_textColor_tir_Condition : home_default_color,textColor:Thu==true?Main_Theme_WhiteCollor: Main_Theme_textColor.withOpacity(0.4),),
-
-
-                                  CustomCircleDay(day: "Fr", onTap: () {
-                                    setState(() =>fri=!fri);
-                                  }, backgroundColor:fri==true?Main_Theme_textColor_tir_Condition : home_default_color,textColor:fri==true?Main_Theme_WhiteCollor: Main_Theme_textColor.withOpacity(0.4),),
-
-
-
-                                ],
-                              )
-                          ),
-                          SizedBox(height: C_height+5,),
                         ],
                       ),
                     ),
@@ -736,7 +778,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                         children: [
                           JibikaCustomTextFromField(
                         readOnly: false,
-                              controller: _companyAddressController,
+                              controller: _GrossSalaryController,
                               height: 50,
                               img: "Assets/PrimaryInformation/money_payment.png",
                               hinttext: "Gross Salary",
@@ -745,7 +787,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                           SizedBox(height: C_height,),
                           JibikaCustomTextFromField(
                         readOnly: false,
-                              controller: _companyAddressController,
+                              controller: _BasicSalaryController,
                               height: 50,
                               img: "Assets/PrimaryInformation/money_payment.png",
                               hinttext: "Basic Salary",
@@ -754,7 +796,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                           SizedBox(height: C_height,),
                           JibikaCustomTextFromField(
                         readOnly: false,
-                              controller: _companyAddressController,
+                              controller: _HouserentController,
                               height: 50,
                               img: "Assets/PrimaryInformation/home-svgrepo-com 1.png",
                               hinttext: "House rent",
@@ -764,7 +806,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
 
                           JibikaCustomTextFromField(
                         readOnly: false,
-                              controller: _companyAddressController,
+                              controller: _MedicalAllowanceController,
                               height: 50,
                               img: "Assets/PrimaryInformation/people.png",
                               hinttext: "Medical Allowance",
@@ -773,7 +815,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                           SizedBox(height: C_height,),
                           JibikaCustomTextFromField(
                         readOnly: false,
-                              controller: _companyAddressController,
+                              controller: _FoodAllowanceController,
                               height: 50,
                               img: "Assets/PrimaryInformation/gender-7 1.png",
                               hinttext: "Food Allowance",
@@ -783,7 +825,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
 
 
                           JibikaCustomTextFromField2(
-                              controller: _phoneController,
+                              controller: _ConvinceAllowanceController,
                               height: 50,
                               img: "Assets/PrimaryInformation/convienceallowence.png",
                               hinttext: "Convince Allowance",
@@ -792,7 +834,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                           SizedBox(height: C_height,),
 
                           JibikaCustomTextFromField2(
-                              controller: _phoneController,
+                              controller: _OtherAllowanceController,
                               height: 50,
                               img: "Assets/PrimaryInformation/other_allowence.png",
                               hinttext: "Other Allowance",
@@ -802,7 +844,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
 
 
                           JibikaCustomTextFromField2(
-                              controller: _phoneController,
+                              controller: _OtherDeductionController,
                               height: 50,
                               img: "Assets/PrimaryInformation/other_deduction.png",
                               hinttext: "Other Deduction",
@@ -811,7 +853,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                           SizedBox(height: C_height,),
 
                           JibikaCustomTextFromField2(
-                              controller: _phoneController,
+                              controller: _OverTimeRateController,
                               height: 50,
                               img: "Assets/PrimaryInformation/clock.png",
                               hinttext: "Over Time Rate",
@@ -820,7 +862,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                           SizedBox(height: C_height,),
 
                           JibikaCustomTextFromField2(
-                              controller: _phoneController,
+                              controller: _BankBranchNameController,
                               height: 50,
                               img: "Assets/PrimaryInformation/bank.png",
                               hinttext: "Bank & Branch Name",
@@ -828,7 +870,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                               obscureText: false),
 
                           JibikaCustomTextFromField2(
-                              controller: _phoneController,
+                              controller: _AccountnumberController,
                               height: 50,
                               img: "Assets/PrimaryInformation/calendar.png",
                               hinttext: "Account number",
@@ -967,7 +1009,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                           SizedBox(height: 15,),
                           JibikaCustomTextFromField(
                         readOnly: false,
-                              controller: _companyAddressController,
+                              controller: _NomineeNameController,
                               height: 50,
                               img: "Assets/PrimaryInformation/people (2).png",
                               hinttext: "Nominee Name",
@@ -976,7 +1018,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                           SizedBox(height: C_height,),
                           JibikaCustomTextFromField(
                         readOnly: false,
-                              controller: _companyAddressController,
+                              controller: _NomineeAddressController,
                               height: 50,
                               img: "Assets/PrimaryInformation/people (1).png",
                               hinttext: "Nominee Address",
@@ -984,7 +1026,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                               obscureText: false),
                           SizedBox(height: C_height,),
                           JibikaCustomTextFromField2(
-                              controller: _phoneController,
+                              controller: _NomineephoneController,
                               height: 50,
                               img: "Assets/PrimaryInformation/phone.png",
                               hinttext: "Mobile number",
@@ -993,7 +1035,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                           SizedBox(height: C_height,),
                           JibikaCustomTextFromField(
                         readOnly: false,
-                              controller: _companyAddressController,
+                              controller: _NomineeEmailController,
                               height: 50,
                               img: "Assets/PrimaryInformation/sms.png",
                               hinttext: "Nominee E-mail",
@@ -1001,7 +1043,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                               obscureText: false),
                           SizedBox(height: C_height,),
                           JibikaCustomTextFromField2(
-                              controller: _phoneController,
+                              controller: _RelationwithNomineeController,
                               height: 50,
                               img: "Assets/PrimaryInformation/relation.png",
                               hinttext: "Relation with Nominee",

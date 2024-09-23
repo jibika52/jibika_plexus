@@ -176,7 +176,9 @@ class CustomHttpRequestClass{
           ).show(context);
 
           if(GetStorage().read("id_token")!=null && GetStorage().read("user_type_id")==1001){
-            Navigator.push(context, MaterialPageRoute(builder: (context) => BootomNatchBarScreen(),));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => BootomNatchBarScreen(
+              index: 4,
+            ),));
           }
 
           else if(GetStorage().read("id_token")!=null && GetStorage().read("user_type_id")==1003){
@@ -476,8 +478,6 @@ class CustomHttpRequestClass{
           body: body
       ).then((http.Response response) {
         getEmployeeLocaltionInfoList =jsonDecode(response.body)["data"];
-
-        print("-----------------------------$getEmployeeLocaltionInfoList");
       });
       return getEmployeeLocaltionInfoList;
     }
@@ -505,8 +505,6 @@ class CustomHttpRequestClass{
           body: body
       ).then((http.Response response) {
         getMovementTrackableEmployeeList =jsonDecode(response.body)["data"];
-
-        print("-----------------------------$getMovementTrackableEmployeeList");
       });
       return getMovementTrackableEmployeeList;
     }
@@ -536,8 +534,6 @@ class CustomHttpRequestClass{
           body: body
       ).then((http.Response response) {
         GetMovementTrackableEmployeeByAttendanceDatelist =jsonDecode(response.body)["data"];
-
-        print("-----------------------------$GetMovementTrackableEmployeeByAttendanceDatelist");
       });
       return GetMovementTrackableEmployeeByAttendanceDatelist;
     }
@@ -565,13 +561,39 @@ class CustomHttpRequestClass{
           body: body
       ).then((http.Response response) {
         getVehicleList =jsonDecode(response.body)["data"];
-
-        print("-----------------------------$getVehicleList");
       });
       return getVehicleList;
     }
     catch(e){
       print("  get Vehicle List Catch error ============================ ${e}");
+    }
+  }
+
+
+
+
+  ///  GetShiftPlanNWeekendListHttpFunction-------------------------------------------------------------------------
+  GetShiftPlanNWeekendListHttpFunction(String UserId, BuildContext context)async{
+    dynamic  GetShiftPlanNWeekendListt  ;
+    var body = jsonEncode({
+      "UserId":"$UserId",
+    });
+    try{
+      var data=await http.post(Uri.parse("${BASEURL}/${GetShiftPlanNWeekendList}"),
+          headers: {
+            "Content-Type": "application/json",
+            "username": "jibikaapps",
+            "password": "20jibika24",
+          },
+          body: body
+      ).then((http.Response response) {
+        GetShiftPlanNWeekendListt =jsonDecode(response.body);
+        print("---------------------------------------------- $GetShiftPlanNWeekendListt ");
+      });
+      return GetShiftPlanNWeekendListt;
+    }
+    catch(e){
+      print("  GetShiftPlanNWeekendListHttpFunction ============================ ${e}");
     }
   }
 

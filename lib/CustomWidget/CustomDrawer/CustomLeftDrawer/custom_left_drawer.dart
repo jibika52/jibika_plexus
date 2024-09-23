@@ -196,7 +196,9 @@ class CustomLeftDrawer extends StatelessWidget {
                         child: CustomDrawerOption(image: "Assets/DrawerImage/drawericonong.png", name: "Employee home", size: 17, size2: 16,)),
                     InkWell(
                         onTap: () {
-                          Navigator.push(context, CupertinoPageRoute(builder: (context) => BootomNatchBarScreen(),));
+                          Navigator.push(context, CupertinoPageRoute(builder: (context) => BootomNatchBarScreen(
+                            index: 4,
+                          ),));
                         },
                         child: CustomDrawerOption(image: "Assets/DrawerImage/drawericonong.png", name: "Admin home", size: 17, size2: 16,)),
                   ],

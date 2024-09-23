@@ -104,7 +104,7 @@ class _BootomNavigationBarItemsPayrollScreenState extends State<BootomNavigation
                         padding: const EdgeInsets.only(left:10.0,right: 10,top: 10,bottom: 10),
                         child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            ColorCustomText(fontSize: font12header, fontWeight: FontWeight.w500, text: "Salary Comparison Chart  Jan-2023", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.9),),
+                            ColorCustomText(fontSize: font12header, fontWeight: FontWeight.w500, text: "Salary Comparison Chart", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.9),),
                             InkWell(
                               onTap: () {
                                 _onPressed(context: context);
@@ -118,7 +118,6 @@ class _BootomNavigationBarItemsPayrollScreenState extends State<BootomNavigation
                                     ColorCustomText(fontSize: font12header, fontWeight: FontWeight.w500, text:_selected_pick_month==null?"${DateFormat("MMM-yyyy").format(DateTime.now())}": "${DateFormat("MMM-yyyy").format(_selected_pick_month!)}", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.9),),
                                     SizedBox(width: 7,),
                                     CustomCalender(onTap: () {
-
                                     },),
                                   ],
                                 ),
@@ -138,7 +137,6 @@ class _BootomNavigationBarItemsPayrollScreenState extends State<BootomNavigation
                                   top4: total_Amount>999999.0? "${double.parse("${(total_Amount/4)/1000000}").toStringAsFixed(0)}M": "${double.parse("${(total_Amount/4)/1000}").toStringAsFixed(0)}K",
                                   color:Main_Theme_textColor.withOpacity(0.6),
                                 ),
-
                                 Expanded(
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,

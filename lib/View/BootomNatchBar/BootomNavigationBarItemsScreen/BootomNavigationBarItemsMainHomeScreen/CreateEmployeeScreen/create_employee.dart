@@ -18,6 +18,7 @@ import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
 import 'package:jibika_plexus/CustomWidget/CustomImageButton/custom_imagebutton.dart';
 import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
+import 'package:jibika_plexus/View/BootomNatchBar/bootom_bar_screen.dart';
 import '../../../../../CustomWidget/CustomTExtFormField/Jibika_custom_text_from_field.dart';
 import '../../../../../Utils/constants.dart';
 import 'create_employee2.dart';
@@ -30,7 +31,9 @@ class CreateNewEmployeeScreen extends StatefulWidget {
 }
 
 class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
-  TextEditingController _companyAddressController = TextEditingController();
+
+  TextEditingController _joiningDateController = TextEditingController();
+  TextEditingController _birthDateController = TextEditingController();
   TextEditingController _employeeIdController = TextEditingController();
   TextEditingController _nIDController = TextEditingController();
   TextEditingController _employeeNameController = TextEditingController();
@@ -47,6 +50,9 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
     setState(() {
       if (pickedFile != null) {
         _NID = File(pickedFile.path);
+        Future.delayed(Duration(seconds: 2),() {
+          _extractText(_NID!);
+        },);
       }
     });
   }
@@ -61,43 +67,7 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
   }
 
 
-  Widget _extractTextView() {
-    if (_NID == null) {
-      return const Center(
-        child: Text("No result."),
-      );
-    }
-    return FutureBuilder(
-      future: _extractText(_NID!),
-      builder: (context, snapshot) {
-        return Column(
-          children: [
-            Text(
-              "${snapshot.data!.split('Date of Birth')[0] ?? ""}" ,
-              style: const TextStyle(
-                fontSize: 25,
-              ),
-            ),
-            Text(
-              "${snapshot.data!.split('Date of Birth')[1].split('N')[0] ?? ""}" ,
-              style: const TextStyle(
-                fontSize: 25,
-              ),
-            ),
-            Text(
-              "${snapshot.data!.split('Date of Birth')[1].split('NO')[1] ?? ""}" ,
-              style: const TextStyle(
-                fontSize: 25,
-              ),
-            ),
-          ],
-        );
-      },
-    );
-  }
-
   Future<String?> _extractText(File file) async {
-
     final textRecognizer = TextRecognizer(
       script: TextRecognitionScript.latin,
     );
@@ -107,6 +77,9 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
     String text = recognizedText.text.substring(82, recognizedText.text.length).replaceAll(":", "").replaceAll("Nam", "").replaceAll("ID", "").replaceAll("NID", "");
     print("cccccccccccccccccccc------------------ ${text}-----------------------------");
     textRecognizer.close();
+    _NID == null ? _employeeNameController :_employeeNameController.text="${text.split('Date of Birth')[0] ?? ""}";
+    _NID == null ? _birthDateController : _birthDateController.text="${text.split('Date of Birth')[1].split('N')[0] ?? ""}";
+    _NID == null ? _nIDController : _nIDController.text="${text.split('Date of Birth')[1].split('NO')[1] ?? ""}";
     return text;
   }
 
@@ -199,15 +172,11 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
                                       ),
                                     ),
                                   ),
-
-
-
                                 ],
                               ),
                             ),
                             SizedBox(height: 5,),
-                            CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Upload / Take photo", letterSpacing: 0.3),
-
+                            CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Upload photo", letterSpacing: 0.3),
                           ],
                         ),
                       ),
@@ -288,7 +257,6 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
                           ),
                           SizedBox(height: 5,),
                           CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Scan NID Card", letterSpacing: 0.3),
-          
                         ],
                       ),
                     ],
@@ -339,10 +307,10 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
                   SizedBox(height: C_height,),
                   JibikaCustomTextFromField(
                       onTap: () {
-                        _joiningDate(context);
+                        _birthdate(context);
                       },
                       readOnly: true,
-                      controller: _companyAddressController,
+                      controller: _birthDateController,
                       height: 50,
                       img: "Assets/PrimaryInformation/calendar.png",
                       hinttext: "Date of barth",
@@ -379,7 +347,7 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
                         _joiningDate(context);
                       },
                       readOnly: true,
-                      controller: _companyAddressController,
+                      controller: _joiningDateController,
                       height: 50,
                       img: "Assets/PrimaryInformation/calendar.png",
                       hinttext: "Joining date",
@@ -390,96 +358,85 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
               )
                   :
 
+              Column(
+                children: [
+                  JibikaCustomTextFromField(
+                      readOnly: false,
+                      controller: _nIDController,
+                      height: 50,
+                      img: "Assets/DashBoardIcons/personalcard.png",
+                      hinttext: "Employee NID",
+                      keyboardType: TextInputType.text,
+                      obscureText: false),
+                  SizedBox(height: C_height,),
+                  JibikaCustomTextFromField(
+                      readOnly: false,
+                      controller: _employeeIdController,
+                      height: 50,
+                      img: "Assets/PrimaryInformation/people (1).png",
+                      hinttext: "Employee ID",
+                      keyboardType: TextInputType.text,
+                      obscureText: false),
+                  SizedBox(height: C_height,),
+                  JibikaCustomTextFromField(
+                      readOnly: false,
+                      controller: _employeeNameController,
+                      height: 50,
+                      img: "Assets/PrimaryInformation/people (2).png",
+                      hinttext: "Employee name",
+                      keyboardType: TextInputType.text,
+                      obscureText: false),
+                  SizedBox(height: C_height,),
+                  JibikaCustomTextFromField(
+                      onTap: () {
+                        _joiningDate(context);
+                      },
+                      readOnly: true,
+                      controller: _birthDateController,
+                      height: 50,
+                      img: "Assets/PrimaryInformation/calendar.png",
+                      hinttext: "Date of barth",
+                      keyboardType: TextInputType.text,
+                      obscureText: false),
+                  SizedBox(height: C_height,),
+                  JibikaCustomTextFromField2(
+                      controller: _phoneController,
+                      height: 50,
+                      img: "Assets/PrimaryInformation/phone.png",
+                      hinttext: "Mobile number",
+                      keyboardType: TextInputType.text,
+                      obscureText: false),
+                  SizedBox(height: C_height,),
+                  JibikaCustomTextFromField2(
+                      controller: _siftplaneController,
+                      height: 50,
+                      img: "Assets/PrimaryInformation/work-shift 1.png",
+                      hinttext: "Shift plane",
+                      keyboardType: TextInputType.text,
+                      obscureText: false),
+                  SizedBox(height: C_height,),
+                  JibikaCustomTextFromField2(
+                      controller: _growsSalaryController,
+                      height: 50,
+                      img: "Assets/PrimaryInformation/money_payment.png",
+                      hinttext: "Grows Salary",
+                      keyboardType: TextInputType.text,
+                      obscureText: false),
+                  SizedBox(height: C_height,),
 
-                  FutureBuilder(
-                future: _extractText(_NID!),
-                builder: (BuildContext context, AsyncSnapshot<String?> snapshot) {
-                  _NID == null ? _employeeNameController :_employeeNameController.text="${snapshot.data!.split('Date of Birth')[0] ?? ""}";
-                  _NID == null ? birthdate : birthdate="${snapshot.data!.split('Date of Birth')[1].split('N')[0] ?? ""}";
-                  _NID == null ? _nIDController : _nIDController.text="${snapshot.data!.split('Date of Birth')[1].split('NO')[1] ?? ""}";
+                  JibikaCustomTextFromField(
+                      onTap: () {
+                        _joiningDate(context);
+                      },
+                      readOnly: true,
+                      controller: _joiningDateController,
+                      height: 50,
+                      img: "Assets/PrimaryInformation/calendar.png",
+                      hinttext: "Joining date",
+                      keyboardType: TextInputType.text,
+                      obscureText: false),
 
-                  return Column(
-                    children: [
-                      JibikaCustomTextFromField(
-                          readOnly: false,
-                          controller: _nIDController,
-                          height: 50,
-                          img: "Assets/DashBoardIcons/personalcard.png",
-                          hinttext: "Employee NID",
-                          keyboardType: TextInputType.text,
-                          obscureText: false),
-                      SizedBox(height: C_height,),
-                      JibikaCustomTextFromField(
-                          readOnly: false,
-                          controller: _employeeIdController,
-                          height: 50,
-                          img: "Assets/PrimaryInformation/people (1).png",
-                          hinttext: "Employee ID",
-                          keyboardType: TextInputType.text,
-                          obscureText: false),
-                      SizedBox(height: C_height,),
-                      JibikaCustomTextFromField(
-                          readOnly: false,
-                          controller: _employeeNameController,
-                          height: 50,
-                          img: "Assets/PrimaryInformation/people (2).png",
-                          hinttext: "Employee name",
-                          keyboardType: TextInputType.text,
-                          obscureText: false),
-                      SizedBox(height: C_height,),
-                      JibikaCustomTextFromField(
-                          onTap: () {
-                            _joiningDate(context);
-                          },
-                          readOnly: true,
-                          controller: _companyAddressController,
-                          height: 50,
-                          img: "Assets/PrimaryInformation/calendar.png",
-                          hinttext: "Date of barth",
-                          keyboardType: TextInputType.text,
-                          obscureText: false),
-                      SizedBox(height: C_height,),
-                      JibikaCustomTextFromField2(
-                          controller: _phoneController,
-                          height: 50,
-                          img: "Assets/PrimaryInformation/phone.png",
-                          hinttext: "Mobile number",
-                          keyboardType: TextInputType.text,
-                          obscureText: false),
-                      SizedBox(height: C_height,),
-                      JibikaCustomTextFromField2(
-                          controller: _siftplaneController,
-                          height: 50,
-                          img: "Assets/PrimaryInformation/work-shift 1.png",
-                          hinttext: "Shift plane",
-                          keyboardType: TextInputType.text,
-                          obscureText: false),
-                      SizedBox(height: C_height,),
-                      JibikaCustomTextFromField2(
-                          controller: _growsSalaryController,
-                          height: 50,
-                          img: "Assets/PrimaryInformation/money_payment.png",
-                          hinttext: "Grows Salary",
-                          keyboardType: TextInputType.text,
-                          obscureText: false),
-                      SizedBox(height: C_height,),
-
-                      JibikaCustomTextFromField(
-                          onTap: () {
-                            _joiningDate(context);
-                          },
-                          readOnly: true,
-                          controller: _companyAddressController,
-                          height: 50,
-                          img: "Assets/PrimaryInformation/calendar.png",
-                          hinttext: "Joining date",
-                          keyboardType: TextInputType.text,
-                          obscureText: false),
-
-                    ],
-                  );
-                },
-
+                ],
               ),
               ),
               SizedBox(height: C_height+18,),
@@ -539,31 +496,79 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     CustomCircleDay(day: "Sa", onTap: () {
-                    setState(() =>sat=!sat);
+                    setState(() {
+                      sat=!sat;
+                      if(sat==true){
+                        Containsvalue.add(1);
+                      }else{
+                        Containsvalue.removeAt(0);
+                      }
+                    });
                     }, backgroundColor:sat==true?Main_Theme_textColor_tir_Condition : home_default_color,textColor:sat==true?Main_Theme_WhiteCollor: Main_Theme_textColor.withOpacity(0.4),),
 
                     CustomCircleDay(day: "Su", onTap: () {
-                    setState(() =>sun=!sun);
+                    setState((){
+                      sun=!sun;
+                      if(sat==true){
+                        Containsvalue.add(2);
+                      }else{
+                        Containsvalue.removeAt(1);
+                      }
+                    });
                     }, backgroundColor:sun==true?Main_Theme_textColor_tir_Condition : home_default_color,textColor:sun==true?Main_Theme_WhiteCollor: Main_Theme_textColor.withOpacity(0.4),),
 
                     CustomCircleDay(day: "Mo", onTap: () {
-                    setState(() =>mon=!mon);
+                    setState(() {
+                      mon=!mon;
+                      if(sat==true){
+                        Containsvalue.add(3);
+                      }else{
+                        Containsvalue.removeAt(2);
+                      }
+                    });
                     }, backgroundColor:mon==true?Main_Theme_textColor_tir_Condition : home_default_color,textColor:mon==true?Main_Theme_WhiteCollor: Main_Theme_textColor.withOpacity(0.4),),
 
                     CustomCircleDay(day: "Tu", onTap: () {
-                    setState(() =>Tue=!Tue);
+                    setState(() {
+                      Tue=!Tue;
+                      if(sat==true){
+                        Containsvalue.add(4);
+                      }else{
+                        Containsvalue.removeAt(3);
+                      }
+                    });
                     }, backgroundColor:Tue==true?Main_Theme_textColor_tir_Condition : home_default_color,textColor:Tue==true?Main_Theme_WhiteCollor: Main_Theme_textColor.withOpacity(0.4),),
                     CustomCircleDay(day: "We", onTap: () {
-                    setState(() =>Wed=!Wed);
+                    setState(() {
+                      Wed=!Wed;
+                      if(sat==true){
+                        Containsvalue.add(5);
+                      }else{
+                        Containsvalue.removeAt(4);
+                      }
+                    });
                     }, backgroundColor:Wed==true?Main_Theme_textColor_tir_Condition : home_default_color,textColor:Wed==true?Main_Theme_WhiteCollor: Main_Theme_textColor.withOpacity(0.4),),
 
                     CustomCircleDay(day: "Th", onTap: () {
-                    setState(() =>Thu=!Thu);
+                    setState(() {
+                      Thu=!Thu;
+                      if(sat==true){
+                        Containsvalue.add(6);
+                      }else{
+                        Containsvalue.removeAt(5);
+                      }
+                    });
                     }, backgroundColor:Thu==true?Main_Theme_textColor_tir_Condition : home_default_color,textColor:Thu==true?Main_Theme_WhiteCollor: Main_Theme_textColor.withOpacity(0.4),),
 
-
                     CustomCircleDay(day: "Fr", onTap: () {
-                    setState(() =>fri=!fri);
+                    setState(() {
+                      fri=!fri;
+                      if(sat==true){
+                        Containsvalue.add(7);
+                      }else{
+                        Containsvalue.removeAt(6);
+                      }
+                    });
                     }, backgroundColor:fri==true?Main_Theme_textColor_tir_Condition : home_default_color,textColor:fri==true?Main_Theme_WhiteCollor: Main_Theme_textColor.withOpacity(0.4),),
 
 
@@ -575,7 +580,16 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
               Align(
               alignment: Alignment.centerRight,
                 child: InkWell(
-                    onTap: () => Navigator.push(context, CupertinoPageRoute(builder: (context) => CreateNewEmployeeScreen2(),)),
+                    onTap: () => Navigator.push(context, CupertinoPageRoute(builder: (context) => CreateNewEmployeeScreen2(
+                        employeeID: _employeeIdController.text,
+                        employeeNID: _nIDController.text,
+                        employeeName: _employeeNameController.text,
+                        employeeDateOfBirth: _birthDateController.text,
+                        employeeMobileNumber: _phoneController.text,
+                        ShiftPlane: _siftplaneController.text,
+                        employeeGrowssallary: _growsSalaryController.text,
+                        employeeJoiningDate: _joiningDateController.text
+                    ) ,)),
                     child: ColorCustomText(fontSize: 13, fontWeight: FontWeight.w500, text: "More info...", letterSpacing: 0.3, textColor: Main_Theme_textColor_tir_Condition)),
               ),
               SizedBox(height: C_height+10,),
@@ -613,7 +627,7 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
 
 
   functionval()async{
-    var nid_cardd = await http.MultipartFile.fromPath('EmpImageFile', _image!.path.toString());
+    var nid_cardd = await http.MultipartFile.fromPath('EmpImageFile', "${_image!.path.toString()}");
    // var image = await http.MultipartFile.fromPath('EmpImageFile', _NID!.path.toString());
     request.files.add(nid_cardd);
   //  request.files.add(image);
@@ -626,38 +640,36 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
     try{
       request.headers.addAll({
         "accept": "application/json",
-        'Authorization': 'Bearer ${GetStorage().read("api_token")}'
+      //  'Authorization': 'Bearer ${GetStorage().read("api_token")}'
       });
 
-      // request.fields['GENDER'] = "M" ;
-      // request.fields['ID_CARD_NO'] = "10016" ;
-      // request.fields['USERID'] = "01889173335" ;
-      // request.fields['EMPLOYEE_NAME_ENGLISH'] = "Uzzal Biswas";
-      // request.fields['JOINING_DATE'] = "18-Sep-2024";
-      // request.fields['BIRTH_DATE'] = "11-Apr-1997";
-      // request.fields['RF_ID_NO'] = "015186812";
-      // request.fields['EMPLOYEE_STATUS'] = "3";
-      // request.fields['CLIENTBASE_URL'] = "${BASEURL}";
 
-    "${_image}"=="null"?dun(): functionval();
       request.fields["GENDER"] = m==true? "M" :f==true? "F": "O" ;
-      request.fields["ID_CARD_NO"] = "01889173335" ;
-      request.fields["USERID"] = "01889173335" ;
-      request.fields["EMPLOYEE_NAME_ENGLISH"] = "TEST ARMY" ;
-      request.fields["JOINING_DATE"] = "18-Sep-2024" ;
-      request.fields["BIRTH_DATE"] = "01-Sep-1992" ;
-      request.fields["RF_ID_NO"] = "10015" ;
-      request.fields["EMPLOYEE_STATUS"] = "3" ;
-      request.fields["CLIENTBASE_URL"] = "${GetStorage().read("APPS_IMG_BASEURL")}" ;
+      request.fields["ID_CARD_NO"] =  _employeeIdController.text;
+      request.fields["MOBILE_NO "] =  _phoneController.text;
+      request.fields["NID_NO"] =  _nIDController.text;
+      request.fields["WEEKEND1"] =  _nIDController.text;
+      request.fields["WEEKEND2"] =  _nIDController.text;
 
+      request.fields["USERID"] = "${GetStorage().read("mobile_id")}";
+      request.fields["EMPLOYEE_NAME_ENGLISH"] = _employeeNameController.text;
+      request.fields["JOINING_DATE"] = _joiningDateController.text;
+      request.fields["BIRTH_DATE"] = _birthDateController.text;
+      request.fields["RF_ID_NO"] = _employeeIdController.text;
+      request.fields["EMPLOYEE_STATUS"] = "3";
+      request.fields["CLIENTBASE_URL"] = "${GetStorage().read("APPS_IMG_BASEURL")}" ;
+      "${_image}"=="null"?dun(): functionval();
       var response = await request.send();
       print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa=============================> ${response.stream}");
       var responseData = await response.stream.toBytes();
       print("bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb=============================> ${responseData}");
-
       var responseString = String.fromCharCodes(responseData);
       print("ccccccccccccccccccccccccccccccccccccccccccc=============================> ${responseData}");
       var  data = jsonDecode(responseString);
+      print("dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd${data}");
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => BootomNatchBarScreen(
+        index: 0,
+      ),));
 
     }catch(erroe){
       print("Catch Error $erroe");
@@ -665,7 +677,6 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
   }
 
   String joiningDate = DateFormat("dd-MMM-yyyy").format(DateTime.now()).toString();
-  String birthdate = "Enter";
   Future<void> _joiningDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
         context: context,
@@ -675,9 +686,25 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
       final df = new DateFormat("dd-MMM-yyyy");
       setState(() {
         joiningDate = df.format(picked);
-        _companyAddressController.text=joiningDate;
+        _joiningDateController.text=joiningDate;
       });
     }
   }
+  String birthdate = DateFormat("dd-MMM-yyyy").format(DateTime.now()).toString();
+  Future<void> _birthdate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+        context: context,
+        firstDate: DateTime(2015, 8),
+        lastDate: DateTime(2101));
+    if (picked != null && picked != birthdate) {
+      final df = new DateFormat("dd-MMM-yyyy");
+      setState(() {
+        birthdate = df.format(picked);
+        _birthDateController.text=birthdate;
+      });
+    }
+  }
+
+  List Containsvalue=[];
 
 }

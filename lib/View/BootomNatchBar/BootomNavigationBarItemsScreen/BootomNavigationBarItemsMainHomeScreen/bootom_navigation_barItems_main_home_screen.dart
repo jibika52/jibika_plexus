@@ -7,6 +7,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jibika_plexus/Controller/AdminEmployeeController/admin_employee_controller.dart';
+import 'package:jibika_plexus/Controller/OnboardingEmployeeController/on_boarding_employee_controller.dart';
 import 'package:jibika_plexus/CustomWidget/CustomAppBar/CustomDefaultAppBar/custom_default_app_bar.dart';
 import 'package:jibika_plexus/View/BootomNatchBar/BootomNavigationBarItemsScreen/BootomNavigationBarItemsMainHomeScreen/CreateEmployeeScreen/create_employee.dart';
 import 'package:jibika_plexus/View/BootomNatchBar/BootomNavigationBarItemsScreen/BootomNavigationBarItemsMainHomeScreen/EmployeeProfile/employee_profile_screen.dart';
@@ -35,6 +36,12 @@ class _BootomNavBarItemsEmployeeHomeScreenState extends State<BootomNavBarItemsE
   int? nullableValue;
   bool positive = false;
   bool loading = false;
+  @override
+  void initState() {
+    Provider.of<OnboardingEmployeeController>(context,listen: false).GetShiftPlanNWeekendListProvider("${GetStorage().read("mobile_id")}", context);
+    // TODO: implement initState
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     double h=MediaQuery.of(context).size.height;

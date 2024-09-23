@@ -84,10 +84,10 @@ class JibikaCustomTextFromField extends StatelessWidget {
                   border: InputBorder.none,
                 //  label:CustomText(fontSize: 10, fontWeight: FontWeight.w500, text: '$hinttext', letterSpacing: 0.2),
                   labelStyle: GoogleFonts.poppins(
-                      color: Main_Theme_textColor.withOpacity(0.4),
+                      color: Main_Theme_textColor.withOpacity(0.7),
                       fontSize: 13,
-                      fontWeight: FontWeight.w400,
-                      letterSpacing: 0.2
+                      fontWeight: FontWeight.w500,
+                      letterSpacing: 0.5
                   ),
                   errorStyle: TextStyle(
                     fontSize: 0.1,
@@ -182,10 +182,10 @@ class JibikaCustomTextFromField2 extends StatelessWidget {
                   border: InputBorder.none,
                   //  label:CustomText(fontSize: 10, fontWeight: FontWeight.w500, text: '$hinttext', letterSpacing: 0.2),
                   labelStyle: GoogleFonts.poppins(
-                      color: Main_Theme_textColor.withOpacity(0.4),
+                      color: Main_Theme_textColor.withOpacity(0.7),
                       fontSize: 13,
-                      fontWeight: FontWeight.w400,
-                      letterSpacing: 0.2
+                      fontWeight: FontWeight.w500,
+                      letterSpacing: 0.5
                   ),
                   errorStyle: TextStyle(
                     fontSize: 0.1,

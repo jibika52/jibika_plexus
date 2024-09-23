@@ -20,8 +20,8 @@ import '../HomeScreen/home_screen.dart';
 import 'BootomNavigationBarItemsScreen/BootomNavigationBarItemsTrackingScreen/bootombar_tracking_screen.dart';
 
 class BootomNatchBarScreen extends StatefulWidget {
-  const BootomNatchBarScreen({super.key});
-
+   BootomNatchBarScreen({super.key,required this.index});
+  int index;
   @override
   State<BootomNatchBarScreen> createState() => _BootomNatchBarScreenState();
 }
@@ -33,6 +33,7 @@ class _BootomNatchBarScreenState extends State<BootomNatchBarScreen> {
   dynamic getDynamicSliderData;
   @override
   void initState() {
+    _currentIndex=widget.index;
    Provider.of<HomeProvider>(context,listen: false).selfORAdminShortDescriptionProvider(GetStorage().read("mobile_id"), GetStorage().read("IdCardNo"), context);
     // TODO: implement initState
     super.initState();
@@ -48,7 +49,7 @@ class _BootomNatchBarScreenState extends State<BootomNatchBarScreen> {
 
   ];
   final _key=GlobalKey<ScaffoldState>();
-  int _currentIndex = 4;
+  late int   _currentIndex ;
   double C_size=30;
   double b_bar_h=50;
   @override
