@@ -85,6 +85,12 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
     return text;
   }
 
+  @override
+  void initState() {
+    Provider.of<OnboardingEmployeeController>(context,listen: false).GetDepartmentNDesinationListProvider("${GetStorage().read("mobile_id")}", context);
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -432,22 +438,22 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
                       height: 50,
                       width: double.infinity,
                       padding: EdgeInsets.only(left: 15, right: 15), 
-                      child: DropdownButton<String>(
+                      child: DropdownButton(
                         underline: Container(height: 1.7,color: Main_Theme_textColor.withOpacity(0.1),),
                         value: shiftplan_id,
                         hint: CustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "Select Shift Plane", letterSpacing: 0.3),
                         // Create the dropdown items using the list of maps
                         items: shiftplanelist.map((shift) {
-                          return DropdownMenuItem<String>(
-                            value: shift['EnglishName'],
+                          return DropdownMenuItem(
+                            value: "${shift['Code']}",
                             child: CustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "${shift['EnglishName']}", letterSpacing: 0.3), // Display the EnglishName
                           );
                         }).toList(),
 
                         // Handle change in selected value
-                        onChanged: (String? newValue) {
+                        onChanged: (newValue) {
                           setState(() {
-                            shiftplan_id = newValue;
+                            shiftplan_id = newValue.toString();
                           });
                         },
                       ),
@@ -690,7 +696,7 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
   bool f=false;
   bool o=false;
 
-  String? shiftplan_id;
+  var shiftplan_id;
 
   functionval()async{
     var nid_cardd = await http.MultipartFile.fromPath('EmpImageFile', "${_image!.path.toString()}");

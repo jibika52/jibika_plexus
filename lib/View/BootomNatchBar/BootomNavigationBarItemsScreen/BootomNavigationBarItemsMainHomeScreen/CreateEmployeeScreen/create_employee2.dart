@@ -1,49 +1,26 @@
 
 import 'dart:io';
 import 'dart:math';
+import 'dart:ui';
 import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:intl/intl.dart';
+import 'package:jibika_plexus/Controller/OnboardingEmployeeController/on_boarding_employee_controller.dart';
 import 'package:jibika_plexus/CustomWidget/CustomAppBar/CustomDefaultAppBar/custom_default_app_bar.dart';
-import 'package:jibika_plexus/CustomWidget/CustomAppBar/CustomMAinAppBAr/custom_main_app_bar.dart';
-import 'package:jibika_plexus/CustomWidget/CustomButton/custom_button.dart';
-import 'package:jibika_plexus/CustomWidget/CustomCheckBox/custom_check_box.dart';
 import 'package:jibika_plexus/CustomWidget/CustomCircleDay/custom_circleday.dart';
 import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
 import 'package:jibika_plexus/CustomWidget/CustomImageButton/custom_imagebutton.dart';
 import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
-
+import 'package:provider/provider.dart';
 import '../../../../../CustomWidget/CustomTExtFormField/Jibika_custom_text_from_field.dart';
 import '../../../../../Utils/constants.dart';
 
@@ -87,11 +64,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
   TextEditingController _presentAddressController = TextEditingController();
   TextEditingController _parmenentAddressController = TextEditingController();
   TextEditingController _maraitalStatus = TextEditingController();
-  TextEditingController _religeonStatus = TextEditingController();
   TextEditingController _siftplaneController = TextEditingController();
-  TextEditingController _DepartmentController = TextEditingController();
-  TextEditingController _DesignationController = TextEditingController();
-  TextEditingController _SectionAddressController = TextEditingController();
   TextEditingController _StafCategoryController = TextEditingController();
   TextEditingController _workStationController = TextEditingController();
   TextEditingController _InactiveDateController = TextEditingController();
@@ -115,6 +88,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
   TextEditingController _RelationwithNomineeController = TextEditingController();
   final _fromKey=GlobalKey<FormState>();
   File ? _image;
+  File ? signature;
   File ? _NID;
   final picker = ImagePicker();
   ///NID font
@@ -135,6 +109,16 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
     setState(() {
       if (pickedFile != null) {
         _image = File(pickedFile.path);
+      }
+    });
+  }
+
+  ///Signature
+  Future getSignatureFromGallery() async {
+    final pickedFile = await picker.pickImage(source: ImageSource.camera);
+    setState(() {
+      if (pickedFile != null) {
+        signature = File(pickedFile.path);
       }
     });
   }
@@ -167,12 +151,23 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
     _siftplaneController.text =widget.ShiftPlane;
     _GrossSalaryController.text =widget.employeeGrowssallary;
    _joiningDateController.text =widget.employeeJoiningDate;
+
+
     // TODO: implement initState
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    List  shiftplanelist=Provider.of<OnboardingEmployeeController>(context).GetShiftPlanNWeekendList["shiftplan"];
+    List  religionlist=Provider.of<OnboardingEmployeeController>(context).GetShiftPlanNWeekendList["religion"];
+
+    List  departments=Provider.of<OnboardingEmployeeController>(context).GetDepartmentNDesinationList["departments"];
+    List  designations=Provider.of<OnboardingEmployeeController>(context).GetDepartmentNDesinationList["designations"];
+    List  section=Provider.of<OnboardingEmployeeController>(context).GetDepartmentNDesinationList["section"];
+    List  workstation=Provider.of<OnboardingEmployeeController>(context).GetDepartmentNDesinationList["workstation"];
+    List  rostertype=Provider.of<OnboardingEmployeeController>(context).GetDepartmentNDesinationList["rostertype"];
+    List  rostergroup=Provider.of<OnboardingEmployeeController>(context).GetDepartmentNDesinationList["rostergroup"];
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
     double C_height=8;
@@ -449,7 +444,10 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                             obscureText: false),
                         SizedBox(height: C_height,),
                         JibikaCustomTextFromField(
-                            readOnly: false,
+                            onTap: () {
+                              _birthdate(context);
+                            },
+                            readOnly: true,
                             controller: _birthDateController,
                             height: 50,
                             img: "Assets/PrimaryInformation/calendar.png",
@@ -501,15 +499,6 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                             keyboardType: TextInputType.text,
                             obscureText: false),
                         SizedBox(height: C_height,),
-
-                        JibikaCustomTextFromField2(
-                            controller: _siftplaneController,
-                            height: 50,
-                            img: "Assets/PrimaryInformation/work-shift 1.png",
-                            hinttext: "Shift plane",
-                            keyboardType: TextInputType.text,
-                            obscureText: false),
-                        SizedBox(height: C_height,),
                         JibikaCustomTextFromField2(
                             controller: _maraitalStatus,
                             height: 50,
@@ -518,7 +507,11 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                             keyboardType: TextInputType.text,
                             obscureText: false),
                         SizedBox(height: C_height,),
-                        JibikaCustomTextFromField2(
+                        JibikaCustomTextFromField(
+                            onTap: () {
+                              _joiningDate(context);
+                            },
+                            readOnly: true,
                             controller: _joiningDateController,
                             height: 50,
                             img: "Assets/PrimaryInformation/calendar.png",
@@ -526,17 +519,159 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                             keyboardType: TextInputType.text,
                             obscureText: false),
                         SizedBox(height: C_height,),
-                        JibikaCustomTextFromField2(
-                            controller: _religeonStatus,
-                            height: 50,
-                            img: "Assets/PrimaryInformation/religion 1.png",
-                            hinttext: "Religion",
-                            keyboardType: TextInputType.text,
-                            obscureText: false),
+
                       ],
                     ),
                     ),
-                    SizedBox(height: C_height+18,),
+                    Consumer<OnboardingEmployeeController>(
+                    builder: (context, value, child) =>
+                    Container(
+                    margin: EdgeInsets.only(top: 10),
+                    height: 50,
+                    width: double.infinity,
+                    padding: EdgeInsets.only(left: 15, right: 15),
+                    child: DropdownButton<String>(
+                    underline: Container(height: 1.7,color: Main_Theme_textColor.withOpacity(0.1),),
+                    value: shiftplan_id,
+                    hint: CustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "Select Shift Plane", letterSpacing: 0.3),
+                    // Create the dropdown items using the list of maps
+                    items: shiftplanelist.map((shift) {
+                    return DropdownMenuItem<String>(
+                    value: "${shift['Code']}",
+                    child: CustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "${shift['EnglishName']}", letterSpacing: 0.3), // Display the EnglishName
+                    );
+                    }).toList(),
+
+                    // Handle change in selected value
+                    onChanged: (String? newValue) {
+                    setState(() {
+                    shiftplan_id = newValue;
+                    });
+                    },
+                    ),
+                    ),
+                    ),
+                    Consumer<OnboardingEmployeeController>(
+                    builder: (context, value, child) =>
+                    Container(
+                    margin: EdgeInsets.only(top: 10),
+                    height: 50,
+                    width: double.infinity,
+                    padding: EdgeInsets.only(left: 15, right: 15),
+                    child: DropdownButton<String>(
+                    underline: Container(height: 1.7,color: Main_Theme_textColor.withOpacity(0.1),),
+                    value: relijion_id,
+                    hint: CustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "Select Religion", letterSpacing: 0.3),
+                    // Create the dropdown items using the list of maps
+                    items: religionlist.map((shift) {
+                    return DropdownMenuItem<String>(
+                    value: "${shift['Code']}",
+                    child: CustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "${shift['EnglishName']}", letterSpacing: 0.3), // Display the EnglishName
+                    );
+                    }).toList(),
+
+                    // Handle change in selected value
+                    onChanged: (String? newValue) {
+                    setState(() {
+                    shiftplan_id = newValue;
+                    });
+                    },
+                    ),
+                    ),
+                    ),
+                    SizedBox(height: C_height),
+                    Align(
+                        alignment: Alignment.centerLeft,
+                        child: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w500, text: "Weekend", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),)),
+                    SizedBox(height: C_height,),
+                    Container(
+                        height: 35,
+                        width: double.infinity,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            CustomCircleDay(day: "Sa", onTap: () {
+                              setState(() {
+                                sat=!sat;
+                                if(sat==true){
+                                  Containsvalue.add(1);
+                                }else{
+                                  Containsvalue.remove(1);
+                                }
+                              });
+                            }, backgroundColor:sat==true?Main_Theme_textColor_tir_Condition : home_default_color,textColor:sat==true?Main_Theme_WhiteCollor: Main_Theme_textColor.withOpacity(0.4),),
+
+                            CustomCircleDay(day: "Su", onTap: () {
+                              setState((){
+                                sun=!sun;
+                                if(sun==true){
+                                  Containsvalue.add(2);
+                                }else{
+                                  Containsvalue.remove(2);
+                                }
+                              });
+                            }, backgroundColor:sun==true?Main_Theme_textColor_tir_Condition : home_default_color,textColor:sun==true?Main_Theme_WhiteCollor: Main_Theme_textColor.withOpacity(0.4),),
+
+                            CustomCircleDay(day: "Mo", onTap: () {
+                              setState(() {
+                                mon=!mon;
+                                if(mon==true){
+                                  Containsvalue.add(3);
+                                }else{
+                                  Containsvalue.remove(3);
+                                }
+                              });
+                            }, backgroundColor:mon==true?Main_Theme_textColor_tir_Condition : home_default_color,textColor:mon==true?Main_Theme_WhiteCollor: Main_Theme_textColor.withOpacity(0.4),),
+
+                            CustomCircleDay(day: "Tu", onTap: () {
+                              setState(() {
+                                Tue=!Tue;
+                                if(Tue==true){
+                                  Containsvalue.add(4);
+                                }else{
+                                  Containsvalue.remove(4);
+                                }
+                              });
+                            }, backgroundColor:Tue==true?Main_Theme_textColor_tir_Condition : home_default_color,textColor:Tue==true?Main_Theme_WhiteCollor: Main_Theme_textColor.withOpacity(0.4),),
+                            CustomCircleDay(day: "We", onTap: () {
+                              setState(() {
+                                Wed=!Wed;
+                                if(Wed==true){
+                                  Containsvalue.add(5);
+                                }else{
+                                  Containsvalue.remove(5);
+                                }
+                              });
+                            }, backgroundColor:Wed==true?Main_Theme_textColor_tir_Condition : home_default_color,textColor:Wed==true?Main_Theme_WhiteCollor: Main_Theme_textColor.withOpacity(0.4),),
+
+                            CustomCircleDay(day: "Th", onTap: () {
+                              setState(() {
+                                Thu=!Thu;
+                                if(Thu==true){
+                                  Containsvalue.add(6);
+                                }else{
+                                  Containsvalue.remove(6);
+                                }
+                              });
+                            }, backgroundColor:Thu==true?Main_Theme_textColor_tir_Condition : home_default_color,textColor:Thu==true?Main_Theme_WhiteCollor: Main_Theme_textColor.withOpacity(0.4),),
+
+                            CustomCircleDay(day: "Fr", onTap: () {
+                              setState(() {
+                                fri=!fri;
+                                if(fri==true){
+                                  Containsvalue.add(7);
+                                }else{
+                                  Containsvalue.remove(7);
+                                }
+                              });
+                            }, backgroundColor:fri==true?Main_Theme_textColor_tir_Condition : home_default_color,textColor:fri==true?Main_Theme_WhiteCollor: Main_Theme_textColor.withOpacity(0.4),),
+
+
+
+                          ],
+                        )
+                    ),
+                    SizedBox(height: C_height),
                     Align(
                         alignment: Alignment.centerLeft,
                         child: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w500, text: "Gender", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),)),
@@ -589,22 +724,31 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "Signature", letterSpacing: 0.1, textColor: Main_Theme_textColor.withOpacity(0.8)),
-                                Container(
-                                  height: 80,
-                                  width: 146,
-                                  margin: EdgeInsets.only(top: 5,bottom: 5),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(7),
-                                    border: Border.all(color: presentsent_color.withOpacity(0.4)),
-                                   // color: Colors.blue,
-                                  ),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    children: [
-                                      Image.asset("Assets/PrimaryInformation/email.png",height: 31,width: 45,fit: BoxFit.fill,),
-                                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Browse file", letterSpacing: 0.1, textColor: presentsent_color),
-                                    ],
+                                InkWell(
+                                  onTap: () {
+                                    getSignatureFromGallery();
+                                  },
+                                  child: Container(
+                                    height: 80,
+                                    width: 146,
+                                    margin: EdgeInsets.only(top: 5,bottom: 5),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(7),
+                                      border: Border.all(color: presentsent_color.withOpacity(0.4)),
+                                     // color: Colors.blue,
+                                    ),
+                                    child:signature!=null? ClipRRect(
+                                        borderRadius: BorderRadius.circular(7),
+                                        child: Image.file(signature!.renameSync(signature!.path),height: 80,width: 80, fit: BoxFit.fill,))
+                                        :
+                                    Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        Image.asset("Assets/PrimaryInformation/email.png",height: 31,width: 45,fit: BoxFit.fill,),
+                                        ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Browse file", letterSpacing: 0.1, textColor: presentsent_color),
+                                      ],
+                                    ),
                                   ),
                                 ),
                                 ColorCustomText(fontSize: 10, fontWeight: FontWeight.w400, text: "Accepted File Types: .jpeg and .png", letterSpacing: 0.1, textColor: Main_Theme_textColor.withOpacity(0.8)),
@@ -616,31 +760,31 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
 
                           Expanded(
                               child: Container(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "QR code", letterSpacing: 0.1, textColor: Main_Theme_textColor.withOpacity(0.8)),
-                                    Container(
-                                      height: 80,
-                                      width: 146,
-                                      margin: EdgeInsets.only(top: 5,bottom: 5),
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(7),
-                                        border: Border.all(color: presentsent_color.withOpacity(0.4)),
-                                        // color: Colors.blue,
-                                      ),
-                                      child:  Column(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        crossAxisAlignment: CrossAxisAlignment.center,
-                                        children: [
-                                          Image.asset("Assets/PrimaryInformation/qrcode.png",height: 47,width: 48,fit: BoxFit.fill,),
-                                      //    ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Browse file", letterSpacing: 0.1, textColor: presentsent_color),
-                                        ],
-                                      ), ),
-                                    ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: " ", letterSpacing: 0.1, textColor: Main_Theme_textColor.withOpacity(0.8)),
-
-                                  ],
-                                ),
+                                // child: Column(
+                                //   crossAxisAlignment: CrossAxisAlignment.start,
+                                //   children: [
+                                //     ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "QR code", letterSpacing: 0.1, textColor: Main_Theme_textColor.withOpacity(0.8)),
+                                //     Container(
+                                //       height: 80,
+                                //       width: 146,
+                                //       margin: EdgeInsets.only(top: 5,bottom: 5),
+                                //       decoration: BoxDecoration(
+                                //         borderRadius: BorderRadius.circular(7),
+                                //         border: Border.all(color: presentsent_color.withOpacity(0.4)),
+                                //         // color: Colors.blue,
+                                //       ),
+                                //       child:  Column(
+                                //         mainAxisAlignment: MainAxisAlignment.center,
+                                //         crossAxisAlignment: CrossAxisAlignment.center,
+                                //         children: [
+                                //           Image.asset("Assets/PrimaryInformation/qrcode.png",height: 47,width: 48,fit: BoxFit.fill,),
+                                //       //    ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Browse file", letterSpacing: 0.1, textColor: presentsent_color),
+                                //         ],
+                                //       ), ),
+                                //     ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: " ", letterSpacing: 0.1, textColor: Main_Theme_textColor.withOpacity(0.8)),
+                                //
+                                //   ],
+                                // ),
                               )),
                         ],
                       ),
@@ -690,72 +834,242 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                         children: [
                           JibikaCustomTextFromField(
                               readOnly: false,
-                              controller: _DepartmentController,
-                              height: 50,
-                              img: "Assets/PrimaryInformation/people (2).png",
-                              hinttext: "Department",
-                              keyboardType: TextInputType.text,
-                              obscureText: false),
-                          SizedBox(height: C_height,),
-                          JibikaCustomTextFromField(
-                        readOnly: false,
-                              controller: _DesignationController,
-                              height: 50,
-                              img: "Assets/PrimaryInformation/people (1).png",
-                              hinttext: "Designation",
-                              keyboardType: TextInputType.text,
-                              obscureText: false),
-                          SizedBox(height: C_height,),
-                          JibikaCustomTextFromField(
-                        readOnly: false,
-                              controller: _SectionAddressController,
-                              height: 50,
-                              img: "Assets/PrimaryInformation/calendar.png",
-                              hinttext: "Section",
-                              keyboardType: TextInputType.text,
-                              obscureText: false),
-                          SizedBox(height: C_height,),
-                          JibikaCustomTextFromField(
-                        readOnly: false,
                               controller: _StafCategoryController,
                               height: 50,
                               img: "Assets/PrimaryInformation/father.png",
                               hinttext: "Staff Category",
                               keyboardType: TextInputType.text,
                               obscureText: false),
-                          SizedBox(height: C_height,),
-                          JibikaCustomTextFromField2(
-                              controller: _workStationController,
-                              height: 50,
-                              img: "Assets/PrimaryInformation/gender.png",
-                              hinttext: "Work Station",
-                              keyboardType: TextInputType.text,
-                              obscureText: false),
-                          SizedBox(height: C_height,),
+                          Consumer<OnboardingEmployeeController>(
+                            builder: (context, value, child) =>
+                                Container(
+                                  margin: EdgeInsets.only(top: 10),
+                                  height: 50,
+                                  width: double.infinity,
+                                  padding: EdgeInsets.only(left: 15, right: 15),
+                                  child: DropdownButton(
+                                    enableFeedback: true,
+                                    autofocus: false,
+                                    isExpanded: true,
+                                    hint: InkWell(
+                                      onTap: () {},
+                                      child: CustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "Select Department", letterSpacing: 0.3), // Display the EnglishName
 
+                                    ),
+                                    // Not necessary for Option 1
+                                    value: department_id,
+                                    onChanged: (newValue) {
+                                      setState(() {
+                                        department_id = newValue.toString();
+                                      });
+                                    },
+                                    items: departments.map((shift) {
+                                      return DropdownMenuItem(
+                                        child: CustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "${shift['EnglishName']}", letterSpacing: 0.3),
+                                        value: "${shift['Code']}",
+                                      );
+                                    }).toList(),
+                                  ),
+                                ),
+                          ),
+                          Consumer<OnboardingEmployeeController>(
+                            builder: (context, value, child) =>
+                                Container(
+                                  margin: EdgeInsets.only(top: 10),
+                                  height: 50,
+                                  width: double.infinity,
+                                  padding: EdgeInsets.only(left: 15, right: 15),
+                                  child: DropdownButton(
+                                    enableFeedback: true,
+                                    autofocus: false,
+                                    isExpanded: true,
+                                    hint: InkWell(
+                                      onTap: () {},
+                                      child: CustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "Select Designation", letterSpacing: 0.3), // Display the EnglishName
+
+                                    ),
+                                    // Not necessary for Option 1
+                                    value: designation_id,
+                                    onChanged: (newValue) {
+                                      setState(() {
+                                        designation_id = newValue.toString();
+                                      });
+                                    },
+                                    items: designations.map((shift) {
+                                      return DropdownMenuItem(
+                                       child: CustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "${shift['EnglishName']}", letterSpacing: 0.3),
+
+                                      value: "${shift['Code']}",
+                                      );
+                                    }).toList(),
+                                  ),
+                                ),
+                          ),
+                          Consumer<OnboardingEmployeeController>(
+                            builder: (context, value, child) =>
+                                Container(
+                                  margin: EdgeInsets.only(top: 10),
+                                  height: 50,
+                                  width: double.infinity,
+                                  padding: EdgeInsets.only(left: 15, right: 15),
+                                  child: DropdownButton(
+                                    enableFeedback: true,
+                                    autofocus: false,
+                                    isExpanded: true,
+                                    hint: InkWell(
+                                      onTap: () {},
+                                      child: CustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "Select Section", letterSpacing: 0.3), // Display the EnglishName
+
+                                    ),
+                                    // Not necessary for Option 1
+                                    value: section_id,
+                                    onChanged: (newValue) {
+                                      setState(() {
+                                        section_id = newValue.toString();
+                                      });
+                                    },
+                                    items: section.map((shift) {
+                                      return DropdownMenuItem(
+                                        child: CustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "${shift['EnglishName']}", letterSpacing: 0.3),
+                                        value: "${shift['Code']}",
+                                      );
+                                    }).toList(),
+                                  ),
+                                ),
+                          ),
+                          Consumer<OnboardingEmployeeController>(
+                            builder: (context, value, child) =>
+                                Container(
+                                  margin: EdgeInsets.only(top: 10),
+                                  height: 50,
+                                  width: double.infinity,
+                                  padding: EdgeInsets.only(left: 15, right: 15),
+                                  child: DropdownButton(
+                                    enableFeedback: true,
+                                    autofocus: false,
+                                    isExpanded: true,
+                                    hint: InkWell(
+                                      onTap: () {},
+                                      child: CustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "Select Work Station", letterSpacing: 0.3), // Display the EnglishName
+
+                                    ),
+                                    // Not necessary for Option 1
+                                    value: workstation_id,
+                                    onChanged: (newValue) {
+                                      setState(() {
+                                        workstation_id = newValue.toString();
+                                      });
+                                    },
+                                    items: workstation.map((shift) {
+                                      return DropdownMenuItem(
+                                        child: CustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "${shift['EnglishName']}", letterSpacing: 0.3),
+                                        value: "${shift['Code']}",
+                                      );
+                                    }).toList(),
+                                  ),
+                                ),
+                          ),
+                          Consumer<OnboardingEmployeeController>(
+                            builder: (context, value, child) =>
+                                Container(
+                                  margin: EdgeInsets.only(top: 10),
+                                  height: 50,
+                                  width: double.infinity,
+                                  padding: EdgeInsets.only(left: 15, right: 15),
+                                  child: DropdownButton(
+                                    enableFeedback: true,
+                                    autofocus: false,
+                                    isExpanded: true,
+                                    hint: InkWell(
+                                      onTap: () {},
+                                      child: CustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "Select Section", letterSpacing: 0.3), // Display the EnglishName
+
+                                    ),
+                                    // Not necessary for Option 1
+                                    value: section_id,
+                                    onChanged: (newValue) {
+                                      setState(() {
+                                        section_id = newValue.toString();
+                                      });
+                                    },
+                                    items: section.map((shift) {
+                                      return DropdownMenuItem(
+                                        child: CustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "${shift['EnglishName']}", letterSpacing: 0.3),
+                                        value: "${shift['Code']}",
+                                      );
+                                    }).toList(),
+                                  ),
+                                ),
+                          ),
+                          Consumer<OnboardingEmployeeController>(
+                            builder: (context, value, child) =>
+                                Container(
+                                  margin: EdgeInsets.only(top: 10),
+                                  height: 50,
+                                  width: double.infinity,
+                                  padding: EdgeInsets.only(left: 15, right: 15),
+                                  child: DropdownButton(
+                                    enableFeedback: true,
+                                    autofocus: false,
+                                    isExpanded: true,
+                                    hint: InkWell(
+                                      onTap: () {},
+                                      child: CustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "Select Roster Type", letterSpacing: 0.3), // Display the EnglishName
+
+                                    ),
+                                    // Not necessary for Option 1
+                                    value: rostertype_id,
+                                    onChanged: (newValue) {
+                                      setState(() {
+                                        rostertype_id = newValue.toString();
+                                      });
+                                    },
+                                    items: rostertype.map((shift) {
+                                      return DropdownMenuItem(
+                                        child: CustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "${shift['EnglishName']}", letterSpacing: 0.3),
+                                        value: "${shift['Code']}",
+                                      );
+                                    }).toList(),
+                                  ),
+                                ),
+                          ),
+
+
+                          Container(
+                            margin: EdgeInsets.only(top: 10),
+                            height: 50,
+                            width: double.infinity,
+                            padding: EdgeInsets.only(left: 15, right: 15),
+                            child: DropdownButton(
+                              enableFeedback: true,
+                              autofocus: false,
+                              isExpanded: true,
+                              hint: InkWell(
+                                  onTap: () {},
+                                child: CustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "Select Roster Group", letterSpacing: 0.3), // Display the EnglishName
+
+                              ),
+                              // Not necessary for Option 1
+                              value: rostergroup_id,
+                              onChanged: (newValue) {
+                                setState(() {
+                                  rostergroup_id = newValue.toString();
+                                });
+                              },
+                              items: rostergroup.map((shift) {
+                                return DropdownMenuItem(
+                                  child: CustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "${shift['EnglishName']}", letterSpacing: 0.3),
+
+                                  value: "${shift['Code']}",
+                                );
+                              }).toList(),
+                            ),
+                          ),
                           JibikaCustomTextFromField2(
                               controller: _InactiveDateController,
                               height: 50,
                               img: "Assets/PrimaryInformation/calendar.png",
                               hinttext: "Inactive Date",
-                              keyboardType: TextInputType.text,
-                              obscureText: false),
-                          SizedBox(height: C_height,),
-
-                          JibikaCustomTextFromField2(
-                              controller: _RosterTypeController,
-                              height: 50,
-                              img: "Assets/DashBoardIcons/messagetext.png",
-                              hinttext: "Roster Type",
-                              keyboardType: TextInputType.text,
-                              obscureText: false),
-                          SizedBox(height: C_height,),
-
-                          JibikaCustomTextFromField2(
-                              controller: _EmployeestatusController,
-                              height: 50,
-                              img: "Assets/PrimaryInformation/work-shift 2.png",
-                              hinttext: "Employee status",
                               keyboardType: TextInputType.text,
                               obscureText: false),
                         ],
@@ -1120,5 +1434,42 @@ List nameList=[
   bool Thu=false;
   bool fri=false;
 
+  String birthdate = DateFormat("dd-MMM-yyyy").format(DateTime.now()).toString();
+  Future<void> _birthdate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+        context: context,
+        firstDate: DateTime(2015, 8),
+        lastDate: DateTime(2101));
+    if (picked != null && picked != birthdate) {
+      final df = new DateFormat("dd-MMM-yyyy");
+      setState(() {
+        birthdate = df.format(picked);
+        _birthDateController.text=birthdate;
+      });
+    }
+  }
 
+  String joiningDate = DateFormat("dd-MMM-yyyy").format(DateTime.now()).toString();
+  Future<void> _joiningDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+        context: context,
+        firstDate: DateTime(2015, 8),
+        lastDate: DateTime(2101));
+    if (picked != null && picked != joiningDate) {
+      final df = new DateFormat("dd-MMM-yyyy");
+      setState(() {
+        joiningDate = df.format(picked);
+        _joiningDateController.text=joiningDate;
+      });
+    }
+  }
+  String?  shiftplan_id;
+  String?  department_id;
+  String?  relijion_id;
+  String?  designation_id;
+  String ? section_id;
+  String ? workstation_id;
+  String ? rostertype_id;
+  String ? rostergroup_id;
+  List<int> Containsvalue=[];
 }

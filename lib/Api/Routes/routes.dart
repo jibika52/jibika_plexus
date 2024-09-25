@@ -106,3 +106,7 @@
 
   ///  Employee On boarding
     String GetShiftPlanNWeekendList="Employee/GetShiftPlanNWeekendList";
+
+
+  ///  Employee On boarding
+    String GetDepartmentNDesinationList="Employee/GetDepartmentNDesinationList";

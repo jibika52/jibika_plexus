@@ -599,6 +599,32 @@ class CustomHttpRequestClass{
 
 
 
+  ///  GetDepartmentNDesinationList function-------------------------------------------------------------------------
+  GetDepartmentNDesinationListHttpFunction(String UserId, BuildContext context)async{
+    dynamic  DepartmentNDesinationList  ;
+    var body = jsonEncode({
+      "UserId":"$UserId",
+    });
+    try{
+      var data=await http.post(Uri.parse("${BASEURL}/${GetDepartmentNDesinationList}"),
+          headers: {
+            "Content-Type": "application/json",
+            "username": "jibikaapps",
+            "password": "20jibika24",
+          },
+          body: body
+      ).then((http.Response response) {
+        DepartmentNDesinationList =jsonDecode(response.body);
+      });
+      return DepartmentNDesinationList;
+    }
+    catch(e){
+      print("  DepartmentNDesinationList ============================ ${e}");
+    }
+  }
+
+
+
 
 
 

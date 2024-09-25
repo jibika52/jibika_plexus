@@ -10,4 +10,12 @@ class OnboardingEmployeeController with ChangeNotifier{
     GetShiftPlanNWeekendList =await CustomHttpRequestClass().GetShiftPlanNWeekendListHttpFunction(UserId,context);
     notifyListeners();
   }
+  ///   GetVehicle List-------------------------------------------------------------------------
+  dynamic GetDepartmentNDesinationList;
+  GetDepartmentNDesinationListProvider(String UserId,BuildContext context)async{
+    GetDepartmentNDesinationList =await CustomHttpRequestClass().GetDepartmentNDesinationListHttpFunction(UserId,context);
+    notifyListeners();
+  }
+
+
 }
