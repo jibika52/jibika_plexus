@@ -57,6 +57,8 @@ class CreateNewEmployeeScreen2 extends StatefulWidget {
     required this.ShiftPlane,
     required this.employeeGrowssallary,
     required this.employeeJoiningDate,
+    required this.photo,
+    required this.Nidphoto,
 
   });
   String employeeID;
@@ -67,6 +69,8 @@ class CreateNewEmployeeScreen2 extends StatefulWidget {
   String ShiftPlane;
   String employeeGrowssallary;
   String employeeJoiningDate;
+  File photo;
+  File Nidphoto;
   @override
   State<CreateNewEmployeeScreen2> createState() => _CreateNewEmployeeScreen2State();
 }
@@ -250,6 +254,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                     /// Primary Information ---------------------------------------------------------
 
                     SizedBox(height: C_height,),
+                    /// Primary Information ---------------------------------------------------------
                     Container(
                       height: 102,
                       padding: EdgeInsets.symmetric(
@@ -258,131 +263,154 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                       width: double.infinity,
                       child: Row(
                         children: [
-                          Column(
-                            children: [
-                              Container(
-                                height: 80,
-                                width:80,
-                                decoration: BoxDecoration(
-                                    borderRadius:BorderRadius.circular(7),
-                                    border: Border.all(
-                                        color: Main_Theme_textColor.withOpacity(0.4),
-                                        width: 1.2
-                                    )
-                                ),
-                                alignment: Alignment.center,
-                                child: Stack(
-                                  alignment: Alignment.topCenter,
-                                  children: [
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.circular(56),
-                                      child: Container(
-                                        height: 56,
-                                        width: 56,
-                                        color:  Main_Theme_textColor.withOpacity(0.07),
-                                        padding: EdgeInsets.all(10),
-                                        child: CustomImageSction(height: 20, width: 15, radius: 1, image: "Assets/DashBoardIcons/person1.png"),
-                                      ),
-                                    ),
-                                    Positioned(
-                                      bottom: -1.5,
-                                      left: 0,
-                                      right: 0,
-                                      child: Padding(
-                                        padding:
-                                        EdgeInsets.only(bottom: 1, left: 1.0, right:1.0),
+                          InkWell(
+                            onTap: () {
+                              getImageFromGallery();
+                            },
+                            child: Column(
+                              children: [
+                                _image!=null?ClipRRect(
+                                  borderRadius: BorderRadius.circular(50),
+                                  child: Image.file(_image!.renameSync(_image!.path),height: 80,width: 80, fit: BoxFit.fill,))
+                                  :
+                              widget.photo!=null?ClipRRect(
+                                    borderRadius: BorderRadius.circular(50),
+                                    child: Image.file(widget.photo,height: 80,width: 80, fit: BoxFit.fill,))
+                                    :
+                                 Container(
+                                  height: 80,
+                                  width:80,
+                                  decoration: BoxDecoration(
+                                      borderRadius:BorderRadius.circular(7),
+                                      border: Border.all(
+                                          color: Main_Theme_textColor.withOpacity(0.4),
+                                          width: 1.2
+                                      )
+                                  ),
+                                  alignment: Alignment.center,
+                                  child:
+                                  Stack(
+                                    alignment: Alignment.topCenter,
+                                    children: [
+                                      ClipRRect(
+                                        borderRadius: BorderRadius.circular(56),
                                         child: Container(
-                                          decoration: BoxDecoration(
-                                            image: DecorationImage(
-                                                image: AssetImage("Assets/Icons/subtract.png"),
-                                                fit: BoxFit.fill),
-                                          ),
-                                          height: 20,
-                                          width: 50,
+                                          height: 56,
+                                          width: 56,
+                                          color:  Main_Theme_textColor.withOpacity(0.07),
+                                          padding: EdgeInsets.all(10),
+                                          child: CustomImageSction(height: 20, width: 15, radius: 1, image: "Assets/DashBoardIcons/person1.png" ),
                                         ),
                                       ),
-                                    ),
-            
-            
-            
-                                  ],
+                                      Positioned(
+                                        bottom: -1.5,
+                                        left: 0,
+                                        right: 0,
+                                        child: Padding(
+                                          padding:
+                                          EdgeInsets.only(bottom: 1, left: 1.0, right:1.0),
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                  image: AssetImage("Assets/Icons/subtract.png"),
+                                                  fit: BoxFit.fill),
+                                            ),
+                                            height: 20,
+                                            width: 50,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              SizedBox(height: 5,),
-                              CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Upload / Take photo", letterSpacing: 0.3),
-            
-                            ],
+                                SizedBox(height: 5,),
+                                CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Upload photo", letterSpacing: 0.3),
+                              ],
+                            ),
                           ),
                           Spacer(),
                           Column(
                             children: [
-                              Stack(
-                                alignment: Alignment.center,
-                                children: [
-                                  Container(
-                                    height: 80,
-                                    width:126,
-                                    decoration: BoxDecoration(
-                                        borderRadius:BorderRadius.circular(7),
-                                        border: Border.all(
-                                            color: absent_color.withOpacity(0.3),
-                                            width: 1.2
-                                        )
-                                    ),
-                                    alignment: Alignment.center,
-                                    child: Container(
-                                      height: 40,
-                                      width: 50,
-                                      padding: EdgeInsets.only(top: 7),
-                                      color:  Main_Theme_WhiteCollor,
-                                      child: CustomImageSction2(height: 27, width: 47, radius: 1, image: "Assets/DashBoardIcons/empoloyee_card.png",img_color: Main_Theme_textColor.withOpacity(0.7),),
-                                    ),
-                                  ),
-                                  Positioned(
-                                      top: 80/2-2 ,
+                              InkWell(
+                                onTap: () {
+                                  getNIDImageFromGallery();
+                                },
+                                child:
+                                _NID!=null?ClipRRect(
+                                    borderRadius: BorderRadius.circular(7),
+                                    child: Image.file(_NID!.renameSync(_NID!.path),height: 80,width: 126, fit: BoxFit.fill,))
+                                    :
+                                widget.Nidphoto!=null?ClipRRect(
+                                    borderRadius: BorderRadius.circular(7),
+                                    child: Image.file(widget.Nidphoto,height: 80,width: 126, fit: BoxFit.fill,))
+                                    :
+                                Stack(
+                                  alignment: Alignment.center,
+                                  children: [
+                                    Container(
+                                      height: 80,
+                                      width:126,
+                                      decoration: BoxDecoration(
+                                          borderRadius:BorderRadius.circular(7),
+                                          border: Border.all(
+                                              color: absent_color.withOpacity(0.3),
+                                              width: 1.2
+                                          )
+                                      ),
+                                      alignment: Alignment.center,
                                       child: Container(
-                                        decoration: BoxDecoration(
-                                          boxShadow:[
-                                            BoxShadow(
-                                              color: absent_color.withOpacity(0.8),
-                                              spreadRadius: 1,
-                                              blurRadius: 9,
-                                              offset: Offset(0, 2), // changes position of shadow
-                                            ),
-                                          ],
+                                        height: 40,
+                                        width: 50,
+                                        padding: EdgeInsets.only(top: 7),
+                                        color:  Main_Theme_WhiteCollor,
+                                        child: CustomImageSction2(height: 27, width: 47, radius: 1, image: "Assets/DashBoardIcons/empoloyee_card.png",img_color: Main_Theme_textColor.withOpacity(0.7),),
+                                      ),
+                                    ),
+                                    Positioned(
+                                        top: 80/2-2 ,
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            boxShadow:[
+                                              BoxShadow(
+                                                color: absent_color.withOpacity(0.8),
+                                                spreadRadius: 1,
+                                                blurRadius: 9,
+                                                offset: Offset(0, 2), // changes position of shadow
+                                              ),
+                                            ],
+                                            color: absent_color.withOpacity(0.7),
+                                          ),
+                                          height: 1,
+                                          width: 126,
+
+                                        )),
+
+                                    Positioned(
+                                        top: 80/2+2,
+                                        child: Container(
+                                          height: 1,
+                                          width: 126,
                                           color: absent_color.withOpacity(0.7),
-                                        ),
-                                        height: 1,
-                                        width: 126,
-            
-                                      )),
-            
-                                  Positioned(
-                                      top: 80/2+2,
-                                      child: Container(
-                                        height: 1,
-                                        width: 126,
-                                        color: absent_color.withOpacity(0.7),
-                                      )),
-                                  Positioned(
-                                      top: 80/2+2,
-                                      child: Container(
-                                        height: 36.5,
-                                        width: 126,
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.only(
-                                              bottomLeft: Radius.circular(7),
-                                              bottomRight: Radius.circular(7)
-                                          ) ,
-                                          color: absent_color.withOpacity(0.07),
-                                        ),
-            
-                                      ))
-                                ],
+                                        )),
+                                    Positioned(
+                                        top: 80/2+2,
+                                        child: Container(
+                                          height: 36.5,
+                                          width: 126,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.only(
+                                                bottomLeft: Radius.circular(7),
+                                                bottomRight: Radius.circular(7)
+                                            ) ,
+                                            color: absent_color.withOpacity(0.07),
+                                          ),
+
+                                        ))
+                                  ],
+                                ),
                               ),
                               SizedBox(height: 5,),
                               CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Scan NID Card", letterSpacing: 0.3),
-            
                             ],
                           ),
                         ],

@@ -588,7 +588,7 @@ class CustomHttpRequestClass{
           body: body
       ).then((http.Response response) {
         GetShiftPlanNWeekendListt =jsonDecode(response.body);
-        print("---------------------------------------------- $GetShiftPlanNWeekendListt ");
+        print("-----------------------sda----------------------- ${GetShiftPlanNWeekendListt}");
       });
       return GetShiftPlanNWeekendListt;
     }

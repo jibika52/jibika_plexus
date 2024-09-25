@@ -12,6 +12,7 @@ import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:jibika_plexus/Api/Routes/routes.dart';
+import 'package:jibika_plexus/Controller/OnboardingEmployeeController/on_boarding_employee_controller.dart';
 import 'package:jibika_plexus/CustomWidget/CustomAppBar/CustomDefaultAppBar/custom_default_app_bar.dart';
 import 'package:jibika_plexus/CustomWidget/CustomCircleDay/custom_circleday.dart';
 import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
@@ -19,6 +20,7 @@ import 'package:jibika_plexus/CustomWidget/CustomImageButton/custom_imagebutton.
 import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
 import 'package:jibika_plexus/View/BootomNatchBar/bootom_bar_screen.dart';
+import 'package:provider/provider.dart';
 import '../../../../../CustomWidget/CustomTExtFormField/Jibika_custom_text_from_field.dart';
 import '../../../../../Utils/constants.dart';
 import 'create_employee2.dart';
@@ -90,6 +92,7 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
     double w = MediaQuery.of(context).size.width;
     double C_height=8;
     double Cwidth=10;
+    List  shiftplanelist=Provider.of<OnboardingEmployeeController>(context).GetShiftPlanNWeekendList["shiftplan"];
     return Scaffold(
       appBar: PreferredSize(preferredSize: Size.fromHeight(75), child: CustomDefaultAppBar(onTap: () => Navigator.pop(context),
           text: "Primary Information")),
@@ -267,13 +270,12 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
 
 
                 SizedBox(height: C_height,),
+              /// Registration part ---------------------------------------------------------
+
+
               Padding(padding: EdgeInsets.only(
                 left: 0,right: 10,
               ),
-
-                /// Registration part ---------------------------------------------------------
-
-
               child:
               _NID == null?
               Column(
@@ -322,14 +324,6 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
                       height: 50,
                       img: "Assets/PrimaryInformation/phone.png",
                       hinttext: "Mobile number",
-                      keyboardType: TextInputType.text,
-                      obscureText: false),
-                  SizedBox(height: C_height,),
-                  JibikaCustomTextFromField2(
-                      controller: _siftplaneController,
-                      height: 50,
-                      img: "Assets/PrimaryInformation/work-shift 1.png",
-                      hinttext: "Shift plane",
                       keyboardType: TextInputType.text,
                       obscureText: false),
                   SizedBox(height: C_height,),
@@ -408,14 +402,6 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
                       obscureText: false),
                   SizedBox(height: C_height,),
                   JibikaCustomTextFromField2(
-                      controller: _siftplaneController,
-                      height: 50,
-                      img: "Assets/PrimaryInformation/work-shift 1.png",
-                      hinttext: "Shift plane",
-                      keyboardType: TextInputType.text,
-                      obscureText: false),
-                  SizedBox(height: C_height,),
-                  JibikaCustomTextFromField2(
                       controller: _growsSalaryController,
                       height: 50,
                       img: "Assets/PrimaryInformation/money_payment.png",
@@ -435,11 +421,39 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
                       hinttext: "Joining date",
                       keyboardType: TextInputType.text,
                       obscureText: false),
-
                 ],
               ),
               ),
-              SizedBox(height: C_height+18,),
+              SizedBox(height: C_height,),
+              Consumer<OnboardingEmployeeController>(
+                builder: (context, value, child) =>
+                    Container(
+                      margin: EdgeInsets.only(top: 10),
+                      height: 50,
+                      width: double.infinity,
+                      padding: EdgeInsets.only(left: 15, right: 15), 
+                      child: DropdownButton<String>(
+                        underline: Container(height: 1.7,color: Main_Theme_textColor.withOpacity(0.1),),
+                        value: shiftplan_id,
+                        hint: CustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "Select Shift Plane", letterSpacing: 0.3),
+                        // Create the dropdown items using the list of maps
+                        items: shiftplanelist.map((shift) {
+                          return DropdownMenuItem<String>(
+                            value: shift['EnglishName'],
+                            child: CustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "${shift['EnglishName']}", letterSpacing: 0.3), // Display the EnglishName
+                          );
+                        }).toList(),
+
+                        // Handle change in selected value
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            shiftplan_id = newValue;
+                          });
+                        },
+                      ),
+                    ),
+              ),
+              SizedBox(height: C_height+10,),
               Align(
                   alignment: Alignment.centerLeft,
                   child: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w500, text: "Gender", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),)),
@@ -482,9 +496,6 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
                   )
               ),
               SizedBox(height: C_height+10,),
-
-
-
               Align(
                   alignment: Alignment.centerLeft,
                   child: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w500, text: "Weekend", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),)),
@@ -501,7 +512,7 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
                       if(sat==true){
                         Containsvalue.add(1);
                       }else{
-                        Containsvalue.removeAt(0);
+                        Containsvalue.remove(1);
                       }
                     });
                     }, backgroundColor:sat==true?Main_Theme_textColor_tir_Condition : home_default_color,textColor:sat==true?Main_Theme_WhiteCollor: Main_Theme_textColor.withOpacity(0.4),),
@@ -509,10 +520,10 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
                     CustomCircleDay(day: "Su", onTap: () {
                     setState((){
                       sun=!sun;
-                      if(sat==true){
+                      if(sun==true){
                         Containsvalue.add(2);
                       }else{
-                        Containsvalue.removeAt(1);
+                        Containsvalue.remove(2);
                       }
                     });
                     }, backgroundColor:sun==true?Main_Theme_textColor_tir_Condition : home_default_color,textColor:sun==true?Main_Theme_WhiteCollor: Main_Theme_textColor.withOpacity(0.4),),
@@ -520,10 +531,10 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
                     CustomCircleDay(day: "Mo", onTap: () {
                     setState(() {
                       mon=!mon;
-                      if(sat==true){
+                      if(mon==true){
                         Containsvalue.add(3);
                       }else{
-                        Containsvalue.removeAt(2);
+                        Containsvalue.remove(3);
                       }
                     });
                     }, backgroundColor:mon==true?Main_Theme_textColor_tir_Condition : home_default_color,textColor:mon==true?Main_Theme_WhiteCollor: Main_Theme_textColor.withOpacity(0.4),),
@@ -531,20 +542,20 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
                     CustomCircleDay(day: "Tu", onTap: () {
                     setState(() {
                       Tue=!Tue;
-                      if(sat==true){
+                      if(Tue==true){
                         Containsvalue.add(4);
                       }else{
-                        Containsvalue.removeAt(3);
+                        Containsvalue.remove(4);
                       }
                     });
                     }, backgroundColor:Tue==true?Main_Theme_textColor_tir_Condition : home_default_color,textColor:Tue==true?Main_Theme_WhiteCollor: Main_Theme_textColor.withOpacity(0.4),),
                     CustomCircleDay(day: "We", onTap: () {
                     setState(() {
                       Wed=!Wed;
-                      if(sat==true){
+                      if(Wed==true){
                         Containsvalue.add(5);
                       }else{
-                        Containsvalue.removeAt(4);
+                        Containsvalue.remove(5);
                       }
                     });
                     }, backgroundColor:Wed==true?Main_Theme_textColor_tir_Condition : home_default_color,textColor:Wed==true?Main_Theme_WhiteCollor: Main_Theme_textColor.withOpacity(0.4),),
@@ -552,10 +563,10 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
                     CustomCircleDay(day: "Th", onTap: () {
                     setState(() {
                       Thu=!Thu;
-                      if(sat==true){
+                      if(Thu==true){
                         Containsvalue.add(6);
                       }else{
-                        Containsvalue.removeAt(5);
+                        Containsvalue.remove(6);
                       }
                     });
                     }, backgroundColor:Thu==true?Main_Theme_textColor_tir_Condition : home_default_color,textColor:Thu==true?Main_Theme_WhiteCollor: Main_Theme_textColor.withOpacity(0.4),),
@@ -563,10 +574,10 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
                     CustomCircleDay(day: "Fr", onTap: () {
                     setState(() {
                       fri=!fri;
-                      if(sat==true){
+                      if(fri==true){
                         Containsvalue.add(7);
                       }else{
-                        Containsvalue.removeAt(6);
+                        Containsvalue.remove(7);
                       }
                     });
                     }, backgroundColor:fri==true?Main_Theme_textColor_tir_Condition : home_default_color,textColor:fri==true?Main_Theme_WhiteCollor: Main_Theme_textColor.withOpacity(0.4),),
@@ -580,22 +591,77 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
               Align(
               alignment: Alignment.centerRight,
                 child: InkWell(
-                    onTap: () => Navigator.push(context, CupertinoPageRoute(builder: (context) => CreateNewEmployeeScreen2(
-                        employeeID: _employeeIdController.text,
-                        employeeNID: _nIDController.text,
-                        employeeName: _employeeNameController.text,
-                        employeeDateOfBirth: _birthDateController.text,
-                        employeeMobileNumber: _phoneController.text,
-                        ShiftPlane: _siftplaneController.text,
-                        employeeGrowssallary: _growsSalaryController.text,
-                        employeeJoiningDate: _joiningDateController.text
-                    ) ,)),
+                   onTap: () {
+                     if(_image==null ){
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(duration: Duration(milliseconds: 500),content: Text("Upload Photo ")));
+                     }
+                       else{
+                         if(_NID==null){
+                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(duration: Duration(milliseconds: 500),content: Text("Upload NID Card ")));
+                         }else{
+                           Navigator.push(context, CupertinoPageRoute(builder: (context) => CreateNewEmployeeScreen2(
+                             employeeID: _employeeIdController.text,
+                             employeeNID: _nIDController.text,
+                             employeeName: _employeeNameController.text,
+                             employeeDateOfBirth: _birthDateController.text,
+                             employeeMobileNumber: _phoneController.text,
+                             ShiftPlane: _siftplaneController.text,
+                             employeeGrowssallary: _growsSalaryController.text,
+                             employeeJoiningDate: _joiningDateController.text,
+                             Nidphoto:_NID!.renameSync(_NID!.path),
+                             photo:_image!.renameSync(_image!.path),
+                           )
+                             ,));
+                         }
+                       }
+                     },
                     child: ColorCustomText(fontSize: 13, fontWeight: FontWeight.w500, text: "More info...", letterSpacing: 0.3, textColor: Main_Theme_textColor_tir_Condition)),
               ),
               SizedBox(height: C_height+10,),
               InkWell(
                 onTap: () {
-                  SaveOnBoarding();
+                  if(_nIDController.text.isEmpty){
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(duration: Duration(milliseconds: 500),content: Text("Ennter NID ")));
+                  }else{
+                    if(_employeeIdController.text.isEmpty){
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(duration: Duration(milliseconds: 500),content: Text("Ennter Employee ID ")));
+                    }else{
+                      if(_employeeNameController.text.isEmpty){
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(duration: Duration(milliseconds: 500),content: Text("Ennter Employee Name")));
+                      }else{
+                        if(_birthDateController.text.isEmpty){
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(duration: Duration(milliseconds: 500),content: Text("Ennter Employee BirthDate")));
+                        }else{
+                          if(_growsSalaryController.text.isEmpty){
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(duration: Duration(milliseconds: 500),content: Text("Ennter Grows Salary")));
+                          }else{
+                            if(_joiningDateController.text.isEmpty){
+                              ScaffoldMessenger.of(context).showSnackBar(SnackBar(duration: Duration(milliseconds: 500),content: Text("Ennter Joinning Date")));
+                            }else{
+                              if(shiftplan_id==""){
+                                ScaffoldMessenger.of(context).showSnackBar(SnackBar(duration: Duration(milliseconds: 500),content: Text("Select Shift plane")));
+                              }else{
+                                if(m==false && o==false && f==false){
+                                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(duration: Duration(milliseconds: 500),content: Text("Select Genger")));
+                                }else{
+                                  if(Containsvalue.isEmpty){
+                                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(duration: Duration(milliseconds: 500),content: Text("Select Weekend")));
+                                  }else{
+                                    if(_phoneController.text.isEmpty){
+                                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(duration: Duration(milliseconds: 500),content: Text("Enter Phone Number")));
+                                    }else{
+                                      SaveOnBoarding();
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+
                 },
                 child: Padding(
                   padding: const EdgeInsets.only(left: 70.0,right: 70),
@@ -624,7 +690,7 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
   bool f=false;
   bool o=false;
 
-
+  String? shiftplan_id;
 
   functionval()async{
     var nid_cardd = await http.MultipartFile.fromPath('EmpImageFile', "${_image!.path.toString()}");
@@ -705,6 +771,7 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
     }
   }
 
-  List Containsvalue=[];
+  List<int> Containsvalue=[];
+
 
 }
