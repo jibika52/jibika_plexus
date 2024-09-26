@@ -34,8 +34,6 @@ class CreateNewEmployeeScreen2 extends StatefulWidget {
     required this.ShiftPlane,
     required this.employeeGrowssallary,
     required this.employeeJoiningDate,
-    required this.photo,
-    required this.Nidphoto,
 
   });
   String employeeID;
@@ -46,8 +44,6 @@ class CreateNewEmployeeScreen2 extends StatefulWidget {
   String ShiftPlane;
   String employeeGrowssallary;
   String employeeJoiningDate;
-  File photo;
-  File Nidphoto;
   @override
   State<CreateNewEmployeeScreen2> createState() => _CreateNewEmployeeScreen2State();
 }
@@ -268,10 +264,6 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                                   borderRadius: BorderRadius.circular(50),
                                   child: Image.file(_image!.renameSync(_image!.path),height: 80,width: 80, fit: BoxFit.fill,))
                                   :
-                              widget.photo!=null?ClipRRect(
-                                    borderRadius: BorderRadius.circular(50),
-                                    child: Image.file(widget.photo,height: 80,width: 80, fit: BoxFit.fill,))
-                                    :
                                  Container(
                                   height: 80,
                                   width:80,
@@ -334,10 +326,6 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                                 _NID!=null?ClipRRect(
                                     borderRadius: BorderRadius.circular(7),
                                     child: Image.file(_NID!.renameSync(_NID!.path),height: 80,width: 126, fit: BoxFit.fill,))
-                                    :
-                                widget.Nidphoto!=null?ClipRRect(
-                                    borderRadius: BorderRadius.circular(7),
-                                    child: Image.file(widget.Nidphoto,height: 80,width: 126, fit: BoxFit.fill,))
                                     :
                                 Stack(
                                   alignment: Alignment.center,
@@ -1341,7 +1329,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                                       ),
                                     ),
                                     SizedBox(height: 5,),
-                                    CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Upload / Take photo", letterSpacing: 0.3),
+                                    CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Upload / Take Nominee photo", letterSpacing: 0.3),
 
                                   ],
                                 ),

@@ -235,7 +235,7 @@ class _EmployeeConvinceTrackinScreenState extends State<EmployeeConvinceTrackinS
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "Total Conveyance", letterSpacing: 0.2, textColor: Main_Theme_textColor),
-                          ColorCustomText(fontSize: 14, fontWeight: FontWeight.w600, text: "505 BDT", letterSpacing: 0.2,
+                          ColorCustomText(fontSize: 14, fontWeight: FontWeight.w600, text: "0 BDT", letterSpacing: 0.2,
                               textColor: Main_Theme_textColor_tir_Condition),
                         ],
                       ),

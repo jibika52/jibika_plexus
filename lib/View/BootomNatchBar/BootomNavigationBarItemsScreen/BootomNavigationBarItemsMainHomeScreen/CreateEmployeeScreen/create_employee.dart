@@ -2,6 +2,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'dart:ui';
+import 'package:elegant_notification/elegant_notification.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -37,6 +38,7 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
   TextEditingController _joiningDateController = TextEditingController();
   TextEditingController _birthDateController = TextEditingController();
   TextEditingController _employeeIdController = TextEditingController();
+  TextEditingController _employeeRFController = TextEditingController();
   TextEditingController _nIDController = TextEditingController();
   TextEditingController _employeeNameController = TextEditingController();
   TextEditingController _phoneController = TextEditingController();
@@ -265,7 +267,7 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
                             ),
                           ),
                           SizedBox(height: 5,),
-                          CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Scan NID Card", letterSpacing: 0.3),
+                          CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Scan NID For Photo & OCR", letterSpacing: 0.3),
                         ],
                       ),
                     ],
@@ -288,19 +290,29 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
                 children: [
                   JibikaCustomTextFromField(
                       readOnly: false,
-                      controller: _nIDController,
+                      controller: _employeeIdController,
                       height: 50,
-                      img: "Assets/DashBoardIcons/personalcard.png",
-                      hinttext: "Employee NID",
-                      keyboardType: TextInputType.text,
+                      img: "Assets/PrimaryInformation/people (1).png",
+                      hinttext: "Id Card No.",
+                      keyboardType: TextInputType.number,
+                      obscureText: false),
+                  SizedBox(height: C_height,),
+                  JibikaCustomTextFromField(
+
+                      readOnly: false,
+                      controller: _employeeRFController,
+                      height: 50,
+                      img: "Assets/PrimaryInformation/people (1).png",
+                      hinttext: "RF/FP/Face No.",
+                      keyboardType: TextInputType.number,
                       obscureText: false),
                   SizedBox(height: C_height,),
                   JibikaCustomTextFromField(
                       readOnly: false,
-                      controller: _employeeIdController,
+                      controller: _nIDController,
                       height: 50,
-                      img: "Assets/PrimaryInformation/people (1).png",
-                      hinttext: "Employee ID",
+                      img: "Assets/DashBoardIcons/personalcard.png",
+                      hinttext: "NID No.",
                       keyboardType: TextInputType.text,
                       obscureText: false),
                   SizedBox(height: C_height,),
@@ -321,7 +333,7 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
                       controller: _birthDateController,
                       height: 50,
                       img: "Assets/PrimaryInformation/calendar.png",
-                      hinttext: "Date of barth",
+                      hinttext: "Date of Birth",
                       keyboardType: TextInputType.text,
                       obscureText: false),
                   SizedBox(height: C_height,),
@@ -329,8 +341,8 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
                       controller: _phoneController,
                       height: 50,
                       img: "Assets/PrimaryInformation/phone.png",
-                      hinttext: "Mobile number",
-                      keyboardType: TextInputType.text,
+                      hinttext: "Mobile Number",
+                      keyboardType: TextInputType.number,
                       obscureText: false),
                   SizedBox(height: C_height,),
                   JibikaCustomTextFromField2(
@@ -338,7 +350,7 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
                       height: 50,
                       img: "Assets/PrimaryInformation/money_payment.png",
                       hinttext: "Grows Salary",
-                      keyboardType: TextInputType.text,
+                      keyboardType: TextInputType.number,
                       obscureText: false),
                   SizedBox(height: C_height,),
 
@@ -350,7 +362,7 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
                       controller: _joiningDateController,
                       height: 50,
                       img: "Assets/PrimaryInformation/calendar.png",
-                      hinttext: "Joining date",
+                      hinttext: "Joining Date",
                       keyboardType: TextInputType.text,
                       obscureText: false),
 
@@ -361,23 +373,24 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
               Column(
                 children: [
                   JibikaCustomTextFromField(
+                    readOnly: false,
+                    controller: _employeeIdController,
+                    height: 50,
+                    img: "Assets/PrimaryInformation/people (1).png",
+                    hinttext: "Employee ID",
+                    keyboardType: TextInputType.number,
+                    obscureText: false),
+                  SizedBox(height: C_height,),
+                  JibikaCustomTextFromField(
                       readOnly: false,
                       controller: _nIDController,
                       height: 50,
                       img: "Assets/DashBoardIcons/personalcard.png",
-                      hinttext: "Employee NID",
-                      keyboardType: TextInputType.text,
+                      hinttext: "NID",
+                      keyboardType: TextInputType.number,
                       obscureText: false),
                   SizedBox(height: C_height,),
-                  JibikaCustomTextFromField(
-                      readOnly: false,
-                      controller: _employeeIdController,
-                      height: 50,
-                      img: "Assets/PrimaryInformation/people (1).png",
-                      hinttext: "Employee ID",
-                      keyboardType: TextInputType.text,
-                      obscureText: false),
-                  SizedBox(height: C_height,),
+
                   JibikaCustomTextFromField(
                       readOnly: false,
                       controller: _employeeNameController,
@@ -437,32 +450,36 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
                       margin: EdgeInsets.only(top: 10),
                       height: 50,
                       width: double.infinity,
-                      padding: EdgeInsets.only(left: 15, right: 15), 
+                      padding: EdgeInsets.only(left: 15, right: 15),
                       child: DropdownButton(
-                        underline: Container(height: 1.7,color: Main_Theme_textColor.withOpacity(0.1),),
-                        value: shiftplan_id,
-                        hint: CustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "Select Shift Plane", letterSpacing: 0.3),
-                        // Create the dropdown items using the list of maps
-                        items: shiftplanelist.map((shift) {
-                          return DropdownMenuItem(
-                            value: "${shift['Code']}",
-                            child: CustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "${shift['EnglishName']}", letterSpacing: 0.3), // Display the EnglishName
-                          );
-                        }).toList(),
+                        enableFeedback: true,
+                        autofocus: false,
+                        isExpanded: true,
+                        hint: InkWell(
+                          onTap: () {},
+                          child: CustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "Shift Plane", letterSpacing: 0.3), // Display the EnglishName
 
-                        // Handle change in selected value
+                        ),
+                        // Not necessary for Option 1
+                        value: shiftplan_id,
                         onChanged: (newValue) {
                           setState(() {
                             shiftplan_id = newValue.toString();
                           });
                         },
+                        items: shiftplanelist.map((shift) {
+                          return DropdownMenuItem(
+                            child: CustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "${shift['EnglishName']}", letterSpacing: 0.3),
+                            value: "${shift['Code']}",
+                          );
+                        }).toList(),
                       ),
                     ),
               ),
               SizedBox(height: C_height+10,),
               Align(
                   alignment: Alignment.centerLeft,
-                  child: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w500, text: "Gender", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),)),
+                  child: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w500, text: "Gender", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.7),)),
               SizedBox(height: C_height,),
               Container(
                   height: 35,
@@ -492,7 +509,7 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
                           f=false;
                           o=true;
                         });
-                      }, backgroundColor:o==true?Main_Theme_textColor_tir_Condition : home_default_color,textColor:o==true?Main_Theme_WhiteCollor: Main_Theme_textColor.withOpacity(0.4),),
+                      }, backgroundColor:o==true?Main_Theme_textColor_tir_Condition : home_default_color,textColor:o==true?Main_Theme_WhiteCollor: Main_Theme_textColor.withOpacity(0.7),),
                       Container(height: 30,width: 30,margin: EdgeInsets.only(right: 10),),
                       Container(height: 30,width: 30,margin: EdgeInsets.only(right: 10),),
                       Container(height: 30,width: 30,margin: EdgeInsets.only(right: 10),),
@@ -504,7 +521,7 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
               SizedBox(height: C_height+10,),
               Align(
                   alignment: Alignment.centerLeft,
-                  child: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w500, text: "Weekend", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),)),
+                  child: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w500, text: "Weekend", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.7),)),
               SizedBox(height: C_height,),
               Container(
                 height: 35,
@@ -598,28 +615,17 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
               alignment: Alignment.centerRight,
                 child: InkWell(
                    onTap: () {
-                     if(_image==null ){
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(duration: Duration(milliseconds: 500),content: Text("Upload Photo ")));
-                     }
-                       else{
-                         if(_NID==null){
-                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(duration: Duration(milliseconds: 500),content: Text("Upload NID Card ")));
-                         }else{
-                           Navigator.push(context, CupertinoPageRoute(builder: (context) => CreateNewEmployeeScreen2(
-                             employeeID: _employeeIdController.text,
-                             employeeNID: _nIDController.text,
-                             employeeName: _employeeNameController.text,
-                             employeeDateOfBirth: _birthDateController.text,
-                             employeeMobileNumber: _phoneController.text,
-                             ShiftPlane: _siftplaneController.text,
-                             employeeGrowssallary: _growsSalaryController.text,
-                             employeeJoiningDate: _joiningDateController.text,
-                             Nidphoto:_NID!.renameSync(_NID!.path),
-                             photo:_image!.renameSync(_image!.path),
-                           )
-                             ,));
-                         }
-                       }
+                     Navigator.push(context, CupertinoPageRoute(builder: (context) => CreateNewEmployeeScreen2(
+                       employeeID: _employeeIdController.text,
+                       employeeNID: _nIDController.text,
+                       employeeName: _employeeNameController.text,
+                       employeeDateOfBirth: _birthDateController.text,
+                       employeeMobileNumber: _phoneController.text,
+                       ShiftPlane: _siftplaneController.text,
+                       employeeGrowssallary: _growsSalaryController.text,
+                       employeeJoiningDate: _joiningDateController.text,
+                     )
+                       ,));
                      },
                     child: ColorCustomText(fontSize: 13, fontWeight: FontWeight.w500, text: "More info...", letterSpacing: 0.3, textColor: Main_Theme_textColor_tir_Condition)),
               ),
@@ -739,6 +745,22 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
       print("ccccccccccccccccccccccccccccccccccccccccccc=============================> ${responseData}");
       var  data = jsonDecode(responseString);
       print("dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd${data}");
+      ElegantNotification(
+        borderRadius: BorderRadius.circular(11),
+        width: 340,
+        iconSize: 25,
+        background: presentsent_color,
+        progressIndicatorBackground: presentsent_color,
+        progressIndicatorColor: absent_color,
+        // position: Alignment.center,
+        title:  ColorCustomText(fontSize: 16, fontWeight: FontWeight.w500, text: "Employee added successfully", letterSpacing: 0.3, textColor: Main_Theme_textColor),
+        description: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "Thanks for registration", letterSpacing: 0.3, textColor: Main_Theme_textColor),
+        onDismiss: () {
+          print('Message when the notification is dismissed');
+        }, icon: Icon(Icons.delete_forever,color:Colors.black,),
+      ).show(context);
+
+
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => BootomNatchBarScreen(
         index: 0,
       ),));

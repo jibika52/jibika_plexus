@@ -114,7 +114,7 @@ class _CreateConveyanceScreenState extends State<CreateConveyanceScreen> {
   void initState() {
     Provider.of<TrackingController>(context,listen: false).GetEmployeeLocaltionInfoProvider("${GetStorage().read("mobile_id")}", "09-Sep-2024","60670", context);
     _getCurrentLocation();
-   _amountController.text= GetStorage().read("select_conveyance")??"00";
+   _amountController.text= GetStorage().read("select_conveyance")??"";
    selected_car_index= int.parse("${GetStorage().read("select_car_type")}");
     // TODO: implement initState
     super.initState();
@@ -359,7 +359,7 @@ class _CreateConveyanceScreenState extends State<CreateConveyanceScreen> {
                                   GetStorage().write("conveyance_car_code","0");
                                   GetStorage().write("for_end_conveyance_code","0");
                                   GetStorage().write("is_Start_Journey","false");
-                                  GetStorage().write("select_conveyance", "0");
+                                  GetStorage().write("select_conveyance", "");
                                   GetStorage().write("select_car_type", "-1");
                                   _amountController.text="";
                                   selected_car_index=-1;

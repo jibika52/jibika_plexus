@@ -33,7 +33,7 @@ class CustomCircleDay extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
           color:backgroundColor
         ),
-        child: ColorCustomText(fontSize: 12, fontWeight: FontWeight.w500, text: "$day", letterSpacing: 0.1,textColor: textColor,),
+        child: ColorCustomText(fontSize: 12, fontWeight: FontWeight.w500, text: "$day", letterSpacing: 0.1,textColor: Main_Theme_textColor,),
       ),
     );
   }
