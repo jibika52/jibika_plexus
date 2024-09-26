@@ -674,7 +674,11 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
                                     if(_phoneController.text.isEmpty){
                                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(duration: Duration(milliseconds: 500),content: Text("Enter Phone Number")));
                                     }else{
-                                      SaveOnBoarding();
+                                      if(_employeeRFController.text.isEmpty){
+                                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(duration: Duration(milliseconds: 500),content: Text("Enter Phone Number")));
+                                      }else{
+                                        SaveOnBoarding();
+                                      }
                                     }
                                   }
                                 }
@@ -738,14 +742,14 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
       request.fields["ID_CARD_NO"] =  _employeeIdController.text;
       request.fields["MOBILE_NO "] =  _phoneController.text;
       request.fields["NID_NO"] =  _nIDController.text;
-      request.fields["WEEKEND1"] =  _nIDController.text;
-      request.fields["WEEKEND2"] =  _nIDController.text;
-
+      request.fields["SHIFT_PLAN"] = "${shiftplan_id}";
+      request.fields["WEEKEND1"] = "${Containsvalue[0]}";
+      request.fields["WEEKEND2"] =  Containsvalue.length >= 2?"${Containsvalue[1]}" :"";
       request.fields["USERID"] = "${GetStorage().read("mobile_id")}";
       request.fields["EMPLOYEE_NAME_ENGLISH"] = _employeeNameController.text;
       request.fields["JOINING_DATE"] = _joiningDateController.text;
       request.fields["BIRTH_DATE"] = _birthDateController.text;
-      request.fields["RF_ID_NO"] = _employeeIdController.text;
+      request.fields["RF_ID_NO"] = _employeeRFController.text;
       request.fields["EMPLOYEE_STATUS"] = "3";
       request.fields["CLIENTBASE_URL"] = "${GetStorage().read("APPS_IMG_BASEURL")}" ;
       "${_image}"=="null"?dun(): functionval();
