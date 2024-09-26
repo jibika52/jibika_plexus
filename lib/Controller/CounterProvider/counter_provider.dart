@@ -102,12 +102,19 @@ class CounterProvider with ChangeNotifier{
     print("time--- ${setcountSecond}");
     _setcountSecond = "${DateFormat('HH:mm:ss').format(DateTime.now()).toString()}";
     notifyListeners();
-
-
   }
 
 
-
-
+  ///Get Single || Marig status
+  bool _is_single=false;
+  bool get is_single=>_is_single;
+  void getMarriedStatus(){
+    _is_single=false;
+    notifyListeners();
+  }
+  void getSingleStatus(){
+    _is_single=true;
+    notifyListeners();
+  }
 
 }

@@ -21,6 +21,7 @@ import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
 import 'package:jibika_plexus/CustomWidget/CustomImageButton/custom_imagebutton.dart';
 import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 import 'package:provider/provider.dart';
+import '../../../../../Controller/CounterProvider/counter_provider.dart';
 import '../../../../../CustomWidget/CustomTExtFormField/Jibika_custom_text_from_field.dart';
 import '../../../../../Utils/constants.dart';
 
@@ -393,7 +394,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                                 ),
                               ),
                               SizedBox(height: 5,),
-                              CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Scan NID Card", letterSpacing: 0.3),
+                              CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Scan NID For Photo & OCR", letterSpacing: 0.3),
                             ],
                           ),
                         ],
@@ -409,8 +410,8 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                             controller: _employeeIdController,
                             height: 50,
                             img: "Assets/DashBoardIcons/personalcard.png",
-                            hinttext: "Employee id",
-                            keyboardType: TextInputType.text,
+                            hinttext: "Id Card No.",
+                            keyboardType: TextInputType.number,
                             obscureText: false),
                         SizedBox(height: C_height,),
                         JibikaCustomTextFromField(
@@ -418,7 +419,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                             controller: _nIDController,
                             height: 50,
                             img: "Assets/PrimaryInformation/people (1).png",
-                            hinttext: "Employee NID",
+                            hinttext: "NID Card No",
                             keyboardType: TextInputType.text,
                             obscureText: false),
                         SizedBox(height: C_height,),
@@ -427,7 +428,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                             controller: _employeeNameController,
                             height: 50,
                             img: "Assets/PrimaryInformation/people (2).png",
-                            hinttext: "Employee name",
+                            hinttext: "Employee Name",
                             keyboardType: TextInputType.text,
                             obscureText: false),
                         SizedBox(height: C_height,),
@@ -439,7 +440,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                             controller: _birthDateController,
                             height: 50,
                             img: "Assets/PrimaryInformation/calendar.png",
-                            hinttext: "Date of barth",
+                            hinttext: "Date of Birth",
                             keyboardType: TextInputType.text,
                             obscureText: false),
                         SizedBox(height: C_height,),
@@ -448,7 +449,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                             controller: _fatherNameController,
                             height: 50,
                             img: "Assets/PrimaryInformation/father.png",
-                            hinttext: "Father name",
+                            hinttext: "Father Name",
                             keyboardType: TextInputType.text,
                             obscureText: false),
                         SizedBox(height: C_height,),
@@ -456,8 +457,8 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                             controller: _phoneController,
                             height: 50,
                             img: "Assets/PrimaryInformation/phone.png",
-                            hinttext: "Mobile number",
-                            keyboardType: TextInputType.text,
+                            hinttext: "Mobile Number",
+                            keyboardType: TextInputType.number,
                             obscureText: false),
                         SizedBox(height: C_height,),
 
@@ -465,7 +466,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                             controller: _gmailController,
                             height: 50,
                             img: "Assets/DashBoardIcons/messagetext.png",
-                            hinttext: "Gmail",
+                            hinttext: "Enter Email",
                             keyboardType: TextInputType.text,
                             obscureText: false),
                         SizedBox(height: C_height,),
@@ -474,7 +475,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                             controller: _presentAddressController,
                             height: 50,
                             img: "Assets/DashBoardIcons/location.png",
-                            hinttext: "Present address",
+                            hinttext: "Present Address",
                             keyboardType: TextInputType.text,
                             obscureText: false),
                         SizedBox(height: C_height,),
@@ -483,15 +484,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                             controller: _parmenentAddressController,
                             height: 50,
                             img: "Assets/DashBoardIcons/location.png",
-                            hinttext: "Permanent address",
-                            keyboardType: TextInputType.text,
-                            obscureText: false),
-                        SizedBox(height: C_height,),
-                        JibikaCustomTextFromField2(
-                            controller: _maraitalStatus,
-                            height: 50,
-                            img: "Assets/PrimaryInformation/money_payment.png",
-                            hinttext: "Marital status",
+                            hinttext: "Permanent Address",
                             keyboardType: TextInputType.text,
                             obscureText: false),
                         SizedBox(height: C_height,),
@@ -568,9 +561,10 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                     ),
                     ),
                     SizedBox(height: C_height),
+                    /// Weekend-----------------------------------------
                     Align(
                         alignment: Alignment.centerLeft,
-                        child: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w500, text: "Weekend", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),)),
+                        child: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w500, text: "Weekend", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.7),)),
                     SizedBox(height: C_height,),
                     Container(
                         height: 35,
@@ -660,9 +654,10 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                         )
                     ),
                     SizedBox(height: C_height),
+                    /// Gender------------------------------------------
                     Align(
                         alignment: Alignment.centerLeft,
-                        child: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w500, text: "Gender", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),)),
+                        child: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w500, text: "Gender", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.7),)),
                     SizedBox(height: C_height,),
                     Container(
                         height: 35,
@@ -702,6 +697,54 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                         )
                     ),
                     SizedBox(height: C_height+10,),
+                    /// Marital Status------------------------------------------
+                    Align(
+                        alignment: Alignment.centerLeft,
+                        child: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w500, text: "Marital Status", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.7),)),
+                    SizedBox(height: C_height,),
+                    Consumer<CounterProvider>(
+                      builder: (context, value, child) =>
+                       Container(
+                          height: 35,
+                          width: double.infinity,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  Provider.of<CounterProvider>(context,listen: false).getSingleStatus();
+                                },
+                                child: Row(
+                                  children: [
+                                    CircleAvatar(radius: 11,backgroundColor: value.is_single==true? Main_Theme_textColor:home_default_color ,),
+                                    SizedBox(width: 7,),
+                                    ColorCustomText(fontSize: 13, fontWeight:FontWeight.w500, text: "Single", letterSpacing: 0.4,textColor: Main_Theme_textColor,)
+                                  ],
+                                ),
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  Provider.of<CounterProvider>(context,listen: false).getMarriedStatus();
+                                },
+                                child: Row(
+                                  children: [
+                                    CircleAvatar(radius: 11,backgroundColor: value.is_single==false? Main_Theme_textColor :home_default_color ,),
+                                    SizedBox(width: 7,),
+                                    ColorCustomText(fontSize: 13, fontWeight:FontWeight.w500, text: "Married", letterSpacing: 0.4,textColor:  Main_Theme_textColor,)
+                                  ],
+                                ),
+                              ),
+
+
+                              Container(height: 30,width: 30,margin: EdgeInsets.only(right: 10),),
+                              Container(height: 30,width: 30,margin: EdgeInsets.only(right: 10),),
+
+                            ],
+                          )
+                      ),
+                    ),
+                    SizedBox(height: C_height+10,),
+                    /// Signature------------------------------------------
                     Container(
                       height: 139,width: double.infinity,
                       child: Row(
