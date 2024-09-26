@@ -137,3 +137,4 @@ String Loremtext="Lorem sed do eiusmod tempor incididunt ut labore et dolore mag
 // GetStorage().write("select_conveyance", "");
 // GetStorage().write("for_end_conveyance_code","0");
 // GetStorage().write("conveyance_car_code","0");
+// GetStorage().write("for_create_empcode","empcode");

@@ -106,15 +106,12 @@ class CounterProvider with ChangeNotifier{
 
 
   ///Get Single || Marig status
-  bool _is_single=false;
-  bool get is_single=>_is_single;
-  void getMarriedStatus(){
-    _is_single=false;
+  String ? _MaritalStatus;
+  String? get MaritalStatus=>_MaritalStatus;
+  void getMarriedStatus(String getMaritalStatus){
+    _MaritalStatus="$getMaritalStatus";
     notifyListeners();
   }
-  void getSingleStatus(){
-    _is_single=true;
-    notifyListeners();
-  }
+
 
 }

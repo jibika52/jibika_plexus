@@ -159,6 +159,7 @@ class CustomHttpRequestClass{
           GetStorage().write("select_car_type","-1");
           GetStorage().write("for_end_conveyance_code","0");
           GetStorage().write("conveyance_car_code","0");
+          GetStorage().write("for_create_empcode","");
           //   print("$loginData");
           ElegantNotification(
             borderRadius: BorderRadius.circular(11),

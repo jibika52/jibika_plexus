@@ -53,6 +53,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
   TextEditingController _joiningDateController = TextEditingController();
   TextEditingController _birthDateController = TextEditingController();
   TextEditingController _employeeIdController = TextEditingController();
+  TextEditingController _employeeRFController = TextEditingController();
   TextEditingController _nIDController = TextEditingController();
   TextEditingController _employeeNameController = TextEditingController();
   TextEditingController _fatherNameController = TextEditingController();
@@ -405,24 +406,9 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                       padding: EdgeInsets.only(left: 0,right: 10,),
                     child: Column(
                       children: [
-                        JibikaCustomTextFromField(
-                            readOnly: false,
-                            controller: _employeeIdController,
-                            height: 50,
-                            img: "Assets/DashBoardIcons/personalcard.png",
-                            hinttext: "Id Card No.",
-                            keyboardType: TextInputType.number,
-                            obscureText: false),
-                        SizedBox(height: C_height,),
-                        JibikaCustomTextFromField(
-                            readOnly: false,
-                            controller: _nIDController,
-                            height: 50,
-                            img: "Assets/PrimaryInformation/people (1).png",
-                            hinttext: "NID Card No",
-                            keyboardType: TextInputType.text,
-                            obscureText: false),
-                        SizedBox(height: C_height,),
+
+
+
                         JibikaCustomTextFromField(
                             readOnly: false,
                             controller: _employeeNameController,
@@ -431,18 +417,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                             hinttext: "Employee Name",
                             keyboardType: TextInputType.text,
                             obscureText: false),
-                        SizedBox(height: C_height,),
-                        JibikaCustomTextFromField(
-                            onTap: () {
-                              _birthdate(context);
-                            },
-                            readOnly: true,
-                            controller: _birthDateController,
-                            height: 50,
-                            img: "Assets/PrimaryInformation/calendar.png",
-                            hinttext: "Date of Birth",
-                            keyboardType: TextInputType.text,
-                            obscureText: false),
+
                         SizedBox(height: C_height,),
                         JibikaCustomTextFromField(
                             readOnly: false,
@@ -451,6 +426,33 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                             img: "Assets/PrimaryInformation/father.png",
                             hinttext: "Father Name",
                             keyboardType: TextInputType.text,
+                            obscureText: false),
+                        SizedBox(height: C_height,),
+                        JibikaCustomTextFromField(
+                            readOnly: false,
+                            controller: _nIDController,
+                            height: 50,
+                            img: "Assets/PrimaryInformation/people (1).png",
+                            hinttext: "NID Card No",
+                            keyboardType: TextInputType.number,
+                            obscureText: false),
+                        SizedBox(height: C_height,),
+                        JibikaCustomTextFromField(
+                            readOnly: false,
+                            controller: _employeeRFController,
+                            height: 50,
+                            img: "Assets/PrimaryInformation/people (1).png",
+                            hinttext: "RF/FP/Face No.",
+                            keyboardType: TextInputType.number,
+                            obscureText: false),
+                        SizedBox(height: C_height,),
+                        JibikaCustomTextFromField(
+                            readOnly: false,
+                            controller: _employeeIdController,
+                            height: 50,
+                            img: "Assets/DashBoardIcons/personalcard.png",
+                            hinttext: "Id Card No.",
+                            keyboardType: TextInputType.number,
                             obscureText: false),
                         SizedBox(height: C_height,),
                         JibikaCustomTextFromField2(
@@ -485,6 +487,18 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                             height: 50,
                             img: "Assets/DashBoardIcons/location.png",
                             hinttext: "Permanent Address",
+                            keyboardType: TextInputType.text,
+                            obscureText: false),
+                        SizedBox(height: C_height,),
+                        JibikaCustomTextFromField(
+                            onTap: () {
+                              _birthdate(context);
+                            },
+                            readOnly: true,
+                            controller: _birthDateController,
+                            height: 50,
+                            img: "Assets/PrimaryInformation/calendar.png",
+                            hinttext: "Date of Birth",
                             keyboardType: TextInputType.text,
                             obscureText: false),
                         SizedBox(height: C_height,),
@@ -653,7 +667,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                           ],
                         )
                     ),
-                    SizedBox(height: C_height),
+                    SizedBox(height: C_height+10),
                     /// Gender------------------------------------------
                     Align(
                         alignment: Alignment.centerLeft,
@@ -703,46 +717,112 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                         child: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w500, text: "Marital Status", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.7),)),
                     SizedBox(height: C_height,),
                     Consumer<CounterProvider>(
-                      builder: (context, value, child) =>
-                       Container(
-                          height: 35,
-                          width: double.infinity,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              InkWell(
-                                onTap: () {
-                                  Provider.of<CounterProvider>(context,listen: false).getSingleStatus();
-                                },
-                                child: Row(
-                                  children: [
-                                    CircleAvatar(radius: 11,backgroundColor: value.is_single==true? Main_Theme_textColor:home_default_color ,),
-                                    SizedBox(width: 7,),
-                                    ColorCustomText(fontSize: 13, fontWeight:FontWeight.w500, text: "Single", letterSpacing: 0.4,textColor: Main_Theme_textColor,)
-                                  ],
-                                ),
-                              ),
-                              InkWell(
-                                onTap: () {
-                                  Provider.of<CounterProvider>(context,listen: false).getMarriedStatus();
-                                },
-                                child: Row(
-                                  children: [
-                                    CircleAvatar(radius: 11,backgroundColor: value.is_single==false? Main_Theme_textColor :home_default_color ,),
-                                    SizedBox(width: 7,),
-                                    ColorCustomText(fontSize: 13, fontWeight:FontWeight.w500, text: "Married", letterSpacing: 0.4,textColor:  Main_Theme_textColor,)
-                                  ],
-                                ),
-                              ),
-
-
-                              Container(height: 30,width: 30,margin: EdgeInsets.only(right: 10),),
-                              Container(height: 30,width: 30,margin: EdgeInsets.only(right: 10),),
-
-                            ],
-                          )
-                      ),
-                    ),
+                      builder: (context, value, child){
+                       Color CircleAvaterBorderColor=Main_Theme_textColor.withOpacity(0.5);
+                       Color ClickedColor=Main_Theme_textColor_tir_Condition;
+                        return   Container(
+                        height: 35,
+                        width: double.infinity,
+                        child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          InkWell(
+                                        onTap: () {
+                                          Provider.of<CounterProvider>(context,
+                                                  listen: false)
+                                              .getMarriedStatus("Married");
+                                        },
+                                        child: Container(
+                                          padding: EdgeInsets.symmetric(horizontal: 10,vertical: 7),
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(10),
+                                             color:  value.MaritalStatus == "Married" ? ClickedColor : home_default_color
+                                          ),
+                                          child: ColorCustomText(
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.w500,
+                                            text: "Married",
+                                            letterSpacing: 0.4,
+                                            textColor:value.MaritalStatus == "Married" ? Main_Theme_WhiteCollor :Main_Theme_textColor,
+                                          ),
+                                        ),
+                                      ),
+                                      InkWell(
+                                        onTap: () {
+                                          Provider.of<CounterProvider>(context,
+                                                  listen: false)
+                                              .getMarriedStatus("Unmarried");
+                                        },
+                                       child: Container(
+                                         padding: EdgeInsets.symmetric(horizontal: 10,vertical: 7),
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                              color: value.MaritalStatus ==
+                                                      "Unmarried"
+                                                  ? ClickedColor
+                                                  : home_default_color),
+                                          child: ColorCustomText(
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.w500,
+                                            text: "Unmarried",
+                                            letterSpacing: 0.4,
+                                            textColor:value.MaritalStatus == "Unmarried" ? Main_Theme_WhiteCollor :Main_Theme_textColor,
+                                          ),
+                                        ),
+                                      ),
+                                      InkWell(
+                                        onTap: () {
+                                          Provider.of<CounterProvider>(context,
+                                                  listen: false)
+                                              .getMarriedStatus("Divorced");
+                                        },
+                                          child: Container(
+                                            padding: EdgeInsets.symmetric(horizontal: 10,vertical: 7),
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                BorderRadius.circular(10),
+                                                color: value.MaritalStatus ==
+                                                    "Divorced"
+                                                    ? ClickedColor
+                                                    : home_default_color),
+                                            child: ColorCustomText(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w500,
+                                              text: "Divorced",
+                                              letterSpacing: 0.4,
+                                              textColor:value.MaritalStatus == "Divorced" ? Main_Theme_WhiteCollor :Main_Theme_textColor,
+                                            ),
+                                          )
+                                      ),
+                                      InkWell(
+                                        onTap: () {
+                                          Provider.of<CounterProvider>(context,
+                                                  listen: false)
+                                              .getMarriedStatus("Widow");
+                                        },
+                                          child: Container(
+                                            padding: EdgeInsets.symmetric(horizontal: 10,vertical: 7),
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                BorderRadius.circular(10),
+                                                color: value.MaritalStatus ==
+                                                    "Widow"
+                                                    ? ClickedColor
+                                                    : home_default_color),
+                                            child: ColorCustomText(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w500,
+                                              text: "Widow",
+                                              letterSpacing: 0.4,
+                                              textColor:value.MaritalStatus == "Widow" ? Main_Theme_WhiteCollor :Main_Theme_textColor,
+                                            ),
+                                          )
+                                      ),
+                                    ],
+                                  ));
+                            },
+                          ),
                     SizedBox(height: C_height+10,),
                     /// Signature------------------------------------------
                     Container(

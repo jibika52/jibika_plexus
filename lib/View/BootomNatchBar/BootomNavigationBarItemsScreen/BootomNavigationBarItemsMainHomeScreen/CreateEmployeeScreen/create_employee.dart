@@ -290,6 +290,37 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
                 children: [
                   JibikaCustomTextFromField(
                       readOnly: false,
+                      controller: _employeeNameController,
+                      height: 50,
+                      img: "Assets/PrimaryInformation/people (2).png",
+                      hinttext: "Employee name",
+                      keyboardType: TextInputType.text,
+                      obscureText: false),
+                  SizedBox(height: C_height,),
+                  JibikaCustomTextFromField(
+                      readOnly: false,
+                      controller: _nIDController,
+                      height: 50,
+                      img: "Assets/DashBoardIcons/personalcard.png",
+                      hinttext: "NID No.",
+                      keyboardType: TextInputType.text,
+                      obscureText: false),
+                  SizedBox(height: C_height,),
+
+                  JibikaCustomTextFromField(
+                      onTap: () {
+                        _birthdate(context);
+                      },
+                      readOnly: true,
+                      controller: _birthDateController,
+                      height: 50,
+                      img: "Assets/PrimaryInformation/calendar.png",
+                      hinttext: "Date of Birth",
+                      keyboardType: TextInputType.text,
+                      obscureText: false),
+                  SizedBox(height: C_height,),
+                  JibikaCustomTextFromField(
+                      readOnly: false,
                       controller: _employeeIdController,
                       height: 50,
                       img: "Assets/PrimaryInformation/people (1).png",
@@ -305,36 +336,6 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
                       img: "Assets/PrimaryInformation/people (1).png",
                       hinttext: "RF/FP/Face No.",
                       keyboardType: TextInputType.number,
-                      obscureText: false),
-                  SizedBox(height: C_height,),
-                  JibikaCustomTextFromField(
-                      readOnly: false,
-                      controller: _nIDController,
-                      height: 50,
-                      img: "Assets/DashBoardIcons/personalcard.png",
-                      hinttext: "NID No.",
-                      keyboardType: TextInputType.text,
-                      obscureText: false),
-                  SizedBox(height: C_height,),
-                  JibikaCustomTextFromField(
-                      readOnly: false,
-                      controller: _employeeNameController,
-                      height: 50,
-                      img: "Assets/PrimaryInformation/people (2).png",
-                      hinttext: "Employee name",
-                      keyboardType: TextInputType.text,
-                      obscureText: false),
-                  SizedBox(height: C_height,),
-                  JibikaCustomTextFromField(
-                      onTap: () {
-                        _birthdate(context);
-                      },
-                      readOnly: true,
-                      controller: _birthDateController,
-                      height: 50,
-                      img: "Assets/PrimaryInformation/calendar.png",
-                      hinttext: "Date of Birth",
-                      keyboardType: TextInputType.text,
                       obscureText: false),
                   SizedBox(height: C_height,),
                   JibikaCustomTextFromField2(
@@ -373,25 +374,6 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
               Column(
                 children: [
                   JibikaCustomTextFromField(
-                    readOnly: false,
-                    controller: _employeeIdController,
-                    height: 50,
-                    img: "Assets/PrimaryInformation/people (1).png",
-                    hinttext: "Employee ID",
-                    keyboardType: TextInputType.number,
-                    obscureText: false),
-                  SizedBox(height: C_height,),
-                  JibikaCustomTextFromField(
-                      readOnly: false,
-                      controller: _nIDController,
-                      height: 50,
-                      img: "Assets/DashBoardIcons/personalcard.png",
-                      hinttext: "NID",
-                      keyboardType: TextInputType.number,
-                      obscureText: false),
-                  SizedBox(height: C_height,),
-
-                  JibikaCustomTextFromField(
                       readOnly: false,
                       controller: _employeeNameController,
                       height: 50,
@@ -401,23 +383,52 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
                       obscureText: false),
                   SizedBox(height: C_height,),
                   JibikaCustomTextFromField(
+                      readOnly: false,
+                      controller: _nIDController,
+                      height: 50,
+                      img: "Assets/DashBoardIcons/personalcard.png",
+                      hinttext: "NID No.",
+                      keyboardType: TextInputType.text,
+                      obscureText: false),
+                  SizedBox(height: C_height,),
+
+                  JibikaCustomTextFromField(
                       onTap: () {
-                        _joiningDate(context);
+                        _birthdate(context);
                       },
                       readOnly: true,
                       controller: _birthDateController,
                       height: 50,
                       img: "Assets/PrimaryInformation/calendar.png",
-                      hinttext: "Date of barth",
+                      hinttext: "Date of Birth",
                       keyboardType: TextInputType.text,
+                      obscureText: false),
+                  SizedBox(height: C_height,),
+                  JibikaCustomTextFromField(
+                      readOnly: false,
+                      controller: _employeeIdController,
+                      height: 50,
+                      img: "Assets/PrimaryInformation/people (1).png",
+                      hinttext: "Id Card No.",
+                      keyboardType: TextInputType.number,
+                      obscureText: false),
+                  SizedBox(height: C_height,),
+                  JibikaCustomTextFromField(
+
+                      readOnly: false,
+                      controller: _employeeRFController,
+                      height: 50,
+                      img: "Assets/PrimaryInformation/people (1).png",
+                      hinttext: "RF/FP/Face No.",
+                      keyboardType: TextInputType.number,
                       obscureText: false),
                   SizedBox(height: C_height,),
                   JibikaCustomTextFromField2(
                       controller: _phoneController,
                       height: 50,
                       img: "Assets/PrimaryInformation/phone.png",
-                      hinttext: "Mobile number",
-                      keyboardType: TextInputType.text,
+                      hinttext: "Mobile Number",
+                      keyboardType: TextInputType.number,
                       obscureText: false),
                   SizedBox(height: C_height,),
                   JibikaCustomTextFromField2(
@@ -425,7 +436,7 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
                       height: 50,
                       img: "Assets/PrimaryInformation/money_payment.png",
                       hinttext: "Grows Salary",
-                      keyboardType: TextInputType.text,
+                      keyboardType: TextInputType.number,
                       obscureText: false),
                   SizedBox(height: C_height,),
 
@@ -437,11 +448,12 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
                       controller: _joiningDateController,
                       height: 50,
                       img: "Assets/PrimaryInformation/calendar.png",
-                      hinttext: "Joining date",
+                      hinttext: "Joining Date",
                       keyboardType: TextInputType.text,
                       obscureText: false),
+
                 ],
-              ),
+              )
               ),
               SizedBox(height: C_height,),
               Consumer<OnboardingEmployeeController>(
@@ -745,27 +757,45 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
       print("ccccccccccccccccccccccccccccccccccccccccccc=============================> ${responseData}");
       var  data = jsonDecode(responseString);
       print("dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd${data}");
-      ElegantNotification(
-        borderRadius: BorderRadius.circular(11),
-        width: 340,
-        iconSize: 25,
-        background: presentsent_color,
-        progressIndicatorBackground: presentsent_color,
-        progressIndicatorColor: absent_color,
-        // position: Alignment.center,
-        title:  ColorCustomText(fontSize: 16, fontWeight: FontWeight.w500, text: "Employee added successfully", letterSpacing: 0.3, textColor: Main_Theme_textColor),
-        description: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "Thanks for registration", letterSpacing: 0.3, textColor: Main_Theme_textColor),
-        onDismiss: () {
-          print('Message when the notification is dismissed');
-        }, icon: Icon(Icons.delete_forever,color:Colors.black,),
-      ).show(context);
+  if(data["msg"]=="success"){
+    ElegantNotification(
+      borderRadius: BorderRadius.circular(11),
+      width: 340,
+      iconSize: 25,
+      background: presentsent_color,
+      progressIndicatorBackground: presentsent_color,
+      progressIndicatorColor: absent_color,
+      // position: Alignment.center,
+      title:  ColorCustomText(fontSize: 16, fontWeight: FontWeight.w500, text: "Employee added successfully", letterSpacing: 0.3, textColor: Main_Theme_textColor),
+      description: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "Thanks for registration", letterSpacing: 0.3, textColor: Main_Theme_textColor),
+      onDismiss: () {
+        print('Message when the notification is dismissed');
+      }, icon: Icon(Icons.delete_forever,color:Colors.black,),
+    ).show(context);
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => BootomNatchBarScreen(
+      index: 0,
+    ),));
+  }else{
+    Navigator.push(context, MaterialPageRoute(builder: (context) => CreateNewEmployeeScreen(),));
+    ElegantNotification(
+      borderRadius: BorderRadius.circular(11),
+      width: 340,
+      iconSize: 25,
+      background: presentsent_color,
+      progressIndicatorBackground: presentsent_color,
+      progressIndicatorColor: absent_color,
+      // position: Alignment.center,
+      title:  ColorCustomText(fontSize: 16, fontWeight: FontWeight.w500, text: "${data["status"]}", letterSpacing: 0.3, textColor: Main_Theme_textColor),
+      description: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "PLease Try Again ..", letterSpacing: 0.3, textColor: Main_Theme_textColor),
+      onDismiss: () {
+        print('Message when the notification is dismissed');
+      }, icon: Icon(Icons.delete_forever,color:Colors.black,),
+    ).show(context);
+  }
 
-
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => BootomNatchBarScreen(
-        index: 0,
-      ),));
 
     }catch(erroe){
+      Navigator.push(context, MaterialPageRoute(builder: (context) => CreateNewEmployeeScreen(),));
       print("Catch Error $erroe");
     }
   }
