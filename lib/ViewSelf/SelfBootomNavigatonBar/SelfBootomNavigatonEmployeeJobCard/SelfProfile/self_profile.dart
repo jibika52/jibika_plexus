@@ -36,63 +36,63 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
     List<SelfProfileInformationCard> SelfProfileInformationCardlist=[
       SelfProfileInformationCard(
-        image: "Assets/DashBoardIcons/personalcard.png",
-        text1: "Id no",
+        image: "Assets/Employee_Profile_Icon/id.png",
+        text1: "Id No",
         text2: "${widget.getProfile["ID_CARD_NO"]}",
       ),
       SelfProfileInformationCard(
-        image: "Assets/DashBoardIcons/personalcard.png",
-        text1: "Nid",
+        image: "Assets/Employee_Profile_Icon/nid_card.png",
+        text1: "NID",
         text2: "${widget.getProfile["NID_NO"]}",
       ),
       SelfProfileInformationCard(
-        image: "Assets/DashBoardIcons/personalcard.png",
-        text1: "Employee name",
+        image: "Assets/Employee_Profile_Icon/user.png",
+        text1: "Employee Name",
         text2: "${widget.getProfile["EMPLOYEE_NAME_ENGLISH"]}",
       ),
       SelfProfileInformationCard(
-        image: "Assets/DashBoardIcons/personalcard.png",
-        text1: "Date of birth",
+        image: "Assets/Employee_Profile_Icon/birthday.png",
+        text1: "Date of Birth",
         text2: "${widget.getProfile["BIRTH_DATE"]}",
       ),
       SelfProfileInformationCard(
-        image: "Assets/DashBoardIcons/personalcard.png",
-        text1: "Father name",
+        image: "Assets/Employee_Profile_Icon/person.png",
+        text1: "Father Name",
         text2: "${widget.getProfile["FATHER_NAME_ENGLISH"]}",
       ),
       SelfProfileInformationCard(
-        image: "Assets/DashBoardIcons/personalcard.png",
+        image: "Assets/Employee_Profile_Icon/gender.png",
         text1: "Gender",
         text2: "${widget.getProfile["GENDER"]}",
       ),
       SelfProfileInformationCard(
-        image: "Assets/DashBoardIcons/personalcard.png",
-        text1: "Marital status",
+        image: "Assets/Employee_Profile_Icon/maritalstatus.png",
+        text1: "Marital Status",
         text2: "${widget.getProfile["MARITAL_STATUS"]??""}",
       ),
       SelfProfileInformationCard(
         image: "Assets/DashBoardIcons/personalcard.png",
-        text1: "Mobile number",
+        text1: "Mobile Number",
         text2: "${widget.getProfile["PERSONAL_PHONE"]??""}",
       ),
       SelfProfileInformationCard(
-        image: "Assets/DashBoardIcons/personalcard.png",
-        text1: "Gmail",
+        image: "Assets/Employee_Profile_Icon/email.png",
+        text1: "Email",
         text2: "${widget.getProfile["PERSONAL_EMAIL"]??""}",
 
       ),
       SelfProfileInformationCard(
-        image: "Assets/DashBoardIcons/personalcard.png",
-        text1: "Present address",
+        image: "Assets/Employee_Profile_Icon/address.png",
+        text1: "Present Address",
         text2: "${widget.getProfile["PRESENT_ADDRESS_ENGLISH"]??""}",
       ),
       SelfProfileInformationCard(
-        image: "Assets/DashBoardIcons/personalcard.png",
-        text1: "Permanent address",
+        image: "Assets/Employee_Profile_Icon/address.png",
+        text1: "Permanent Address",
         text2: "${widget.getProfile["PERMANENT_ADDRESS_ENGLISH"]??""}",
       ),
       SelfProfileInformationCard(
-        image: "Assets/DashBoardIcons/personalcard.png",
+        image: "Assets/Employee_Profile_Icon/religion.png",
         text1: "Religion",
         text2: "${widget.getProfile["RELIGION_ENGLISH"]??""}",
       ),
@@ -528,11 +528,45 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       itemBuilder: (context, index) {
                                         return
                                           selectedindex==0?
-                                          SelfProfileImageNameSubName(
-                                          image: "${SelfProfileInformationCardlist[index].image}",
-                                          text1: "${SelfProfileInformationCardlist[index].text1}",
-                                          text2: "${SelfProfileInformationCardlist[index].text2}",
-                                        ) :
+                                          Card(
+                                            elevation: 9,
+                                            color: Main_Theme_WhiteCollor,
+                                            child: Padding(
+                                              padding: const EdgeInsets.symmetric(horizontal: 10.0,vertical: 5),
+                                              child: Row(
+                                                children: [
+                                                  Image.asset(
+                                                    SelfProfileInformationCardlist[index].image,
+                                                    height: 33,
+                                                    width: 33,
+                                                    fit: BoxFit.fill,
+                                                    color: Main_Theme_textColor.withOpacity(0.7),
+                                                  ),
+                                                  SizedBox(width: 10,),
+                                                  Column(
+                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                    children: [
+                                                      Text(
+                                                        SelfProfileInformationCardlist[index].text1,
+                                                        style: TextStyle(
+                                                          fontSize: 16,
+                                                          fontWeight: FontWeight.bold,
+                                                          color: Main_Theme_textColor.withOpacity(0.9)
+                                                        ),
+                                                      ),
+                                                      Text(
+                                                        SelfProfileInformationCardlist[index].text2,
+                                                        style: TextStyle(
+                                                          fontSize: 14,
+                                                          color: Colors.grey,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ):
                                           selectedindex==1?
                                           SelfProfileImageNameSubName(
                                           image: "${SelfOfficialInformationCardlist[index].image}",

@@ -24,9 +24,9 @@ class SelfProfileImageNameSubName extends StatelessWidget {
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          CustomImageSction2(height: 24, width: 24, radius: 5, image: "$image", img_color: Main_Theme_textColor),
+          CustomImageSction2(height: 24, width: 24, radius: 5, image: "$image", img_color: Main_Theme_textColor.withOpacity(0.7)),
           SizedBox(width: 10,),
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
