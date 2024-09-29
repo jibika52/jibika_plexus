@@ -236,9 +236,13 @@ class _BootomNavBarItemsEmployeeHomeScreenState extends State<BootomNavBarItemsE
                                 itemCount: value.Admin_GetEmployeeListByStatus.length,
                                 itemBuilder: (context, index) {
                                   return InkWell(
-                                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => EmployeeProfileScreen(
+
+                                    onTap: () {
+                                     Navigator.push(context, MaterialPageRoute(builder: (context) => EmployeeProfileScreen(
                                       currentEmployeedataIndex: value.Admin_GetEmployeeListByStatus[index],
-                                    ),)),
+                                    ),));
+                                     Provider.of<OnboardingEmployeeController>(context,listen: false).GetEmployeeByIdListProvider("${value.Admin_GetEmployeeListByStatus[index]["IdCardNo"]}","${GetStorage().read("mobile_id")}", context);
+                                },
                                     child: AnimatedContainer(
                                       duration: Duration(milliseconds: 400),
                                       decoration: BoxDecoration(

@@ -86,7 +86,10 @@ class _SelfBootomBarJobCardScreenState extends State<SelfBootomBarJobCardScreen>
                     return InkWell(
                       onTap: () {
                         if(index==0){
-                          Navigator.push(context, CupertinoPageRoute(builder: (context) => SelfProfileScreen(),));
+                          Navigator.push(context, CupertinoPageRoute(builder: (context) => ProfileScreen(
+                            areYouFromEmployee: "user",
+                            getProfile: [],
+                          ),));
                         }
                       else if(index==1){
                         Navigator.push(context, CupertinoPageRoute(builder: (context) => SalfBootomNatchBarScreen(

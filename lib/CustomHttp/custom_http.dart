@@ -626,6 +626,34 @@ class CustomHttpRequestClass{
 
 
 
+  ///  GetDepartmentNDesinationList function-------------------------------------------------------------------------
+  GetEmployeeByIdListHttpFunction(String ID_CARD_NO,String UserId, BuildContext context)async{
+    dynamic  GetEmployeeByEmployee  ;
+    var body = jsonEncode({
+      "UserId":"$UserId",
+      "ID_CARD_NO":"$ID_CARD_NO",
+    });
+    try{
+      var data=await http.post(Uri.parse("${BASEURL}/${GetEmployeeById}"),
+          headers: {
+            "Content-Type": "application/json",
+            "username": "jibikaapps",
+            "password": "20jibika24",
+          },
+          body: body
+      ).then((http.Response response) {
+        var response_data =jsonDecode(response.body);
+        GetEmployeeByEmployee =response_data["data"];
+      });
+      return GetEmployeeByEmployee;
+    }
+    catch(e){
+      print("  GetEmployeeByIdListHttpFunction ============================ ${e}");
+    }
+  }
+
+
+
 
 
 

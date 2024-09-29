@@ -101,12 +101,16 @@
 
 
   ///  Employee On boarding
-    String EmployeeOnBoarding="/Employee/OnBoardEmployee";
+    String EmployeeOnBoarding="Employee/OnBoardEmployee";
 
 
-  ///  Employee On boarding
+  ///  Get Shift PlanN Weekend List
     String GetShiftPlanNWeekendList="Employee/GetShiftPlanNWeekendList";
 
 
-  ///  Employee On boarding
+  ///  GetDepartmentNDesinationList
     String GetDepartmentNDesinationList="Employee/GetDepartmentNDesinationList";
+
+
+  ///  GEt Employee Profile by employee id
+    String GetEmployeeById="Employee/GetEmployeeById";

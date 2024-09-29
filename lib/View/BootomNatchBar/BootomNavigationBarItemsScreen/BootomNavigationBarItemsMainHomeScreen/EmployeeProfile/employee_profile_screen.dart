@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jibika_plexus/Controller/OnboardingEmployeeController/on_boarding_employee_controller.dart';
 import 'package:jibika_plexus/CustomWidget/CustomAppBar/CustomDefaultAppBar/custom_default_app_bar.dart';
 import 'package:jibika_plexus/CustomWidget/CustomEmployeeProfile/custom_employee_profile.dart';
 import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/SelfBootomNavigatonEmployeeJobCard/SelfProfile/self_profile.dart';
 import 'package:jibika_plexus/main.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../../CustomWidget/CustomImage/custom_image.dart';
 import '../../../../../CustomWidget/CustomText/custom_text.dart';
@@ -94,7 +96,10 @@ class _EmployeeProfileScreenState extends State<EmployeeProfileScreen> {
                   itemBuilder: (context, index) {
                     return InkWell(
                       onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => SelfProfileScreen(),));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileScreen(
+                          getProfile: Provider.of<OnboardingEmployeeController>(context).GetEmployeeByIdList,
+                          areYouFromEmployee: "Employee",
+                        ),));
                       },
                       child: SizedBox(
                         width: 130,
@@ -104,7 +109,9 @@ class _EmployeeProfileScreenState extends State<EmployeeProfileScreen> {
                               width: double.infinity,
                               height: double.infinity,
                               margin: const EdgeInsets.only(
-                                top: 0, left: 0, right: 0, bottom: 0,),
+
+                                top: 0, left: 0, right: 0, bottom: 0,
+                              ),
                               decoration: BoxDecoration(
                                 boxShadow: <BoxShadow>[
                                   BoxShadow(
@@ -170,7 +177,8 @@ class _EmployeeProfileScreenState extends State<EmployeeProfileScreen> {
                         ),
                       ),
                     );
-                  },),
+                  },
+                ),
               ),
             )
           ],

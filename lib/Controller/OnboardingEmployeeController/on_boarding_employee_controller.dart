@@ -16,6 +16,12 @@ class OnboardingEmployeeController with ChangeNotifier{
     GetDepartmentNDesinationList =await CustomHttpRequestClass().GetDepartmentNDesinationListHttpFunction(UserId,context);
     notifyListeners();
   }
+  ///   GetVehicle List-------------------------------------------------------------------------
+  dynamic GetEmployeeByIdList;
+  GetEmployeeByIdListProvider(String ID_CARD_NO,String UserId,BuildContext context)async{
+    GetEmployeeByIdList =await CustomHttpRequestClass().GetEmployeeByIdListHttpFunction(ID_CARD_NO,UserId,context);
+    notifyListeners();
+  }
 
 
 }

@@ -728,7 +728,7 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
   }
   dun(){}
 
-  var request = http.MultipartRequest("POST", Uri.parse("${BASEURL}${EmployeeOnBoarding}"));
+  var request = http.MultipartRequest("POST", Uri.parse("${BASEURL}/${EmployeeOnBoarding}"));
 
   SaveOnBoarding() async {
     try{
