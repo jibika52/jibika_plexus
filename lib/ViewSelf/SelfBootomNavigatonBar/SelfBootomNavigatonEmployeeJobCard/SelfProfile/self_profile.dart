@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jibika_plexus/CustomSelfWedget/CustomImageUpdateSection/custom_image_update_section.dart';
@@ -41,17 +42,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
     List<SelfProfileInformationCard> SelfProfileInformationCardlist=[
       SelfProfileInformationCard(
         image: "Assets/Employee_Profile_Icon/id.png",
-        text1: "Id No",
+        text1: "Employee Id",
         text2: "${widget.getProfile["ID_CARD_NO"]}",
       ),
       SelfProfileInformationCard(
         image: "Assets/Employee_Profile_Icon/nid_card.png",
-        text1: "NID",
+        text1: "Employee NID",
         text2: "${widget.getProfile["NID_NO"]}",
       ),
       SelfProfileInformationCard(
         image: "Assets/Employee_Profile_Icon/user.png",
-        text1: "Employee Name",
+        text1: "Name",
         text2: "${widget.getProfile["EMPLOYEE_NAME_ENGLISH"]}",
       ),
       SelfProfileInformationCard(
@@ -269,7 +270,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   alignment: Alignment.center,
                   children: [
                     Container(
-                      height: 237,
+                      height: 250,
                       width: double.infinity,
                      margin: EdgeInsets.all(10),
                      decoration: BoxDecoration(
@@ -281,7 +282,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                      child: Column(
                        children: [
                          Container(
-                           height: 214,
+                           height: 220,
                            width: double.infinity,
                            decoration: BoxDecoration(
                              borderRadius: BorderRadius.only(
@@ -301,7 +302,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                            ),
                            child: Column(
                              children: [
-                               Padding(
+                               Container(
                                  padding: const EdgeInsets.only(left: 16,top: 10),
                                  child: Row(
                                    mainAxisAlignment: MainAxisAlignment.start,
@@ -314,34 +315,44 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                          crossAxisAlignment: CrossAxisAlignment.start,
                                          mainAxisAlignment: MainAxisAlignment.start,
                                          children: [
-                                           Container(
-                                             alignment: Alignment.center,
-                                             padding: EdgeInsets.symmetric(horizontal: 10,vertical: 3),
-                                             decoration: BoxDecoration(
-                                               borderRadius: BorderRadius.circular(7),
-                                               color: Main_Theme_textColor.withOpacity(0.5),
-                                             ),
-                                             child:
+                                           Row(
+                                             children: [
+                                               Container(
+                                                 alignment: Alignment.center,
+                                                 padding: EdgeInsets.symmetric(horizontal: 10,vertical: 3),
+                                                 decoration: BoxDecoration(
+                                                   borderRadius: BorderRadius.circular(7),
+                                                   color: Main_Theme_textColor.withOpacity(0.5),
+                                                 ),
+                                                 child:
 
-                                             ColorCustomText(fontSize: fontTitle, fontWeight: FontWeight.w700, text: "${widget.getProfile["EMPCODE"]}",
-                                               letterSpacing: 0.7, textColor: Main_Theme_WhiteCollor,),
+                                                 ColorCustomText(fontSize: fontTitle, fontWeight: FontWeight.w700, text: "${widget.getProfile["EMPCODE"]}",
+                                                   letterSpacing: 0.7, textColor: Main_Theme_WhiteCollor,),
+                                               ),
+                                               Spacer()
+                                             ],
                                            ),
-                                           SizedBox(height:2,),
-                                           ColorCustomText(fontSize: fontTitle+2,maxLines: 1,overflow: TextOverflow.ellipsis, fontWeight: FontWeight.w600, text: "${widget.getProfile["EMPLOYEE_NAME_ENGLISH"]}", letterSpacing: 0.5, textColor: Main_Theme_textColor,),
-                                           ColorCustomText(fontSize: fontSubTitle, fontWeight: FontWeight.w500, text: "${widget.getProfile["DESIGNATION_ENGLISH"]}", letterSpacing: 0.5, textColor: Main_Theme_textColor,),
 
+                                           SizedBox(height:2,),
+                                           ColorCustomText(fontSize: fontTitle, maxLines: 1,overflow:TextOverflow.ellipsis,fontWeight: FontWeight.w600, text: "jsdf dsjhf hsd ${widget.getProfile["EMPLOYEE_NAME_ENGLISH"]}", letterSpacing: 0.5, textColor: Main_Theme_textColor,),
+                                           ColorCustomText(fontSize: fontSubTitle, fontWeight: FontWeight.w500, text: "${widget.getProfile["DESIGNATION_ENGLISH"]}", letterSpacing: 0.5, textColor: Main_Theme_textColor,),
+                                       
                                          ],
                                        ),
                                      ),
-                                     Spacer(),
-                                     CircleAvatar(
-                                       backgroundColor:  Main_Theme_textColor.withOpacity(0.5),
-                                       radius: 20,
-                                       child: new SvgPicture.asset("Assets/Employee_Profile_Icon/edit.svg",
-                                       height: 18,
-                                         width: 18,
-                                         color: Main_Theme_WhiteCollor,
-                                       )
+                                     SizedBox(width: 10,),
+                                     Container(
+                                       height: 40,
+                                       width: 40,
+                                       child: CircleAvatar(
+                                         backgroundColor:  Main_Theme_textColor.withOpacity(0.5),
+                                         radius: 20,
+                                         child: new SvgPicture.asset("Assets/Employee_Profile_Icon/edit.svg",
+                                         height: 18,
+                                           width: 18,
+                                           color: Main_Theme_WhiteCollor,
+                                         )
+                                       ),
                                      ),
                                      SizedBox(width: 10,)
                                    ],
@@ -365,7 +376,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                        mainAxisAlignment: MainAxisAlignment.start,
                                        children: [
                                          Text("Dep : ", style: customSubHeadingTextStyle(Main_Theme_textColor.withOpacity(0.7)),),
-                                         Text("${widget.getProfile["DEPARTMENT_ENGLISH"]??""}",overflow: TextOverflow.ellipsis,maxLines: 1, style: customSubHeadingTextStyle(Main_Theme_textColor.withOpacity(0.9)),)
+                                         Text("${widget.getProfile["DEPARTMENT_ENGLISH"]??""}",overflow: TextOverflow.ellipsis,maxLines: 1,
+                                           style: customSubHeadingTextStyle(Main_Theme_textColor.withOpacity(0.9)),)
 
                                        ],
                                      ),
@@ -531,7 +543,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                     SvgPicture.asset(
                                                       'Assets/Employee_Profile_Icon/profileinf.svg',
                                                       height: 30.0,
-                                                      width: 30.0,
+                                                      width: 32.0,
                                                       color: Main_Theme_textColor,
                                                     ),
                                                     SizedBox(width: 10,),
@@ -541,11 +553,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                       children: [
                                                         Text(
                                                           SelfProfileInformationCardlist[index].text1,
-                                                          style: customHeadingTextStyle(Main_Theme_textColor.withOpacity(0.9)),
+                                                          style: customHeadingTextStyle(Main_Theme_textColor.withOpacity(0.7)),
                                                         ),
                                                         SelfProfileInformationCardlist[index].text2==""?Container():  Text(
                                                           SelfProfileInformationCardlist[index].text2,
-                                                          style: customSubHeadingTextStyle(Main_Theme_textColor.withOpacity(0.7)),
+                                                          style: customSubHeadingTextStyle(Main_Theme_textColor.withOpacity(0.9)),
                                                         ),
                                                       ],
                                                     ),

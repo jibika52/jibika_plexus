@@ -35,11 +35,11 @@ class SelfProfileImageNameSubName extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "$text1",
+                    "$text1 : ",
                     style: TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.bold,
-                        color: Main_Theme_textColor.withOpacity(0.9)
+                        color: Main_Theme_textColor.withOpacity(0.7)
                     ),
                   ),
                   "$text1"==""?Container():  Text(
@@ -47,7 +47,7 @@ class SelfProfileImageNameSubName extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
-                      color: Main_Theme_textColor.withOpacity(0.8),
+                      color: Main_Theme_textColor.withOpacity(0.9),
                     ),
                   ),
                 ],
