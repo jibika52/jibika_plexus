@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../../../../../CustomWidget/CustomImage/custom_image.dart';
 import '../../../../../CustomWidget/CustomText/custom_text.dart';
@@ -11,32 +12,49 @@ class SelfProfileImageNameSubName extends StatelessWidget {
   String ? text2;
   @override
   Widget build(BuildContext context) {
+
     return Container(
-      padding: EdgeInsets.only(top: 5,left: 10),
-      height: 60,
-      width: double.infinity,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: Main_Theme_WhiteCollor,
-        border: Border(
-            bottom: BorderSide(color: Main_Theme_textColor.withOpacity(0.1),)
-        ),
+        borderRadius: BorderRadius.circular(7),
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
+      margin: EdgeInsets.only(bottom: 5),
+      padding: const EdgeInsets.symmetric(horizontal: 10.0,vertical: 5),
+      child: Column(
         children: [
-          CustomImageSction2(height: 24, width: 24, radius: 5, image: "$image", img_color: Main_Theme_textColor.withOpacity(0.7)),
-          SizedBox(width: 10,),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
+          Row(
             children: [
-              SizedBox(height: 4,),
-              ColorCustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "$text1", letterSpacing: 0.3, textColor: Main_Theme_textColor,),
-              ColorCustomText(fontSize: 13, fontWeight: FontWeight.w500, text: "$text2", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.5),),
+              SvgPicture.asset(
+                'Assets/Employee_Profile_Icon/profileinf.svg',
+                height: 30.0,
+                width: 30.0,
+                color: Main_Theme_textColor,
+              ),
+              SizedBox(width: 10,),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "$text1",
+                    style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                        color: Main_Theme_textColor.withOpacity(0.9)
+                    ),
+                  ),
+                  "$text1"==""?Container():  Text(
+                    "$text2",
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                      color: Main_Theme_textColor.withOpacity(0.8),
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
+          Divider()
         ],
       ),
     );

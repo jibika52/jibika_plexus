@@ -13,6 +13,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 const Main_Theme_textColor = Color(0xff333333);
 const Main_Theme_textColor_tir_Condition = Color(0xffACC027);
@@ -69,10 +70,10 @@ late double  d_width;
 const font11=11.0;
 const font12header=13.0;
 const font13header=13.0;
-const font13=13.0;
-const font14=14.0;
+
+const fontSubTitle=14.0;
 const font15=15.0;
-const font16=16.0;
+const fontTitle=16.0;
 const font18=18.0;
 const font19=19.0;
 const font20=20.0;
@@ -245,3 +246,31 @@ class FitnessAppTheme {
   color: lightText, // was lightText
  );
 }
+
+
+ LinearGradient customGradientBackground() {
+  return LinearGradient(
+   colors: [
+     Main_Theme_textColor_tir_Condition.withOpacity(0.5), CustomButtonColor.withOpacity(0.7),],
+  );
+ }
+
+/// Title text Style------------------------------------------------------------------
+ TextStyle customHeadingTextStyle(Color  ? color) {
+  return GoogleFonts.roboto(
+   fontSize: fontTitle,
+   fontWeight: FontWeight.bold,
+   color: color,
+   letterSpacing:0.4
+  );
+ }
+
+/// SubTitle text Style------------------------------------------------------------------
+ TextStyle customSubHeadingTextStyle(Color  ? color) {
+  return GoogleFonts.roboto(
+   fontSize: fontSubTitle,
+   fontWeight: FontWeight.bold,
+   color: color,
+   letterSpacing:0.4
+  );
+ }
