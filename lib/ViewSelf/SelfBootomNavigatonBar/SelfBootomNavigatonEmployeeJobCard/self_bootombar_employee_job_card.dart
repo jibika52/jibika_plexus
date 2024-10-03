@@ -88,7 +88,6 @@ class _SelfBootomBarJobCardScreenState extends State<SelfBootomBarJobCardScreen>
                         if(index==0){
                           Navigator.push(context, CupertinoPageRoute(builder: (context) => ProfileScreen(
                             areYouFromEmployee: "user",
-                            getProfile: [],
                           ),));
                         }
                       else if(index==1){

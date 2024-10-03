@@ -68,8 +68,8 @@ class SelfDashboardController with ChangeNotifier{
   }
   ///  Leave allocation --------------------------------------------------------------------------
   dynamic selfAdminAdmin_Get_Monthly_Att_SummaryCountList;
-  selfAdminAdmin_Get_Monthly_Att_SummaryCountProvider(String SUMMARY_MONTH, BuildContext context)async{
-    selfAdminAdmin_Get_Monthly_Att_SummaryCountList =await CustomHttpSelf().selfAdminAdmin_Get_Monthly_Att_SummaryCount( SUMMARY_MONTH, context);
+  selfAdminAdmin_Get_Monthly_Att_SummaryCountProvider(String SUMMARY_MONTH,String ID_CARD_NO,String UserId,String attendanceType, BuildContext context)async{
+    selfAdminAdmin_Get_Monthly_Att_SummaryCountList =await CustomHttpSelf().selfAdminAdmin_Get_Monthly_Att_SummaryCount(SUMMARY_MONTH, ID_CARD_NO, UserId, attendanceType, context);
     notifyListeners();
   }
   ///   selfAdminAdmin_Get_Emp_New_FaceList--------------------------------------------------------------------------

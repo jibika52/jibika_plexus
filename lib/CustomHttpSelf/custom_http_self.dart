@@ -278,12 +278,15 @@ class CustomHttpSelf{
 
 
   ///  Self Or Admin Get selfAdminAdmin Get Monthly Att SummaryCountList Count --------------------------------------------------------------------------
-    selfAdminAdmin_Get_Monthly_Att_SummaryCount( String SUMMARY_MONTH, BuildContext context)async{
+    selfAdminAdmin_Get_Monthly_Att_SummaryCount( String SUMMARY_MONTH,String ID_CARD_NO,String UserId,String attendanceType, BuildContext context)async{
     dynamic  selfAdminAdmin_Get_Monthly_Att_SummaryCountList  ;
     var body = jsonEncode({
-      "UserId":"${GetStorage().read("mobile_id")}",
-      "ID_CARD_NO":"${GetStorage().read("IdCardNo")}",
-        "attendanceType" : "GENERAL",
+    //  "UserId":"${GetStorage().read("mobile_id")}",
+      "UserId":"$UserId",
+   //   "ID_CARD_NO":"${GetStorage().read("IdCardNo")}",
+      "ID_CARD_NO":"$ID_CARD_NO",
+     //   "attendanceType" : "GENERAL",
+        "attendanceType" : "$attendanceType",
         "SUMMARY_MONTH": "$SUMMARY_MONTH"
     });
     try{

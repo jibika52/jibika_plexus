@@ -14,6 +14,7 @@ import 'package:jibika_plexus/View/BootomNatchBar/BootomNavigationBarItemsScreen
 import 'package:jibika_plexus/View/BootomNatchBar/bootom_bar_screen.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../Controller/CounterProvider/counter_provider.dart';
 import '../../../../CustomWidget/CustomImage/custom_image.dart';
 import '../../../../CustomWidget/CustomText/custom_text.dart';
 import '../../../../Utils/constants.dart';
@@ -214,7 +215,8 @@ class _BootomNavBarItemsEmployeeHomeScreenState extends State<BootomNavBarItemsE
                                   ),
                                 ],
                               ),
-                            ))
+                          ),
+                        )
                       ],
                     ),
                   ),
@@ -241,6 +243,7 @@ class _BootomNavBarItemsEmployeeHomeScreenState extends State<BootomNavBarItemsE
                                      Navigator.push(context, MaterialPageRoute(builder: (context) => EmployeeProfileScreen(
                                       currentEmployeedataIndex: value.Admin_GetEmployeeListByStatus[index],
                                     ),));
+                                     Provider.of<CounterProvider>(context, listen: false).selectedEmployeeforGetProfileFunction(index);
                                      Provider.of<OnboardingEmployeeController>(context,listen: false).GetEmployeeByIdListProvider("${value.Admin_GetEmployeeListByStatus[index]["IdCardNo"]}","${GetStorage().read("mobile_id")}", context);
                                 },
                                     child: AnimatedContainer(

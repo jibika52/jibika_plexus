@@ -24,8 +24,8 @@ import '../../../CustomWidget/CustomImage/custom_image.dart';
 import '../SelfBootomNavigatonBarHomeScreen/self_bootom_navigaton_bar_home_screen.dart';
 
 class SelfBootomNavigatonEmployeeDashboard extends StatefulWidget {
-  const SelfBootomNavigatonEmployeeDashboard({super.key});
-
+  SelfBootomNavigatonEmployeeDashboard({super.key,required this.are_you_user});
+  String ? are_you_user;
   @override
   State<SelfBootomNavigatonEmployeeDashboard> createState() => _SelfBootomNavigatonEmployeeDashboardState();
 }
@@ -53,6 +53,9 @@ class _SelfBootomNavigatonEmployeeDashboardState extends State<SelfBootomNavigat
     );
     Provider.of<SelfDashboardController>(context,listen: false).selfAdminAdmin_Get_Monthly_Att_SummaryCountProvider(
         "${DateFormat("MMM-yyyy").format(DateTime.now())}",
+        "${GetStorage().read("IdCardNo")}",
+        "${GetStorage().read("mobile_id")}",
+        "GENERAL",
         context
     );
     // TODO: implement initState
@@ -393,8 +396,14 @@ class _SelfBootomNavigatonEmployeeDashboardState extends State<SelfBootomNavigat
         _selected_pick_month = selected;
         // Provider.of<HomeProvider>(context,listen: false).dashboardBarChartDataProvider("${GetStorage().read("mobile_id")}", "${DateFormat('dd-MMMM-yyyy').format(DateTime.now())}","$selectedValue", context);
         Provider.of<SelfDashboardController>(context,listen: false).selfAdminAdmin_Get_Monthly_Att_SummaryCountProvider(
-            "${DateFormat("MMM-yyyy").format(_selected_pick_month)}",
-            context
+        "${DateFormat("MMM-yyyy").format(_selected_pick_month)}",
+        "${GetStorage().read("IdCardNo")}",
+        "${GetStorage().read("mobile_id")}",
+        "GENERAL",
+        context
+
+
+
         );
 
         Provider.of<SelfDashboardController>(context,listen: false).selfOneMonthAttendanceProvider(

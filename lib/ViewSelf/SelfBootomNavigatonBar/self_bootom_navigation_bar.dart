@@ -74,7 +74,7 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
   final List<Widget> bottomBarPages = [
 
     SelfBootomBarJobCardScreen(),
-    SelfBootomNavigatonEmployeeDashboard(),
+    SelfBootomNavigatonEmployeeDashboard(are_you_user: "user",),
     SelfBootomNavigationLeave(),
     GetStorage().read("is_Start_Journey")=="true" ?CreateConveyanceScreen():  SelfBootomNavigationConvienceScreen(),
     SelfBootomNavigatonBarHomeScreen(),

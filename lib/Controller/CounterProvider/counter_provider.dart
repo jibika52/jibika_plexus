@@ -112,6 +112,13 @@ class CounterProvider with ChangeNotifier{
     _MaritalStatus="$getMaritalStatus";
     notifyListeners();
   }
+  ///Get Single || Marig status
+  int _selectedEmployeeforGetProfile=-1;
+  int get selectedEmployeeforGetProfile=>_selectedEmployeeforGetProfile;
+  void selectedEmployeeforGetProfileFunction(int selectedEmployee){
+    _selectedEmployeeforGetProfile= selectedEmployee;
+    notifyListeners();
+  }
 
 
 }

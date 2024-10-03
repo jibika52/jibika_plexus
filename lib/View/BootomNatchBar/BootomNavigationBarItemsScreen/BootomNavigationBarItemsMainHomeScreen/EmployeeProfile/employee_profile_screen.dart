@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:jibika_plexus/Controller/OnboardingEmployeeController/on_boarding_employee_controller.dart';
 import 'package:jibika_plexus/CustomWidget/CustomAppBar/CustomDefaultAppBar/custom_default_app_bar.dart';
 import 'package:jibika_plexus/CustomWidget/CustomEmployeeProfile/custom_employee_profile.dart';
+import 'package:jibika_plexus/CustomWidget/CustomEmployeeProfile/custom_main_employee_profile.dart';
 import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/SelfBootomNavigatonEmployeeJobCard/SelfProfile/self_profile.dart';
 import 'package:jibika_plexus/main.dart';
 import 'package:provider/provider.dart';
@@ -64,21 +65,12 @@ class _EmployeeProfileScreenState extends State<EmployeeProfileScreen> {
         child: Column(
           children: [
             /// First part -----------------------------
-            CustomEmployeeProfile(
-              image: "${widget.currentEmployeedataIndex["EmpPhotoPath"]}",
-              id: "${widget.currentEmployeedataIndex["IdCardNo"]}",
-              name: "${widget.currentEmployeedataIndex["EmployeeNameEnglish"]}",
-              designation: "${widget.currentEmployeedataIndex["Designation"]}",
-              time: "${widget.currentEmployeedataIndex["Department"]}", onTap1: () {
 
-                }, onTap2: () {
-
-                },
-            onTap3: () {
-
-            },
-              need_location: false,
-            ),
+            customMainEmployeeProfile(
+                is_need_edit_button_on_short_profile: "false",
+                image: "${widget.currentEmployeedataIndex["EmpPhotoPath"]}", employeeCode: "${widget.currentEmployeedataIndex["IdCardNo"]}",
+                employeeName: "${widget.currentEmployeedataIndex["EmployeeNameEnglish"]}", employeeDesignation: "${widget.currentEmployeedataIndex["Designation"]}",
+                employeeDepartment: "${widget.currentEmployeedataIndex["Department"]}", birthday:  "${widget.currentEmployeedataIndex["BirthDate"]??""}"),
             /// Second part -----------------------------
 
             Expanded(
@@ -97,7 +89,6 @@ class _EmployeeProfileScreenState extends State<EmployeeProfileScreen> {
                     return InkWell(
                       onTap: () {
                         Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileScreen(
-                          getProfile: Provider.of<OnboardingEmployeeController>(context).GetEmployeeByIdList,
                           areYouFromEmployee: "Employee",
                         ),));
                       },
