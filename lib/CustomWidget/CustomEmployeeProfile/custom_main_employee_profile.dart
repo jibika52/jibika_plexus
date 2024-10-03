@@ -2,9 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../../CustomSelfWedget/ShareMessagePdf/share_message_pdf_summary.dart';
 import '../../Utils/constants.dart';
+import '../../View/BootomNatchBar/BootomNavigationBarItemsScreen/BootomNavigationBarItemsMainHomeScreen/CreateEmployeeScreen/create_employee2.dart';
 import '../CustomImage/custom_image.dart';
 import '../CustomText/custom_text.dart';
 
@@ -17,6 +19,7 @@ class customMainEmployeeProfile extends StatelessWidget {
     required this.employeeDepartment,
     required this.birthday,
    required this.is_need_edit_button_on_short_profile,
+    this.profile,
   });
   String image;
   String employeeCode;
@@ -25,8 +28,7 @@ class customMainEmployeeProfile extends StatelessWidget {
   String employeeDepartment;
   String birthday;
   String is_need_edit_button_on_short_profile;
-
-
+  dynamic profile;
   double container_Radius=50.0;
 
   @override
@@ -115,17 +117,58 @@ class customMainEmployeeProfile extends StatelessWidget {
                             ),
                           ),
                           SizedBox(width: 10,),
-                          is_need_edit_button_on_short_profile=="false"?Container(width: 2,): Container(
-                            height: 40,
-                            width: 40,
-                            child: CircleAvatar(
-                                backgroundColor:  Main_Theme_textColor.withOpacity(0.5),
-                                radius: 20,
-                                child: new SvgPicture.asset("Assets/Employee_Profile_Icon/edit.svg",
-                                  height: 18,
-                                  width: 18,
-                                  color: Main_Theme_WhiteCollor,
-                                )
+                          is_need_edit_button_on_short_profile=="false"?Container(width: 2,): InkWell(
+                            onTap: () {
+                                      Navigator.push(context, CupertinoPageRoute(builder: (context) => CreateNewEmployeeScreen2(
+                                          employeeID:"${profile["EMPCODE"]}",
+                                          employeeNID: "${profile["NID_NO"]}",
+                                          employeeName:employeeName,
+                                          employeeDateOfBirth: birthday,
+                                          employeeMobileNumber:"${profile["MOBILE_NO"]}",
+                                          ShiftPlane:"${profile["SHIFT_PLAN_ENGLISH"]}",
+                                          employeeGrowssallary: "${profile["GROSS"]}",
+                                          employeeJoiningDate: "${profile["JOINING_DATE1"]}",
+
+                                          joiningDateController: "${profile["JOINING_DATE1"]}",
+                                          employeeRFController: "${profile["RF_ID_NO"]}",
+                                          fatherNameController: "${profile["FATHER_NAME_ENGLISH"]}",
+                                          gmailController: "${profile["EMAIL"]}",
+                                          presentAddressController: "${profile["PRESENT_ADDRESS_ENGLISH"]}",
+                                          parmenentAddressController: "${profile["PERMANENT_ADDRESS_ENGLISH"]}",
+                                          siftplaneController: "${profile["SHIFT_PLAN_CODE"]}",
+                                          StafCategoryController: "${profile["STAFF_CATEGORY_CODE"]}",
+                                          InactiveDateController: "${profile["INACTIVE_DATE"]}",
+                                          BasicSalaryController: "${profile["BASIC"]}",
+                                          HouserentController: "${profile["HOUSE_RENT"]}",
+                                          MedicalAllowanceController: "${profile["MEDICAL_ALLOWANCE"]}",
+                                          FoodAllowanceController: "${profile["FOOD_ALLOWANCE"]}",
+                                          ConvinceAllowanceController: "${profile["TRANSPORT_ALLOWANCE"]}",
+                                          OtherAllowanceController: "${profile["OTHER_ALLOWANCE"]}",
+                                          OtherDeductionController: "${profile["OTHER_DEDUCTION"]}",
+                                          OverTimeRateController: "${profile["OT_RATE"]}",
+                                          BankBranchNameController: "${profile["BANK_INFO_ENGLISH"]}",
+                                          AccountnumberController: "${profile["BANK_AC_NO"]}",
+                                          NomineeNameController: "${profile["NOMINEE_PERSON_NAME_ENGLISH"]}",
+                                          NomineeAddressController: "${profile["NOMINEE_PERSON_ADDRESS"]}",
+                                          NomineephoneController: "${profile["NOMINEE_PERSON_PHONE"]}",
+                                          NomineeEmailController: "",
+                                          RelationwithNomineeController: "${profile["NOMINEE_RELATION"]}",)
+                                      ,),
+                                    );
+                                  },
+
+                            child: Container(
+                              height: 40,
+                              width: 40,
+                              child: CircleAvatar(
+                                  backgroundColor:  Main_Theme_textColor.withOpacity(0.5),
+                                  radius: 20,
+                                  child: new SvgPicture.asset("Assets/Employee_Profile_Icon/edit.svg",
+                                    height: 18,
+                                    width: 18,
+                                    color: Main_Theme_WhiteCollor,
+                                  )
+                              ),
                             ),
                           ),
                           SizedBox(width: 10,)
@@ -133,61 +176,73 @@ class customMainEmployeeProfile extends StatelessWidget {
                       ),
                     ),
 
-                    Container(
-                      height: 84,
-                      margin: EdgeInsets.all(10),
-                      padding: EdgeInsets.symmetric(horizontal: 20,vertical: 10),
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(7),
-                        color:Main_Theme_WhiteCollor.withOpacity(0.2),
-                      ),
-                      child:   Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
+                    Stack(
+                      children: [
+                        Container(
+                          height: 84,
+                          margin: EdgeInsets.all(10),
+                          padding: EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(7),
+                            color:Main_Theme_WhiteCollor.withOpacity(0.2),
+                          ),
+                          child:   Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("Dep : ", style: customSubHeadingTextStyle(Main_Theme_textColor.withOpacity(0.7)),),
-                              Text( "${employeeDepartment}",overflow: TextOverflow.ellipsis,maxLines: 1,
-                                style: customSubHeadingTextStyle(Main_Theme_textColor.withOpacity(0.9)),)
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Text("Dep : ", style: customSubHeadingTextStyle(Main_Theme_textColor.withOpacity(0.7)),),
+                                  Text( "${employeeDepartment}",overflow: TextOverflow.ellipsis,maxLines: 1,
+                                    style: customSubHeadingTextStyle(Main_Theme_textColor.withOpacity(0.9)),)
+
+                                ],
+                              ),
+                              Spacer(),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  ColorCustomText(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w500,
+                                    text: "Deg : ",
+                                    letterSpacing: 0.3,
+                                    textColor:
+                                    Main_Theme_textColor.withOpacity(0.8),
+                                  ),
+                                  Text("$employeeDesignation", style: customSubHeadingTextStyle(Main_Theme_textColor.withOpacity(0.9)),)
+                                ],
+                              ),
+                              Spacer(),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  ColorCustomText(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w500,
+                                    text: "BirthDay : ",
+                                    letterSpacing: 0.3,
+                                    textColor:
+                                    Main_Theme_textColor.withOpacity(0.8),
+                                  ),
+                                  Text("$birthday", style: customSubHeadingTextStyle(Main_Theme_textColor.withOpacity(0.9)),)
+                                ],
+                              ),
 
                             ],
                           ),
-                          Spacer(),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              ColorCustomText(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w500,
-                                text: "Deg : ",
-                                letterSpacing: 0.3,
-                                textColor:
-                                Main_Theme_textColor.withOpacity(0.8),
-                              ),
-                              Text("$employeeDesignation", style: customSubHeadingTextStyle(Main_Theme_textColor.withOpacity(0.9)),)
-                            ],
-                          ),
-                          Spacer(),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              ColorCustomText(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w500,
-                                text: "BirthDay : ",
-                                letterSpacing: 0.3,
-                                textColor:
-                                Main_Theme_textColor.withOpacity(0.8),
-                              ),
-                              Text("$birthday", style: customSubHeadingTextStyle(Main_Theme_textColor.withOpacity(0.9)),)
-                            ],
-                          ),
-
-                        ],
-                      ),
+                        ),
+                        Positioned(
+                            bottom: 20,
+                            right: 20,
+                            child: Container(
+                          height: 60,
+                          width: 60,
+                          child: Image.asset("Assets/PrimaryInformation/qrcode.png"),
+                        ))
+                      ],
                     )
                   ],
                 ),

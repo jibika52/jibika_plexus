@@ -36,6 +36,31 @@ class CreateNewEmployeeScreen2 extends StatefulWidget {
     required this.employeeGrowssallary,
     required this.employeeJoiningDate,
 
+    required this.joiningDateController ,
+    required this.employeeRFController ,
+    required this.fatherNameController ,
+    required this.gmailController ,
+    required this.presentAddressController ,
+    required this.parmenentAddressController ,
+    required this.siftplaneController ,
+    required this.StafCategoryController ,
+    required this.InactiveDateController ,
+    required this.BasicSalaryController ,
+    required this.HouserentController ,
+    required this.MedicalAllowanceController ,
+    required this.FoodAllowanceController ,
+    required this.ConvinceAllowanceController ,
+    required this.OtherAllowanceController ,
+    required this.OtherDeductionController ,
+    required this.OverTimeRateController ,
+    required this.BankBranchNameController ,
+    required this.AccountnumberController ,
+    required this.NomineeNameController ,
+    required this.NomineeAddressController ,
+    required this.NomineephoneController ,
+    required this.NomineeEmailController ,
+    required this.RelationwithNomineeController ,
+
   });
   String employeeID;
   String employeeNID;
@@ -45,6 +70,34 @@ class CreateNewEmployeeScreen2 extends StatefulWidget {
   String ShiftPlane;
   String employeeGrowssallary;
   String employeeJoiningDate;
+  /////////////////////////////////
+  String joiningDateController ;
+  String employeeRFController ;
+  String fatherNameController ;
+  String gmailController ;
+  String presentAddressController ;
+  String parmenentAddressController ;
+  String siftplaneController ;
+  String StafCategoryController ;
+  String InactiveDateController ;
+  String BasicSalaryController ;
+  String HouserentController ;
+  String MedicalAllowanceController ;
+  String FoodAllowanceController ;
+  String ConvinceAllowanceController ;
+  String OtherAllowanceController ;
+  String OtherDeductionController ;
+  String OverTimeRateController ;
+  String BankBranchNameController ;
+  String AccountnumberController ;
+  String NomineeNameController ;
+  String NomineeAddressController ;
+  String NomineephoneController ;
+  String NomineeEmailController ;
+  String RelationwithNomineeController ;
+  /////////////////////////////////
+
+
   @override
   State<CreateNewEmployeeScreen2> createState() => _CreateNewEmployeeScreen2State();
 }
@@ -61,13 +114,9 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
   TextEditingController _gmailController = TextEditingController();
   TextEditingController _presentAddressController = TextEditingController();
   TextEditingController _parmenentAddressController = TextEditingController();
-  TextEditingController _maraitalStatus = TextEditingController();
   TextEditingController _siftplaneController = TextEditingController();
   TextEditingController _StafCategoryController = TextEditingController();
-  TextEditingController _workStationController = TextEditingController();
   TextEditingController _InactiveDateController = TextEditingController();
-  TextEditingController _RosterTypeController = TextEditingController();
-  TextEditingController _EmployeestatusController = TextEditingController();
   TextEditingController _GrossSalaryController = TextEditingController();
   TextEditingController _BasicSalaryController = TextEditingController();
   TextEditingController _HouserentController = TextEditingController();
@@ -141,6 +190,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
 
   @override
   void initState() {
+    Provider.of<OnboardingEmployeeController>(context,listen: false).GetDepartmentNDesinationListProvider("${GetStorage().read("mobile_id")}", context);
     _employeeIdController.text =widget.employeeID;
      _nIDController.text =widget.employeeNID;
     _employeeNameController.text =widget.employeeName;
@@ -150,7 +200,32 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
     _GrossSalaryController.text =widget.employeeGrowssallary;
    _joiningDateController.text =widget.employeeJoiningDate;
 
-
+///--------------------------------------- ----------------------------------------------------------///
+    _joiningDateController.text          =     widget.joiningDateController ;
+    _employeeRFController.text           =     widget.employeeRFController   ;
+    _fatherNameController.text           =     widget.fatherNameController  ;
+    _gmailController.text                =     widget.gmailController ;
+    _presentAddressController.text       =     widget.presentAddressController ;
+    _parmenentAddressController.text     =     widget.parmenentAddressController ;
+    _siftplaneController.text            =     widget.siftplaneController ;
+    _StafCategoryController.text         =     widget.StafCategoryController ;
+    _InactiveDateController.text         =     widget.InactiveDateController  ;
+    _BasicSalaryController.text          =     widget.BasicSalaryController ;
+    _HouserentController.text            =     widget.HouserentController ;
+    _MedicalAllowanceController.text     =     widget.MedicalAllowanceController ;
+    _FoodAllowanceController.text        =     widget.FoodAllowanceController ;
+    _ConvinceAllowanceController.text    =     widget.ConvinceAllowanceController ;
+    _OtherAllowanceController.text       =     widget.OtherAllowanceController ;
+    _OtherDeductionController.text       =     widget.OtherDeductionController ;
+    _OverTimeRateController.text         =     widget.OverTimeRateController ;
+    _BankBranchNameController.text       =     widget.BankBranchNameController  ;
+    _AccountnumberController.text        =     widget.AccountnumberController ;
+    _NomineeNameController.text          =     widget.NomineeNameController ;
+    _NomineeAddressController.text       =     widget.NomineeAddressController ;
+    _NomineephoneController.text         =     widget.NomineephoneController ;
+    _NomineeEmailController.text         =     widget.NomineeEmailController ;
+    _RelationwithNomineeController.text  =     widget.RelationwithNomineeController;
+///--------------------------------------------------------------------------------------------------///
     // TODO: implement initState
     super.initState();
   }
@@ -161,6 +236,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
     List  religionlist=Provider.of<OnboardingEmployeeController>(context).GetShiftPlanNWeekendList["religion"];
 
     List  departments=Provider.of<OnboardingEmployeeController>(context).GetDepartmentNDesinationList["departments"];
+
     List  designations=Provider.of<OnboardingEmployeeController>(context).GetDepartmentNDesinationList["designations"];
     List  section=Provider.of<OnboardingEmployeeController>(context).GetDepartmentNDesinationList["section"];
     List  workstation=Provider.of<OnboardingEmployeeController>(context).GetDepartmentNDesinationList["workstation"];

@@ -479,6 +479,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   children: [
                     /// First part -----------------------------
                     customMainEmployeeProfile(
+                      profile: getProfile,
                       is_need_edit_button_on_short_profile: "true",
                       image:widget.areYouFromEmployee =="user"?  "87" : "${getProfile["EMP_PHOTO_PATH"]}",
                       employeeCode:widget.areYouFromEmployee =="user"?  "87" : "${getProfile["EMPCODE"]}",
