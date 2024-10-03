@@ -1,3 +1,5 @@
+
+import 'package:web_socket_channel/status.dart' as status;
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get_storage/get_storage.dart';
@@ -5,6 +7,7 @@ import 'package:jibika_plexus/View/SplashScreen/splash_screen1.dart';
 import 'package:jibika_plexus/View/SplashScreen/splash_screen2.dart';
 import 'package:jibika_plexus/View/SplashScreen/splash_screen3.dart';
 import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/self_bootom_navigation_bar.dart';
+import 'package:web_socket_channel/web_socket_channel.dart';
 
 import '../BootomNatchBar/bootom_bar_screen.dart';
 
@@ -20,8 +23,26 @@ class _MainSplashPageViewScreenState extends State<MainSplashPageViewScreen> {
     LocationPermission permission = await Geolocator.requestPermission();
     print(permission);
   }
+
+
+  socketFunction()async {
+    print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+    final wsUrl = Uri.parse('ws://45.114.84.22:8081/Leave/GetNotifyMe?userid=01889173335');
+    print("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
+    final channel = WebSocketChannel.connect(wsUrl);
+    print("CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC");
+
+    await channel.ready;
+    print("DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD");
+
+    channel.stream.listen((message) {
+      print("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE $message");
+   //   channel.sink.close(status.goingAway);
+    });
+  }
   @override
   void initState() {
+    socketFunction();
     permissionn();
     Future.delayed(Duration(milliseconds: 500),() {
       if(GetStorage().read("id_token")!=null && GetStorage().read("user_type_id")==1001){
