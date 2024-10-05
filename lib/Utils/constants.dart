@@ -308,7 +308,7 @@ socketFunction(BuildContext context)async {
  print("DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD");
 
  channel.stream.listen((message) {
-  print("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE ${message.toString().substring(22, message.toString().length)}");
+  print("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE ${message.toString()}");
   Provider.of<CounterProvider>(context,listen: false).setNotificationCounterFunction(message.toString().substring(22, message.toString().length));
   //   channel.sink.close(status.goingAway);
  });
@@ -613,7 +613,7 @@ selfOffLineDataSync()async{
  /// ------- for loop ------------------------------------------------------
  try{
   print("Check ---------------- Status----------------- ${jsonEncode([fmap])}");
-  var data=await http.post(Uri.parse("${BASEURL}/Attendance/OffLineDataSync"),
+  var data=await http.post(Uri.parse("${BASEURL}/Attendance/OffSLineDataSync"),
       headers: {
        "Content-Type": "application/json",
        "username": "jibikaapps",
