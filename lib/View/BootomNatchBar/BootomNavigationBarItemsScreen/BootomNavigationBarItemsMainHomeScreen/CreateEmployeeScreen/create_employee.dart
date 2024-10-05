@@ -100,7 +100,7 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
     double w = MediaQuery.of(context).size.width;
     double C_height=8;
     double Cwidth=10;
-    List  shiftplanelist=Provider.of<OnboardingEmployeeController>(context).GetShiftPlanNWeekendList["shiftplan"];
+  //  List  shiftplanelist=Provider.of<OnboardingEmployeeController>(context).GetShiftPlanNWeekendList["shiftplan"];
     return Scaffold(
       appBar: PreferredSize(preferredSize: Size.fromHeight(75), child: CustomDefaultAppBar(onTap: () => Navigator.pop(context),
           text: "Primary Information")),
@@ -479,7 +479,7 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
                             shiftplan_id = newValue.toString();
                           });
                         },
-                        items: shiftplanelist.map((shift) {
+                        items: value.GetShiftPlanNWeekendList["shiftplan"].map((shift) {
                           return DropdownMenuItem(
                             child: CustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "${shift['EnglishName']}", letterSpacing: 0.3),
                             value: "${shift['Code']}",

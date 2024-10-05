@@ -27,8 +27,10 @@ import 'package:http/http.dart' as http;
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 import 'package:intl/intl.dart';
 import 'package:jibika_plexus/Api/Routes/routes.dart';
+import 'package:jibika_plexus/Controller/CounterProvider/counter_provider.dart';
 import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 import 'package:karmm_callkit/karmm_callkit.dart';
+import 'package:provider/provider.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
 import '../ViewSelf/SelfBootomNavigatonBar/BackgroundTrackingApiModelClass/background_tracking_api_modelclass.dart';
@@ -295,7 +297,7 @@ class FitnessAppTheme {
  }
 
  /// Socket add and connect
-socketFunction()async {
+socketFunction(BuildContext context)async {
  print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
  final wsUrl = Uri.parse('ws://45.114.84.22:8081/Leave/GetNotifyMe?userid=01889173335');
  print("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
@@ -306,13 +308,14 @@ socketFunction()async {
  print("DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD");
 
  channel.stream.listen((message) {
-  print("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE $message");
+  print("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE ${message.toString().substring(22, message.toString().length)}");
+  Provider.of<CounterProvider>(context,listen: false).setNotificationCounterFunction(message.toString().substring(22, message.toString().length));
   //   channel.sink.close(status.goingAway);
  });
 }
 
 /// -------------- Custom Alert function ----------------------------------
-alertFunction(BuildContext context,String text1,String text2){
+customNotification(BuildContext context,String text1,String text2){
  ElegantNotification(
   borderRadius: BorderRadius.circular(11),
   width: 340,
@@ -422,7 +425,6 @@ Future<void> initializeService() async {
      .resolvePlatformSpecificImplementation<
      AndroidFlutterLocalNotificationsPlugin>()
      ?.createNotificationChannel(channel);
-
  await service.configure(
   androidConfiguration: AndroidConfiguration(
    // this will be executed when app is in foreground or background in separated isolate

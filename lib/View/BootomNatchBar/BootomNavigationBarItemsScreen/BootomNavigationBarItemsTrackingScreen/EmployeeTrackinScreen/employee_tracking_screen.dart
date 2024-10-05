@@ -8,6 +8,7 @@ import 'package:intl/intl.dart';
 import 'package:jibika_plexus/CustomWidget/CustomAppBar/CustomDefaultAppBar/custom_default_app_bar.dart';
 import 'package:jibika_plexus/CustomWidget/CustomButton/custom_button.dart';
 import 'package:jibika_plexus/CustomWidget/CustomEmployeeProfile/custom_employee_profile.dart';
+import 'package:jibika_plexus/CustomWidget/CustomEmployeeProfile/custom_main_employee_profile.dart';
 import 'package:jibika_plexus/View/BootomNatchBar/BootomNavigationBarItemsScreen/BootomNavigationBarItemsTrackingScreen/EmployeeConvinceTrackinScreen/employee_convince_tracking_screen.dart';
 import 'package:jibika_plexus/tracking_google_map.dart';
 import 'package:jibika_plexus/tracking_google_map_test.dart';
@@ -59,20 +60,22 @@ class _EmployeeTrackinScreenState extends State<EmployeeTrackinScreen> {
             /// First part -----------------------------
             Stack(
               children: [
-                CustomEmployeeProfile(
-                  image: "${widget.image}", id: "${widget.e_code}", name: "${widget.name}", designation: "${widget.e_deg}",
-                    time: "${widget.e_dep}", onTap1: () {
-
-                    }, onTap2: () {
-
-                    },
-                onTap3: () {
-                },
-                  need_location: false,
-                ),
+                // CustomEmployeeProfile(
+                //   image: "${widget.image}", id: "${widget.e_code}", name: "${widget.name}", designation: "${widget.e_deg}",
+                //     time: "${widget.e_dep}", onTap1: () {
+                //
+                //     }, onTap2: () {
+                //
+                //     },
+                // onTap3: () {
+                // },
+                //   need_location: false,
+                // ),
+                customMainEmployeeProfile(image:  "${widget.image}", employeeCode: "${widget.e_code}", employeeName: "${widget.name}", employeeDesignation: "${widget.e_deg}",
+                    employeeDepartment: "${widget.e_dep}", birthday: "", is_need_edit_button_on_short_profile: "false"),
                 Positioned(
-                    right: 15,
-                    bottom: 8,
+                    right: 20,
+                    top: 110,
                     child: InkWell(
                       onTap: () {
                       //   Navigator.push(context, MaterialPageRoute(builder: (context) => EmployeeConvinceTrackinScreen(
@@ -81,7 +84,7 @@ class _EmployeeTrackinScreenState extends State<EmployeeTrackinScreen> {
 
                         print("aaaaaaaaaaaaaaa ${Provider.of<TrackingController>(context,listen: false).EmployeeLocaltionInfoList}");
 
-                        "${Provider.of<TrackingController>(context,listen: false).EmployeeLocaltionInfoList}"=="null"?alertFunction(context, "You don't have location", "Please Enabled GPS Track"):         Navigator.push(context, MaterialPageRoute(builder: (context) => TrackingMapScreenTEstPoliline(
+                        "${Provider.of<TrackingController>(context,listen: false).EmployeeLocaltionInfoList}"=="null"?customNotification(context, "You don't have location", "Please Enabled GPS Track"):         Navigator.push(context, MaterialPageRoute(builder: (context) => TrackingMapScreenTEstPoliline(
                               list_of_location: Provider.of<TrackingController>(context).EmployeeLocaltionInfoList,
                           lat: double.parse("${Provider.of<TrackingController>(context).EmployeeLocaltionInfoList.last["Latitude"]}"),
                           lon: double.parse("${Provider.of<TrackingController>(context).EmployeeLocaltionInfoList.last["Longitude"]}"),
@@ -89,14 +92,15 @@ class _EmployeeTrackinScreenState extends State<EmployeeTrackinScreen> {
                         ));
                       },
                       child: Container(
-                                        height: 30,
-                                        width: 100,
+                                        height: 35,
+                                        width: 110,
                                         decoration: BoxDecoration(
-                        gradient: LinearGradient(colors: [
-                          Main_Theme_textColor_tir_Condition.withOpacity(0.5),
-                          Main_Theme_textColor_tir_Condition.withOpacity(0.6),
-                          // Main_Theme_textColor_tir_Condition,
-                        ]),
+                        // gradient: LinearGradient(colors: [
+                        //   Main_Theme_textColor_tir_Condition.withOpacity(0.5),
+                        //   Main_Theme_textColor_tir_Condition.withOpacity(0.6),
+                        //   // Main_Theme_textColor_tir_Condition,
+                        // ]),
+                                          color: Main_Theme_textColor.withOpacity(0.5),
                       borderRadius: BorderRadius.circular(7),
                       border: Border.all(
                         color: Main_Theme_WhiteCollor.withOpacity(0.7),
@@ -108,7 +112,7 @@ class _EmployeeTrackinScreenState extends State<EmployeeTrackinScreen> {
                           children: [
                          Icon(Icons.location_on_outlined,size: 17,color: Main_Theme_WhiteCollor.withOpacity(0.7),),
                             //   Image.asset("Assets/DashBoardIcons/location.png",height: 18,width: 18,fit: BoxFit.fill,color: Main_Theme_WhiteCollor,),
-                            ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Track Now", letterSpacing: 0.2,textColor: Main_Theme_WhiteCollor,),
+                            ColorCustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "Track Now", letterSpacing: 0.2,textColor: Main_Theme_WhiteCollor,),
                           ],
                         ),
                                       ),
