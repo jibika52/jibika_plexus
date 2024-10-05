@@ -78,12 +78,14 @@ class _EmployeeTrackinScreenState extends State<EmployeeTrackinScreen> {
                       //   Navigator.push(context, MaterialPageRoute(builder: (context) => EmployeeConvinceTrackinScreen(
                       // //    list_of_location: Provider.of<TrackingController>(context).EmployeeLocaltionInfoList,
                       //   ),
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => TrackingMapScreenTEstPoliline(
+
+                        print("aaaaaaaaaaaaaaa ${Provider.of<TrackingController>(context,listen: false).EmployeeLocaltionInfoList}");
+
+                        "${Provider.of<TrackingController>(context,listen: false).EmployeeLocaltionInfoList}"=="null"?alertFunction(context, "You don't have location", "Please Enabled GPS Track"):         Navigator.push(context, MaterialPageRoute(builder: (context) => TrackingMapScreenTEstPoliline(
                               list_of_location: Provider.of<TrackingController>(context).EmployeeLocaltionInfoList,
                           lat: double.parse("${Provider.of<TrackingController>(context).EmployeeLocaltionInfoList.last["Latitude"]}"),
                           lon: double.parse("${Provider.of<TrackingController>(context).EmployeeLocaltionInfoList.last["Longitude"]}"),
                         ),
-
                         ));
                       },
                       child: Container(

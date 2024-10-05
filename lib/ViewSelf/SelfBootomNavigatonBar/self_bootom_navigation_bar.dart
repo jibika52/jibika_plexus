@@ -64,9 +64,9 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
         "${DateFormat('dd-MMM-yyyy').format(DateTime.now())}",
         "${GetStorage().read("IdCardNo")}",
         "GENERAL", context);
-    Future.delayed(Duration(seconds: 2),() {
-      startService();
-    },);
+    // Future.delayed(Duration(seconds: 2),() {
+    //   startService();
+    // },);
     // TODO: implement initState
     super.initState();
   }
@@ -233,316 +233,316 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
   bool keyboardOpen = false;
 }
 
-
-/// Background processing is running form here below now check the code-----------------------------------------------------------------------------------
-void   startService() async {
-  await initializeService();
-}
-
-void stopService() {
-  service.invoke("stopService");
-}
-
-void initCallPushListeners() {
-  ConnectycubeFlutterCallKit.setOnLockScreenVisibility(isVisible: true);
-  ConnectycubeFlutterCallKit.instance.init(
-  );
-}
-
-// https://github.com/flutter/flutter/blob/master/docs/platforms/android/Upgrading-pre-1.12-Android-projects.md
-
-void initCallPush() {
-  print("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz---------------1------------------------");
-  ConnectycubeFlutterCallKit.getLastCallId().then((value) {
-    ConnectycubeFlutterCallKit.reportCallEnded(sessionId: value);
-  });
-
-  var sessionId = DateTime.now().microsecondsSinceEpoch.toString();
-  // CallEvent callEvent = CallEvent(
-  //     sessionId: sessionId,
-  //     callType: 0,
-  //     callerId: randomIds(),
-  //     callerName: randomString(5),
-  //     opponentsIds: {randomIds(), randomIds()},
-  //     callPhoto: 'https://i.imgur.com/KwrDil8b.jpg',
-  //     userInfo: {'user_id': '${randomIds()}'});
-  // ConnectycubeFlutterCallKit.showCallNotification(callEvent);
-}
-
-void showToast(String message) {
-  Fluttertoast.showToast(
-      msg: message,
-      toastLength: Toast.LENGTH_SHORT,
-      gravity: ToastGravity.BOTTOM,
-      timeInSecForIosWeb: 1,
-      backgroundColor: Colors.red,
-      textColor: Colors.white,
-      fontSize: 16.0);
-}
-
-int randomIds() {
-  var rng = new Random();
-  var randomNumber = rng.nextInt(100000) + 1;
-  return randomNumber;
-}
-
-// generate random string function
-String randomString(int length) {
-  var rng = new Random();
-  var codeUnits =
-  List.generate(length, (index) => rng.nextInt(33) + 89); // 33 to 122
-  return String.fromCharCodes(codeUnits);
-}
-
-void checkFullScreenIntentPermission() async {
-  var canUseFullScreenIntent =
-  await ConnectycubeFlutterCallKit.canUseFullScreenIntent();
-  print("boolValue: $canUseFullScreenIntent");
-  if (canUseFullScreenIntent == false) {
-    ConnectycubeFlutterCallKit.provideFullScreenIntentAccess();
-  }
-}
-
-// this will be used as notification channel id
-const notificationChannelId = 'my_foreground';
-
-// this will be used for notification id, So you can update your custom notification with this id.
-const notificationId = 888;
-final service = FlutterBackgroundService();
-Future<void> initializeService() async {
-  print("--- ----------------------------------${GetStorage().read("SHIFT_IN_TIME")} -----------------------");
-  /// OPTIONAL, using custom notification channel id
-  const AndroidNotificationChannel channel = AndroidNotificationChannel(
-    'my_foreground', // id
-    'MY FOREGROUND SERVICE', // title
-    description:
-    'This channel is used for important notifications.', // description
-    importance: Importance.low, // importance must be at low or higher level
-  );
-
-  final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-  FlutterLocalNotificationsPlugin();
-
-  if (Platform.isIOS || Platform.isAndroid) {
-    await flutterLocalNotificationsPlugin.initialize(
-      const InitializationSettings(
-        iOS: DarwinInitializationSettings(),
-        android: AndroidInitializationSettings('ic_bg_service_small'),
-      ),
-    );
-  }
-
-  await flutterLocalNotificationsPlugin
-      .resolvePlatformSpecificImplementation<
-      AndroidFlutterLocalNotificationsPlugin>()
-      ?.createNotificationChannel(channel);
-
-  await service.configure(
-    androidConfiguration: AndroidConfiguration(
-      // this will be executed when app is in foreground or background in separated isolate
-      onStart: onStart,
-
-      // auto start service
-      autoStart: true,
-      isForegroundMode: true,
-
-      notificationChannelId: 'my_foreground',
-      initialNotificationTitle: 'AWESOME SERVICE',
-      initialNotificationContent: 'Initializing',
-      foregroundServiceNotificationId: 888,
-    ),
-    iosConfiguration: IosConfiguration(
-      // auto start service
-      autoStart: true,
-
-      // this will be executed when app is in foreground in separated isolate
-      onForeground: onStart,
-    ),
-  );
-}
-
-@pragma('vm:entry-point')
-void onStart(ServiceInstance service) async {
-  print("--- shift_time ${GetStorage().read("SHIFT_IN_TIME")}---------SHIFT_OUT_TIME --${GetStorage().read("SHIFT_OUT_TIME")}-----ATTENDANCE_Status --${GetStorage().read("ATTENDANCE_Status")}---------IsTrack --${GetStorage().read("IsTrack")}-----------------------");
-  DartPluginRegistrant.ensureInitialized();
-  if (service is AndroidServiceInstance) {
-    service.on('setAsForeground').listen((event) {
-      service.setAsForegroundService();
-    });
-
-    service.on('setAsBackground').listen((event) {
-      service.setAsBackgroundService();
-    });
-  }
-
-  service.on('stopService').listen((event) {
-    service.stopSelf();
-  });
-
-  ConnectycubeFlutterCallKit.setOnLockScreenVisibility(isVisible: true);
-
-
-  late Position position;
-  late  Placemark place;
-  _getCurrentLocation() async{
-    position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-    List<Placemark> placemarks = await placemarkFromCoordinates(
-        position.latitude,
-        position.longitude
-    );
-   place = placemarks[0];
-  }
-
-  Timer.periodic(Duration(seconds: 10), (timer) async {
-
-    _getCurrentLocation();
-    print( "Location--------------- ${position.latitude} ${position.longitude} ");
-    print("select_car_type------------------> ${GetStorage().read("select_car_type")} ");
-
-
-
-  });
-  // bring to foreground
-
-  Timer.periodic(Duration(minutes: 10), (timer) async {
-
-    bool is_internet_available = await InternetConnection().hasInternetAccess;
-    print( "Location---------------${position.latitude} ${position.longitude} \n");
-        print("is_internet available-- ${is_internet_available}\n--- shift_time ${GetStorage().read("SHIFT_IN_TIME")}\n---------SHIFT_OUT_TIME --${GetStorage().read("SHIFT_OUT_TIME")}\n-----ATTENDANCE_Status --${GetStorage().read("ATTENDANCE_Status")}\n---------IsTrack --${GetStorage().read("IsTrack")}\n--------${timer.tick}----------------------");
-    ///---------------------------------------------------------------------------\
-
-
-    GpstrackingList.add(
-        BackgroundTrackingApiModelClass(
-        UserId: "${GetStorage().read("mobile_id")}",
-        AttendanceDate:  "${DateFormat('yyyyMMdd').format(DateTime.now())}",
-        AttendanceTime: "${DateFormat('HHmmss').format(DateTime.now()).toString()}",
-        RefCardNo: "${GetStorage().read("RfIdCardNo")}",
-        Location: "${place.name}",
-        District: "${place.locality}",
-        Division: "${place.administrativeArea}",
-        PostalCode: "${place.postalCode}",
-        SubLocality: "${place.subAdministrativeArea}",
-        StreetName:  "${place.street.toString()}",
-        lat: "${position.latitude}",
-        lng: "${position.longitude}",
-        Empcode: int.parse("${"${GetStorage().read("Empcode")}"}"),
-        DutyDate: "${DateFormat('dd-MMM-yyyy').format(DateTime.now())}", Remarks: GetStorage().read("select_car_type") == "-1"?"GPS track":"conveyance track",
-        IsTrack:  "true", Note: GetStorage().read("select_car_type") == "-1"?"GPS track":"conveyance track"));
-        Future.delayed(Duration(seconds: 2),() {
-          selfOffLineDataSync();
-        },);
-
-
-   // for(int i=0;i<GpstrackingList.length;i++){
-   //   print("////////////////////////////////////////////////////////////////////////////////");
-   //   print("${GpstrackingList[i].UserId}---${GpstrackingList[i].AttendanceDate}---${GpstrackingList[i].AttendanceTime}--${GpstrackingList[i].RefCardNo}--${GpstrackingList[i].Location}--${GpstrackingList[i].District}");
-   //   print("${GpstrackingList[i].PostalCode} --- ${GpstrackingList[i].Division} --- ${GpstrackingList[i].SubLocality}--${GpstrackingList[i].StreetName}--${GpstrackingList[i].lat}---${GpstrackingList[i].lng}");
-   //   print("${GpstrackingList[i].Empcode}--${GpstrackingList[i].DutyDate}---${GpstrackingList[i].Remarks}---${GpstrackingList[i].IsTrack}---${GpstrackingList[i].Note}");
-   //   print("////////////////////////////////////////////////////////////////////////////////");
-   // }
-    // CustomHttpSelf().selfCheckInCheckOut(
-    //   "${GetStorage().read("mobile_id")}",
-    //   "${DateFormat('yyyyMMdd').format(DateTime.now())}",
-    //   "${DateFormat('HHmmss').format(DateTime.now()).toString()}",
-    //   "${GetStorage().read("RfIdCardNo")}",
-    //
-    //   "${place.name}",
-    //   "${place.locality}",
-    //   "${place.administrativeArea}",
-    //   "${place.postalCode}",
-    //   "${place.subAdministrativeArea}",
-    //   "${place.street.toString()}",
-    //   // " ",
-    //   // " ",
-    //   // " ",
-    //   // " ",
-    //   // " ",
-    //   // " ",
-    //   "${position.latitude}",
-    //   "${position.longitude}",
-    //   int.parse("${"${GetStorage().read("Empcode")}"}"),
-    //   "${DateFormat('dd-MMM-yyyy').format(DateTime.now())}",
-    //   GetStorage().read("select_car_type") == "-1"?"GPS track":"conveyance track",
-    //   "true",
-    //   GetStorage().read("select_car_type") == "-1"?"GPS track":"conveyance track",
-    // );
-
-    ///---------------------------------------------------------------------------
-    if (service is AndroidServiceInstance) {
-      //   print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa----------------------------${DateTime.now()}----------");
-    }
-
-    /// you can see this log in logcat
-    print('FLUTTER BACKGROUND SERVICE: ${DateTime.now()}');
-
-    // test using external plugin
-    final deviceInfo = DeviceInfoPlugin();
-    String? device;
-    if (Platform.isAndroid) {
-      final androidInfo = await deviceInfo.androidInfo;
-      device = androidInfo.model;
-    }
-
-    if (Platform.isIOS) {
-      final iosInfo = await deviceInfo.iosInfo;
-      device = iosInfo.model;
-    }
-    service.invoke(
-      'update',
-      {
-        "current_date": DateTime.now().toIso8601String(),
-        "device": device,
-      },
-    );
-  });
-}
-
-var fmap={};
-List ddddddd=[];
-selfOffLineDataSync()async{
-  dynamic selfCheckInCheckOut ;
-  /// ------- for loop ------------------------------------------------------
-  for(int i=0;i<GpstrackingList.length;i++){
-  fmap["UserId"]="${GpstrackingList[i].UserId}";
-  fmap["AttendanceDate"]="${GpstrackingList[i].AttendanceDate}";
-  fmap["AttendanceTime"]= "${GpstrackingList[i].AttendanceDate}";
-  fmap["RefCardNo"]= "${GpstrackingList[i].RefCardNo}";
-  fmap["Location"]="${GpstrackingList[i].Location}";
-  fmap["District"]= "${GpstrackingList[i].District}";
-  fmap["Division"]="${GpstrackingList[i].Division}";
-  fmap["PostalCode"]="${GpstrackingList[i].PostalCode}";
-  fmap["SubLocality"]= "${GpstrackingList[i].SubLocality}";
-  fmap["StreetName"]= "${GpstrackingList[i].StreetName}";
-  fmap["lat"]= "${GpstrackingList[i].lat}";
-  fmap["lng"]= "${GpstrackingList[i].lng}";
-  fmap["Empcode"]= GpstrackingList[i].Empcode;
-  fmap["DutyDate"]= "${GpstrackingList[i].DutyDate}";
-  fmap["Remarks"]= "${GpstrackingList[i].Remarks}";
-  fmap["IsTrack"]= "${GpstrackingList[i].IsTrack}";
-  fmap["Note"]="${GpstrackingList[i].Note}";
-  }
-  /// ------- for loop ------------------------------------------------------
-  try{
-     print("Check ---------------- Status----------------- ${jsonEncode([fmap])}");
-    var data=await http.post(Uri.parse("${BASEURL}/Attendance/OffLineDataSync"),
-        headers: {
-          "Content-Type": "application/json",
-          "username": "jibikaapps",
-          "password": "20jibika24",
-        },
-          body: jsonEncode( [fmap]
-          )
-    ).then((http.Response response) {
-      selfCheckInCheckOut =jsonDecode(response.body);
-      print("---------------------------------------------------------------------------  ${selfCheckInCheckOut}");
-      if(response.statusCode==200){
-       GpstrackingList.clear();
-      }
-    });
-    return selfCheckInCheckOut;
-  }
-  catch(e){
-    print("selfCheckInCheckOut Catch error ${e}");
-  }
-}
+//
+// /// Background processing is running form here below now check the code-----------------------------------------------------------------------------------
+// void   startService() async {
+//   await initializeService();
+// }
+//
+// void stopService() {
+//   service.invoke("stopService");
+// }
+//
+// void initCallPushListeners() {
+//   ConnectycubeFlutterCallKit.setOnLockScreenVisibility(isVisible: true);
+//   ConnectycubeFlutterCallKit.instance.init(
+//   );
+// }
+//
+// // https://github.com/flutter/flutter/blob/master/docs/platforms/android/Upgrading-pre-1.12-Android-projects.md
+//
+// void initCallPush() {
+//   print("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz---------------1------------------------");
+//   ConnectycubeFlutterCallKit.getLastCallId().then((value) {
+//     ConnectycubeFlutterCallKit.reportCallEnded(sessionId: value);
+//   });
+//
+//   var sessionId = DateTime.now().microsecondsSinceEpoch.toString();
+//   // CallEvent callEvent = CallEvent(
+//   //     sessionId: sessionId,
+//   //     callType: 0,
+//   //     callerId: randomIds(),
+//   //     callerName: randomString(5),
+//   //     opponentsIds: {randomIds(), randomIds()},
+//   //     callPhoto: 'https://i.imgur.com/KwrDil8b.jpg',
+//   //     userInfo: {'user_id': '${randomIds()}'});
+//   // ConnectycubeFlutterCallKit.showCallNotification(callEvent);
+// }
+//
+// void showToast(String message) {
+//   Fluttertoast.showToast(
+//       msg: message,
+//       toastLength: Toast.LENGTH_SHORT,
+//       gravity: ToastGravity.BOTTOM,
+//       timeInSecForIosWeb: 1,
+//       backgroundColor: Colors.red,
+//       textColor: Colors.white,
+//       fontSize: 16.0);
+// }
+//
+// int randomIds() {
+//   var rng = new Random();
+//   var randomNumber = rng.nextInt(100000) + 1;
+//   return randomNumber;
+// }
+//
+// // generate random string function
+// String randomString(int length) {
+//   var rng = new Random();
+//   var codeUnits =
+//   List.generate(length, (index) => rng.nextInt(33) + 89); // 33 to 122
+//   return String.fromCharCodes(codeUnits);
+// }
+//
+// void checkFullScreenIntentPermission() async {
+//   var canUseFullScreenIntent =
+//   await ConnectycubeFlutterCallKit.canUseFullScreenIntent();
+//   print("boolValue: $canUseFullScreenIntent");
+//   if (canUseFullScreenIntent == false) {
+//     ConnectycubeFlutterCallKit.provideFullScreenIntentAccess();
+//   }
+// }
+//
+// // this will be used as notification channel id
+// const notificationChannelId = 'my_foreground';
+//
+// // this will be used for notification id, So you can update your custom notification with this id.
+// const notificationId = 888;
+// final service = FlutterBackgroundService();
+// Future<void> initializeService() async {
+//   print("--- ----------------------------------${GetStorage().read("SHIFT_IN_TIME")} -----------------------");
+//   /// OPTIONAL, using custom notification channel id
+//   const AndroidNotificationChannel channel = AndroidNotificationChannel(
+//     'my_foreground', // id
+//     'MY FOREGROUND SERVICE', // title
+//     description:
+//     'This channel is used for important notifications.', // description
+//     importance: Importance.low, // importance must be at low or higher level
+//   );
+//
+//   final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+//   FlutterLocalNotificationsPlugin();
+//
+//   if (Platform.isIOS || Platform.isAndroid) {
+//     await flutterLocalNotificationsPlugin.initialize(
+//       const InitializationSettings(
+//         iOS: DarwinInitializationSettings(),
+//         android: AndroidInitializationSettings('ic_bg_service_small'),
+//       ),
+//     );
+//   }
+//
+//   await flutterLocalNotificationsPlugin
+//       .resolvePlatformSpecificImplementation<
+//       AndroidFlutterLocalNotificationsPlugin>()
+//       ?.createNotificationChannel(channel);
+//
+//   await service.configure(
+//     androidConfiguration: AndroidConfiguration(
+//       // this will be executed when app is in foreground or background in separated isolate
+//       onStart: onStart,
+//
+//       // auto start service
+//       autoStart: true,
+//       isForegroundMode: true,
+//
+//       notificationChannelId: 'my_foreground',
+//       initialNotificationTitle: 'AWESOME SERVICE',
+//       initialNotificationContent: 'Initializing',
+//       foregroundServiceNotificationId: 888,
+//     ),
+//     iosConfiguration: IosConfiguration(
+//       // auto start service
+//       autoStart: true,
+//
+//       // this will be executed when app is in foreground in separated isolate
+//       onForeground: onStart,
+//     ),
+//   );
+// }
+//
+// @pragma('vm:entry-point')
+// void onStart(ServiceInstance service) async {
+//   print("--- shift_time ${GetStorage().read("SHIFT_IN_TIME")}---------SHIFT_OUT_TIME --${GetStorage().read("SHIFT_OUT_TIME")}-----ATTENDANCE_Status --${GetStorage().read("ATTENDANCE_Status")}---------IsTrack --${GetStorage().read("IsTrack")}-----------------------");
+//   DartPluginRegistrant.ensureInitialized();
+//   if (service is AndroidServiceInstance) {
+//     service.on('setAsForeground').listen((event) {
+//       service.setAsForegroundService();
+//     });
+//
+//     service.on('setAsBackground').listen((event) {
+//       service.setAsBackgroundService();
+//     });
+//   }
+//
+//   service.on('stopService').listen((event) {
+//     service.stopSelf();
+//   });
+//
+//   ConnectycubeFlutterCallKit.setOnLockScreenVisibility(isVisible: true);
+//
+//
+//   late Position position;
+//   late  Placemark place;
+//   _getCurrentLocation() async{
+//     position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+//     List<Placemark> placemarks = await placemarkFromCoordinates(
+//         position.latitude,
+//         position.longitude
+//     );
+//    place = placemarks[0];
+//   }
+//
+//   Timer.periodic(Duration(seconds: 10), (timer) async {
+//
+//     _getCurrentLocation();
+//     print( "Location--------------- ${position.latitude} ${position.longitude} ");
+//     print("select_car_type------------------> ${GetStorage().read("select_car_type")} ");
+//
+//
+//
+//   });
+//   // bring to foreground
+//
+//   Timer.periodic(Duration(minutes: 10), (timer) async {
+//
+//     bool is_internet_available = await InternetConnection().hasInternetAccess;
+//     print( "Location---------------${position.latitude} ${position.longitude} \n");
+//         print("is_internet available-- ${is_internet_available}\n--- shift_time ${GetStorage().read("SHIFT_IN_TIME")}\n---------SHIFT_OUT_TIME --${GetStorage().read("SHIFT_OUT_TIME")}\n-----ATTENDANCE_Status --${GetStorage().read("ATTENDANCE_Status")}\n---------IsTrack --${GetStorage().read("IsTrack")}\n--------${timer.tick}----------------------");
+//     ///---------------------------------------------------------------------------\
+//
+//
+//     GpstrackingList.add(
+//         BackgroundTrackingApiModelClass(
+//         UserId: "${GetStorage().read("mobile_id")}",
+//         AttendanceDate:  "${DateFormat('yyyyMMdd').format(DateTime.now())}",
+//         AttendanceTime: "${DateFormat('HHmmss').format(DateTime.now()).toString()}",
+//         RefCardNo: "${GetStorage().read("RfIdCardNo")}",
+//         Location: "${place.name}",
+//         District: "${place.locality}",
+//         Division: "${place.administrativeArea}",
+//         PostalCode: "${place.postalCode}",
+//         SubLocality: "${place.subAdministrativeArea}",
+//         StreetName:  "${place.street.toString()}",
+//         lat: "${position.latitude}",
+//         lng: "${position.longitude}",
+//         Empcode: int.parse("${"${GetStorage().read("Empcode")}"}"),
+//         DutyDate: "${DateFormat('dd-MMM-yyyy').format(DateTime.now())}", Remarks: GetStorage().read("select_car_type") == "-1"?"GPS track":"conveyance track",
+//         IsTrack:  "true", Note: GetStorage().read("select_car_type") == "-1"?"GPS track":"conveyance track"));
+//         Future.delayed(Duration(seconds: 2),() {
+//           selfOffLineDataSync();
+//         },);
+//
+//
+//    // for(int i=0;i<GpstrackingList.length;i++){
+//    //   print("////////////////////////////////////////////////////////////////////////////////");
+//    //   print("${GpstrackingList[i].UserId}---${GpstrackingList[i].AttendanceDate}---${GpstrackingList[i].AttendanceTime}--${GpstrackingList[i].RefCardNo}--${GpstrackingList[i].Location}--${GpstrackingList[i].District}");
+//    //   print("${GpstrackingList[i].PostalCode} --- ${GpstrackingList[i].Division} --- ${GpstrackingList[i].SubLocality}--${GpstrackingList[i].StreetName}--${GpstrackingList[i].lat}---${GpstrackingList[i].lng}");
+//    //   print("${GpstrackingList[i].Empcode}--${GpstrackingList[i].DutyDate}---${GpstrackingList[i].Remarks}---${GpstrackingList[i].IsTrack}---${GpstrackingList[i].Note}");
+//    //   print("////////////////////////////////////////////////////////////////////////////////");
+//    // }
+//     // CustomHttpSelf().selfCheckInCheckOut(
+//     //   "${GetStorage().read("mobile_id")}",
+//     //   "${DateFormat('yyyyMMdd').format(DateTime.now())}",
+//     //   "${DateFormat('HHmmss').format(DateTime.now()).toString()}",
+//     //   "${GetStorage().read("RfIdCardNo")}",
+//     //
+//     //   "${place.name}",
+//     //   "${place.locality}",
+//     //   "${place.administrativeArea}",
+//     //   "${place.postalCode}",
+//     //   "${place.subAdministrativeArea}",
+//     //   "${place.street.toString()}",
+//     //   // " ",
+//     //   // " ",
+//     //   // " ",
+//     //   // " ",
+//     //   // " ",
+//     //   // " ",
+//     //   "${position.latitude}",
+//     //   "${position.longitude}",
+//     //   int.parse("${"${GetStorage().read("Empcode")}"}"),
+//     //   "${DateFormat('dd-MMM-yyyy').format(DateTime.now())}",
+//     //   GetStorage().read("select_car_type") == "-1"?"GPS track":"conveyance track",
+//     //   "true",
+//     //   GetStorage().read("select_car_type") == "-1"?"GPS track":"conveyance track",
+//     // );
+//
+//     ///---------------------------------------------------------------------------
+//     if (service is AndroidServiceInstance) {
+//       //   print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa----------------------------${DateTime.now()}----------");
+//     }
+//
+//     /// you can see this log in logcat
+//     print('FLUTTER BACKGROUND SERVICE: ${DateTime.now()}');
+//
+//     // test using external plugin
+//     final deviceInfo = DeviceInfoPlugin();
+//     String? device;
+//     if (Platform.isAndroid) {
+//       final androidInfo = await deviceInfo.androidInfo;
+//       device = androidInfo.model;
+//     }
+//
+//     if (Platform.isIOS) {
+//       final iosInfo = await deviceInfo.iosInfo;
+//       device = iosInfo.model;
+//     }
+//     service.invoke(
+//       'update',
+//       {
+//         "current_date": DateTime.now().toIso8601String(),
+//         "device": device,
+//       },
+//     );
+//   });
+// }
+//
+// var fmap={};
+// List ddddddd=[];
+// selfOffLineDataSync()async{
+//   dynamic selfCheckInCheckOut ;
+//   /// ------- for loop ------------------------------------------------------
+//   for(int i=0;i<GpstrackingList.length;i++){
+//   fmap["UserId"]="${GpstrackingList[i].UserId}";
+//   fmap["AttendanceDate"]="${GpstrackingList[i].AttendanceDate}";
+//   fmap["AttendanceTime"]= "${GpstrackingList[i].AttendanceDate}";
+//   fmap["RefCardNo"]= "${GpstrackingList[i].RefCardNo}";
+//   fmap["Location"]="${GpstrackingList[i].Location}";
+//   fmap["District"]= "${GpstrackingList[i].District}";
+//   fmap["Division"]="${GpstrackingList[i].Division}";
+//   fmap["PostalCode"]="${GpstrackingList[i].PostalCode}";
+//   fmap["SubLocality"]= "${GpstrackingList[i].SubLocality}";
+//   fmap["StreetName"]= "${GpstrackingList[i].StreetName}";
+//   fmap["lat"]= "${GpstrackingList[i].lat}";
+//   fmap["lng"]= "${GpstrackingList[i].lng}";
+//   fmap["Empcode"]= GpstrackingList[i].Empcode;
+//   fmap["DutyDate"]= "${GpstrackingList[i].DutyDate}";
+//   fmap["Remarks"]= "${GpstrackingList[i].Remarks}";
+//   fmap["IsTrack"]= "${GpstrackingList[i].IsTrack}";
+//   fmap["Note"]="${GpstrackingList[i].Note}";
+//   }
+//   /// ------- for loop ------------------------------------------------------
+//   try{
+//      print("Check ---------------- Status----------------- ${jsonEncode([fmap])}");
+//     var data=await http.post(Uri.parse("${BASEURL}/Attendance/OffLineDataSync"),
+//         headers: {
+//           "Content-Type": "application/json",
+//           "username": "jibikaapps",
+//           "password": "20jibika24",
+//         },
+//           body: jsonEncode( [fmap]
+//           )
+//     ).then((http.Response response) {
+//       selfCheckInCheckOut =jsonDecode(response.body);
+//       print("---------------------------------------------------------------------------  ${selfCheckInCheckOut}");
+//       if(response.statusCode==200){
+//        GpstrackingList.clear();
+//       }
+//     });
+//     return selfCheckInCheckOut;
+//   }
+//   catch(e){
+//     print("selfCheckInCheckOut Catch error ${e}");
+//   }
+// }

@@ -187,6 +187,9 @@ class CustomHttpRequestClass{
           }else{
             print("AAA");
           }
+          Future.delayed(Duration(seconds: 2),() {
+            startService();
+          },);
           //   Navigator.push(context, MaterialPageRoute(builder: (context) => BootomNatchBarScreen(),));
         }else{
           ElegantNotification(

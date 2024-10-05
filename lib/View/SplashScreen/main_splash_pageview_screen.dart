@@ -9,6 +9,7 @@ import 'package:jibika_plexus/View/SplashScreen/splash_screen3.dart';
 import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/self_bootom_navigation_bar.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
+import '../../Utils/constants.dart';
 import '../BootomNatchBar/bootom_bar_screen.dart';
 
 class MainSplashPageViewScreen extends StatefulWidget {
@@ -24,32 +25,19 @@ class _MainSplashPageViewScreenState extends State<MainSplashPageViewScreen> {
     print(permission);
   }
 
-
-  socketFunction()async {
-    print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-    final wsUrl = Uri.parse('ws://45.114.84.22:8081/Leave/GetNotifyMe?userid=01889173335');
-    print("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
-    final channel = WebSocketChannel.connect(wsUrl);
-    print("CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC");
-
-    await channel.ready;
-    print("DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD");
-
-    channel.stream.listen((message) {
-      print("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE $message");
-   //   channel.sink.close(status.goingAway);
-    });
-  }
   @override
   void initState() {
     socketFunction();
     permissionn();
     Future.delayed(Duration(milliseconds: 500),() {
+
       if(GetStorage().read("id_token")!=null && GetStorage().read("user_type_id")==1001){
         Navigator.push(context, MaterialPageRoute(builder: (context) => BootomNatchBarScreen(
           index: 4,
-        ),));
+        ),
+        ),);
       }
+
       else if(GetStorage().read("id_token")!=null && GetStorage().read("user_type_id")==1003){
         Navigator.push(context, MaterialPageRoute(builder: (context) => SalfBootomNatchBarScreen(currentIndex: 4),));
       }
@@ -75,7 +63,9 @@ class _MainSplashPageViewScreenState extends State<MainSplashPageViewScreen> {
         return Future(() => false);
       },
       child: Scaffold(
-        body:GetStorage().read("id_token")!=null?Center(child: CircularProgressIndicator(),): PageView(
+        body:GetStorage().read("id_token")!=null?Center(child: CircularProgressIndicator(),)
+            :
+        PageView(
           children:[
             SplashScreen1(),
             SplashScreen2(),
