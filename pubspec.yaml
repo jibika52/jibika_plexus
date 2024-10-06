@@ -79,13 +79,14 @@ dependencies:
   geocoding: ^3.0.0
   flutter_background_service: any
   device_info_plus: any
-  flutter_local_notifications: any
+  flutter_local_notifications: ^17.2.3
   receive_intent: any
   karmm_callkit: any
   internet_connection_checker_plus: any
   google_maps_flutter: ^2.5.0
   google_mlkit_text_recognition: ^0.11.0
   web_socket_channel: ^3.0.1
+  audioplayers: ^6.1.0
 
 
 dev_dependencies:
@@ -125,6 +126,7 @@ flutter:
     - Assets/PrimaryInformation/
     - Assets/SelfIcon/
     - Assets/Employee_Profile_Icon/
+    - Assets/SoundAlert/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:jibika_plexus/Controller/CounterProvider/counter_provider.dart';
 import 'package:jibika_plexus/Controller/OnboardingEmployeeController/on_boarding_employee_controller.dart';
@@ -15,11 +16,31 @@ import 'Controller/SelfDashboardController/self_dashboard_controller.dart';
 import 'Controller/TrackingController/tracking_controller.dart';
 import 'View/SplashScreen/main_splash_pageview_screen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:timezone/data/latest.dart' as tz;
 
-import 'ViewSelf/SelfBootomNavigatonBar/self_bootom_navigation_bar.dart';
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+FlutterLocalNotificationsPlugin();
 
 void main() async {
   await GetStorage.init();
+  WidgetsFlutterBinding.ensureInitialized();
+  const AndroidInitializationSettings androidInitializationSettings =
+  AndroidInitializationSettings('@mipmap/ic_launcher');
+  const DarwinInitializationSettings iosInitializationSettings =
+  DarwinInitializationSettings();
+  const InitializationSettings initializationSettings = InitializationSettings(
+    android: androidInitializationSettings,
+    iOS: iosInitializationSettings,
+  );
+
+  await flutterLocalNotificationsPlugin.initialize(
+    initializationSettings,
+    onDidReceiveNotificationResponse: (NotificationResponse response) {
+      // Handle notification tap here
+    },
+  );
+
+  tz.initializeTimeZones();
   runApp(MyApp());
 }
 class MyApp extends StatelessWidget {
@@ -88,6 +109,7 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
 
 // Check for marge  requset //
 

@@ -27,7 +27,8 @@ class _MainSplashPageViewScreenState extends State<MainSplashPageViewScreen> {
 
   @override
   void initState() {
-    socketFunction(context);
+
+    socketFunction();
     permissionn();
     Future.delayed(Duration(milliseconds: 500),() {
 

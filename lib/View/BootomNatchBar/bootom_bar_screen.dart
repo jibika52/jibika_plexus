@@ -88,10 +88,11 @@ class _BootomNatchBarScreenState extends State<BootomNatchBarScreen> {
             children: [
               InkWell(
                   onTap: () {
-                    Provider.of<EmployeeAdminProvider>(context,listen: false).GetDailyAttendanceCounterListProvider("${GetStorage().read("mobile_id")}", "Active", 1, context);
-                    setState(() {
-                      _currentIndex=0;
-                    });
+                    showNotification("I am uzzal kumar biswas from Jibika");
+                    // Provider.of<EmployeeAdminProvider>(context,listen: false).GetDailyAttendanceCounterListProvider("${GetStorage().read("mobile_id")}", "Active", 1, context);
+                    // setState(() {
+                    //   _currentIndex=0;
+                    // });
                   },
                   child: Container(
                     height: b_bar_h,

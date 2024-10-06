@@ -9,14 +9,19 @@
 
 
 
+
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 import 'dart:math';
 import 'dart:ui';
-import 'dart:io';
+import 'package:timezone/data/latest.dart' as tz;
+import 'package:timezone/timezone.dart' as tz;
+import 'package:audioplayers/audioplayers.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:elegant_notification/elegant_notification.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_background_service/flutter_background_service.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:geocoding/geocoding.dart';
@@ -27,14 +32,13 @@ import 'package:http/http.dart' as http;
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 import 'package:intl/intl.dart';
 import 'package:jibika_plexus/Api/Routes/routes.dart';
-import 'package:jibika_plexus/Controller/CounterProvider/counter_provider.dart';
 import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 import 'package:karmm_callkit/karmm_callkit.dart';
-import 'package:provider/provider.dart';
-import 'package:web_socket_channel/web_socket_channel.dart';
+import 'package:web_socket_channel/io.dart';
 
 import '../ViewSelf/SelfBootomNavigatonBar/BackgroundTrackingApiModelClass/background_tracking_api_modelclass.dart';
 import '../ViewSelf/SelfBootomNavigatonBar/self_bootom_navigation_bar.dart';
+import '../main.dart';
 
 const Main_Theme_textColor = Color(0xff333333);
 const Main_Theme_textColor_tir_Condition = Color(0xffACC027);
@@ -297,11 +301,24 @@ class FitnessAppTheme {
  }
 
  /// Socket add and connect
-socketFunction(BuildContext context)async {
+socketFunction()async {
+ final headers = {
+  "Origin":"http://45.114.84.22:8081",
+  "Sec-WebSocket-Protocol":"jibika-ws.json"
+ };
+ // showNotification();
  print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
- final wsUrl = Uri.parse('ws://45.114.84.22:8081/Leave/GetNotifyMe?userid=01889173335');
+ final wsUrl = Uri.parse('ws://45.114.84.22:8081/jsocket');
  print("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
- final channel = WebSocketChannel.connect(wsUrl);
+ // final channel = WebSocketChannel.connect(
+ //     wsUrl,
+ //     headers,
+ //  protocols:
+ //
+ // );
+
+ final channel = await connectWebSocketWithHeaders(wsUrl, headers);
+
  print("CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC");
 
  await channel.ready;
@@ -309,10 +326,33 @@ socketFunction(BuildContext context)async {
 
  channel.stream.listen((message) {
   print("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE ${message.toString()}");
-  Provider.of<CounterProvider>(context,listen: false).setNotificationCounterFunction(message.toString().substring(22, message.toString().length));
+  var notification=jsonDecode(message);
+  showNotification( notification["message"]);
+  _playRingtone("Assets/SoundAlert/messagealert.mp3");
+  Future.delayed(Duration(milliseconds: 700),() {
+   _stopRingtone();
+  },);
+  // Provider.of<CounterProvider>(context,listen: false).setNotificationCounterFunction(message);
   //   channel.sink.close(status.goingAway);
  });
 }
+
+connectWebSocketWithHeaders(Uri wsUrl, Map<String, String> headers)
+ async {
+  // Use the dart:io WebSocket with headers
+  final WebSocket socket = await WebSocket.connect(
+   wsUrl.toString(),
+   headers: headers,
+  );
+
+  // Pass the WebSocket to IOWebSocketChannel
+  return IOWebSocketChannel(socket);
+
+}
+
+
+
+
 
 /// -------------- Custom Alert function ----------------------------------
 customNotification(BuildContext context,String text1,String text2){
@@ -338,19 +378,14 @@ customNotification(BuildContext context,String text1,String text2){
 void   startService() async {
  await initializeService();
 }
-
 void stopService() {
  service.invoke("stopService");
 }
-
 void initCallPushListeners() {
  ConnectycubeFlutterCallKit.setOnLockScreenVisibility(isVisible: true);
  ConnectycubeFlutterCallKit.instance.init(
  );
 }
-
-// https://github.com/flutter/flutter/blob/master/docs/platforms/android/Upgrading-pre-1.12-Android-projects.md
-
 void initCallPush() {
  print("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz---------------1------------------------");
  ConnectycubeFlutterCallKit.getLastCallId().then((value) {
@@ -368,21 +403,17 @@ void initCallPush() {
  //     userInfo: {'user_id': '${randomIds()}'});
  // ConnectycubeFlutterCallKit.showCallNotification(callEvent);
 }
-
 int randomIds() {
  var rng = new Random();
  var randomNumber = rng.nextInt(100000) + 1;
  return randomNumber;
 }
-
-// generate random string function
 String randomString(int length) {
  var rng = new Random();
  var codeUnits =
  List.generate(length, (index) => rng.nextInt(33) + 89); // 33 to 122
  return String.fromCharCodes(codeUnits);
 }
-
 void checkFullScreenIntentPermission() async {
  var canUseFullScreenIntent =
  await ConnectycubeFlutterCallKit.canUseFullScreenIntent();
@@ -391,11 +422,7 @@ void checkFullScreenIntentPermission() async {
   ConnectycubeFlutterCallKit.provideFullScreenIntentAccess();
  }
 }
-
-// this will be used as notification channel id
 const notificationChannelId = 'my_foreground';
-
-// this will be used for notification id, So you can update your custom notification with this id.
 const notificationId = 888;
 final service = FlutterBackgroundService();
 Future<void> initializeService() async {
@@ -448,7 +475,6 @@ Future<void> initializeService() async {
   ),
  );
 }
-
 @pragma('vm:entry-point')
 void onStart(ServiceInstance service) async {
  print("--- shift_time ${GetStorage().read("SHIFT_IN_TIME")}---------SHIFT_OUT_TIME --${GetStorage().read("SHIFT_OUT_TIME")}-----ATTENDANCE_Status --${GetStorage().read("ATTENDANCE_Status")}---------IsTrack --${GetStorage().read("IsTrack")}-----------------------");
@@ -460,6 +486,7 @@ void onStart(ServiceInstance service) async {
 
   service.on('setAsBackground').listen((event) {
    service.setAsBackgroundService();
+
   });
  }
 
@@ -491,7 +518,7 @@ void onStart(ServiceInstance service) async {
 
  });
  // bring to foreground
-
+ socketFunction();
  Timer.periodic(Duration(minutes: 2), (timer) async {
 
   bool is_internet_available = await InternetConnection().hasInternetAccess;
@@ -585,7 +612,6 @@ void onStart(ServiceInstance service) async {
   );
  });
 }
-
 var fmap={};
 List ddddddd=[];
 selfOffLineDataSync()async{
@@ -633,4 +659,69 @@ selfOffLineDataSync()async{
  catch(e){
   print("selfCheckInCheckOut Catch error ${e}");
  }
+}
+
+
+
+/// -------------------------  Flutter Notification -------------------------------------------------------///
+ showNotification(String nitification) async {
+ print("""""""""""""""1111""""""""""""""");
+ const AndroidNotificationDetails androidDetails = AndroidNotificationDetails(
+  'channel_id',
+  'channel_name',
+  importance: Importance.high,
+  priority: Priority.high,
+ );
+
+ const NotificationDetails notificationDetails = NotificationDetails(
+  android: androidDetails,
+ );
+
+
+ await flutterLocalNotificationsPlugin.show(
+  0,
+  '$nitification',
+  'Static Count from websocket',
+  notificationDetails,
+ );
+ // _playRingtone("Assets/SoundAlert/messagealert.mp3");
+ //
+ // Future.delayed(Duration(milliseconds: 950),() {
+ //  _stopRingtone();
+ // },);
+}
+/// -------------------------  Audio Play -------------------------------------------------------///
+StreamSubscription<void>? ringSubscription;
+final player = AudioPlayer();
+Future<void> _playRingtone( String audioasset) async {
+ print('ppppppppppppppppppppppppppp');
+ ByteData bytes = await rootBundle.load(audioasset); //load sound from assets
+ Uint8List soundbytes =
+ bytes.buffer.asUint8List(bytes.offsetInBytes, bytes.lengthInBytes);
+ try {
+  await player.play(
+   BytesSource(soundbytes),
+  );
+  ringSubscription = player.onPlayerComplete.listen((event) async {
+   await player.play(
+    BytesSource(soundbytes),
+   );
+  });
+  await player.setVolume(1.0);
+ } catch (e) {
+  print("Error loading audio source: $e");
+ }
+}
+
+/// -----------------------------------------------Stop Audio-----------------------------------------
+void _stopRingtone() async{
+ print("Stop ridddddddddddddddddddddddddddddd");
+ await player.stop();
+ await ringSubscription!.cancel();
+
+ print("Stop ridddddddddddddddddddddddddddddd");
+ if (ringSubscription != null) {
+  ringSubscription!.cancel();
+ }
+ print('ringtone stopped');
 }
