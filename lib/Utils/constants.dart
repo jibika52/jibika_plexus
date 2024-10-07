@@ -301,41 +301,7 @@ class FitnessAppTheme {
  }
 
  /// Socket add and connect
-socketFunction()async {
- final headers = {
-  "Origin":"http://45.114.84.22:8081",
-  "Sec-WebSocket-Protocol":"jibika-ws.json"
- };
- // showNotification();
- print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
- final wsUrl = Uri.parse('ws://45.114.84.22:8081/jsocket');
- print("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
- // final channel = WebSocketChannel.connect(
- //     wsUrl,
- //     headers,
- //  protocols:
- //
- // );
 
- final channel = await connectWebSocketWithHeaders(wsUrl, headers);
-
- print("CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC");
-
- await channel.ready;
- print("DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD");
-
- channel.stream.listen((message) {
-  print("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE ${message.toString()}");
-  var notification=jsonDecode(message);
-  showNotification( notification["message"]);
-  _playRingtone("Assets/SoundAlert/messagealert.mp3");
-  Future.delayed(Duration(milliseconds: 700),() {
-   _stopRingtone();
-  },);
-  // Provider.of<CounterProvider>(context,listen: false).setNotificationCounterFunction(message);
-  //   channel.sink.close(status.goingAway);
- });
-}
 
 connectWebSocketWithHeaders(Uri wsUrl, Map<String, String> headers)
  async {
@@ -438,7 +404,6 @@ Future<void> initializeService() async {
 
  final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
  FlutterLocalNotificationsPlugin();
-
  if (Platform.isIOS || Platform.isAndroid) {
   await flutterLocalNotificationsPlugin.initialize(
    const InitializationSettings(
@@ -508,18 +473,39 @@ void onStart(ServiceInstance service) async {
   place = placemarks[0];
  }
 
- Timer.periodic(Duration(seconds: 10), (timer) async {
+ Future.delayed(Duration(seconds: 2),()async {
 
+
+
+ // void socketFunction()async {
+   final headers = {
+    "Origin":"http://45.114.84.22:8081",
+    "Sec-WebSocket-Protocol":"jibika-ws.json"
+   };
+   print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+   final wsUrl = Uri.parse('ws://45.114.84.22:8081/jsocket');
+   print("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
+   final channel = await connectWebSocketWithHeaders(wsUrl, headers);
+   print("CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC");
+   await channel.ready;
+   print("DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD");
+   channel.stream.listen((message) {
+    print("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE ${message.toString()}");
+    var notification=jsonDecode(message);
+    showNotification(notification["message"]);
+    // Provider.of<CounterProvider>(context,listen: false).setNotificationCounterFunction(message);
+   });
+//  }
+
+
+ },);
+ Timer.periodic(Duration(seconds: 10), (timer) async {
   _getCurrentLocation();
   print( "Location--------------- ${position.latitude} ${position.longitude} ");
   print("select_car_type------------------> ${GetStorage().read("select_car_type")} ");
-
-
-
  });
  // bring to foreground
- socketFunction();
- Timer.periodic(Duration(minutes: 2), (timer) async {
+ Timer.periodic(Duration(minutes: 1), (timer) async {
 
   bool is_internet_available = await InternetConnection().hasInternetAccess;
   print( "Location---------------${position.latitude} ${position.longitude} \n");
@@ -611,7 +597,10 @@ void onStart(ServiceInstance service) async {
    },
   );
  });
+
 }
+
+
 var fmap={};
 List ddddddd=[];
 selfOffLineDataSync()async{
@@ -620,7 +609,7 @@ selfOffLineDataSync()async{
  for(int i=0;i<GpstrackingList.length;i++){
   fmap["UserId"]="${GpstrackingList[i].UserId}";
   fmap["AttendanceDate"]="${GpstrackingList[i].AttendanceDate}";
-  fmap["AttendanceTime"]= "${GpstrackingList[i].AttendanceDate}";
+  fmap["AttendanceTime"]= "${GpstrackingList[i].AttendanceTime}";
   fmap["RefCardNo"]= "${GpstrackingList[i].RefCardNo}";
   fmap["Location"]="${GpstrackingList[i].Location}";
   fmap["District"]= "${GpstrackingList[i].District}";
@@ -639,14 +628,14 @@ selfOffLineDataSync()async{
  /// ------- for loop ------------------------------------------------------
  try{
   print("Check ---------------- Status----------------- ${jsonEncode([fmap])}");
-  var data=await http.post(Uri.parse("${BASEURL}/Attendance/OffSLineDataSync"),
+  var data=await http.post(Uri.parse("http://45.114.84.22:8081/Attendance/OffLineDataSync"),
       headers: {
        "Content-Type": "application/json",
        "username": "jibikaapps",
        "password": "20jibika24",
       },
-      body: jsonEncode( [fmap]
-      )
+   body: jsonEncode([fmap])
+   //   body:[{"UserId":"01889173335","AttendanceDate":"20241007","AttendanceTime":"20241007","RefCardNo":"1002","Location":"48","District":"Dhaka","Division":"Dhaka Division","PostalCode":"1212","SubLocality":"Dhaka District","StreetName":"48 শাহীদ আব্দুল আজিজ রোড","lat":"23.8101053","lng":"90.422086","Empcode":60670,"DutyDate":"07-Oct-2024","Remarks":"GPS track","IsTrack":"true","Note":"GPS track"}]
   ).then((http.Response response) {
    selfCheckInCheckOut =jsonDecode(response.body);
    print("---------------------------------------------------------------------------  ${selfCheckInCheckOut}");
@@ -690,38 +679,38 @@ selfOffLineDataSync()async{
  //  _stopRingtone();
  // },);
 }
-/// -------------------------  Audio Play -------------------------------------------------------///
-StreamSubscription<void>? ringSubscription;
-final player = AudioPlayer();
-Future<void> _playRingtone( String audioasset) async {
- print('ppppppppppppppppppppppppppp');
- ByteData bytes = await rootBundle.load(audioasset); //load sound from assets
- Uint8List soundbytes =
- bytes.buffer.asUint8List(bytes.offsetInBytes, bytes.lengthInBytes);
- try {
-  await player.play(
-   BytesSource(soundbytes),
-  );
-  ringSubscription = player.onPlayerComplete.listen((event) async {
-   await player.play(
-    BytesSource(soundbytes),
-   );
-  });
-  await player.setVolume(1.0);
- } catch (e) {
-  print("Error loading audio source: $e");
- }
-}
-
-/// -----------------------------------------------Stop Audio-----------------------------------------
-void _stopRingtone() async{
- print("Stop ridddddddddddddddddddddddddddddd");
- await player.stop();
- await ringSubscription!.cancel();
-
- print("Stop ridddddddddddddddddddddddddddddd");
- if (ringSubscription != null) {
-  ringSubscription!.cancel();
- }
- print('ringtone stopped');
-}
+// /// -------------------------  Audio Play -------------------------------------------------------///
+// StreamSubscription<void>? ringSubscription;
+// final player = AudioPlayer();
+// Future<void> _playRingtone( String audioasset) async {
+//  print('ppppppppppppppppppppppppppp');
+//  ByteData bytes = await rootBundle.load(audioasset); //load sound from assets
+//  Uint8List soundbytes =
+//  bytes.buffer.asUint8List(bytes.offsetInBytes, bytes.lengthInBytes);
+//  try {
+//   await player.play(
+//    BytesSource(soundbytes),
+//   );
+//   ringSubscription = player.onPlayerComplete.listen((event) async {
+//    await player.play(
+//     BytesSource(soundbytes),
+//    );
+//   });
+//   await player.setVolume(1.0);
+//  } catch (e) {
+//   print("Error loading audio source: $e");
+//  }
+// }
+//
+// /// -----------------------------------------------Stop Audio-----------------------------------------
+// void _stopRingtone() async{
+//  print("Stop ridddddddddddddddddddddddddddddd");
+//  await player.stop();
+//  await ringSubscription!.cancel();
+//
+//  print("Stop ridddddddddddddddddddddddddddddd");
+//  if (ringSubscription != null) {
+//   ringSubscription!.cancel();
+//  }
+//  print('ringtone stopped');
+// }

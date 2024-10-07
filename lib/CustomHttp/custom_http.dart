@@ -187,7 +187,6 @@ class CustomHttpRequestClass{
           }else{
             print("AAA");
           }
-          socketFunction();
           Future.delayed(Duration(seconds: 2),() {
             startService();
           },);

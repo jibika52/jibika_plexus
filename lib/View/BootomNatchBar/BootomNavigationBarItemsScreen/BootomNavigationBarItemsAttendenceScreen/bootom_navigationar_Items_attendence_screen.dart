@@ -222,7 +222,7 @@ class _BootomNavigationBarItemsAttendenceScreenState extends State<BootomNavigat
             Expanded(
                 child: Consumer<AttendanceProvder>(
                     builder: (context, value, child) {
-                      print("ssssssssssssssssssss ${value.GetDailyAttendanceCounter}");
+                   //   print("ssssssssssssssssssss ${value.GetDailyAttendanceCounter}");
                       return value.GetDailyAttendanceCounter==null?Center(child: CircularProgressIndicator(backgroundColor: presentsent_color,)): Container(
                         color:Main_Theme_WhiteCollor,
                         padding: EdgeInsets.only(left: 10,right: 10),
