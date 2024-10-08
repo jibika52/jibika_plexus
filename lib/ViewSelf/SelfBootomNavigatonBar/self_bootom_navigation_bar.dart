@@ -103,7 +103,7 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
         resizeToAvoidBottomInset: false,
         drawer:CustomLeftDrawer(),
         key: _key,
-        appBar: PreferredSize(preferredSize: Size.fromHeight(60),
+        appBar: PreferredSize(preferredSize: Size.fromHeight(75),
           /// ------------ Custom Main AppBAr -------------///
           child: CustomMainAppBar(
               leading_image_route: "Assets/DashBoardIcons/appbar_leadin_menu.png",
@@ -201,7 +201,8 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
                         ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Conveyance", letterSpacing: 0.3, textColor: widget.currentIndex==3? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
                       ],
                     ),
-                  )),
+                  ),
+               ),
             ],
           ),
         ),

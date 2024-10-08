@@ -389,23 +389,33 @@ class _SelfBootomNavigationLeaveState extends State<SelfBootomNavigationLeave> {
                         child: Container(
                           width: 110,
                           child: CustomButton(onTap: () {
-                            Provider.of<SelfDashboardController>(context,listen: false).selfAdminSaveLeaveRegisterProvider(
-                                "${get_status}",
-                                "1",
-                                "${DateFormat("dd-MMM-yyyy").format(DateFormat("dd-MMM-yyyy").parse("$selectedformDatee"))}",
-                                "${DateFormat("dd-MMM-yyyy").format(DateFormat("dd-MMM-yyyy").parse("$selectedtoDatee"))}",
-                                "${DateFormat("dd-MMM-yyyy").format(DateTime.now())}",
-                                "N",
-                                "0",
-                                "N",
-                              //  "${get_status[0]["LeaveAbbre"]}",
-                                "${_commentsController.text}",
-                                "",
-                                "1001",
-                                "${GetStorage().read("mobile_id")}",
-                                "${selfORAdminShortInformationdata["StaffCategory"]}",
-                                "${GetStorage().read("user_type_id")}",
-                                context);
+
+
+                            if(totalDate.isNegative){
+                              customNotification(context, "Your formDate must less from to Date", "Please try again");
+                              selectedformDatee = DateFormat('dd-MMM-yyyy').format(DateTime.now()).toString();
+                              selectedtoDatee = DateFormat('dd-MMM-yyyy').format(DateTime.now()).toString();
+                              totalDate=1;
+                            } else{
+                              Provider.of<SelfDashboardController>(context,listen: false).selfAdminSaveLeaveRegisterProvider(
+                                  "${get_status}",
+                                  "$totalDate",
+                                  "${DateFormat("dd-MMM-yyyy").format(DateFormat("dd-MMM-yyyy").parse("$selectedformDatee"))}",
+                                  "${DateFormat("dd-MMM-yyyy").format(DateFormat("dd-MMM-yyyy").parse("$selectedtoDatee"))}",
+                                  "${DateFormat("dd-MMM-yyyy").format(DateTime.now())}",
+                                  "N",
+                                  "0",
+                                  "N",
+                                  //  "${get_status[0]["LeaveAbbre"]}",
+                                  "${_commentsController.text}",
+                                  "",
+                                  "1001",
+                                  "${GetStorage().read("mobile_id")}",
+                                  "${selfORAdminShortInformationdata["StaffCategory"]}",
+                                  "${GetStorage().read("user_type_id")}",
+                                  context);
+                            }
+
                           }, text: "Apply", fontWeight: FontWeight.w400,button_text_fontSize: 14, button_height: 40, custom_button_collor: CustomButtonColor.withOpacity(0.3), button_text_color: CustomButtonColor, borderRadius: 50),
 
                         ),
@@ -426,9 +436,9 @@ class _SelfBootomNavigationLeaveState extends State<SelfBootomNavigationLeave> {
     "1",
     "1",
   ];
-   int totalDate=5;
   /// From Date-----------------------------------------------------------------------------------------
   String selectedformDatee = DateFormat('dd-MMM-yyyy').format(DateTime.now()).toString();
+  String A = DateFormat('yyyy-MM-dd').format(DateTime.now()).toString();
   Future<void> _selectformDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
         context: context,
@@ -436,15 +446,17 @@ class _SelfBootomNavigationLeaveState extends State<SelfBootomNavigationLeave> {
         lastDate: DateTime(2101));
     if (picked != null && picked != selectedformDatee) {
       final df = new DateFormat('dd-MMM-yyyy');
+      final dff = new DateFormat('yyyy-MM-dd');
       setState(() {
         selectedformDatee = df.format(picked);
-
+        A=dff.format(picked);
       });
     }
   }
 
   /// To Date-----------------------------------------------------------------------------------------
   String selectedtoDatee = DateFormat('dd-MMM-yyyy').format(DateTime.now()).toString();
+  String B = DateFormat('yyyy-MM-dd').format(DateTime.now()).toString();
   DateTime ? fromtime;
   Future<void> _selecttoDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
@@ -453,14 +465,37 @@ class _SelfBootomNavigationLeaveState extends State<SelfBootomNavigationLeave> {
         lastDate: DateTime(2101));
     if (picked != null && picked != selectedtoDatee) {
       final df = new DateFormat('dd-MMM-yyyy');
+      final dff = new DateFormat('yyyy-MM-dd');
       setState(() {
         selectedtoDatee = df.format(picked);
-        totalDate=   DateTime.parse(selectedformDatee).difference(DateTime.parse(selectedtoDatee)).inDays;
-
-        print("======================================================================== $totalDate");
+        B=dff.format(picked);
+        DayCalculation();
       });
     }
   }
+  int totalDate=1;
+  /// Date Calculation......................
+  DayCalculation() {
+    DateTime dt1 = DateTime.parse("${B}");
+    DateTime dt2 = DateTime.parse("${A}");
+    Duration diff = dt1.difference(dt2);
+    print("bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb ${diff.inDays}");
+//output (in days): 1198
+    setState(() {
+      totalDate = int.parse("${diff.inDays}")+1;
+      if(totalDate.isNegative){
+      //  customNotification(context, "Your formDate must less from to Date", "Please try again");
+        quickAlertsuccess(context, "Warning for you", "Your formDate must less from toDate",2);
+      selectedformDatee = DateFormat('dd-MMM-yyyy').format(DateTime.now()).toString();
+      selectedtoDatee = DateFormat('dd-MMM-yyyy').format(DateTime.now()).toString();
+        totalDate=1;
+      } else{
 
+      }
+    });
+  }
 
+  int daysBetween_wrong1(DateTime date1, DateTime date2) {
+    return date1.difference(date2).inDays;
+  }
 }

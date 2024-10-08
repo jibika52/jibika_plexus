@@ -15,6 +15,8 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
 import 'dart:ui';
+import 'package:quickalert/models/quickalert_type.dart';
+import 'package:quickalert/widgets/quickalert_dialog.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 import 'package:audioplayers/audioplayers.dart';
@@ -714,3 +716,27 @@ selfOffLineDataSync()async{
 //  }
 //  print('ringtone stopped');
 // }
+
+/// Quick Alert ---------------------------------------------------------- ///
+quickAlertsuccess(BuildContext context,String title,String text,int second,) async {
+ QuickAlert.show(
+  context: context,
+  title: '$title',
+  text: '$text',
+  type: QuickAlertType.warning,
+  confirmBtnColor: presentsent_color,
+  autoCloseDuration: Duration(seconds: second)
+ );
+}
+
+/// Quick Alert ---------------------------------------------------------- ///
+quickAlertWrong(BuildContext context,String title,String text,int second,) async {
+ QuickAlert.show(
+  context: context,
+  title: '$title',
+  text: '$text',
+  type: QuickAlertType.warning,
+  confirmBtnColor: presentsent_color,
+  autoCloseDuration: Duration(seconds: second)
+ );
+}

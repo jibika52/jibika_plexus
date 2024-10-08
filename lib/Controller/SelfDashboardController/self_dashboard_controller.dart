@@ -82,8 +82,13 @@ class SelfDashboardController with ChangeNotifier{
   ///   self Admin Save Leave Register Provider--------------------------------------------------------------------------
   dynamic SaveLeaveRegister;
   selfAdminSaveLeaveRegisterProvider(
-      String LEAVETYPECODE,String LEAVEDAYS,String FROMDATE,
-      String TODATE,String APPLYDATE,String HALFDAY,String HOLIDAYFOND,
+      String LEAVETYPECODE,
+      String LEAVEDAYS,
+      String FROMDATE,
+      String TODATE,
+      String APPLYDATE,
+      String HALFDAY,
+      String HOLIDAYFOND,
       String ATEENBONUSFLAG,String LEAVEREASON,String ADDRESSDURINGLEAVE,
       String DUTYCARRIEDOUTBY,String MOBILENO,
       String STAFFCATEGORYCODE,String USERTYPEID, BuildContext context)async{
