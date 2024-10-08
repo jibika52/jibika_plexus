@@ -492,7 +492,7 @@ void onStart(ServiceInstance service) async {
    channel.stream.listen((message) {
     print("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE ${message.toString()}");
     var notification=jsonDecode(message);
-    showNotification(notification["message"]);
+    showNotification(notification["msgbody"]);
     // Provider.of<CounterProvider>(context,listen: false).setNotificationCounterFunction(message);
    });
 //  }

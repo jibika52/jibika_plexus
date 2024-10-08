@@ -324,7 +324,7 @@ class _SelfBootomNavigationLeaveState extends State<SelfBootomNavigationLeave> {
                                           color: Main_Theme_textColor.withOpacity(0.1),
                                         ),
                                         alignment: Alignment.center,
-                                        child: CustomText(fontSize: font12header, fontWeight: FontWeight.w500, text: "0", letterSpacing: 0.3),
+                                        child: CustomText(fontSize: font12header, fontWeight: FontWeight.w500, text: "${totalDate}", letterSpacing: 0.3),
                                       )
                                     ],
                                   ),
@@ -426,7 +426,7 @@ class _SelfBootomNavigationLeaveState extends State<SelfBootomNavigationLeave> {
     "1",
     "1",
   ];
-
+   int totalDate=5;
   /// From Date-----------------------------------------------------------------------------------------
   String selectedformDatee = DateFormat('dd-MMM-yyyy').format(DateTime.now()).toString();
   Future<void> _selectformDate(BuildContext context) async {
@@ -438,12 +438,14 @@ class _SelfBootomNavigationLeaveState extends State<SelfBootomNavigationLeave> {
       final df = new DateFormat('dd-MMM-yyyy');
       setState(() {
         selectedformDatee = df.format(picked);
+
       });
     }
   }
 
   /// To Date-----------------------------------------------------------------------------------------
   String selectedtoDatee = DateFormat('dd-MMM-yyyy').format(DateTime.now()).toString();
+  DateTime ? fromtime;
   Future<void> _selecttoDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
         context: context,
@@ -453,6 +455,9 @@ class _SelfBootomNavigationLeaveState extends State<SelfBootomNavigationLeave> {
       final df = new DateFormat('dd-MMM-yyyy');
       setState(() {
         selectedtoDatee = df.format(picked);
+        totalDate=   DateTime.parse(selectedformDatee).difference(DateTime.parse(selectedtoDatee)).inDays;
+
+        print("======================================================================== $totalDate");
       });
     }
   }
