@@ -499,13 +499,13 @@ void onStart(ServiceInstance service) async {
 
 
  },);
- Timer.periodic(Duration(seconds: 10), (timer) async {
+ Timer.periodic(Duration(seconds: 30), (timer) async {
   _getCurrentLocation();
   print( "Location--------------- ${position.latitude} ${position.longitude} ");
   print("select_car_type------------------> ${GetStorage().read("select_car_type")} ");
  });
  // bring to foreground
- Timer.periodic(Duration(minutes: 1), (timer) async {
+ Timer.periodic(Duration(minutes: 5), (timer) async {
 
   bool is_internet_available = await InternetConnection().hasInternetAccess;
   print( "Location---------------${position.latitude} ${position.longitude} \n");

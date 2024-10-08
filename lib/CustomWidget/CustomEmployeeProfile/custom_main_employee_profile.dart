@@ -37,7 +37,7 @@ class customMainEmployeeProfile extends StatelessWidget {
       alignment: Alignment.center,
       children: [
         Container(
-          height: 250,
+          height: 250-30,
           width: double.infinity,
           margin: EdgeInsets.all(10),
           decoration: BoxDecoration(
@@ -247,28 +247,28 @@ class customMainEmployeeProfile extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(height: 22,)
+            //  SizedBox(height: 22,)
             ],
           ),
         ),
-        Positioned(
-          bottom: 10,
-          child: Container(
-            height: 45,
-            width: 170,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(50),
-              color: Main_Theme_WhiteCollor,
-            ),
-            child:  ShareMessagePdfPart(
-              width: 170,
-              is_share: true, onTap: () {
-            }, is_messsage: true, onTap2message: () {
-            }, is_pdf: true, onTap3pdf: () {
-            },
-            ),
-          ),
-        )
+        // Positioned(
+        //   bottom: 10,
+        //   child: Container(
+        //     height: 45,
+        //     width: 170,
+        //     decoration: BoxDecoration(
+        //       borderRadius: BorderRadius.circular(50),
+        //       color: Main_Theme_WhiteCollor,
+        //     ),
+        //     child:  ShareMessagePdfPart(
+        //       width: 170,
+        //       is_share: true, onTap: () {
+        //     }, is_messsage: true, onTap2message: () {
+        //     }, is_pdf: true, onTap3pdf: () {
+        //     },
+        //     ),
+        //   ),
+        // )
       ],
     );
   }
