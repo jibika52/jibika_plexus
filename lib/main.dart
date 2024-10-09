@@ -49,6 +49,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+   showNotification("nitification", "I am Uzzal Kumar biswas Fro Rajbari District Dhaka banfladesh .I invite you to come my home district and enjoy111111111111111");
     d_height = MediaQuery.of(context).size.height;
     d_width = MediaQuery.of(context).size.width;
     return MultiProvider(providers: [

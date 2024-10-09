@@ -2,12 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jibika_plexus/Controller/HomeController/home_controller.dart';
 import 'package:jibika_plexus/Controller/OnboardingEmployeeController/on_boarding_employee_controller.dart';
 import 'package:jibika_plexus/CustomSelfWedget/ShareMessagePdf/share_message_pdf_summary.dart';
 import 'package:jibika_plexus/CustomWidget/CustomAppBar/CustomDefaultAppBar/custom_default_app_bar.dart';
 import 'package:jibika_plexus/CustomWidget/CustomEmployeeProfile/custom_employee_profile.dart';
 import 'package:jibika_plexus/CustomWidget/CustomEmployeeProfile/custom_main_employee_profile.dart';
+import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/SelfBootomNavigatonEmployeeDashboard/self_bootom_navigaton_employee_dashboard.dart';
 import 'package:jibika_plexus/ViewSelf/SelfBootomNavigatonBar/SelfBootomNavigatonEmployeeJobCard/SelfProfile/self_profile.dart';
 import 'package:jibika_plexus/main.dart';
 import 'package:provider/provider.dart';
@@ -15,6 +18,8 @@ import 'package:provider/provider.dart';
 import '../../../../../CustomWidget/CustomImage/custom_image.dart';
 import '../../../../../CustomWidget/CustomText/custom_text.dart';
 import '../../../../../Utils/constants.dart';
+import '../../../../../ViewSelf/SelfBootomNavigatonBar/SelfBootomNavigationLeave/self_bootom_navigation_leave.dart';
+import '../../BootomNavigationBarItemsPayrollScreen/bootom_navigationar_Items_payroll_screen.dart';
 
 class EmployeeProfileScreen extends StatefulWidget {
    EmployeeProfileScreen({super.key ,required this.currentEmployeedataIndex});
@@ -55,6 +60,12 @@ class _EmployeeProfileScreenState extends State<EmployeeProfileScreen> {
     "Assets/DashBoardIcons/promotion.png",
     "Assets/DashBoardIcons/loan.png",
   ];
+  // @override
+  // void initState() {
+  //   Provider.of<HomeProvider>(context,listen: false).selfORAdminShortDescriptionProvider("${GetStorage().read("mobile_id")}", "${widget.currentEmployeedataIndex["IdCardNo"]}", context);
+  //   // TODO: implement initState
+  //   super.initState();
+  // }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,9 +83,13 @@ alignment: Alignment.center,
 
                 customMainEmployeeProfile(
                     is_need_edit_button_on_short_profile: "false",
-                    image: "${widget.currentEmployeedataIndex["EmpPhotoPath"]}", employeeCode: "${widget.currentEmployeedataIndex["IdCardNo"]}",
-                    employeeName: "${widget.currentEmployeedataIndex["EmployeeNameEnglish"]}", employeeDesignation: "${widget.currentEmployeedataIndex["Designation"]}",
-                    employeeDepartment: "${widget.currentEmployeedataIndex["Department"]}", birthday:  "${widget.currentEmployeedataIndex["BirthDate"]??""}"),
+                    image: "${widget.currentEmployeedataIndex["EmpPhotoPath"]}",
+                    employeeCode: "${widget.currentEmployeedataIndex["IdCardNo"]}",
+                    employeeName: "${widget.currentEmployeedataIndex["EmployeeNameEnglish"]}",
+                    employeeDesignation: "${widget.currentEmployeedataIndex["Designation"]}",
+                    employeeDepartment: "${widget.currentEmployeedataIndex["Department"]}",
+                    birthday:  "${widget.currentEmployeedataIndex["BirthDate"]??""}"
+                ),
                 /// Second part -----------------------------
 
                  Expanded(
@@ -92,9 +107,31 @@ alignment: Alignment.center,
                       itemBuilder: (context, index) {
                         return InkWell(
                           onTap: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileScreen(
-                              areYouFromEmployee: "Employee",
-                            ),));
+                            if(index==0){
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileScreen(
+                                areYouFromEmployee: "Employee",
+                              ),));
+                            }
+                            else if(index==1){
+                              Navigator.push(context, CupertinoPageRoute(builder: (context) => SafeArea(child: SelfBootomNavigatonEmployeeDashboard(
+                                  are_you_user: "employee",
+                                  IdCardNo: "${widget.currentEmployeedataIndex["IdCardNo"]}",
+                                  userId_mobile: "${GetStorage().read("mobile_id")}",
+                                  image: "${widget.currentEmployeedataIndex["EmpPhotoPath"]}",
+                                  employeeCode: "${widget.currentEmployeedataIndex["IdCardNo"]}",
+                                  employeeName: "${widget.currentEmployeedataIndex["EmployeeNameEnglish"]}",
+                                  employeeDesignation: "${widget.currentEmployeedataIndex["Designation"]}",
+                                  employeeDepartment: "${widget.currentEmployeedataIndex["Department"]}",
+                                  birthday:  "${widget.currentEmployeedataIndex["BirthDate"]??""}"
+                              )),));
+                            }
+                            else if(index==2){
+                              Navigator.push(context, CupertinoPageRoute(builder: (context) => SafeArea(child: SelfBootomNavigationLeave( )),));
+                            }
+                            else if(index==3){
+                              Navigator.push(context, CupertinoPageRoute(builder: (context) => SafeArea(child: BootomNavigationBarItemsPayrollScreen( )),));
+                            }
+                            
                           },
                           child: Container(
                             width: 130,

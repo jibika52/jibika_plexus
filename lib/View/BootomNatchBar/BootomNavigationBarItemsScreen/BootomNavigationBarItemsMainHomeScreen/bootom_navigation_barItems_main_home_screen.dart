@@ -40,6 +40,7 @@ class _BootomNavBarItemsEmployeeHomeScreenState extends State<BootomNavBarItemsE
   @override
   void initState() {
     Provider.of<OnboardingEmployeeController>(context,listen: false).GetShiftPlanNWeekendListProvider("${GetStorage().read("mobile_id")}", context);
+
     // TODO: implement initState
     super.initState();
   }

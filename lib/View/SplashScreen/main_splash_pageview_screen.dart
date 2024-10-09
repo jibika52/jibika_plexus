@@ -37,7 +37,6 @@ class _MainSplashPageViewScreenState extends State<MainSplashPageViewScreen> {
         ),
         ),);
       }
-
       else if(GetStorage().read("id_token")!=null && GetStorage().read("user_type_id")==1003){
         Navigator.push(context, MaterialPageRoute(builder: (context) => SalfBootomNatchBarScreen(currentIndex: 4),));
       }

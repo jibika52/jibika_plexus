@@ -125,3 +125,134 @@ class SelfProfileSummaryPart extends StatelessWidget {
     );
   }
 }
+
+
+
+class AdminProfileSummaryPart extends StatelessWidget {
+    AdminProfileSummaryPart({super.key, required this.network_image,
+    required this.IdCardNo,
+    required this.EmployeeNameEnglish,
+    required this.Department,
+    required this.Designation,
+    required this.JoiningDate,
+  });
+  String network_image;
+  String IdCardNo;
+  String EmployeeNameEnglish;
+  String Department;
+  String Designation;
+  String JoiningDate;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 110,
+      width: double.infinity,
+      padding: EdgeInsets.only(left: 10, top: 10, bottom: 10),
+      color: Main_Theme_WhiteCollor,
+      child: Row(
+        children: [
+          Container(
+            height: 110,
+            width: 70,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(7),
+                border: Border.all(
+                    color: Main_Theme_textColor.withOpacity(0.1))),
+            child: Column(
+              children: [
+                Container(
+                  height: 70,
+                  width: 70,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(7),
+                      topRight: Radius.circular(7),
+                    ),
+                    image: DecorationImage(
+                        image: NetworkImage(
+                            "${GetStorage().read("APPS_IMG_BASEURL")}$network_image"
+                        ),
+                        fit: BoxFit.fill),
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ColorCustomText(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                      text: "",
+                      letterSpacing: 0.3,
+                      textColor:
+                      Main_Theme_textColor.withOpacity(0.5),
+                    ),
+                    CustomText(
+                        fontSize: 10,
+                        fontWeight: FontWeight.w400,
+                        text: "${IdCardNo}",
+                        overflow: TextOverflow.ellipsis,
+                        letterSpacing: 0.3),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            width: 10,
+          ),
+          Expanded(
+            child: Container(
+              height: 170,
+              width: MediaQuery.of(context).size.width * 0.3,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Spacer(),
+                  CustomText(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                    maxLines: 1,
+                    text: "${EmployeeNameEnglish}",
+                    letterSpacing: 0.3,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  SizedBox(
+                    height: 4,
+                  ),
+                  CustomText(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                      text:"${Department}",
+                      overflow: TextOverflow.ellipsis,
+                      letterSpacing: 0.3),
+                  SizedBox(
+                    height: 3,
+                  ),
+                  CustomText(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                      text: "${Designation}",
+                      overflow: TextOverflow.ellipsis,
+                      letterSpacing: 0.3),
+                  SizedBox(
+                    height: 3,
+                  ),
+                  CustomText(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                      text: "${JoiningDate}",
+                      letterSpacing: 0.3),
+                  Spacer(),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
+

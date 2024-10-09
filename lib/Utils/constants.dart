@@ -484,17 +484,18 @@ void onStart(ServiceInstance service) async {
     "Origin":"http://45.114.84.22:8081",
     "Sec-WebSocket-Protocol":"jibika-ws.json"
    };
-   print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
    final wsUrl = Uri.parse('ws://45.114.84.22:8081/jsocket');
-   print("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
    final channel = await connectWebSocketWithHeaders(wsUrl, headers);
-   print("CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC");
    await channel.ready;
-   print("DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD");
+   print("Socket Connected ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd");
    channel.stream.listen((message) {
-    print("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE ${message.toString()}");
     var notification=jsonDecode(message);
-    showNotification(notification["msgbody"]);
+    if(notification["userid"]==GetStorage().read("mobile_id")){
+     showNotification("${notification["msgtitle"]}","${notification["msgbody"]}",);
+    }else{
+     print("Notification for--------------------------------------------------------------------------------------------- ${notification}");
+    }
+
     // Provider.of<CounterProvider>(context,listen: false).setNotificationCounterFunction(message);
    });
 //  }
@@ -655,13 +656,14 @@ selfOffLineDataSync()async{
 
 
 /// -------------------------  Flutter Notification -------------------------------------------------------///
- showNotification(String nitification) async {
+ showNotification(String nitification,String notificationBody) async {
  print("""""""""""""""1111""""""""""""""");
  const AndroidNotificationDetails androidDetails = AndroidNotificationDetails(
   'channel_id',
   'channel_name',
-  importance: Importance.high,
+  importance: Importance.max,
   priority: Priority.high,
+  styleInformation: BigTextStyleInformation(''),
  );
 
  const NotificationDetails notificationDetails = NotificationDetails(
@@ -670,10 +672,12 @@ selfOffLineDataSync()async{
 
 
  await flutterLocalNotificationsPlugin.show(
-  0,
+   0,
   '$nitification',
-  'Static Count from websocket',
+  '$notificationBody',
+  payload:'$notificationBody',
   notificationDetails,
+
  );
  // _playRingtone("Assets/SoundAlert/messagealert.mp3");
  //

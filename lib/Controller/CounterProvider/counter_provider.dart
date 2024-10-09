@@ -114,7 +114,7 @@ class CounterProvider with ChangeNotifier{
   }
 
 
-  ///Get Single || Marig status
+  /// Selected Employee-------------------------
   int _selectedEmployeeforGetProfile=-1;
   int get selectedEmployeeforGetProfile=>_selectedEmployeeforGetProfile;
   void selectedEmployeeforGetProfileFunction(int selectedEmployee){

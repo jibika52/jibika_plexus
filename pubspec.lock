@@ -213,10 +213,10 @@ packages:
     dependency: "direct main"
     description:
       name: elegant_notification
-      sha256: "59ddf857bcc5f4727e47b1dee2499d6b1ea1cb7e1fab73037ba488683deabe21"
+      sha256: "5a5943c194d5a70ae0b871474eac4bb7b45137ac35cccf758743b22d4c83d037"
       url: "https://pub.dev"
     source: hosted
-    version: "2.2.2"
+    version: "2.3.0"
   equatable:
     dependency: transitive
     description:
@@ -351,7 +351,7 @@ packages:
     source: hosted
     version: "3.0.2"
   flutter_local_notifications:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: flutter_local_notifications
       sha256: "49eeef364fddb71515bc78d5a8c51435a68bccd6e4d68e25a942c5e47761ae71"

@@ -18,14 +18,30 @@ import 'package:jibika_plexus/Utils/constants.dart';
 import 'package:month_year_picker/month_year_picker.dart';
 import 'package:pie_chart/pie_chart.dart';
 import 'package:provider/provider.dart';
+import '../../../Controller/HomeController/home_controller.dart';
 import '../../../Controller/SelfDashboardController/self_dashboard_controller.dart';
 import '../../../CustomSelfWedget/myself_leave_status.dart';
 import '../../../CustomWidget/CustomImage/custom_image.dart';
 import '../SelfBootomNavigatonBarHomeScreen/self_bootom_navigaton_bar_home_screen.dart';
 
 class SelfBootomNavigatonEmployeeDashboard extends StatefulWidget {
-  SelfBootomNavigatonEmployeeDashboard({super.key,required this.are_you_user});
+  SelfBootomNavigatonEmployeeDashboard({super.key,required this.are_you_user,this.IdCardNo,this.userId_mobile,
+    this.image,
+    this.employeeCode,
+    this.employeeName,
+    this.employeeDesignation,
+    this.employeeDepartment,
+    this.birthday,
+  });
   String ? are_you_user;
+  String ? userId_mobile;
+  String ? IdCardNo;
+  String ? image;
+  String ? employeeCode;
+  String ? employeeName;
+  String ? employeeDesignation;
+  String ? employeeDepartment;
+  String ? birthday;
   @override
   State<SelfBootomNavigatonEmployeeDashboard> createState() => _SelfBootomNavigatonEmployeeDashboardState();
 }
@@ -45,16 +61,16 @@ class _SelfBootomNavigatonEmployeeDashboardState extends State<SelfBootomNavigat
         DateTime.now().year,
         DateTime.now().month,
         DateTime.now().day,
-        "${GetStorage().read("mobile_id")}",
+      widget.are_you_user=="employee"?"${widget.userId_mobile}":  "${GetStorage().read("mobile_id")}",
         "${DateFormat('dd-MMM-yyyy').format(DateTime.now())}",
-        "${GetStorage().read("IdCardNo")}",
+        widget.are_you_user=="employee"?"${widget.IdCardNo}":  "${GetStorage().read("IdCardNo")}",
         "GENERAL",
         context
     );
     Provider.of<SelfDashboardController>(context,listen: false).selfAdminAdmin_Get_Monthly_Att_SummaryCountProvider(
         "${DateFormat("MMM-yyyy").format(DateTime.now())}",
-        "${GetStorage().read("IdCardNo")}",
-        "${GetStorage().read("mobile_id")}",
+        widget.are_you_user=="employee"?"${widget.IdCardNo}" :    "${GetStorage().read("IdCardNo")}",
+        widget.are_you_user=="employee"?"${widget.userId_mobile}" : "${GetStorage().read("mobile_id")}",
         "GENERAL",
         context
     );
@@ -108,8 +124,19 @@ class _SelfBootomNavigatonEmployeeDashboardState extends State<SelfBootomNavigat
                     width: double.infinity,
                     padding: EdgeInsets.only(left: 0,top: 0,bottom: 0),
                     color: Main_Theme_WhiteCollor,
-                    child:  SelfProfileSummaryPart()
-                  ),
+                    child:
+                    widget.are_you_user=="employee"?
+                    AdminProfileSummaryPart(
+                        network_image: "${widget.image}",
+                        IdCardNo:"${widget.employeeCode}",
+                        EmployeeNameEnglish: "${widget.employeeName}",
+                        Department: "${widget.employeeDepartment}",
+                        Designation:"${widget.employeeDesignation}",
+                        JoiningDate:"${widget.birthday}",
+                    )
+                  :
+                    SelfProfileSummaryPart()
+        ),
                   Positioned(
                     right: 0,
                     top: -10,
