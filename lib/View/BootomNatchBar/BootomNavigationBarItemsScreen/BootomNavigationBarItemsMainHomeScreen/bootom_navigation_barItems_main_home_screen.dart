@@ -188,6 +188,7 @@ class _BootomNavBarItemsEmployeeHomeScreenState extends State<BootomNavBarItemsE
                                                       animatwidth=w-13;
                                                     }
                                                   }else{
+                                                    FocusScope.of(context).requestFocus(new FocusNode());
                                                     animatwidth=117.0;
                                                   }
                                                 });
@@ -200,7 +201,7 @@ class _BootomNavBarItemsEmployeeHomeScreenState extends State<BootomNavBarItemsE
                                                 // child: IconButton(onPressed: () {
                                                 //
                                                 // }, icon: Icon(Icons.search,size: 15,color: Main_Theme_textColor,)),
-                                                  child: CustomImageSction2(height: 20, width: 20, radius: 1, image: "Assets/DashBoardIcons/searchnormal.png", img_color: Main_Theme_textColor,),
+                                                  child: CustomImageSction2(height: 20, width: 20, radius: 1, image: "Assets/DashBoardIcons/searchnormal.png", img_color: Main_Theme_textColor.withOpacity(0.6),),
                                               ),
                                             ),
                                           ],

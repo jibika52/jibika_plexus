@@ -815,7 +815,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                                              color:  value.MaritalStatus == "Married" ? ClickedColor : home_default_color
                                           ),
                                           child: ColorCustomText(
-                                            fontSize: 13,
+                                            fontSize:MediaQuery.of(context).size.width>380? 13:11,
                                             fontWeight: FontWeight.w500,
                                             text: "Married",
                                             letterSpacing: 0.4,
@@ -839,7 +839,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                                                   ? ClickedColor
                                                   : home_default_color),
                                           child: ColorCustomText(
-                                            fontSize: 13,
+                                            fontSize:MediaQuery.of(context).size.width>380? 13:11,
                                             fontWeight: FontWeight.w500,
                                             text: "Unmarried",
                                             letterSpacing: 0.4,
@@ -863,7 +863,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                                                     ? ClickedColor
                                                     : home_default_color),
                                             child: ColorCustomText(
-                                              fontSize: 13,
+                                              fontSize:MediaQuery.of(context).size.width>380? 13:11,
                                               fontWeight: FontWeight.w500,
                                               text: "Divorced",
                                               letterSpacing: 0.4,
@@ -887,7 +887,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                                                     ? ClickedColor
                                                     : home_default_color),
                                             child: ColorCustomText(
-                                              fontSize: 13,
+                                              fontSize:MediaQuery.of(context).size.width>380? 13:11,
                                               fontWeight: FontWeight.w500,
                                               text: "Widow",
                                               letterSpacing: 0.4,
