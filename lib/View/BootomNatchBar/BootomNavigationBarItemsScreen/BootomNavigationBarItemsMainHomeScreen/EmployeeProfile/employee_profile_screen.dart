@@ -69,8 +69,8 @@ class _EmployeeProfileScreenState extends State<EmployeeProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: PreferredSize(preferredSize: Size.fromHeight(75), child: CustomDefaultAppBar(onTap: () => Navigator.pop(context),
-      //     text: "Uzzal Biswas")),
+      appBar: PreferredSize(preferredSize: Size.fromHeight(68), child: CustomDefaultAppBar(onTap: () => Navigator.pop(context),
+          text: "Activities")),
       body: Stack(
 alignment: Alignment.center,
         children: [
@@ -92,126 +92,135 @@ alignment: Alignment.center,
                 ),
                 /// Second part -----------------------------
 
-                 Expanded(
-                  child: Container(
-                    padding:   EdgeInsets.only(left: 10,right: 10,bottom: 10),
-                    child: GridView.builder(
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          mainAxisSpacing: 10,
-                          crossAxisSpacing: 10,
-                          mainAxisExtent: 130
-                      ),
-                      scrollDirection: Axis.vertical,
-                      itemCount: countList.length,
-                      itemBuilder: (context, index) {
-                        return InkWell(
-                          onTap: () {
-                            if(index==0){
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileScreen(
-                                areYouFromEmployee: "Employee",
-                              ),));
-                            }
-                            else if(index==1){
-                              Navigator.push(context, CupertinoPageRoute(builder: (context) => SafeArea(child: SelfBootomNavigatonEmployeeDashboard(
-                                  are_you_user: "employee",
-                                  IdCardNo: "${widget.currentEmployeedataIndex["IdCardNo"]}",
-                                  userId_mobile: "${GetStorage().read("mobile_id")}",
-                                  image: "${widget.currentEmployeedataIndex["EmpPhotoPath"]}",
-                                  employeeCode: "${widget.currentEmployeedataIndex["IdCardNo"]}",
-                                  employeeName: "${widget.currentEmployeedataIndex["EmployeeNameEnglish"]}",
-                                  employeeDesignation: "${widget.currentEmployeedataIndex["Designation"]}",
-                                  employeeDepartment: "${widget.currentEmployeedataIndex["Department"]}",
-                                  birthday:  "${widget.currentEmployeedataIndex["BirthDate"]??""}"
-                              )),));
-                            }
-                            else if(index==2){
-                              Navigator.push(context, CupertinoPageRoute(builder: (context) => SafeArea(child: SelfBootomNavigationLeave( )),));
-                            }
-                            else if(index==3){
-                              Navigator.push(context, CupertinoPageRoute(builder: (context) => SafeArea(child: BootomNavigationBarItemsPayrollScreen( )),));
-                            }
-                            
-                          },
-                          child: Container(
-                            width: 130,
-                            child: Stack(
-                              children: <Widget>[
-                                Container(
-                                  width: double.infinity,
-                                  height: double.infinity,
-                                  margin: const EdgeInsets.only(
-                                    top: 0, left: 0, right: 0, bottom: 0,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    boxShadow: <BoxShadow>[
-                                      BoxShadow(
-                                          color: CustomButtonColor.withOpacity(0.5),
-                                          offset: const Offset(1.1, 4.0),
-                                          blurRadius: 8.0),
-                                    ],
-                                    gradient: LinearGradient(
-                                      colors:  [
-                                        // HexColor("#738AE6"),
-                                        // HexColor("#5C5EDD"),
-                                        CustomButtonColor.withOpacity(0.5),
-                                        CustomButtonColor.withOpacity(0.9),
+                 Container(
+                   height: MediaQuery.of(context).size.height-250-30-63,
+                   width: double.infinity,
+                   padding:   EdgeInsets.only(left: 10,right: 10,bottom: 10),
+                   child: GridView.builder(
+                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                         crossAxisCount: 2,
+                         mainAxisSpacing: 10,
+                         crossAxisSpacing: 10,
+                         mainAxisExtent: 130
+                     ),
+                     scrollDirection: Axis.vertical,
+                     itemCount: countList.length,
+                     itemBuilder: (context, index) {
+                       return InkWell(
+                         onTap: () {
+                           if(index==0){
+                             Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileScreen(
+                               areYouFromEmployee: "Employee",
+                             ),));
+                           }
+                           else if(index==1){
+                             Navigator.push(context, CupertinoPageRoute(builder: (context) => Scaffold(
+                                 appBar: PreferredSize(preferredSize: Size.fromHeight(68), child: CustomDefaultAppBar(onTap: () => Navigator.pop(context),
+                                     text: "Job Card")),
+                                 body: SelfBootomNavigatonEmployeeDashboard(
+                                 are_you_user: "employee",
+                                 IdCardNo: "${widget.currentEmployeedataIndex["IdCardNo"]}",
+                                 userId_mobile: "${GetStorage().read("mobile_id")}",
+                                 image: "${widget.currentEmployeedataIndex["EmpPhotoPath"]}",
+                                 employeeCode: "${widget.currentEmployeedataIndex["IdCardNo"]}",
+                                 employeeName: "${widget.currentEmployeedataIndex["EmployeeNameEnglish"]}",
+                                 employeeDesignation: "${widget.currentEmployeedataIndex["Designation"]}",
+                                 employeeDepartment: "${widget.currentEmployeedataIndex["Department"]}",
+                                 birthday:  "${widget.currentEmployeedataIndex["BirthDate"]??""}"
+                             )),));
+                           }
+                           else if(index==2){
+                             Navigator.push(context, CupertinoPageRoute(builder: (context) => Scaffold(
+                                 appBar: PreferredSize(preferredSize: Size.fromHeight(68), child: CustomDefaultAppBar(onTap: () => Navigator.pop(context),
+                                     text: "Leave")),
+                                 body: SelfBootomNavigationLeave( )),));
+                           }
+                           else if(index==3){
+                             Navigator.push(context, CupertinoPageRoute(builder: (context) => Scaffold(
+                                 appBar: PreferredSize(preferredSize: Size.fromHeight(68), child: CustomDefaultAppBar(onTap: () => Navigator.pop(context),
+                                     text: "Payroll")),
+                                 body: BootomNavigationBarItemsPayrollScreen( )),));
+                           }
 
-                                      ],
-                                      begin: Alignment.topLeft,
-                                      end: Alignment.bottomRight,
-                                    ),
-                                    borderRadius:   BorderRadius.only(
-                                      bottomRight: Radius.circular(8.0),
-                                      bottomLeft: Radius.circular(8.0),
-                                      topLeft: Radius.circular(8.0),
-                                      topRight: Radius.circular(40.0),
-                                    ),
-                                  ),
-                                  alignment: Alignment.bottomLeft,
-                                  padding: EdgeInsets.only(left: 10,bottom: 10),
-                                  child: Text(
-                                    "${countList[index]}",
-                                    textAlign: TextAlign.center,
-                                    style: GoogleFonts.poppins(
-                                      // fontFamily: "Roboto",
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 20,
-                                      letterSpacing: 0.2,
-                                      color: FitnessAppTheme.white,
-                                    ),
-                                  ),
-                                ),
-                                Positioned(
-                                  top: - 10,
-                                  right: -5,
-                                  child: Container(
-                                    width: 90,
-                                    height: 90,
-                                    decoration: BoxDecoration(
-                                      color: Main_Theme_WhiteCollor.withOpacity(0.2),
-                                      shape: BoxShape.circle,
-                                    ),
-                                  ),
-                                ),
-                                Positioned(
-                                  top: 10,
-                                  right: 10,
-                                  child: Container(
-                                    width: 60,
-                                    height: 60,
-                                    padding: EdgeInsets.all(5),
-                                    child: Image.asset(listimage[index],color: Main_Theme_WhiteCollor,height: 40,width: 40,fit: BoxFit.fill,),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                  ),
-                )
+                         },
+                         child: Container(
+                           width: 130,
+                           child: Stack(
+                             children: <Widget>[
+                               Container(
+                                 width: double.infinity,
+                                 height: double.infinity,
+                                 margin: const EdgeInsets.only(
+                                   top: 0, left: 0, right: 0, bottom: 0,
+                                 ),
+                                 decoration: BoxDecoration(
+                                   boxShadow: <BoxShadow>[
+                                     BoxShadow(
+                                         color: CustomButtonColor.withOpacity(0.5),
+                                         offset: const Offset(1.1, 4.0),
+                                         blurRadius: 8.0),
+                                   ],
+                                   gradient: LinearGradient(
+                                     colors:  [
+                                       // HexColor("#738AE6"),
+                                       // HexColor("#5C5EDD"),
+                                       CustomButtonColor.withOpacity(0.5),
+                                       CustomButtonColor.withOpacity(0.9),
+
+                                     ],
+                                     begin: Alignment.topLeft,
+                                     end: Alignment.bottomRight,
+                                   ),
+                                   borderRadius:   BorderRadius.only(
+                                     bottomRight: Radius.circular(8.0),
+                                     bottomLeft: Radius.circular(8.0),
+                                     topLeft: Radius.circular(8.0),
+                                     topRight: Radius.circular(40.0),
+                                   ),
+                                 ),
+                                 alignment: Alignment.bottomLeft,
+                                 padding: EdgeInsets.only(left: 10,bottom: 10),
+                                 child: Text(
+                                   "${countList[index]}",
+                                   textAlign: TextAlign.center,
+                                   style: GoogleFonts.poppins(
+                                     // fontFamily: "Roboto",
+                                     fontWeight: FontWeight.w500,
+                                     fontSize: 20,
+                                     letterSpacing: 0.2,
+                                     color: FitnessAppTheme.white,
+                                   ),
+                                 ),
+                               ),
+                               Positioned(
+                                 top: - 10,
+                                 right: -5,
+                                 child: Container(
+                                   width: 90,
+                                   height: 90,
+                                   decoration: BoxDecoration(
+                                     color: Main_Theme_WhiteCollor.withOpacity(0.2),
+                                     shape: BoxShape.circle,
+                                   ),
+                                 ),
+                               ),
+                               Positioned(
+                                 top: 10,
+                                 right: 10,
+                                 child: Container(
+                                   width: 60,
+                                   height: 60,
+                                   padding: EdgeInsets.all(5),
+                                   child: Image.asset(listimage[index],color: Main_Theme_WhiteCollor,height: 40,width: 40,fit: BoxFit.fill,),
+                                 ),
+                               ),
+                             ],
+                           ),
+                         ),
+                       );
+                     },
+                   ),
+                 )
 
 
 

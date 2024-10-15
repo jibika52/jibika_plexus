@@ -42,7 +42,7 @@ class CustomButton extends StatelessWidget {
           child: Text(
             text,
             style:  GoogleFonts.roboto(
-              letterSpacing: 0.3,
+              letterSpacing: 0.5,
                 color: button_text_color, fontWeight: fontWeight, fontSize: button_text_fontSize),
           ),
         ),

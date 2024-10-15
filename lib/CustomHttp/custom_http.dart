@@ -578,6 +578,7 @@ class CustomHttpRequestClass{
 
   ///  GetShiftPlanNWeekendListHttpFunction-------------------------------------------------------------------------
   GetShiftPlanNWeekendListHttpFunction(String UserId, BuildContext context)async{
+    print("dddddddddddddddddddddddddddddddd");
     dynamic  GetShiftPlanNWeekendListt  ;
     var body = jsonEncode({
       "UserId":"$UserId",

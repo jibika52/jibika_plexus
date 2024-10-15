@@ -457,36 +457,37 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
               ),
               SizedBox(height: C_height,),
               Consumer<OnboardingEmployeeController>(
-                builder: (context, value, child) =>
-                    Container(
-                      margin: EdgeInsets.only(top: 10),
-                      height: 50,
-                      width: double.infinity,
-                      padding: EdgeInsets.only(left: 15, right: 15),
-                      child: DropdownButton(
-                        enableFeedback: true,
-                        autofocus: false,
-                        isExpanded: true,
-                        hint: InkWell(
-                          onTap: () {},
-                          child: CustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "Shift Plane", letterSpacing: 0.3), // Display the EnglishName
 
-                        ),
-                        // Not necessary for Option 1
-                        value: shiftplan_id,
-                        onChanged: (newValue) {
-                          setState(() {
-                            shiftplan_id = newValue.toString();
-                          });
-                        },
-                        items: value.GetShiftPlanNWeekendList["shiftplan"].map((shift) {
-                          return DropdownMenuItem(
-                            child: CustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "${shift['EnglishName']}", letterSpacing: 0.3),
-                            value: "${shift['Code']}",
-                          );
-                        }).toList(),
-                      ),
-                    ),
+                builder: (context, value, child)
+                {
+                  List abc=value.GetShiftPlanNWeekendList["shiftplan"];
+                  return Container(
+              margin: EdgeInsets.only(top: 10),
+          height: 50,
+          width: double.infinity,
+          padding: EdgeInsets.only(left: 15, right: 15),
+          child: DropdownButton(
+            enableFeedback: true,
+            autofocus: false,
+            isExpanded: true,
+            hint: CustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "Shift Plane", letterSpacing: 0.3),
+            // Not necessary for Option 1
+            value: shiftplan_id,
+            onChanged: (newValue) {
+              setState(() {
+                shiftplan_id = newValue.toString();
+              });
+            },
+            items: abc.map((shift) {
+              return DropdownMenuItem(
+                child: CustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "${shift['EnglishName']}", letterSpacing: 0.3),
+                value: "${shift['Code']}",
+              );
+            }).toList(),
+          ),
+        );
+                }
+
               ),
               SizedBox(height: C_height+10,),
               Align(

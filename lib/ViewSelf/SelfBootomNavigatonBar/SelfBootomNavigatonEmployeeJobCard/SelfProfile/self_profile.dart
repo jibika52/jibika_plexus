@@ -265,6 +265,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
     return SafeArea(
       child: Scaffold(
+        appBar: PreferredSize(preferredSize: Size.fromHeight(68), child: CustomDefaultAppBar(onTap: () => Navigator.pop(context),
+            text: "Profile")),
         backgroundColor: home_default_color,
 
         // body: Container(

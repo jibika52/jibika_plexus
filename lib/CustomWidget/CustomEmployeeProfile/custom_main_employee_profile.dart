@@ -20,6 +20,8 @@ class customMainEmployeeProfile extends StatelessWidget {
     required this.birthday,
    required this.is_need_edit_button_on_short_profile,
     this.profile,
+    this.onTap,
+    this.is_need_qr_code,
   });
   String image;
   String employeeCode;
@@ -30,7 +32,8 @@ class customMainEmployeeProfile extends StatelessWidget {
   String is_need_edit_button_on_short_profile;
   dynamic profile;
   double container_Radius=50.0;
-
+  bool ? is_need_qr_code;
+  final GestureTapCallback? onTap;
   @override
   Widget build(BuildContext context) {
     return  Stack(
@@ -234,14 +237,37 @@ class customMainEmployeeProfile extends StatelessWidget {
                             ],
                           ),
                         ),
-                        Positioned(
+                          Positioned(
                             bottom: 20,
                             right: 20,
-                            child: Container(
-                          height: 60,
-                          width: 60,
-                          child: Image.asset("Assets/PrimaryInformation/qrcode.png"),
-                        ))
+                            child: InkWell(
+                              onTap: onTap,
+                              child: Container(
+                                                        height: 60,
+                                                        width: 60,
+                                                        child: is_need_qr_code==true?Container(
+                              padding: EdgeInsets.all(3),
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Main_Theme_textColor_tir_Condition
+                              ),
+                              child:Column(
+                                children: [
+                                  SizedBox(height: 3,),
+                                  Image.asset("Assets/SelfIcon/leave_icon.png",height: 31,width: 31,color: Main_Theme_WhiteCollor,),
+                                  ColorCustomText(
+                                    fontSize: font12header,
+                                    fontWeight: FontWeight.w500,
+                                    text: "History",
+                                    letterSpacing: 0.5,
+                                    textAlign: TextAlign.center,
+                                    textColor: Main_Theme_WhiteCollor,
+                                  ),
+                                ],
+                              ),) : Image.asset("Assets/PrimaryInformation/qrcode.png"),
+                                                      ),
+                            ))
                       ],
                     )
                   ],
