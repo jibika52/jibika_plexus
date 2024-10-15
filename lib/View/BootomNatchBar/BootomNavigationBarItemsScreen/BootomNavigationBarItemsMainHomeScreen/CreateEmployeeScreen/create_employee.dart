@@ -824,7 +824,7 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
 
 
     }catch(erroe){
-      Navigator.push(context, MaterialPageRoute(builder: (context) => CreateNewEmployeeScreen(),));
+    //  Navigator.push(context, MaterialPageRoute(builder: (context) => CreateNewEmployeeScreen(),));
       print("Catch Error $erroe");
     }
   }

@@ -263,470 +263,468 @@ class _ProfileScreenState extends State<ProfileScreen> {
     ];
 
 
-    return SafeArea(
-      child: Scaffold(
-        appBar: PreferredSize(preferredSize: Size.fromHeight(68), child: CustomDefaultAppBar(onTap: () => Navigator.pop(context),
-            text: "Profile")),
-        backgroundColor: home_default_color,
+    return Scaffold(
+      appBar: PreferredSize(preferredSize: Size.fromHeight(68), child: CustomDefaultAppBar(onTap: () => Navigator.pop(context),
+          text: "Profile")),
+      backgroundColor: home_default_color,
 
-        // body: Container(
-        //   height: double.infinity,
-        //   width: double.infinity,
-        //   child: Column(
-        //     children: [
-        //       Expanded(
-        //         child: Column(
-        //           children: [
-        //                     customMainEmployeeProfile(
-        //                       image:widget.areYouFromEmployee =="user"?  "87" : "${getProfile["EMP_PHOTO_PATH"]}",
-        //                       employeeCode:widget.areYouFromEmployee =="user"?  "87" : "${getProfile["EMPCODE"]}",
-        //                       employeeName:widget.areYouFromEmployee =="user"?  "87" : "${getProfile["EMPLOYEE_NAME_ENGLISH"]}",
-        //                       employeeDesignation:widget.areYouFromEmployee =="user"?  "87" : "${getProfile["DESIGNATION_ENGLISH"]}",
-        //                       employeeDepartment:widget.areYouFromEmployee =="user"?  "87" : "${getProfile["DEPARTMENT_ENGLISH"]??""}",
-        //                       birthday:widget.areYouFromEmployee =="user"?  "87" : "${getProfile["BirthDate"]??""}",),
-        //             Expanded(
-        //               child: Container(
-        //                         margin: EdgeInsets.only(left: 10,right: 10),
-        //                         child: ListView.builder(
-        //                           // physics: NeverScrollableScrollPhysics(),
-        //                           // shrinkWrap: true,
-        //                           itemCount:profile_list.length,
-        //                           itemBuilder: (context, index) {
-        //                             return InkWell(
-        //                               onTap: () {
-        //                                 setState(() {
-        //                                   selectedindex=index;
-        //                                   animatedheight=0;
-        //                                   Future.delayed(Duration(milliseconds: 100),() {
-        //                                     setState(() {
-        //                                       if(getindex=="$index"){
-        //                                         animatedheight=0;
-        //                                         getindex='';
-        //                                       }else{
-        //                                         animatedheight=index==0?795:index==1?780:index==2?780:400;
-        //                                         getindex="$index";
-        //                                       }
-        //                                     });
-        //                                   },);
-        //                                 });
-        //                               },
-        //                               child: Container(
-        //                                 decoration: BoxDecoration(
-        //                                     borderRadius: BorderRadius.all( Radius.circular(7)),
-        //                                     color: Main_Theme_textColor_tir_Condition.withOpacity(0.1),
-        //                                     //  color:  CustomButtonColor.withOpacity(0.05),
-        //                                     border: Border(bottom: BorderSide( color: CustomButtonColor))
-        //                                 ),
-        //                                 margin: EdgeInsets.only(bottom: 7),
-        //                                 child: Column(
-        //                                   children: [
-        //                                     Container(
-        //                                       padding: EdgeInsets.only(left: 10,right: 10),
-        //                                       height: 51,
-        //                                       decoration: BoxDecoration(
-        //                                           borderRadius: BorderRadius.only(
-        //                                             topLeft: Radius.circular(7),
-        //                                             topRight: Radius.circular(7),
-        //                                             bottomLeft: Radius.circular( selectedindex==index?0:7),
-        //                                             bottomRight:Radius.circular( selectedindex==index?0:7),
-        //                                           ),
-        //                                       //    color: Main_Theme_textColor_tir_Condition.withOpacity(0.1)
-        //                                       ),
-        //                                       width: double.infinity,
-        //                                       child: Row(
-        //                                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        //                                         children: [
-        //                                           CustomText(fontSize: font15, fontWeight: FontWeight.w600, text: "${profile_list[index]}", letterSpacing: 0.3),
-        //                                           selectedindex==index && getindex  == "$index"?
-        //                                           Icon(Icons.keyboard_arrow_up,)
-        //                                               :
-        //                                           Icon(Icons.keyboard_arrow_down,),
-        //                                         ],
-        //                                       ),
-        //                                     ),
-        //                                     selectedindex==index&&index==3? SizedBox(height: 7,):Container()  ,
-        //                                     selectedindex==index&&index==3 && getindex  == "$index" ? Row(
-        //                                       mainAxisAlignment:MainAxisAlignment.spaceEvenly ,
-        //                                       children: [
-        //                                         CustomImageUpdateScetion2(width: 100,height:50 ,image: "Assets/PrimaryInformation/email.png", heddintext: '',),
-        //                                       ],
-        //                                     ) :Container(),
-        //
-        //
-        //                                     selectedindex==index? AnimatedContainer(
-        //                                       height: animatedheight,
-        //                                       width: double.infinity,
-        //                                       duration: Duration(milliseconds: 400),
-        //                                       color: home_default_color,
-        //                                       child: Container(
-        //                                           child:  ListView.builder(
-        //                                             physics: NeverScrollableScrollPhysics(),
-        //                                             itemCount:
-        //                                             selectedindex==0? SelfProfileInformationCardlist.length
-        //                                             :
-        //                                             selectedindex==1? SelfOfficialInformationCardlist.length
-        //                                             :
-        //                                             selectedindex==2? SelfSalaryInformationCardlist.length
-        //                                             :
-        //                                             SelfReferrerInformationCardlist.length,
-        //
-        //                                             itemBuilder: (context, index) {
-        //                                               return
-        //                                                 selectedindex==0?
-        //                                                 Container(
-        //                                                   decoration: BoxDecoration(
-        //                                                     borderRadius: BorderRadius.circular(7),
-        //                                                   ),
-        //                                                   margin: EdgeInsets.only(bottom: 5),
-        //                                                   padding: const EdgeInsets.symmetric(horizontal: 10.0,vertical: 5),
-        //                                                   child: Column(
-        //                                                     children: [
-        //                                                       Row(
-        //                                                         children: [
-        //                                                           SvgPicture.asset(
-        //                                                             'Assets/Employee_Profile_Icon/profileinf.svg',
-        //                                                             height: 30.0,
-        //                                                             width: 32.0,
-        //                                                             color: Main_Theme_textColor,
-        //                                                           ),
-        //                                                           SizedBox(width: 10,),
-        //                                                           Column(
-        //                                                             crossAxisAlignment: CrossAxisAlignment.start,
-        //                                                             mainAxisAlignment: MainAxisAlignment.center,
-        //                                                             children: [
-        //                                                               Text(
-        //                                                                 SelfProfileInformationCardlist[index].text1,
-        //                                                                 style: customHeadingTextStyle(Main_Theme_textColor.withOpacity(0.7)),
-        //                                                               ),
-        //                                                               SelfProfileInformationCardlist[index].text2==""?Container():  Text(
-        //                                                                 SelfProfileInformationCardlist[index].text2,
-        //                                                                 style: customSubHeadingTextStyle(Main_Theme_textColor.withOpacity(0.9)),
-        //                                                               ),
-        //                                                             ],
-        //                                                           ),
-        //                                                         ],
-        //                                                       ),
-        //                                                       Divider()
-        //                                                     ],
-        //                                                   ),
-        //                                                 ):
-        //                                                 selectedindex==1?
-        //                                                 SelfProfileImageNameSubName(
-        //                                                 image: "${SelfOfficialInformationCardlist[index].image}",
-        //                                                 text1: "${SelfOfficialInformationCardlist[index].text1}",
-        //                                                 text2: "${SelfOfficialInformationCardlist[index].text2}",
-        //                                               ) :
-        //                                                 selectedindex==2?
-        //                                                 SelfProfileImageNameSubName(
-        //                                                 image: "${SelfSalaryInformationCardlist[index].image}",
-        //                                                 text1: "${SelfSalaryInformationCardlist[index].text1}",
-        //                                                 text2: "${SelfSalaryInformationCardlist[index].text2}",
-        //                                               ):
-        //                                                 SelfProfileImageNameSubName(
-        //                                                 image: "${SelfReferrerInformationCardlist[index].image}",
-        //                                                 text1: "${SelfReferrerInformationCardlist[index].text1}",
-        //                                                 text2: "${SelfReferrerInformationCardlist[index].text2}",
-        //                                               );
-        //                                             },)
-        //                                       ) ,
-        //                                     ) : Container(),
-        //                                     selectedindex==index&&index==0? SizedBox(height: 7,):Container()  ,
-        //                                     selectedindex==index&&index==0 && getindex  == "$index" ? Row(
-        //                                       mainAxisAlignment:MainAxisAlignment.spaceEvenly ,
-        //                                       children: [
-        //                                         CustomImageUpdateScetion2(width: 100,height:50 ,image: "Assets/PrimaryInformation/email.png", heddintext: 'Signature',),
-        //                                         SizedBox(width: 15,),
-        //                                         CustomImageUpdateScetion2(width: 50,height:50 ,image: "Assets/PrimaryInformation/qrcode.png", heddintext: 'QR Code',),
-        //                                       ],
-        //                                     ) :Container(),
-        //                                   ],
-        //                                 ),
-        //                               ),
-        //                             );
-        //                           },),
-        //                       ),
-        //
-        //             ),
-        //           ],
-        //         ),
-        //       ),
-        //       widget.areYouFromEmployee =="user"?Container(
-        //         height: 1,
-        //         width: double.infinity,
-        //       ):
-        //       Consumer<EmployeeAdminProvider>(
-        //           builder: (context, value, child) {
-        //             return Consumer<CounterProvider>(
-        //               builder: (context, selected, child) =>
-        //                Container(
-        //                  height: 100,
-        //                  width: double.infinity,
-        //                  color: Colors.red.withOpacity(0.2),
-        //                )
-        //             );
-        //           }
-        //       ),
-        //     ],
-        //   ),
-        // ),
+      // body: Container(
+      //   height: double.infinity,
+      //   width: double.infinity,
+      //   child: Column(
+      //     children: [
+      //       Expanded(
+      //         child: Column(
+      //           children: [
+      //                     customMainEmployeeProfile(
+      //                       image:widget.areYouFromEmployee =="user"?  "87" : "${getProfile["EMP_PHOTO_PATH"]}",
+      //                       employeeCode:widget.areYouFromEmployee =="user"?  "87" : "${getProfile["EMPCODE"]}",
+      //                       employeeName:widget.areYouFromEmployee =="user"?  "87" : "${getProfile["EMPLOYEE_NAME_ENGLISH"]}",
+      //                       employeeDesignation:widget.areYouFromEmployee =="user"?  "87" : "${getProfile["DESIGNATION_ENGLISH"]}",
+      //                       employeeDepartment:widget.areYouFromEmployee =="user"?  "87" : "${getProfile["DEPARTMENT_ENGLISH"]??""}",
+      //                       birthday:widget.areYouFromEmployee =="user"?  "87" : "${getProfile["BirthDate"]??""}",),
+      //             Expanded(
+      //               child: Container(
+      //                         margin: EdgeInsets.only(left: 10,right: 10),
+      //                         child: ListView.builder(
+      //                           // physics: NeverScrollableScrollPhysics(),
+      //                           // shrinkWrap: true,
+      //                           itemCount:profile_list.length,
+      //                           itemBuilder: (context, index) {
+      //                             return InkWell(
+      //                               onTap: () {
+      //                                 setState(() {
+      //                                   selectedindex=index;
+      //                                   animatedheight=0;
+      //                                   Future.delayed(Duration(milliseconds: 100),() {
+      //                                     setState(() {
+      //                                       if(getindex=="$index"){
+      //                                         animatedheight=0;
+      //                                         getindex='';
+      //                                       }else{
+      //                                         animatedheight=index==0?795:index==1?780:index==2?780:400;
+      //                                         getindex="$index";
+      //                                       }
+      //                                     });
+      //                                   },);
+      //                                 });
+      //                               },
+      //                               child: Container(
+      //                                 decoration: BoxDecoration(
+      //                                     borderRadius: BorderRadius.all( Radius.circular(7)),
+      //                                     color: Main_Theme_textColor_tir_Condition.withOpacity(0.1),
+      //                                     //  color:  CustomButtonColor.withOpacity(0.05),
+      //                                     border: Border(bottom: BorderSide( color: CustomButtonColor))
+      //                                 ),
+      //                                 margin: EdgeInsets.only(bottom: 7),
+      //                                 child: Column(
+      //                                   children: [
+      //                                     Container(
+      //                                       padding: EdgeInsets.only(left: 10,right: 10),
+      //                                       height: 51,
+      //                                       decoration: BoxDecoration(
+      //                                           borderRadius: BorderRadius.only(
+      //                                             topLeft: Radius.circular(7),
+      //                                             topRight: Radius.circular(7),
+      //                                             bottomLeft: Radius.circular( selectedindex==index?0:7),
+      //                                             bottomRight:Radius.circular( selectedindex==index?0:7),
+      //                                           ),
+      //                                       //    color: Main_Theme_textColor_tir_Condition.withOpacity(0.1)
+      //                                       ),
+      //                                       width: double.infinity,
+      //                                       child: Row(
+      //                                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      //                                         children: [
+      //                                           CustomText(fontSize: font15, fontWeight: FontWeight.w600, text: "${profile_list[index]}", letterSpacing: 0.3),
+      //                                           selectedindex==index && getindex  == "$index"?
+      //                                           Icon(Icons.keyboard_arrow_up,)
+      //                                               :
+      //                                           Icon(Icons.keyboard_arrow_down,),
+      //                                         ],
+      //                                       ),
+      //                                     ),
+      //                                     selectedindex==index&&index==3? SizedBox(height: 7,):Container()  ,
+      //                                     selectedindex==index&&index==3 && getindex  == "$index" ? Row(
+      //                                       mainAxisAlignment:MainAxisAlignment.spaceEvenly ,
+      //                                       children: [
+      //                                         CustomImageUpdateScetion2(width: 100,height:50 ,image: "Assets/PrimaryInformation/email.png", heddintext: '',),
+      //                                       ],
+      //                                     ) :Container(),
+      //
+      //
+      //                                     selectedindex==index? AnimatedContainer(
+      //                                       height: animatedheight,
+      //                                       width: double.infinity,
+      //                                       duration: Duration(milliseconds: 400),
+      //                                       color: home_default_color,
+      //                                       child: Container(
+      //                                           child:  ListView.builder(
+      //                                             physics: NeverScrollableScrollPhysics(),
+      //                                             itemCount:
+      //                                             selectedindex==0? SelfProfileInformationCardlist.length
+      //                                             :
+      //                                             selectedindex==1? SelfOfficialInformationCardlist.length
+      //                                             :
+      //                                             selectedindex==2? SelfSalaryInformationCardlist.length
+      //                                             :
+      //                                             SelfReferrerInformationCardlist.length,
+      //
+      //                                             itemBuilder: (context, index) {
+      //                                               return
+      //                                                 selectedindex==0?
+      //                                                 Container(
+      //                                                   decoration: BoxDecoration(
+      //                                                     borderRadius: BorderRadius.circular(7),
+      //                                                   ),
+      //                                                   margin: EdgeInsets.only(bottom: 5),
+      //                                                   padding: const EdgeInsets.symmetric(horizontal: 10.0,vertical: 5),
+      //                                                   child: Column(
+      //                                                     children: [
+      //                                                       Row(
+      //                                                         children: [
+      //                                                           SvgPicture.asset(
+      //                                                             'Assets/Employee_Profile_Icon/profileinf.svg',
+      //                                                             height: 30.0,
+      //                                                             width: 32.0,
+      //                                                             color: Main_Theme_textColor,
+      //                                                           ),
+      //                                                           SizedBox(width: 10,),
+      //                                                           Column(
+      //                                                             crossAxisAlignment: CrossAxisAlignment.start,
+      //                                                             mainAxisAlignment: MainAxisAlignment.center,
+      //                                                             children: [
+      //                                                               Text(
+      //                                                                 SelfProfileInformationCardlist[index].text1,
+      //                                                                 style: customHeadingTextStyle(Main_Theme_textColor.withOpacity(0.7)),
+      //                                                               ),
+      //                                                               SelfProfileInformationCardlist[index].text2==""?Container():  Text(
+      //                                                                 SelfProfileInformationCardlist[index].text2,
+      //                                                                 style: customSubHeadingTextStyle(Main_Theme_textColor.withOpacity(0.9)),
+      //                                                               ),
+      //                                                             ],
+      //                                                           ),
+      //                                                         ],
+      //                                                       ),
+      //                                                       Divider()
+      //                                                     ],
+      //                                                   ),
+      //                                                 ):
+      //                                                 selectedindex==1?
+      //                                                 SelfProfileImageNameSubName(
+      //                                                 image: "${SelfOfficialInformationCardlist[index].image}",
+      //                                                 text1: "${SelfOfficialInformationCardlist[index].text1}",
+      //                                                 text2: "${SelfOfficialInformationCardlist[index].text2}",
+      //                                               ) :
+      //                                                 selectedindex==2?
+      //                                                 SelfProfileImageNameSubName(
+      //                                                 image: "${SelfSalaryInformationCardlist[index].image}",
+      //                                                 text1: "${SelfSalaryInformationCardlist[index].text1}",
+      //                                                 text2: "${SelfSalaryInformationCardlist[index].text2}",
+      //                                               ):
+      //                                                 SelfProfileImageNameSubName(
+      //                                                 image: "${SelfReferrerInformationCardlist[index].image}",
+      //                                                 text1: "${SelfReferrerInformationCardlist[index].text1}",
+      //                                                 text2: "${SelfReferrerInformationCardlist[index].text2}",
+      //                                               );
+      //                                             },)
+      //                                       ) ,
+      //                                     ) : Container(),
+      //                                     selectedindex==index&&index==0? SizedBox(height: 7,):Container()  ,
+      //                                     selectedindex==index&&index==0 && getindex  == "$index" ? Row(
+      //                                       mainAxisAlignment:MainAxisAlignment.spaceEvenly ,
+      //                                       children: [
+      //                                         CustomImageUpdateScetion2(width: 100,height:50 ,image: "Assets/PrimaryInformation/email.png", heddintext: 'Signature',),
+      //                                         SizedBox(width: 15,),
+      //                                         CustomImageUpdateScetion2(width: 50,height:50 ,image: "Assets/PrimaryInformation/qrcode.png", heddintext: 'QR Code',),
+      //                                       ],
+      //                                     ) :Container(),
+      //                                   ],
+      //                                 ),
+      //                               ),
+      //                             );
+      //                           },),
+      //                       ),
+      //
+      //             ),
+      //           ],
+      //         ),
+      //       ),
+      //       widget.areYouFromEmployee =="user"?Container(
+      //         height: 1,
+      //         width: double.infinity,
+      //       ):
+      //       Consumer<EmployeeAdminProvider>(
+      //           builder: (context, value, child) {
+      //             return Consumer<CounterProvider>(
+      //               builder: (context, selected, child) =>
+      //                Container(
+      //                  height: 100,
+      //                  width: double.infinity,
+      //                  color: Colors.red.withOpacity(0.2),
+      //                )
+      //             );
+      //           }
+      //       ),
+      //     ],
+      //   ),
+      // ),
 
-        body:
-        Stack(
-          children: [
-            Container(
-              height: double.infinity,
-              width: double.infinity,
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    /// First part -----------------------------
-                    customMainEmployeeProfile(
-                      profile: getProfile,
-                      is_need_edit_button_on_short_profile: "true",
-                      image:widget.areYouFromEmployee =="user"?  "87" : "${getProfile["EMP_PHOTO_PATH"]}",
-                      employeeCode:widget.areYouFromEmployee =="user"?  "87" : "${getProfile["EMPCODE"]}",
-                      employeeName:widget.areYouFromEmployee =="user"?  "87" : "${getProfile["EMPLOYEE_NAME_ENGLISH"]}",
-                      employeeDesignation:widget.areYouFromEmployee =="user"?  "87" : "${getProfile["DESIGNATION_ENGLISH"]}",
-                      employeeDepartment:widget.areYouFromEmployee =="user"?  "87" : "${getProfile["DEPARTMENT_ENGLISH"]??""}",
-                      birthday:widget.areYouFromEmployee =="user"?  "87" : "${getProfile["BirthDate"]??""}",),
-                   /// Second part  -------------------------------
-                    Container(
-                      margin: EdgeInsets.only(left: 10,right: 10),
-                      child: ListView.builder(
-                        physics: NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemCount:profile_list.length,
-                        itemBuilder: (context, index) {
-                          return InkWell(
-                            onTap: () {
-                              setState(() {
-                                selectedindex=index;
-                                animatedheight=0;
-                                Future.delayed(Duration(milliseconds: 100),() {
-                                  setState(() {
-                                    if(getindex=="$index"){
-                                      animatedheight=0;
-                                      getindex='';
-                                    }else{
-                                      animatedheight=index==0?795:index==1?780:index==2?780:400;
-                                      getindex="$index";
-                                    }
-                                  });
-                                },);
-                              });
-                            },
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.all( Radius.circular(7)),
-                                  color: Main_Theme_textColor_tir_Condition.withOpacity(0.1),
-                                  //  color:  CustomButtonColor.withOpacity(0.05),
-                                  border: Border(bottom: BorderSide( color: CustomButtonColor))
-                              ),
-                              margin: EdgeInsets.only(bottom: 7),
-                              child: Column(
-                                children: [
-                                  Container(
-                                    padding: EdgeInsets.only(left: 10,right: 10),
-                                    height: 51,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.only(
-                                          topLeft: Radius.circular(7),
-                                          topRight: Radius.circular(7),
-                                          bottomLeft: Radius.circular( selectedindex==index?0:7),
-                                          bottomRight:Radius.circular( selectedindex==index?0:7),
-                                        ),
-                                    //    color: Main_Theme_textColor_tir_Condition.withOpacity(0.1)
-                                    ),
-                                    width: double.infinity,
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      body:
+      Stack(
+        children: [
+          Container(
+            height: double.infinity,
+            width: double.infinity,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  /// First part -----------------------------
+                  customMainEmployeeProfile(
+                    profile: getProfile,
+                    is_need_edit_button_on_short_profile: "true",
+                    image:widget.areYouFromEmployee =="user"?  "87" : "${getProfile["EMP_PHOTO_PATH"]}",
+                    employeeCode:widget.areYouFromEmployee =="user"?  "87" : "${getProfile["EMPCODE"]}",
+                    employeeName:widget.areYouFromEmployee =="user"?  "87" : "${getProfile["EMPLOYEE_NAME_ENGLISH"]}",
+                    employeeDesignation:widget.areYouFromEmployee =="user"?  "87" : "${getProfile["DESIGNATION_ENGLISH"]}",
+                    employeeDepartment:widget.areYouFromEmployee =="user"?  "87" : "${getProfile["DEPARTMENT_ENGLISH"]??""}",
+                    birthday:widget.areYouFromEmployee =="user"?  "87" : "${getProfile["BirthDate"]??""}",),
+                 /// Second part  -------------------------------
+                  Container(
+                    margin: EdgeInsets.only(left: 10,right: 10),
+                    child: ListView.builder(
+                      physics: NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount:profile_list.length,
+                      itemBuilder: (context, index) {
+                        return InkWell(
+                          onTap: () {
+                            setState(() {
+                              selectedindex=index;
+                              animatedheight=0;
+                              Future.delayed(Duration(milliseconds: 100),() {
+                                setState(() {
+                                  if(getindex=="$index"){
+                                    animatedheight=0;
+                                    getindex='';
+                                  }else{
+                                    animatedheight=index==0?795:index==1?780:index==2?780:400;
+                                    getindex="$index";
+                                  }
+                                });
+                              },);
+                            });
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.all( Radius.circular(7)),
+                                color: Main_Theme_textColor_tir_Condition.withOpacity(0.1),
+                                //  color:  CustomButtonColor.withOpacity(0.05),
+                                border: Border(bottom: BorderSide( color: CustomButtonColor))
+                            ),
+                            margin: EdgeInsets.only(bottom: 7),
+                            child: Column(
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.only(left: 10,right: 10),
+                                  height: 51,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(7),
+                                        topRight: Radius.circular(7),
+                                        bottomLeft: Radius.circular( selectedindex==index?0:7),
+                                        bottomRight:Radius.circular( selectedindex==index?0:7),
+                                      ),
+                                  //    color: Main_Theme_textColor_tir_Condition.withOpacity(0.1)
+                                  ),
+                                  width: double.infinity,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      CustomText(fontSize: font15, fontWeight: FontWeight.w600, text: "${profile_list[index]}", letterSpacing: 0.3),
+                                      selectedindex==index && getindex  == "$index"?
+                                      Icon(Icons.keyboard_arrow_up,)
+                                          :
+                                      Icon(Icons.keyboard_arrow_down,),
+                                    ],
+                                  ),
+                                ),
+                                selectedindex==index&&index==3? SizedBox(height: 7,):Container()  ,
+                                selectedindex==index&&index==3 && getindex  == "$index" ? Row(
+                                  mainAxisAlignment:MainAxisAlignment.spaceEvenly ,
+                                  children: [
+                                    CustomImageUpdateScetion2(width: 100,height:50 ,image: "Assets/PrimaryInformation/email.png", heddintext: '',),
+                                  ],
+                                ) :Container(),
+
+
+                                selectedindex==index? AnimatedContainer(
+                                  height: animatedheight,
+                                  width: double.infinity,
+                                  duration: Duration(milliseconds: 400),
+                                  color: home_default_color,
+                                  child: Container(
+                                      child:  ListView.builder(
+                                        physics: NeverScrollableScrollPhysics(),
+                                        itemCount:
+                                        selectedindex==0? SelfProfileInformationCardlist.length
+                                        :
+                                        selectedindex==1? SelfOfficialInformationCardlist.length
+                                        :
+                                        selectedindex==2? SelfSalaryInformationCardlist.length
+                                        :
+                                        SelfReferrerInformationCardlist.length,
+
+                                        itemBuilder: (context, index) {
+                                          return
+                                            selectedindex==0?
+                                            Container(
+                                              decoration: BoxDecoration(
+                                                borderRadius: BorderRadius.circular(7),
+                                              ),
+                                              margin: EdgeInsets.only(bottom: 5),
+                                              padding: const EdgeInsets.symmetric(horizontal: 10.0,vertical: 5),
+                                              child: Column(
+                                                children: [
+                                                  Row(
+                                                    children: [
+                                                      SvgPicture.asset(
+                                                        'Assets/Employee_Profile_Icon/profileinf.svg',
+                                                        height: 30.0,
+                                                        width: 32.0,
+                                                        color: Main_Theme_textColor,
+                                                      ),
+                                                      SizedBox(width: 10,),
+                                                      Column(
+                                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                                        mainAxisAlignment: MainAxisAlignment.center,
+                                                        children: [
+                                                          Text(
+                                                            SelfProfileInformationCardlist[index].text1,
+                                                            style: customHeadingTextStyle(Main_Theme_textColor.withOpacity(0.7)),
+                                                          ),
+                                                          SelfProfileInformationCardlist[index].text2==""?Container():  Text(
+                                                            SelfProfileInformationCardlist[index].text2,
+                                                            style: customSubHeadingTextStyle(Main_Theme_textColor.withOpacity(0.9)),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  Divider()
+                                                ],
+                                              ),
+                                            ):
+                                            selectedindex==1?
+                                            SelfProfileImageNameSubName(
+                                            image: "${SelfOfficialInformationCardlist[index].image}",
+                                            text1: "${SelfOfficialInformationCardlist[index].text1}",
+                                            text2: "${SelfOfficialInformationCardlist[index].text2}",
+                                          ) :
+                                            selectedindex==2?
+                                            SelfProfileImageNameSubName(
+                                            image: "${SelfSalaryInformationCardlist[index].image}",
+                                            text1: "${SelfSalaryInformationCardlist[index].text1}",
+                                            text2: "${SelfSalaryInformationCardlist[index].text2}",
+                                          ):
+                                            SelfProfileImageNameSubName(
+                                            image: "${SelfReferrerInformationCardlist[index].image}",
+                                            text1: "${SelfReferrerInformationCardlist[index].text1}",
+                                            text2: "${SelfReferrerInformationCardlist[index].text2}",
+                                          );
+                                        },)
+                                  ) ,
+                                ) : Container(),
+                                selectedindex==index&&index==0? SizedBox(height: 7,):Container()  ,
+                                selectedindex==index&&index==0 && getindex  == "$index" ? Row(
+                                  mainAxisAlignment:MainAxisAlignment.spaceEvenly ,
+                                  children: [
+                                    CustomImageUpdateScetion2(width: 100,height:50 ,image: "Assets/PrimaryInformation/email.png", heddintext: 'Signature',),
+                                    SizedBox(width: 15,),
+                                    CustomImageUpdateScetion2(width: 50,height:50 ,image: "Assets/PrimaryInformation/qrcode.png", heddintext: 'QR Code',),
+                                  ],
+                                ) :Container(),
+                              ],
+                            ),
+                          ),
+                        );
+                      },),
+                  ),
+                  SizedBox(height: 200,)
+                ],
+              ),
+            ),
+          ),
+          Positioned(
+              bottom: 0,
+              child:    widget.areYouFromEmployee =="user"?Container(
+                height: 1,
+                width: double.infinity,
+              ):
+              Consumer<EmployeeAdminProvider>(
+                  builder: (context, value, child) {
+                    return Consumer<CounterProvider>(
+                      builder: (context, selected, child) =>
+                          Container(
+                            height: 140,
+                            width: MediaQuery.of(context).size.width,
+                            padding: EdgeInsets.only(left: 10,right: 10,top: 5,bottom: 5),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.only(topLeft: Radius.circular(11),topRight: Radius.circular(11)),
+                              color: home_default_color.withOpacity(0.8),
+                            ),
+                            child:  Expanded(
+                              child: ListView.builder(
+                                scrollDirection: Axis.horizontal,
+                                itemCount: value.Admin_GetEmployeeListByStatus.length,
+                                itemBuilder: (context, index) => InkWell(
+                                  splashColor: Colors.white.withOpacity(0.0),
+                                  onTap: () {
+                                    Provider.of<CounterProvider>(context, listen: false).selectedEmployeeforGetProfileFunction(index);
+                                    Provider.of<OnboardingEmployeeController>(context, listen: false).GetEmployeeByIdListProvider(
+                                        "${value.Admin_GetEmployeeListByStatus[index]["IdCardNo"]}",
+                                        "${GetStorage().read("mobile_id")}",
+                                        context);
+                                  },
+                                  child: Container(
+                                    padding: EdgeInsets.only(right: 20.0),
+                                    child: Column(
                                       children: [
-                                        CustomText(fontSize: font15, fontWeight: FontWeight.w600, text: "${profile_list[index]}", letterSpacing: 0.3),
-                                        selectedindex==index && getindex  == "$index"?
-                                        Icon(Icons.keyboard_arrow_up,)
-                                            :
-                                        Icon(Icons.keyboard_arrow_down,),
+                                        CircleAvatar(
+                                          radius: 50,
+                                          backgroundColor:selected.selectedEmployeeforGetProfile==index?
+                                          presentsent_color.withOpacity(0.7):
+                                          leave_color.withOpacity(0.7),
+                                          child: CircleAvatar(
+                                            radius: selected.selectedEmployeeforGetProfile==index? 42:44,
+                                            backgroundImage: NetworkImage(
+                                                "${GetStorage().read("APPS_IMG_BASEURL")}${value.Admin_GetEmployeeListByStatus[index]["EmpPhotoPath"]}"),
+                                            //   child:value.Admin_GetEmployeeListByStatus[index]["EmpPhotoPath"]!=""? CustomImageSctionNetwork(height: 55, width: 45, radius: 7, image: "${value.Admin_GetEmployeeListByStatus[index]["EmpPhotoPath"]}"):Image(image: NetworkImage("https://greenmartbd.net/images/default.jpg"),height: 70,width: 50,fit: BoxFit.fill,),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 5,
+                                        ),
+                                        Text("${value.Admin_GetEmployeeListByStatus[index]["IdCardNo"]}",
+                                            style:selected.selectedEmployeeforGetProfile==index?GoogleFonts.poppins(
+                                                fontSize: fontTitle,
+                                                fontWeight: FontWeight.bold
+                                            ):
+                                            customHeadingTextStyle(
+                                                Colors.black.withOpacity(0.7)
+                                            )
+                                        )
                                       ],
                                     ),
                                   ),
-                                  selectedindex==index&&index==3? SizedBox(height: 7,):Container()  ,
-                                  selectedindex==index&&index==3 && getindex  == "$index" ? Row(
-                                    mainAxisAlignment:MainAxisAlignment.spaceEvenly ,
-                                    children: [
-                                      CustomImageUpdateScetion2(width: 100,height:50 ,image: "Assets/PrimaryInformation/email.png", heddintext: '',),
-                                    ],
-                                  ) :Container(),
-
-
-                                  selectedindex==index? AnimatedContainer(
-                                    height: animatedheight,
-                                    width: double.infinity,
-                                    duration: Duration(milliseconds: 400),
-                                    color: home_default_color,
-                                    child: Container(
-                                        child:  ListView.builder(
-                                          physics: NeverScrollableScrollPhysics(),
-                                          itemCount:
-                                          selectedindex==0? SelfProfileInformationCardlist.length
-                                          :
-                                          selectedindex==1? SelfOfficialInformationCardlist.length
-                                          :
-                                          selectedindex==2? SelfSalaryInformationCardlist.length
-                                          :
-                                          SelfReferrerInformationCardlist.length,
-
-                                          itemBuilder: (context, index) {
-                                            return
-                                              selectedindex==0?
-                                              Container(
-                                                decoration: BoxDecoration(
-                                                  borderRadius: BorderRadius.circular(7),
-                                                ),
-                                                margin: EdgeInsets.only(bottom: 5),
-                                                padding: const EdgeInsets.symmetric(horizontal: 10.0,vertical: 5),
-                                                child: Column(
-                                                  children: [
-                                                    Row(
-                                                      children: [
-                                                        SvgPicture.asset(
-                                                          'Assets/Employee_Profile_Icon/profileinf.svg',
-                                                          height: 30.0,
-                                                          width: 32.0,
-                                                          color: Main_Theme_textColor,
-                                                        ),
-                                                        SizedBox(width: 10,),
-                                                        Column(
-                                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                                          mainAxisAlignment: MainAxisAlignment.center,
-                                                          children: [
-                                                            Text(
-                                                              SelfProfileInformationCardlist[index].text1,
-                                                              style: customHeadingTextStyle(Main_Theme_textColor.withOpacity(0.7)),
-                                                            ),
-                                                            SelfProfileInformationCardlist[index].text2==""?Container():  Text(
-                                                              SelfProfileInformationCardlist[index].text2,
-                                                              style: customSubHeadingTextStyle(Main_Theme_textColor.withOpacity(0.9)),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ],
-                                                    ),
-                                                    Divider()
-                                                  ],
-                                                ),
-                                              ):
-                                              selectedindex==1?
-                                              SelfProfileImageNameSubName(
-                                              image: "${SelfOfficialInformationCardlist[index].image}",
-                                              text1: "${SelfOfficialInformationCardlist[index].text1}",
-                                              text2: "${SelfOfficialInformationCardlist[index].text2}",
-                                            ) :
-                                              selectedindex==2?
-                                              SelfProfileImageNameSubName(
-                                              image: "${SelfSalaryInformationCardlist[index].image}",
-                                              text1: "${SelfSalaryInformationCardlist[index].text1}",
-                                              text2: "${SelfSalaryInformationCardlist[index].text2}",
-                                            ):
-                                              SelfProfileImageNameSubName(
-                                              image: "${SelfReferrerInformationCardlist[index].image}",
-                                              text1: "${SelfReferrerInformationCardlist[index].text1}",
-                                              text2: "${SelfReferrerInformationCardlist[index].text2}",
-                                            );
-                                          },)
-                                    ) ,
-                                  ) : Container(),
-                                  selectedindex==index&&index==0? SizedBox(height: 7,):Container()  ,
-                                  selectedindex==index&&index==0 && getindex  == "$index" ? Row(
-                                    mainAxisAlignment:MainAxisAlignment.spaceEvenly ,
-                                    children: [
-                                      CustomImageUpdateScetion2(width: 100,height:50 ,image: "Assets/PrimaryInformation/email.png", heddintext: 'Signature',),
-                                      SizedBox(width: 15,),
-                                      CustomImageUpdateScetion2(width: 50,height:50 ,image: "Assets/PrimaryInformation/qrcode.png", heddintext: 'QR Code',),
-                                    ],
-                                  ) :Container(),
-                                ],
-                              ),
-                            ),
-                          );
-                        },),
-                    ),
-                    SizedBox(height: 200,)
-                  ],
-                ),
-              ),
-            ),
-            Positioned(
-                bottom: 0,
-                child:    widget.areYouFromEmployee =="user"?Container(
-                  height: 1,
-                  width: double.infinity,
-                ):
-                Consumer<EmployeeAdminProvider>(
-                    builder: (context, value, child) {
-                      return Consumer<CounterProvider>(
-                        builder: (context, selected, child) =>
-                            Container(
-                              height: 140,
-                              width: MediaQuery.of(context).size.width,
-                              padding: EdgeInsets.only(left: 10,right: 10,top: 5,bottom: 5),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.only(topLeft: Radius.circular(11),topRight: Radius.circular(11)),
-                                color: home_default_color.withOpacity(0.8),
-                              ),
-                              child:  Expanded(
-                                child: ListView.builder(
-                                  scrollDirection: Axis.horizontal,
-                                  itemCount: value.Admin_GetEmployeeListByStatus.length,
-                                  itemBuilder: (context, index) => InkWell(
-                                    splashColor: Colors.white.withOpacity(0.0),
-                                    onTap: () {
-                                      Provider.of<CounterProvider>(context, listen: false).selectedEmployeeforGetProfileFunction(index);
-                                      Provider.of<OnboardingEmployeeController>(context, listen: false).GetEmployeeByIdListProvider(
-                                          "${value.Admin_GetEmployeeListByStatus[index]["IdCardNo"]}",
-                                          "${GetStorage().read("mobile_id")}",
-                                          context);
-                                    },
-                                    child: Container(
-                                      padding: EdgeInsets.only(right: 20.0),
-                                      child: Column(
-                                        children: [
-                                          CircleAvatar(
-                                            radius: 50,
-                                            backgroundColor:selected.selectedEmployeeforGetProfile==index?
-                                            presentsent_color.withOpacity(0.7):
-                                            leave_color.withOpacity(0.7),
-                                            child: CircleAvatar(
-                                              radius: selected.selectedEmployeeforGetProfile==index? 42:44,
-                                              backgroundImage: NetworkImage(
-                                                  "${GetStorage().read("APPS_IMG_BASEURL")}${value.Admin_GetEmployeeListByStatus[index]["EmpPhotoPath"]}"),
-                                              //   child:value.Admin_GetEmployeeListByStatus[index]["EmpPhotoPath"]!=""? CustomImageSctionNetwork(height: 55, width: 45, radius: 7, image: "${value.Admin_GetEmployeeListByStatus[index]["EmpPhotoPath"]}"):Image(image: NetworkImage("https://greenmartbd.net/images/default.jpg"),height: 70,width: 50,fit: BoxFit.fill,),
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            height: 5,
-                                          ),
-                                          Text("${value.Admin_GetEmployeeListByStatus[index]["IdCardNo"]}",
-                                              style:selected.selectedEmployeeforGetProfile==index?GoogleFonts.poppins(
-                                                  fontSize: fontTitle,
-                                                  fontWeight: FontWeight.bold
-                                              ):
-                                              customHeadingTextStyle(
-                                                  Colors.black.withOpacity(0.7)
-                                              )
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ),),),
-                            ),
-                      );
-                    }
-                )
-            )
-          ],
-        ),
-     ),
-    );
+                                ),),),
+                          ),
+                    );
+                  }
+              )
+          )
+        ],
+      ),
+         );
   }
   List profile_list=[
     "Profile Info",
