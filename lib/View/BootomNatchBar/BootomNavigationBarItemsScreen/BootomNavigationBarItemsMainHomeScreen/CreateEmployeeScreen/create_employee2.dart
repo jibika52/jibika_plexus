@@ -1,8 +1,10 @@
 
+import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
 import 'dart:ui';
 import 'package:animated_toggle_switch/animated_toggle_switch.dart';
+import 'package:elegant_notification/elegant_notification.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -10,6 +12,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:http/http.dart' as http;
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
 import 'package:image_picker/image_picker.dart';
@@ -21,9 +24,11 @@ import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
 import 'package:jibika_plexus/CustomWidget/CustomImageButton/custom_imagebutton.dart';
 import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 import 'package:provider/provider.dart';
+import '../../../../../Api/Routes/routes.dart';
 import '../../../../../Controller/CounterProvider/counter_provider.dart';
 import '../../../../../CustomWidget/CustomTExtFormField/Jibika_custom_text_from_field.dart';
 import '../../../../../Utils/constants.dart';
+import '../../../bootom_bar_screen.dart';
 
 class CreateNewEmployeeScreen2 extends StatefulWidget {
   CreateNewEmployeeScreen2({super.key,
@@ -105,7 +110,7 @@ class CreateNewEmployeeScreen2 extends StatefulWidget {
 class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
   TextEditingController _joiningDateController = TextEditingController();
   TextEditingController _birthDateController = TextEditingController();
-  TextEditingController _employeeIdController = TextEditingController();
+  TextEditingController _employeeCodeIdController = TextEditingController();
   TextEditingController _employeeRFController = TextEditingController();
   TextEditingController _nIDController = TextEditingController();
   TextEditingController _employeeNameController = TextEditingController();
@@ -191,7 +196,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
   @override
   void initState() {
     Provider.of<OnboardingEmployeeController>(context,listen: false).GetDepartmentNDesinationListProvider("${GetStorage().read("mobile_id")}", context);
-    _employeeIdController.text =widget.employeeID;
+    _employeeCodeIdController.text =widget.employeeID;
      _nIDController.text =widget.employeeNID;
     _employeeNameController.text =widget.employeeName;
       _birthDateController.text =widget.employeeDateOfBirth;
@@ -232,6 +237,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
 
   @override
   Widget build(BuildContext context) {
+    print("cccccccccccccccccccccccccccccccccccc ${widget.employeeNID}");
     List  shiftplanelist=Provider.of<OnboardingEmployeeController>(context).GetShiftPlanNWeekendList["shiftplan"];
     List  religionlist=Provider.of<OnboardingEmployeeController>(context).GetShiftPlanNWeekendList["religion"];
 
@@ -524,10 +530,19 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                         SizedBox(height: C_height,),
                         JibikaCustomTextFromField(
                             readOnly: false,
-                            controller: _employeeIdController,
+                            controller: _employeeRFController,
+                            height: 50,
+                            img: "Assets/PrimaryInformation/people (1).png",
+                            hinttext: "Id Card No.",
+                            keyboardType: TextInputType.number,
+                            obscureText: false),
+                        SizedBox(height: C_height,),
+                        JibikaCustomTextFromField(
+                            readOnly: false,
+                            controller: _employeeCodeIdController,
                             height: 50,
                             img: "Assets/DashBoardIcons/personalcard.png",
-                            hinttext: "Id Card No.",
+                            hinttext: "Employee Code",
                             keyboardType: TextInputType.number,
                             obscureText: false),
                         SizedBox(height: C_height,),
@@ -979,10 +994,16 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                     SizedBox(
                       height: 20,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 70.0,right: 70),
-                      child: CustomImageButton(height: 45, img: "Assets/PrimaryInformation/save 1.png", text: "Save",
-                          textColor: Colors.white, b_color: CustomButtonColor),
+                    Container(
+                      alignment: Alignment.center,
+                      width: MediaQuery.of(context).size.width/2,
+                      child: InkWell(
+                        onTap: () {
+                          SaveOnBoarding();
+                        },
+                        child: CustomImageButton(height: 45, img: "Assets/PrimaryInformation/save 1.png", text: "Save",
+                            textColor: Colors.white, b_color: CustomButtonColor),
+                      ),
                     ),
                     SizedBox(height: C_height+20,),
             
@@ -1659,4 +1680,94 @@ List nameList=[
   String ? rostertype_id;
   String ? rostergroup_id;
   List<int> Containsvalue=[];
+
+
+
+  functionval()async{
+    var nid_cardd = await http.MultipartFile.fromPath('EmpImageFile', "${_image!.path.toString()}");
+    // var image = await http.MultipartFile.fromPath('EmpImageFile', _NID!.path.toString());
+    request.files.add(nid_cardd);
+    //  request.files.add(image);
+  }
+  dun(){}
+
+  var request = http.MultipartRequest("POST", Uri.parse("${BASEURL}/${EmployeeOnBoarding}"));
+
+  SaveOnBoarding() async {
+    try{
+
+      request.headers.addAll({
+        "accept": "application/json",
+        //  'Authorization': 'Bearer ${GetStorage().read("api_token")}'
+      });
+
+
+      request.fields["GENDER"] = m==true? "M" :f==true? "F": "O" ;
+      request.fields["ID_CARD_NO"] =  _employeeRFController.text;
+      request.fields["MOBILE_NO "] =  _phoneController.text;
+      request.fields["NID_NO"] =  _nIDController.text;
+      request.fields["SHIFT_PLAN"] = "${shiftplan_id}";
+      request.fields["WEEKEND1"] = "${Containsvalue[0]}";
+      request.fields["WEEKEND2"] =  Containsvalue.length >= 2?"${Containsvalue[1]}" :"";
+      request.fields["USERID"] = "${GetStorage().read("mobile_id")}";
+      request.fields["EMPLOYEE_NAME_ENGLISH"] = _employeeNameController.text;
+      request.fields["JOINING_DATE"] = _joiningDateController.text;
+      request.fields["BIRTH_DATE"] = _birthDateController.text;
+      request.fields["RF_ID_NO"] = _employeeRFController.text;
+      request.fields["EMPLOYEE_STATUS"] = "3";
+      request.fields["CLIENTBASE_URL"] = "${GetStorage().read("APPS_IMG_BASEURL")}" ;
+      request.fields["Empcode"] = _employeeCodeIdController.text ;
+      "${_image}"=="null"?dun(): functionval();
+      var response = await request.send();
+      print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa=============================> ${response.stream}");
+      var responseData = await response.stream.toBytes();
+      print("bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb=============================> ${responseData}");
+      var responseString = String.fromCharCodes(responseData);
+      print("ccccccccccccccccccccccccccccccccccccccccccc=============================> ${responseData}");
+      var  data = jsonDecode(responseString);
+      print("dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd${data}");
+      if(data["msg"]=="success"){
+        ElegantNotification(
+          borderRadius: BorderRadius.circular(11),
+          width: 340,
+          iconSize: 25,
+          background: presentsent_color,
+          progressIndicatorBackground: presentsent_color,
+          progressIndicatorColor: absent_color,
+          // position: Alignment.center,
+          title:  ColorCustomText(fontSize: 16, fontWeight: FontWeight.w500, text: "Employee added successfully", letterSpacing: 0.3, textColor: Main_Theme_textColor),
+          description: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "Thanks for registration", letterSpacing: 0.3, textColor: Main_Theme_textColor),
+          onDismiss: () {
+            print('Message when the notification is dismissed');
+          }, icon: Icon(Icons.delete_forever,color:Colors.black,),
+        ).show(context);
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => BootomNatchBarScreen(
+          index: 0,
+        ),));
+      }else{
+//    Navigator.push(context, MaterialPageRoute(builder: (context) => CreateNewEmployeeScreen(),));
+        ElegantNotification(
+          borderRadius: BorderRadius.circular(11),
+          width: 340,
+          iconSize: 25,
+          background: presentsent_color,
+          progressIndicatorBackground: presentsent_color,
+          progressIndicatorColor: absent_color,
+          // position: Alignment.center,
+          title:  ColorCustomText(fontSize: 16, fontWeight: FontWeight.w500, text: "${data["status"]}", letterSpacing: 0.3, textColor: Main_Theme_textColor),
+          description: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "PLease Try Again ..", letterSpacing: 0.3, textColor: Main_Theme_textColor),
+          onDismiss: () {
+            print('Message when the notification is dismissed');
+          }, icon: Icon(Icons.delete_forever,color:Colors.black,),
+        ).show(context);
+      }
+
+
+    }catch(erroe){
+      //  Navigator.push(context, MaterialPageRoute(builder: (context) => CreateNewEmployeeScreen(),));
+      print("Catch Error $erroe");
+    }
+  }
+
+
 }
