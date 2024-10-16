@@ -84,7 +84,7 @@ alignment: Alignment.center,
                 customMainEmployeeProfile(
                     is_need_edit_button_on_short_profile: "false",
                     image: "${widget.currentEmployeedataIndex["EmpPhotoPath"]}",
-                    employeeCode: "${widget.currentEmployeedataIndex["IdCardNo"]}",
+                    employeeCode: "${widget.currentEmployeedataIndex["EmpCode"]}",
                     employeeName: "${widget.currentEmployeedataIndex["EmployeeNameEnglish"]}",
                     employeeDesignation: "${widget.currentEmployeedataIndex["Designation"]}",
                     employeeDepartment: "${widget.currentEmployeedataIndex["Department"]}",

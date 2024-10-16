@@ -97,6 +97,7 @@ late double  d_width;
 const font11=11.0;
 const font12header=13.0;
 const font13header=13.0;
+const font12=12.0;
 
 const fontSubTitle=14.0;
 const font15=15.0;

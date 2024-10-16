@@ -203,10 +203,10 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
      _phoneController.text =widget.employeeMobileNumber;
     _siftplaneController.text =widget.ShiftPlane;
     _GrossSalaryController.text =widget.employeeGrowssallary;
-   _joiningDateController.text =widget.employeeJoiningDate;
+   _joiningDateController.text ="${widget.employeeJoiningDate}"=="null"?"":widget.employeeJoiningDate;
 
 ///--------------------------------------- ----------------------------------------------------------///
-    _joiningDateController.text          =     widget.joiningDateController ;
+ //   _joiningDateController.text          =     widget.joiningDateController ;
     _employeeRFController.text           =     widget.employeeRFController   ;
     _fatherNameController.text           =     widget.fatherNameController  ;
     _gmailController.text                =     widget.gmailController ;
@@ -237,7 +237,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
 
   @override
   Widget build(BuildContext context) {
-    print("cccccccccccccccccccccccccccccccccccc ${widget.employeeNID}");
+    print("cccccccccccccccccccccccccccccccccccc ${widget.employeeNID}  ${widget.employeeJoiningDate}");
     List  shiftplanelist=Provider.of<OnboardingEmployeeController>(context).GetShiftPlanNWeekendList["shiftplan"];
     List  religionlist=Provider.of<OnboardingEmployeeController>(context).GetShiftPlanNWeekendList["religion"];
 
@@ -1701,9 +1701,12 @@ List nameList=[
         //  'Authorization': 'Bearer ${GetStorage().read("api_token")}'
       });
 
-
-      request.fields["GENDER"] = m==true? "M" :f==true? "F": "O" ;
+      request.fields["PERMANENT_ADDRESS_ENGLISH"] =  _parmenentAddressController.text;
+      request.fields["PRESENT_ADDRESS_ENGLISH"] =  _presentAddressController.text;
+      request.fields["FATHER_NAME_ENGLISH"] =  _fatherNameController.text;
+      request.fields["EMAIL"] =  _gmailController.text;
       request.fields["ID_CARD_NO"] =  _employeeRFController.text;
+      request.fields["GENDER"] = m==true? "M" :f==true? "F": "O" ;
       request.fields["MOBILE_NO "] =  _phoneController.text;
       request.fields["NID_NO"] =  _nIDController.text;
       request.fields["SHIFT_PLAN"] = "${shiftplan_id}";
@@ -1713,6 +1716,7 @@ List nameList=[
       request.fields["EMPLOYEE_NAME_ENGLISH"] = _employeeNameController.text;
       request.fields["JOINING_DATE"] = _joiningDateController.text;
       request.fields["BIRTH_DATE"] = _birthDateController.text;
+      request.fields["RF_ID_NO"] = _employeeRFController.text;
       request.fields["RF_ID_NO"] = _employeeRFController.text;
       request.fields["EMPLOYEE_STATUS"] = "3";
       request.fields["CLIENTBASE_URL"] = "${GetStorage().read("APPS_IMG_BASEURL")}" ;

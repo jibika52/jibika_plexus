@@ -103,7 +103,8 @@ class _SelfBootomNavigationLeaveState extends State<SelfBootomNavigationLeave> {
                   //     ],
                   //   ),
                   // ),
-                  Expanded(
+                  Container(
+                    height: MediaQuery.of(context).size.height-412,
                     child: SingleChildScrollView(
                       scrollDirection: Axis.vertical,
                       child: Column(
@@ -284,7 +285,7 @@ class _SelfBootomNavigationLeaveState extends State<SelfBootomNavigationLeave> {
                                                     ],
                                                   ),
                                                   SizedBox(width:2,),
-                                                  CustomText(fontSize: 14, fontWeight: FontWeight.w400, text: index==0?"Full day" :index==1?"First half" :"Second half", letterSpacing: 0.3),
+                                                  CustomText(fontSize:MediaQuery.of(context).size.width<380?11: 14, fontWeight: FontWeight.w400, text: index==0?"Full day" :index==1?"First half" :"Second half", letterSpacing: 0.3),
                                                 ],
                                               ),
                                             )
@@ -336,29 +337,26 @@ class _SelfBootomNavigationLeaveState extends State<SelfBootomNavigationLeave> {
                                         ),
                                       ),
                                       SizedBox(width: 10,),
-                                      Expanded(
-                                        flex: 1,
-                                        child: Container(
-                                          width: double.infinity,
-                                          padding: EdgeInsets.only(bottom: 7,top: 5),
-                                          child: Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                              CustomText(fontSize: font12header, fontWeight: FontWeight.w400, text: "Day(s)", letterSpacing: 0.3),
-                                              Container(
-                                                height: 30,
-                                                decoration: BoxDecoration(
-                                                    borderRadius: BorderRadius.circular(5),
-                                                    color: Main_Theme_textColor_tir_Condition.withOpacity(0.7)
-                                                  //   border: Border.all(
-                                                  //     color: Main_Theme_textColor.withOpacity(0.7),
-                                                  //   )
-                                                ),
-                                                alignment: Alignment.center,
-                                                child: CustomText(fontSize: font12header, fontWeight: FontWeight.w600, text: "${totalDate}", letterSpacing: 0.3),
-                                              )
-                                            ],
-                                          ),
+                                      Container(
+                                        width: 70,
+                                        padding: EdgeInsets.only(bottom: 7,top: 5),
+                                        child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            CustomText(fontSize: font12header, fontWeight: FontWeight.w400, text: "Day(s)", letterSpacing: 0.3),
+                                            Container(
+                                              height: 30,
+                                              decoration: BoxDecoration(
+                                                  borderRadius: BorderRadius.circular(5),
+                                                  color: Main_Theme_textColor_tir_Condition.withOpacity(0.7)
+                                                //   border: Border.all(
+                                                //     color: Main_Theme_textColor.withOpacity(0.7),
+                                                //   )
+                                              ),
+                                              alignment: Alignment.center,
+                                              child: CustomText(fontSize: font12header, fontWeight: FontWeight.w600, text: "${totalDate}", letterSpacing: 0.3),
+                                            )
+                                          ],
                                         ),
                                       ),
                                     ],

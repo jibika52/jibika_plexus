@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
 import 'package:jibika_plexus/View/HomeScreen/HomeComponent/HomeFirstPartComponent/HomeFirstPartComponentAttendence/home_first_part_component_attendence.dart';
 import 'package:jibika_plexus/View/HomeScreen/HomeComponent/HomeFirstPartComponent/HomeFirstPartComponentLeave/home_first_part_component_leave.dart';
+import 'package:jibika_plexus/View/HomeScreen/HomeComponent/HomeFirstPartComponent/HomeFirstPartComponentNewJoinApproval/home_first_part_component_new_join_approval.dart';
 
 import '../../../../CustomWidget/CustomText/custom_text.dart';
 
@@ -55,6 +56,9 @@ class _HomeHederPartState extends State<HomeHederPart> {
                 setState(() {
                   selected_index=index;
                 });
+                if(selected_index==0){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => HomeFirstPartComponentNewJoinApproval(),));
+                }
                 if(selected_index==1){
                   Navigator.push(context, MaterialPageRoute(builder: (context) => HomeFirstPartComponentAttendance(),));
                 }

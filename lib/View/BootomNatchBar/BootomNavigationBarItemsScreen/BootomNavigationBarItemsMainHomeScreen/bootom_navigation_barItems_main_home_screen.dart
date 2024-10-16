@@ -1,5 +1,7 @@
 
 
+import 'dart:math';
+
 import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +39,8 @@ class _BootomNavBarItemsEmployeeHomeScreenState extends State<BootomNavBarItemsE
   int? nullableValue;
   bool positive = false;
   bool loading = false;
-
+  int _selectedIndex=0;
+  List nameList=['Active', 'Inactive'];
   @override
   void initState() {
     Provider.of<OnboardingEmployeeController>(context,listen: false).GetShiftPlanNWeekendListProvider("${GetStorage().read("mobile_id")}", context);
@@ -64,180 +67,140 @@ class _BootomNavBarItemsEmployeeHomeScreenState extends State<BootomNavBarItemsE
               width: double.infinity,
               child: Column(
                 children: [
-                  Container (
+                  Container(
                     height: 55,
-                    width: w,
-                    padding: EdgeInsets.only(left: 10, right: 10, top: 7, bottom: 7 ),
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(7),
-                      color: Main_Theme_WhiteCollor,
+                    width: double.infinity,
+                    padding: EdgeInsets.only(
+                        top: 10,right: 10,left: 10,bottom: 6
                     ),
-                    child: Stack(
+                    child: Row(
                       children: [
-                        Container(
-                            height: 38,
-                            width: 160,
-                            padding: EdgeInsets.only(top: 2),
-                            child:  Container(
-                              height: 38,
-                              child: AnimatedToggleSwitch.size(
-
-                                clipBehavior: Clip.none,
-
-                                current:_isActive ,
-                                values: [false,true],
-                                iconOpacity: 0.8,
-                                indicatorSize: Size.fromWidth(120),
-                                customIconBuilder: (context,local,global){
-                                  return  AnimatedContainer(
-                                    duration: Duration(milliseconds: 500),
-                                    child: Text(
-                                      local.value? "Inactive":"Active",
-                                      style: TextStyle(
-                                        fontSize: _isActive? 11:11,
-                                        fontWeight:  _isActive? FontWeight.w400 : FontWeight.w400,
-                                        color:  Colors.black ),
-                                     ),
-                                    );
-                                  },
-
-                                borderWidth: 1.0,
-                                iconAnimationCurve: Curves.linear,
-                                //  selectedIconOpacity: 1.0,
-                                selectedIconOpacity: 0.8,
-                                onChanged: (value) => setState(() {
-                                  _isActive=!_isActive;
-                                  print(_isActive);
-                                  if(_isActive==true){
-                                    Provider.of<EmployeeAdminProvider>(context,listen: false).GetDailyAttendanceCounterListProvider("${GetStorage().read("mobile_id")}", "Inactive", 1, context);
-                                  }else{
-                                    Provider.of<EmployeeAdminProvider>(context,listen: false).GetDailyAttendanceCounterListProvider("${GetStorage().read("mobile_id")}", "Active", 1, context);
-
-                                  }
-                                }),
-                                styleBuilder: (b) => ToggleStyle(
-                                  borderColor: Main_Theme_textColor.withOpacity(0.5),
-                                  borderRadius: BorderRadius.circular(10),
-                                  backgroundColor: b ? Colors.white : Colors.white,
-                                  indicatorColor: b ? Colors.red : Colors.green,
-                                  indicatorBorderRadius: BorderRadius.circular(b ? 4.0 : 4.0),
-                                ),
-
+                        Expanded(
+                            flex: 10,
+                            child: Container(
+                              height: 48,
+                              width: 300,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(7),
+                                  color:Color.fromRGBO(245, 245, 245, 1),
+                                  border: Border.all(width: 2,color: Main_Theme_textColor.withOpacity(0.1))
                               ),
-                            )
-                        ),
-
-                        Positioned(
-                            top: 0.9,
-                            right: 0,
-                            bottom: 2,
-                            child: AnimatedContainer(
-                              duration: Duration(milliseconds: 300),
-                              height: 50,
-                              width: animatwidth,
-
-                              padding: EdgeInsets.only(left: 7,right: 7),
                               child: Row(
                                 children: [
-                                  Expanded(
-                                      flex: 10,
-                                      child: Container(
-                                        height: 55,
-                                        width: 300,
-                                        decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(7),
-                                            color:Color.fromRGBO(245, 245, 245, 1),
-                                            border: Border.all(width: 2,color: Main_Theme_textColor.withOpacity(0.1))
-                                        ),
-                                        child: Row(
-                                          children: [
-                                            Expanded(
-                                              child: Container(
-                                                  child: TextFormField(
-                                                    style: GoogleFonts.poppins(
-                                                      fontWeight: FontWeight.w400,
-                                                      fontSize: 12,
-                                                    ),
-                                                    decoration: InputDecoration(
-                                                        contentPadding: EdgeInsets.only(bottom: 14,left: 10),
-                                                        border: InputBorder.none,
-                                                        hintStyle: TextStyle(
-                                                            fontWeight: FontWeight.w400,
-                                                            fontSize: 12,
-                                                            color: Main_Theme_textColor.withOpacity(0.30)
-                                                        ),
-                                                        hintText: "Search Here"
-                                                    ),
-                                                  )
-                                              ),
-                                            ) ,
-                                            Container(
-                                              margin: EdgeInsets.only(left: 10
-                                              ),
-                                              height: 12,
-                                              width: 2,
-                                              color: Main_Theme_textColor.withOpacity(0.1),
-                                            ),
-                                            InkWell(
-                                              onTap: () {
-                                                setState(() {
-                                                  _is_click_date=!_is_click_date;
-                                                  if(_is_click_date==true){
-                                                    if(w>530){
-                                                      animatwidth=530;
-                                                    }else{
-                                                      animatwidth=w-13;
-                                                    }
-                                                  }else{
-                                                    FocusScope.of(context).requestFocus(new FocusNode());
-                                                    animatwidth=117.0;
-                                                  }
-                                                });
-                                              },
-                                              child: Container(
-                                                margin: EdgeInsets.only(
-                                                    left: 10,right: 7
-                                                ),
-                                                height: 20,width: 20 ,
-                                                // child: IconButton(onPressed: () {
-                                                //
-                                                // }, icon: Icon(Icons.search,size: 15,color: Main_Theme_textColor,)),
-                                                  child: CustomImageSction2(height: 20, width: 20, radius: 1, image: "Assets/DashBoardIcons/searchnormal.png", img_color: Main_Theme_textColor.withOpacity(0.6),),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      )),
-
-                                  InkWell(
-                                    onTap: () {
-                                      setState(() {
-                                        animatwidth=117.0;
-                                      });
-                                    },
-                                    child: Container(
-                                      height: 55,
-                                      width: 40,
-                                      margin: EdgeInsets.only(
-                                          left: 10,right: 0
-                                      ),
-
-                                      decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(7),
-                                          color:Color.fromRGBO(245, 245, 245, 1),
-                                          border: Border.all(width: 2,color: Main_Theme_textColor.withOpacity(0.1))
-                                      ),
-                                      alignment: Alignment.center,
-                                      child: CustomText(fontSize: 11, fontWeight: FontWeight.bold, text: valcount==null?"0":"${valcount.length}", letterSpacing: 0.1),
+                                  Container(
+                                    margin: EdgeInsets.only(
+                                        left: 10,right: 10
                                     ),
+                                    height: 16,width: 16 ,
+                                    child: CustomImageSction2(height: 16, width: 16, radius: 1, image: "Assets/DashBoardIcons/searchnormal.png",img_color: Main_Theme_textColor.withOpacity(0.5),),
                                   ),
+                                  Container(
+                                    margin: EdgeInsets.only(right: 10
+                                    ),
+                                    height: 12,
+                                    width: 2,
+                                    color: Main_Theme_textColor.withOpacity(0.1),
+                                  ),
+                                  Expanded(
+                                    child: Container(
+                                        child: TextFormField(
+                                          style: GoogleFonts.poppins(
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 12,
+                                          ),
+                                          decoration: InputDecoration(
+                                              contentPadding: EdgeInsets.only(bottom: 10),
+                                              border: InputBorder.none,
+                                              hintStyle: TextStyle(
+                                                  fontWeight: FontWeight.w400,
+                                                  fontSize: 12,
+                                                  color: Main_Theme_textColor.withOpacity(0.30)
+                                              ),
+                                              hintText: "Search Here"
+                                          ),
+                                        )
+                                    ),
+                                  )
                                 ],
                               ),
+                            )),
+                        Container(
+                          height: 53,
+                          width: 40,
+                          margin: EdgeInsets.only(
+                              left: 10,right: 10
                           ),
-                        )
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 10,
+                              vertical: 7.95
+                          ),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(7),
+                              color:Color.fromRGBO(245, 245, 245, 1),
+                              border: Border.all(width: 2,color: Main_Theme_textColor.withOpacity(0.1))
+                          ),
+                          child: CustomImageSction(height: 17, width: 15, radius: 1, image: "Assets/DrawerImage/search_filter.png"),
+                        ),
                       ],
                     ),
                   ),
+                  Container(
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(0),color: Main_Theme_textColor_tir_Condition.withOpacity(0.5)),
+                    padding:  EdgeInsets.only(left: 10.0,right: 10,top: 10,bottom: 10),
+                    child: AnimatedToggleSwitch<int>.size(
+                      height: 35,
+                      current: max(_selectedIndex, 0),
+                      style: ToggleStyle(
+                        backgroundColor: home_default_color,
+                        indicatorColor: presentsent_color,
+                        borderColor: Colors.transparent,
+                        borderRadius: BorderRadius.circular(30.0),
+                        indicatorBorderRadius: BorderRadius.circular(30),
 
+                      ),
+                      values:  [0, 1],
+                      iconOpacity: 1.0,
+                      selectedIconScale: 1.0,
+                      indicatorSize: Size.fromWidth(MediaQuery.of(context).size.width/2),
+                      iconAnimationType: AnimationType.onHover,
+                      styleAnimationType: AnimationType.onHover,
+                      spacing: 2.0,
+                      customSeparatorBuilder: (context, local, global) {
+                        final opacity =
+                        ((global.position - local.position).abs() - 0.5)
+                            .clamp(0.0, 1.0);
+                        return VerticalDivider(
+                            indent: 10.0,
+                            endIndent: 10.0,
+                            color: Colors.white38.withOpacity(opacity));
+                      },
+                      customIconBuilder: (context, local, global) {
+                        final text = nameList[local.index];
+                        return Center(
+                            child: Text(text,
+                                style: GoogleFonts.poppins(
+                                    fontSize : 13,
+                                    fontWeight : FontWeight.w400,
+                                    letterSpacing :  0.3,
+                                    color: Color.lerp(Colors.black, Colors.white,
+                                        local.animationValue))));
+                      },
+                      borderWidth: 1.0,
+                      onChanged: (i) {
+                        setState(() => _selectedIndex = i);
+                      if(_selectedIndex==1){
+                      Provider.of<EmployeeAdminProvider>(context,listen: false).GetDailyAttendanceCounterListProvider("${GetStorage().read("mobile_id")}", "Inactive", 1, context);
+                    }else{
+                      Provider.of<EmployeeAdminProvider>(context,listen: false).GetDailyAttendanceCounterListProvider("${GetStorage().read("mobile_id")}", "Active", 1, context);
+
+                    }
+                      }
+                    ),
+                  ),
+                  SizedBox(height: 5,),
+                  valcount != null?  CustomText(fontSize: fontSubTitle, fontWeight: FontWeight.w500, text: _selectedIndex==0 ? "Active ${valcount.length}":"Inactive ${valcount.length}", letterSpacing: 0.1)
+                      :
+                  CustomText(fontSize: fontSubTitle, fontWeight: FontWeight.w500, text:  "0", letterSpacing: 0.1),
                   Expanded(
                     child: Consumer<EmployeeAdminProvider>(
                       builder: (context, value, child) {
@@ -290,9 +253,14 @@ class _BootomNavBarItemsEmployeeHomeScreenState extends State<BootomNavBarItemsE
                                             width: double.infinity,
                                             child: Row(
                                               children: [ 
-                                                CircleAvatar(
-                                                  radius: 35,
-                                                  backgroundImage:value.Admin_GetEmployeeListByStatus[index]["EmpPhotoPath"]!=""? NetworkImage("${GetStorage().read("APPS_IMG_BASEURL")}${value.Admin_GetEmployeeListByStatus[index]["EmpPhotoPath"]}"): NetworkImage("${custom_Avater}"),
+                                                Column(
+                                                  children: [
+                                                    CircleAvatar(
+                                                      radius: 27,
+                                                      backgroundImage:value.Admin_GetEmployeeListByStatus[index]["EmpPhotoPath"]!=""? NetworkImage("${GetStorage().read("APPS_IMG_BASEURL")}${value.Admin_GetEmployeeListByStatus[index]["EmpPhotoPath"]}"): NetworkImage("${custom_Avater}"),
+                                                    ),
+                                                    CustomText(fontSize: 11, fontWeight: FontWeight.w500, text: "${value.Admin_GetEmployeeListByStatus[index]["EmpCode"]}", letterSpacing: 0.1),
+                                                  ],
                                                 ),
                                                 // Container(
                                                 //   height: 55,
@@ -304,7 +272,7 @@ class _BootomNavBarItemsEmployeeHomeScreenState extends State<BootomNavBarItemsE
                                                 //   child:value.Admin_GetEmployeeListByStatus[index]["EmpPhotoPath"]!=""? CustomImageSctionNetwork(height: 55, width: 45, radius: 7, image: "${value.Admin_GetEmployeeListByStatus[index]["EmpPhotoPath"]}"):Image(image: NetworkImage("https://greenmartbd.net/images/default.jpg"),height: 70,width: 50,fit: BoxFit.fill,),
                                                 // ),
 
-                                                SizedBox(width: 5,),
+                                                SizedBox(width: 10,),
                                                 Expanded(
                                                   flex: 4,
                                                   child: SingleChildScrollView(
@@ -315,18 +283,18 @@ class _BootomNavBarItemsEmployeeHomeScreenState extends State<BootomNavBarItemsE
                                                         Text(value.Admin_GetEmployeeListByStatus[index]["EmployeeNameEnglish"]??"",
                                                           overflow: TextOverflow.ellipsis
                                                           ,style: GoogleFonts.poppins(
-                                                            fontSize: 13,
+                                                            fontSize: font13header,
                                                             fontWeight: FontWeight.w500,
                                                             letterSpacing: 0.3,
                                                           ),),
                                                         SizedBox(height: 1,),
                                                         CustomText(
                                                           maxLines: 1,
-                                                          fontSize: 12, fontWeight: FontWeight.w300,
+                                                          fontSize: font12, fontWeight: FontWeight.w300,
                                                           overflow: TextOverflow.ellipsis,
                                                           text:value.Admin_GetEmployeeListByStatus[index]["Designation"]??"", letterSpacing: 0.3,  ),
                                                         SizedBox(height: 1,),
-                                                        CustomText(fontSize: 12, fontWeight: FontWeight.w300,
+                                                        CustomText(fontSize: font12, fontWeight: FontWeight.w300,
                                                           text: value.Admin_GetEmployeeListByStatus[index]["Department"]??"", letterSpacing: 0.3,  ),
                                                       ],
                                                     ),
