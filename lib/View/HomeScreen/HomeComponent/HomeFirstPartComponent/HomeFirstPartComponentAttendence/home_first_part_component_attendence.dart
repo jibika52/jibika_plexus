@@ -359,14 +359,14 @@ class _HomeFirstPartComponentAttendanceState extends State<HomeFirstPartComponen
                                ),
 
                                ///----------------- Third Part ------------------------------///
-                               IconButton(onPressed: () {
-                               }, icon: selectedindex==index? Icon(Icons.keyboard_arrow_up):Icon(Icons.keyboard_arrow_down))
+
+                                selectedindex==index? Icon(Icons.keyboard_arrow_up):Icon(Icons.keyboard_arrow_down)
 
                              ],
                            ),
                          ),
-                             selectedindex==index?
-                           AnimatedContainer(
+                             selectedindex==index &&
+                             animatedheight!=0?  AnimatedContainer(
                              height: animatedheight,
                              width: double.infinity,
                              duration: Duration(milliseconds: 400),
@@ -419,8 +419,8 @@ class _HomeFirstPartComponentAttendanceState extends State<HomeFirstPartComponen
                                                child: ColorCustomText(fontSize: 16, fontWeight: FontWeight.w600, text: "Disapproved", letterSpacing: 0.3, textColor: absent_color),
                                              ),
                                            ),
-                                 
-                                 
+
+
                                            SizedBox(width: 10,),
                                            Expanded(
                                              child: Container(
@@ -438,11 +438,11 @@ class _HomeFirstPartComponentAttendanceState extends State<HomeFirstPartComponen
                                                child: ColorCustomText(fontSize: 16, fontWeight: FontWeight.w600, text: "Approved", letterSpacing: 0.3, textColor: CustomButtonColor),
                                              ),
                                            ),
-                                 
+
                                          ],
                                        ),
                                      ),
-                                 
+
                                      SizedBox(height: 10,),
                                    ],
                                  ),

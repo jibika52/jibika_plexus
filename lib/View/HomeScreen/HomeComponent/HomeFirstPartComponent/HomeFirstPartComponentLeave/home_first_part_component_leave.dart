@@ -1,6 +1,8 @@
 
+import 'dart:math';
 import 'dart:ui';
 
+import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -30,6 +32,8 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
   String ? getindex;
   bool _is_click_date=false;
   int selectedmonth=0;
+  int _selectedIndex=0;
+  List nameList=['Waiting','Approved','Disapproved'];
   @override
   Widget build(BuildContext context) {
     final isChekin=Provider.of<CounterProvider>(context).isCheckIn;
@@ -49,47 +53,84 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
             children: [
               /// ------------------------ Waiting approved and disApproved ---------------------------
               Container(
-                height: h*.06,
+                height: 55,
                 width: double.infinity,
-                padding: EdgeInsets.only(left:  10,right: 10,top: 5,bottom: 5),
-                decoration: BoxDecoration(
-                  color: leave_approval_button_color,
+                padding: EdgeInsets.only(
+                    top: 10,right: 10,left: 10,bottom: 6
                 ),
-                child: Consumer<CounterProvider>(
-                  builder: (context, value, child) => ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                      itemCount: 3,
-                      itemBuilder: (context, index) =>
-                      InkWell(
-                        onTap: () {
-                          if(index==0){
-                            value.leave_waiting();
-                          }
-                         else if(index==1){
-                            value.leave_approval();
-                          }
-                         else{
-                            value.leave_Disapproval();
-                          }
-      
-      
-                        },
-                        child: AnimatedContainer(
-                          duration: Duration(seconds: 1),
-                                        margin: EdgeInsets.only(right: 10),
-                                        decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5)  ,
-                        color:value.selectindex2==index? CheckOutColor:leave_approval_button_color,
-                                        ),
-                                        alignment: Alignment.center,
-                                        width: w*0.3,
-                                        child: ColorCustomText(text: "${Approvallist[index]}",textColor:value.selectindex2==index? Main_Theme_WhiteCollor :Main_Theme_textColor.withOpacity(0.6),fontWeight: FontWeight.w500,fontSize:14 ,letterSpacing: 0.3,),
+                child: Row(
+                  children: [
+                    Expanded(
+                        flex: 10,
+                        child: Container(
+                          height: 48,
+                          width: 300,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(7),
+                              color:Color.fromRGBO(245, 245, 245, 1),
+                              border: Border.all(width: 2,color: Main_Theme_textColor.withOpacity(0.1))
+                          ),
+                          child: Row(
+                            children: [
+                              Container(
+                                margin: EdgeInsets.only(
+                                    left: 10,right: 10
+                                ),
+                                height: 16,width: 16 ,
+                                child: CustomImageSction2(height: 16, width: 16, radius: 1, image: "Assets/DashBoardIcons/searchnormal.png",img_color: Main_Theme_textColor.withOpacity(0.5),),
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(right: 10
+                                ),
+                                height: 12,
+                                width: 2,
+                                color: Main_Theme_textColor.withOpacity(0.1),
+                              ),
+                              Expanded(
+                                child: Container(
+                                    child: TextFormField(
+                                      style: GoogleFonts.poppins(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 12,
                                       ),
-                      ),),
-                )
+                                      decoration: InputDecoration(
+                                          contentPadding: EdgeInsets.only(bottom: 10),
+                                          border: InputBorder.none,
+                                          hintStyle: TextStyle(
+                                              fontWeight: FontWeight.w400,
+                                              fontSize: 12,
+                                              color: Main_Theme_textColor.withOpacity(0.30)
+                                          ),
+                                          hintText: "Search Here"
+                                      ),
+                                    )
+                                ),
+                              )
+                            ],
+                          ),
+                        )),
+                    Container(
+                      height: 53,
+                      width: 40,
+                      margin: EdgeInsets.only(
+                          left: 10,right: 10
+                      ),
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 10,
+                          vertical: 7.95
+                      ),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(7),
+                          color:Color.fromRGBO(245, 245, 245, 1),
+                          border: Border.all(width: 2,color: Main_Theme_textColor.withOpacity(0.1))
+                      ),
+                      child: CustomImageSction(height: 17, width: 15, radius: 1, image: "Assets/DrawerImage/search_filter.png"),
+                    ),
+                  ],
+                ),
               ),
               SizedBox(height: 6,),
-              /// ------------------ Second part ------------///
+              /// ------------------ Calender part ------------///
               Container(
                 height: 50,
                 width: double.infinity,
@@ -101,31 +142,31 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
                       height: 42,
                       width: 140,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(7),
-                       // color: Colors.red,
-                        border: Border.all(
-                          color: Main_Theme_textColor.withOpacity(0.15),
-                          width: 1.5
-                        )
+                          borderRadius: BorderRadius.circular(7),
+                          // color: Colors.red,
+                          border: Border.all(
+                              color: Main_Theme_textColor.withOpacity(0.15),
+                              width: 1.5
+                          )
                       ),
                       padding: EdgeInsets.only(left: 7,right: 7),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           CustomImageSction(height: 24, width: 24, radius: 1, image: "Assets/Icons/share2.png"),
-                         Container(
+                          Container(
                             height: 20,
                             width: 1,
                             color: Main_Theme_textColor.withOpacity(0.3),
                           ),
                           CustomImageSction(height: 24, width: 24, radius: 1, image: "Assets/Icons/sms.png"),
-                         Container(
+                          Container(
                             height: 20,
                             width: 1,
                             color: Main_Theme_textColor.withOpacity(0.3),
                           ),
                           CustomImageSction(height: 24, width: 24, radius: 1, image: "Assets/Icons/pdf.png"),
-      
+
                         ],
                       ),
                     ),
@@ -133,52 +174,52 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
                         right: 0,
                         bottom: 2,
                         child: AnimatedContainer(
-                      duration: Duration(milliseconds: 300),
-                      height: 32,
-                      width: animatwidth,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(7),
-                            color: leave_approval_button_color,
-                          border: Border.all(
-                              color: Main_Theme_textColor.withOpacity(0.7),
-                              width: 1
-                          )
-                      ),
-                      padding: EdgeInsets.all(7),
-                      child: InkWell(
-                        onTap: () {
-                          setState(() {
-                            _is_click_date=!_is_click_date;
-                            if(_is_click_date==true){
-                              animatwidth=w*0.95;
-                            }else{
-                              animatwidth=100.0;
-                            }
-                          });
-                        },
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                          _is_click_date==false?  ColorCustomText(fontSize: font12header, fontWeight: FontWeight.w500, text: "${MonthList[selectedmonth]}", letterSpacing: 0.3,
-                              textColor: CustomButtonColor) :
-                                  Expanded(child: ListView.builder(
-                                    itemCount: MonthList.length,
-                                    scrollDirection: Axis.horizontal,
-                                    itemBuilder: (context, index) {
+                          duration: Duration(milliseconds: 300),
+                          height: 32,
+                          width: animatwidth,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(7),
+                              color: leave_approval_button_color,
+                              border: Border.all(
+                                  color: Main_Theme_textColor.withOpacity(0.7),
+                                  width: 1
+                              )
+                          ),
+                          padding: EdgeInsets.all(7),
+                          child: InkWell(
+                            onTap: () {
+                              setState(() {
+                                _is_click_date=!_is_click_date;
+                                if(_is_click_date==true){
+                                  animatwidth=w*0.95;
+                                }else{
+                                  animatwidth=100.0;
+                                }
+                              });
+                            },
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                _is_click_date==false?  ColorCustomText(fontSize: font12header, fontWeight: FontWeight.w500, text: "${MonthList[selectedmonth]}", letterSpacing: 0.3,
+                                    textColor: CustomButtonColor) :
+                                Expanded(child: ListView.builder(
+                                  itemCount: MonthList.length,
+                                  scrollDirection: Axis.horizontal,
+                                  itemBuilder: (context, index) {
                                     return InkWell(
                                       onTap: () {
-                                            setState(() {
-                                              selectedmonth=index;
-                                              _is_click_date=!_is_click_date;
-                                              if(_is_click_date==true){
-                                                animatwidth=w*0.95;
-                                              }else{
-                                                animatwidth=100.0;
-                                              }
-      
-                                          },);
-      
-      
+                                        setState(() {
+                                          selectedmonth=index;
+                                          _is_click_date=!_is_click_date;
+                                          if(_is_click_date==true){
+                                            animatwidth=w*0.95;
+                                          }else{
+                                            animatwidth=100.0;
+                                          }
+
+                                        },);
+
+
                                       },
                                       child: Padding(
                                         padding: const EdgeInsets.only(right: 10.0,left: 5),
@@ -186,24 +227,73 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
                                       ),
                                     ) ;
                                   },)),
-                            Container(
-                              height: 12,
-                              width: 1,
-                              color: Main_Theme_textColor,
-                              margin: EdgeInsets.only(left: 5,right: 5),
+                                Container(
+                                  height: 12,
+                                  width: 1,
+                                  color: Main_Theme_textColor,
+                                  margin: EdgeInsets.only(left: 5,right: 5),
+                                ),
+                                ColorCustomText(fontSize: font12header, fontWeight: FontWeight.w500, text: "2023", letterSpacing: 0.3, textColor: Main_Theme_textColor),
+                              ],
                             ),
-                            ColorCustomText(fontSize: font12header, fontWeight: FontWeight.w500, text: "2023", letterSpacing: 0.3, textColor: Main_Theme_textColor),
-                          ],
-                        ),
-                      ),
-                    ))
+                          ),
+                        ))
                   ],
                 ),
               ),
+              Container(
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(0),color: Main_Theme_textColor_tir_Condition.withOpacity(0.5)),
+                padding:  EdgeInsets.only(left: 10.0,right: 10,top: 10,bottom: 10),
+                child: AnimatedToggleSwitch<int>.size(
+                  height: 35,
+                  current: max(_selectedIndex, 0),
+                  style: ToggleStyle(
+                    backgroundColor: home_default_color,
+                    indicatorColor:_selectedIndex==0? Main_Theme_textColor_tir_Condition :_selectedIndex==1? presentsent_color : absent_color ,
+                    borderColor: Colors.transparent,
+                    borderRadius: BorderRadius.circular(30.0),
+                    indicatorBorderRadius: BorderRadius.circular(30),
+
+                  ),
+                  values:  [0, 1, 2],
+                  iconOpacity: 1.0,
+                  selectedIconScale: 1.0,
+                  indicatorSize: Size.fromWidth(MediaQuery.of(context).size.width/2),
+                  iconAnimationType: AnimationType.onHover,
+                  styleAnimationType: AnimationType.onHover,
+                  spacing: 2.0,
+                  customSeparatorBuilder: (context, local, global) {
+                    final opacity =
+                    ((global.position - local.position).abs() - 0.5)
+                        .clamp(0.0, 1.0);
+                    return VerticalDivider(
+                        indent: 10.0,
+                        endIndent: 10.0,
+                        color: Colors.white38.withOpacity(opacity));
+                  },
+                  customIconBuilder: (context, local, global) {
+                    final text = nameList[local.index];
+                    return Center(
+                        child: Text(text,
+                            style: GoogleFonts.poppins(
+                                fontSize : 13,
+                                fontWeight : FontWeight.w400,
+                                letterSpacing :  0.3,
+                                color: Color.lerp(Colors.black, Colors.white,
+                                    local.animationValue))));
+                  },
+                  borderWidth: 1.0,
+                  onChanged: (i) => setState(() => _selectedIndex = i),
+                ),
+              ),
+              SizedBox(height: 5,),
+              CustomText(fontSize: font12, fontWeight: FontWeight.w500, text: _selectedIndex==0?"Waiting : 655":_selectedIndex==1?"Approved : 100":"Disapproved : 100", letterSpacing: 0.1),
+
+
               /// ------------------ third part ------------///
               Expanded(
                 child: Container(
-                  margin: EdgeInsets.only(top: 7),
+                  margin: EdgeInsets.only(top: 5),
                   width: 400,
                   color: Main_Theme_WhiteCollor,
                   padding: EdgeInsets.only(
@@ -236,7 +326,8 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.all( Radius.circular(7)),
       
-                                   color:  CustomButtonColor.withOpacity(0.05),
+                                  // color:  CustomButtonColor.withOpacity(0.05),
+                                  color: _selectedIndex==0? Main_Theme_textColor_tir_Condition.withOpacity(0.1) :_selectedIndex==1? presentsent_color.withOpacity(0.1) : absent_color.withOpacity(0.1),
                                   border: Border(bottom: BorderSide( color:isChekin==false?CheckOutColor:  CustomButtonColor))
                               ),
                               margin: EdgeInsets.only(bottom: 7),
