@@ -13,6 +13,7 @@ import 'package:jibika_plexus/CustomWidget/CustomAppBar/CustomDefaultAppBar/cust
 import 'package:jibika_plexus/CustomWidget/CustomButton/custom_button.dart';
 import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
+import 'package:month_year_picker/month_year_picker.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../CustomWidget/CustomCalender/custom_calender.dart';
@@ -72,20 +73,6 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
                           ),
                           child: Row(
                             children: [
-                              Container(
-                                margin: EdgeInsets.only(
-                                    left: 10,right: 10
-                                ),
-                                height: 16,width: 16 ,
-                                child: CustomImageSction2(height: 16, width: 16, radius: 1, image: "Assets/DashBoardIcons/searchnormal.png",img_color: Main_Theme_textColor.withOpacity(0.5),),
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(right: 10
-                                ),
-                                height: 12,
-                                width: 2,
-                                color: Main_Theme_textColor.withOpacity(0.1),
-                              ),
                               Expanded(
                                 child: Container(
                                     child: TextFormField(
@@ -94,7 +81,7 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
                                         fontSize: 12,
                                       ),
                                       decoration: InputDecoration(
-                                          contentPadding: EdgeInsets.only(bottom: 10),
+                                          contentPadding: EdgeInsets.only(bottom: 10,left: 10),
                                           border: InputBorder.none,
                                           hintStyle: TextStyle(
                                               fontWeight: FontWeight.w400,
@@ -105,145 +92,56 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
                                       ),
                                     )
                                 ),
-                              )
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(left: 10
+                                ),
+                                height: 12,
+                                width: 2,
+                                color: Main_Theme_textColor.withOpacity(0.1),
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(
+                                    left: 10,right: 10
+                                ),
+                                height: 16,width: 16 ,
+                                child: CustomImageSction2(height: 16, width: 16, radius: 1, image: "Assets/DashBoardIcons/searchnormal.png",img_color: Main_Theme_textColor.withOpacity(0.5),),
+                              ),
                             ],
                           ),
                         )),
-                    Container(
-                      height: 53,
-                      width: 40,
-                      margin: EdgeInsets.only(
-                          left: 10,right: 10
-                      ),
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 10,
-                          vertical: 7.95
-                      ),
-                      decoration: BoxDecoration(
+                    SizedBox(width: 10,),
+                    InkWell(
+                      onTap: () {
+                        _onPressed(context: context);
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(7),
-                          color:Color.fromRGBO(245, 245, 245, 1),
-                          border: Border.all(width: 2,color: Main_Theme_textColor.withOpacity(0.1))
-                      ),
-                      child: CustomImageSction(height: 17, width: 15, radius: 1, image: "Assets/DrawerImage/search_filter.png"),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(height: 6,),
-              /// ------------------ Calender part ------------///
-              Container(
-                height: 50,
-                width: double.infinity,
-                padding: EdgeInsets.only(left: 10, right: 10, top: 7, bottom: 7 ),
-                color: leave_approval_button_color,
-                child: Stack(
-                  children: [
-                    Container(
-                      height: 42,
-                      width: 140,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(7),
-                          // color: Colors.red,
-                          border: Border.all(
-                              color: Main_Theme_textColor.withOpacity(0.15),
-                              width: 1.5
-                          )
-                      ),
-                      padding: EdgeInsets.only(left: 7,right: 7),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          CustomImageSction(height: 24, width: 24, radius: 1, image: "Assets/Icons/share2.png"),
-                          Container(
-                            height: 20,
-                            width: 1,
-                            color: Main_Theme_textColor.withOpacity(0.3),
-                          ),
-                          CustomImageSction(height: 24, width: 24, radius: 1, image: "Assets/Icons/sms.png"),
-                          Container(
-                            height: 20,
-                            width: 1,
-                            color: Main_Theme_textColor.withOpacity(0.3),
-                          ),
-                          CustomImageSction(height: 24, width: 24, radius: 1, image: "Assets/Icons/pdf.png"),
-
-                        ],
-                      ),
-                    ),
-                    Positioned(
-                        right: 0,
-                        bottom: 2,
-                        child: AnimatedContainer(
-                          duration: Duration(milliseconds: 300),
-                          height: 32,
-                          width: animatwidth,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(7),
-                              color: leave_approval_button_color,
-                              border: Border.all(
-                                  color: Main_Theme_textColor.withOpacity(0.7),
-                                  width: 1
-                              )
-                          ),
-                          padding: EdgeInsets.all(7),
-                          child: InkWell(
-                            onTap: () {
-                              setState(() {
-                                _is_click_date=!_is_click_date;
-                                if(_is_click_date==true){
-                                  animatwidth=w*0.95;
-                                }else{
-                                  animatwidth=100.0;
-                                }
-                              });
-                            },
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                _is_click_date==false?  ColorCustomText(fontSize: font12header, fontWeight: FontWeight.w500, text: "${MonthList[selectedmonth]}", letterSpacing: 0.3,
-                                    textColor: CustomButtonColor) :
-                                Expanded(child: ListView.builder(
-                                  itemCount: MonthList.length,
-                                  scrollDirection: Axis.horizontal,
-                                  itemBuilder: (context, index) {
-                                    return InkWell(
-                                      onTap: () {
-                                        setState(() {
-                                          selectedmonth=index;
-                                          _is_click_date=!_is_click_date;
-                                          if(_is_click_date==true){
-                                            animatwidth=w*0.95;
-                                          }else{
-                                            animatwidth=100.0;
-                                          }
-
-                                        },);
-
-
-                                      },
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(right: 10.0,left: 5),
-                                        child: Text("${MonthList[index]}"),
-                                      ),
-                                    ) ;
-                                  },)),
-                                Container(
-                                  height: 12,
-                                  width: 1,
-                                  color: Main_Theme_textColor,
-                                  margin: EdgeInsets.only(left: 5,right: 5),
-                                ),
-                                ColorCustomText(fontSize: font12header, fontWeight: FontWeight.w500, text: "2023", letterSpacing: 0.3, textColor: Main_Theme_textColor),
-                              ],
+                          border: Border.all(color: Main_Theme_textColor.withOpacity(0.1),width: 1.5)
+                        ),
+                        height: 40,
+                        width: 110,
+                        child: Row(
+                          children: [
+                            Spacer(),
+                            CustomText(fontSize: font12, fontWeight: FontWeight.w400, text: "${DateFormat("MMM-yyyy").format(DateTime.parse("$selected_pick_month"))}", letterSpacing: 0.1),
+                            Spacer(),
+                            Padding(
+                              padding:   EdgeInsets.all(3.0),
+                              child: Image.asset("Assets/DashBoardIcons/clender.png",fit: BoxFit.fill,height: 40,width: 30,),
                             ),
-                          ),
-                        ))
+                          ],
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
+
               Container(
-                decoration: BoxDecoration(borderRadius: BorderRadius.circular(0),color: Main_Theme_textColor_tir_Condition.withOpacity(0.5)),
-                padding:  EdgeInsets.only(left: 10.0,right: 10,top: 10,bottom: 10),
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(0)),
+                padding:  EdgeInsets.only(left: 10.0,right: 10,top: 5,bottom: 5),
                 child: AnimatedToggleSwitch<int>.size(
                   height: 35,
                   current: max(_selectedIndex, 0),
@@ -293,7 +191,7 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
               /// ------------------ third part ------------///
               Expanded(
                 child: Container(
-                  margin: EdgeInsets.only(top: 5),
+                  margin: EdgeInsets.only(top: 10),
                   width: 400,
                   color: Main_Theme_WhiteCollor,
                   padding: EdgeInsets.only(
@@ -564,5 +462,25 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
   List MonthList=[
     "Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"
   ];
+  DateTime?  selected_pick_month=DateTime.now() ;
+  Future<void> _onPressed({
+    required BuildContext context,
+    String? locale,
+  }) async {
+    final localeObj = locale != null ? Locale(locale) : null;
+    final selected = await showMonthYearPicker(
+      context: context,
+      initialDate:  selected_pick_month ?? DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2130),
+      locale: localeObj,
+    );
 
+    if (selected != null) {
+      setState(() {
+        selected_pick_month = selected;
+
+      });
+    }
+  }
 }
