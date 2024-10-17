@@ -41,7 +41,6 @@ class CreateNewEmployeeScreen2 extends StatefulWidget {
     required this.employeeGrowssallary,
     required this.employeeJoiningDate,
 
-    required this.joiningDateController ,
     required this.employeeRFController ,
     required this.fatherNameController ,
     required this.gmailController ,
@@ -65,6 +64,13 @@ class CreateNewEmployeeScreen2 extends StatefulWidget {
     required this.NomineephoneController ,
     required this.NomineeEmailController ,
     required this.RelationwithNomineeController ,
+    required this.religion ,
+    required this.department_id ,
+    required this.designation_id ,
+    required this.section_id ,
+    required this.workstation_id ,
+    required this.rostertype_id ,
+    required this.rostergroup_id ,
 
   });
   String employeeID;
@@ -76,7 +82,6 @@ class CreateNewEmployeeScreen2 extends StatefulWidget {
   String employeeGrowssallary;
   String employeeJoiningDate;
   /////////////////////////////////
-  String joiningDateController ;
   String employeeRFController ;
   String fatherNameController ;
   String gmailController ;
@@ -100,6 +105,13 @@ class CreateNewEmployeeScreen2 extends StatefulWidget {
   String NomineephoneController ;
   String NomineeEmailController ;
   String RelationwithNomineeController ;
+  String religion ;
+  String department_id ;
+  String designation_id ;
+  String section_id ;
+  String workstation_id ;
+  String rostertype_id ;
+  String rostergroup_id ;
   /////////////////////////////////
 
 
@@ -212,7 +224,15 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
     _gmailController.text                =     widget.gmailController ;
     _presentAddressController.text       =     widget.presentAddressController ;
     _parmenentAddressController.text     =     widget.parmenentAddressController ;
-    _siftplaneController.text            =     widget.siftplaneController ;
+     shiftplan_id                        =     widget.siftplaneController ;
+
+    relijion_id                          =    widget.religion;
+    department_id                        =    widget.department_id;
+    designation_id                       =    widget.designation_id;
+    section_id                           =    widget.section_id;
+    workstation_id                       =    widget.workstation_id;
+    rostertype_id                        =    widget.rostertype_id;
+    rostergroup_id                       =    widget.rostergroup_id;
     _StafCategoryController.text         =     widget.StafCategoryController ;
     _InactiveDateController.text         =     widget.InactiveDateController  ;
     _BasicSalaryController.text          =     widget.BasicSalaryController ;
@@ -328,7 +348,6 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                 child: Column(
                   children: [
                     /// Primary Information ---------------------------------------------------------
-
                     SizedBox(height: C_height,),
                     /// Primary Information ---------------------------------------------------------
                     Container(
@@ -489,9 +508,6 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                       padding: EdgeInsets.only(left: 0,right: 10,),
                     child: Column(
                       children: [
-
-
-
                         JibikaCustomTextFromField(
                             readOnly: false,
                             controller: _employeeNameController,
@@ -500,7 +516,6 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                             hinttext: "Employee Name",
                             keyboardType: TextInputType.text,
                             obscureText: false),
-
                         SizedBox(height: C_height,),
                         JibikaCustomTextFromField(
                             readOnly: false,
@@ -555,7 +570,6 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                             keyboardType: TextInputType.number,
                             obscureText: false),
                         SizedBox(height: C_height,),
-
                         JibikaCustomTextFromField2(
                             controller: _gmailController,
                             height: 50,
@@ -564,7 +578,6 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                             keyboardType: TextInputType.text,
                             obscureText: false),
                         SizedBox(height: C_height,),
-
                         JibikaCustomTextFromField2(
                             controller: _presentAddressController,
                             height: 50,
@@ -573,7 +586,6 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                             keyboardType: TextInputType.text,
                             obscureText: false),
                         SizedBox(height: C_height,),
-
                         JibikaCustomTextFromField2(
                             controller: _parmenentAddressController,
                             height: 50,
@@ -1724,6 +1736,7 @@ List nameList=[
         //  'Authorization': 'Bearer ${GetStorage().read("api_token")}'
       });
 
+
       request.fields["PERMANENT_ADDRESS_ENGLISH"] =  _parmenentAddressController.text;
       request.fields["PRESENT_ADDRESS_ENGLISH"] =  _presentAddressController.text;
       request.fields["FATHER_NAME_ENGLISH"] =  _fatherNameController.text;
@@ -1733,6 +1746,8 @@ List nameList=[
       request.fields["MOBILE_NO "] =  _phoneController.text;
       request.fields["NID_NO"] =  _nIDController.text;
       request.fields["SHIFT_PLAN"] = "${shiftplan_id}";
+      request.fields["RELIGION"] = "${relijion_id}";
+
       request.fields["WEEKEND1"] = "${Containsvalue[0]}";
       request.fields["WEEKEND2"] =  Containsvalue.length >= 2?"${Containsvalue[1]}" :"";
       request.fields["USERID"] = "${GetStorage().read("mobile_id")}";

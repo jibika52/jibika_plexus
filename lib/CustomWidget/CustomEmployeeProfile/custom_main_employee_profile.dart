@@ -128,11 +128,10 @@ class customMainEmployeeProfile extends StatelessWidget {
                                           employeeName:employeeName,
                                           employeeDateOfBirth: birthday,
                                           employeeMobileNumber:"${profile["MOBILE_NO"]}",
-                                          ShiftPlane:"${profile["SHIFT_PLAN_ENGLISH"]}",
+                                          ShiftPlane:"${profile["SHIFT_PLAN_CODE"]}",
                                           employeeGrowssallary: "${profile["GROSS"]}",
                                           employeeJoiningDate: "${profile["JOINING_DATE1"]}",
 
-                                          joiningDateController: "${profile["JOINING_DATE1"]}",
                                           employeeRFController: "${profile["RF_ID_NO"]}",
                                           fatherNameController: "${profile["FATHER_NAME_ENGLISH"]}",
                                           gmailController: "${profile["EMAIL"]}",
@@ -155,7 +154,15 @@ class customMainEmployeeProfile extends StatelessWidget {
                                           NomineeAddressController: "${profile["NOMINEE_PERSON_ADDRESS"]}",
                                           NomineephoneController: "${profile["NOMINEE_PERSON_PHONE"]}",
                                           NomineeEmailController: "",
-                                          RelationwithNomineeController: "${profile["NOMINEE_RELATION"]}",)
+                                          RelationwithNomineeController: "${profile["NOMINEE_RELATION"]}",
+                                          religion:           "${profile["RELIGION_CODE"]}",
+                                          department_id :     "${profile["DEPARTMENT_CODE"]}",
+                                          designation_id :    "${profile["DESIGNATION_CODE"]}",
+                                          section_id :        "${profile["SECTION_CODE"]}",
+                                          workstation_id :    "${profile["WORK_STATION_CODE"]}",
+                                          rostertype_id :     "${profile["ROSTER_TYPE_CODE"]}",
+                                          rostergroup_id :    "${profile["ROSTER_GROUP_CODE"]}",
+                                      )
                                       ,),
                                     );
                                   },

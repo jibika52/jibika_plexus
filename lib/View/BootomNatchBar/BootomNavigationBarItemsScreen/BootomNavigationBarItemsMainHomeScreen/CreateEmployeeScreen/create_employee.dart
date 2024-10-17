@@ -637,7 +637,7 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
                          ShiftPlane: _siftplaneController.text,
                          employeeGrowssallary: _growsSalaryController.text,
                          employeeJoiningDate: _joiningDateController.text,
-                         joiningDateController: "",
+
                          employeeRFController: "",
                          fatherNameController: "",
                          gmailController: "",
@@ -660,7 +660,14 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
                          NomineeAddressController: "",
                          NomineephoneController: "",
                          NomineeEmailController: "",
-                         RelationwithNomineeController: ""
+                         RelationwithNomineeController: "",
+                       religion: "",
+                         department_id : "",
+                         designation_id : "",
+                         section_id : "",
+                         workstation_id : "",
+                         rostertype_id : "",
+                         rostergroup_id : "",
                      )
                        ,));
                      },
