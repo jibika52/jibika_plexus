@@ -145,8 +145,8 @@ class _BootomNavBarItemsEmployeeHomeScreenState extends State<BootomNavBarItemsE
                     ),
                   ),
                   Container(
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(0),color: Main_Theme_textColor_tir_Condition.withOpacity(0.5)),
-                    padding:  EdgeInsets.only(left: 10.0,right: 10,top: 10,bottom: 10),
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(0),color: Main_Theme_textColor_tir_Condition.withOpacity(0.0)),
+                    padding:  EdgeInsets.only(left: 10.0,right: 10,top: 0,bottom: 0),
                     child: AnimatedToggleSwitch<int>.size(
                       height: 35,
                       current: max(_selectedIndex, 0),
@@ -198,7 +198,7 @@ class _BootomNavBarItemsEmployeeHomeScreenState extends State<BootomNavBarItemsE
                     ),
                   ),
                   SizedBox(height: 5,),
-                  valcount != null?  CustomText(fontSize: fontSubTitle, fontWeight: FontWeight.w500, text: _selectedIndex==0 ? "Active ${valcount.length}":"Inactive ${valcount.length}", letterSpacing: 0.1)
+                  valcount != null?  CustomText(fontSize: fontSubTitle-2, fontWeight: FontWeight.w500, text: _selectedIndex==0 ? "Active(${valcount.length})":"Inactive(${valcount.length})", letterSpacing: 0.1)
                       :
                   CustomText(fontSize: fontSubTitle, fontWeight: FontWeight.w500, text:  "0", letterSpacing: 0.1),
                   Expanded(
