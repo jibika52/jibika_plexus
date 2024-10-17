@@ -252,6 +252,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
     double w = MediaQuery.of(context).size.width;
     double C_height=8;
     double Cwidth=10;
+    print("cccccccccccccccccccc ${religionlist} cccccccccccccccc ${widget.employeeNID}  ${widget.employeeJoiningDate}");
     return Scaffold(
       backgroundColor: home_default_color,
       appBar: PreferredSize(preferredSize: Size.fromHeight(75), child: CustomDefaultAppBar(onTap: () => Navigator.pop(context),
@@ -610,62 +611,84 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                     ),
                     ),
                     Consumer<OnboardingEmployeeController>(
-                    builder: (context, value, child) =>
-                    Container(
-                    margin: EdgeInsets.only(top: 10),
-                    height: 50,
-                    width: double.infinity,
-                    padding: EdgeInsets.only(left: 15, right: 15),
-                    child: DropdownButton<String>(
-                    underline: Container(height: 1.7,color: Main_Theme_textColor.withOpacity(0.1),),
-                    value: shiftplan_id,
-                    hint: CustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "Select Shift Plane", letterSpacing: 0.3),
-                    // Create the dropdown items using the list of maps
-                    items: shiftplanelist.map((shift) {
-                    return DropdownMenuItem<String>(
-                    value: "${shift['Code']}",
-                    child: CustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "${shift['EnglishName']}", letterSpacing: 0.3), // Display the EnglishName
-                    );
-                    }).toList(),
+                            builder: (context, value, child) => Container(
+                              margin: EdgeInsets.only(top: 10),
+                              height: 50,
+                              width: double.infinity,
+                              padding: EdgeInsets.only(left: 15, right: 15),
+                              child: DropdownButton<String>(
+                                underline: Container(
+                                  height: 1.7,
+                                  color: Main_Theme_textColor.withOpacity(0.1),
+                                ),
+                                value: shiftplan_id,
+                                hint: CustomText(
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w400,
+                                    text: "Select Shift Plane",
+                                    letterSpacing: 0.3),
+                                // Create the dropdown items using the list of maps
+                                items: shiftplanelist.map((shift) {
+                                  return DropdownMenuItem<String>(
+                                    value: "${shift['Code']}",
+                                    child: CustomText(
+                                        fontSize: 13,
+                                        fontWeight: FontWeight.w400,
+                                        text: "${shift['EnglishName']}",
+                                        letterSpacing:
+                                            0.3), // Display the EnglishName
+                                  );
+                                }).toList(),
 
-                    // Handle change in selected value
-                    onChanged: (String? newValue) {
-                    setState(() {
-                    shiftplan_id = newValue;
-                    });
-                    },
-                    ),
-                    ),
-                    ),
-                    Consumer<OnboardingEmployeeController>(
-                    builder: (context, value, child) =>
-                    Container(
-                    margin: EdgeInsets.only(top: 10),
-                    height: 50,
-                    width: double.infinity,
-                    padding: EdgeInsets.only(left: 15, right: 15),
-                    child: DropdownButton<String>(
-                    underline: Container(height: 1.7,color: Main_Theme_textColor.withOpacity(0.1),),
-                    value: relijion_id,
-                    hint: CustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "Select Religion", letterSpacing: 0.3),
-                    // Create the dropdown items using the list of maps
-                    items: religionlist.map((shift) {
-                    return DropdownMenuItem<String>(
-                    value: "${shift['Code']}",
-                    child: CustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "${shift['EnglishName']}", letterSpacing: 0.3), // Display the EnglishName
-                    );
-                    }).toList(),
+                                // Handle change in selected value
+                                onChanged: (String? newValue) {
+                                  setState(() {
+                                    shiftplan_id = newValue;
+                                  });
+                                },
+                              ),
+                            ),
+                          ),
+                          Consumer<OnboardingEmployeeController>(
+                            builder: (context, value, child) => Container(
+                              margin: EdgeInsets.only(top: 10),
+                              height: 50,
+                              width: double.infinity,
+                              padding: EdgeInsets.only(left: 15, right: 15),
+                              child: DropdownButton<String>(
+                                underline: Container(
+                                  height: 1.7,
+                                  color: Main_Theme_textColor.withOpacity(0.1),
+                                ),
+                                value: relijion_id,
+                                hint: CustomText(
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w400,
+                                    text: "Select Religion",
+                                    letterSpacing: 0.3),
+                                // Create the dropdown items using the list of maps
+                                items: religionlist.map((shift) {
+                                  return DropdownMenuItem<String>(
+                                    value: "${shift['Code']}",
+                                    child: CustomText(
+                                        fontSize: 13,
+                                        fontWeight: FontWeight.w400,
+                                        text: "${shift['EnglishName']}",
+                                        letterSpacing:
+                                            0.3), // Display the EnglishName
+                                  );
+                                }).toList(),
 
-                    // Handle change in selected value
-                    onChanged: (String? newValue) {
-                    setState(() {
-                    shiftplan_id = newValue;
-                    });
-                    },
-                    ),
-                    ),
-                    ),
-                    SizedBox(height: C_height),
+                                // Handle change in selected value
+                                onChanged: (String? newValue) {
+                                  setState(() {
+                                    relijion_id = newValue;
+                                  });
+                                },
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: C_height),
                     /// Weekend-----------------------------------------
                     Align(
                         alignment: Alignment.centerLeft,
