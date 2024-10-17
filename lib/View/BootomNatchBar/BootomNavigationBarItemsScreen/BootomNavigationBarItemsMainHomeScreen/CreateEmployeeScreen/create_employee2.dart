@@ -132,7 +132,6 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
   TextEditingController _presentAddressController = TextEditingController();
   TextEditingController _parmenentAddressController = TextEditingController();
   TextEditingController _siftplaneController = TextEditingController();
-  TextEditingController _StafCategoryController = TextEditingController();
   TextEditingController _InactiveDateController = TextEditingController();
   TextEditingController _GrossSalaryController = TextEditingController();
   TextEditingController _BasicSalaryController = TextEditingController();
@@ -233,7 +232,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
     workstation_id                       =    widget.workstation_id;
     rostertype_id                        =    widget.rostertype_id;
     rostergroup_id                       =    widget.rostergroup_id;
-    _StafCategoryController.text         =     widget.StafCategoryController ;
+    StafCategoryController               =     widget.StafCategoryController ;
     _InactiveDateController.text         =     widget.InactiveDateController  ;
     _BasicSalaryController.text          =     widget.BasicSalaryController ;
     _HouserentController.text            =     widget.HouserentController ;
@@ -250,6 +249,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
     _NomineephoneController.text         =     widget.NomineephoneController ;
     _NomineeEmailController.text         =     widget.NomineeEmailController ;
     _RelationwithNomineeController.text  =     widget.RelationwithNomineeController;
+    Containsvalue.add(1);
 ///--------------------------------------------------------------------------------------------------///
     // TODO: implement initState
     super.initState();
@@ -268,6 +268,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
     List  workstation=Provider.of<OnboardingEmployeeController>(context).GetDepartmentNDesinationList["workstation"];
     List  rostertype=Provider.of<OnboardingEmployeeController>(context).GetDepartmentNDesinationList["rostertype"];
     List  rostergroup=Provider.of<OnboardingEmployeeController>(context).GetDepartmentNDesinationList["rostergroup"];
+    List  staffCategory=Provider.of<OnboardingEmployeeController>(context).GetDepartmentNDesinationList["staffcategory"];
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
     double C_height=8;
@@ -1075,14 +1076,38 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                       padding: EdgeInsets.only(left: 0,right: 10,),
                       child: Column(
                         children: [
-                          JibikaCustomTextFromField(
-                              readOnly: false,
-                              controller: _StafCategoryController,
-                              height: 50,
-                              img: "Assets/PrimaryInformation/father.png",
-                              hinttext: "Staff Category",
-                              keyboardType: TextInputType.text,
-                              obscureText: false),
+                          Consumer<OnboardingEmployeeController>(
+                            builder: (context, value, child) =>
+                                Container(
+                                  margin: EdgeInsets.only(top: 10),
+                                  height: 50,
+                                  width: double.infinity,
+                                  padding: EdgeInsets.only(left: 15, right: 15),
+                                  child: DropdownButton(
+                                    enableFeedback: true,
+                                    autofocus: false,
+                                    isExpanded: true,
+                                    hint: InkWell(
+                                      onTap: () {},
+                                      child: CustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "Select StaffCategory", letterSpacing: 0.3), // Display the EnglishName
+
+                                    ),
+                                    // Not necessary for Option 1
+                                    value: StafCategoryController,
+                                    onChanged: (newValue) {
+                                      setState(() {
+                                         StafCategoryController = newValue.toString();
+                                      });
+                                    },
+                                    items: staffCategory.map((shift) {
+                                      return DropdownMenuItem(
+                                        child: CustomText(fontSize: 13, fontWeight: FontWeight.w400, text: "${shift['EnglishName']}", letterSpacing: 0.3),
+                                        value: "${shift['Code']}",
+                                      );
+                                    }).toList(),
+                                  ),
+                                ),
+                          ),
                           Consumer<OnboardingEmployeeController>(
                             builder: (context, value, child) =>
                                 Container(
@@ -1115,6 +1140,8 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                                   ),
                                 ),
                           ),
+
+
                           Consumer<OnboardingEmployeeController>(
                             builder: (context, value, child) =>
                                 Container(
@@ -1722,6 +1749,7 @@ List nameList=[
     }
   }
   String?  shiftplan_id;
+  String?  StafCategoryController;
   String?  department_id;
   String?  relijion_id;
   String?  designation_id;
@@ -1762,6 +1790,15 @@ List nameList=[
       request.fields["NID_NO"] =  _nIDController.text;
       request.fields["SHIFT_PLAN"] = "${shiftplan_id}";
       request.fields["RELIGION"] = "${relijion_id}";
+      request.fields["STAFF_CATEGORY"] = "${StafCategoryController}";
+
+      request.fields["DESIGNATION"] = "${designation_id}";
+      request.fields["DEPARTMENT"] = "${department_id}";
+      request.fields["SECTION"] = "${section_id}";
+      request.fields["WORK_STATION"] = "${workstation_id}";
+      request.fields["ROSTER_TYPE"] = "${rostertype_id}";
+      request.fields["ROSTER_GROUP"] = "${rostergroup_id}";
+
 
       request.fields["WEEKEND1"] = "${Containsvalue[0]}";
       request.fields["WEEKEND2"] =  Containsvalue.length >= 2?"${Containsvalue[1]}" :"";
