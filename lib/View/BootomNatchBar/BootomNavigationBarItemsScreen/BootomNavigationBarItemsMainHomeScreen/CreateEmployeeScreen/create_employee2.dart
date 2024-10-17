@@ -1321,10 +1321,15 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                     SizedBox(
                       height: 20,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 70.0,right: 70),
-                      child: CustomImageButton(height: 45, img: "Assets/PrimaryInformation/save 1.png", text: "Save",
-                          textColor: Colors.white, b_color: CustomButtonColor),
+                    InkWell(
+                      onTap: () {
+                        SaveOnBoarding();
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 70.0,right: 70),
+                        child: CustomImageButton(height: 45, img: "Assets/PrimaryInformation/save 1.png", text: "Save",
+                            textColor: Colors.white, b_color: CustomButtonColor),
+                      ),
                     ),
                     SizedBox(height: C_height+20,),
 
@@ -1468,10 +1473,15 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                     SizedBox(
                       height: 30,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 70.0,right: 70),
-                      child: CustomImageButton(height: 45, img: "Assets/PrimaryInformation/save 1.png", text: "Save",
-                          textColor: Colors.white, b_color: CustomButtonColor),
+                    InkWell(
+                      onTap: () {
+                        SaveOnBoarding();
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 70.0,right: 70),
+                        child: CustomImageButton(height: 45, img: "Assets/PrimaryInformation/save 1.png", text: "Save",
+                            textColor: Colors.white, b_color: CustomButtonColor),
+                      ),
                     ),
                     SizedBox(height: C_height+20,),
 
@@ -1641,10 +1651,15 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                     SizedBox(
                       height: 20,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 70.0,right: 70),
-                      child: CustomImageButton(height: 45, img: "Assets/PrimaryInformation/save 1.png", text: "Save",
-                          textColor: Colors.white, b_color: CustomButtonColor),
+                    InkWell(
+                      onTap: () {
+                        SaveOnBoarding();
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 70.0,right: 70),
+                        child: CustomImageButton(height: 45, img: "Assets/PrimaryInformation/save 1.png", text: "Save",
+                            textColor: Colors.white, b_color: CustomButtonColor),
+                      ),
                     ),
                     SizedBox(height: C_height+20,),
 
