@@ -672,51 +672,50 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               borderRadius: BorderRadius.only(topLeft: Radius.circular(11),topRight: Radius.circular(11)),
                               color: home_default_color.withOpacity(0.8),
                             ),
-                            child:  Expanded(
-                              child: ListView.builder(
-                                scrollDirection: Axis.horizontal,
-                                itemCount: value.Admin_GetEmployeeListByStatus.length,
-                                itemBuilder: (context, index) => InkWell(
-                                  splashColor: Colors.white.withOpacity(0.0),
-                                  onTap: () {
-                                    Provider.of<CounterProvider>(context, listen: false).selectedEmployeeforGetProfileFunction(index);
-                                    Provider.of<OnboardingEmployeeController>(context, listen: false).GetEmployeeByIdListProvider(
-                                        "${value.Admin_GetEmployeeListByStatus[index]["IdCardNo"]}",
-                                        "${GetStorage().read("mobile_id")}",
-                                        context);
-                                  },
-                                  child: Container(
-                                    padding: EdgeInsets.only(right: 20.0),
-                                    child: Column(
-                                      children: [
-                                        CircleAvatar(
-                                          radius: 50,
-                                          backgroundColor:selected.selectedEmployeeforGetProfile==index?
-                                          presentsent_color.withOpacity(0.7):
-                                          leave_color.withOpacity(0.7),
-                                          child: CircleAvatar(
-                                            radius: selected.selectedEmployeeforGetProfile==index? 42:44,
-                                            backgroundImage: NetworkImage(
-                                                "${GetStorage().read("APPS_IMG_BASEURL")}${value.Admin_GetEmployeeListByStatus[index]["EmpPhotoPath"]}"),
-                                            //   child:value.Admin_GetEmployeeListByStatus[index]["EmpPhotoPath"]!=""? CustomImageSctionNetwork(height: 55, width: 45, radius: 7, image: "${value.Admin_GetEmployeeListByStatus[index]["EmpPhotoPath"]}"):Image(image: NetworkImage("https://greenmartbd.net/images/default.jpg"),height: 70,width: 50,fit: BoxFit.fill,),
-                                          ),
+                            child:  ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: value.Admin_GetEmployeeListByStatus.length,
+                              itemBuilder: (context, index) => InkWell(
+                                splashColor: Colors.white.withOpacity(0.0),
+                                onTap: () {
+                                  Provider.of<CounterProvider>(context, listen: false).selectedEmployeeforGetProfileFunction(index);
+                                  Provider.of<OnboardingEmployeeController>(context, listen: false).GetEmployeeByIdListProvider(
+                                      "${value.Admin_GetEmployeeListByStatus[index]["IdCardNo"]}",
+                                      "${GetStorage().read("mobile_id")}",
+                                      context);
+                                },
+                                child: Container(
+                                  padding: EdgeInsets.only(right: 20.0),
+                                  child: Column(
+                                    children: [
+                                      CircleAvatar(
+                                        radius: 50,
+                                        backgroundColor:selected.selectedEmployeeforGetProfile==index?
+                                        presentsent_color.withOpacity(0.7):
+                                        leave_color.withOpacity(0.7),
+                                        child: CircleAvatar(
+                                          radius: selected.selectedEmployeeforGetProfile==index? 42:44,
+                                          backgroundImage: NetworkImage(
+                                              "${GetStorage().read("APPS_IMG_BASEURL")}${value.Admin_GetEmployeeListByStatus[index]["EmpPhotoPath"]}"),
+                                          //   child:value.Admin_GetEmployeeListByStatus[index]["EmpPhotoPath"]!=""? CustomImageSctionNetwork(height: 55, width: 45, radius: 7, image: "${value.Admin_GetEmployeeListByStatus[index]["EmpPhotoPath"]}"):Image(image: NetworkImage("https://greenmartbd.net/images/default.jpg"),height: 70,width: 50,fit: BoxFit.fill,),
                                         ),
-                                        SizedBox(
-                                          height: 5,
-                                        ),
-                                        Text("${value.Admin_GetEmployeeListByStatus[index]["IdCardNo"]}",
-                                            style:selected.selectedEmployeeforGetProfile==index?GoogleFonts.poppins(
-                                                fontSize: fontTitle,
-                                                fontWeight: FontWeight.bold
-                                            ):
-                                            customHeadingTextStyle(
-                                                Colors.black.withOpacity(0.7)
-                                            )
-                                        )
-                                      ],
-                                    ),
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      Text("${value.Admin_GetEmployeeListByStatus[index]["IdCardNo"]}",
+                                          style:selected.selectedEmployeeforGetProfile==index?GoogleFonts.poppins(
+                                              fontSize: fontTitle,
+                                              fontWeight: FontWeight.bold
+                                          ):
+                                          customHeadingTextStyle(
+                                              Colors.black.withOpacity(0.7)
+                                          )
+                                      )
+                                    ],
                                   ),
-                                ),),),
+                                ),
+                              ),),
                           ),
                     );
                   }
