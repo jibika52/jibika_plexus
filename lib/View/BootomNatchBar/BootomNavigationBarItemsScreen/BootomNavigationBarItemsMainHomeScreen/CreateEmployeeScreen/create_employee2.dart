@@ -250,6 +250,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
     _NomineeEmailController.text         =     widget.NomineeEmailController ;
     _RelationwithNomineeController.text  =     widget.RelationwithNomineeController;
     Containsvalue.add(1);
+    sat=true;
 ///--------------------------------------------------------------------------------------------------///
     // TODO: implement initState
     super.initState();
