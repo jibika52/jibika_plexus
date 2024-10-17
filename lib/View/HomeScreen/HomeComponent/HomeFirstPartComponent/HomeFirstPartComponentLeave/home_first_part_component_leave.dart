@@ -138,7 +138,7 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
                   ],
                 ),
               ),
-
+              /// Check in &&& CheckOut ----------------------------------------------------------------///
               Container(
                 decoration: BoxDecoration(borderRadius: BorderRadius.circular(0)),
                 padding:  EdgeInsets.only(left: 10.0,right: 10,top: 5,bottom: 5),
@@ -186,17 +186,12 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
               ),
               SizedBox(height: 5,),
               CustomText(fontSize: font12, fontWeight: FontWeight.w500, text: _selectedIndex==0?"Waiting : 655":_selectedIndex==1?"Approved : 100":"Disapproved : 100", letterSpacing: 0.1),
-
-
               /// ------------------ third part ------------///
               Expanded(
+                flex: 2,
                 child: Container(
-                  margin: EdgeInsets.only(top: 10),
                   width: 400,
                   color: Main_Theme_WhiteCollor,
-                  padding: EdgeInsets.only(
-                    left: 10,right: 10
-                  ),
                   child: Container(
                       child: ListView.builder(
                         itemCount: 10,
@@ -206,16 +201,16 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
                               setState(() {
                                 selectedindex=index;
                                 animatedheight=0;
-                                Future.delayed(Duration(milliseconds: 400),() {
+                                Future.delayed(Duration(milliseconds: 100),() {
                                   setState(() {
                                     if(getindex=="$index"){
                                       animatedheight=0;
                                       getindex='';
                                     }else{
-                                      animatedheight=130;
+                                      animatedheight=170;
                                       getindex="$index";
                                     }
-      
+
                                   });
                                 },);
                               });
@@ -223,9 +218,8 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
                             child: Container(
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.all( Radius.circular(7)),
-      
-                                  // color:  CustomButtonColor.withOpacity(0.05),
-                                  color: _selectedIndex==0? Main_Theme_textColor_tir_Condition.withOpacity(0.1) :_selectedIndex==1? presentsent_color.withOpacity(0.1) : absent_color.withOpacity(0.1),
+                                  //  color: Color(0xffF3FCFB)
+                                  color:isChekin==false?  CheckOutColor.withOpacity(0.08) : CustomButtonColor.withOpacity(0.05),
                                   border: Border(bottom: BorderSide( color:isChekin==false?CheckOutColor:  CustomButtonColor))
                               ),
                               margin: EdgeInsets.only(bottom: 7),
@@ -241,8 +235,8 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
                                         bottomLeft: Radius.circular( selectedindex==index?0:7),
                                         bottomRight:Radius.circular( selectedindex==index?0:7),
                                       ),
-      
-                                       color:selectedindex==index?leave_color.withOpacity(0.1) : leave_color.withOpacity(0.05),
+                                      //  color: Color(0xffF3FCFB)
+                                      //   color: CustomButtonColor.withOpacity(0.05),
                                       //  border: Border(bottom: BorderSide(color:_selectedindex==index?CustomButtonColor.withOpacity(0.05): CustomButtonColor))
                                     ),
                                     width: double.infinity,
@@ -257,22 +251,16 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
                                                 topRight: Radius.circular(7),
                                                 bottomLeft: Radius.circular( selectedindex==index?0:7),
                                                 bottomRight:Radius.circular( selectedindex==index?0:7),
-      
+
                                               )
                                           ),
                                           margin: EdgeInsets.only(right: 10),
-                                          child: Stack(
-                                            children: [
-                                              Padding(
-                                                padding: const EdgeInsets.all(1.0),
-                                                child: ClipRRect(
-                                                    borderRadius: BorderRadius.circular(100),
-                                                    child: CustomImageSction(height: 50, width: 50, radius: 1, image: "Assets/DrawerImage/testperson.png")
-                                                ),
-                                              ),
-      
-      
-                                            ],
+                                          child:  Padding(
+                                            padding: const EdgeInsets.all(1.0),
+                                            child: ClipRRect(
+                                                borderRadius: BorderRadius.circular(100),
+                                                child: CustomImageSction(height: 50, width: 50, radius: 1, image: "Assets/DrawerImage/testperson.png")
+                                            ),
                                           ),
                                         ),
                                         Expanded(
@@ -293,8 +281,6 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
                                               ],
                                             )),
                                         SizedBox(width: 10,),
-      
-      
                                         Expanded(
                                             flex: 4,
                                             child: Column(
@@ -304,7 +290,7 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
                                                 Row(
                                                   mainAxisAlignment: MainAxisAlignment.center,
                                                   children: [
-                                                  ColorCustomText(fontSize: 11, fontWeight: FontWeight.w500, text: "CL-02", letterSpacing: 0.3, textColor: CustomButtonColor,),
+                                                    ColorCustomText(fontSize: 11, fontWeight: FontWeight.w500, text: "CL-02", letterSpacing: 0.3, textColor: CustomButtonColor,),
                                                   ],
                                                 ),
                                                 Row(
@@ -320,112 +306,91 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
                                                     ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "To : ", letterSpacing: 0.3, textColor: Main_Theme_textColor),
                                                     CustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "10 Apr 2023", letterSpacing: 0.3, ),
                                                     SizedBox(width: 4,),
-      
+
                                                   ],
                                                 ),
-      
+
                                               ],
                                             )
                                         ),
-      
                                         ///----------------- Third Part ------------------------------///
-                                        IconButton(onPressed: () {
-                                        }, icon: selectedindex==index? Icon(Icons.keyboard_arrow_up):Icon(Icons.keyboard_arrow_down))
-      
+                                        selectedindex==index? Icon(Icons.keyboard_arrow_up):Icon(Icons.keyboard_arrow_down)
                                       ],
                                     ),
                                   ),
-                                  selectedindex==index?
-                                  AnimatedContainer(
-                                    margin: EdgeInsets.only(top: 7),
-                                    height: animatedheight,
-                                    width: double.infinity,
-                                    duration: Duration(milliseconds: 400),
-                                    child: Container(
-                                      child: SingleChildScrollView(
-                                        child: Column(
-                                          children: [
-                                            // Divider(),
-                                            // Padding(
-                                            //   padding: const EdgeInsets.only(left: 10.0,top: 5,bottom: 10),
-                                            //   child: Row(
-                                            //     children: [
-                                            //       CustomImageSction(height: 18, width: 15, radius: 1, image: "Assets/DrawerImage/chat.png"),
-                                            //       SizedBox(width: 10,),
-                                            //       ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "Gulshan Circle-1", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.6),),
-                                            //     ],
-                                            //   ),
-                                            // ),
-                                            Container(
-                                              decoration: BoxDecoration(
-                                                borderRadius: BorderRadius.circular(7),
-                                                border: Border.all(
-                                                    width: 1,
-                                                    color: Main_Theme_textColor.withOpacity(0.1)
+                                  selectedindex==index  ?  Stack(
+                                    children: [
+                                      AnimatedContainer(
+                                        height: animatedheight,
+                                        width: double.infinity,
+                                        duration: Duration(milliseconds: 400),
+                                        child: SingleChildScrollView(
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.circular(7),
+                                              border: Border.all(
+                                                  width: 1,
+                                                  color: Main_Theme_textColor.withOpacity(0.1)
+                                              ),
+                                            ),
+                                            padding: EdgeInsets.only(left: 10,right: 10,top: 10,bottom: 60),
+                                            child: CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "$Loremtext", letterSpacing: 0.3,textAlign: TextAlign.justify,),
+                                          ),
+                                        ) ,
+
+                                      ),
+                                      Positioned(
+                                        bottom: 10,
+                                        child: Container(
+                                          height: 45,
+                                          width: MediaQuery.of(context).size.width,
+                                          padding: EdgeInsets.only(left: 20,right: 20),
+                                          child: Row(
+                                            children: [
+                                              Expanded(
+                                                child: Container(
+                                                  height: 60,
+                                                  width: double.infinity,
+                                                  alignment: Alignment.center,
+                                                  decoration: BoxDecoration(
+                                                      borderRadius: BorderRadius.circular(20),
+                                                      color: absent_color.withOpacity(1.0),
+                                                      border: Border.all(
+                                                          width: 1,
+                                                          color: absent_color
+                                                      )
+                                                  ),
+                                                  child:  CustomText(fontSize: 16, fontWeight: FontWeight.w600, text: "Disapproved",
+                                                      letterSpacing: 0.3),
                                                 ),
                                               ),
-                                              height: 60,
-                                              padding: EdgeInsets.all(10),
-                                              margin: EdgeInsets.all(7),
-                                              child: CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "$Loremtext", letterSpacing: 0.3,textAlign: TextAlign.justify,),
-                                            ),
-                                            SizedBox(height: 7,),
-                                            Container(
-                                              height: 40,
-                                              width: double.infinity,
-                                              padding: EdgeInsets.only(left: 20,right: 20),
-                                              child: Row(
-                                                children: [
-                                                  Expanded(
-                                                    child: Container(
-                                                      height: 60,
-                                                      width: double.infinity,
-                                                      alignment: Alignment.center,
-                                                      decoration: BoxDecoration(
-                                                          borderRadius: BorderRadius.circular(20),
-                                                          color: absent_color.withOpacity(0.3),
-                                                          border: Border.all(
-                                                              width: 1,
-                                                              color: absent_color
-                                                          )
-                                                      ),
-                                                      child: ColorCustomText(fontSize: 16, fontWeight: FontWeight.w600, text: "Disapproved", letterSpacing: 0.3, textColor: absent_color),
-                                                    ),
+
+
+                                              SizedBox(width: 10,),
+                                              Expanded(
+                                                child: Container(
+                                                  height: 60,
+                                                  width: double.infinity,
+                                                  alignment: Alignment.center,
+                                                  decoration: BoxDecoration(
+                                                      borderRadius: BorderRadius.circular(20),
+                                                      color: presentsent_color.withOpacity(1.0),
+                                                      border: Border.all(
+                                                          width: 1,
+                                                          color: CustomButtonColor
+                                                      )
                                                   ),
-      
-      
-                                                  SizedBox(width: 10,),
-                                                  Expanded(
-                                                    child: Container(
-                                                      height: 60,
-                                                      width: double.infinity,
-                                                      alignment: Alignment.center,
-                                                      decoration: BoxDecoration(
-                                                          borderRadius: BorderRadius.circular(20),
-                                                          color: CustomButtonColor.withOpacity(0.3),
-                                                          border: Border.all(
-                                                              width: 1,
-                                                              color: CustomButtonColor
-                                                          )
-                                                      ),
-                                                      child: ColorCustomText(fontSize: 16, fontWeight: FontWeight.w600, text: "Approved", letterSpacing: 0.3, textColor: CustomButtonColor),
-                                                    ),
-                                                  ),
-      
-                                                ],
+                                                  child: ColorCustomText(fontSize: 16, fontWeight: FontWeight.w600, text: "Approved",
+                                                      letterSpacing: 0.3, textColor: Main_Theme_WhiteCollor),
+                                                ),
                                               ),
-                                            ),
-      
-                                            SizedBox(height: 10,),
-                                          ],
-                                        ),
-                                      ),
-                                    ) ,
-      
-                                  )
-      
-                                      :Container(),
-      
+
+                                            ],
+                                          ),
+                                        ),)
+                                    ],
+                                  ) :Container(),
+
                                 ],
                               ),
                             ),
@@ -434,7 +399,6 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
                   ),
                 ),
               )
-      
             ],
           ),
         ),

@@ -1,6 +1,8 @@
 import 'dart:io';
+import 'dart:math';
 import 'dart:ui';
 
+import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -25,8 +27,10 @@ class HomeFirstPartComponentAttendance extends StatefulWidget {
 
 class _HomeFirstPartComponentAttendanceState extends State<HomeFirstPartComponentAttendance> {
   int  selectedindex=-1;
+  int  _selectedIndex=0;
   double animatedheight=0;
   String ? getindex;
+  List nameList=["CheckIn", "CheckOut"];
   @override
   Widget build(BuildContext context) {
     final isChekin=Provider.of<CounterProvider>(context).isCheckIn;
@@ -157,58 +161,53 @@ class _HomeFirstPartComponentAttendanceState extends State<HomeFirstPartComponen
             ),
 
             /// ------------------ Second part ------------///
-             Consumer<CounterProvider>(
-                builder: (context, value, child) {
-                  return Container(
-                      height: 45,width: double.infinity,
-                      decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(7),
-                  color: Main_Theme_textColor.withOpacity(0.1)
-                  ),
-                  margin: EdgeInsets.only(
-                  top: 7,bottom: 7,left: 10,right: 10
-                  ),
-                  child: Row(
-                        children: [
-                          Expanded(
-                              child: InkWell(
-                                onTap: () {
-                                  value.clickIn();
-                                },
-                                child: Container(
-                                  height: 50,
-                                  width: 500,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(7),
-                                    color:value.isCheckIn==true? CheckInColor:Main_Theme_textColor.withOpacity(0.01),
-                                  ),
-                                  alignment: Alignment.center,child: ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Check In (17)", letterSpacing: 0.3,textColor:value.isCheckIn==true? Main_Theme_WhiteCollor:Main_Theme_textColor.withOpacity(0.70),),
-                                ),
-                              )),
-                          Expanded(
-                              child: InkWell(
-                                onTap: () {
-                                  value.clickout();
-                                  setState(() {
-                                    animatedheight=0;
-                                  });
-                                },
-                                child: Container(
-                                  height: 50,
-                                  width: 500,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(7),
-                                    color:value.isCheckIn==true?Main_Theme_textColor.withOpacity(0.01): CheckOutColor,
-                                  ),
-                                  alignment: Alignment.center,child: ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Check Out (11)", letterSpacing: 0.3,textColor:value.isCheckIn==true?Main_Theme_textColor.withOpacity(0.70): Main_Theme_WhiteCollor,),
+            Container(
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(0),color: Main_Theme_textColor_tir_Condition.withOpacity(0.0)),
+              padding:  EdgeInsets.only(left: 10.0,right: 10,top: 5,bottom: 0),
+              child: AnimatedToggleSwitch<int>.size(
+                height: 35,
+                current: max(_selectedIndex, 0),
+                style: ToggleStyle(
+                  backgroundColor: home_default_color,
+                  indicatorColor: presentsent_color,
+                  borderColor: Colors.transparent,
+                  borderRadius: BorderRadius.circular(30.0),
+                  indicatorBorderRadius: BorderRadius.circular(30),
 
-                                ),
-                              ))
-                        ],
-                      ),
-                  );
+                ),
+                values:  [0, 1],
+                iconOpacity: 1.0,
+                selectedIconScale: 1.0,
+                indicatorSize: Size.fromWidth(MediaQuery.of(context).size.width/2),
+                iconAnimationType: AnimationType.onHover,
+                styleAnimationType: AnimationType.onHover,
+                spacing: 2.0,
+                customSeparatorBuilder: (context, local, global) {
+                  final opacity =
+                  ((global.position - local.position).abs() - 0.5)
+                      .clamp(0.0, 1.0);
+                  return VerticalDivider(
+                      indent: 10.0,
+                      endIndent: 10.0,
+                      color: Colors.white38.withOpacity(opacity));
                 },
+                customIconBuilder: (context, local, global) {
+                  final text = nameList[local.index];
+                  return Center(
+                      child: Text(text,
+                          style: GoogleFonts.poppins(
+                              fontSize : 13,
+                              fontWeight : FontWeight.w400,
+                              letterSpacing :  0.3,
+                              color: Color.lerp(Colors.black, Colors.white,
+                                  local.animationValue))));
+                },
+                borderWidth: 1.0,
+                onChanged: (i) => setState(() => _selectedIndex = i),
               ),
+            ),
+            SizedBox(height: 5,),
+            CustomText(fontSize: fontSubTitle, fontWeight: FontWeight.w500, text: _selectedIndex==0?"CheckIn 655":"CheckOut 100", letterSpacing: 0.1),
             /// ------------------ third part ------------///
            Expanded(
              child: Container(
@@ -357,16 +356,12 @@ class _HomeFirstPartComponentAttendanceState extends State<HomeFirstPartComponen
                                      ],
                                    )
                                ),
-
                                ///----------------- Third Part ------------------------------///
-
                                 selectedindex==index? Icon(Icons.keyboard_arrow_up):Icon(Icons.keyboard_arrow_down)
-
                              ],
                            ),
                          ),
-                             selectedindex==index &&
-                             animatedheight!=0?  AnimatedContainer(
+                             selectedindex==index  ?  AnimatedContainer(
                              height: animatedheight,
                              width: double.infinity,
                              duration: Duration(milliseconds: 400),
@@ -449,9 +444,7 @@ class _HomeFirstPartComponentAttendanceState extends State<HomeFirstPartComponen
                                ),
                              ) ,
 
-                           )
-
-                           :Container(),
+                           ) :Container(),
 
                          ],
                        ),
