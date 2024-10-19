@@ -199,8 +199,9 @@ class _HomeFirstPartComponentPromotionScreenState extends State<HomeFirstPartCom
                                   if(getindex=="$index"){
                                     animatedheight=0;
                                     getindex='';
+                                    selectedindex=-1;
                                   }else{
-                                    animatedheight=105;
+                                    animatedheight=140;
                                     getindex="$index";
                                   }
 
@@ -262,7 +263,8 @@ class _HomeFirstPartComponentPromotionScreenState extends State<HomeFirstPartCom
                                             crossAxisAlignment: CrossAxisAlignment.start,
                                             mainAxisAlignment: MainAxisAlignment.center,
                                             children: [
-                                              ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "ID: 544532", letterSpacing: 0.3, textColor: CustomButtonColor.withOpacity(0.7),),
+                                              ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "ID: 544532", letterSpacing: 0.3,
+                                                textColor: CustomButtonColor.withOpacity(0.7),),
                                               Text("Hafijur Rahman Mizan",
                                                 overflow: TextOverflow.ellipsis
                                                 ,style: GoogleFonts.poppins(
@@ -291,47 +293,90 @@ class _HomeFirstPartComponentPromotionScreenState extends State<HomeFirstPartCom
                                         child: Column(
                                           children: [
                                           //  Divider(height: 6,),
+                                          //   Padding(
+                                          //     padding: const EdgeInsets.only(left: 20,right: 20.0),
+                                          //     child: Row(
+                                          //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          //       children: [
+                                          //         CustomText(fontSize: fontSubTitle, fontWeight: FontWeight.w400, text: "Previous", letterSpacing: 0.2),
+                                          //         CustomText(fontSize: fontSubTitle, fontWeight: FontWeight.w400, text: "New", letterSpacing: 0.2),
+                                          //       ],
+                                          //     ),
+                                          //   ),
                                             Container(
                                               padding: EdgeInsets.only(left: 10,right: 10,top: 5,bottom: 5),
                                               decoration: BoxDecoration(
-                                                  color: home_default_color,
+                                                  color:  CheckOutColor.withOpacity(0.1),
                                                   borderRadius: BorderRadius.only(bottomRight: Radius.circular(11),bottomLeft: Radius.circular(11))
                                               ),
-                                              child: Column(
+                                              // child: Column(
+                                              //   children: [
+                                              //     Row(
+                                              //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                              //       children: [
+                                              //         ColorCustomText(textColor: Main_Theme_textColor.withOpacity(0.8),fontSize: font12, fontWeight: FontWeight.bold, text: "Salary : 30,000", letterSpacing: 0.2),
+                                              //        // ColorCustomText(textColor: Main_Theme_textColor.withOpacity(0.8),fontSize: font12, fontWeight: FontWeight.bold, text: "->", letterSpacing: 0.2),
+                                              //         ColorCustomText(textColor: presentsent_color,fontSize: font12, fontWeight: FontWeight.bold, text: "Updated : 50,0000", letterSpacing: 0.2),
+                                              //       ],
+                                              //     ),
+                                              //     //  Divider(height: 8,),
+                                              //     SizedBox(height: 5,),
+                                              //     Row(
+                                              //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                              //       children: [
+                                              //         ColorCustomText(textColor: Main_Theme_textColor.withOpacity(0.8),fontSize: font12, fontWeight: FontWeight.bold, text: "junior Engineer ", letterSpacing: 0.2),
+                                              //       //  ColorCustomText(textColor: Main_Theme_textColor.withOpacity(0.8),fontSize: font12, fontWeight: FontWeight.bold, text: "->", letterSpacing: 0.2),
+                                              //         ColorCustomText(textColor: presentsent_color,fontSize: font12, fontWeight: FontWeight.bold, text: " senior Software Engineer", letterSpacing: 0.2),
+                                              //       ],
+                                              //     ),
+                                              //
+                                              //   ],
+                                              // ),
+
+                                              child: Row(
                                                 children: [
-                                                  // Row(
-                                                  //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                  //   children: [
-                                                  //     CustomText(fontSize: font12, fontWeight: FontWeight.w400, text: "Previous Salary: 4000", letterSpacing: 0.2),
-                                                  //     CustomText(fontSize: font12, fontWeight: FontWeight.w400, text: "Present Salary : 5000", letterSpacing: 0.2),
-                                                  //   ],
-                                                  // ),
-                                                  Row(
-                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                    children: [
-                                                      ColorCustomText(textColor: Main_Theme_textColor.withOpacity(0.8),fontSize: font12, fontWeight: FontWeight.bold, text: "Salary : 30,000", letterSpacing: 0.2),
-                                                     // ColorCustomText(textColor: Main_Theme_textColor.withOpacity(0.8),fontSize: font12, fontWeight: FontWeight.bold, text: "->", letterSpacing: 0.2),
-                                                      ColorCustomText(textColor: presentsent_color,fontSize: font12, fontWeight: FontWeight.bold, text: "Updated : 50,0000", letterSpacing: 0.2),
-                                                    ],
+                                                  Expanded(
+                                                      child: Container(
+                                                    width: double.infinity,
+                                                        child: Column(
+                                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                                          children: [
+                                                            Center(child: ColorCustomText(textColor: CustomButtonColor.withOpacity(0.7),fontSize: fontSubTitle, fontWeight: FontWeight.w400, text: "Previous", letterSpacing: 0.2)),
+                                                            CustomText(fontSize: font11, fontWeight: FontWeight.w400, text: "Effect : 10-Oct-2024", letterSpacing: 0.2),
+                                                            CustomText(fontSize: font11, fontWeight: FontWeight.w400, text: "Salary : 200000", letterSpacing: 0.2),
+                                                            CustomText(maxLines: 1,overflow: TextOverflow.ellipsis,fontSize: font11, fontWeight: FontWeight.w400, text: "Desig : Jr. software Ebngineerjdhfbjsdjzc ", letterSpacing: 0.2),
+                                                          ],
+                                                        ),
+                                                  )),
+                                                  SizedBox(width: 5,),
+                                                  Container(
+                                                    height: 60,
+                                                    width: 1,
+                                                    color: Main_Theme_textColor.withOpacity(0.2),
                                                   ),
-                                                  //  Divider(height: 8,),
-                                                  SizedBox(height: 5,),
-                                                  Row(
-                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                    children: [
-                                                      ColorCustomText(textColor: Main_Theme_textColor.withOpacity(0.8),fontSize: font12, fontWeight: FontWeight.bold, text: "junior Engineer ", letterSpacing: 0.2),
-                                                      ColorCustomText(textColor: Main_Theme_textColor.withOpacity(0.8),fontSize: font12, fontWeight: FontWeight.bold, text: "->", letterSpacing: 0.2),
-                                                      ColorCustomText(textColor: presentsent_color,fontSize: font12, fontWeight: FontWeight.bold, text: " senior Software Engineer", letterSpacing: 0.2),
-                                                    ],
-                                                  ),
+                                                  SizedBox(width: 5,),
+                                                  Expanded(
+                                                      child: Container(
+                                                    width: double.infinity,
+                                                        child: Column(
+                                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                                          children: [
+                                                            Center(child: ColorCustomText(textColor: CustomButtonColor.withOpacity(0.7),fontSize: fontSubTitle, fontWeight: FontWeight.w400, text: "New", letterSpacing: 0.2)),
+                                                            CustomText(fontSize: font11, fontWeight: FontWeight.w400, text: "Effect : 10-Oct-2024", letterSpacing: 0.2),
+                                                            CustomText(fontSize: font11, fontWeight: FontWeight.w400, text: "Salary : 200000", letterSpacing: 0.2),
+                                                            CustomText(maxLines: 1,overflow: TextOverflow.ellipsis,fontSize: font11, fontWeight: FontWeight.w400, text: "Desig : Jr. software Ebngineerjdhfbjsdjzc ", letterSpacing: 0.2),
+                                                          ],
+                                                        ),
+                                                  )),
                                                 ],
                                               ),
+
                                             ),
                                             SizedBox(height: 10,),
                                             Container(
-                                              height: 35,
+                                              height: 30,
                                               width: MediaQuery.of(context).size.width,
-                                              padding: EdgeInsets.only(left: 20,right: 20),
+                                              padding: EdgeInsets.only(left: 25,right: 25),
                                               child: Row(
                                                 children: [
                                                   Expanded(
@@ -347,7 +392,7 @@ class _HomeFirstPartComponentPromotionScreenState extends State<HomeFirstPartCom
                                                               color: absent_color
                                                           )
                                                       ),
-                                                      child:  CustomText(fontSize: 14, fontWeight: FontWeight.w600, text: "Disapproved",
+                                                      child:  CustomText(fontSize: font13header, fontWeight: FontWeight.w600, text: "Disapprove",
                                                           letterSpacing: 0.3),
                                                     ),
                                                   ),
@@ -367,7 +412,7 @@ class _HomeFirstPartComponentPromotionScreenState extends State<HomeFirstPartCom
                                                               color: CustomButtonColor
                                                           )
                                                       ),
-                                                      child: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w600, text: "Approved",
+                                                      child: ColorCustomText(fontSize: font13header, fontWeight: FontWeight.w600, text: "Approve",
                                                           letterSpacing: 0.3, textColor: Main_Theme_WhiteCollor),
                                                     ),
                                                   ),
