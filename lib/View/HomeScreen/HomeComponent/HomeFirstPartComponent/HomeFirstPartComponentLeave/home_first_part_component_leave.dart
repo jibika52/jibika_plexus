@@ -16,6 +16,7 @@ import 'package:jibika_plexus/Utils/constants.dart';
 import 'package:month_year_picker/month_year_picker.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../../CustomSelfWedget/ApprovedDisApprovedButton/approve_disapprove_button.dart';
 import '../../../../../CustomWidget/CustomCalender/custom_calender.dart';
 import '../../../../../CustomWidget/CustomText/custom_text.dart';
 
@@ -183,7 +184,7 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
               ),
             ),
             SizedBox(height: 5,),
-            CustomText(fontSize: font12, fontWeight: FontWeight.w500, text: _selectedIndex==0?"Waiting : 655":_selectedIndex==1?"Approved : 100":"Disapproved : 100", letterSpacing: 0.1),
+            CustomText(fontSize: font12, fontWeight: FontWeight.w500, text: _selectedIndex==0?"Waiting : 655": "Approved", letterSpacing: 0.1),
             /// ------------------ third part ------------///
             Expanded(
               flex: 2,
@@ -340,53 +341,11 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
                                     ),
                                     Positioned(
                                       bottom: 10,
-                                      child: Container(
-                                        height: 35,
-                                        width: MediaQuery.of(context).size.width,
-                                        padding: EdgeInsets.only(left: 20,right: 20),
-                                        child: Row(
-                                          children: [
-                                            Expanded(
-                                              child: Container(
-                                                height: 35,
-                                                width: double.infinity,
-                                                alignment: Alignment.center,
-                                                decoration: BoxDecoration(
-                                                    borderRadius: BorderRadius.circular(20),
-                                                    color: absent_color.withOpacity(1.0),
-                                                    border: Border.all(
-                                                        width: 1,
-                                                        color: absent_color
-                                                    )
-                                                ),
-                                                child:  CustomText(fontSize: 14, fontWeight: FontWeight.w600, text: "Disapproved",
-                                                    letterSpacing: 0.3),
-                                              ),
-                                            ),
+                                      child:   ApprovedDisapprovedButton(onTap: () {
 
+                                      }, disapproved: () {
 
-                                            SizedBox(width: 10,),
-                                            Expanded(
-                                              child: Container(
-                                                height: 35,
-                                                width: double.infinity,
-                                                alignment: Alignment.center,
-                                                decoration: BoxDecoration(
-                                                    borderRadius: BorderRadius.circular(20),
-                                                    color: presentsent_color.withOpacity(1.0),
-                                                    border: Border.all(
-                                                        width: 1,
-                                                        color: CustomButtonColor
-                                                    )
-                                                ),
-                                                child: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w600, text: "Approved",
-                                                    letterSpacing: 0.3, textColor: Main_Theme_WhiteCollor),
-                                              ),
-                                            ),
-
-                                          ],
-                                        ),
-                                      ),)
+                                      },),)
                                   ],
                                 ) :Container(),
 

@@ -5,9 +5,11 @@ import 'package:jibika_plexus/View/HomeScreen/HomeComponent/HomeFirstPartCompone
 import 'package:jibika_plexus/View/HomeScreen/HomeComponent/HomeFirstPartComponent/HomeFirstPartComponentLeave/home_first_part_component_leave.dart';
 import 'package:jibika_plexus/View/HomeScreen/HomeComponent/HomeFirstPartComponent/HomeFirstPartComponentNewJoinApproval/home_first_part_component_new_join_approval.dart';
 import 'package:provider/provider.dart';
+import 'package:quickalert/quickalert.dart';
 
 import '../../../../Controller/HomeController/home_controller.dart';
 import '../../../../CustomWidget/CustomText/custom_text.dart';
+import 'HomeFirstPartComponentConveyance/home_first_part_component_conveyance.dart';
 import 'HomeFirstPartComponentPromotion/home_first_part_component_promotion.dart';
 
 class HomeHederPart extends StatefulWidget {
@@ -74,6 +76,12 @@ class _HomeHederPartState extends State<HomeHederPart> {
                 }
                 if(selected_index==3){
                   Navigator.push(context, MaterialPageRoute(builder: (context) => HomeFirstPartComponentPromotionScreen(),));
+                }
+                if(selected_index==4){
+                  quickAlertWrong(context, "Coming soon", "Please try again later", 2);
+                }
+                if(selected_index==5){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => HomeFirstPartComponentConveyance(),));
                 }
               },
               child: Container(

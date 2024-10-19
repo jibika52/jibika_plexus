@@ -15,6 +15,7 @@ import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../../CustomSelfWedget/ApprovedDisApprovedButton/approve_disapprove_button.dart';
 import '../../../../../CustomWidget/CustomCalender/custom_calender.dart';
 import '../../../../../CustomWidget/CustomText/custom_text.dart';
 
@@ -169,7 +170,7 @@ class _HomeFirstPartComponentAttendanceState extends State<HomeFirstPartComponen
                 current: max(_selectedIndex, 0),
                 style: ToggleStyle(
                   backgroundColor: home_default_color,
-                  indicatorColor: presentsent_color,
+                  indicatorColor:_selectedIndex==0? presentsent_color : absent_color,
                   borderColor: Colors.transparent,
                   borderRadius: BorderRadius.circular(30.0),
                   indicatorBorderRadius: BorderRadius.circular(30),
@@ -207,7 +208,9 @@ class _HomeFirstPartComponentAttendanceState extends State<HomeFirstPartComponen
               ),
             ),
             SizedBox(height: 5,),
-            CustomText(fontSize: fontSubTitle, fontWeight: FontWeight.w500, text: _selectedIndex==0?"CheckIn 655":"CheckOut 100", letterSpacing: 0.1),
+        //    CustomText(fontSize: fontSubTitle, fontWeight: FontWeight.w500, text: _selectedIndex==0?"CheckIn 655":"CheckOut 100", letterSpacing: 0.1),
+            ColorCustomText(textColor:_selectedIndex==0? presentsent_color : absent_color ,fontSize: font12, fontWeight: FontWeight.w500, text: _selectedIndex==0?"CheckIn(655)": "CheckOut(100)", letterSpacing: 0.1),
+            SizedBox(height: 5,),
             /// ------------------ third part ------------///
            Expanded(
              child: Container(
@@ -241,8 +244,8 @@ class _HomeFirstPartComponentAttendanceState extends State<HomeFirstPartComponen
                        decoration: BoxDecoration(
                            borderRadius: BorderRadius.all( Radius.circular(7)),
                            //  color: Color(0xffF3FCFB)
-                           color:isChekin==false?  CheckOutColor.withOpacity(0.08) : CustomButtonColor.withOpacity(0.05),
-                           border: Border(bottom: BorderSide( color:isChekin==false?CheckOutColor:  CustomButtonColor))
+                           color:_selectedIndex==0? presentsent_color.withOpacity(0.05) : absent_color.withOpacity(0.05),
+                           border: Border(bottom: BorderSide( color:_selectedIndex==0? presentsent_color : absent_color))
                        ),
                        margin: EdgeInsets.only(bottom: 7),
                        child: Column(
@@ -393,53 +396,11 @@ class _HomeFirstPartComponentAttendanceState extends State<HomeFirstPartComponen
                                        child: CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "$Loremtext", letterSpacing: 0.3,textAlign: TextAlign.justify,),
                                      ),
                                      SizedBox(height: 7,),
-                                     Container(
-                                       height: 35,
-                                       width: MediaQuery.of(context).size.width,
-                                       padding: EdgeInsets.only(left: 20,right: 20),
-                                       child: Row(
-                                         children: [
-                                           Expanded(
-                                             child: Container(
-                                               height: 35,
-                                               width: double.infinity,
-                                               alignment: Alignment.center,
-                                               decoration: BoxDecoration(
-                                                   borderRadius: BorderRadius.circular(20),
-                                                   color: absent_color.withOpacity(1.0),
-                                                   border: Border.all(
-                                                       width: 1,
-                                                       color: absent_color
-                                                   )
-                                               ),
-                                               child:  CustomText(fontSize: 14, fontWeight: FontWeight.w600, text: "Disapproved",
-                                                   letterSpacing: 0.3),
-                                             ),
-                                           ),
+                                     ApprovedDisapprovedButton(onTap: () {
 
+                                     }, disapproved: () {
 
-                                           SizedBox(width: 10,),
-                                           Expanded(
-                                             child: Container(
-                                               height: 35,
-                                               width: double.infinity,
-                                               alignment: Alignment.center,
-                                               decoration: BoxDecoration(
-                                                   borderRadius: BorderRadius.circular(20),
-                                                   color: presentsent_color.withOpacity(1.0),
-                                                   border: Border.all(
-                                                       width: 1,
-                                                       color: CustomButtonColor
-                                                   )
-                                               ),
-                                               child: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w600, text: "Approved",
-                                                   letterSpacing: 0.3, textColor: Main_Theme_WhiteCollor),
-                                             ),
-                                           ),
-
-                                         ],
-                                       ),
-                                     ),
+                                     },),
 
                                      SizedBox(height: 10,),
                                    ],

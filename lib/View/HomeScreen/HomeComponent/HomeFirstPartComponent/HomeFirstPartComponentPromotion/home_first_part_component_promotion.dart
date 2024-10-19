@@ -4,6 +4,7 @@ import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:jibika_plexus/CustomSelfWedget/ApprovedDisApprovedButton/approve_disapprove_button.dart';
 import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 import 'package:month_year_picker/month_year_picker.dart';
 import 'package:provider/provider.dart';
@@ -131,51 +132,51 @@ class _HomeFirstPartComponentPromotionScreenState extends State<HomeFirstPartCom
               ),
             ),
             /// Check in &&& CheckOut ----------------------------------------------------------------///
-            Container(
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(0)),
-              padding:  EdgeInsets.only(left: 10.0,right: 10,top: 5,bottom: 5),
-              child: AnimatedToggleSwitch<int>.size(
-                height: 35,
-                current: max(_selectedIndex, 0),
-                style: ToggleStyle(
-                  backgroundColor: home_default_color,
-                  indicatorColor:_selectedIndex==0? Main_Theme_textColor_tir_Condition :_selectedIndex==1? presentsent_color : absent_color ,
-                  borderColor: Colors.transparent,
-                  borderRadius: BorderRadius.circular(30.0),
-                  indicatorBorderRadius: BorderRadius.circular(30),
-
-                ),
-                values:  [0, 1, 2],
-                iconOpacity: 1.0,
-                selectedIconScale: 1.0,
-                indicatorSize: Size.fromWidth(MediaQuery.of(context).size.width/2),
-                iconAnimationType: AnimationType.onHover,
-                styleAnimationType: AnimationType.onHover,
-                spacing: 2.0,
-                customSeparatorBuilder: (context, local, global) {
-                  final opacity =
-                  ((global.position - local.position).abs() - 0.5)
-                      .clamp(0.0, 1.0);
-                  return VerticalDivider(
-                      indent: 10.0,
-                      endIndent: 10.0,
-                      color: Colors.white38.withOpacity(opacity));
-                },
-                customIconBuilder: (context, local, global) {
-                  final text = nameList[local.index];
-                  return Center(
-                      child: Text(text,
-                          style: GoogleFonts.poppins(
-                              fontSize : 13,
-                              fontWeight : FontWeight.w400,
-                              letterSpacing :  0.3,
-                              color: Color.lerp(Colors.black, Colors.white,
-                                  local.animationValue))));
-                },
-                borderWidth: 1.0,
-                onChanged: (i) => setState(() => _selectedIndex = i),
-              ),
-            ),
+            // Container(
+            //   decoration: BoxDecoration(borderRadius: BorderRadius.circular(0)),
+            //   padding:  EdgeInsets.only(left: 10.0,right: 10,top: 5,bottom: 5),
+            //   child: AnimatedToggleSwitch<int>.size(
+            //     height: 35,
+            //     current: max(_selectedIndex, 0),
+            //     style: ToggleStyle(
+            //       backgroundColor: home_default_color,
+            //       indicatorColor:_selectedIndex==0? Main_Theme_textColor_tir_Condition :_selectedIndex==1? presentsent_color : absent_color ,
+            //       borderColor: Colors.transparent,
+            //       borderRadius: BorderRadius.circular(30.0),
+            //       indicatorBorderRadius: BorderRadius.circular(30),
+            //
+            //     ),
+            //     values:  [0, 1, 2],
+            //     iconOpacity: 1.0,
+            //     selectedIconScale: 1.0,
+            //     indicatorSize: Size.fromWidth(MediaQuery.of(context).size.width/2),
+            //     iconAnimationType: AnimationType.onHover,
+            //     styleAnimationType: AnimationType.onHover,
+            //     spacing: 2.0,
+            //     customSeparatorBuilder: (context, local, global) {
+            //       final opacity =
+            //       ((global.position - local.position).abs() - 0.5)
+            //           .clamp(0.0, 1.0);
+            //       return VerticalDivider(
+            //           indent: 10.0,
+            //           endIndent: 10.0,
+            //           color: Colors.white38.withOpacity(opacity));
+            //     },
+            //     customIconBuilder: (context, local, global) {
+            //       final text = nameList[local.index];
+            //       return Center(
+            //           child: Text(text,
+            //               style: GoogleFonts.poppins(
+            //                   fontSize : 13,
+            //                   fontWeight : FontWeight.w400,
+            //                   letterSpacing :  0.3,
+            //                   color: Color.lerp(Colors.black, Colors.white,
+            //                       local.animationValue))));
+            //     },
+            //     borderWidth: 1.0,
+            //     onChanged: (i) => setState(() => _selectedIndex = i),
+            //   ),
+            // ),
             ColorCustomText(textColor: _selectedIndex==0? Main_Theme_textColor_tir_Condition :_selectedIndex==1? presentsent_color : absent_color ,fontSize: font12, fontWeight: FontWeight.w500, text: _selectedIndex==0?"Waiting(655)":_selectedIndex==1?"Approved(100)":"Disapproved(100)", letterSpacing: 0.1),
             SizedBox(height: 5,),
             /// ------------------ third part ------------///
@@ -204,7 +205,6 @@ class _HomeFirstPartComponentPromotionScreenState extends State<HomeFirstPartCom
                                     animatedheight=140;
                                     getindex="$index";
                                   }
-
                                 });
                               },);
                             });
@@ -213,7 +213,7 @@ class _HomeFirstPartComponentPromotionScreenState extends State<HomeFirstPartCom
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.all( Radius.circular(7)),
                                 //  color: Color(0xffF3FCFB)
-                                color: CheckOutColor.withOpacity(0.08)  ,
+                                color: CheckOutColor.withOpacity(0.1)  ,
                                 border: Border(bottom: BorderSide( color:_selectedIndex==0? Main_Theme_textColor_tir_Condition :_selectedIndex==1? presentsent_color : absent_color))
                             ),
                             margin: EdgeInsets.only(bottom: 7),
@@ -237,8 +237,7 @@ class _HomeFirstPartComponentPromotionScreenState extends State<HomeFirstPartCom
                                   child: Row(
                                     children: [
                                       Container(
-                                        height: 50,
-                                        width: 50,
+                                        height: 68,
                                         decoration: BoxDecoration(
                                             borderRadius: BorderRadius.only(
                                               topLeft: Radius.circular(7),
@@ -249,12 +248,19 @@ class _HomeFirstPartComponentPromotionScreenState extends State<HomeFirstPartCom
                                             )
                                         ),
                                         margin: EdgeInsets.only(right: 10),
-                                        child:  Padding(
-                                          padding: const EdgeInsets.all(1.0),
-                                          child: ClipRRect(
-                                              borderRadius: BorderRadius.circular(100),
-                                              child: CustomImageSction(height: 50, width: 50, radius: 1, image: "Assets/DrawerImage/testperson.png")
-                                          ),
+                                        child:  Column(
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsets.all(1.0),
+                                              child: ClipRRect(
+                                                  borderRadius: BorderRadius.circular(100),
+                                                  child: CustomImageSction(height: 50, width: 50, radius: 1, image: "Assets/DrawerImage/testperson.png")
+                                              ),
+                                            ),
+                                            ColorCustomText(fontSize: 11, fontWeight: FontWeight.w500, text: "54453", letterSpacing: 0.3,
+                                              textColor:CustomButtonColor.withOpacity(0.7), ),
+
+                                          ],
                                         ),
                                       ),
                                       Expanded(
@@ -263,8 +269,6 @@ class _HomeFirstPartComponentPromotionScreenState extends State<HomeFirstPartCom
                                             crossAxisAlignment: CrossAxisAlignment.start,
                                             mainAxisAlignment: MainAxisAlignment.center,
                                             children: [
-                                              ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "ID: 544532", letterSpacing: 0.3,
-                                                textColor: CustomButtonColor.withOpacity(0.7),),
                                               Text("Hafijur Rahman Mizan",
                                                 overflow: TextOverflow.ellipsis
                                                 ,style: GoogleFonts.poppins(
@@ -273,12 +277,40 @@ class _HomeFirstPartComponentPromotionScreenState extends State<HomeFirstPartCom
                                                   letterSpacing: 0.3,
                                                 ),),
                                               CustomText(fontSize: 11, fontWeight: FontWeight.w300, text: "HR Manager", letterSpacing: 0.3,  ),
+                                              Row(
+                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                children: [
+                                                  CustomText(fontSize: 11, fontWeight: FontWeight.w300, text: "Doj: 10-Oct-2024", letterSpacing: 0.3,  ),
+                                                  Container(
+                                                    width: 100,
+                                                    child: Row(
+                                                      mainAxisAlignment: MainAxisAlignment.center,
+                                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                                      children: [
+                                                        CustomImageSction(height: 13, width: 13, radius: 1, image: "Assets/DashBoardIcons/rating.png"),
+                                                        SizedBox(width: 4,),
+                                                        CustomImageSction(height: 13, width: 13, radius: 1, image: "Assets/DashBoardIcons/rating.png"),
+                                                        SizedBox(width: 4,),
+                                                        CustomImageSction(height: 13, width: 13, radius: 1, image: "Assets/DashBoardIcons/rating.png"),
+                                                        SizedBox(width: 4,),
+                                                        CustomImageSction2(height: 13, width: 13, radius: 1, image: "Assets/DashBoardIcons/rating.png",img_color: Main_Theme_textColor.withOpacity(0.2)),
+                                                        SizedBox(width: 4,),
+                                                        CustomImageSction2(height: 13, width: 13, radius: 1, image: "Assets/DashBoardIcons/rating.png", img_color: Main_Theme_textColor.withOpacity(0.2),),
+                                                        SizedBox(width: 4,),
+                                                        //    Icon(Icons.arrow_forward_ios_rounded,size: 22,color: Main_Theme_textColor,)
+                                                      ],
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
+                                              // ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "Doj: 10-Oct-2024", letterSpacing: 0.3,
+                                              //   textColor: CustomButtonColor.withOpacity(0.7),),
                                             ],
                                           )),
                                       SizedBox(width: 10,),
 
                                       ///----------------- Third Part ------------------------------///
-                                      selectedindex==index? Icon(Icons.keyboard_arrow_up):Icon(Icons.keyboard_arrow_down)
+                                      selectedindex==index? Icon(Icons.keyboard_arrow_up,size: 20, color: Main_Theme_textColor.withOpacity(0.6),):Icon(Icons.keyboard_arrow_down,size: 20, color: Main_Theme_textColor.withOpacity(0.6))
                                     ],
                                   ),
                                 ),
@@ -292,46 +324,12 @@ class _HomeFirstPartComponentPromotionScreenState extends State<HomeFirstPartCom
                                       child: SingleChildScrollView(
                                         child: Column(
                                           children: [
-                                          //  Divider(height: 6,),
-                                          //   Padding(
-                                          //     padding: const EdgeInsets.only(left: 20,right: 20.0),
-                                          //     child: Row(
-                                          //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                          //       children: [
-                                          //         CustomText(fontSize: fontSubTitle, fontWeight: FontWeight.w400, text: "Previous", letterSpacing: 0.2),
-                                          //         CustomText(fontSize: fontSubTitle, fontWeight: FontWeight.w400, text: "New", letterSpacing: 0.2),
-                                          //       ],
-                                          //     ),
-                                          //   ),
                                             Container(
                                               padding: EdgeInsets.only(left: 10,right: 10,top: 5,bottom: 5),
                                               decoration: BoxDecoration(
                                                   color:  CheckOutColor.withOpacity(0.1),
                                                   borderRadius: BorderRadius.only(bottomRight: Radius.circular(11),bottomLeft: Radius.circular(11))
                                               ),
-                                              // child: Column(
-                                              //   children: [
-                                              //     Row(
-                                              //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                              //       children: [
-                                              //         ColorCustomText(textColor: Main_Theme_textColor.withOpacity(0.8),fontSize: font12, fontWeight: FontWeight.bold, text: "Salary : 30,000", letterSpacing: 0.2),
-                                              //        // ColorCustomText(textColor: Main_Theme_textColor.withOpacity(0.8),fontSize: font12, fontWeight: FontWeight.bold, text: "->", letterSpacing: 0.2),
-                                              //         ColorCustomText(textColor: presentsent_color,fontSize: font12, fontWeight: FontWeight.bold, text: "Updated : 50,0000", letterSpacing: 0.2),
-                                              //       ],
-                                              //     ),
-                                              //     //  Divider(height: 8,),
-                                              //     SizedBox(height: 5,),
-                                              //     Row(
-                                              //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                              //       children: [
-                                              //         ColorCustomText(textColor: Main_Theme_textColor.withOpacity(0.8),fontSize: font12, fontWeight: FontWeight.bold, text: "junior Engineer ", letterSpacing: 0.2),
-                                              //       //  ColorCustomText(textColor: Main_Theme_textColor.withOpacity(0.8),fontSize: font12, fontWeight: FontWeight.bold, text: "->", letterSpacing: 0.2),
-                                              //         ColorCustomText(textColor: presentsent_color,fontSize: font12, fontWeight: FontWeight.bold, text: " senior Software Engineer", letterSpacing: 0.2),
-                                              //       ],
-                                              //     ),
-                                              //
-                                              //   ],
-                                              // ),
 
                                               child: Row(
                                                 children: [
@@ -370,109 +368,17 @@ class _HomeFirstPartComponentPromotionScreenState extends State<HomeFirstPartCom
                                                   )),
                                                 ],
                                               ),
-
                                             ),
                                             SizedBox(height: 10,),
-                                            Container(
-                                              height: 30,
-                                              width: MediaQuery.of(context).size.width,
-                                              padding: EdgeInsets.only(left: 25,right: 25),
-                                              child: Row(
-                                                children: [
-                                                  Expanded(
-                                                    child: Container(
-                                                      height: 35,
-                                                      width: double.infinity,
-                                                      alignment: Alignment.center,
-                                                      decoration: BoxDecoration(
-                                                          borderRadius: BorderRadius.circular(20),
-                                                          color: absent_color.withOpacity(1.0),
-                                                          border: Border.all(
-                                                              width: 1,
-                                                              color: absent_color
-                                                          )
-                                                      ),
-                                                      child:  CustomText(fontSize: font13header, fontWeight: FontWeight.w600, text: "Disapprove",
-                                                          letterSpacing: 0.3),
-                                                    ),
-                                                  ),
+                                            ApprovedDisapprovedButton(onTap: () {
 
+                                            }, disapproved: () {
 
-                                                  SizedBox(width: 10,),
-                                                  Expanded(
-                                                    child: Container(
-                                                      height: 35,
-                                                      width: double.infinity,
-                                                      alignment: Alignment.center,
-                                                      decoration: BoxDecoration(
-                                                          borderRadius: BorderRadius.circular(20),
-                                                          color: presentsent_color.withOpacity(1.0),
-                                                          border: Border.all(
-                                                              width: 1,
-                                                              color: CustomButtonColor
-                                                          )
-                                                      ),
-                                                      child: ColorCustomText(fontSize: font13header, fontWeight: FontWeight.w600, text: "Approve",
-                                                          letterSpacing: 0.3, textColor: Main_Theme_WhiteCollor),
-                                                    ),
-                                                  ),
-
-                                                ],
-                                              ),
-                                            )
+                                            },)
                                           ],
                                         ),
                                       ),
                                     ),
-                                    // Positioned(
-                                    //   bottom: 10,
-                                    //   child: Container(
-                                    //     height: 35,
-                                    //     width: MediaQuery.of(context).size.width,
-                                    //     padding: EdgeInsets.only(left: 20,right: 20),
-                                    //     child: Row(
-                                    //       children: [
-                                    //         Expanded(
-                                    //           child: Container(
-                                    //             height: 35,
-                                    //             width: double.infinity,
-                                    //             alignment: Alignment.center,
-                                    //             decoration: BoxDecoration(
-                                    //                 borderRadius: BorderRadius.circular(20),
-                                    //                 color: absent_color.withOpacity(1.0),
-                                    //                 border: Border.all(
-                                    //                     width: 1,
-                                    //                     color: absent_color
-                                    //                 )
-                                    //             ),
-                                    //             child:  CustomText(fontSize: 14, fontWeight: FontWeight.w600, text: "Disapproved",
-                                    //                 letterSpacing: 0.3),
-                                    //           ),
-                                    //         ),
-                                    //
-                                    //
-                                    //         SizedBox(width: 10,),
-                                    //         Expanded(
-                                    //           child: Container(
-                                    //             height: 35,
-                                    //             width: double.infinity,
-                                    //             alignment: Alignment.center,
-                                    //             decoration: BoxDecoration(
-                                    //                 borderRadius: BorderRadius.circular(20),
-                                    //                 color: presentsent_color.withOpacity(1.0),
-                                    //                 border: Border.all(
-                                    //                     width: 1,
-                                    //                     color: CustomButtonColor
-                                    //                 )
-                                    //             ),
-                                    //             child: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w600, text: "Approved",
-                                    //                 letterSpacing: 0.3, textColor: Main_Theme_WhiteCollor),
-                                    //           ),
-                                    //         ),
-                                    //
-                                    //       ],
-                                    //     ),
-                                    //   ),)
                                   ],
                                 ) :Container(),
 
