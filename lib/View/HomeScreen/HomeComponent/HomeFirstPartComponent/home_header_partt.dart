@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
 import 'package:jibika_plexus/View/HomeScreen/HomeComponent/HomeFirstPartComponent/HomeFirstPartComponentAttendence/home_first_part_component_attendence.dart';
 import 'package:jibika_plexus/View/HomeScreen/HomeComponent/HomeFirstPartComponent/HomeFirstPartComponentLeave/home_first_part_component_leave.dart';
 import 'package:jibika_plexus/View/HomeScreen/HomeComponent/HomeFirstPartComponent/HomeFirstPartComponentNewJoinApproval/home_first_part_component_new_join_approval.dart';
+import 'package:provider/provider.dart';
 
+import '../../../../Controller/HomeController/home_controller.dart';
 import '../../../../CustomWidget/CustomText/custom_text.dart';
+import 'HomeFirstPartComponentPromotion/home_first_part_component_promotion.dart';
 
 class HomeHederPart extends StatefulWidget {
    HomeHederPart({Key? key,required this.permission_list}) : super(key: key);
@@ -58,6 +62,7 @@ class _HomeHederPartState extends State<HomeHederPart> {
                 });
                 if(selected_index==0){
                   Navigator.push(context, MaterialPageRoute(builder: (context) => HomeFirstPartComponentNewJoinApproval(),));
+                  Provider.of<HomeProvider>(context,listen: false).ThisMonthJoinEmployeeListProvider("thismonthjoin",GetStorage().read("mobile_id") , context);
                 }
                 if(selected_index==1){
                   Navigator.push(context, MaterialPageRoute(builder: (context) => HomeFirstPartComponentAttendance(),));
@@ -66,6 +71,9 @@ class _HomeHederPartState extends State<HomeHederPart> {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => HomeFirstPartComponentLeave(
                     tag: "dash",
                   ),));
+                }
+                if(selected_index==3){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => HomeFirstPartComponentPromotionScreen(),));
                 }
               },
               child: Container(

@@ -213,6 +213,7 @@ class _HomeFirstPartComponentAttendanceState extends State<HomeFirstPartComponen
              child: Container(
                width: 400,
                color: Main_Theme_WhiteCollor,
+               padding: EdgeInsets.only(left: 10,right: 10,bottom: 10),
                child: Container(
                  child: ListView.builder(
                    itemCount: 10,
@@ -393,25 +394,26 @@ class _HomeFirstPartComponentAttendanceState extends State<HomeFirstPartComponen
                                      ),
                                      SizedBox(height: 7,),
                                      Container(
-                                       height: 45,
-                                       width: double.infinity,
+                                       height: 35,
+                                       width: MediaQuery.of(context).size.width,
                                        padding: EdgeInsets.only(left: 20,right: 20),
                                        child: Row(
                                          children: [
                                            Expanded(
                                              child: Container(
-                                               height: 60,
+                                               height: 35,
                                                width: double.infinity,
                                                alignment: Alignment.center,
                                                decoration: BoxDecoration(
                                                    borderRadius: BorderRadius.circular(20),
-                                                   color: absent_color.withOpacity(0.3),
+                                                   color: absent_color.withOpacity(1.0),
                                                    border: Border.all(
                                                        width: 1,
                                                        color: absent_color
                                                    )
                                                ),
-                                               child: ColorCustomText(fontSize: 16, fontWeight: FontWeight.w600, text: "Disapproved", letterSpacing: 0.3, textColor: absent_color),
+                                               child:  CustomText(fontSize: 14, fontWeight: FontWeight.w600, text: "Disapproved",
+                                                   letterSpacing: 0.3),
                                              ),
                                            ),
 
@@ -419,18 +421,19 @@ class _HomeFirstPartComponentAttendanceState extends State<HomeFirstPartComponen
                                            SizedBox(width: 10,),
                                            Expanded(
                                              child: Container(
-                                               height: 60,
+                                               height: 35,
                                                width: double.infinity,
                                                alignment: Alignment.center,
                                                decoration: BoxDecoration(
                                                    borderRadius: BorderRadius.circular(20),
-                                                   color: CustomButtonColor.withOpacity(0.3),
+                                                   color: presentsent_color.withOpacity(1.0),
                                                    border: Border.all(
                                                        width: 1,
                                                        color: CustomButtonColor
                                                    )
                                                ),
-                                               child: ColorCustomText(fontSize: 16, fontWeight: FontWeight.w600, text: "Approved", letterSpacing: 0.3, textColor: CustomButtonColor),
+                                               child: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w600, text: "Approved",
+                                                   letterSpacing: 0.3, textColor: Main_Theme_WhiteCollor),
                                              ),
                                            ),
 

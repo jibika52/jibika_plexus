@@ -58,5 +58,13 @@ class HomeProvider with ChangeNotifier{
   }
 
 
+  /// This month Join Employee List
+  dynamic ThisMonthJoinEmployeeList ;
+  ThisMonthJoinEmployeeListProvider(String STATUS,String UserId, BuildContext context)async{
+    ThisMonthJoinEmployeeList=await CustomHttpRequestClass().ThisMonthJoinEmployeeListFunction(STATUS,UserId,  context);
+    notifyListeners();
+  }
+
+
 
 }

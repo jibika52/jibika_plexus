@@ -68,6 +68,7 @@ class _EmployeeProfileScreenState extends State<EmployeeProfileScreen> {
   // }
   @override
   Widget build(BuildContext context) {
+    print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa ${widget.currentEmployeedataIndex}");
     return Scaffold(
       appBar: PreferredSize(preferredSize: Size.fromHeight(68), child: CustomDefaultAppBar(onTap: () => Navigator.pop(context),
           text: "Activities")),
@@ -84,7 +85,7 @@ alignment: Alignment.center,
                 customMainEmployeeProfile(
                     is_need_edit_button_on_short_profile: "false",
                     image: "${widget.currentEmployeedataIndex["EmpPhotoPath"]}",
-                    employeeCode: "${widget.currentEmployeedataIndex["EmpCode"]}",
+                    employeeCode: "${widget.currentEmployeedataIndex["  "]}",
                     employeeName: "${widget.currentEmployeedataIndex["EmployeeNameEnglish"]}",
                     employeeDesignation: "${widget.currentEmployeedataIndex["Designation"]}",
                     employeeDepartment: "${widget.currentEmployeedataIndex["Department"]}",

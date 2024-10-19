@@ -5,6 +5,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:jibika_plexus/Controller/CounterProvider/counter_provider.dart';
 import 'package:jibika_plexus/Controller/OnboardingEmployeeController/on_boarding_employee_controller.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
+import 'package:jibika_plexus/View/HomeScreen/HomeComponent/HomeFirstPartComponent/HomeFirstPartComponentPromotion/home_first_part_component_promotion.dart';
 import 'package:jibika_plexus/tracking_google_map_test.dart';
 import 'package:month_year_picker/month_year_picker.dart';
 import 'package:provider/provider.dart';
@@ -81,7 +82,8 @@ class MyApp extends StatelessWidget {
         //      home:BootomNatchBarScreen(),
         //   home:BootomNatchBarScreen(),
         /// ----------SplashScreen--------
-           home:MainSplashPageViewScreen(),
+         home:MainSplashPageViewScreen(),
+        //    home:HomeFirstPartComponentPromotionScreen(),
         //     home:TrackingMapScreenTEstPoliline(),
         //    home:SalfBootomNatchBarScreen(currentIndex: 4,),
         //  home:TestLongPress(),

@@ -35,7 +35,7 @@ class _BootomNatchBarScreenState extends State<BootomNatchBarScreen> {
   void initState() {
     _currentIndex=widget.index;
    Provider.of<HomeProvider>(context,listen: false).selfORAdminShortDescriptionProvider(GetStorage().read("mobile_id"), GetStorage().read("IdCardNo"), context);
-    // TODO: implement initState
+     // TODO: implement initState
     super.initState();
   }
   /// widget list

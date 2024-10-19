@@ -658,6 +658,34 @@ class CustomHttpRequestClass{
 
 
 
+  ///  This Month Join Employee List  function-------------------------------------------------------------------------
+  ThisMonthJoinEmployeeListFunction(String STATUS,String UserId, BuildContext context)async{
+    dynamic  ThisMonthJoinEmployee   ;
+    var body = jsonEncode({
+      "UserId":"$UserId",
+      "STATUS": "$STATUS"
+    });
+    try{
+      var data=await http.post(Uri.parse("${BASEURL}/${ThisMonthJoinEmployeeList}"),
+          headers: {
+            "Content-Type": "application/json",
+            "username": "jibikaapps",
+            "password": "20jibika24",
+          },
+          body: body
+      ).then((http.Response response) {
+        var response_data =jsonDecode(response.body);
+        ThisMonthJoinEmployee =response_data["data"];
+      });
+      return ThisMonthJoinEmployee;
+    }
+    catch(e){
+      print("  This Month Join Employee ============================ ${e}");
+    }
+  }
+
+
+
 
 
 

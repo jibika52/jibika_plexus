@@ -114,3 +114,7 @@
 
   ///  GEt Employee Profile by employee id
     String GetEmployeeById="Employee/GetEmployeeById";
+
+
+  ///  This month join employee list
+    String ThisMonthJoinEmployeeList="Employee/GetSelectedEmpList";

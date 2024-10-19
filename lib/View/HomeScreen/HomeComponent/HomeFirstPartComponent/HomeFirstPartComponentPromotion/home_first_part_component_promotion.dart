@@ -1,32 +1,26 @@
-
 import 'dart:math';
-import 'dart:ui';
 
 import 'package:animated_toggle_switch/animated_toggle_switch.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-import 'package:jibika_plexus/Controller/CounterProvider/counter_provider.dart';
-import 'package:jibika_plexus/CustomWidget/CustomAppBar/CustomDefaultAppBar/custom_default_app_bar.dart';
-import 'package:jibika_plexus/CustomWidget/CustomButton/custom_button.dart';
-import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
-import 'package:jibika_plexus/Utils/constants.dart';
+import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 import 'package:month_year_picker/month_year_picker.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../../CustomWidget/CustomCalender/custom_calender.dart';
-import '../../../../../CustomWidget/CustomText/custom_text.dart';
+import '../../../../../Controller/CounterProvider/counter_provider.dart';
+import '../../../../../CustomWidget/CustomAppBar/CustomDefaultAppBar/custom_default_app_bar.dart';
+import '../../../../../CustomWidget/CustomImage/custom_image.dart';
+import '../../../../../Utils/constants.dart';
 
-class HomeFirstPartComponentLeave extends StatefulWidget {
- HomeFirstPartComponentLeave({super.key,this.tag});
-  String ? tag;
+class HomeFirstPartComponentPromotionScreen extends StatefulWidget {
+  const HomeFirstPartComponentPromotionScreen({super.key});
+
   @override
-  State<HomeFirstPartComponentLeave> createState() => _HomeFirstPartComponentLeaveState();
+  State<HomeFirstPartComponentPromotionScreen> createState() => _HomeFirstPartComponentPromotionScreenState();
 }
 
-class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeave> {
+class _HomeFirstPartComponentPromotionScreenState extends State<HomeFirstPartComponentPromotionScreen> {
   int  selectedindex=0;
   double animatedheight=0;
   double animatwidth=100;
@@ -44,7 +38,7 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(75),child: CustomDefaultAppBar(onTap: () {
         Navigator.pop(context);
-      }, text: "Leave Approval"),),
+      }, text: "Promotion Approval"),),
       body: Container(
         height: double.infinity,
         width: double.infinity,
@@ -115,8 +109,8 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
                     },
                     child: Container(
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(7),
-                        border: Border.all(color: Main_Theme_textColor.withOpacity(0.1),width: 1.5)
+                          borderRadius: BorderRadius.circular(7),
+                          border: Border.all(color: Main_Theme_textColor.withOpacity(0.1),width: 1.5)
                       ),
                       height: 40,
                       width: 110,
@@ -182,8 +176,8 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
                 onChanged: (i) => setState(() => _selectedIndex = i),
               ),
             ),
+            ColorCustomText(textColor: _selectedIndex==0? Main_Theme_textColor_tir_Condition :_selectedIndex==1? presentsent_color : absent_color ,fontSize: font12, fontWeight: FontWeight.w500, text: _selectedIndex==0?"Waiting(655)":_selectedIndex==1?"Approved(100)":"Disapproved(100)", letterSpacing: 0.1),
             SizedBox(height: 5,),
-            CustomText(fontSize: font12, fontWeight: FontWeight.w500, text: _selectedIndex==0?"Waiting : 655":_selectedIndex==1?"Approved : 100":"Disapproved : 100", letterSpacing: 0.1),
             /// ------------------ third part ------------///
             Expanded(
               flex: 2,
@@ -206,7 +200,7 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
                                     animatedheight=0;
                                     getindex='';
                                   }else{
-                                    animatedheight=170;
+                                    animatedheight=105;
                                     getindex="$index";
                                   }
 
@@ -218,8 +212,8 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.all( Radius.circular(7)),
                                 //  color: Color(0xffF3FCFB)
-                                color:isChekin==false?  CheckOutColor.withOpacity(0.08) : CustomButtonColor.withOpacity(0.05),
-                                border: Border(bottom: BorderSide( color:isChekin==false?CheckOutColor:  CustomButtonColor))
+                                color: CheckOutColor.withOpacity(0.08)  ,
+                                border: Border(bottom: BorderSide( color:_selectedIndex==0? Main_Theme_textColor_tir_Condition :_selectedIndex==1? presentsent_color : absent_color))
                             ),
                             margin: EdgeInsets.only(bottom: 7),
                             child: Column(
@@ -280,38 +274,7 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
                                             ],
                                           )),
                                       SizedBox(width: 10,),
-                                      Expanded(
-                                          flex: 4,
-                                          child: Column(
-                                            crossAxisAlignment: CrossAxisAlignment.center,
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: [
-                                              Row(
-                                                mainAxisAlignment: MainAxisAlignment.center,
-                                                children: [
-                                                  ColorCustomText(fontSize: 11, fontWeight: FontWeight.w500, text: "CL-02", letterSpacing: 0.3, textColor: CustomButtonColor,),
-                                                ],
-                                              ),
-                                              Row(
-                                                mainAxisAlignment: MainAxisAlignment.center,
-                                                children: [
-                                                  ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "From : " , letterSpacing: 0.3, textColor: Main_Theme_textColor,),
-                                                  CustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "10 Apr 2023", letterSpacing: 0.3, ),
-                                                ],
-                                              ),
-                                              Row(
-                                                mainAxisAlignment: MainAxisAlignment.center,
-                                                children: [
-                                                  ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "To : ", letterSpacing: 0.3, textColor: Main_Theme_textColor),
-                                                  CustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "10 Apr 2023", letterSpacing: 0.3, ),
-                                                  SizedBox(width: 4,),
 
-                                                ],
-                                              ),
-
-                                            ],
-                                          )
-                                      ),
                                       ///----------------- Third Part ------------------------------///
                                       selectedindex==index? Icon(Icons.keyboard_arrow_up):Icon(Icons.keyboard_arrow_down)
                                     ],
@@ -322,71 +285,149 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
                                     AnimatedContainer(
                                       height: animatedheight,
                                       width: double.infinity,
+                                      padding: EdgeInsets.only(top: 5),
                                       duration: Duration(milliseconds: 400),
                                       child: SingleChildScrollView(
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(7),
-                                            border: Border.all(
-                                                width: 1,
-                                                color: Main_Theme_textColor.withOpacity(0.1)
-                                            ),
-                                          ),
-                                          padding: EdgeInsets.only(left: 10,right: 10,top: 10,bottom: 60),
-                                          child: CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "$Loremtext", letterSpacing: 0.3,textAlign: TextAlign.justify,),
-                                        ),
-                                      ) ,
-
-                                    ),
-                                    Positioned(
-                                      bottom: 10,
-                                      child: Container(
-                                        height: 35,
-                                        width: MediaQuery.of(context).size.width,
-                                        padding: EdgeInsets.only(left: 20,right: 20),
-                                        child: Row(
+                                        child: Column(
                                           children: [
-                                            Expanded(
-                                              child: Container(
-                                                height: 35,
-                                                width: double.infinity,
-                                                alignment: Alignment.center,
-                                                decoration: BoxDecoration(
-                                                    borderRadius: BorderRadius.circular(20),
-                                                    color: absent_color.withOpacity(1.0),
-                                                    border: Border.all(
-                                                        width: 1,
-                                                        color: absent_color
-                                                    )
-                                                ),
-                                                child:  CustomText(fontSize: 14, fontWeight: FontWeight.w600, text: "Disapproved",
-                                                    letterSpacing: 0.3),
+                                          //  Divider(height: 6,),
+                                            Container(
+                                              padding: EdgeInsets.only(left: 10,right: 10,top: 5,bottom: 5),
+                                              decoration: BoxDecoration(
+                                                  color: home_default_color,
+                                                  borderRadius: BorderRadius.only(bottomRight: Radius.circular(11),bottomLeft: Radius.circular(11))
+                                              ),
+                                              child: Column(
+                                                children: [
+                                                  // Row(
+                                                  //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                  //   children: [
+                                                  //     CustomText(fontSize: font12, fontWeight: FontWeight.w400, text: "Previous Salary: 4000", letterSpacing: 0.2),
+                                                  //     CustomText(fontSize: font12, fontWeight: FontWeight.w400, text: "Present Salary : 5000", letterSpacing: 0.2),
+                                                  //   ],
+                                                  // ),
+                                                  Row(
+                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                    children: [
+                                                      ColorCustomText(textColor: Main_Theme_textColor.withOpacity(0.8),fontSize: font12, fontWeight: FontWeight.bold, text: "Salary : 30,000", letterSpacing: 0.2),
+                                                     // ColorCustomText(textColor: Main_Theme_textColor.withOpacity(0.8),fontSize: font12, fontWeight: FontWeight.bold, text: "->", letterSpacing: 0.2),
+                                                      ColorCustomText(textColor: presentsent_color,fontSize: font12, fontWeight: FontWeight.bold, text: "Updated : 50,0000", letterSpacing: 0.2),
+                                                    ],
+                                                  ),
+                                                  //  Divider(height: 8,),
+                                                  SizedBox(height: 5,),
+                                                  Row(
+                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                    children: [
+                                                      ColorCustomText(textColor: Main_Theme_textColor.withOpacity(0.8),fontSize: font12, fontWeight: FontWeight.bold, text: "junior Engineer ", letterSpacing: 0.2),
+                                                      ColorCustomText(textColor: Main_Theme_textColor.withOpacity(0.8),fontSize: font12, fontWeight: FontWeight.bold, text: "->", letterSpacing: 0.2),
+                                                      ColorCustomText(textColor: presentsent_color,fontSize: font12, fontWeight: FontWeight.bold, text: " senior Software Engineer", letterSpacing: 0.2),
+                                                    ],
+                                                  ),
+                                                ],
                                               ),
                                             ),
+                                            SizedBox(height: 10,),
+                                            Container(
+                                              height: 35,
+                                              width: MediaQuery.of(context).size.width,
+                                              padding: EdgeInsets.only(left: 20,right: 20),
+                                              child: Row(
+                                                children: [
+                                                  Expanded(
+                                                    child: Container(
+                                                      height: 35,
+                                                      width: double.infinity,
+                                                      alignment: Alignment.center,
+                                                      decoration: BoxDecoration(
+                                                          borderRadius: BorderRadius.circular(20),
+                                                          color: absent_color.withOpacity(1.0),
+                                                          border: Border.all(
+                                                              width: 1,
+                                                              color: absent_color
+                                                          )
+                                                      ),
+                                                      child:  CustomText(fontSize: 14, fontWeight: FontWeight.w600, text: "Disapproved",
+                                                          letterSpacing: 0.3),
+                                                    ),
+                                                  ),
 
 
-                                            SizedBox(width: 10,),
-                                            Expanded(
-                                              child: Container(
-                                                height: 35,
-                                                width: double.infinity,
-                                                alignment: Alignment.center,
-                                                decoration: BoxDecoration(
-                                                    borderRadius: BorderRadius.circular(20),
-                                                    color: presentsent_color.withOpacity(1.0),
-                                                    border: Border.all(
-                                                        width: 1,
-                                                        color: CustomButtonColor
-                                                    )
-                                                ),
-                                                child: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w600, text: "Approved",
-                                                    letterSpacing: 0.3, textColor: Main_Theme_WhiteCollor),
+                                                  SizedBox(width: 10,),
+                                                  Expanded(
+                                                    child: Container(
+                                                      height: 35,
+                                                      width: double.infinity,
+                                                      alignment: Alignment.center,
+                                                      decoration: BoxDecoration(
+                                                          borderRadius: BorderRadius.circular(20),
+                                                          color: presentsent_color.withOpacity(1.0),
+                                                          border: Border.all(
+                                                              width: 1,
+                                                              color: CustomButtonColor
+                                                          )
+                                                      ),
+                                                      child: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w600, text: "Approved",
+                                                          letterSpacing: 0.3, textColor: Main_Theme_WhiteCollor),
+                                                    ),
+                                                  ),
+
+                                                ],
                                               ),
-                                            ),
-
+                                            )
                                           ],
                                         ),
-                                      ),)
+                                      ),
+                                    ),
+                                    // Positioned(
+                                    //   bottom: 10,
+                                    //   child: Container(
+                                    //     height: 35,
+                                    //     width: MediaQuery.of(context).size.width,
+                                    //     padding: EdgeInsets.only(left: 20,right: 20),
+                                    //     child: Row(
+                                    //       children: [
+                                    //         Expanded(
+                                    //           child: Container(
+                                    //             height: 35,
+                                    //             width: double.infinity,
+                                    //             alignment: Alignment.center,
+                                    //             decoration: BoxDecoration(
+                                    //                 borderRadius: BorderRadius.circular(20),
+                                    //                 color: absent_color.withOpacity(1.0),
+                                    //                 border: Border.all(
+                                    //                     width: 1,
+                                    //                     color: absent_color
+                                    //                 )
+                                    //             ),
+                                    //             child:  CustomText(fontSize: 14, fontWeight: FontWeight.w600, text: "Disapproved",
+                                    //                 letterSpacing: 0.3),
+                                    //           ),
+                                    //         ),
+                                    //
+                                    //
+                                    //         SizedBox(width: 10,),
+                                    //         Expanded(
+                                    //           child: Container(
+                                    //             height: 35,
+                                    //             width: double.infinity,
+                                    //             alignment: Alignment.center,
+                                    //             decoration: BoxDecoration(
+                                    //                 borderRadius: BorderRadius.circular(20),
+                                    //                 color: presentsent_color.withOpacity(1.0),
+                                    //                 border: Border.all(
+                                    //                     width: 1,
+                                    //                     color: CustomButtonColor
+                                    //                 )
+                                    //             ),
+                                    //             child: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w600, text: "Approved",
+                                    //                 letterSpacing: 0.3, textColor: Main_Theme_WhiteCollor),
+                                    //           ),
+                                    //         ),
+                                    //
+                                    //       ],
+                                    //     ),
+                                    //   ),)
                                   ],
                                 ) :Container(),
 
