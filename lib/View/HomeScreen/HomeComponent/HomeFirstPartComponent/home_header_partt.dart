@@ -3,12 +3,14 @@ import 'package:get_storage/get_storage.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
 import 'package:jibika_plexus/View/HomeScreen/HomeComponent/HomeFirstPartComponent/HomeFirstPartComponentAttendence/home_first_part_component_attendence.dart';
 import 'package:jibika_plexus/View/HomeScreen/HomeComponent/HomeFirstPartComponent/HomeFirstPartComponentLeave/home_first_part_component_leave.dart';
+import 'package:jibika_plexus/View/HomeScreen/HomeComponent/HomeFirstPartComponent/HomeFirstPartComponentLoan/home_first_part_component_loan.dart';
 import 'package:jibika_plexus/View/HomeScreen/HomeComponent/HomeFirstPartComponent/HomeFirstPartComponentNewJoinApproval/home_first_part_component_new_join_approval.dart';
 import 'package:provider/provider.dart';
 import 'package:quickalert/quickalert.dart';
 
 import '../../../../Controller/HomeController/home_controller.dart';
 import '../../../../CustomWidget/CustomText/custom_text.dart';
+import 'HomeFirstPartComponentComplainBox/home_first_part_component_complain_box.dart';
 import 'HomeFirstPartComponentConveyance/home_first_part_component_conveyance.dart';
 import 'HomeFirstPartComponentPromotion/home_first_part_component_promotion.dart';
 
@@ -66,22 +68,30 @@ class _HomeHederPartState extends State<HomeHederPart> {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => HomeFirstPartComponentNewJoinApproval(),));
                   Provider.of<HomeProvider>(context,listen: false).ThisMonthJoinEmployeeListProvider("thismonthjoin",GetStorage().read("mobile_id") , context);
                 }
-                if(selected_index==1){
+                else if(selected_index==1){
                   Navigator.push(context, MaterialPageRoute(builder: (context) => HomeFirstPartComponentAttendance(),));
                 }
-                if(selected_index==2){
+                else if(selected_index==2){
                   Navigator.push(context, MaterialPageRoute(builder: (context) => HomeFirstPartComponentLeave(
                     tag: "dash",
                   ),));
                 }
-                if(selected_index==3){
+                else if(selected_index==3){
                   Navigator.push(context, MaterialPageRoute(builder: (context) => HomeFirstPartComponentPromotionScreen(),));
                 }
-                if(selected_index==4){
+                else if(selected_index==4){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) =>  HomeFirstPartComponentLoan()));
+                }
+                else if(selected_index==5){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => HomeFirstPartComponentConveyance(),));
+                }
+                else if(selected_index==6){
                   quickAlertWrong(context, "Coming soon", "Please try again later", 2);
                 }
-                if(selected_index==5){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => HomeFirstPartComponentConveyance(),));
+                else if(selected_index==7){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => HomeFirstPartComponentComplainBox(),));
+                }else{
+
                 }
               },
               child: Container(

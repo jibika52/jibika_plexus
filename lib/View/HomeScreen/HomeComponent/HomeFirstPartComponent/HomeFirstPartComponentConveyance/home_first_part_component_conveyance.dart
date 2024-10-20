@@ -196,7 +196,7 @@ class _HomeFirstPartComponentConveyanceState extends State<HomeFirstPartComponen
                                   if(getindex=="$index"){
                                     animatedheight=0;
                                     getindex='';
-                                    selectedindex=-1;
+                                 //   selectedindex=-1;
                                   }else{
                                     animatedheight=200;
                                     getindex="$index";
@@ -211,6 +211,7 @@ class _HomeFirstPartComponentConveyanceState extends State<HomeFirstPartComponen
                                 borderRadius: BorderRadius.circular(11),
                                // color: _selectedIndex==0? Main_Theme_textColor_tir_Condition.withOpacity(0.2) :  presentsent_color.withOpacity(0.2)
                                 color: Main_Theme_textColor.withOpacity(0.07),
+                                image: DecorationImage(image: AssetImage("Assets/SplashImage/newbackgroung.png"),fit: BoxFit.fill),
                                 border: Border(
                                   bottom: BorderSide(
                                     color: _selectedIndex==0? Main_Theme_textColor_tir_Condition :  presentsent_color,

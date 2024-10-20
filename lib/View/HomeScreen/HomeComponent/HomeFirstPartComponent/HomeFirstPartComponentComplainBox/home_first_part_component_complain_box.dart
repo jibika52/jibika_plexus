@@ -1,0 +1,124 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+import '../../../../../CustomWidget/CustomAppBar/CustomDefaultAppBar/custom_default_app_bar.dart';
+import '../../../../../CustomWidget/CustomImage/custom_image.dart';
+import '../../../../../CustomWidget/CustomText/custom_text.dart';
+import '../../../../../Utils/constants.dart';
+
+class HomeFirstPartComponentComplainBox extends StatefulWidget {
+  const HomeFirstPartComponentComplainBox({super.key});
+
+  @override
+  State<HomeFirstPartComponentComplainBox> createState() => _HomeFirstPartComponentComplainBoxState();
+}
+
+class _HomeFirstPartComponentComplainBoxState extends State<HomeFirstPartComponentComplainBox> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(75),child: CustomDefaultAppBar(onTap: () {
+        Navigator.pop(context);
+      }, text: "Complain Box"),),
+
+      body: Container(
+        height: double.infinity,
+        width: double.infinity,
+        padding: EdgeInsets.only(left: 10,right: 10,top: 10),
+        child: ListView.builder(itemBuilder: (context, index) {
+          return Container(
+            width: double.infinity,
+            margin: EdgeInsets.only(bottom: 10),
+            padding: EdgeInsets.only(left: 10,top: 10,bottom: 10),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: home_default_color
+            ),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+                        flex: 5,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                CustomImageSction2(height: 19, width: 19, radius: 0, image: "Assets/DashBoardIcons/suggestion.png", img_color:absent_color.withOpacity(0.9)),
+                                SizedBox(width: 7,),
+                                CustomText(fontSize: font13header, fontWeight: FontWeight.w700, text: "Suggest", letterSpacing: 0.3),
+                                SizedBox(width: 7,),
+                                // Container(
+                                //   decoration: BoxDecoration(borderRadius: BorderRadius.circular(7),color: presentsent_color),
+                                //   height: 20,width: 60,alignment: Alignment.center,child: ColorCustomText(textColor: Main_Theme_WhiteCollor,
+                                //     fontSize: 11, fontWeight: FontWeight.w500, text: "checked", letterSpacing: 0.1),)
+                              ],
+                            ),
+                            SizedBox(height: 1,),
+                            ColorCustomText(fontSize: 11, fontWeight: FontWeight.w500, text: "12-Oct-2024", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.6),),
+                          ],
+                        )),
+                    Expanded(
+                        flex: 5,
+                      child: Container(
+                        padding: EdgeInsets.only(left: 6,right: 10),
+                        height: 60,
+                        width: 200,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(50),
+                            topRight: Radius.circular(0),
+                            bottomLeft: Radius.circular( 50),
+                            bottomRight:Radius.circular( 0),
+                          ),
+                          color: presentsent_color,
+                        ),
+                      
+                        child: Row(
+                          children: [
+                            Container(
+                              height: 50,
+                              width: 50,
+                              margin: EdgeInsets.only(right: 7),
+                              child:  ClipRRect(
+                                  borderRadius: BorderRadius.circular(100),
+                                  child: CustomImageSction(height: 50, width: 50, radius: 1, image: "Assets/DrawerImage/testperson.png")
+                              ),
+                            ),
+                            Expanded(
+                                flex: 4,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "ID: 544532", letterSpacing: 0.3,
+                                      textColor: Main_Theme_WhiteCollor),
+                                    Text("Hafijur Rahman Mizan",
+                                      overflow: TextOverflow.ellipsis
+                                      ,style: GoogleFonts.poppins(
+                                        fontSize: 12,
+                                        color:Main_Theme_WhiteCollor,
+                                        fontWeight: FontWeight.w400,
+                                        letterSpacing: 0.3,
+                                      ),),
+                                    ColorCustomText(textColor: Main_Theme_WhiteCollor,fontSize: 11, fontWeight: FontWeight.w300, text: "HR Manager", letterSpacing: 0.3,  ),
+                                  ],
+                                )),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                CustomText(maxLines: 4,fontSize: 12.5, fontWeight: FontWeight.w400, text: "To Manager,\n$Loremtext", letterSpacing: 0.2)
+              ],
+            ),
+          );
+        },),
+      ),
+    );
+  }
+}

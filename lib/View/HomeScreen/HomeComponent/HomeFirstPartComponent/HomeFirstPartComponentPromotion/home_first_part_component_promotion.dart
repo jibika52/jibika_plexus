@@ -32,9 +32,6 @@ class _HomeFirstPartComponentPromotionScreenState extends State<HomeFirstPartCom
   List nameList=['Waiting','Approved','Disapproved'];
   @override
   Widget build(BuildContext context) {
-    final isChekin=Provider.of<CounterProvider>(context).isCheckIn;
-    double h=MediaQuery.of(context).size.height;
-    double w=MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(75),child: CustomDefaultAppBar(onTap: () {
@@ -131,52 +128,6 @@ class _HomeFirstPartComponentPromotionScreenState extends State<HomeFirstPartCom
                 ],
               ),
             ),
-            /// Check in &&& CheckOut ----------------------------------------------------------------///
-            // Container(
-            //   decoration: BoxDecoration(borderRadius: BorderRadius.circular(0)),
-            //   padding:  EdgeInsets.only(left: 10.0,right: 10,top: 5,bottom: 5),
-            //   child: AnimatedToggleSwitch<int>.size(
-            //     height: 35,
-            //     current: max(_selectedIndex, 0),
-            //     style: ToggleStyle(
-            //       backgroundColor: home_default_color,
-            //       indicatorColor:_selectedIndex==0? Main_Theme_textColor_tir_Condition :_selectedIndex==1? presentsent_color : absent_color ,
-            //       borderColor: Colors.transparent,
-            //       borderRadius: BorderRadius.circular(30.0),
-            //       indicatorBorderRadius: BorderRadius.circular(30),
-            //
-            //     ),
-            //     values:  [0, 1, 2],
-            //     iconOpacity: 1.0,
-            //     selectedIconScale: 1.0,
-            //     indicatorSize: Size.fromWidth(MediaQuery.of(context).size.width/2),
-            //     iconAnimationType: AnimationType.onHover,
-            //     styleAnimationType: AnimationType.onHover,
-            //     spacing: 2.0,
-            //     customSeparatorBuilder: (context, local, global) {
-            //       final opacity =
-            //       ((global.position - local.position).abs() - 0.5)
-            //           .clamp(0.0, 1.0);
-            //       return VerticalDivider(
-            //           indent: 10.0,
-            //           endIndent: 10.0,
-            //           color: Colors.white38.withOpacity(opacity));
-            //     },
-            //     customIconBuilder: (context, local, global) {
-            //       final text = nameList[local.index];
-            //       return Center(
-            //           child: Text(text,
-            //               style: GoogleFonts.poppins(
-            //                   fontSize : 13,
-            //                   fontWeight : FontWeight.w400,
-            //                   letterSpacing :  0.3,
-            //                   color: Color.lerp(Colors.black, Colors.white,
-            //                       local.animationValue))));
-            //     },
-            //     borderWidth: 1.0,
-            //     onChanged: (i) => setState(() => _selectedIndex = i),
-            //   ),
-            // ),
             ColorCustomText(textColor: _selectedIndex==0? Main_Theme_textColor_tir_Condition :_selectedIndex==1? presentsent_color : absent_color ,fontSize: font12, fontWeight: FontWeight.w500, text: _selectedIndex==0?"Waiting(655)":_selectedIndex==1?"Approved(100)":"Disapproved(100)", letterSpacing: 0.1),
             SizedBox(height: 5,),
             /// ------------------ third part ------------///
