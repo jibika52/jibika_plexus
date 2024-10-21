@@ -129,14 +129,14 @@ class _HomeFirstPartComponentConveyanceState extends State<HomeFirstPartComponen
               ),
             ),
             Container(
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(0)),
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(0),color: Main_Theme_textColor_tir_Condition.withOpacity(0.0)),
               padding:  EdgeInsets.only(left: 10.0,right: 10,top: 5,bottom: 0),
               child: AnimatedToggleSwitch<int>.size(
                 height: 35,
                 current: max(_selectedIndex, 0),
                 style: ToggleStyle(
                   backgroundColor: home_default_color,
-                  indicatorColor:_selectedIndex==0? Main_Theme_textColor_tir_Condition :  presentsent_color  ,
+                  indicatorColor:_selectedIndex==0?CheckOutColor: presentsent_color ,
                   borderColor: Colors.transparent,
                   borderRadius: BorderRadius.circular(30.0),
                   indicatorBorderRadius: BorderRadius.circular(30),
@@ -174,7 +174,7 @@ class _HomeFirstPartComponentConveyanceState extends State<HomeFirstPartComponen
               ),
             ),
             SizedBox(height: 5,),
-            ColorCustomText(textColor: _selectedIndex==0? Main_Theme_textColor_tir_Condition :  presentsent_color ,fontSize: font12, fontWeight: FontWeight.w500, text: _selectedIndex==0?"Waiting(363)": "Approved(110)", letterSpacing: 0.1),
+            ColorCustomText(textColor: _selectedIndex==0? CheckOutColor :_selectedIndex==1? presentsent_color : absent_color ,fontSize: font12, fontWeight: FontWeight.w500, text: _selectedIndex==0?"Waiting(655)":_selectedIndex==1?"Approved(100)":"Disapproved(100)", letterSpacing: 0.1),
             SizedBox(height: 5,),
             /// ------------------ third part ------------///
             Expanded(
@@ -209,12 +209,12 @@ class _HomeFirstPartComponentConveyanceState extends State<HomeFirstPartComponen
                           child: Container(
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(11),
-                               // color: _selectedIndex==0? Main_Theme_textColor_tir_Condition.withOpacity(0.2) :  presentsent_color.withOpacity(0.2)
-                                color: Main_Theme_textColor.withOpacity(0.07),
-                                image: DecorationImage(image: AssetImage("Assets/SplashImage/newbackgroung.png"),fit: BoxFit.fill),
+                              //  color: _selectedIndex==0? Main_Theme_textColor_tir_Condition.withOpacity(0.2) :  presentsent_color.withOpacity(0.2)
+                                color:  _selectedIndex==0? CheckOutColor.withOpacity(0.1) :  presentsent_color.withOpacity(0.1),
+                               // image: DecorationImage(image: AssetImage("Assets/SplashImage/newbackgroung.png"),fit: BoxFit.fill),
                                 border: Border(
                                   bottom: BorderSide(
-                                    color: _selectedIndex==0? Main_Theme_textColor_tir_Condition :  presentsent_color,
+                                    color: _selectedIndex==0? CheckOutColor :  presentsent_color,
                                     width: 2,
                                   ),
                                 )

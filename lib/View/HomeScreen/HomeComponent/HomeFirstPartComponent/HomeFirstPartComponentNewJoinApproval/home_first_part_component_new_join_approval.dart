@@ -127,7 +127,7 @@ class _HomeFirstPartComponentNewJoinApprovalState extends State<HomeFirstPartCom
               builder: (context, value, child) =>value.ThisMonthJoinEmployeeList==null?
               Center(child: CircularProgressIndicator()):
               Container(
-                height: MediaQuery.of(context).size.height-75-55-13-45,
+                height: MediaQuery.of(context).size.height<900? MediaQuery.of(context).size.height-75-55-13-45-15:MediaQuery.of(context).size.height-75-55-13-45,
                 width: double.infinity,
                 margin: EdgeInsets.only(top: apps_div_margin-5),
                 padding: EdgeInsets.symmetric(horizontal: 10),

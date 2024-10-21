@@ -97,138 +97,135 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
       }
     }
 //    print(" shift_time ${GetStorage().read("SHIFT_IN_TIME")}---------SHIFT_OUT_TIME --${GetStorage().read("SHIFT_OUT_TIME")}-----ATTENDANCE_Status --${GetStorage().read("ATTENDANCE_Status")}---------IsTrack --${GetStorage().read("IsTrack")}---------------");
-    return WillPopScope(
-      onWillPop: () => Future(() => false),
-      child: Scaffold(
-        resizeToAvoidBottomInset: false,
-        drawer:CustomLeftDrawer(),
-        key: _key,
-        appBar: PreferredSize(preferredSize: Size.fromHeight(75),
-          /// ------------ Custom Main AppBAr -------------///
-          child: CustomMainAppBar(
-              leading_image_route: "Assets/DashBoardIcons/appbar_leadin_menu.png",
-              center_appbar_text: "${GetStorage().read("Company_name")}",
-              leading_ontab: () {
-                _key.currentState!.openDrawer();
-              }, is_need_trailing: true),
-        ),
-      
-        body: bottomBarPages[widget.currentIndex],
-        bottomNavigationBar: Container(
-          height: 70,
-          width: double.infinity,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(11),
-              topRight: Radius.circular(11),
-            ),
-            color: CustomButtonColor,
-          ),
-          padding: EdgeInsets.symmetric(horizontal: 15),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              InkWell(
-                  onTap: () {
-                    setState(() {
-                      widget.currentIndex=0;
-                    });
-                  },
-                  child: Container(
-                    height: b_bar_height,
-                    child: Column(
-                      children: [
-                        Icon(Icons.category_rounded,color: widget.currentIndex==0? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5),size: 30,),
-                        //    CustomImageSction2(height: b_bar_icon_size,width: b_bar_icon_size, img_color:widget.currentIndex==0? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5),  radius: 5, image: "Assets/DashBoardIcons/b_bar_home.png"),
-                        SizedBox(height: 2,),
-                        ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "My Menu", letterSpacing: 0.3, textColor: widget.currentIndex==0? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
-                      ],
-                    ),
-                  )
-              ),
-              InkWell(
-                  onTap: () {
-                    setState(() {
-                      widget.currentIndex=1;
-                    });
-                  },
-                  child: Container(
-                    height: b_bar_height,
-                    child: Column(
-                      children: [
-                        //     Icon(Icons.list_alt,size: 30,weight: 30,color: widget.currentIndex==1? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.3),),
-                        CustomImageSction2(height: b_bar_icon_size,width: b_bar_icon_size,  img_color: widget.currentIndex==1? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5),  radius: 5, image: "Assets/SelfIcon/test_fingerprint.png"),
-                        SizedBox(height: 2,),
-                        ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Attendance", letterSpacing: 0.3, textColor: widget.currentIndex==1? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
-                      ],
-                    ),
-                  )),
-      
-      
-              Container(
-                width: MediaQuery.of(context).size.width*0.13,
-              ),
-              InkWell(
-                  onTap: () {
-                    setState(() {
-                      widget.currentIndex=2;
-                    });
-                  },
-                  child: Container(
-                    height: b_bar_height,
-                    child: Column(
-                      children: [
-                        CustomImageSction2(height: b_bar_icon_size,width: b_bar_icon_size,  img_color: widget.currentIndex==2? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5),  radius: 5, image: "Assets/SelfIcon/leave_icon.png"),
-                        SizedBox(height: 2,),
-                        ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Leave", letterSpacing: 0.3, textColor: widget.currentIndex==2? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
-                      ],
-                    ),
-                  )),
-              InkWell(
-                  onTap: () {
-                    setState(() {
-                      widget.currentIndex=3;
-                      Provider.of<TrackingController>(context,listen: false).GetVehicleListHttpFunctionProvider("${GetStorage().read("mobile_id")}", "10/04/2024", context);
-                    });
-                  },
-                  child: Container(
-                    height: b_bar_height,
-                    child: Column(
-                      children: [
-                        Icon(Icons.time_to_leave,color: widget.currentIndex==3? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5),size: 30,),
-                        //    CustomImageSction2(height: b_bar_icon_size,width: b_bar_icon_size,  img_color: widget.currentIndex==3? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5), radius: 5, image: "Assets/SelfIcon/Conveyance_edited1.png"),
-                        SizedBox(height: 2,),
-                        ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Conveyance", letterSpacing: 0.3, textColor: widget.currentIndex==3? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
-                      ],
-                    ),
-                  ),
-               ),
-            ],
-          ),
-        ),
-      
-        floatingActionButton:keyboardOpen==true
-            ? SizedBox(): CircleAvatar(
-          radius: 30,
-          backgroundColor: Colors.white,
-          child: FloatingActionButton(
-            isExtended: false,shape: CircleBorder(
-            side: BorderSide(color: Main_Theme_WhiteCollor),
-          ),
-            foregroundColor: Main_Theme_WhiteCollor,
-            backgroundColor: Main_Theme_WhiteCollor,
-            onPressed: () {
-              setState(() {
-                widget.currentIndex=4;
-              });
-            }, child: Padding(
-            padding: const EdgeInsets.all(2.0),
-            child: Image.asset("Assets/Logo/leaff.png" ),
-          ),),
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      
+    return Scaffold(
+     // resizeToAvoidBottomInset: false,
+      drawer:CustomLeftDrawer(),
+      key: _key,
+      appBar: PreferredSize(preferredSize: Size.fromHeight(75),
+        /// ------------ Custom Main AppBAr -------------///
+        child: CustomMainAppBar(
+            leading_image_route: "Assets/DashBoardIcons/appbar_leadin_menu.png",
+            center_appbar_text: "${GetStorage().read("Company_name")}",
+            leading_ontab: () {
+              _key.currentState!.openDrawer();
+            }, is_need_trailing: true),
       ),
+
+      body: bottomBarPages[widget.currentIndex],
+      bottomNavigationBar: Container(
+        height: 70,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(11),
+            topRight: Radius.circular(11),
+          ),
+          color: CustomButtonColor,
+        ),
+        padding: EdgeInsets.symmetric(horizontal: 15),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            InkWell(
+                onTap: () {
+                  setState(() {
+                    widget.currentIndex=0;
+                  });
+                },
+                child: Container(
+                  height: b_bar_height,
+                  child: Column(
+                    children: [
+                      Icon(Icons.category_rounded,color: widget.currentIndex==0? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5),size: 30,),
+                      //    CustomImageSction2(height: b_bar_icon_size,width: b_bar_icon_size, img_color:widget.currentIndex==0? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5),  radius: 5, image: "Assets/DashBoardIcons/b_bar_home.png"),
+                      SizedBox(height: 2,),
+                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "My Menu", letterSpacing: 0.3, textColor: widget.currentIndex==0? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
+                    ],
+                  ),
+                )
+            ),
+            InkWell(
+                onTap: () {
+                  setState(() {
+                    widget.currentIndex=1;
+                  });
+                },
+                child: Container(
+                  height: b_bar_height,
+                  child: Column(
+                    children: [
+                      //     Icon(Icons.list_alt,size: 30,weight: 30,color: widget.currentIndex==1? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.3),),
+                      CustomImageSction2(height: b_bar_icon_size,width: b_bar_icon_size,  img_color: widget.currentIndex==1? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5),  radius: 5, image: "Assets/SelfIcon/test_fingerprint.png"),
+                      SizedBox(height: 2,),
+                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Attendance", letterSpacing: 0.3, textColor: widget.currentIndex==1? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
+                    ],
+                  ),
+                )),
+
+
+            Container(
+              width: MediaQuery.of(context).size.width*0.13,
+            ),
+            InkWell(
+                onTap: () {
+                  setState(() {
+                    widget.currentIndex=2;
+                  });
+                },
+                child: Container(
+                  height: b_bar_height,
+                  child: Column(
+                    children: [
+                      CustomImageSction2(height: b_bar_icon_size,width: b_bar_icon_size,  img_color: widget.currentIndex==2? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5),  radius: 5, image: "Assets/SelfIcon/leave_icon.png"),
+                      SizedBox(height: 2,),
+                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Leave", letterSpacing: 0.3, textColor: widget.currentIndex==2? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
+                    ],
+                  ),
+                )),
+            InkWell(
+                onTap: () {
+                  setState(() {
+                    widget.currentIndex=3;
+                    Provider.of<TrackingController>(context,listen: false).GetVehicleListHttpFunctionProvider("${GetStorage().read("mobile_id")}", "10/04/2024", context);
+                  });
+                },
+                child: Container(
+                  height: b_bar_height,
+                  child: Column(
+                    children: [
+                      Icon(Icons.time_to_leave,color: widget.currentIndex==3? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5),size: 30,),
+                      //    CustomImageSction2(height: b_bar_icon_size,width: b_bar_icon_size,  img_color: widget.currentIndex==3? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5), radius: 5, image: "Assets/SelfIcon/Conveyance_edited1.png"),
+                      SizedBox(height: 2,),
+                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Conveyance", letterSpacing: 0.3, textColor: widget.currentIndex==3? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
+                    ],
+                  ),
+                ),
+             ),
+          ],
+        ),
+      ),
+
+      floatingActionButton:keyboardOpen==true
+          ? SizedBox(): CircleAvatar(
+        radius: 30,
+        backgroundColor: Colors.white,
+        child: FloatingActionButton(
+          isExtended: false,shape: CircleBorder(
+          side: BorderSide(color: Main_Theme_WhiteCollor),
+        ),
+          foregroundColor: Main_Theme_WhiteCollor,
+          backgroundColor: Main_Theme_WhiteCollor,
+          onPressed: () {
+            setState(() {
+              widget.currentIndex=4;
+            });
+          }, child: Padding(
+          padding: const EdgeInsets.all(2.0),
+          child: Image.asset("Assets/Logo/leaff.png" ),
+        ),),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+
     );
   }
   bool keyboardOpen = false;

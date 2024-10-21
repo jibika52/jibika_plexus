@@ -1,3 +1,11 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
@@ -5,6 +13,7 @@ import 'package:jibika_plexus/View/HomeScreen/HomeComponent/HomeFirstPartCompone
 import 'package:jibika_plexus/View/HomeScreen/HomeComponent/HomeFirstPartComponent/HomeFirstPartComponentLeave/home_first_part_component_leave.dart';
 import 'package:jibika_plexus/View/HomeScreen/HomeComponent/HomeFirstPartComponent/HomeFirstPartComponentLoan/home_first_part_component_loan.dart';
 import 'package:jibika_plexus/View/HomeScreen/HomeComponent/HomeFirstPartComponent/HomeFirstPartComponentNewJoinApproval/home_first_part_component_new_join_approval.dart';
+import 'package:jibika_plexus/View/HomeScreen/HomeComponent/HomeFirstPartComponent/HomeFirstPartComponentStationary/home_first_part_component_stationary.dart';
 import 'package:provider/provider.dart';
 import 'package:quickalert/quickalert.dart';
 
@@ -65,31 +74,31 @@ class _HomeHederPartState extends State<HomeHederPart> {
                   selected_index=index;
                 });
                 if(selected_index==0){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => HomeFirstPartComponentNewJoinApproval(),));
+                  Navigator.push(context, CupertinoPageRoute(builder: (context) => HomeFirstPartComponentNewJoinApproval(),));
                   Provider.of<HomeProvider>(context,listen: false).ThisMonthJoinEmployeeListProvider("thismonthjoin",GetStorage().read("mobile_id") , context);
                 }
                 else if(selected_index==1){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => HomeFirstPartComponentAttendance(),));
+                  Navigator.push(context, CupertinoPageRoute(builder: (context) => HomeFirstPartComponentAttendance(),));
                 }
                 else if(selected_index==2){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => HomeFirstPartComponentLeave(
+                  Navigator.push(context, CupertinoPageRoute(builder: (context) => HomeFirstPartComponentLeave(
                     tag: "dash",
                   ),));
                 }
                 else if(selected_index==3){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => HomeFirstPartComponentPromotionScreen(),));
+                  Navigator.push(context, CupertinoPageRoute(builder: (context) => HomeFirstPartComponentPromotionScreen(),));
                 }
                 else if(selected_index==4){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) =>  HomeFirstPartComponentLoan()));
+                  Navigator.push(context, CupertinoPageRoute(builder: (context) =>  HomeFirstPartComponentLoan()));
                 }
                 else if(selected_index==5){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => HomeFirstPartComponentConveyance(),));
+                  Navigator.push(context, CupertinoPageRoute(builder: (context) => HomeFirstPartComponentConveyance(),));
                 }
                 else if(selected_index==6){
-                  quickAlertWrong(context, "Coming soon", "Please try again later", 2);
+                  Navigator.push(context, CupertinoPageRoute(builder: (context) =>HomeFirstPartComponentStationary(),));
                 }
                 else if(selected_index==7){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => HomeFirstPartComponentComplainBox(),));
+                  Navigator.push(context, CupertinoPageRoute(builder: (context) => HomeFirstPartComponentComplainBox(),));
                 }else{
 
                 }

@@ -232,7 +232,7 @@ class _HomeFirstPartComponentAttendanceState extends State<HomeFirstPartComponen
                                animatedheight=0;
                                getindex='';
                              }else{
-                               animatedheight=270;
+                               animatedheight=140;
                                getindex="$index";
                              }
 
@@ -392,8 +392,9 @@ class _HomeFirstPartComponentAttendanceState extends State<HomeFirstPartComponen
                                              color: Main_Theme_textColor.withOpacity(0.1)
                                          ),
                                        ),
-                                       padding: EdgeInsets.all(10),
-                                       child: CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "$Loremtext", letterSpacing: 0.3,textAlign: TextAlign.justify,),
+                                       padding: EdgeInsets.only(left: 10,right: 10,top: 5,bottom: 5),
+                                       margin: EdgeInsets.only(left: 10,right: 10),
+                                       child: CustomText(maxLines: 2,fontSize: 12, fontWeight: FontWeight.w400, text: "$Loremtext", letterSpacing: 0.3,textAlign: TextAlign.justify,),
                                      ),
                                      SizedBox(height: 7,),
                                      ApprovedDisapprovedButton(onTap: () {

@@ -1,3 +1,6 @@
+import 'dart:math';
+
+import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
@@ -127,7 +130,53 @@ class _HomeFirstPartComponentLoanState extends State<HomeFirstPartComponentLoan>
                 ],
               ),
             ),
-            ColorCustomText(textColor: _selectedIndex==0? Main_Theme_textColor_tir_Condition :_selectedIndex==1? presentsent_color : absent_color ,fontSize: font12, fontWeight: FontWeight.w500, text: _selectedIndex==0?"Waiting(655)":_selectedIndex==1?"Approved(100)":"Disapproved(100)", letterSpacing: 0.1),
+            Container(
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(0),color: Main_Theme_textColor_tir_Condition.withOpacity(0.0)),
+              padding:  EdgeInsets.only(left: 10.0,right: 10,top: 5,bottom: 0),
+              child: AnimatedToggleSwitch<int>.size(
+                height: 35,
+                current: max(_selectedIndex, 0),
+                style: ToggleStyle(
+                  backgroundColor: home_default_color,
+                  indicatorColor:_selectedIndex==0?CheckOutColor: presentsent_color ,
+                  borderColor: Colors.transparent,
+                  borderRadius: BorderRadius.circular(30.0),
+                  indicatorBorderRadius: BorderRadius.circular(30),
+
+                ),
+                values:  [0, 1],
+                iconOpacity: 1.0,
+                selectedIconScale: 1.0,
+                indicatorSize: Size.fromWidth(MediaQuery.of(context).size.width/2),
+                iconAnimationType: AnimationType.onHover,
+                styleAnimationType: AnimationType.onHover,
+                spacing: 2.0,
+                customSeparatorBuilder: (context, local, global) {
+                  final opacity =
+                  ((global.position - local.position).abs() - 0.5)
+                      .clamp(0.0, 1.0);
+                  return VerticalDivider(
+                      indent: 10.0,
+                      endIndent: 10.0,
+                      color: Colors.white38.withOpacity(opacity));
+                },
+                customIconBuilder: (context, local, global) {
+                  final text = nameList[local.index];
+                  return Center(
+                      child: Text(text,
+                          style: GoogleFonts.poppins(
+                              fontSize : 13,
+                              fontWeight : FontWeight.w400,
+                              letterSpacing :  0.3,
+                              color: Color.lerp(Colors.black, Colors.white,
+                                  local.animationValue))));
+                },
+                borderWidth: 1.0,
+                onChanged: (i) => setState(() => _selectedIndex = i),
+              ),
+            ),
+            SizedBox(height: 5,),
+            ColorCustomText(textColor: _selectedIndex==0? CheckOutColor :_selectedIndex==1? presentsent_color : absent_color ,fontSize: font12, fontWeight: FontWeight.w500, text: _selectedIndex==0?"Waiting(655)":_selectedIndex==1?"Approved(100)":"Disapproved(100)", letterSpacing: 0.1),
             SizedBox(height: 5,),
             /// ------------------ third part ------------///
             Expanded(
@@ -152,7 +201,7 @@ class _HomeFirstPartComponentLoanState extends State<HomeFirstPartComponentLoan>
                                     getindex='';
                                 //    selectedindex=-1;
                                   }else{
-                                    animatedheight=140;
+                                    animatedheight=130;
                                     getindex="$index";
                                   }
                                 });
@@ -163,8 +212,8 @@ class _HomeFirstPartComponentLoanState extends State<HomeFirstPartComponentLoan>
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.all( Radius.circular(7)),
                                 //  color: Color(0xffF3FCFB)
-                                color: CheckOutColor.withOpacity(0.1)  ,
-                                border: Border(bottom: BorderSide( color:_selectedIndex==0? Main_Theme_textColor_tir_Condition :_selectedIndex==1? presentsent_color : absent_color))
+                                color: _selectedIndex==0? CheckOutColor.withOpacity(0.1) :_selectedIndex==1? presentsent_color.withOpacity(0.1) : absent_color,
+                                border: Border(bottom: BorderSide( color:_selectedIndex==0? CheckOutColor :_selectedIndex==1? presentsent_color : absent_color))
                             ),
                             margin: EdgeInsets.only(bottom: 7),
                             child: Column(

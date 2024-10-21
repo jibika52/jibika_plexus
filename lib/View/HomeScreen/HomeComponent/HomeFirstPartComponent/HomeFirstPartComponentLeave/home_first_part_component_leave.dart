@@ -146,13 +146,13 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
                 current: max(_selectedIndex, 0),
                 style: ToggleStyle(
                   backgroundColor: home_default_color,
-                  indicatorColor:_selectedIndex==0? Main_Theme_textColor_tir_Condition :_selectedIndex==1? presentsent_color : absent_color ,
+                  indicatorColor:_selectedIndex==0? CheckOutColor :_selectedIndex==1? presentsent_color : absent_color ,
                   borderColor: Colors.transparent,
                   borderRadius: BorderRadius.circular(30.0),
                   indicatorBorderRadius: BorderRadius.circular(30),
 
                 ),
-                values:  [0, 1, 2],
+                values:  [0, 1],
                 iconOpacity: 1.0,
                 selectedIconScale: 1.0,
                 indicatorSize: Size.fromWidth(MediaQuery.of(context).size.width/2),
@@ -184,7 +184,9 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
               ),
             ),
             SizedBox(height: 5,),
-            CustomText(fontSize: font12, fontWeight: FontWeight.w500, text: _selectedIndex==0?"Waiting : 655": "Approved", letterSpacing: 0.1),
+            ColorCustomText(textColor: _selectedIndex==0? CheckOutColor :_selectedIndex==1? presentsent_color : absent_color ,fontSize: font12, fontWeight: FontWeight.w500, text: _selectedIndex==0?"Waiting(655)":_selectedIndex==1?"Approved(100)":"Disapproved(100)", letterSpacing: 0.1),
+            SizedBox(height: 5,),
+
             /// ------------------ third part ------------///
             Expanded(
               flex: 2,
@@ -207,7 +209,7 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
                                     animatedheight=0;
                                     getindex='';
                                   }else{
-                                    animatedheight=170;
+                                    animatedheight=155;
                                     getindex="$index";
                                   }
 
@@ -220,8 +222,8 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.all( Radius.circular(7)),
                                 //  color: Color(0xffF3FCFB)
-                                color:isChekin==false?  CheckOutColor.withOpacity(0.08) : CustomButtonColor.withOpacity(0.05),
-                                border: Border(bottom: BorderSide( color:isChekin==false?CheckOutColor:  CustomButtonColor))
+                                color:  _selectedIndex==0? CheckOutColor.withOpacity(0.1) : presentsent_color.withOpacity(0.1),
+                                border: Border(bottom: BorderSide( color: _selectedIndex==0? CheckOutColor : presentsent_color,))
                             ),
                             margin: EdgeInsets.only(bottom: 7),
                             child: Column(
@@ -282,72 +284,85 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
                                             ],
                                           )),
                                       SizedBox(width: 10,),
-                                      Expanded(
-                                          flex: 4,
-                                          child: Column(
-                                            crossAxisAlignment: CrossAxisAlignment.center,
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: [
-                                              Row(
-                                                mainAxisAlignment: MainAxisAlignment.center,
-                                                children: [
-                                                  ColorCustomText(fontSize: 11, fontWeight: FontWeight.w500, text: "CL-02", letterSpacing: 0.3, textColor: CustomButtonColor,),
-                                                ],
-                                              ),
-                                              Row(
-                                                mainAxisAlignment: MainAxisAlignment.center,
-                                                children: [
-                                                  ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "From : " , letterSpacing: 0.3, textColor: Main_Theme_textColor,),
-                                                  CustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "10 Apr 2023", letterSpacing: 0.3, ),
-                                                ],
-                                              ),
-                                              Row(
-                                                mainAxisAlignment: MainAxisAlignment.center,
-                                                children: [
-                                                  ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "To : ", letterSpacing: 0.3, textColor: Main_Theme_textColor),
-                                                  CustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "10 Apr 2023", letterSpacing: 0.3, ),
-                                                  SizedBox(width: 4,),
-
-                                                ],
-                                              ),
-
-                                            ],
-                                          )
-                                      ),
+                                      // Expanded(
+                                      //     flex: 4,
+                                      //     child: Column(
+                                      //       crossAxisAlignment: CrossAxisAlignment.center,
+                                      //       mainAxisAlignment: MainAxisAlignment.center,
+                                      //       children: [
+                                      //         Row(
+                                      //           mainAxisAlignment: MainAxisAlignment.center,
+                                      //           children: [
+                                      //             ColorCustomText(fontSize: 11, fontWeight: FontWeight.w500, text: "CL-02", letterSpacing: 0.3, textColor: CustomButtonColor,),
+                                      //           ],
+                                      //         ),
+                                      //         Row(
+                                      //           mainAxisAlignment: MainAxisAlignment.center,
+                                      //           children: [
+                                      //             ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "From : " , letterSpacing: 0.3, textColor: Main_Theme_textColor,),
+                                      //             CustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "10 Apr 2023", letterSpacing: 0.3, ),
+                                      //           ],
+                                      //         ),
+                                      //         Row(
+                                      //           mainAxisAlignment: MainAxisAlignment.center,
+                                      //           children: [
+                                      //             ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "To : ", letterSpacing: 0.3, textColor: Main_Theme_textColor),
+                                      //             CustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "10 Apr 2023", letterSpacing: 0.3, ),
+                                      //             SizedBox(width: 4,),
+                                      //
+                                      //           ],
+                                      //         ),
+                                      //
+                                      //       ],
+                                      //     )
+                                      // ),
                                       ///----------------- Third Part ------------------------------///
                                       selectedindex==index? Icon(Icons.keyboard_arrow_up):Icon(Icons.keyboard_arrow_down)
                                     ],
                                   ),
                                 ),
-                                selectedindex==index  ?  Stack(
-                                  children: [
-                                    AnimatedContainer(
-                                      height: animatedheight,
-                                      width: double.infinity,
-                                      duration: Duration(milliseconds: 400),
-                                      child: SingleChildScrollView(
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(7),
-                                            border: Border.all(
-                                                width: 1,
-                                                color: Main_Theme_textColor.withOpacity(0.1)
-                                            ),
+                                selectedindex==index  ?  AnimatedContainer(
+                                  height: animatedheight,
+                                  width: double.infinity,
+                                  duration: Duration(milliseconds: 400),
+                                  child: SingleChildScrollView(
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(7),
+                                      ),
+                                      padding: EdgeInsets.only(left: 10,right: 10,top: 0,bottom: 60),
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Divider(height: 5,),
+                                          Row(
+                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              CustomText(fontSize: 11, fontWeight: FontWeight.w500, text: "02-Oct-2024 To 05-Oct-2024", letterSpacing: 0.3),
+                                              CustomText(fontSize: 11, fontWeight: FontWeight.w500, text: "Total : CL-05 Days", letterSpacing: 0.3),
+                                            ],
                                           ),
-                                          padding: EdgeInsets.only(left: 10,right: 10,top: 10,bottom: 60),
-                                          child: CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "$Loremtext", letterSpacing: 0.3,textAlign: TextAlign.justify,),
-                                        ),
-                                      ) ,
+                                          SizedBox(height: 10,),
+                                          CustomText(fontSize: 12, fontWeight: FontWeight.w500, text: "Remarks", letterSpacing: 0.3),
+                                          SizedBox(height: 5,),
+                                          Container(
+                                              padding: EdgeInsets.only(left: 10,right: 10,top: 5,bottom: 5),
+                                              decoration: BoxDecoration(
+                                                borderRadius: BorderRadius.circular(7),
+                                                border: Border.all(width: 1.5,color: Main_Theme_textColor.withOpacity(0.2))
+                                              ),
+                                              child: CustomText(maxLines:2,fontSize: 12, fontWeight: FontWeight.w400, text: "$Loremtext", letterSpacing: 0.2,textAlign: TextAlign.justify,)),
+                                          SizedBox(height: 10,),
+                                          ApprovedDisapprovedButton(onTap: () {
 
+                                          }, disapproved: () {
+
+                                          },)
+                                        ],
+                                      ),
                                     ),
-                                    Positioned(
-                                      bottom: 10,
-                                      child:   ApprovedDisapprovedButton(onTap: () {
+                                  ) ,
 
-                                      }, disapproved: () {
-
-                                      },),)
-                                  ],
                                 ) :Container(),
 
                               ],
