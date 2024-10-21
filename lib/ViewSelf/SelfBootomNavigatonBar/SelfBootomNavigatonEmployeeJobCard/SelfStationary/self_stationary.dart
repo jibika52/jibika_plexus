@@ -82,7 +82,8 @@ class _SelfStationaryState extends State<SelfStationary> {
             ),
             SizedBox(height: apps_div_margin,),
             /// Second part Body------------------
-            Expanded(child: Container(
+            Expanded(
+                child: Container(
               height: double.infinity,
               width: double.infinity,
               padding: EdgeInsets.only(left: 10,right: 10),

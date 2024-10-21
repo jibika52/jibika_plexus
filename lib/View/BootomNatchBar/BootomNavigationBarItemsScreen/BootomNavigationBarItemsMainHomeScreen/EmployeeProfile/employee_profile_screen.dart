@@ -68,8 +68,10 @@ class _EmployeeProfileScreenState extends State<EmployeeProfileScreen> {
   // }
   @override
   Widget build(BuildContext context) {
-    print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa ${widget.currentEmployeedataIndex}");
-    return Scaffold(
+     print("aaaaaaaaaaaaaaaaaaaaaa${MediaQuery.of(context).size.height}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa ${widget.currentEmployeedataIndex.length}");
+
+     return Scaffold(
+
       appBar: PreferredSize(preferredSize: Size.fromHeight(68), child: CustomDefaultAppBar(onTap: () => Navigator.pop(context),
           text: "Activities")),
       body: Stack(
@@ -85,7 +87,7 @@ alignment: Alignment.center,
                 customMainEmployeeProfile(
                     is_need_edit_button_on_short_profile: "false",
                     image: "${widget.currentEmployeedataIndex["EmpPhotoPath"]}",
-                    employeeCode: "${widget.currentEmployeedataIndex["  "]}",
+                    employeeCode: "${widget.currentEmployeedataIndex["EmpCode"]}",
                     employeeName: "${widget.currentEmployeedataIndex["EmployeeNameEnglish"]}",
                     employeeDesignation: "${widget.currentEmployeedataIndex["Designation"]}",
                     employeeDepartment: "${widget.currentEmployeedataIndex["Department"]}",
@@ -94,9 +96,9 @@ alignment: Alignment.center,
                 /// Second part -----------------------------
 
                  Container(
-                   height: MediaQuery.of(context).size.height-250-30-63,
+                   height:MediaQuery.of(context).size.height<900? MediaQuery.of(context).size.height-250-30-63-15:MediaQuery.of(context).size.height-250-30-63,
                    width: double.infinity,
-                   padding:   EdgeInsets.only(left: 10,right: 10,bottom: 10),
+                   padding:   EdgeInsets.only(left: 10,right: 10,bottom: 0),
                    child: GridView.builder(
                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                          crossAxisCount: 2,
