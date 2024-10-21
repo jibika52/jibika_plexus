@@ -19,6 +19,7 @@ import 'View/HomeScreen/HomeComponent/HomeFirstPartComponent/HomeFirstPartCompon
 import 'View/SplashScreen/main_splash_pageview_screen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:timezone/data/latest.dart' as tz;
+ 
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
 FlutterLocalNotificationsPlugin();
@@ -82,7 +83,8 @@ class MyApp extends StatelessWidget {
         //      home:BootomNatchBarScreen(),
         //   home:BootomNatchBarScreen(),
         /// ----------SplashScreen--------
-         home:MainSplashPageViewScreen(),
+          home:MainSplashPageViewScreen(),
+
         //    home:HomeFirstPartComponentPromotionScreen(),
         //     home:TrackingMapScreenTEstPoliline(),
         //    home:SalfBootomNatchBarScreen(currentIndex: 4,),

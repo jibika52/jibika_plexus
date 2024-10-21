@@ -141,7 +141,7 @@ final List<String> yearslist = [
 String custom_Avater="";
 
 String Loremtext="Lorem sed do eiusmod tempor incididunt  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum smahfb asfa ufusdgfu sdu fsudg fusg";
-
+String Application ="I am Shawn Mendez, a resident of Rory Lane. I am writing to bring to your notice the poor maintenance of the garden around our residential area and the improper disposal of waste. The garden around the residential area was watered regularly, and grass shrubs were trimmed and maintained neatly in the beginning. It has been more than a month now since any kind of maintenance is done in the garden. We have tried contacting the person in charge, but every effort has just been in vain.\nAnother growing issue is the problem of waste disposal. There were people from the corporation collecting garbage for disposal every two days, but it has been more than a week now since they have collected any garbage from our area. This has led to the accumulation of waste, and people have started dumping it in the corner of the street as they have no other choice. Kindly look into this and the maintenance of the garden as it would become a huge mess if this continues. It would be highly appreciated if you could also inform the residents that all garbage would be collected and not to throw them out around the street corners.";
 
 //  GetStorage().write("mobile_id","${_phoneController.text}") ;
 //  GetStorage().write("id_token",loginData["loginData"]) ;
