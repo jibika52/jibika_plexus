@@ -130,5 +130,13 @@ class CounterProvider with ChangeNotifier{
     notifyListeners();
   }
 
+  /// Are you User Or Admin
+  String ? _are_you_user_or_admin;
+  String ? get  are_you_user_or_admin=>_are_you_user_or_admin;
+  void areYouUserOrAdminFunction(String are_you_user_or_admin){
+    _are_you_user_or_admin= are_you_user_or_admin;
+    notifyListeners();
+  }
+
 
 }
