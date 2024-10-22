@@ -120,6 +120,7 @@ class customMainEmployeeProfile extends StatelessWidget {
                             ),
                           ),
                           SizedBox(width: 10,),
+
                           is_need_edit_button_on_short_profile=="false"?Container(width: 2,): InkWell(
                             onTap: () {
                                       Navigator.push(context, CupertinoPageRoute(builder: (context) => CreateNewEmployeeScreen2(

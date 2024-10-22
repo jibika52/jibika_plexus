@@ -198,20 +198,20 @@ class CustomLeftDrawer extends StatelessWidget {
                     CustomDrawerOption(image: "Assets/DrawerImage/drawer_tirmscondition_option.png", name: "Terms & Condition", size: 17,size2: 16,),
                     CustomDrawerOption(image: "Assets/DrawerImage/drawer_disclimer_option.png", name: "Disclaimer", size: 16, size2: 16,),
                     CustomDrawerOption(image: "Assets/DrawerImage/drawer_setting_option.png", name: "Setting", size: 17, size2: 16,),
-                    InkWell(
-                        onTap: () {
-                          Navigator.push(context, CupertinoPageRoute(builder: (context) => SalfBootomNatchBarScreen(
-                            currentIndex: 4,
-                          ),));
-                        },
-                        child: CustomDrawerOption(image: "Assets/DrawerImage/drawericonong.png", name: "Employee home", size: 17, size2: 16,)),
-                    InkWell(
-                        onTap: () {
-                          Navigator.push(context, CupertinoPageRoute(builder: (context) => BootomNatchBarScreen(
-                            index: 4,
-                          ),));
-                        },
-                        child: CustomDrawerOption(image: "Assets/DrawerImage/drawericonong.png", name: "Admin home", size: 17, size2: 16,)),
+                    // InkWell(
+                    //     onTap: () {
+                    //       Navigator.push(context, CupertinoPageRoute(builder: (context) => SalfBootomNatchBarScreen(
+                    //         currentIndex: 4,
+                    //       ),));
+                    //     },
+                    //     child: CustomDrawerOption(image: "Assets/DrawerImage/drawericonong.png", name: "Employee home", size: 17, size2: 16,)),
+                    // InkWell(
+                    //     onTap: () {
+                    //       Navigator.push(context, CupertinoPageRoute(builder: (context) => BootomNatchBarScreen(
+                    //         index: 4,
+                    //       ),));
+                    //     },
+                    //     child: CustomDrawerOption(image: "Assets/DrawerImage/drawericonong.png", name: "Admin home", size: 17, size2: 16,)),
                   ],
                 ),
                 ),

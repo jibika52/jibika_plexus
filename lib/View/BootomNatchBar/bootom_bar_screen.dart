@@ -4,6 +4,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:intl/intl.dart';
 import 'package:jibika_plexus/Controller/AdminEmployeeController/admin_employee_controller.dart';
 import 'package:jibika_plexus/Controller/AttendanceController/attendance_controller.dart';
+import 'package:jibika_plexus/Controller/CounterProvider/counter_provider.dart';
 import 'package:jibika_plexus/Controller/HomeController/home_controller.dart';
 import 'package:jibika_plexus/CustomWidget/CustomImage/custom_image.dart';
 import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
@@ -33,6 +34,7 @@ class _BootomNatchBarScreenState extends State<BootomNatchBarScreen> {
   dynamic getDynamicSliderData;
   @override
   void initState() {
+    Provider.of<CounterProvider>(context,listen: false).areYouUserOrAdminFunction("Admin");
     _currentIndex=widget.index;
    Provider.of<HomeProvider>(context,listen: false).selfORAdminShortDescriptionProvider(GetStorage().read("mobile_id"), GetStorage().read("IdCardNo"), context);
      // TODO: implement initState
