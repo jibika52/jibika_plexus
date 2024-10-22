@@ -1,6 +1,7 @@
 
 import 'dart:ui';
 
+import 'package:flutter/animation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -57,7 +58,7 @@ class _HomeFirstPartComponentComplainBoxState extends State<HomeFirstPartCompone
                                   children: [
                                     CustomImageSction2(height: 19, width: 19, radius: 0, image: "Assets/DashBoardIcons/suggestion.png", img_color:absent_color.withOpacity(0.9)),
                                     SizedBox(width: 7,),
-                                    CustomText(fontSize: font13header, fontWeight: FontWeight.w700, text: "Suggest", letterSpacing: 0.3),
+                                    ColorCustomText(textColor: Main_Theme_textColor.withOpacity(0.8),fontSize: font13header, fontWeight: FontWeight.w700, text: "Suggest", letterSpacing: 0.3),
                                     SizedBox(width: 7,),
                                   ],
                                 ),
@@ -79,7 +80,7 @@ class _HomeFirstPartComponentComplainBoxState extends State<HomeFirstPartCompone
                                 bottomLeft: Radius.circular( 50),
                                 bottomRight:Radius.circular( 0),
                               ),
-                              color: presentsent_color,
+                              color: leave_color.withOpacity(0.75),
                             ),
 
                             child: Row(
@@ -120,7 +121,10 @@ class _HomeFirstPartComponentComplainBoxState extends State<HomeFirstPartCompone
                     ),
                     Padding(
                       padding: const EdgeInsets.only(right: 10.0),
-                      child: CustomText(maxLines: 4,overflow: TextOverflow.ellipsis,fontSize: 12.5, fontWeight: FontWeight.w400, text: "To Manager,\n$Loremtext", letterSpacing: 0.2),
+                      child: ColorCustomText(
+                        textAlign: TextAlign.justify,
+                        maxLines: 4,overflow: TextOverflow.ellipsis,fontSize: 12,
+                          fontWeight: FontWeight.w400, text: "To Manager,\n$Loremtext", letterSpacing: 0.4, textColor: Main_Theme_textColor.withOpacity(0.8),),
                     )
                   ],
                 ),
