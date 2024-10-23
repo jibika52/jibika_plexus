@@ -70,7 +70,6 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
       onWillPop: () => Future(() => false),
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        drawer:CustomLeftDrawer(),
         key: _key,
         appBar: PreferredSize(preferredSize: Size.fromHeight(80),
           child: CustomMainAppBar(
@@ -80,6 +79,7 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
                 _key.currentState!.openDrawer();
               }, is_need_trailing: true),
         ),
+        drawer:CustomLeftDrawer(),
         body: bottomBarPages[_currentIndex],
 
         bottomNavigationBar: Container(

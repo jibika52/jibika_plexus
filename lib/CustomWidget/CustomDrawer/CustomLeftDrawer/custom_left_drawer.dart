@@ -111,61 +111,8 @@ class CustomLeftDrawer extends StatelessWidget {
                     ),
 
                     /// Previous Model --------------------------------------------------------------
-                    // Container(
-                    //   height: 122,
-                    //   width: double.infinity,
-                    //   child: Row(
-                    //     children: [
-                    //       //  GetStorage().write("mobile_id","${_phoneController.text}") ;
-                    //       //  GetStorage().write("id_token",loginData["loginData"]) ;
-                    //       //  GetStorage().write("refresh_token",loginData["refresh_token"]) ;
-                    //
-                    //       // GetStorage().write("id_token",loginData["id_token"]) ;
-                    //       // GetStorage().write("refresh_token",loginData["refresh_token"]) ;
-                    //       // GetStorage().write("Company_name",loginData["Company"]) ;
-                    //       // GetStorage().write("RfIdCardNo",loginData["RfIdCardNo"]) ;
-                    //       // GetStorage().write("IdCardNo",loginData["IdCardNo"]) ;
-                    //       // GetStorage().write("Empcode",loginData["Empcode"]) ;
-                    //       // GetStorage().write("user_type_id",loginData["user_type_id"]) ;
-                    //       //GetStorage().write("APPS_IMG_BASEURL",loginData["AppsBaseUrl"]) ;
-                    //       // GetStorage().write("APPS_IMG_BASEURL",loginData["AppsBaseUrl"]) ;
-                    //       // GetStorage().write("APPS_IMG_Path",loginData["PhotoPath"]) ;
-                    //       //  GetStorage().write("APPS_User_Name",loginData["user_name"]) ;
-                    //
-                    //
-                    //       CustomImageSctionNetwork(height: 122, width: 100, radius: 1, image: "${GetStorage().read("APPS_IMG_BASEURL")}${GetStorage().read("APPS_IMG_Path")}"),
-                    //
-                    //       Expanded(child: Container(
-                    //         child: Column(
-                    //           crossAxisAlignment: CrossAxisAlignment.start,
-                    //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    //           children: [
-                    //             Container(
-                    //               alignment: Alignment.centerLeft,
-                    //               height: 42,
-                    //               color: Color(0xffACC027).withOpacity(0.6),
-                    //               child: ColorCustomText(fontSize: 20, fontWeight: FontWeight.w500, text: " ${GetStorage().read("Company_name")}",
-                    //                 overflow: TextOverflow.ellipsis,letterSpacing: 0.5, textColor: CustomButtonColor,),
-                    //             ),
-                    //             ColorCustomText(fontSize: 16, fontWeight: FontWeight.w600, text: " ${GetStorage().read("APPS_User_Name")}", letterSpacing: 0.5, textColor: presentsent_color.withOpacity(0.7),),
-                    //             ColorCustomText(fontSize: 10, fontWeight: FontWeight.w500, text: "  Software Eng.", letterSpacing: 0.5, textColor: Main_Theme_textColor,),
-                    //             ColorCustomText(fontSize: 10, fontWeight: FontWeight.w300, text: "  ID 4531454", letterSpacing: 0.5, textColor: CustomButtonColor,),
-                    //             ColorCustomText(fontSize: 10, fontWeight: FontWeight.w300, text: "  Service Length: 2Y 6M", letterSpacing: 0.5, textColor: Main_Theme_textColor,),
-                    //
-                    //
-                    //           ],
-                    //         ),
-                    //       )),
-                    //     ],
-                    //   ),
-                    // ),
 
-                    /// Previous Model --------------------------------------------------------------
-
-
-
-
-                    SizedBox(height: 20),
+                    SizedBox(height: 10),
                     Consumer<CounterProvider>(
                       builder: (context, value, child) => GetStorage().read("user_type_id")==1003?Divider(): Container(
                         alignment: Alignment.centerRight,
