@@ -9,6 +9,7 @@ import 'package:jibika_plexus/View/HomeScreen/HomeComponent/HomeFirstPartCompone
 import 'package:jibika_plexus/tracking_google_map_test.dart';
 import 'package:month_year_picker/month_year_picker.dart';
 import 'package:provider/provider.dart';
+import 'Controller/AdminApprovalController/admin_approval_controller.dart';
 import 'Controller/AdminEmployeeController/admin_employee_controller.dart';
 import 'Controller/AttendanceController/attendance_controller.dart';
 import 'Controller/HomeController/home_controller.dart';
@@ -64,6 +65,7 @@ class MyApp extends StatelessWidget {
       ChangeNotifierProvider<EmployeeAdminProvider>(create: (context) => EmployeeAdminProvider(),),
       ChangeNotifierProvider<TrackingController>(create: (context) => TrackingController(),),
       ChangeNotifierProvider<OnboardingEmployeeController>(create: (context) => OnboardingEmployeeController(),),
+      ChangeNotifierProvider<AdminApprovalController>(create: (context) => AdminApprovalController(),),
     ],
 
       child: MaterialApp(
@@ -117,17 +119,6 @@ class MyApp extends StatelessWidget {
 }
 
 
-// Check for marge  requset //
 
 
-class HexColor extends Color {
-  HexColor(final String hexColor) : super(_getColorFromHex(hexColor));
 
-  static int _getColorFromHex(String hexColor) {
-    hexColor = hexColor.toUpperCase().replaceAll('#', '');
-    if (hexColor.length == 6) {
-      hexColor = 'FF' + hexColor;
-    }
-    return int.parse(hexColor, radix: 16);
-  }
-}

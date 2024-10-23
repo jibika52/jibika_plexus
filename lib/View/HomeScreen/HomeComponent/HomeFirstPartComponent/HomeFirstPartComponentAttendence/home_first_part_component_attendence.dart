@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:jibika_plexus/Controller/AdminApprovalController/admin_approval_controller.dart';
 import 'package:jibika_plexus/Controller/CounterProvider/counter_provider.dart';
 import 'package:jibika_plexus/CustomWidget/CustomAppBar/CustomDefaultAppBar/custom_default_app_bar.dart';
 import 'package:jibika_plexus/CustomWidget/CustomButton/custom_button.dart';
@@ -209,216 +210,216 @@ class _HomeFirstPartComponentAttendanceState extends State<HomeFirstPartComponen
             ),
             SizedBox(height: 5,),
         //    CustomText(fontSize: fontSubTitle, fontWeight: FontWeight.w500, text: _selectedIndex==0?"CheckIn 655":"CheckOut 100", letterSpacing: 0.1),
-            ColorCustomText(textColor:_selectedIndex==0? presentsent_color : absent_color ,fontSize: font12, fontWeight: FontWeight.w500, text: _selectedIndex==0?"CheckIn(655)": "CheckOut(100)", letterSpacing: 0.1),
+            ColorCustomText(textColor:_selectedIndex==0? presentsent_color : absent_color ,fontSize: font12, fontWeight: FontWeight.w500, text: _selectedIndex==0?"CheckIn(10)": "0", letterSpacing: 0.1),
             SizedBox(height: 5,),
             /// ------------------ third part ------------///
-           Expanded(
-             child: Container(
-               width: 400,
-               color: Main_Theme_WhiteCollor,
-               padding: EdgeInsets.only(left: 10,right: 10,bottom: 10),
-               child: Container(
-                 child: ListView.builder(
-                   itemCount: 10,
-                   itemBuilder: (context, index) {
-                   return InkWell(
-                     onTap: () {
-                       setState(() {
-                         selectedindex=index;
-                         animatedheight=0;
-                         Future.delayed(Duration(milliseconds: 100),() {
-                           setState(() {
-                             if(getindex=="$index"){
-                               animatedheight=0;
-                               getindex='';
-                             }else{
-                               animatedheight=140;
-                               getindex="$index";
-                             }
+            Expanded(
+              child: Container(
+                width: 400,
+                color: Main_Theme_WhiteCollor,
+                padding: EdgeInsets.only(left: 10,right: 10,bottom: 10),
+                child: Container(
+                  child: ListView.builder(
+                    itemCount: 10,
+                    itemBuilder: (context, index) {
+                    return InkWell(
+                      onTap: () {
+                        setState(() {
+                          selectedindex=index;
+                          animatedheight=0;
+                          Future.delayed(Duration(milliseconds: 100),() {
+                            setState(() {
+                              if(getindex=="$index"){
+                                animatedheight=0;
+                                getindex='';
+                              }else{
+                                animatedheight=140;
+                                getindex="$index";
+                              }
 
-                           });
-                         },);
-                       });
-                     },
-                     child: Container(
-                       decoration: BoxDecoration(
-                           borderRadius: BorderRadius.all( Radius.circular(7)),
-                           //  color: Color(0xffF3FCFB)
-                           color:_selectedIndex==0? presentsent_color.withOpacity(0.05) : absent_color.withOpacity(0.05),
-                           border: Border(bottom: BorderSide( color:_selectedIndex==0? presentsent_color : absent_color))
-                       ),
-                       margin: EdgeInsets.only(bottom: 7),
-                       child: Column(
-                         children: [
-                         Container(
-                           padding: EdgeInsets.only(left: 6,right: 10),
-                           height: 70,
-                           decoration: BoxDecoration(
-                               borderRadius: BorderRadius.only(
-                                 topLeft: Radius.circular(7),
-                                 topRight: Radius.circular(7),
-                                 bottomLeft: Radius.circular( selectedindex==index?0:7),
-                                 bottomRight:Radius.circular( selectedindex==index?0:7),
-                               ),
-                             //  color: Color(0xffF3FCFB)
-                            //   color: CustomButtonColor.withOpacity(0.05),
-                           //  border: Border(bottom: BorderSide(color:_selectedindex==index?CustomButtonColor.withOpacity(0.05): CustomButtonColor))
-                           ),
-                           width: double.infinity,
-                           child: Row(
-                             children: [
-                               Container(
-                               height: 50,
-                               width: 50,
-                               decoration: BoxDecoration(
-                                 borderRadius: BorderRadius.only(
-                                   topLeft: Radius.circular(7),
-                                   topRight: Radius.circular(7),
-                                   bottomLeft: Radius.circular( selectedindex==index?0:7),
-                                   bottomRight:Radius.circular( selectedindex==index?0:7),
+                            });
+                          },);
+                        });
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all( Radius.circular(7)),
+                            //  color: Color(0xffF3FCFB)
+                            color:_selectedIndex==0? presentsent_color.withOpacity(0.05) : absent_color.withOpacity(0.05),
+                            border: Border(bottom: BorderSide( color:_selectedIndex==0? presentsent_color : absent_color))
+                        ),
+                        margin: EdgeInsets.only(bottom: 7),
+                        child: Column(
+                          children: [
+                          Container(
+                            padding: EdgeInsets.only(left: 6,right: 10),
+                            height: 70,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(7),
+                                  topRight: Radius.circular(7),
+                                  bottomLeft: Radius.circular( selectedindex==index?0:7),
+                                  bottomRight:Radius.circular( selectedindex==index?0:7),
+                                ),
+                              //  color: Color(0xffF3FCFB)
+                             //   color: CustomButtonColor.withOpacity(0.05),
+                            //  border: Border(bottom: BorderSide(color:_selectedindex==index?CustomButtonColor.withOpacity(0.05): CustomButtonColor))
+                            ),
+                            width: double.infinity,
+                            child: Row(
+                              children: [
+                                Container(
+                                height: 50,
+                                width: 50,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(7),
+                                    topRight: Radius.circular(7),
+                                    bottomLeft: Radius.circular( selectedindex==index?0:7),
+                                    bottomRight:Radius.circular( selectedindex==index?0:7),
 
-                                 )
-                               ),
-                               margin: EdgeInsets.only(right: 10),
-                               child: Stack(
-                                 children: [
-                                   Padding(
-                                     padding: const EdgeInsets.all(1.0),
-                                     child: ClipRRect(
-                                         borderRadius: BorderRadius.circular(100),
-                                         child: CustomImageSction(height: 50, width: 50, radius: 1, image: "Assets/DrawerImage/testperson.png")
-                                     ),
-                                   ),
-                                   selectedindex==index || getindex==0? Container():  Positioned(
-                                       right: 0,
-                                       child: CustomImageSction(height: 18, width: 15, radius: 1, image: "Assets/DrawerImage/chat.png"))
+                                  )
+                                ),
+                                margin: EdgeInsets.only(right: 10),
+                                child: Stack(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.all(1.0),
+                                      child: ClipRRect(
+                                          borderRadius: BorderRadius.circular(100),
+                                          child: CustomImageSctionNetwork(height: 50, width: 50, radius: 1, image: "")
+                                      ),
+                                    ),
+                                    selectedindex==index || getindex==0? Container():  Positioned(
+                                        right: 0,
+                                        child: CustomImageSction(height: 18, width: 15, radius: 1, image: "Assets/DrawerImage/chat.png"))
 
-                                 ],
-                               ),
-                             ),
-                               Expanded(
-                                   flex: 4,
-                                   child: Column(
-                                     crossAxisAlignment: CrossAxisAlignment.start,
-                                     mainAxisAlignment: MainAxisAlignment.center,
-                                     children: [
-                                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "ID: 544532", letterSpacing: 0.3, textColor: CustomButtonColor.withOpacity(0.7),),
-                                       Text("Hafijur Rahman Mizan",
-                                           overflow: TextOverflow.ellipsis
-                                           ,style: GoogleFonts.poppins(
-                                         fontSize: 12,
-                                         fontWeight: FontWeight.w400,
-                                         letterSpacing: 0.3,
-                                       ),),
-                                       CustomText(fontSize: 11, fontWeight: FontWeight.w300, text: "HR Manager", letterSpacing: 0.3,  ),
-                                     ],
-                                   )),
-                               SizedBox(width: 10,),
-                               Expanded(
-                                   flex: 4,
-                                   child: Column(
-                                     crossAxisAlignment: CrossAxisAlignment.start,
-                                     mainAxisAlignment: MainAxisAlignment.center,
-                                     children: [
-                                       Row(
-                                         children: [
-                                           CustomImageSction(height: 12, width: 15, radius: 1, image: "Assets/DrawerImage/location.png"),
-                                           ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "Gulshan Circle-1", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.6),),
-                                         ],
-                                       ),
-                                       Divider(
-                                         height: 10,
-                                       ),
-                                       Row(
-                                         children: [
-                                           ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text:isChekin==false?"Check Out": "Check In", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.6),),
-                                           SizedBox(width: 10,),
-                                           CustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "08:25:00", letterSpacing: 0.3, ),
-                                         ],
-                                       ),
-                                       Row(
-                                         children: [
-                                           ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text:isChekin==false?"Early" :"Late", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.6),),
-                                           SizedBox(width: 5,),
-                                           CustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "25:00", letterSpacing: 0.3, ),
-                                           SizedBox(width: 4,),
+                                  ],
+                                ),
+                              ),
+                                Expanded(
+                                    flex: 4,
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                       ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "ID: 544532", letterSpacing: 0.3, textColor: CustomButtonColor.withOpacity(0.7),),
+                                        Text("Hafijur Rahman Mizan",
+                                            overflow: TextOverflow.ellipsis
+                                            ,style: GoogleFonts.poppins(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w400,
+                                          letterSpacing: 0.3,
+                                        ),),
+                                        CustomText(fontSize: 11, fontWeight: FontWeight.w300, text: "HR Manager", letterSpacing: 0.3,  ),
+                                      ],
+                                    )),
+                                SizedBox(width: 10,),
+                                Expanded(
+                                    flex: 4,
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            CustomImageSction(height: 12, width: 15, radius: 1, image: "Assets/DrawerImage/location.png"),
+                                            ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "Gulshan Circle-1", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.6),),
+                                          ],
+                                        ),
+                                        Divider(
+                                          height: 10,
+                                        ),
+                                        Row(
+                                          children: [
+                                            ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text:isChekin==false?"Check Out": "Check In", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.6),),
+                                            SizedBox(width: 10,),
+                                            CustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "08:25:00", letterSpacing: 0.3, ),
+                                          ],
+                                        ),
+                                        Row(
+                                          children: [
+                                            ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text:isChekin==false?"Early" :"Late", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.6),),
+                                            SizedBox(width: 5,),
+                                            CustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "25:00", letterSpacing: 0.3, ),
+                                            SizedBox(width: 4,),
 
-                                           isChekin==false?  Container(height: 10,width: 1,color: Main_Theme_textColor,):Container(),
-                                           SizedBox(width: 4,),
+                                            isChekin==false?  Container(height: 10,width: 1,color: Main_Theme_textColor,):Container(),
+                                            SizedBox(width: 4,),
 
-                                           isChekin==false? Row(
-                                             children: [
-                                               ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text:"OT", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.6),),
-                                               SizedBox(width: 5,),
-                                               CustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "25:00", letterSpacing: 0.3, ),
-                                             ],
-                                           ):Container(),
+                                            isChekin==false? Row(
+                                              children: [
+                                                ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text:"OT", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.6),),
+                                                SizedBox(width: 5,),
+                                                CustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "25:00", letterSpacing: 0.3, ),
+                                              ],
+                                            ):Container(),
 
-                                         ],
-                                       ),
+                                          ],
+                                        ),
 
-                                     ],
-                                   )
-                               ),
-                               ///----------------- Third Part ------------------------------///
-                                selectedindex==index? Icon(Icons.keyboard_arrow_up):Icon(Icons.keyboard_arrow_down)
-                             ],
-                           ),
-                         ),
-                             selectedindex==index  ?  AnimatedContainer(
-                             height: animatedheight,
-                             width: double.infinity,
-                             duration: Duration(milliseconds: 400),
-                             child: Container(
-                               child: SingleChildScrollView(
-                                 child: Column(
-                                   children: [
-                                     Divider(),
-                                     Padding(
-                                       padding: const EdgeInsets.only(left: 10.0,top: 5,bottom: 10),
-                                       child: Row(
-                                         children: [
-                                           CustomImageSction(height: 18, width: 15, radius: 1, image: "Assets/DrawerImage/chat.png"),
-                                           SizedBox(width: 10,),
-                                           ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "Gulshan Circle-1", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.6),),
-                                         ],
-                                       ),
-                                     ),
-                                     Container(
-                                       decoration: BoxDecoration(
-                                         borderRadius: BorderRadius.circular(7),
-                                         border: Border.all(
-                                             width: 1,
-                                             color: Main_Theme_textColor.withOpacity(0.1)
-                                         ),
-                                       ),
-                                       padding: EdgeInsets.only(left: 10,right: 10,top: 5,bottom: 5),
-                                       margin: EdgeInsets.only(left: 10,right: 10),
-                                       child: CustomText(maxLines: 2,fontSize: 12, fontWeight: FontWeight.w400, text: "$Loremtext", letterSpacing: 0.3,textAlign: TextAlign.justify,),
-                                     ),
-                                     SizedBox(height: 7,),
-                                     ApprovedDisapprovedButton(onTap: () {
+                                      ],
+                                    )
+                                ),
+                                ///----------------- Third Part ------------------------------///
+                                 selectedindex==index? Icon(Icons.keyboard_arrow_up):Icon(Icons.keyboard_arrow_down)
+                              ],
+                            ),
+                          ),
+                              selectedindex==index  ?  AnimatedContainer(
+                              height: animatedheight,
+                              width: double.infinity,
+                              duration: Duration(milliseconds: 400),
+                              child: Container(
+                                child: SingleChildScrollView(
+                                  child: Column(
+                                    children: [
+                                      Divider(),
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 10.0,top: 5,bottom: 10),
+                                        child: Row(
+                                          children: [
+                                            CustomImageSction(height: 18, width: 15, radius: 1, image: "Assets/DrawerImage/chat.png"),
+                                            SizedBox(width: 10,),
+                                            ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "Gulshan Circle-1", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.6),),
+                                          ],
+                                        ),
+                                      ),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(7),
+                                          border: Border.all(
+                                              width: 1,
+                                              color: Main_Theme_textColor.withOpacity(0.1)
+                                          ),
+                                        ),
+                                        padding: EdgeInsets.only(left: 10,right: 10,top: 5,bottom: 5),
+                                        margin: EdgeInsets.only(left: 10,right: 10),
+                                        child: CustomText(maxLines: 2,fontSize: 12, fontWeight: FontWeight.w400, text: "$Loremtext", letterSpacing: 0.3,textAlign: TextAlign.justify,),
+                                      ),
+                                      SizedBox(height: 7,),
+                                      ApprovedDisapprovedButton(onTap: () {
 
-                                     }, disapproved: () {
+                                      }, disapproved: () {
 
-                                     },),
+                                      },),
 
-                                     SizedBox(height: 10,),
-                                   ],
-                                 ),
-                               ),
-                             ) ,
+                                      SizedBox(height: 10,),
+                                    ],
+                                  ),
+                                ),
+                              ) ,
 
-                           ) :Container(),
+                            ) :Container(),
 
-                         ],
-                       ),
-                     ),
-                   );
-                 },)
-               ),
-             ),
-           )
+                          ],
+                        ),
+                      ),
+                    );
+                  },)
+                ),
+              ),
+            )
 
           ],
         ),

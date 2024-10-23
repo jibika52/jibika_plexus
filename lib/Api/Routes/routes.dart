@@ -116,5 +116,22 @@
     String GetEmployeeById="Employee/GetEmployeeById";
 
 
+
   ///  This month join employee list
     String ThisMonthJoinEmployeeList="Employee/GetSelectedEmpList";
+
+    /// for approval art-------------------------------------------------------------------------------------------------------
+  ///  Pending Leave list
+  String PendingLeaveList="Leave/GetAppliedLeaveApprovalData";
+
+
+  ///  Approved Leave list
+  String ApprovedLeaveList="Leave/GetLeaveRegisterByEmployee";
+
+
+  ///  Approved Leave list
+  String ApprovedLeavebyTmpTableCode="Leave/ApplyLeaveApproval";
+
+
+  ///  Reject Leave list
+  String RejectLeaveApprovalTmpTableCode="Leave/RejectLeaveApproval";

@@ -6,8 +6,10 @@ import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:jibika_plexus/Controller/AdminApprovalController/admin_approval_controller.dart';
 import 'package:jibika_plexus/Controller/CounterProvider/counter_provider.dart';
 import 'package:jibika_plexus/CustomWidget/CustomAppBar/CustomDefaultAppBar/custom_default_app_bar.dart';
 import 'package:jibika_plexus/CustomWidget/CustomButton/custom_button.dart';
@@ -180,196 +182,202 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
                                   local.animationValue))));
                 },
                 borderWidth: 1.0,
-                onChanged: (i) => setState(() => _selectedIndex = i),
+                onChanged: (i) => setState(()
+                {
+                  animatedheight=0;
+                  getindex='';
+                  _selectedIndex = i;
+                  if(_selectedIndex==0){
+              Provider.of<AdminApprovalController>(context,listen: false).pendingLeaveListProvider("${GetStorage().read("mobile_id")}", "${GetStorage().read("IdCardNo")}", "${GetStorage().read("Empcode")}", context);
+                 }else{
+              Provider.of<AdminApprovalController>(context,listen: false).approvedLeaveListProvider("${GetStorage().read("mobile_id")}", "${GetStorage().read("IdCardNo")}", "${GetStorage().read("Empcode")}", context);
+              }
+                }),
               ),
             ),
             SizedBox(height: 5,),
-            ColorCustomText(textColor: _selectedIndex==0? CheckOutColor :_selectedIndex==1? presentsent_color : absent_color ,fontSize: font12, fontWeight: FontWeight.w500, text: _selectedIndex==0?"Waiting(655)":_selectedIndex==1?"Approved(100)":"Disapproved(100)", letterSpacing: 0.1),
+            Consumer<AdminApprovalController>(
+                builder: (context, value, child) =>
+              value.pendingLeaveList==null?  ColorCustomText(textColor: _selectedIndex==0? CheckOutColor :_selectedIndex==1? presentsent_color : absent_color ,fontSize: font12, fontWeight: FontWeight.w500, text: _selectedIndex==0?"Waiting(0)": "Approved(0)" , letterSpacing: 0.1)
+          :
+                ColorCustomText(textColor: _selectedIndex==0? CheckOutColor :_selectedIndex==1? presentsent_color : absent_color ,fontSize: font12, fontWeight: FontWeight.w500, text: _selectedIndex==0?"Waiting(${value.pendingLeaveList.length})": "Approved(${value.pendingLeaveList.length})" , letterSpacing: 0.1)),
             SizedBox(height: 5,),
-
             /// ------------------ third part ------------///
-            Expanded(
-              flex: 2,
-              child: Container(
-                width: 400,
-                color: Main_Theme_WhiteCollor,
-                padding: EdgeInsets.only(left: 10,right: 10,bottom: 10),
-                child: Container(
-                    child: ListView.builder(
-                      itemCount: 10,
-                      itemBuilder: (context, index) {
-                        return InkWell(
-                          onTap: () {
-                            setState(() {
-                              selectedindex=index;
-                              animatedheight=0;
-                              Future.delayed(Duration(milliseconds: 100),() {
-                                setState(() {
-                                  if(getindex=="$index"){
-                                    animatedheight=0;
-                                    getindex='';
-                                  }else{
-                                    animatedheight=155;
-                                    getindex="$index";
-                                  }
+            Consumer<AdminApprovalController>(
+              builder: (context, value, child)  =>
+               Expanded(
+                flex: 2,
+                child: value.pendingLeaveList==null?Center(child: CircularProgressIndicator(),): Container(
+                  width: 400,
+                  color: Main_Theme_WhiteCollor,
+                  padding: EdgeInsets.only(left: 10,right: 10,bottom: 10),
+                  child: Container(
+                      child: ListView.builder(
+                        itemCount: value.pendingLeaveList==null?0: value.pendingLeaveList.length ,
+                        itemBuilder: (context, index) {
+                          return InkWell(
+                            onTap: () {
+                              setState(() {
+                                selectedindex=index;
+                                animatedheight=0;
+                                Future.delayed(Duration(milliseconds: 100),() {
+                                  setState(() {
+                                    if(getindex=="$index"){
+                                      animatedheight=0;
+                                      getindex='';
+                                    }else{
+                                      _selectedIndex==0?   animatedheight=155 : animatedheight=110;
+                                      getindex="$index";
+                                    }
 
-                                });
-                              },);
+                                  });
+                                },);
 
-                            });
-                          },
-                          child: Container(
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.all( Radius.circular(7)),
-                                //  color: Color(0xffF3FCFB)
-                                color:  _selectedIndex==0? CheckOutColor.withOpacity(0.1) : presentsent_color.withOpacity(0.1),
-                                border: Border(bottom: BorderSide( color: _selectedIndex==0? CheckOutColor : presentsent_color,))
-                            ),
-                            margin: EdgeInsets.only(bottom: 7),
-                            child: Column(
-                              children: [
-                                Container(
-                                  padding: EdgeInsets.only(left: 6,right: 10),
-                                  height: 70,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(7),
-                                      topRight: Radius.circular(7),
-                                      bottomLeft: Radius.circular( selectedindex==index?0:7),
-                                      bottomRight:Radius.circular( selectedindex==index?0:7),
+                              });
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.all( Radius.circular(7)),
+                                  //  color: Color(0xffF3FCFB)
+                                  color:  _selectedIndex==0? CheckOutColor.withOpacity(0.1) : presentsent_color.withOpacity(0.1),
+                                  border: Border(bottom: BorderSide( color: _selectedIndex==0? CheckOutColor : presentsent_color,))
+                              ),
+                              margin: EdgeInsets.only(bottom: 7),
+                              child: Column(
+                                children: [
+                                  Container(
+                                    padding: EdgeInsets.only(left: 6,right: 10),
+                                    height: 70,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(7),
+                                        topRight: Radius.circular(7),
+                                        bottomLeft: Radius.circular( selectedindex==index?0:7),
+                                        bottomRight:Radius.circular( selectedindex==index?0:7),
+                                      ),
                                     ),
-                                    //  color: Color(0xffF3FCFB)
-                                    //   color: CustomButtonColor.withOpacity(0.05),
-                                    //  border: Border(bottom: BorderSide(color:_selectedindex==index?CustomButtonColor.withOpacity(0.05): CustomButtonColor))
+                                    width: double.infinity,
+                                    child: Row(
+                                      children: [
+                                        Container(
+                                          height: 50,
+                                          width: 50,
+                                          decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.only(
+                                                topLeft: Radius.circular(7),
+                                                topRight: Radius.circular(7),
+                                                bottomLeft: Radius.circular( selectedindex==index?0:7),
+                                                bottomRight:Radius.circular( selectedindex==index?0:7),
+
+                                              )
+                                          ),
+                                          margin: EdgeInsets.only(right: 10),
+                                          child:  Padding(
+                                            padding: const EdgeInsets.all(1.0),
+                                            child: ClipRRect(
+                                                borderRadius: BorderRadius.circular(100),
+                                                child: CustomImageSctionNetwork(height: 50, width: 50, radius: 1, image: "${value.pendingLeaveList[index]["IMG"]}")
+                                            ),
+                                          ),
+                                        ),
+                                        Expanded(
+                                            flex: 4,
+                                            child: Column(
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: [
+                                                ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "ID: ${value.pendingLeaveList[index]["ID_CARD_NO"]}", letterSpacing: 0.3, textColor: CustomButtonColor.withOpacity(0.7),),
+                                                Text("${value.pendingLeaveList[index]["EMPLOYEE_NAME_ENGLISH"]}",
+                                                  overflow: TextOverflow.ellipsis
+                                                  ,style: GoogleFonts.poppins(
+                                                    fontSize: 12,
+                                                    fontWeight: FontWeight.w400,
+                                                    letterSpacing: 0.3,
+                                                  ),),
+                                                CustomText(fontSize: 11, fontWeight: FontWeight.w300, text: "${value.pendingLeaveList[index]["DESIGNATION"]}", letterSpacing: 0.3,  ),
+                                              ],
+                                            )),
+                                        SizedBox(width: 10,),
+
+                                        ///----------------- Third Part ------------------------------///
+                                        selectedindex==index? Icon(Icons.keyboard_arrow_up):Icon(Icons.keyboard_arrow_down)
+                                      ],
+                                    ),
                                   ),
-                                  width: double.infinity,
-                                  child: Row(
-                                    children: [
-                                      Container(
-                                        height: 50,
-                                        width: 50,
+                                  selectedindex==index  ?  AnimatedContainer(
+                                    height: animatedheight,
+                                    width: double.infinity,
+                                    duration: Duration(milliseconds: 400),
+                                    child: SingleChildScrollView(
+                                      child: Container(
                                         decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.only(
-                                              topLeft: Radius.circular(7),
-                                              topRight: Radius.circular(7),
-                                              bottomLeft: Radius.circular( selectedindex==index?0:7),
-                                              bottomRight:Radius.circular( selectedindex==index?0:7),
-
-                                            )
+                                          borderRadius: BorderRadius.circular(7),
                                         ),
-                                        margin: EdgeInsets.only(right: 10),
-                                        child:  Padding(
-                                          padding: const EdgeInsets.all(1.0),
-                                          child: ClipRRect(
-                                              borderRadius: BorderRadius.circular(100),
-                                              child: CustomImageSction(height: 50, width: 50, radius: 1, image: "Assets/DrawerImage/testperson.png")
-                                          ),
+                                        padding: EdgeInsets.only(left: 10,right: 10,top: 0,bottom: 60),
+                                        child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Divider(height: 5,),
+                                            Row(
+                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                              children: [
+                                                CustomText(fontSize: 11, fontWeight: FontWeight.w500, text: "${value.pendingLeaveList[index]["FROM_2_TO_DATE"]}", letterSpacing: 0.3),
+                                                CustomText(fontSize: 11, fontWeight: FontWeight.w500, text: "Total : ${value.pendingLeaveList[index]["LEAVE_TYPE_ENGLISH"]}-${value.pendingLeaveList[index]["LEAVE_DAYS"]} Days", letterSpacing: 0.3),
+                                              ],
+                                            ),
+                                            SizedBox(height: 10,),
+                                            CustomText(fontSize: 12, fontWeight: FontWeight.w500, text: "Remarks", letterSpacing: 0.3),
+                                            SizedBox(height: 5,),
+                                            Container(
+                                                padding: EdgeInsets.only(left: 10,right: 10,top: 5,bottom: 5),
+                                                decoration: BoxDecoration(
+                                                  borderRadius: BorderRadius.circular(7),
+                                                  border: Border.all(width: 1.5,color: Main_Theme_textColor.withOpacity(0.2))
+                                                ),
+                                                child: CustomText(maxLines:2,fontSize: 12, fontWeight: FontWeight.w400, text: "${value.pendingLeaveList[index]["REMARKS"]??"Missed ...\n."}", letterSpacing: 0.2,textAlign: TextAlign.justify,)),
+                                            _selectedIndex==0?      SizedBox(height: 10,):Container(),
+                                            _selectedIndex==0?   ApprovedDisapprovedButton(onTap: () {
+                                              showDialog(context: context, builder: (context) => AlertDialog(
+                                                title: CustomText(fontSize: fontSubTitle, fontWeight: FontWeight.w600, text: "Are you sure to Approved", letterSpacing: 0.3),
+                                                actions: [
+                                                  ActionChip(label: Text("Yes"),onPressed: () {
+                                                  Provider.of<AdminApprovalController>(context,listen: false).LeaveapprovedProvider("${GetStorage().read("mobile_id")}","${value.pendingLeaveList[index]["EMPCODE"]}","${GetStorage().read("IdCardNo")}", "${value.pendingLeaveList[index]["TEMP_TABLE_CODE"]}","${GetStorage().read("Empcode")}", context);
+                                                  Navigator.pop(context);
+                                                  },),
+                                                  ActionChip(label: Text("No"),onPressed: () {
+                                                    Navigator.pop(context);
+                                                  },)
+                                                ],
+                                              ),);
+                                            }, disapproved: () {
+                                              showDialog(context: context, builder: (context) => AlertDialog(
+                                                title: CustomText(fontSize: fontSubTitle, fontWeight: FontWeight.w600, text: "Are you sure to Disapproved", letterSpacing: 0.3),
+                                                actions: [
+                                                  ActionChip(label: Text("Yes"),onPressed: () {
+                                                    Provider.of<AdminApprovalController>(context,listen: false).LeaveRejectProvider("${GetStorage().read("mobile_id")}","${value.pendingLeaveList[index]["EMPCODE"]}","${GetStorage().read("IdCardNo")}", "${value.pendingLeaveList[index]["TEMP_TABLE_CODE"]}","${GetStorage().read("Empcode")}", context);
+                                                    Navigator.pop(context);
+                                                  },),
+                                                  ActionChip(label: Text("No"),onPressed: () {
+                                                    Navigator.pop(context);
+                                                  },)
+                                                ],
+                                              ),);
+
+
+                                            },) :Container()
+                                          ],
                                         ),
                                       ),
-                                      Expanded(
-                                          flex: 4,
-                                          child: Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: [
-                                              ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "ID: 544532", letterSpacing: 0.3, textColor: CustomButtonColor.withOpacity(0.7),),
-                                              Text("Hafijur Rahman Mizan",
-                                                overflow: TextOverflow.ellipsis
-                                                ,style: GoogleFonts.poppins(
-                                                  fontSize: 12,
-                                                  fontWeight: FontWeight.w400,
-                                                  letterSpacing: 0.3,
-                                                ),),
-                                              CustomText(fontSize: 11, fontWeight: FontWeight.w300, text: "HR Manager", letterSpacing: 0.3,  ),
-                                            ],
-                                          )),
-                                      SizedBox(width: 10,),
-                                      // Expanded(
-                                      //     flex: 4,
-                                      //     child: Column(
-                                      //       crossAxisAlignment: CrossAxisAlignment.center,
-                                      //       mainAxisAlignment: MainAxisAlignment.center,
-                                      //       children: [
-                                      //         Row(
-                                      //           mainAxisAlignment: MainAxisAlignment.center,
-                                      //           children: [
-                                      //             ColorCustomText(fontSize: 11, fontWeight: FontWeight.w500, text: "CL-02", letterSpacing: 0.3, textColor: CustomButtonColor,),
-                                      //           ],
-                                      //         ),
-                                      //         Row(
-                                      //           mainAxisAlignment: MainAxisAlignment.center,
-                                      //           children: [
-                                      //             ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "From : " , letterSpacing: 0.3, textColor: Main_Theme_textColor,),
-                                      //             CustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "10 Apr 2023", letterSpacing: 0.3, ),
-                                      //           ],
-                                      //         ),
-                                      //         Row(
-                                      //           mainAxisAlignment: MainAxisAlignment.center,
-                                      //           children: [
-                                      //             ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "To : ", letterSpacing: 0.3, textColor: Main_Theme_textColor),
-                                      //             CustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "10 Apr 2023", letterSpacing: 0.3, ),
-                                      //             SizedBox(width: 4,),
-                                      //
-                                      //           ],
-                                      //         ),
-                                      //
-                                      //       ],
-                                      //     )
-                                      // ),
-                                      ///----------------- Third Part ------------------------------///
-                                      selectedindex==index? Icon(Icons.keyboard_arrow_up):Icon(Icons.keyboard_arrow_down)
-                                    ],
-                                  ),
-                                ),
-                                selectedindex==index  ?  AnimatedContainer(
-                                  height: animatedheight,
-                                  width: double.infinity,
-                                  duration: Duration(milliseconds: 400),
-                                  child: SingleChildScrollView(
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(7),
-                                      ),
-                                      padding: EdgeInsets.only(left: 10,right: 10,top: 0,bottom: 60),
-                                      child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          Divider(height: 5,),
-                                          Row(
-                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              CustomText(fontSize: 11, fontWeight: FontWeight.w500, text: "02-Oct-2024 To 05-Oct-2024", letterSpacing: 0.3),
-                                              CustomText(fontSize: 11, fontWeight: FontWeight.w500, text: "Total : CL-05 Days", letterSpacing: 0.3),
-                                            ],
-                                          ),
-                                          SizedBox(height: 10,),
-                                          CustomText(fontSize: 12, fontWeight: FontWeight.w500, text: "Remarks", letterSpacing: 0.3),
-                                          SizedBox(height: 5,),
-                                          Container(
-                                              padding: EdgeInsets.only(left: 10,right: 10,top: 5,bottom: 5),
-                                              decoration: BoxDecoration(
-                                                borderRadius: BorderRadius.circular(7),
-                                                border: Border.all(width: 1.5,color: Main_Theme_textColor.withOpacity(0.2))
-                                              ),
-                                              child: CustomText(maxLines:2,fontSize: 12, fontWeight: FontWeight.w400, text: "$Loremtext", letterSpacing: 0.2,textAlign: TextAlign.justify,)),
-                                          SizedBox(height: 10,),
-                                          ApprovedDisapprovedButton(onTap: () {
+                                    ) ,
 
-                                          }, disapproved: () {
+                                  ) :Container(),
 
-                                          },)
-                                        ],
-                                      ),
-                                    ),
-                                  ) ,
-
-                                ) :Container(),
-
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
-                        );
-                      },)
+                          );
+                        },)
+                  ),
                 ),
               ),
             )

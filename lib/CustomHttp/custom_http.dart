@@ -684,6 +684,141 @@ class CustomHttpRequestClass{
     }
   }
 
+/// -------------------------------  Approval Part -----------------------------------------------------------------------------------------
+
+  ///  Pending Leave List for get Approval-
+  pendingLeaveListHttpFunction(String UserId, String ID_CARD_NO, String EMPCODE,BuildContext context)async{
+    dynamic  pendingLeaveList   ;
+    var body = jsonEncode({
+      "UserId":"$UserId",
+      "ID_CARD_NO": "$ID_CARD_NO",
+      "EMPCODE": int.parse("$EMPCODE")
+    });
+    try{
+      var data=await http.post(Uri.parse("$BASEURL/$PendingLeaveList"),
+          headers: {
+            "Content-Type": "application/json",
+            "username": "jibikaapps",
+            "password": "20jibika24",
+          },
+          body: body
+      ).then((http.Response response) {
+        print("----------------------aaaaaaaaaaaaaaaa---------------------------- ${response.body}");
+        var response_data =jsonDecode(response.body);
+        pendingLeaveList =response_data["data"]["rows"];
+      });
+      return pendingLeaveList;
+    }
+    catch(e){
+      print("  Pending Leave List Catch Error ============================ ${e}");
+    }
+  }
+
+
+
+  ///  Approved Leave List for get Approval-------------------------------------------------------------------------
+  ApprovedLeaveListHttpFunction(String UserId, String ID_CARD_NO, String EMPCODE,BuildContext context)async{
+    dynamic  approvedLeaveList   ;
+    var body = jsonEncode({
+      "UserId":"$UserId",
+      "EMPCODE": int.parse("$EMPCODE")
+    });
+    try{
+      var data=await http.post(Uri.parse("$BASEURL/$ApprovedLeaveList"),
+          headers: {
+            "Content-Type": "application/json",
+            "username": "jibikaapps",
+            "password": "20jibika24",
+          },
+          body: body
+      ).then((http.Response response) {
+        print("-------------bbbbbbbbbbbbbbb------------------------------------- ${response.body}");
+        var response_data =jsonDecode(response.body);
+        approvedLeaveList =response_data["data"];
+      });
+      return approvedLeaveList;
+    }
+    catch(e){
+      print("  Pending Leave List Catch Error ============================ ${e}");
+    }
+  }
+
+
+
+
+  ///  Approved Leave List for get Approval-------------------------------------------------------------------------
+  ApprovedLeavebyTmpTableCodeHttpFunction(String UserId,  String EMPCODE,  String ID_CARD_NO,  String TEMP_CODE, String R_EMPCODE, BuildContext context)async{
+    dynamic  approvedLeaveList   ;
+    var body = jsonEncode({
+      "UserId":"$UserId",
+      "EMPCODE": int.parse("$EMPCODE") ,
+      "ID_CARD_NO": "$ID_CARD_NO",
+      "TEMP_CODE": int.parse("$TEMP_CODE"),
+      "R_EMPCODE" : int.parse("$R_EMPCODE")
+    });
+    try{
+      var data=await http.post(Uri.parse("$BASEURL/$ApprovedLeavebyTmpTableCode"),
+          headers: {
+            "Content-Type": "application/json",
+            "username": "jibikaapps",
+            "password": "20jibika24",
+          },
+          body: body
+      ).then((http.Response response) {
+        print("-------------bbbbbbbbbbbbbbb------------------------------------- ${response.body}");
+        var response_data =jsonDecode(response.body);
+        if(response.statusCode==200){
+          quickAlertsuccess(context, "Leave Approved Successful", "Thanks for leave approval", 2);
+        }else{
+          quickAlertsuccess(context, "$response_data", "Try again later", 2);
+        }
+      });
+
+      return approvedLeaveList;
+    }
+    catch(e){
+      print("  Pending Leave List Catch Error ============================ ${e}");
+    }
+  }
+
+
+
+
+  ///  Approved Leave List for get Approval-------------------------------------------------------------------------
+  RejectLeaveApprovalTmpTableCodeHttpFunction(String UserId,  String EMPCODE,  String ID_CARD_NO,  String TEMP_CODE, String R_EMPCODE, BuildContext context)async{
+    dynamic  approvedLeaveList   ;
+    var body = jsonEncode({
+      "UserId":"$UserId",
+      "EMPCODE": int.parse("$EMPCODE") ,
+      "ID_CARD_NO": "$ID_CARD_NO",
+      "TEMP_CODE": int.parse("$TEMP_CODE"),
+      "R_EMPCODE" : int.parse("$R_EMPCODE")
+    });
+    try{
+      var data=await http.post(Uri.parse("$BASEURL/$RejectLeaveApprovalTmpTableCode"),
+          headers: {
+            "Content-Type": "application/json",
+            "username": "jibikaapps",
+            "password": "20jibika24",
+          },
+          body: body
+      ).then((http.Response response) {
+        print("-------------bbbbbbbbbbbbbbb------------------------------------- ${response.body}");
+        var response_data =jsonDecode(response.body);
+        if(response.statusCode==200){
+          quickAlertsuccess(context, "Reject Leave Approval Successful", "Thanks for leave approval", 2);
+        }else{
+          quickAlertsuccess(context, "$response_data", "Try again later", 2);
+        }
+      });
+
+      return approvedLeaveList;
+    }
+    catch(e){
+      print("  Pending Leave List Catch Error ============================ ${e}");
+    }
+  }
+
 
 
 

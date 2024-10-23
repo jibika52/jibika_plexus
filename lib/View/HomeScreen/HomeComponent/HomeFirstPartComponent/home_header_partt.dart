@@ -8,6 +8,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:jibika_plexus/Controller/AdminApprovalController/admin_approval_controller.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
 import 'package:jibika_plexus/View/HomeScreen/HomeComponent/HomeFirstPartComponent/HomeFirstPartComponentAttendence/home_first_part_component_attendence.dart';
 import 'package:jibika_plexus/View/HomeScreen/HomeComponent/HomeFirstPartComponent/HomeFirstPartComponentLeave/home_first_part_component_leave.dart';
@@ -84,7 +85,9 @@ class _HomeHederPartState extends State<HomeHederPart> {
                   Navigator.push(context, CupertinoPageRoute(builder: (context) => HomeFirstPartComponentLeave(
                     tag: "dash",
                   ),));
-                }
+
+                  Provider.of<AdminApprovalController>(context,listen: false).pendingLeaveListProvider("${GetStorage().read("mobile_id")}", "${GetStorage().read("IdCardNo")}", "${GetStorage().read("Empcode")}", context);
+               }
                 else if(selected_index==3){
                   Navigator.push(context, CupertinoPageRoute(builder: (context) => HomeFirstPartComponentPromotionScreen(),));
                 }
