@@ -175,7 +175,7 @@ class CustomLeftDrawer extends StatelessWidget {
                               index: 4,
                             ),));
                           }else{
-                            Navigator.push(context, DialogRoute(context: context, builder: (context) => SalfBootomNatchBarScreen(
+                            Navigator.push(context, CupertinoPageRoute(  builder: (context) => SalfBootomNatchBarScreen(
                               currentIndex: 4,
                             ),));
                           }

@@ -73,8 +73,7 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
         drawer:CustomLeftDrawer(),
         key: _key,
         appBar: PreferredSize(preferredSize: Size.fromHeight(80),
-          /// ------------ Custom Main AppBAr -------------///
-          child: SelfCustomMainAppBar(
+          child: CustomMainAppBar(
               leading_image_route: "Assets/DashBoardIcons/appbar_leadin_menu.png",
               center_appbar_text: "${GetStorage().read("Company_name")}",
               leading_ontab: () {
