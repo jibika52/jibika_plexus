@@ -768,7 +768,20 @@ class CustomHttpRequestClass{
         print("-------------bbbbbbbbbbbbbbb------------------------------------- ${response.body}");
         var response_data =jsonDecode(response.body);
         if(response.statusCode==200){
-          quickAlertsuccess(context, "Leave Approved Successful", "Thanks for leave approval", 2);
+          ElegantNotification(
+            borderRadius: BorderRadius.circular(11),
+            width: 380,
+            iconSize: 25,
+            background: presentsent_color,
+            progressIndicatorBackground: presentsent_color,
+            progressIndicatorColor: absent_color,
+            // position: Alignment.center,
+            title:  ColorCustomText(fontSize: 16, fontWeight: FontWeight.w500, text: "Leave Approved Successful", letterSpacing: 0.3, textColor: Main_Theme_textColor),
+            description: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "Thanks from JIBIKA PAYSCALE!..", letterSpacing: 0.3, textColor: Main_Theme_textColor),
+            onDismiss: () {
+              print('Message when the notification is dismissed');
+            }, icon: Icon(Icons.info_outlined,color:Colors.black,),
+          ).show(context);
         }else{
           quickAlertsuccess(context, "$response_data", "Try again later", 2);
         }
@@ -806,9 +819,23 @@ class CustomHttpRequestClass{
         print("-------------bbbbbbbbbbbbbbb------------------------------------- ${response.body}");
         var response_data =jsonDecode(response.body);
         if(response.statusCode==200){
-          quickAlertsuccess(context, "Reject Leave Approval Successful", "Thanks for leave approval", 2);
+          ElegantNotification(
+            borderRadius: BorderRadius.circular(11),
+            width: 380,
+            iconSize: 25,
+            background: presentsent_color,
+            progressIndicatorBackground: presentsent_color,
+            progressIndicatorColor: absent_color,
+            // position: Alignment.center,
+            title:  ColorCustomText(fontSize: 16, fontWeight: FontWeight.w500, text: "Leave Reject Successful", letterSpacing: 0.3, textColor: Main_Theme_textColor),
+            description: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "Thanks from JIBIKA PAYSCALE!..", letterSpacing: 0.3, textColor: Main_Theme_textColor),
+            onDismiss: () {
+              print('Message when the notification is dismissed');
+            }, icon: Icon(Icons.info_outlined,color:Colors.black,),
+          ).show(context);
         }else{
           quickAlertsuccess(context, "$response_data", "Try again later", 2);
+          Navigator.pop(context);
         }
       });
 

@@ -727,10 +727,11 @@ quickAlertsuccess(BuildContext context,String title,String text,int second,) asy
  QuickAlert.show(
   context: context,
   title: '$title',
-  text: '$text',
-  type: QuickAlertType.warning,
+  type: QuickAlertType.success,
   confirmBtnColor: presentsent_color,
-  autoCloseDuration: Duration(seconds: second)
+  autoCloseDuration: Duration(seconds: second),
+  showConfirmBtn: false,
+  showCancelBtn: false,
  );
 }
 
@@ -739,7 +740,6 @@ quickAlertWrong(BuildContext context,String title,String text,int second,) async
  QuickAlert.show(
   context: context,
   title: '$title',
-  text: '$text',
   type: QuickAlertType.warning,
   confirmBtnColor: presentsent_color,
   autoCloseDuration: Duration(seconds: second),
