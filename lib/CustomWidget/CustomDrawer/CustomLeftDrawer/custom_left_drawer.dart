@@ -111,7 +111,6 @@ class CustomLeftDrawer extends StatelessWidget {
                     ),
 
                     /// Previous Model --------------------------------------------------------------
-
                     SizedBox(height: 10),
                     Consumer<CounterProvider>(
                       builder: (context, value, child) => GetStorage().read("user_type_id")==1003?Divider(): Container(

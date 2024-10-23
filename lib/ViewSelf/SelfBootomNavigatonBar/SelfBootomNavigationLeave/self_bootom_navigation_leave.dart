@@ -61,7 +61,17 @@ class _SelfBootomNavigationLeaveState extends State<SelfBootomNavigationLeave> {
           scrollDirection: Axis.vertical,
           child: Column(
             children: [
-              SizedBox(height: apps_div_margin,),
+              /// Short Summary Of Profile----------------------------------------------------
+              Container(
+                  height: 115,
+                  width: double.infinity,
+                  padding: EdgeInsets.only(left: 0,top: 0,bottom: 0),
+                  color: Main_Theme_WhiteCollor,
+                  child:
+                  SelfProfileSummaryPart( )
+
+              ),
+              SizedBox(height: apps_div_margin-3,),
               /// Four Self part------------------------------------------------------------
               leave_status==null?Center(child: CircularProgressIndicator(),):     Container(
                 width: double.infinity,
@@ -81,6 +91,7 @@ class _SelfBootomNavigationLeaveState extends State<SelfBootomNavigationLeave> {
                                 height: 45,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(45),
+                                  color: home_default_color,
                                   border: Border.all(
                                     color: Main_Theme_textColor.withOpacity(0.1),
                                   )
