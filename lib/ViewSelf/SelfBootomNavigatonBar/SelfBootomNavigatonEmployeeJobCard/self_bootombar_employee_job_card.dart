@@ -75,30 +75,32 @@ class _SelfBootomBarJobCardScreenState extends State<SelfBootomBarJobCardScreen>
                                   }
                                   else if(index==2){
                                     Navigator.push(context, CupertinoPageRoute(builder: (context) => SalfBootomNatchBarScreen(
-                                      currentIndex: 1,
+                                      currentIndex: 2,
                                     ),));
                                    }
                                   else if(index==3){
-                                    Navigator.push(context, CupertinoPageRoute(builder: (context) => SalfBootomNatchBarScreen(
-                                      currentIndex: 1,
-                                    ),));
+                                   quickAlertWrong(context, "Coming Soon", "Thanks for Quarry", 2);
                                    }
                                   else if(index==4){
                                     Navigator.push(context, CupertinoPageRoute(builder: (context) => SelfStationary()));
                                    }
                                   else if(index==5){
+                                    quickAlertWrong(context, "Coming Soon", "Thanks for Quarry", 2);
                                   }
                                   else if(index==6){
+                                    quickAlertWrong(context, "Coming Soon", "Thanks for Quarry", 2);
                                   }
                                   else if(index==7){
                                     Navigator.push(context, CupertinoPageRoute(builder: (context) => SelfLoanScreen(),));
                                   }
                                   else if(index==8){
+                                    quickAlertWrong(context, "Coming Soon", "Thanks for Quarry", 2);
                                   }
                                   else if(index==9){
+                                    quickAlertWrong(context, "Coming Soon", "Thanks for Quarry", 2);
                                   }
                                   else{
-
+                                    quickAlertWrong(context, "Coming Soon", "Thanks for Quarry", 2);
                                   }
               },
               child: Container(

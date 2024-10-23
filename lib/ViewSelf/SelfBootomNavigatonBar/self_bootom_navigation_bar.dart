@@ -81,19 +81,18 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
     }
 //    print(" shift_time ${GetStorage().read("SHIFT_IN_TIME")}---------SHIFT_OUT_TIME --${GetStorage().read("SHIFT_OUT_TIME")}-----ATTENDANCE_Status --${GetStorage().read("ATTENDANCE_Status")}---------IsTrack --${GetStorage().read("IsTrack")}---------------");
     return Scaffold(
-     // resizeToAvoidBottomInset: false,
-      drawer:CustomLeftDrawer(),
-      key: _key,
+     resizeToAvoidBottomInset: false,
       appBar: PreferredSize(preferredSize: Size.fromHeight(75),
         /// ------------ Custom Main AppBAr -------------///
-        child: CustomMainAppBar(
+        child: SelfCustomMainAppBar(
             leading_image_route: "Assets/DashBoardIcons/appbar_leadin_menu.png",
             center_appbar_text: "${GetStorage().read("Company_name")}",
             leading_ontab: () {
               _key.currentState!.openDrawer();
             }, is_need_trailing: true),
       ),
-
+      drawer:CustomLeftDrawer(),
+      key: _key,
       body: bottomBarPages[widget.currentIndex],
       bottomNavigationBar: Container(
         height: 70,
@@ -187,13 +186,12 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
           ],
         ),
       ),
-
-      floatingActionButton:keyboardOpen==true
-          ? SizedBox(): CircleAvatar(
+      floatingActionButton: CircleAvatar(
         radius: 30,
         backgroundColor: Colors.white,
         child: FloatingActionButton(
-          isExtended: false,shape: CircleBorder(
+          isExtended: false,
+          shape: CircleBorder(
           side: BorderSide(color: Main_Theme_WhiteCollor),
         ),
           foregroundColor: Main_Theme_WhiteCollor,
@@ -211,7 +209,7 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
 
     );
   }
-  bool keyboardOpen = false;
+
 }
 
 //

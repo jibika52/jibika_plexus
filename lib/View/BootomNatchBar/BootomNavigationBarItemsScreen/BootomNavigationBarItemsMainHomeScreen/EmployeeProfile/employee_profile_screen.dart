@@ -75,7 +75,7 @@ class _EmployeeProfileScreenState extends State<EmployeeProfileScreen> {
           text: "Activities")),
       body:   Container(
         height:MediaQuery.of(context).size.height ,
-        width: double.infinity,
+        width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
           // gradient: LinearGradient(
           //     colors: [
