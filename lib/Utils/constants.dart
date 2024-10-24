@@ -748,3 +748,4 @@ quickAlertWrong(BuildContext context,String title,String text,int second,) async
 
  );
 }
+
