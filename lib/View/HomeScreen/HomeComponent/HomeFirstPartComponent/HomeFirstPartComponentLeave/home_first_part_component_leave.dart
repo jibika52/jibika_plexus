@@ -341,7 +341,7 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
                                                 title: CustomText(fontSize: fontSubTitle, fontWeight: FontWeight.w600, text: "Are you sure to Approved", letterSpacing: 0.3),
                                                 actions: [
                                                   ActionChip(label: Text("Yes"),onPressed: () {
-                                                  Provider.of<AdminApprovalController>(context,listen: false).LeaveapprovedProvider("${GetStorage().read("mobile_id")}","${value.pendingLeaveList[index]["EMPCODE"]}","${GetStorage().read("IdCardNo")}", "${value.pendingLeaveList[index]["TEMP_TABLE_CODE"]}","${GetStorage().read("Empcode")}", context);
+                                                  Provider.of<AdminApprovalController>(context,listen: false).LeaveapprovedProvider("${GetStorage().read("mobile_id")}","${GetStorage().read("Empcode")}","${GetStorage().read("IdCardNo")}", "${value.pendingLeaveList[index]["TEMP_TABLE_CODE"]}","${value.pendingLeaveList[index]["EMPCODE"]}", context);
                                                   Navigator.pop(context);
                                                   },),
                                                   ActionChip(label: Text("No"),onPressed: () {
@@ -354,7 +354,7 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
                                                 title: CustomText(fontSize: fontSubTitle, fontWeight: FontWeight.w600, text: "Are you sure to Disapproved", letterSpacing: 0.3),
                                                 actions: [
                                                   ActionChip(label: Text("Yes"),onPressed: () {
-                                                    Provider.of<AdminApprovalController>(context,listen: false).LeaveRejectProvider("${GetStorage().read("mobile_id")}","${value.pendingLeaveList[index]["EMPCODE"]}","${GetStorage().read("IdCardNo")}", "${value.pendingLeaveList[index]["TEMP_TABLE_CODE"]}","${GetStorage().read("Empcode")}", context);
+                                                    Provider.of<AdminApprovalController>(context,listen: false).LeaveRejectProvider("${GetStorage().read("mobile_id")}","${GetStorage().read("Empcode")}","${GetStorage().read("IdCardNo")}", "${value.pendingLeaveList[index]["TEMP_TABLE_CODE"]}","${value.pendingLeaveList[index]["EMPCODE"]}", context);
                                                     Navigator.pop(context);
                                                   },),
                                                   ActionChip(label: Text("No"),onPressed: () {
