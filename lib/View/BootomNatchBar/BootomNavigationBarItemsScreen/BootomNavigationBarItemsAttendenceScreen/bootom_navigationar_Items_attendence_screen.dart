@@ -13,7 +13,6 @@ import 'package:jibika_plexus/CustomSelfWedget/MySelfCustomCalender/myself_custo
 import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
 import 'package:month_year_picker/month_year_picker.dart';
-import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:pie_chart/pie_chart.dart';
 import 'package:provider/provider.dart';
 
