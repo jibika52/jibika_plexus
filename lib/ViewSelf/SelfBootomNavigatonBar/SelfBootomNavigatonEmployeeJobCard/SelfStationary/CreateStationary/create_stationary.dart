@@ -17,13 +17,16 @@ class CreateStationaryScreen extends StatefulWidget {
 }
 
 class _CreateStationaryScreenState extends State<CreateStationaryScreen> {
-  double margin=7;
-  double height=40;
-  int count =1;
+  double margin = 7;
+  double height = 40;
+  int count = 1;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(preferredSize: Size.fromHeight(75), child: CustomDefaultAppBar(onTap: () => Navigator.pop(context), text: "Create Stationary")),
+      appBar: PreferredSize(
+          preferredSize: Size.fromHeight(60),
+          child: CustomDefaultAppBar(
+              onTap: () => Navigator.pop(context), text: "Create Stationary")),
       body: Container(
         height: double.infinity,
         width: double.infinity,
@@ -33,193 +36,248 @@ class _CreateStationaryScreenState extends State<CreateStationaryScreen> {
           padding: EdgeInsets.all(10),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: Main_Theme_WhiteCollor
-          ),
+              color: Main_Theme_WhiteCollor),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CustomText(fontSize: 13, fontWeight: FontWeight.w500, text: "Stationery Entry", letterSpacing: 0.4),
+                CustomText(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w500,
+                    text: "Stationery Entry",
+                    letterSpacing: 0.4),
                 Divider(
                   color: Main_Theme_textColor.withOpacity(0.4),
                 ),
                 ListView.builder(
                   shrinkWrap: true,
-                 itemCount: count,
-                 physics: NeverScrollableScrollPhysics(),
-                 itemBuilder: (context, index) {
-                 return Container(
-                   child: Column(
-                     children: [
-                       count !=1? InkWell(
-                         onTap: () {
-                           setState(() {
-                             if(count==1){
-                               count=1;
-                             }else{
-                               count--;
-                             }
-                           });
-                         },
-                         child: Align(
-                           alignment: Alignment.centerRight,
-                           child: Container(
-                             margin: EdgeInsets.only(bottom: 10),
-                             height: 30,
-                             width: 30,
-                             decoration: BoxDecoration(borderRadius: BorderRadius.circular(7),
-                                 border: Border.all(
-                                     color: Main_Theme_textColor.withOpacity(0.4)
-                                 )
-                             ),
-                             child: Image.asset("Assets/SelfIcon/delete.png",height: 17,width: 15,color: absent_color,),
-                           ),
-                         ),
-                       ):Container(),
-                       Container(
-                         height: 189,
-                         width: double.infinity,
-                         child: Row(
-                           children: [
-                             Expanded(
-                                 flex: 2,
-                                 child: Column(
-                                   crossAxisAlignment: CrossAxisAlignment.start,
-                                   children: [
-                                     Container(
-                                         height: height,
-                                         alignment: Alignment.centerLeft,
-                                         child: CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "RQ Date", letterSpacing: 0.3)),
-                                     SizedBox(height: margin,),
-                                     Container(
-                                         height: height,
-                                         alignment: Alignment.centerLeft,
-                                         child: CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Requisition item", letterSpacing: 0.3)),
-                                     SizedBox(height: margin,),
-                                     Container(
-                                         height: height,
-                                         alignment: Alignment.centerLeft,
-                                         child: CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Requisition Quantity", letterSpacing: 0.3)),
-                                     SizedBox(height: margin,),
-                                     Container(
-                                         height: height,
-                                         alignment: Alignment.centerLeft,
-                                         child: CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Configuration Details", letterSpacing: 0.3)),
-                    
-                                   ],
-                                 )),
-                             Expanded(
-                                 flex: 3,
-                                 child: Column(
-                                   crossAxisAlignment: CrossAxisAlignment.start,
-                                   children: [
-                                     MyselfCustomCalender(datetext: "${selectedtoDatee}", width: double.infinity, height: height,onTap: () {
-                                       _selecttoDate(context);
-                                     },),
-                                     SizedBox(height: margin,),
-                                     Container(
-                                         height: height,
-                                         width: double.infinity,
-                                         decoration: BoxDecoration(
-                                           color: Main_Theme_WhiteCollor,
-                                           borderRadius: BorderRadius.circular(5),
-                                           border: Border.all(
-                                             width: 1,
-                                             color: Main_Theme_textColor.withOpacity(0.3),
-                                           ),
-                                         ),
-                                         alignment: Alignment.centerLeft,
-                                         child: TextFormField(
-                                           style: GoogleFonts.poppins(
-                                             fontSize: 12,
-                                             fontWeight: FontWeight.w400
-                                         ),
-                                           decoration: InputDecoration(
-
-                                               hintText: "Enter item",
-                                               hintStyle: GoogleFonts.poppins(
-                                                 fontSize: 12,
-                                                 fontWeight: FontWeight.w400
-                                               ),
-                                               border: InputBorder.none,
-                                               contentPadding: EdgeInsets.only(bottom: 10,left: 10)
-                                           ),
-                                         )
-                                     ),
-                                     SizedBox(height: margin,),
-                                     Container(
-                                         height: height,
-                                         width: double.infinity,
-                                         decoration: BoxDecoration(
-                                           color: Main_Theme_WhiteCollor,
-                                           borderRadius: BorderRadius.circular(5),
-                                           border: Border.all(
-                                             width: 1,
-                                             color: Main_Theme_textColor.withOpacity(0.3),
-                                           ),
-                                         ),
-                                         alignment: Alignment.centerLeft,
-                                         child: TextFormField(
-                                           style: GoogleFonts.poppins(
-                                               fontSize: 12,
-                                               fontWeight: FontWeight.w400
-                                           ),
-                                           keyboardType: TextInputType.number,
-                                           decoration: InputDecoration(
-                                               hintText: "Enter Quantity",
-                                               hintStyle: GoogleFonts.poppins(
-                                                   fontSize: 12,
-                                                   fontWeight: FontWeight.w400
-                                               ),
-                                               border: InputBorder.none,
-                                               contentPadding: EdgeInsets.only(bottom: 10,left: 10)
-                                           ),
-                                         )
-                                     ),
-                                     SizedBox(height: margin,),
-                                     Container(
-                                         height: height,
-                                         width: double.infinity,
-                                         decoration: BoxDecoration(
-                                           color: Main_Theme_WhiteCollor,
-                                           borderRadius: BorderRadius.circular(5),
-                                           border: Border.all(
-                                             width: 1,
-                                             color: Main_Theme_textColor.withOpacity(0.3),
-                                           ),
-                                         ),
-                                         alignment: Alignment.centerLeft,
-                                         child: TextFormField(
-                                           style: GoogleFonts.poppins(
-                                               fontSize: 12,
-                                               fontWeight: FontWeight.w400
-                                           ),
-                                           decoration: InputDecoration(
-                                               hintText: "Enter ",
-                                               hintStyle: GoogleFonts.poppins(
-                                                   fontSize: 12,
-                                                   fontWeight: FontWeight.w400
-                                               ),
-                                               border: InputBorder.none,
-                                               contentPadding: EdgeInsets.only(bottom: 10,left: 10)
-                                           ),
-                                         )
-                                     ),
-                    
-                                   ],
-                                 )),
-                           ],
-                         ),
-                       ),
-                       Divider(
-                         color: Main_Theme_textColor.withOpacity(0.4),
-                       ),
-                       SizedBox(height: 5,),
-                       
-                     ],
-                   ),
-                 );
-               },),
+                  itemCount: count,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemBuilder: (context, index) {
+                    return Container(
+                      child: Column(
+                        children: [
+                          count != 1
+                              ? InkWell(
+                                  onTap: () {
+                                    setState(() {
+                                      if (count == 1) {
+                                        count = 1;
+                                      } else {
+                                        count--;
+                                      }
+                                    });
+                                  },
+                                  child: Align(
+                                    alignment: Alignment.centerRight,
+                                    child: Container(
+                                      margin: EdgeInsets.only(bottom: 10),
+                                      height: 30,
+                                      width: 30,
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(7),
+                                          border: Border.all(
+                                              color: Main_Theme_textColor
+                                                  .withOpacity(0.4))),
+                                      child: Image.asset(
+                                        "Assets/SelfIcon/delete.png",
+                                        height: 17,
+                                        width: 15,
+                                        color: absent_color,
+                                      ),
+                                    ),
+                                  ),
+                                )
+                              : Container(),
+                          Container(
+                            height: 189,
+                            width: double.infinity,
+                            child: Row(
+                              children: [
+                                Expanded(
+                                    flex: 2,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Container(
+                                            height: height,
+                                            alignment: Alignment.centerLeft,
+                                            child: CustomText(
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w400,
+                                                text: "RQ Date",
+                                                letterSpacing: 0.3)),
+                                        SizedBox(
+                                          height: margin,
+                                        ),
+                                        Container(
+                                            height: height,
+                                            alignment: Alignment.centerLeft,
+                                            child: CustomText(
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w400,
+                                                text: "Requisition item",
+                                                letterSpacing: 0.3)),
+                                        SizedBox(
+                                          height: margin,
+                                        ),
+                                        Container(
+                                            height: height,
+                                            alignment: Alignment.centerLeft,
+                                            child: CustomText(
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w400,
+                                                text: "Requisition Quantity",
+                                                letterSpacing: 0.3)),
+                                        SizedBox(
+                                          height: margin,
+                                        ),
+                                        Container(
+                                            height: height,
+                                            alignment: Alignment.centerLeft,
+                                            child: CustomText(
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w400,
+                                                text: "Configuration Details",
+                                                letterSpacing: 0.3)),
+                                      ],
+                                    )),
+                                Expanded(
+                                    flex: 3,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        MyselfCustomCalender(
+                                          datetext: "${selectedtoDatee}",
+                                          width: double.infinity,
+                                          height: height,
+                                          onTap: () {
+                                            _selecttoDate(context);
+                                          },
+                                        ),
+                                        SizedBox(
+                                          height: margin,
+                                        ),
+                                        Container(
+                                            height: height,
+                                            width: double.infinity,
+                                            decoration: BoxDecoration(
+                                              color: Main_Theme_WhiteCollor,
+                                              borderRadius:
+                                                  BorderRadius.circular(5),
+                                              border: Border.all(
+                                                width: 1,
+                                                color: Main_Theme_textColor
+                                                    .withOpacity(0.3),
+                                              ),
+                                            ),
+                                            alignment: Alignment.centerLeft,
+                                            child: TextFormField(
+                                              style: GoogleFonts.poppins(
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.w400),
+                                              decoration: InputDecoration(
+                                                  hintText: "Enter item",
+                                                  hintStyle:
+                                                      GoogleFonts.poppins(
+                                                          fontSize: 12,
+                                                          fontWeight:
+                                                              FontWeight.w400),
+                                                  border: InputBorder.none,
+                                                  contentPadding:
+                                                      EdgeInsets.only(
+                                                          bottom: 10,
+                                                          left: 10)),
+                                            )),
+                                        SizedBox(
+                                          height: margin,
+                                        ),
+                                        Container(
+                                            height: height,
+                                            width: double.infinity,
+                                            decoration: BoxDecoration(
+                                              color: Main_Theme_WhiteCollor,
+                                              borderRadius:
+                                                  BorderRadius.circular(5),
+                                              border: Border.all(
+                                                width: 1,
+                                                color: Main_Theme_textColor
+                                                    .withOpacity(0.3),
+                                              ),
+                                            ),
+                                            alignment: Alignment.centerLeft,
+                                            child: TextFormField(
+                                              style: GoogleFonts.poppins(
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.w400),
+                                              keyboardType:
+                                                  TextInputType.number,
+                                              decoration: InputDecoration(
+                                                  hintText: "Enter Quantity",
+                                                  hintStyle:
+                                                      GoogleFonts.poppins(
+                                                          fontSize: 12,
+                                                          fontWeight:
+                                                              FontWeight.w400),
+                                                  border: InputBorder.none,
+                                                  contentPadding:
+                                                      EdgeInsets.only(
+                                                          bottom: 10,
+                                                          left: 10)),
+                                            )),
+                                        SizedBox(
+                                          height: margin,
+                                        ),
+                                        Container(
+                                            height: height,
+                                            width: double.infinity,
+                                            decoration: BoxDecoration(
+                                              color: Main_Theme_WhiteCollor,
+                                              borderRadius:
+                                                  BorderRadius.circular(5),
+                                              border: Border.all(
+                                                width: 1,
+                                                color: Main_Theme_textColor
+                                                    .withOpacity(0.3),
+                                              ),
+                                            ),
+                                            alignment: Alignment.centerLeft,
+                                            child: TextFormField(
+                                              style: GoogleFonts.poppins(
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.w400),
+                                              decoration: InputDecoration(
+                                                  hintText: "Enter ",
+                                                  hintStyle:
+                                                      GoogleFonts.poppins(
+                                                          fontSize: 12,
+                                                          fontWeight:
+                                                              FontWeight.w400),
+                                                  border: InputBorder.none,
+                                                  contentPadding:
+                                                      EdgeInsets.only(
+                                                          bottom: 10,
+                                                          left: 10)),
+                                            )),
+                                      ],
+                                    )),
+                              ],
+                            ),
+                          ),
+                          Divider(
+                            color: Main_Theme_textColor.withOpacity(0.4),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
                 InkWell(
                   onTap: () {
                     setState(() {
@@ -233,9 +291,20 @@ class _CreateStationaryScreenState extends State<CreateStationaryScreen> {
                       width: 110,
                       child: Row(
                         children: [
-                          Icon(Icons.add_circle_outline_rounded,size: 20,color: CustomButtonColor,),
-                          SizedBox(width: 7,),
-                          ColorCustomText(fontSize: 12, fontWeight: FontWeight.w500, text: "Add more", letterSpacing: 0.3, textColor: CustomButtonColor)
+                          Icon(
+                            Icons.add_circle_outline_rounded,
+                            size: 20,
+                            color: CustomButtonColor,
+                          ),
+                          SizedBox(
+                            width: 7,
+                          ),
+                          ColorCustomText(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500,
+                              text: "Add more",
+                              letterSpacing: 0.3,
+                              textColor: CustomButtonColor)
                         ],
                       ),
                     ),
@@ -244,15 +313,18 @@ class _CreateStationaryScreenState extends State<CreateStationaryScreen> {
                 Align(
                   alignment: Alignment.center,
                   child: Container(
-                    height: 40,
-                    width: 110,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(50),
-                      color: CustomButtonColor.withOpacity(0.2)
-                    ),
-                    child: ColorCustomText(fontSize: 12, fontWeight: FontWeight.w500, text: "Apply", letterSpacing: 0.3, textColor: CustomButtonColor)
-                  ),
+                      height: 40,
+                      width: 110,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50),
+                          color: CustomButtonColor.withOpacity(0.2)),
+                      child: ColorCustomText(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
+                          text: "Apply",
+                          letterSpacing: 0.3,
+                          textColor: CustomButtonColor)),
                 )
               ],
             ),
@@ -261,7 +333,9 @@ class _CreateStationaryScreenState extends State<CreateStationaryScreen> {
       ),
     );
   }
-  String selectedtoDatee = DateFormat('dd-MMMM-yyyy').format(DateTime.now()).toString();
+
+  String selectedtoDatee =
+      DateFormat('dd-MMMM-yyyy').format(DateTime.now()).toString();
   Future<void> _selecttoDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
         context: context,

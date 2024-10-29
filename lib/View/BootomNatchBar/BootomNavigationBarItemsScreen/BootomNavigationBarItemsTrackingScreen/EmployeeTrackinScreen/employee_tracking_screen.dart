@@ -60,7 +60,7 @@ class _EmployeeTrackinScreenState extends State<EmployeeTrackinScreen> {
     return Scaffold(
       backgroundColor: home_default_color,
       appBar: PreferredSize(
-          preferredSize: Size.fromHeight(75),
+          preferredSize: Size.fromHeight(60),
           child: CustomDefaultAppBar(
               onTap: () => Navigator.pop(context), text: "${widget.name}")),
       body: Container(
@@ -99,15 +99,39 @@ class _EmployeeTrackinScreenState extends State<EmployeeTrackinScreen> {
                         // //    list_of_location: Provider.of<TrackingController>(context).EmployeeLocaltionInfoList,
                         //   ),
 
-                        // print("aaaaaaaaaaaaaaa ${Provider.of<TrackingController>(context,listen: false).EmployeeLocaltionInfoList}");
-                        //
-                        // "${Provider.of<TrackingController>(context,listen: false).EmployeeLocaltionInfoList}"=="null"?customNotification(context, "You don't have location", "Please Enabled GPS Track"):
-                        // Navigator.push(context, MaterialPageRoute(builder: (context) => TrackingMapScreenTEstPoliline(
-                        //       list_of_location: Provider.of<TrackingController>(context).EmployeeLocaltionInfoList,
-                        //   lat: double.parse("${Provider.of<TrackingController>(context).EmployeeLocaltionInfoList.last["Latitude"]}"),
-                        //   lon: double.parse("${Provider.of<TrackingController>(context).EmployeeLocaltionInfoList.last["Longitude"]}"),
-                        // ),
-                        // ));
+                        print(
+                            "aaaaaaaaaaaaaaa ${Provider.of<TrackingController>(context, listen: false).EmployeeLocaltionInfoList}");
+
+                        "${Provider.of<TrackingController>(context, listen: false).EmployeeLocaltionInfoList}" ==
+                                "null"
+                            ? customNotification(
+                                context,
+                                "You don't have location",
+                                "Please Enabled GPS Track")
+                            : Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Scaffold(
+                                    appBar: PreferredSize(
+                                        preferredSize: Size.fromHeight(60),
+                                        child: CustomDefaultAppBar(
+                                          onTap: () {
+                                            Navigator.pop(context);
+                                          },
+                                          text: 'Map View',
+                                        )),
+                                    body: TrackingMapScreenTEstPoliline(
+                                      list_of_location:
+                                          Provider.of<TrackingController>(
+                                                  context)
+                                              .EmployeeLocaltionInfoList,
+                                      lat: double.parse(
+                                          "${Provider.of<TrackingController>(context).EmployeeLocaltionInfoList.last["Latitude"]}"),
+                                      lon: double.parse(
+                                          "${Provider.of<TrackingController>(context).EmployeeLocaltionInfoList.last["Longitude"]}"),
+                                    ),
+                                  ),
+                                ));
                       },
                       child: Container(
                         height: 35,
@@ -461,12 +485,28 @@ class _EmployeeTrackinScreenState extends State<EmployeeTrackinScreen> {
                                                   ),
                                                   InkWell(
                                                     onTap: () {
-                                                      // Navigator.push(context, MaterialPageRoute(builder: (context) => TrackingMapScreen(
-                                                      //     lat: double.parse("${value.EmployeeLocaltionInfoList[index]["Latitude"]}"),
-                                                      //     lon: double.parse("${value.EmployeeLocaltionInfoList[index]["Longitude"]}"),
-                                                      //      address: "${value.EmployeeLocaltionInfoList[index]["AdArea"]}, ${value.EmployeeLocaltionInfoList[index]["SubLocality"]}",
-                                                      //   time: "${value.EmployeeLocaltionInfoList[index]["datetime"]}",
-                                                      // )));
+                                                      Navigator.push(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                              builder:
+                                                                  (context) =>
+                                                                      Scaffold(
+                                                                        appBar: PreferredSize(
+                                                                            preferredSize:
+                                                                                Size.fromHeight(60),
+                                                                            child: CustomDefaultAppBar(onTap: () => Navigator.pop(context), text: "Map View")),
+                                                                        body:
+                                                                            TrackingMapScreen(
+                                                                          lat: double.parse(
+                                                                              "${value.EmployeeLocaltionInfoList[index]["Latitude"]}"),
+                                                                          lon: double.parse(
+                                                                              "${value.EmployeeLocaltionInfoList[index]["Longitude"]}"),
+                                                                          address:
+                                                                              "${value.EmployeeLocaltionInfoList[index]["AdArea"]}, ${value.EmployeeLocaltionInfoList[index]["SubLocality"]}",
+                                                                          time:
+                                                                              "${value.EmployeeLocaltionInfoList[index]["datetime"]}",
+                                                                        ),
+                                                                      )));
                                                     },
                                                     child: Column(
                                                       children: [
