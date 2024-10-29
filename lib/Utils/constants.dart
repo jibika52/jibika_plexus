@@ -1,14 +1,4 @@
-
-
-
-
-
-
-
-
-
-
-
+/// test upload git
 
 import 'dart:async';
 import 'dart:convert';
@@ -45,11 +35,9 @@ import '../main.dart';
 const Main_Theme_textColor = Color(0xff333333);
 const Main_Theme_textColor_tir_Condition = Color(0xffACC027);
 
-
 /// Attendance Check out color
 const CheckOutColor = Color(0xffEEAF61);
 const CheckInColor = CustomButtonColor;
-
 
 /// All text white color
 const Main_Theme_WhiteCollor = Color(0xffffffff);
@@ -69,79 +57,76 @@ const notification_color = Color(0xffEC4F4F);
 const CustomAppbarColor = Color(0xff075744);
 
 const CustomButtonColor = CustomAppbarColor;
+
 /// Company Profile default Color
 const CompanyProfileDefaultColor = Color(0xffE6E6E6);
 
 const home_default_color = Color(0xffF2F2F2);
 
-
-
-
-
- ///--------------Dashboard leave absent holidays count ------------------------///
+///--------------Dashboard leave absent holidays count ------------------------///
 // Color presentsent_color=Color(0xff88DB2E);
-Color presentsent_color=Color(0xff16be16);
-Color absent_color=Color(0xffEC4F4F);
-Color leave_color=Color(0xff685CF0);
-Color leave_approval_button_color=Color(0xffe7edbf);
- //  Color holiday_color=Color(0xff2C928C);
-Color holiday_color=Color(0xffF9E400);
-Color pending_color=Color(0xffE48E29);
-
+Color presentsent_color = Color(0xff16be16);
+Color absent_color = Color(0xffEC4F4F);
+Color leave_color = Color(0xff685CF0);
+Color leave_approval_button_color = Color(0xffe7edbf);
+//  Color holiday_color=Color(0xff2C928C);
+Color holiday_color = Color(0xffF9E400);
+Color pending_color = Color(0xffE48E29);
 
 ///--------------- Custom TExt font size -----------------------///
 
-late double  d_height;
-late double  d_width;
+late double d_height;
+late double d_width;
 
-const font11=11.0;
-const font12header=13.0;
-const font13header=13.0;
-const font12=12.0;
+const font11 = 11.0;
+const font12header = 13.0;
+const font13header = 13.0;
+const font12 = 12.0;
 
-const fontSubTitle=14.0;
-const font15=15.0;
-const fontTitle=16.0;
-const font18=18.0;
-const font19=19.0;
-const font20=20.0;
+const fontSubTitle = 14.0;
+const font15 = 15.0;
+const fontTitle = 16.0;
+const font18 = 18.0;
+const font19 = 19.0;
+const font20 = 20.0;
 
 ///---------------- Tab height --------------------- ///
-   const apps_div_margin=10.0;
+const apps_div_margin = 10.0;
 
 /// ----------- Custom Month List -----------------------///
 
-List MonthList= [
- "Jan",
- "Feb",
- "Mar",
- "Apr",
- "May",
- "Jun",
- "Jul",
- "Aug",
- "Sep",
- "Oct",
- "Nov",
- "Dec",
+List MonthList = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
 ];
-
 
 final List<String> yearslist = [
- '2022',
- '2023',
- '2024',
- '2025',
- '2026',
- '2027',
- '2028',
- '2029',
+  '2022',
+  '2023',
+  '2024',
+  '2025',
+  '2026',
+  '2027',
+  '2028',
+  '2029',
 ];
 
-String custom_Avater="";
+String custom_Avater = "";
 
-String Loremtext="Lorem sed do eiusmod tempor incididunt  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum smahfb asfa ufusdgfu sdu fsudg fusg";
-String Application ="I am Shawn Mendez, a resident of Rory Lane. I am writing to bring to your notice the poor maintenance of the garden around our residential area and the improper disposal of waste. The garden around the residential area was watered regularly, and grass shrubs were trimmed and maintained neatly in the beginning. It has been more than a month now since any kind of maintenance is done in the garden. We have tried contacting the person in charge, but every effort has just been in vain.\nAnother growing issue is the problem of waste disposal. There were people from the corporation collecting garbage for disposal every two days, but it has been more than a week now since they have collected any garbage from our area. This has led to the accumulation of waste, and people have started dumping it in the corner of the street as they have no other choice. Kindly look into this and the maintenance of the garden as it would become a huge mess if this continues. It would be highly appreciated if you could also inform the residents that all garbage would be collected and not to throw them out around the street corners.";
+String Loremtext =
+    "Lorem sed do eiusmod tempor incididunt  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum smahfb asfa ufusdgfu sdu fsudg fusg";
+String Application =
+    "I am Shawn Mendez, a resident of Rory Lane. I am writing to bring to your notice the poor maintenance of the garden around our residential area and the improper disposal of waste. The garden around the residential area was watered regularly, and grass shrubs were trimmed and maintained neatly in the beginning. It has been more than a month now since any kind of maintenance is done in the garden. We have tried contacting the person in charge, but every effort has just been in vain.\nAnother growing issue is the problem of waste disposal. There were people from the corporation collecting garbage for disposal every two days, but it has been more than a week now since they have collected any garbage from our area. This has led to the accumulation of waste, and people have started dumping it in the corner of the street as they have no other choice. Kindly look into this and the maintenance of the garden as it would become a huge mess if this continues. It would be highly appreciated if you could also inform the residents that all garbage would be collected and not to throw them out around the street corners.";
 
 //  GetStorage().write("mobile_id","${_phoneController.text}") ;
 //  GetStorage().write("id_token",loginData["loginData"]) ;
@@ -170,521 +155,529 @@ String Application ="I am Shawn Mendez, a resident of Rory Lane. I am writing to
 // GetStorage().write("conveyance_car_code","0");
 // GetStorage().write("for_create_empcode","empcode");
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 class FitnessAppTheme {
- FitnessAppTheme._();
- static const Color nearlyWhite = Color(0xFFFAFAFA);
- static const Color white = Color(0xFFFFFFFF);
- static const Color background = Color(0xFFF2F3F8);
- static const Color nearlyDarkBlue = Color(0xFF2633C5);
+  FitnessAppTheme._();
+  static const Color nearlyWhite = Color(0xFFFAFAFA);
+  static const Color white = Color(0xFFFFFFFF);
+  static const Color background = Color(0xFFF2F3F8);
+  static const Color nearlyDarkBlue = Color(0xFF2633C5);
 
- static const Color nearlyBlue = Color(0xFF00B6F0);
- static const Color nearlyBlack = Color(0xFF213333);
- static const Color grey = Color(0xFF3A5160);
- static const Color dark_grey = Color(0xFF313A44);
+  static const Color nearlyBlue = Color(0xFF00B6F0);
+  static const Color nearlyBlack = Color(0xFF213333);
+  static const Color grey = Color(0xFF3A5160);
+  static const Color dark_grey = Color(0xFF313A44);
 
- static const Color darkText = Color(0xFF253840);
- static const Color darkerText = Color(0xFF17262A);
- static const Color lightText = Color(0xFF4A6572);
- static const Color deactivatedText = Color(0xFF767676);
- static const Color dismissibleBackground = Color(0xFF364A54);
- static const Color spacer = Color(0xFFF2F2F2);
- static const String fontName = 'Roboto';
+  static const Color darkText = Color(0xFF253840);
+  static const Color darkerText = Color(0xFF17262A);
+  static const Color lightText = Color(0xFF4A6572);
+  static const Color deactivatedText = Color(0xFF767676);
+  static const Color dismissibleBackground = Color(0xFF364A54);
+  static const Color spacer = Color(0xFFF2F2F2);
+  static const String fontName = 'Roboto';
 
- static const TextTheme textTheme = TextTheme(
-  headline4: display1,
-  headline5: headline,
-  headline6: title,
-  subtitle2: subtitle,
-  bodyText2: body2,
-  bodyText1: body1,
-  caption: caption,
- );
+  static const TextTheme textTheme = TextTheme(
+    headline4: display1,
+    headline5: headline,
+    headline6: title,
+    subtitle2: subtitle,
+    bodyText2: body2,
+    bodyText1: body1,
+    caption: caption,
+  );
 
- static const TextStyle display1 = TextStyle(
-  fontFamily: fontName,
-  fontWeight: FontWeight.bold,
-  fontSize: 36,
-  letterSpacing: 0.4,
-  height: 0.9,
-  color: darkerText,
- );
+  static const TextStyle display1 = TextStyle(
+    fontFamily: fontName,
+    fontWeight: FontWeight.bold,
+    fontSize: 36,
+    letterSpacing: 0.4,
+    height: 0.9,
+    color: darkerText,
+  );
 
- static const TextStyle headline = TextStyle(
-  fontFamily: fontName,
-  fontWeight: FontWeight.bold,
-  fontSize: 24,
-  letterSpacing: 0.27,
-  color: darkerText,
- );
+  static const TextStyle headline = TextStyle(
+    fontFamily: fontName,
+    fontWeight: FontWeight.bold,
+    fontSize: 24,
+    letterSpacing: 0.27,
+    color: darkerText,
+  );
 
- static const TextStyle title = TextStyle(
-  fontFamily: fontName,
-  fontWeight: FontWeight.bold,
-  fontSize: 16,
-  letterSpacing: 0.18,
-  color: darkerText,
- );
+  static const TextStyle title = TextStyle(
+    fontFamily: fontName,
+    fontWeight: FontWeight.bold,
+    fontSize: 16,
+    letterSpacing: 0.18,
+    color: darkerText,
+  );
 
- static const TextStyle subtitle = TextStyle(
-  fontFamily: fontName,
-  fontWeight: FontWeight.w400,
-  fontSize: 14,
-  letterSpacing: -0.04,
-  color: darkText,
- );
+  static const TextStyle subtitle = TextStyle(
+    fontFamily: fontName,
+    fontWeight: FontWeight.w400,
+    fontSize: 14,
+    letterSpacing: -0.04,
+    color: darkText,
+  );
 
- static const TextStyle body2 = TextStyle(
-  fontFamily: fontName,
-  fontWeight: FontWeight.w400,
-  fontSize: 14,
-  letterSpacing: 0.2,
-  color: darkText,
- );
+  static const TextStyle body2 = TextStyle(
+    fontFamily: fontName,
+    fontWeight: FontWeight.w400,
+    fontSize: 14,
+    letterSpacing: 0.2,
+    color: darkText,
+  );
 
- static const TextStyle body1 = TextStyle(
-  fontFamily: fontName,
-  fontWeight: FontWeight.w400,
-  fontSize: 16,
-  letterSpacing: -0.05,
-  color: darkText,
- );
+  static const TextStyle body1 = TextStyle(
+    fontFamily: fontName,
+    fontWeight: FontWeight.w400,
+    fontSize: 16,
+    letterSpacing: -0.05,
+    color: darkText,
+  );
 
- static const TextStyle caption = TextStyle(
-  fontFamily: fontName,
-  fontWeight: FontWeight.w400,
-  fontSize: 12,
-  letterSpacing: 0.2,
-  color: lightText, // was lightText
- );
+  static const TextStyle caption = TextStyle(
+    fontFamily: fontName,
+    fontWeight: FontWeight.w400,
+    fontSize: 12,
+    letterSpacing: 0.2,
+    color: lightText, // was lightText
+  );
 }
 
-
- LinearGradient customGradientBackground() {
+LinearGradient customGradientBackground() {
   return LinearGradient(
-   colors: [
-     Main_Theme_textColor_tir_Condition.withOpacity(0.5), CustomButtonColor.withOpacity(0.7),],
+    colors: [
+      Main_Theme_textColor_tir_Condition.withOpacity(0.5),
+      CustomButtonColor.withOpacity(0.7),
+    ],
   );
- }
+}
 
 /// Title text Style------------------------------------------------------------------
- TextStyle customHeadingTextStyle(Color  ? color) {
+TextStyle customHeadingTextStyle(Color? color) {
   return GoogleFonts.roboto(
-   fontSize: fontTitle,
-   fontWeight: FontWeight.bold,
-   color: color,
-   letterSpacing:0.4
-  );
- }
+      fontSize: fontTitle,
+      fontWeight: FontWeight.bold,
+      color: color,
+      letterSpacing: 0.4);
+}
 
 /// SubTitle text Style------------------------------------------------------------------
- TextStyle customSubHeadingTextStyle(Color  ? color) {
+TextStyle customSubHeadingTextStyle(Color? color) {
   return GoogleFonts.roboto(
-   fontSize: fontSubTitle,
-   fontWeight: FontWeight.bold,
-   color: color,
-   letterSpacing:0.4
-  );
- }
+      fontSize: fontSubTitle,
+      fontWeight: FontWeight.bold,
+      color: color,
+      letterSpacing: 0.4);
+}
 
- /// Socket add and connect
+/// Socket add and connect
 
-
-connectWebSocketWithHeaders(Uri wsUrl, Map<String, String> headers)
- async {
+connectWebSocketWithHeaders(Uri wsUrl, Map<String, String> headers) async {
   // Use the dart:io WebSocket with headers
   final WebSocket socket = await WebSocket.connect(
-   wsUrl.toString(),
-   headers: headers,
+    wsUrl.toString(),
+    headers: headers,
   );
 
   // Pass the WebSocket to IOWebSocketChannel
   return IOWebSocketChannel(socket);
-
 }
-
-
-
-
 
 /// -------------- Custom Alert function ----------------------------------
-customNotification(BuildContext context,String text1,String text2){
- ElegantNotification(
-  borderRadius: BorderRadius.circular(11),
-  width: 340,
-  iconSize: 25,
-  background: presentsent_color,
-  progressIndicatorBackground: presentsent_color,
-  progressIndicatorColor: absent_color,
-  // position: Alignment.center,
-  title:  ColorCustomText(fontSize: 16, fontWeight: FontWeight.w500, text: "$text1", letterSpacing: 0.3, textColor: Main_Theme_textColor),
-  description: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "${text2}", letterSpacing: 0.3, textColor: Main_Theme_textColor),
-  onDismiss: () {
-   print('Message when the notification is dismissed');
-  }, icon: Icon(Icons.delete_forever,color:Colors.black,),
- ).show(context);
+customNotification(BuildContext context, String text1, String text2) {
+  ElegantNotification(
+    borderRadius: BorderRadius.circular(11),
+    width: 340,
+    iconSize: 25,
+    background: presentsent_color,
+    progressIndicatorBackground: presentsent_color,
+    progressIndicatorColor: absent_color,
+    // position: Alignment.center,
+    title: ColorCustomText(
+        fontSize: 16,
+        fontWeight: FontWeight.w500,
+        text: "$text1",
+        letterSpacing: 0.3,
+        textColor: Main_Theme_textColor),
+    description: ColorCustomText(
+        fontSize: 14,
+        fontWeight: FontWeight.w400,
+        text: "${text2}",
+        letterSpacing: 0.3,
+        textColor: Main_Theme_textColor),
+    onDismiss: () {
+      print('Message when the notification is dismissed');
+    },
+    icon: Icon(
+      Icons.delete_forever,
+      color: Colors.black,
+    ),
+  ).show(context);
 }
-
-
 
 /// Background processing is running form here below now check the code-----------------------------------------------------------------------------------
-void   startService() async {
- await initializeService();
+void startService() async {
+  await initializeService();
 }
-void stopService() {
- service.invoke("stopService");
-}
-void initCallPushListeners() {
- ConnectycubeFlutterCallKit.setOnLockScreenVisibility(isVisible: true);
- ConnectycubeFlutterCallKit.instance.init(
- );
-}
-void initCallPush() {
- print("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz---------------1------------------------");
- ConnectycubeFlutterCallKit.getLastCallId().then((value) {
-  ConnectycubeFlutterCallKit.reportCallEnded(sessionId: value);
- });
 
- var sessionId = DateTime.now().microsecondsSinceEpoch.toString();
- // CallEvent callEvent = CallEvent(
- //     sessionId: sessionId,
- //     callType: 0,
- //     callerId: randomIds(),
- //     callerName: randomString(5),
- //     opponentsIds: {randomIds(), randomIds()},
- //     callPhoto: 'https://i.imgur.com/KwrDil8b.jpg',
- //     userInfo: {'user_id': '${randomIds()}'});
- // ConnectycubeFlutterCallKit.showCallNotification(callEvent);
+void stopService() {
+  service.invoke("stopService");
 }
+
+void initCallPushListeners() {
+  ConnectycubeFlutterCallKit.setOnLockScreenVisibility(isVisible: true);
+  ConnectycubeFlutterCallKit.instance.init();
+}
+
+void initCallPush() {
+  print(
+      "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz---------------1------------------------");
+  ConnectycubeFlutterCallKit.getLastCallId().then((value) {
+    ConnectycubeFlutterCallKit.reportCallEnded(sessionId: value);
+  });
+
+  var sessionId = DateTime.now().microsecondsSinceEpoch.toString();
+  // CallEvent callEvent = CallEvent(
+  //     sessionId: sessionId,
+  //     callType: 0,
+  //     callerId: randomIds(),
+  //     callerName: randomString(5),
+  //     opponentsIds: {randomIds(), randomIds()},
+  //     callPhoto: 'https://i.imgur.com/KwrDil8b.jpg',
+  //     userInfo: {'user_id': '${randomIds()}'});
+  // ConnectycubeFlutterCallKit.showCallNotification(callEvent);
+}
+
 int randomIds() {
- var rng = new Random();
- var randomNumber = rng.nextInt(100000) + 1;
- return randomNumber;
+  var rng = new Random();
+  var randomNumber = rng.nextInt(100000) + 1;
+  return randomNumber;
 }
+
 String randomString(int length) {
- var rng = new Random();
- var codeUnits =
- List.generate(length, (index) => rng.nextInt(33) + 89); // 33 to 122
- return String.fromCharCodes(codeUnits);
+  var rng = new Random();
+  var codeUnits =
+      List.generate(length, (index) => rng.nextInt(33) + 89); // 33 to 122
+  return String.fromCharCodes(codeUnits);
 }
+
 void checkFullScreenIntentPermission() async {
- var canUseFullScreenIntent =
- await ConnectycubeFlutterCallKit.canUseFullScreenIntent();
- print("boolValue: $canUseFullScreenIntent");
- if (canUseFullScreenIntent == false) {
-  ConnectycubeFlutterCallKit.provideFullScreenIntentAccess();
- }
+  var canUseFullScreenIntent =
+      await ConnectycubeFlutterCallKit.canUseFullScreenIntent();
+  print("boolValue: $canUseFullScreenIntent");
+  if (canUseFullScreenIntent == false) {
+    ConnectycubeFlutterCallKit.provideFullScreenIntentAccess();
+  }
 }
+
 const notificationChannelId = 'my_foreground';
 const notificationId = 888;
 final service = FlutterBackgroundService();
 Future<void> initializeService() async {
- print("--- ----------------------------------${GetStorage().read("SHIFT_IN_TIME")} -----------------------");
- /// OPTIONAL, using custom notification channel id
- const AndroidNotificationChannel channel = AndroidNotificationChannel(
-  'my_foreground', // id
-  'MY FOREGROUND SERVICE', // title
-  description:
-  'This channel is used for important notifications.', // description
-  importance: Importance.low, // importance must be at low or higher level
- );
+  print(
+      "--- ----------------------------------${GetStorage().read("SHIFT_IN_TIME")} -----------------------");
 
- final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
- FlutterLocalNotificationsPlugin();
- if (Platform.isIOS || Platform.isAndroid) {
-  await flutterLocalNotificationsPlugin.initialize(
-   const InitializationSettings(
-    iOS: DarwinInitializationSettings(),
-    android: AndroidInitializationSettings('ic_bg_service_small'),
-   ),
+  /// OPTIONAL, using custom notification channel id
+  const AndroidNotificationChannel channel = AndroidNotificationChannel(
+    'my_foreground', // id
+    'MY FOREGROUND SERVICE', // title
+    description:
+        'This channel is used for important notifications.', // description
+    importance: Importance.low, // importance must be at low or higher level
   );
- }
 
- await flutterLocalNotificationsPlugin
-     .resolvePlatformSpecificImplementation<
-     AndroidFlutterLocalNotificationsPlugin>()
-     ?.createNotificationChannel(channel);
- await service.configure(
-  androidConfiguration: AndroidConfiguration(
-   // this will be executed when app is in foreground or background in separated isolate
-   onStart: onStart,
+  final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+      FlutterLocalNotificationsPlugin();
+  if (Platform.isIOS || Platform.isAndroid) {
+    await flutterLocalNotificationsPlugin.initialize(
+      const InitializationSettings(
+        iOS: DarwinInitializationSettings(),
+        android: AndroidInitializationSettings('ic_bg_service_small'),
+      ),
+    );
+  }
 
-   // auto start service
-   autoStart: true,
-   isForegroundMode: true,
+  await flutterLocalNotificationsPlugin
+      .resolvePlatformSpecificImplementation<
+          AndroidFlutterLocalNotificationsPlugin>()
+      ?.createNotificationChannel(channel);
+  await service.configure(
+    androidConfiguration: AndroidConfiguration(
+      // this will be executed when app is in foreground or background in separated isolate
+      onStart: onStart,
 
-   notificationChannelId: 'my_foreground',
-   initialNotificationTitle: 'AWESOME SERVICE',
-   initialNotificationContent: 'Initializing',
-   foregroundServiceNotificationId: 888,
-  ),
-  iosConfiguration: IosConfiguration(
-   // auto start service
-   autoStart: true,
+      // auto start service
+      autoStart: true,
+      isForegroundMode: true,
 
-   // this will be executed when app is in foreground in separated isolate
-   onForeground: onStart,
-  ),
- );
+      notificationChannelId: 'my_foreground',
+      initialNotificationTitle: 'AWESOME SERVICE',
+      initialNotificationContent: 'Initializing',
+      foregroundServiceNotificationId: 888,
+    ),
+    iosConfiguration: IosConfiguration(
+      // auto start service
+      autoStart: true,
+
+      // this will be executed when app is in foreground in separated isolate
+      onForeground: onStart,
+    ),
+  );
 }
+
 @pragma('vm:entry-point')
 void onStart(ServiceInstance service) async {
- print("--- shift_time ${GetStorage().read("SHIFT_IN_TIME")}---------SHIFT_OUT_TIME --${GetStorage().read("SHIFT_OUT_TIME")}-----ATTENDANCE_Status --${GetStorage().read("ATTENDANCE_Status")}---------IsTrack --${GetStorage().read("IsTrack")}-----------------------");
- DartPluginRegistrant.ensureInitialized();
- if (service is AndroidServiceInstance) {
-  service.on('setAsForeground').listen((event) {
-   service.setAsForegroundService();
+  print(
+      "--- shift_time ${GetStorage().read("SHIFT_IN_TIME")}---------SHIFT_OUT_TIME --${GetStorage().read("SHIFT_OUT_TIME")}-----ATTENDANCE_Status --${GetStorage().read("ATTENDANCE_Status")}---------IsTrack --${GetStorage().read("IsTrack")}-----------------------");
+  DartPluginRegistrant.ensureInitialized();
+  if (service is AndroidServiceInstance) {
+    service.on('setAsForeground').listen((event) {
+      service.setAsForegroundService();
+    });
+
+    service.on('setAsBackground').listen((event) {
+      service.setAsBackgroundService();
+    });
+  }
+
+  service.on('stopService').listen((event) {
+    service.stopSelf();
   });
 
-  service.on('setAsBackground').listen((event) {
-   service.setAsBackgroundService();
+  ConnectycubeFlutterCallKit.setOnLockScreenVisibility(isVisible: true);
 
-  });
- }
+  late Position position;
+  late Placemark place;
+  _getCurrentLocation() async {
+    position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
+    List<Placemark> placemarks =
+        await placemarkFromCoordinates(position.latitude, position.longitude);
+    place = placemarks[0];
+  }
 
- service.on('stopService').listen((event) {
-  service.stopSelf();
- });
+  Future.delayed(
+    Duration(seconds: 2),
+    () async {
+      // void socketFunction()async {
+      final headers = {
+        "Origin": "http://45.114.84.22:8081",
+        "Sec-WebSocket-Protocol": "jibika-ws.json"
+      };
+      final wsUrl = Uri.parse('ws://45.114.84.22:8081/jsocket');
+      final channel = await connectWebSocketWithHeaders(wsUrl, headers);
+      await channel.ready;
+      print(
+          "Socket Connected ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd");
+      channel.stream.listen((message) {
+        var notification = jsonDecode(message);
+        if (notification["userid"] == GetStorage().read("mobile_id")) {
+          showNotification(
+            "${notification["msgtitle"]}",
+            "${notification["msgbody"]}",
+          );
+        } else {
+          print(
+              "Notification for--------------------------------------------------------------------------------------------- ${notification}");
+        }
 
- ConnectycubeFlutterCallKit.setOnLockScreenVisibility(isVisible: true);
-
-
- late Position position;
- late  Placemark place;
- _getCurrentLocation() async{
-  position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-  List<Placemark> placemarks = await placemarkFromCoordinates(
-      position.latitude,
-      position.longitude
+        // Provider.of<CounterProvider>(context,listen: false).setNotificationCounterFunction(message);
+      });
+//  }
+    },
   );
-  place = placemarks[0];
- }
+  Timer.periodic(Duration(seconds: 30), (timer) async {
+    _getCurrentLocation();
+    print(
+        "Location--------------- ${position.latitude} ${position.longitude} ");
+    print(
+        "select_car_type------------------> ${GetStorage().read("select_car_type")} ");
+  });
+  // bring to foreground
+  Timer.periodic(Duration(minutes: 5), (timer) async {
+    bool is_internet_available = await InternetConnection().hasInternetAccess;
+    print(
+        "Location---------------${position.latitude} ${position.longitude} \n");
+    print(
+        "is_internet available-- ${is_internet_available}\n--- shift_time ${GetStorage().read("SHIFT_IN_TIME")}\n---------SHIFT_OUT_TIME --${GetStorage().read("SHIFT_OUT_TIME")}\n-----ATTENDANCE_Status --${GetStorage().read("ATTENDANCE_Status")}\n---------IsTrack --${GetStorage().read("IsTrack")}\n--------${timer.tick}----------------------");
 
- Future.delayed(Duration(seconds: 2),()async {
+    ///---------------------------------------------------------------------------\
 
+    GpstrackingList.add(BackgroundTrackingApiModelClass(
+        UserId: "${GetStorage().read("mobile_id")}",
+        AttendanceDate: "${DateFormat('yyyyMMdd').format(DateTime.now())}",
+        AttendanceTime:
+            "${DateFormat('HHmmss').format(DateTime.now()).toString()}",
+        RefCardNo: "${GetStorage().read("RfIdCardNo")}",
+        Location: "${place.name}",
+        District: "${place.locality}",
+        Division: "${place.administrativeArea}",
+        PostalCode: "${place.postalCode}",
+        SubLocality: "${place.subAdministrativeArea}",
+        StreetName: "${place.street.toString()}",
+        lat: "${position.latitude}",
+        lng: "${position.longitude}",
+        Empcode: int.parse("${"${GetStorage().read("Empcode")}"}"),
+        DutyDate: "${DateFormat('dd-MMM-yyyy').format(DateTime.now())}",
+        Remarks: GetStorage().read("select_car_type") == "-1"
+            ? "GPS track"
+            : "conveyance track",
+        IsTrack: "true",
+        Note: GetStorage().read("select_car_type") == "-1"
+            ? "GPS track"
+            : "conveyance track"));
+    Future.delayed(
+      Duration(seconds: 2),
+      () {
+        selfOffLineDataSync();
+      },
+    );
 
+    // for(int i=0;i<GpstrackingList.length;i++){
+    //   print("////////////////////////////////////////////////////////////////////////////////");
+    //   print("${GpstrackingList[i].UserId}---${GpstrackingList[i].AttendanceDate}---${GpstrackingList[i].AttendanceTime}--${GpstrackingList[i].RefCardNo}--${GpstrackingList[i].Location}--${GpstrackingList[i].District}");
+    //   print("${GpstrackingList[i].PostalCode} --- ${GpstrackingList[i].Division} --- ${GpstrackingList[i].SubLocality}--${GpstrackingList[i].StreetName}--${GpstrackingList[i].lat}---${GpstrackingList[i].lng}");
+    //   print("${GpstrackingList[i].Empcode}--${GpstrackingList[i].DutyDate}---${GpstrackingList[i].Remarks}---${GpstrackingList[i].IsTrack}---${GpstrackingList[i].Note}");
+    //   print("////////////////////////////////////////////////////////////////////////////////");
+    // }
+    // CustomHttpSelf().selfCheckInCheckOut(
+    //   "${GetStorage().read("mobile_id")}",
+    //   "${DateFormat('yyyyMMdd').format(DateTime.now())}",
+    //   "${DateFormat('HHmmss').format(DateTime.now()).toString()}",
+    //   "${GetStorage().read("RfIdCardNo")}",
+    //
+    //   "${place.name}",
+    //   "${place.locality}",
+    //   "${place.administrativeArea}",
+    //   "${place.postalCode}",
+    //   "${place.subAdministrativeArea}",
+    //   "${place.street.toString()}",
+    //   // " ",
+    //   // " ",
+    //   // " ",
+    //   // " ",
+    //   // " ",
+    //   // " ",
+    //   "${position.latitude}",
+    //   "${position.longitude}",
+    //   int.parse("${"${GetStorage().read("Empcode")}"}"),
+    //   "${DateFormat('dd-MMM-yyyy').format(DateTime.now())}",
+    //   GetStorage().read("select_car_type") == "-1"?"GPS track":"conveyance track",
+    //   "true",
+    //   GetStorage().read("select_car_type") == "-1"?"GPS track":"conveyance track",
+    // );
 
- // void socketFunction()async {
-   final headers = {
-    "Origin":"http://45.114.84.22:8081",
-    "Sec-WebSocket-Protocol":"jibika-ws.json"
-   };
-   final wsUrl = Uri.parse('ws://45.114.84.22:8081/jsocket');
-   final channel = await connectWebSocketWithHeaders(wsUrl, headers);
-   await channel.ready;
-   print("Socket Connected ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd");
-   channel.stream.listen((message) {
-    var notification=jsonDecode(message);
-    if(notification["userid"]==GetStorage().read("mobile_id")){
-     showNotification("${notification["msgtitle"]}","${notification["msgbody"]}",);
-    }else{
-     print("Notification for--------------------------------------------------------------------------------------------- ${notification}");
+    ///---------------------------------------------------------------------------
+    if (service is AndroidServiceInstance) {
+      //   print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa----------------------------${DateTime.now()}----------");
     }
 
-    // Provider.of<CounterProvider>(context,listen: false).setNotificationCounterFunction(message);
-   });
-//  }
+    /// you can see this log in logcat
+    print('FLUTTER BACKGROUND SERVICE: ${DateTime.now()}');
 
+    // test using external plugin
+    final deviceInfo = DeviceInfoPlugin();
+    String? device;
+    if (Platform.isAndroid) {
+      final androidInfo = await deviceInfo.androidInfo;
+      device = androidInfo.model;
+    }
 
- },);
- Timer.periodic(Duration(seconds: 30), (timer) async {
-  _getCurrentLocation();
-  print( "Location--------------- ${position.latitude} ${position.longitude} ");
-  print("select_car_type------------------> ${GetStorage().read("select_car_type")} ");
- });
- // bring to foreground
- Timer.periodic(Duration(minutes: 5), (timer) async {
-
-  bool is_internet_available = await InternetConnection().hasInternetAccess;
-  print( "Location---------------${position.latitude} ${position.longitude} \n");
-  print("is_internet available-- ${is_internet_available}\n--- shift_time ${GetStorage().read("SHIFT_IN_TIME")}\n---------SHIFT_OUT_TIME --${GetStorage().read("SHIFT_OUT_TIME")}\n-----ATTENDANCE_Status --${GetStorage().read("ATTENDANCE_Status")}\n---------IsTrack --${GetStorage().read("IsTrack")}\n--------${timer.tick}----------------------");
-  ///---------------------------------------------------------------------------\
-
-
-  GpstrackingList.add(
-      BackgroundTrackingApiModelClass(
-          UserId: "${GetStorage().read("mobile_id")}",
-          AttendanceDate:  "${DateFormat('yyyyMMdd').format(DateTime.now())}",
-          AttendanceTime: "${DateFormat('HHmmss').format(DateTime.now()).toString()}",
-          RefCardNo: "${GetStorage().read("RfIdCardNo")}",
-          Location: "${place.name}",
-          District: "${place.locality}",
-          Division: "${place.administrativeArea}",
-          PostalCode: "${place.postalCode}",
-          SubLocality: "${place.subAdministrativeArea}",
-          StreetName:  "${place.street.toString()}",
-          lat: "${position.latitude}",
-          lng: "${position.longitude}",
-          Empcode: int.parse("${"${GetStorage().read("Empcode")}"}"),
-          DutyDate: "${DateFormat('dd-MMM-yyyy').format(DateTime.now())}", Remarks: GetStorage().read("select_car_type") == "-1"?"GPS track":"conveyance track",
-          IsTrack:  "true", Note: GetStorage().read("select_car_type") == "-1"?"GPS track":"conveyance track"));
-  Future.delayed(Duration(seconds: 2),() {
-   selfOffLineDataSync();
-  },);
-
-
-  // for(int i=0;i<GpstrackingList.length;i++){
-  //   print("////////////////////////////////////////////////////////////////////////////////");
-  //   print("${GpstrackingList[i].UserId}---${GpstrackingList[i].AttendanceDate}---${GpstrackingList[i].AttendanceTime}--${GpstrackingList[i].RefCardNo}--${GpstrackingList[i].Location}--${GpstrackingList[i].District}");
-  //   print("${GpstrackingList[i].PostalCode} --- ${GpstrackingList[i].Division} --- ${GpstrackingList[i].SubLocality}--${GpstrackingList[i].StreetName}--${GpstrackingList[i].lat}---${GpstrackingList[i].lng}");
-  //   print("${GpstrackingList[i].Empcode}--${GpstrackingList[i].DutyDate}---${GpstrackingList[i].Remarks}---${GpstrackingList[i].IsTrack}---${GpstrackingList[i].Note}");
-  //   print("////////////////////////////////////////////////////////////////////////////////");
-  // }
-  // CustomHttpSelf().selfCheckInCheckOut(
-  //   "${GetStorage().read("mobile_id")}",
-  //   "${DateFormat('yyyyMMdd').format(DateTime.now())}",
-  //   "${DateFormat('HHmmss').format(DateTime.now()).toString()}",
-  //   "${GetStorage().read("RfIdCardNo")}",
-  //
-  //   "${place.name}",
-  //   "${place.locality}",
-  //   "${place.administrativeArea}",
-  //   "${place.postalCode}",
-  //   "${place.subAdministrativeArea}",
-  //   "${place.street.toString()}",
-  //   // " ",
-  //   // " ",
-  //   // " ",
-  //   // " ",
-  //   // " ",
-  //   // " ",
-  //   "${position.latitude}",
-  //   "${position.longitude}",
-  //   int.parse("${"${GetStorage().read("Empcode")}"}"),
-  //   "${DateFormat('dd-MMM-yyyy').format(DateTime.now())}",
-  //   GetStorage().read("select_car_type") == "-1"?"GPS track":"conveyance track",
-  //   "true",
-  //   GetStorage().read("select_car_type") == "-1"?"GPS track":"conveyance track",
-  // );
-
-  ///---------------------------------------------------------------------------
-  if (service is AndroidServiceInstance) {
-   //   print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa----------------------------${DateTime.now()}----------");
-  }
-
-  /// you can see this log in logcat
-  print('FLUTTER BACKGROUND SERVICE: ${DateTime.now()}');
-
-  // test using external plugin
-  final deviceInfo = DeviceInfoPlugin();
-  String? device;
-  if (Platform.isAndroid) {
-   final androidInfo = await deviceInfo.androidInfo;
-   device = androidInfo.model;
-  }
-
-  if (Platform.isIOS) {
-   final iosInfo = await deviceInfo.iosInfo;
-   device = iosInfo.model;
-  }
-  service.invoke(
-   'update',
-   {
-    "current_date": DateTime.now().toIso8601String(),
-    "device": device,
-   },
-  );
- });
-
-}
-
-
-var fmap={};
-List ddddddd=[];
-selfOffLineDataSync()async{
- dynamic selfCheckInCheckOut ;
- /// ------- for loop ------------------------------------------------------
- for(int i=0;i<GpstrackingList.length;i++){
-  fmap["UserId"]="${GpstrackingList[i].UserId}";
-  fmap["AttendanceDate"]="${GpstrackingList[i].AttendanceDate}";
-  fmap["AttendanceTime"]= "${GpstrackingList[i].AttendanceTime}";
-  fmap["RefCardNo"]= "${GpstrackingList[i].RefCardNo}";
-  fmap["Location"]="${GpstrackingList[i].Location}";
-  fmap["District"]= "${GpstrackingList[i].District}";
-  fmap["Division"]="${GpstrackingList[i].Division}";
-  fmap["PostalCode"]="${GpstrackingList[i].PostalCode}";
-  fmap["SubLocality"]= "${GpstrackingList[i].SubLocality}";
-  fmap["StreetName"]= "${GpstrackingList[i].StreetName}";
-  fmap["lat"]= "${GpstrackingList[i].lat}";
-  fmap["lng"]= "${GpstrackingList[i].lng}";
-  fmap["Empcode"]= GpstrackingList[i].Empcode;
-  fmap["DutyDate"]= "${GpstrackingList[i].DutyDate}";
-  fmap["Remarks"]= "${GpstrackingList[i].Remarks}";
-  fmap["IsTrack"]= "${GpstrackingList[i].IsTrack}";
-  fmap["Note"]="${GpstrackingList[i].Note}";
- }
- /// ------- for loop ------------------------------------------------------
- try{
-  print("Check ---------------- Status----------------- ${jsonEncode([fmap])}");
-  var data=await http.post(Uri.parse("http://45.114.84.22:8081/Attendance/OffLineDataSync"),
-      headers: {
-       "Content-Type": "application/json",
-       "username": "jibikaapps",
-       "password": "20jibika24",
+    if (Platform.isIOS) {
+      final iosInfo = await deviceInfo.iosInfo;
+      device = iosInfo.model;
+    }
+    service.invoke(
+      'update',
+      {
+        "current_date": DateTime.now().toIso8601String(),
+        "device": device,
       },
-   body: jsonEncode([fmap])
-   //   body:[{"UserId":"01889173335","AttendanceDate":"20241007","AttendanceTime":"20241007","RefCardNo":"1002","Location":"48","District":"Dhaka","Division":"Dhaka Division","PostalCode":"1212","SubLocality":"Dhaka District","StreetName":"48 শাহীদ আব্দুল আজিজ রোড","lat":"23.8101053","lng":"90.422086","Empcode":60670,"DutyDate":"07-Oct-2024","Remarks":"GPS track","IsTrack":"true","Note":"GPS track"}]
-  ).then((http.Response response) {
-   selfCheckInCheckOut =jsonDecode(response.body);
-   print("---------------------------------------------------------------------------  ${selfCheckInCheckOut}");
-   if(response.statusCode==200){
-    GpstrackingList.clear();
-   }
+    );
   });
-  return selfCheckInCheckOut;
- }
- catch(e){
-  print("selfCheckInCheckOut Catch error ${e}");
- }
 }
 
+var fmap = {};
+List ddddddd = [];
+selfOffLineDataSync() async {
+  dynamic selfCheckInCheckOut;
 
+  /// ------- for loop ------------------------------------------------------
+  for (int i = 0; i < GpstrackingList.length; i++) {
+    fmap["UserId"] = "${GpstrackingList[i].UserId}";
+    fmap["AttendanceDate"] = "${GpstrackingList[i].AttendanceDate}";
+    fmap["AttendanceTime"] = "${GpstrackingList[i].AttendanceTime}";
+    fmap["RefCardNo"] = "${GpstrackingList[i].RefCardNo}";
+    fmap["Location"] = "${GpstrackingList[i].Location}";
+    fmap["District"] = "${GpstrackingList[i].District}";
+    fmap["Division"] = "${GpstrackingList[i].Division}";
+    fmap["PostalCode"] = "${GpstrackingList[i].PostalCode}";
+    fmap["SubLocality"] = "${GpstrackingList[i].SubLocality}";
+    fmap["StreetName"] = "${GpstrackingList[i].StreetName}";
+    fmap["lat"] = "${GpstrackingList[i].lat}";
+    fmap["lng"] = "${GpstrackingList[i].lng}";
+    fmap["Empcode"] = GpstrackingList[i].Empcode;
+    fmap["DutyDate"] = "${GpstrackingList[i].DutyDate}";
+    fmap["Remarks"] = "${GpstrackingList[i].Remarks}";
+    fmap["IsTrack"] = "${GpstrackingList[i].IsTrack}";
+    fmap["Note"] = "${GpstrackingList[i].Note}";
+  }
+
+  /// ------- for loop ------------------------------------------------------
+  try {
+    print(
+        "Check ---------------- Status----------------- ${jsonEncode([fmap])}");
+    var data = await http
+        .post(Uri.parse("http://45.114.84.22:8081/Attendance/OffLineDataSync"),
+            headers: {
+              "Content-Type": "application/json",
+              "username": "jibikaapps",
+              "password": "20jibika24",
+            },
+            body: jsonEncode([fmap])
+            //   body:[{"UserId":"01889173335","AttendanceDate":"20241007","AttendanceTime":"20241007","RefCardNo":"1002","Location":"48","District":"Dhaka","Division":"Dhaka Division","PostalCode":"1212","SubLocality":"Dhaka District","StreetName":"48 শাহীদ আব্দুল আজিজ রোড","lat":"23.8101053","lng":"90.422086","Empcode":60670,"DutyDate":"07-Oct-2024","Remarks":"GPS track","IsTrack":"true","Note":"GPS track"}]
+            )
+        .then((http.Response response) {
+      selfCheckInCheckOut = jsonDecode(response.body);
+      print(
+          "---------------------------------------------------------------------------  ${selfCheckInCheckOut}");
+      if (response.statusCode == 200) {
+        GpstrackingList.clear();
+      }
+    });
+    return selfCheckInCheckOut;
+  } catch (e) {
+    print("selfCheckInCheckOut Catch error ${e}");
+  }
+}
 
 /// -------------------------  Flutter Notification -------------------------------------------------------///
- showNotification(String nitification,String notificationBody) async {
- print("""""""""""""""1111""""""""""""""");
- const AndroidNotificationDetails androidDetails = AndroidNotificationDetails(
-  'channel_id',
-  'channel_name',
-  importance: Importance.max,
-  priority: Priority.high,
-  styleInformation: BigTextStyleInformation(''),
- );
+showNotification(String nitification, String notificationBody) async {
+  print("""""" """""" """1111""" """""" """""");
+  const AndroidNotificationDetails androidDetails = AndroidNotificationDetails(
+    'channel_id',
+    'channel_name',
+    importance: Importance.max,
+    priority: Priority.high,
+    styleInformation: BigTextStyleInformation(''),
+  );
 
- const NotificationDetails notificationDetails = NotificationDetails(
-  android: androidDetails,
- );
+  const NotificationDetails notificationDetails = NotificationDetails(
+    android: androidDetails,
+  );
 
-
- await flutterLocalNotificationsPlugin.show(
-   0,
-  '$nitification',
-  '$notificationBody',
-  payload:'$notificationBody',
-  notificationDetails,
- );
- // _playRingtone("Assets/SoundAlert/messagealert.mp3");
- //
- // Future.delayed(Duration(milliseconds: 950),() {
- //  _stopRingtone();
- // },);
+  await flutterLocalNotificationsPlugin.show(
+    0,
+    '$nitification',
+    '$notificationBody',
+    payload: '$notificationBody',
+    notificationDetails,
+  );
+  // _playRingtone("Assets/SoundAlert/messagealert.mp3");
+  //
+  // Future.delayed(Duration(milliseconds: 950),() {
+  //  _stopRingtone();
+  // },);
 }
 // /// -------------------------  Audio Play -------------------------------------------------------///
 // StreamSubscription<void>? ringSubscription;
@@ -723,31 +716,37 @@ selfOffLineDataSync()async{
 // }
 
 /// Quick Alert ---------------------------------------------------------- ///
-quickAlertsuccess(BuildContext context,String title,String text,int second,) async {
- QuickAlert.show(
-  context: context,
-  title: '$title',
-  type: QuickAlertType.success,
-  confirmBtnColor: presentsent_color,
-  autoCloseDuration: Duration(seconds: second),
-  showConfirmBtn: false,
-  showCancelBtn: false,
- );
+quickAlertsuccess(
+  BuildContext context,
+  String title,
+  String text,
+  int second,
+) async {
+  QuickAlert.show(
+    context: context,
+    title: '$title',
+    type: QuickAlertType.success,
+    confirmBtnColor: presentsent_color,
+    autoCloseDuration: Duration(seconds: second),
+    showConfirmBtn: false,
+    showCancelBtn: false,
+  );
 }
 
 /// Quick Alert ---------------------------------------------------------- ///
-quickAlertWrong(BuildContext context,String title,String text,int second,) async {
- QuickAlert.show(
-  context: context,
-  title: '$title',
-  type: QuickAlertType.warning,
-  confirmBtnColor: presentsent_color,
-  autoCloseDuration: Duration(seconds: second),
-  showConfirmBtn: false,
-  showCancelBtn: false,
-
- );
+quickAlertWrong(
+  BuildContext context,
+  String title,
+  String text,
+  int second,
+) async {
+  QuickAlert.show(
+    context: context,
+    title: '$title',
+    type: QuickAlertType.warning,
+    confirmBtnColor: presentsent_color,
+    autoCloseDuration: Duration(seconds: second),
+    showConfirmBtn: false,
+    showCancelBtn: false,
+  );
 }
-
-
-
