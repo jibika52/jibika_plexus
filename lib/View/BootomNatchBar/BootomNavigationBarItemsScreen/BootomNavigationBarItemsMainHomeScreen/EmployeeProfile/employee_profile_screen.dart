@@ -23,15 +23,15 @@ import '../../../../../ViewSelf/SelfBootomNavigatonBar/SelfBootomNavigationLeave
 import '../../BootomNavigationBarItemsPayrollScreen/bootom_navigationar_Items_payroll_screen.dart';
 
 class EmployeeProfileScreen extends StatefulWidget {
-   EmployeeProfileScreen({super.key ,required this.currentEmployeedataIndex});
+  EmployeeProfileScreen({super.key, required this.currentEmployeedataIndex});
   dynamic currentEmployeedataIndex;
   @override
   State<EmployeeProfileScreen> createState() => _EmployeeProfileScreenState();
 }
 
 class _EmployeeProfileScreenState extends State<EmployeeProfileScreen> {
-  int selected_index=0;
-  List countList=[
+  int selected_index = 0;
+  List countList = [
     "Profile ",
     "Job Card",
     "Leave",
@@ -42,10 +42,9 @@ class _EmployeeProfileScreenState extends State<EmployeeProfileScreen> {
     "Conveyance",
     "Loan",
     "Arrear.",
-
     "Documents",
   ];
-  List listimage=[
+  List listimage = [
     "Assets/DashBoardIcons/employee_icon.png",
     "Assets/DashBoardIcons/finger_scan.png",
     "Assets/DashBoardIcons/aireplane_leave.png",
@@ -56,7 +55,6 @@ class _EmployeeProfileScreenState extends State<EmployeeProfileScreen> {
     "Assets/DashBoardIcons/complain.png",
     "Assets/DashBoardIcons/employee_icon.png",
     "Assets/DashBoardIcons/finger_scan.png",
-
     "Assets/DashBoardIcons/loan.png",
   ];
   // @override
@@ -67,40 +65,40 @@ class _EmployeeProfileScreenState extends State<EmployeeProfileScreen> {
   // }
   @override
   Widget build(BuildContext context) {
-     print("aaaaaaaaaaaaaaaaaaaaaa${MediaQuery.of(context).size.height}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa ${widget.currentEmployeedataIndex}");
+    print(
+        "aaaaaaaaaaaaaaaaaaaaaa${MediaQuery.of(context).size.height}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa ${widget.currentEmployeedataIndex}");
 
-     return Scaffold(
-
-      appBar: PreferredSize(preferredSize: Size.fromHeight(68), child: CustomDefaultAppBar(onTap: () => Navigator.pop(context),
-          text: "Activities")),
-      body:   Container(
-        height:MediaQuery.of(context).size.height ,
+    return Scaffold(
+      appBar: PreferredSize(
+          preferredSize: Size.fromHeight(60),
+          child: CustomDefaultAppBar(
+              onTap: () => Navigator.pop(context), text: "Activities")),
+      body: Container(
+        height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
-          // gradient: LinearGradient(
-          //     colors: [
-          //       Main_Theme_textColor_tir_Condition,
-          //       Main_Theme_textColor_tir_Condition.withOpacity(0.8),
-          //       Main_Theme_textColor_tir_Condition.withOpacity(0.7),
-          //       Main_Theme_textColor_tir_Condition.withOpacity(0.6),
-          //       Main_Theme_textColor_tir_Condition.withOpacity(0.5),
-          //       Main_Theme_textColor_tir_Condition.withOpacity(0.4),
-          //       Main_Theme_textColor_tir_Condition.withOpacity(0.3),
-          //     ]
-          // ),
-        ),
+            // gradient: LinearGradient(
+            //     colors: [
+            //       Main_Theme_textColor_tir_Condition,
+            //       Main_Theme_textColor_tir_Condition.withOpacity(0.8),
+            //       Main_Theme_textColor_tir_Condition.withOpacity(0.7),
+            //       Main_Theme_textColor_tir_Condition.withOpacity(0.6),
+            //       Main_Theme_textColor_tir_Condition.withOpacity(0.5),
+            //       Main_Theme_textColor_tir_Condition.withOpacity(0.4),
+            //       Main_Theme_textColor_tir_Condition.withOpacity(0.3),
+            //     ]
+            // ),
+            ),
         child: Column(
           children: [
             Container(
               width: double.infinity,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(20),
-                  bottomRight: Radius.circular(20)
-                )
-              ),
-              margin: EdgeInsets.only(left: 10,right: 10,top: 10),
-              padding: const EdgeInsets.only(left: 10,top: 10,bottom: 10),
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      bottomRight: Radius.circular(20))),
+              margin: EdgeInsets.only(left: 10, right: 10, top: 10),
+              padding: const EdgeInsets.only(left: 10, top: 10, bottom: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -110,10 +108,16 @@ class _EmployeeProfileScreenState extends State<EmployeeProfileScreen> {
                       backgroundColor: presentsent_color,
                       child: Padding(
                         padding: const EdgeInsets.all(4.0),
-                        child: CustomImageSctionNetwork(height: 84, width: 84, radius: 100, image:"${widget.currentEmployeedataIndex["EmpPhotoPath"]}"),
-                      )
+                        child: CustomImageSctionNetwork(
+                            height: 84,
+                            width: 84,
+                            radius: 100,
+                            image:
+                                "${widget.currentEmployeedataIndex["EmpPhotoPath"]}"),
+                      )),
+                  SizedBox(
+                    width: 15,
                   ),
-                  SizedBox(width: 15,),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -123,24 +127,45 @@ class _EmployeeProfileScreenState extends State<EmployeeProfileScreen> {
                           children: [
                             Container(
                               alignment: Alignment.center,
-                              padding: EdgeInsets.symmetric(horizontal: 10,vertical: 3),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 3),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(7),
                                 color: Main_Theme_textColor.withOpacity(0.5),
                               ),
-                              child:
-
-                              ColorCustomText(fontSize: fontTitle, fontWeight: FontWeight.w700, text: "${widget.currentEmployeedataIndex["EmpCode"]}",
-                                letterSpacing: 0.7, textColor: Main_Theme_WhiteCollor,),
+                              child: ColorCustomText(
+                                fontSize: fontTitle,
+                                fontWeight: FontWeight.w700,
+                                text:
+                                    "${widget.currentEmployeedataIndex["EmpCode"]}",
+                                letterSpacing: 0.7,
+                                textColor: Main_Theme_WhiteCollor,
+                              ),
                             ),
                             Spacer()
                           ],
                         ),
-
-                        SizedBox(height:2,),
-                        ColorCustomText(fontSize: fontTitle, maxLines: 1,overflow:TextOverflow.ellipsis,fontWeight: FontWeight.w500, text: "${widget.currentEmployeedataIndex["EmployeeNameEnglish"]}", letterSpacing: 0.5, textColor: Main_Theme_textColor,),
-                        ColorCustomText(fontSize: fontSubTitle, fontWeight: FontWeight.w400, text: "${widget.currentEmployeedataIndex["Designation"]}", letterSpacing: 0.5, textColor: Main_Theme_textColor,),
-
+                        SizedBox(
+                          height: 2,
+                        ),
+                        ColorCustomText(
+                          fontSize: fontTitle,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          fontWeight: FontWeight.w500,
+                          text:
+                              "${widget.currentEmployeedataIndex["EmployeeNameEnglish"]}",
+                          letterSpacing: 0.5,
+                          textColor: Main_Theme_textColor,
+                        ),
+                        ColorCustomText(
+                          fontSize: fontSubTitle,
+                          fontWeight: FontWeight.w400,
+                          text:
+                              "${widget.currentEmployeedataIndex["Designation"]}",
+                          letterSpacing: 0.5,
+                          textColor: Main_Theme_textColor,
+                        ),
                       ],
                     ),
                   ),
@@ -148,36 +173,17 @@ class _EmployeeProfileScreenState extends State<EmployeeProfileScreen> {
               ),
             ),
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             /// Body Part--------------------------------------------------------------
             Expanded(
               child: Padding(
-                padding:   EdgeInsets.only(left: 17,right: 17,bottom: 10,top: 10),
+                padding:
+                    EdgeInsets.only(left: 17, right: 17, bottom: 10, top: 10),
                 child: GridView.builder(
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 3,
                       mainAxisSpacing: 16,
-                      crossAxisSpacing:16,
-                      mainAxisExtent: 120
-                  ),
+                      crossAxisSpacing: 16,
+                      mainAxisExtent: 120),
                   scrollDirection: Axis.vertical,
                   itemCount: countList.length,
                   physics: NeverScrollableScrollPhysics(),
@@ -185,54 +191,83 @@ class _EmployeeProfileScreenState extends State<EmployeeProfileScreen> {
                   itemBuilder: (context, index) {
                     return InkWell(
                       onTap: () {
-                        if(index==0){
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileScreen(
-                            areYouFromEmployee: "Employee",
-                          ),));
+                        if (index == 0) {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ProfileScreen(
+                                  areYouFromEmployee: "Employee",
+                                ),
+                              ));
+                        } else if (index == 1) {
+                          Navigator.push(
+                              context,
+                              CupertinoPageRoute(
+                                builder: (context) => Scaffold(
+                                    appBar: PreferredSize(
+                                        preferredSize: Size.fromHeight(60),
+                                        child: CustomDefaultAppBar(
+                                            onTap: () => Navigator.pop(context),
+                                            text: "Job Card")),
+                                    body: SelfBootomNavigatonEmployeeDashboard(
+                                        are_you_user: "employee",
+                                        IdCardNo:
+                                            "${widget.currentEmployeedataIndex["IdCardNo"]}",
+                                        userId_mobile:
+                                            "${GetStorage().read("mobile_id")}",
+                                        image:
+                                            "${widget.currentEmployeedataIndex["EmpPhotoPath"]}",
+                                        employeeCode:
+                                            "${widget.currentEmployeedataIndex["IdCardNo"]}",
+                                        employeeName:
+                                            "${widget.currentEmployeedataIndex["EmployeeNameEnglish"]}",
+                                        employeeDesignation:
+                                            "${widget.currentEmployeedataIndex["Designation"]}",
+                                        employeeDepartment:
+                                            "${widget.currentEmployeedataIndex["Department"]}",
+                                        birthday:
+                                            "${widget.currentEmployeedataIndex["BirthDate"] ?? ""}")),
+                              ));
+                        } else if (index == 2) {
+                          Navigator.push(
+                              context,
+                              CupertinoPageRoute(
+                                builder: (context) => Scaffold(
+                                    appBar: PreferredSize(
+                                        preferredSize: Size.fromHeight(60),
+                                        child: CustomDefaultAppBar(
+                                            onTap: () => Navigator.pop(context),
+                                            text: "Leave")),
+                                    body: SelfBootomNavigationLeave()),
+                              ));
+                        } else if (index == 3) {
+                          Navigator.push(
+                              context,
+                              CupertinoPageRoute(
+                                builder: (context) => Scaffold(
+                                    appBar: PreferredSize(
+                                        preferredSize: Size.fromHeight(60),
+                                        child: CustomDefaultAppBar(
+                                            onTap: () => Navigator.pop(context),
+                                            text: "Payroll")),
+                                    body:
+                                        BootomNavigationBarItemsPayrollScreen()),
+                              ));
                         }
-                        else if(index==1){
-                          Navigator.push(context, CupertinoPageRoute(builder: (context) => Scaffold(
-                              appBar: PreferredSize(preferredSize: Size.fromHeight(68), child: CustomDefaultAppBar(onTap: () => Navigator.pop(context),
-                                  text: "Job Card")),
-                              body: SelfBootomNavigatonEmployeeDashboard(
-                                  are_you_user: "employee",
-                                  IdCardNo: "${widget.currentEmployeedataIndex["IdCardNo"]}",
-                                  userId_mobile: "${GetStorage().read("mobile_id")}",
-                                  image: "${widget.currentEmployeedataIndex["EmpPhotoPath"]}",
-                                  employeeCode: "${widget.currentEmployeedataIndex["IdCardNo"]}",
-                                  employeeName: "${widget.currentEmployeedataIndex["EmployeeNameEnglish"]}",
-                                  employeeDesignation: "${widget.currentEmployeedataIndex["Designation"]}",
-                                  employeeDepartment: "${widget.currentEmployeedataIndex["Department"]}",
-                                  birthday:  "${widget.currentEmployeedataIndex["BirthDate"]??""}"
-                              )),));
-                        }
-                        else if(index==2){
-                          Navigator.push(context, CupertinoPageRoute(builder: (context) => Scaffold(
-                              appBar: PreferredSize(preferredSize: Size.fromHeight(68), child: CustomDefaultAppBar(onTap: () => Navigator.pop(context),
-                                  text: "Leave")),
-                              body: SelfBootomNavigationLeave( )),));
-                        }
-                        else if(index==3){
-                          Navigator.push(context, CupertinoPageRoute(builder: (context) => Scaffold(
-                              appBar: PreferredSize(preferredSize: Size.fromHeight(68), child: CustomDefaultAppBar(onTap: () => Navigator.pop(context),
-                                  text: "Payroll")),
-                              body: BootomNavigationBarItemsPayrollScreen( )),));
-                        }
-
                       },
                       child: Container(
-                      //  padding: EdgeInsets.only(left: 15,right: 15),
+                        //  padding: EdgeInsets.only(left: 15,right: 15),
                         width: 130,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(11),
-                            bottomRight: Radius.circular(11),
-                            topLeft: Radius.circular(11),
-                            topRight: Radius.circular(11),
-                          ),
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(11),
+                              bottomRight: Radius.circular(11),
+                              topLeft: Radius.circular(11),
+                              topRight: Radius.circular(11),
+                            ),
                             color: Main_Theme_textColor.withOpacity(0.2),
-                          border: Border.all(color: Main_Theme_textColor.withOpacity(0.1))
-                        ),
+                            border: Border.all(
+                                color: Main_Theme_textColor.withOpacity(0.1))),
                         child: Stack(
                           alignment: Alignment.center,
                           children: <Widget>[
@@ -253,7 +288,6 @@ class _EmployeeProfileScreenState extends State<EmployeeProfileScreen> {
                                 ),
                               ),
                             ),
-
 
                             // Positioned(
                             //     top: 0,
@@ -277,26 +311,26 @@ class _EmployeeProfileScreenState extends State<EmployeeProfileScreen> {
                                   transform: new Matrix4.identity()
                                     ..rotateZ(50 * 3.1415927 / 180),
                                   child: Container(
-                                                        height: 70,
-                                                        width:  70,
-                                     decoration: BoxDecoration(
-                                       borderRadius: BorderRadius.only(
-                                         topLeft: Radius.circular(10)
-                                       ),
-                                    //   borderRadius: BorderRadius.only(
-                                    //     bottomLeft: Radius.circular(45)
-                                    //   ),
-                                   //   color: Main_Theme_textColor.withOpacity(0.07),
+                                    height: 70,
+                                    width: 70,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.only(
+                                            topLeft: Radius.circular(10)),
+                                        //   borderRadius: BorderRadius.only(
+                                        //     bottomLeft: Radius.circular(45)
+                                        //   ),
+                                        //   color: Main_Theme_textColor.withOpacity(0.07),
 
-                                       gradient: LinearGradient(
-                                         begin: Alignment.topCenter,
-                                           end: Alignment.bottomCenter,
-                                           colors: [
-                                         Main_Theme_WhiteCollor.withOpacity(0.25),
-                                         Main_Theme_textColor.withOpacity(0.1)
-                                       ])
-                                     ),
-                                                      ),
+                                        gradient: LinearGradient(
+                                            begin: Alignment.topCenter,
+                                            end: Alignment.bottomCenter,
+                                            colors: [
+                                              Main_Theme_WhiteCollor
+                                                  .withOpacity(0.25),
+                                              Main_Theme_textColor.withOpacity(
+                                                  0.1)
+                                            ])),
+                                  ),
                                 )),
                             Positioned(
                                 top: -20,
@@ -306,26 +340,26 @@ class _EmployeeProfileScreenState extends State<EmployeeProfileScreen> {
                                   transform: new Matrix4.identity()
                                     ..rotateZ(50 * 3.1415927 / 180),
                                   child: Container(
-                                                        height: 70,
-                                                        width:  70,
-                                     decoration: BoxDecoration(
-                                       borderRadius: BorderRadius.only(
-                                         bottomRight: Radius.circular(10)
-                                       ),
-                                    //   borderRadius: BorderRadius.only(
-                                    //     bottomLeft: Radius.circular(45)
-                                    //   ),
-                                   //   color: Main_Theme_textColor.withOpacity(0.07),
+                                    height: 70,
+                                    width: 70,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.only(
+                                            bottomRight: Radius.circular(10)),
+                                        //   borderRadius: BorderRadius.only(
+                                        //     bottomLeft: Radius.circular(45)
+                                        //   ),
+                                        //   color: Main_Theme_textColor.withOpacity(0.07),
 
-                                       gradient: LinearGradient(
-                                         begin: Alignment.topCenter,
-                                           end: Alignment.bottomCenter,
-                                           colors: [
-                                         Main_Theme_WhiteCollor.withOpacity(0.25),
-                                         Main_Theme_textColor.withOpacity(0.1)
-                                       ])
-                                     ),
-                                                      ),
+                                        gradient: LinearGradient(
+                                            begin: Alignment.topCenter,
+                                            end: Alignment.bottomCenter,
+                                            colors: [
+                                              Main_Theme_WhiteCollor
+                                                  .withOpacity(0.25),
+                                              Main_Theme_textColor.withOpacity(
+                                                  0.1)
+                                            ])),
+                                  ),
                                 )),
 
                             Positioned(
@@ -340,10 +374,14 @@ class _EmployeeProfileScreenState extends State<EmployeeProfileScreen> {
                                 padding: EdgeInsets.all(7),
                                 //  child: Image.asset("Assets/SelfIcon/test_attendance.png",height: 30,width: 30,color: Main_Theme_textColor.withOpacity(0.8),),
                                 //    child: Image.asset("${listimage[listimage.length-1]}",height: 30,width: 30,color: Main_Theme_textColor.withOpacity(0.9),),
-                                child: Image.asset("${listimage[index]}",height: 30,width: 30,color: Main_Theme_textColor.withOpacity(0.9),),
+                                child: Image.asset(
+                                  "${listimage[index]}",
+                                  height: 30,
+                                  width: 30,
+                                  color: Main_Theme_textColor.withOpacity(0.9),
+                                ),
                               ),
                             ),
-
                           ],
                         ),
                       ),
@@ -429,6 +467,6 @@ class _EmployeeProfileScreenState extends State<EmployeeProfileScreen> {
           ],
         ),
       ),
-        );
+    );
   }
 }

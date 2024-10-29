@@ -45,7 +45,7 @@ class _HomeFirstPartComponentLeaveState extends State<HomeFirstPartComponentLeav
     double w=MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(75),child: CustomDefaultAppBar(onTap: () {
+        preferredSize: Size.fromHeight(60),child: CustomDefaultAppBar(onTap: () {
         Navigator.pop(context);
       }, text: "Leave Approval"),),
       body: Container(

@@ -3,18 +3,17 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
-import 'package:geolocator/geolocator.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 ///------------second map------------------///
 class TestMapScreen extends StatefulWidget {
-
-
-
-  TestMapScreen({Key? key,required this.lattt,required this.lannn,required this.startLatitude, required this.startLongitude}) : super(key: key);
+  TestMapScreen(
+      {Key? key,
+      required this.lattt,
+      required this.lannn,
+      required this.startLatitude,
+      required this.startLongitude})
+      : super(key: key);
   double lattt;
   double lannn;
   double startLatitude;
@@ -59,11 +58,8 @@ class _TestMapScreenState extends State<TestMapScreen> {
     );
   }
 
-
-
-
-  CameraPosition _initialLocation = CameraPosition(
-      target: LatLng(23.8223, 90.3654));
+  CameraPosition _initialLocation =
+      CameraPosition(target: LatLng(23.8223, 90.3654));
   late GoogleMapController mapController;
 
   String _startAddress = '';
@@ -79,16 +75,13 @@ class _TestMapScreenState extends State<TestMapScreen> {
   Future<bool> _calculateDistance() async {
     try {
       ///--------------------------startLatitude---------------------///
-      double startLatitude=double.parse("${widget.startLatitude}");
-      double startLongitude=double.parse("${widget.startLongitude}");
+      double startLatitude = double.parse("${widget.startLatitude}");
+      double startLongitude = double.parse("${widget.startLongitude}");
 
       //   double destinationLatitude=double.parse("${GetStorage().read("receivedRideRequestData")["user"]["desLat"]}");
       //       double destinationLongitude= double.parse("${GetStorage().read("receivedRideRequestData")["user"]["deLon"]}");
-      double destinationLatitude=double.parse("${widget.lattt}");
-      double destinationLongitude=double.parse("${widget.lannn}");
-
-
-
+      double destinationLatitude = double.parse("${widget.lattt}");
+      double destinationLongitude = double.parse("${widget.lannn}");
 
       ///-----------------------------------------------------------------
       String startCoordinatesString = '($startLatitude, $startLongitude)';
@@ -175,8 +168,10 @@ class _TestMapScreenState extends State<TestMapScreen> {
 
       setState(() {
         _placeDistance = totalDistance.toStringAsFixed(2);
-        print('DISTANCE:================================================================ ');
-        print('DISTANCE:================================================================ $_placeDistance km');
+        print(
+            'DISTANCE:================================================================ ');
+        print(
+            'DISTANCE:================================================================ $_placeDistance km');
       });
 
       return true;
@@ -197,27 +192,25 @@ class _TestMapScreenState extends State<TestMapScreen> {
         c(lat1 * p) * c(lat2 * p) * (1 - c((lon2 - lon1) * p)) / 2;
 
     return 12742 * asin(sqrt(a));
-
   }
 
   // Create the polylines for showing the route between two places
   _createPolylines(
-      double startLatitude,
-      double startLongitude,
-      double destinationLatitude,
-      double destinationLongitude,
-      ) async {
+    double startLatitude,
+    double startLongitude,
+    double destinationLatitude,
+    double destinationLongitude,
+  ) async {
     polylinePoints = PolylinePoints();
     PolylineResult result = await polylinePoints.getRouteBetweenCoordinates(
-      googleApiKey: "AIzaSyDMnTS3Bada4m_-coPcG46JMShU1GOsRIc", request: PolylineRequest(
+      googleApiKey: "AIzaSyDMnTS3Bada4m_-coPcG46JMShU1GOsRIc",
+      request: PolylineRequest(
         origin: PointLatLng(startLatitude, startLongitude),
-        destination:  PointLatLng(destinationLatitude, destinationLongitude),
+        destination: PointLatLng(destinationLatitude, destinationLongitude),
         mode: TravelMode.driving,
         wayPoints: [PolylineWayPoint(location: "Sabo, Yaba Lagos Nigeria")],
-    ),
+      ),
     );
-
-
 
     if (result.points.isNotEmpty) {
       result.points.forEach((PointLatLng point) {
@@ -237,30 +230,26 @@ class _TestMapScreenState extends State<TestMapScreen> {
 
   @override
   void initState() {
-    _startAddress="dhaka";
-    _destinationAddress="dhaka";
+    _startAddress = "dhaka";
+    _destinationAddress = "dhaka";
     super.initState();
-    Future.delayed(Duration(
-      seconds: 2,
-    ),(){
+    Future.delayed(
+        Duration(
+          seconds: 2,
+        ), () {
       getroute();
     });
-
   }
 
-
-
-
-
-  getroute(){
-
+  getroute() {
     _calculateDistance().then((isCalculated) {
       if (isCalculated) {
         double totalDistance = 0;
         print(totalDistance);
-        ScaffoldMessenger.of(context)
-            .showSnackBar(
-          SnackBar(content: Text('Distance Calculated Sucessfully'),),
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Distance Calculated Sucessfully'),
+          ),
         );
       } else {
         // ScaffoldMessenger.of(context)
@@ -273,6 +262,6 @@ class _TestMapScreenState extends State<TestMapScreen> {
       }
     });
   }
-
 }
+
 ///------------second map------------------///

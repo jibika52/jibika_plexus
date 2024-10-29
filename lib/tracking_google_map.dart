@@ -6,19 +6,24 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class TrackingMapScreen extends StatefulWidget {
-   TrackingMapScreen({super.key,required this.lat, required this.lon,required this.address,required this.time});
-   double lat;
-   double lon;
-   String address;
-   String time;
+  TrackingMapScreen(
+      {super.key,
+      required this.lat,
+      required this.lon,
+      required this.address,
+      required this.time});
+  double lat;
+  double lon;
+  String address;
+  String time;
   @override
   State<TrackingMapScreen> createState() => _TrackingMapScreenState();
 }
 
 class _TrackingMapScreenState extends State<TrackingMapScreen> {
   late Position position;
-  Completer<GoogleMapController> _controller = Completer(); 
-  static late CameraPosition _kGoogle ;
+  Completer<GoogleMapController> _controller = Completer();
+  static late CameraPosition _kGoogle;
   final Set<Marker> _markers = {};
   final Set<Polyline> _polyline = {};
   // list of locations to display polylines
@@ -30,27 +35,24 @@ class _TrackingMapScreenState extends State<TrackingMapScreen> {
   @override
   void initState() {
     // TODO: implement initState
-    _kGoogle =   CameraPosition(
-      target:  LatLng(widget.lat, widget.lon),
+    _kGoogle = CameraPosition(
+      target: LatLng(widget.lat, widget.lon),
       zoom: 16,
     );
-    super.initState(); 
-    for(int i=0; i<1; i++){
+    super.initState();
+    for (int i = 0; i < 1; i++) {
       _markers.add(
-        // added markers
+          // added markers
           Marker(
-            markerId: MarkerId(i.toString()),
-            position: LatLng(widget.lat, widget.lon),
-            infoWindow: InfoWindow(
-              title: '${widget.time}',
-              snippet: '${widget.address}',
-            ),
-            icon: BitmapDescriptor.defaultMarker,
-          )
-      );
-      setState(() {
-
-      });
+        markerId: MarkerId(i.toString()),
+        position: LatLng(widget.lat, widget.lon),
+        infoWindow: InfoWindow(
+          title: '${widget.time}',
+          snippet: '${widget.address}',
+        ),
+        icon: BitmapDescriptor.defaultMarker,
+      ));
+      setState(() {});
       // _polyline.add(
       //     Polyline(
       //       polylineId: PolylineId('1'),
@@ -80,7 +82,7 @@ class _TrackingMapScreenState extends State<TrackingMapScreen> {
         // on below line we have added polylines
         polylines: _polyline,
         // displayed google map
-        onMapCreated: (GoogleMapController controller){
+        onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);
         },
       ),
