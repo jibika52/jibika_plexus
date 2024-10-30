@@ -81,7 +81,6 @@ const font10 = 10.0;
 const font9 = 9.0;
 const font13header = 13.0;
 const font12 = 12.0;
-
 const fontSubTitle = 14.0;
 const font15 = 15.0;
 const fontTitle = 16.0;

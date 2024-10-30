@@ -106,28 +106,31 @@ class _BootomNatchBarScreenState extends State<BootomNatchBarScreen> {
                   },
                   child: Container(
                     height: b_bar_h,
-                    child: Column(
-                      children: [
-                        CustomImageSction2(
-                            height: C_size,
-                            img_color: _currentIndex == 0
-                                ? Main_Theme_WhiteCollor
-                                : Main_Theme_WhiteCollor.withOpacity(0.5),
-                            width: C_size,
-                            radius: 5,
-                            image: "Assets/DashBoardIcons/b_bar_home.png"),
-                        SizedBox(
-                          height: 3,
-                        ),
-                        ColorCustomText(
-                            fontSize: font12,
-                            fontWeight: FontWeight.w500,
-                            text: "Employee",
-                            letterSpacing: 0.9,
-                            textColor: _currentIndex == 0
-                                ? Main_Theme_WhiteCollor
-                                : Main_Theme_WhiteCollor.withOpacity(0.5)),
-                      ],
+                    child: SingleChildScrollView(
+                      physics: NeverScrollableScrollPhysics(),
+                      child: Column(
+                        children: [
+                          CustomImageSction2(
+                              height: C_size,
+                              img_color: _currentIndex == 0
+                                  ? Main_Theme_WhiteCollor
+                                  : Main_Theme_WhiteCollor.withOpacity(0.5),
+                              width: C_size,
+                              radius: 5,
+                              image: "Assets/DashBoardIcons/b_bar_home.png"),
+                          SizedBox(
+                            height: 3,
+                          ),
+                          ColorCustomText(
+                              fontSize: font12,
+                              fontWeight: FontWeight.w500,
+                              text: "Employee",
+                              letterSpacing: 0.9,
+                              textColor: _currentIndex == 0
+                                  ? Main_Theme_WhiteCollor
+                                  : Main_Theme_WhiteCollor.withOpacity(0.5)),
+                        ],
+                      ),
                     ),
                   )),
               InkWell(
@@ -138,28 +141,31 @@ class _BootomNatchBarScreenState extends State<BootomNatchBarScreen> {
                   },
                   child: Container(
                     height: b_bar_h,
-                    child: Column(
-                      children: [
-                        CustomImageSction2(
-                            height: C_size,
-                            img_color: _currentIndex == 2
-                                ? Main_Theme_WhiteCollor
-                                : Main_Theme_WhiteCollor.withOpacity(0.5),
-                            width: C_size,
-                            radius: 5,
-                            image: "Assets/DashBoardIcons/b_bar_payroll.png"),
-                        SizedBox(
-                          height: 3,
-                        ),
-                        ColorCustomText(
-                            fontSize: font12,
-                            fontWeight: FontWeight.w500,
-                            text: "Payroll",
-                            letterSpacing: 0.9,
-                            textColor: _currentIndex == 2
-                                ? Main_Theme_WhiteCollor
-                                : Main_Theme_WhiteCollor.withOpacity(0.5)),
-                      ],
+                    child: SingleChildScrollView(
+                      physics: NeverScrollableScrollPhysics(),
+                      child: Column(
+                        children: [
+                          CustomImageSction2(
+                              height: C_size,
+                              img_color: _currentIndex == 2
+                                  ? Main_Theme_WhiteCollor
+                                  : Main_Theme_WhiteCollor.withOpacity(0.5),
+                              width: C_size,
+                              radius: 5,
+                              image: "Assets/DashBoardIcons/b_bar_payroll.png"),
+                          SizedBox(
+                            height: 3,
+                          ),
+                          ColorCustomText(
+                              fontSize: font12,
+                              fontWeight: FontWeight.w500,
+                              text: "Payroll",
+                              letterSpacing: 0.9,
+                              textColor: _currentIndex == 2
+                                  ? Main_Theme_WhiteCollor
+                                  : Main_Theme_WhiteCollor.withOpacity(0.5)),
+                        ],
+                      ),
                     ),
                   )),
               Container(
@@ -178,29 +184,32 @@ class _BootomNatchBarScreenState extends State<BootomNatchBarScreen> {
                   },
                   child: Container(
                     height: b_bar_h,
-                    child: Column(
-                      children: [
-                        CustomImageSction2(
-                            height: C_size,
-                            img_color: _currentIndex == 1
-                                ? Main_Theme_WhiteCollor
-                                : Main_Theme_WhiteCollor.withOpacity(0.5),
-                            width: C_size,
-                            radius: 5,
-                            image:
-                                "Assets/DashBoardIcons/b_bar_attendence.png"),
-                        SizedBox(
-                          height: 3,
-                        ),
-                        ColorCustomText(
-                            fontSize: font12,
-                            fontWeight: FontWeight.w500,
-                            text: "Attendance",
-                            letterSpacing: 0.9,
-                            textColor: _currentIndex == 1
-                                ? Main_Theme_WhiteCollor
-                                : Main_Theme_WhiteCollor.withOpacity(0.5)),
-                      ],
+                    child: SingleChildScrollView(
+                      physics: NeverScrollableScrollPhysics(),
+                      child: Column(
+                        children: [
+                          CustomImageSction2(
+                              height: C_size,
+                              img_color: _currentIndex == 1
+                                  ? Main_Theme_WhiteCollor
+                                  : Main_Theme_WhiteCollor.withOpacity(0.5),
+                              width: C_size,
+                              radius: 5,
+                              image:
+                                  "Assets/DashBoardIcons/b_bar_attendence.png"),
+                          SizedBox(
+                            height: 3,
+                          ),
+                          ColorCustomText(
+                              fontSize: font12,
+                              fontWeight: FontWeight.w500,
+                              text: "Attendance",
+                              letterSpacing: 0.9,
+                              textColor: _currentIndex == 1
+                                  ? Main_Theme_WhiteCollor
+                                  : Main_Theme_WhiteCollor.withOpacity(0.5)),
+                        ],
+                      ),
                     ),
                   )),
               InkWell(
@@ -211,28 +220,31 @@ class _BootomNatchBarScreenState extends State<BootomNatchBarScreen> {
                 },
                 child: Container(
                   height: b_bar_h,
-                  child: Column(
-                    children: [
-                      CustomImageSction2(
-                          height: C_size,
-                          img_color: _currentIndex == 3
-                              ? Main_Theme_WhiteCollor
-                              : Main_Theme_WhiteCollor.withOpacity(0.5),
-                          width: C_size,
-                          radius: 5,
-                          image: "Assets/DashBoardIcons/b_bar_tricker.png"),
-                      SizedBox(
-                        height: 3,
-                      ),
-                      ColorCustomText(
-                          fontSize: font12,
-                          fontWeight: FontWeight.w500,
-                          text: "Tracker",
-                          letterSpacing: 0.9,
-                          textColor: _currentIndex == 3
-                              ? Main_Theme_WhiteCollor
-                              : Main_Theme_WhiteCollor.withOpacity(0.5)),
-                    ],
+                  child: SingleChildScrollView(
+                    physics: NeverScrollableScrollPhysics(),
+                    child: Column(
+                      children: [
+                        CustomImageSction2(
+                            height: C_size,
+                            img_color: _currentIndex == 3
+                                ? Main_Theme_WhiteCollor
+                                : Main_Theme_WhiteCollor.withOpacity(0.5),
+                            width: C_size,
+                            radius: 5,
+                            image: "Assets/DashBoardIcons/b_bar_tricker.png"),
+                        SizedBox(
+                          height: 3,
+                        ),
+                        ColorCustomText(
+                            fontSize: font12,
+                            fontWeight: FontWeight.w500,
+                            text: "Tracker",
+                            letterSpacing: 0.9,
+                            textColor: _currentIndex == 3
+                                ? Main_Theme_WhiteCollor
+                                : Main_Theme_WhiteCollor.withOpacity(0.5)),
+                      ],
+                    ),
                   ),
                 ),
               ),

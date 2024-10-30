@@ -37,7 +37,7 @@ class _HomeHederPartState extends State<HomeHederPart> {
     "Join ",
     "Atten.",
     "Leave",
-    "Promo.",
+    "Prom.",
     "Loan",
     "conv.",
     "Stat.",

@@ -34,7 +34,7 @@ class _HomeThiredPartHeaderState extends State<HomeThiredPartHeader> {
     double w = MediaQuery.of(context).size.width;
     return Container(
       padding: EdgeInsets.only(right: 10),
-      height: 68,
+      // height: 68,
       width: double.infinity,
       child: Row(
         children: [
@@ -76,6 +76,7 @@ class _HomeThiredPartHeaderState extends State<HomeThiredPartHeader> {
               _onPressed(context: context);
             },
             child: Container(
+              //  height: 68,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(11),
@@ -116,7 +117,6 @@ class _HomeThiredPartHeaderState extends State<HomeThiredPartHeader> {
                     letterSpacing: 0.3,
                     textColor: Main_Theme_textColor.withOpacity(0.6),
                   ),
-                  Spacer(),
                 ],
               ),
             ),

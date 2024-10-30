@@ -22,7 +22,6 @@ class HomeSeventhPartBodySection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(right: 10),
-      height: 100,
       width: 80,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(11),

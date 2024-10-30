@@ -46,7 +46,7 @@ class _BarchatHeaderPartState extends State<BarchatHeaderPart> {
               textColor: Main_Theme_textColor.withOpacity(0.9)),
           ColorCustomText(
               text: "${widget.money}",
-              fontSize: fontSubTitle,
+              fontSize: 14,
               fontWeight: FontWeight.w600,
               letterSpacing: 0.2,
               textColor: Main_Theme_textColor.withOpacity(0.6)),
