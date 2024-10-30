@@ -61,14 +61,14 @@ class _SelfNoticeScreenState extends State<SelfNoticeScreen> {
                               width: 7,
                             ),
                             CustomText(
-                                fontSize: 13,
+                                fontSize: font13header,
                                 fontWeight: FontWeight.w500,
                                 text: "Notice for AGM 2023",
                                 letterSpacing: 0.3)
                           ],
                         ),
                         ColorCustomText(
-                            fontSize: 11,
+                            fontSize: font11,
                             fontWeight: FontWeight.w400,
                             text: "20-apr-2024",
                             letterSpacing: 0.3,
@@ -79,7 +79,7 @@ class _SelfNoticeScreenState extends State<SelfNoticeScreen> {
                   Stack(
                     children: [
                       CustomText(
-                        fontSize: 12,
+                        fontSize: font12,
                         fontWeight: FontWeight.w400,
                         text: "$Loremtext",
                         letterSpacing: 0.3,
@@ -93,7 +93,7 @@ class _SelfNoticeScreenState extends State<SelfNoticeScreen> {
                             width: 100,
                             color: Main_Theme_WhiteCollor,
                             child: ColorCustomText(
-                              fontSize: 12,
+                              fontSize: font12,
                               fontWeight: FontWeight.w600,
                               text: "...Read more",
                               letterSpacing: 0.3,
@@ -126,7 +126,7 @@ class _SelfNoticeScreenState extends State<SelfNoticeScreen> {
                               width: 7,
                             ),
                             ColorCustomText(
-                              fontSize: 11,
+                              fontSize: font11,
                               fontWeight: FontWeight.w400,
                               text: "image.jpg",
                               letterSpacing: 0.3,
@@ -135,7 +135,7 @@ class _SelfNoticeScreenState extends State<SelfNoticeScreen> {
                           ],
                         ),
                         ColorCustomText(
-                            fontSize: 11,
+                            fontSize: font11,
                             fontWeight: FontWeight.w400,
                             text: "20-apr-2024",
                             letterSpacing: 0.3,

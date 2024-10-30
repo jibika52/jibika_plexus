@@ -146,7 +146,7 @@ class _PAyrollProcessScreenState extends State<PAyrollProcessScreen> {
                             children: [
                               _is_click_date == false
                                   ? ColorCustomText(
-                                      fontSize: font12header,
+                                      fontSize: font13header,
                                       fontWeight: FontWeight.w500,
                                       text: "${MonthList[selectedmonth]}",
                                       letterSpacing: 0.3,
@@ -196,7 +196,7 @@ class _PAyrollProcessScreenState extends State<PAyrollProcessScreen> {
                                     hint: Text(
                                       '${DateTime.now().year}',
                                       style: TextStyle(
-                                        fontSize: 12,
+                                        fontSize: font12,
                                         fontWeight: FontWeight.bold,
                                         color: Main_Theme_textColor,
                                       ),
@@ -209,7 +209,7 @@ class _PAyrollProcessScreenState extends State<PAyrollProcessScreen> {
                                               child: Text(
                                                 item,
                                                 style: const TextStyle(
-                                                  fontSize: 12,
+                                                  fontSize: font12,
                                                   fontWeight: FontWeight.bold,
                                                   color: Colors.black,
                                                 ),
@@ -303,7 +303,7 @@ class _PAyrollProcessScreenState extends State<PAyrollProcessScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               ColorCustomText(
-                                  fontSize: 14,
+                                  fontSize: fontSubTitle,
                                   fontWeight: FontWeight.w400,
                                   text: "From",
                                   letterSpacing: 0.2,
@@ -359,7 +359,7 @@ class _PAyrollProcessScreenState extends State<PAyrollProcessScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               ColorCustomText(
-                                  fontSize: 14,
+                                  fontSize: fontSubTitle,
                                   fontWeight: FontWeight.w400,
                                   text: "To",
                                   letterSpacing: 0.2,
@@ -420,7 +420,7 @@ class _PAyrollProcessScreenState extends State<PAyrollProcessScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         ColorCustomText(
-                            fontSize: 14,
+                            fontSize: fontSubTitle,
                             fontWeight: FontWeight.w400,
                             text: "Payment Date",
                             letterSpacing: 0.2,
@@ -499,7 +499,7 @@ class _PAyrollProcessScreenState extends State<PAyrollProcessScreen> {
                               hint: Text(
                                 'Select bonus',
                                 style: TextStyle(
-                                  fontSize: 12,
+                                  fontSize: font12,
                                   fontWeight: FontWeight.bold,
                                   color: Main_Theme_textColor,
                                 ),
@@ -512,7 +512,7 @@ class _PAyrollProcessScreenState extends State<PAyrollProcessScreen> {
                                             child: Text(
                                               item,
                                               style: const TextStyle(
-                                                fontSize: 12,
+                                                fontSize: font12,
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.black,
                                               ),

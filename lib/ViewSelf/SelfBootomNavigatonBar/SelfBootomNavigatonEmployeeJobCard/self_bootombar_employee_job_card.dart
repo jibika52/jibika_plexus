@@ -19,12 +19,14 @@ class SelfBootomBarJobCardScreen extends StatefulWidget {
   const SelfBootomBarJobCardScreen({super.key});
 
   @override
-  State<SelfBootomBarJobCardScreen> createState() => _SelfBootomBarJobCardScreenState();
+  State<SelfBootomBarJobCardScreen> createState() =>
+      _SelfBootomBarJobCardScreenState();
 }
 
-class _SelfBootomBarJobCardScreenState extends State<SelfBootomBarJobCardScreen> {
-  int selected_index=0;
-  List countList=[
+class _SelfBootomBarJobCardScreenState
+    extends State<SelfBootomBarJobCardScreen> {
+  int selected_index = 0;
+  List countList = [
     "My Profile ",
     "My Job Card",
     "My Leave",
@@ -36,7 +38,7 @@ class _SelfBootomBarJobCardScreenState extends State<SelfBootomBarJobCardScreen>
     "My Production",
     "My Complain",
   ];
-  List listimage=[
+  List listimage = [
     "Assets/DashBoardIcons/employee_icon.png",
     "Assets/DashBoardIcons/finger_scan.png",
     "Assets/DashBoardIcons/aireplane_leave.png",
@@ -46,7 +48,8 @@ class _SelfBootomBarJobCardScreenState extends State<SelfBootomBarJobCardScreen>
     "Assets/DashBoardIcons/requistion.png",
     "Assets/DashBoardIcons/complain.png",
     "Assets/DashBoardIcons/employee_icon.png",
-    "Assets/DashBoardIcons/finger_scan.png", ];
+    "Assets/DashBoardIcons/finger_scan.png",
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,45 +66,60 @@ class _SelfBootomBarJobCardScreenState extends State<SelfBootomBarJobCardScreen>
           itemBuilder: (context, index) {
             return InkWell(
               onTap: () {
-                                  if(index==0){
-                                    Navigator.push(context, CupertinoPageRoute(builder: (context) => ProfileScreen(
-                                      areYouFromEmployee: "user",
-                                    ),));
-                                  }
-                                else if(index==1){
-                                  Navigator.push(context, CupertinoPageRoute(builder: (context) => SalfBootomNatchBarScreen(
-                                  currentIndex: 1,
-                                  ),));
-                                  }
-                                  else if(index==2){
-                                    Navigator.push(context, CupertinoPageRoute(builder: (context) => SalfBootomNatchBarScreen(
-                                      currentIndex: 2,
-                                    ),));
-                                   }
-                                  else if(index==3){
-                                   quickAlertWrong(context, "Coming Soon", "Thanks for Quarry", 2);
-                                   }
-                                  else if(index==4){
-                                    Navigator.push(context, CupertinoPageRoute(builder: (context) => SelfStationary()));
-                                   }
-                                  else if(index==5){
-                                    quickAlertWrong(context, "Coming Soon", "Thanks for Quarry", 2);
-                                  }
-                                  else if(index==6){
-                                    quickAlertWrong(context, "Coming Soon", "Thanks for Quarry", 2);
-                                  }
-                                  else if(index==7){
-                                    Navigator.push(context, CupertinoPageRoute(builder: (context) => SelfLoanScreen(),));
-                                  }
-                                  else if(index==8){
-                                    quickAlertWrong(context, "Coming Soon", "Thanks for Quarry", 2);
-                                  }
-                                  else if(index==9){
-                                    quickAlertWrong(context, "Coming Soon", "Thanks for Quarry", 2);
-                                  }
-                                  else{
-                                    quickAlertWrong(context, "Coming Soon", "Thanks for Quarry", 2);
-                                  }
+                if (index == 0) {
+                  Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                        builder: (context) => ProfileScreen(
+                          areYouFromEmployee: "user",
+                        ),
+                      ));
+                } else if (index == 1) {
+                  Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                        builder: (context) => SalfBootomNatchBarScreen(
+                          currentIndex: 1,
+                        ),
+                      ));
+                } else if (index == 2) {
+                  Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                        builder: (context) => SalfBootomNatchBarScreen(
+                          currentIndex: 2,
+                        ),
+                      ));
+                } else if (index == 3) {
+                  quickAlertWrong(
+                      context, "Coming Soon", "Thanks for Quarry", 2);
+                } else if (index == 4) {
+                  Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                          builder: (context) => SelfStationary()));
+                } else if (index == 5) {
+                  quickAlertWrong(
+                      context, "Coming Soon", "Thanks for Quarry", 2);
+                } else if (index == 6) {
+                  quickAlertWrong(
+                      context, "Coming Soon", "Thanks for Quarry", 2);
+                } else if (index == 7) {
+                  Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                        builder: (context) => SelfLoanScreen(),
+                      ));
+                } else if (index == 8) {
+                  quickAlertWrong(
+                      context, "Coming Soon", "Thanks for Quarry", 2);
+                } else if (index == 9) {
+                  quickAlertWrong(
+                      context, "Coming Soon", "Thanks for Quarry", 2);
+                } else {
+                  quickAlertWrong(
+                      context, "Coming Soon", "Thanks for Quarry", 2);
+                }
               },
               child: Container(
                 //  padding: EdgeInsets.only(left: 15,right: 15),
@@ -129,13 +147,14 @@ class _SelfBootomBarJobCardScreenState extends State<SelfBootomBarJobCardScreen>
                           style: GoogleFonts.poppins(
                             // fontFamily: "Roboto",
                             fontWeight: FontWeight.w500,
-                            fontSize: 13,
+                            fontSize: font13header,
                             letterSpacing: 0.2,
                             color: Main_Theme_textColor,
                           ),
                         ),
                       ),
                     ),
+
                     /// down Object ---------------------------------------------
                     Positioned(
                         bottom: -65,
@@ -148,25 +167,23 @@ class _SelfBootomBarJobCardScreenState extends State<SelfBootomBarJobCardScreen>
                             height: 120,
                             width: 70,
                             decoration: BoxDecoration(
-                                borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(10)),
-                                //   borderRadius: BorderRadius.only(
-                                //     bottomLeft: Radius.circular(45)
-                                //   ),
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(10)),
+                              //   borderRadius: BorderRadius.only(
+                              //     bottomLeft: Radius.circular(45)
+                              //   ),
                               // color: Main_Theme_textColor.withOpacity(0.3),
 
-                                gradient: LinearGradient(
-                                    begin: Alignment.topCenter,
-                                    end: Alignment.bottomCenter,
-                                    colors: [
-                                      Main_Theme_WhiteCollor.withOpacity(0.25),
-                                      Main_Theme_textColor.withOpacity(0.1)
-                                    ]),
-
+                              gradient: LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                  colors: [
+                                    Main_Theme_WhiteCollor.withOpacity(0.25),
+                                    Main_Theme_textColor.withOpacity(0.1)
+                                  ]),
                             ),
                           ),
                         )),
-
 
                     /// Top Object ---------------------------------------------
                     Positioned(
@@ -193,13 +210,9 @@ class _SelfBootomBarJobCardScreenState extends State<SelfBootomBarJobCardScreen>
                                     colors: [
                                       Main_Theme_WhiteCollor.withOpacity(0.25),
                                       Main_Theme_textColor.withOpacity(0.1)
-                                    ]
-                                )
-
-                            ),
+                                    ])),
                           ),
                         )),
-
 
                     Positioned(
                       top: 20,
@@ -225,83 +238,83 @@ class _SelfBootomBarJobCardScreenState extends State<SelfBootomBarJobCardScreen>
                 ),
               ),
               // child :  Container(
-    //     width: 130,
-    //     child: Stack(
-    //       children: <Widget>[
-    //         Container(
-    //           width: double.infinity,
-    //           height: double.infinity,
-    //           margin: const EdgeInsets.only(
-    //             top: 0, left: 0, right: 0, bottom: 0,
-    //           ),
-    //           decoration: BoxDecoration(
-    //             boxShadow: <BoxShadow>[
-    //               BoxShadow(
-    //                   color: CustomButtonColor.withOpacity(0.5),
-    //                   offset: const Offset(1.1, 4.0),
-    //                   blurRadius: 8.0),
-    //             ],
-    //             gradient: LinearGradient(
-    //               colors:  [
-    //                 // HexColor("#738AE6"),
-    //                 // HexColor("#5C5EDD"),
-    //                 CustomButtonColor.withOpacity(0.5),
-    //                 CustomButtonColor.withOpacity(0.9),
-    //
-    //               ],
-    //               begin: Alignment.topLeft,
-    //               end: Alignment.bottomRight,
-    //             ),
-    //             borderRadius:   BorderRadius.only(
-    //               bottomRight: Radius.circular(8.0),
-    //               bottomLeft: Radius.circular(8.0),
-    //               topLeft: Radius.circular(8.0),
-    //               topRight: Radius.circular(40.0),
-    //             ),
-    //           ),
-    //           alignment: Alignment.bottomLeft,
-    //           padding: EdgeInsets.only(left: 10,bottom: 10),
-    //           child: Text(
-    //             "${countList[index]}",
-    //             textAlign: TextAlign.center,
-    //             style: GoogleFonts.poppins(
-    //               // fontFamily: "Roboto",
-    //               fontWeight: FontWeight.w500,
-    //               fontSize: 14,
-    //               letterSpacing: 0.2,
-    //               color: FitnessAppTheme.white,
-    //             ),
-    //           ),
-    //         ),
-    //         Positioned(
-    //           top: - 5,
-    //           right: -5,
-    //           child: Container(
-    //             width: 70,
-    //             height: 70,
-    //             decoration: BoxDecoration(
-    //               color: Main_Theme_WhiteCollor.withOpacity(0.2),
-    //               shape: BoxShape.circle,
-    //             ),
-    //           ),
-    //         ),
-    //         Positioned(
-    //           top: 10,
-    //           right: 10,
-    //           child: Container(
-    //             width: 50,
-    //             height: 50,
-    //             padding: EdgeInsets.all(5),
-    //             child: Image.asset(listimage[index],color: Main_Theme_WhiteCollor,height: 40,width: 40,fit: BoxFit.fill,),
-    //           ),
-    //         ),
-    //       ],
-    //     ),
-    //   )
-    );
-    },
-    ),
-    ),
+              //     width: 130,
+              //     child: Stack(
+              //       children: <Widget>[
+              //         Container(
+              //           width: double.infinity,
+              //           height: double.infinity,
+              //           margin: const EdgeInsets.only(
+              //             top: 0, left: 0, right: 0, bottom: 0,
+              //           ),
+              //           decoration: BoxDecoration(
+              //             boxShadow: <BoxShadow>[
+              //               BoxShadow(
+              //                   color: CustomButtonColor.withOpacity(0.5),
+              //                   offset: const Offset(1.1, 4.0),
+              //                   blurRadius: 8.0),
+              //             ],
+              //             gradient: LinearGradient(
+              //               colors:  [
+              //                 // HexColor("#738AE6"),
+              //                 // HexColor("#5C5EDD"),
+              //                 CustomButtonColor.withOpacity(0.5),
+              //                 CustomButtonColor.withOpacity(0.9),
+              //
+              //               ],
+              //               begin: Alignment.topLeft,
+              //               end: Alignment.bottomRight,
+              //             ),
+              //             borderRadius:   BorderRadius.only(
+              //               bottomRight: Radius.circular(8.0),
+              //               bottomLeft: Radius.circular(8.0),
+              //               topLeft: Radius.circular(8.0),
+              //               topRight: Radius.circular(40.0),
+              //             ),
+              //           ),
+              //           alignment: Alignment.bottomLeft,
+              //           padding: EdgeInsets.only(left: 10,bottom: 10),
+              //           child: Text(
+              //             "${countList[index]}",
+              //             textAlign: TextAlign.center,
+              //             style: GoogleFonts.poppins(
+              //               // fontFamily: "Roboto",
+              //               fontWeight: FontWeight.w500,
+              //               fontSize: fontSubTitle,
+              //               letterSpacing: 0.2,
+              //               color: FitnessAppTheme.white,
+              //             ),
+              //           ),
+              //         ),
+              //         Positioned(
+              //           top: - 5,
+              //           right: -5,
+              //           child: Container(
+              //             width: 70,
+              //             height: 70,
+              //             decoration: BoxDecoration(
+              //               color: Main_Theme_WhiteCollor.withOpacity(0.2),
+              //               shape: BoxShape.circle,
+              //             ),
+              //           ),
+              //         ),
+              //         Positioned(
+              //           top: 10,
+              //           right: 10,
+              //           child: Container(
+              //             width: 50,
+              //             height: 50,
+              //             padding: EdgeInsets.all(5),
+              //             child: Image.asset(listimage[index],color: Main_Theme_WhiteCollor,height: 40,width: 40,fit: BoxFit.fill,),
+              //           ),
+              //         ),
+              //       ],
+              //     ),
+              //   )
+            );
+          },
+        ),
+      ),
 
       // body: Container(
       //   height: double.infinity,
@@ -404,7 +417,7 @@ class _SelfBootomBarJobCardScreenState extends State<SelfBootomBarJobCardScreen>
       //                               padding: EdgeInsets.only(
       //                                   top: 10,bottom: 0,right: 5,left: 10
       //                               ),
-      //                               child: ColorCustomText(fontSize: 18, fontWeight: FontWeight.w400, text: "${countList[index]}", letterSpacing: 0.2, textColor: Main_Theme_WhiteCollor),
+      //                               child: ColorCustomText(fontSize: font18, fontWeight: FontWeight.w400, text: "${countList[index]}", letterSpacing: 0.2, textColor: Main_Theme_WhiteCollor),
       //                             ),
       //                           ),
       //                        ),

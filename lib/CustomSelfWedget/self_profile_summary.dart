@@ -14,8 +14,10 @@ class SelfProfileSummaryPart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final selfORAdminShortInformationdata=Provider.of<HomeProvider>(context).selfORAdminShortInformationdata;
-    print("ddddddddddddddddddddddddddddd -------------------- ${selfORAdminShortInformationdata}");
+    final selfORAdminShortInformationdata =
+        Provider.of<HomeProvider>(context).selfORAdminShortInformationdata;
+    print(
+        "ddddddddddddddddddddddddddddd -------------------- ${selfORAdminShortInformationdata}");
     return Container(
       height: 110,
       width: double.infinity,
@@ -28,8 +30,8 @@ class SelfProfileSummaryPart extends StatelessWidget {
             width: 70,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(7),
-                border: Border.all(
-                    color: Main_Theme_textColor.withOpacity(0.1))),
+                border:
+                    Border.all(color: Main_Theme_textColor.withOpacity(0.1))),
             child: Column(
               children: [
                 Container(
@@ -42,8 +44,7 @@ class SelfProfileSummaryPart extends StatelessWidget {
                     ),
                     image: DecorationImage(
                         image: NetworkImage(
-                            "${GetStorage().read("APPS_IMG_BASEURL")}${selfORAdminShortInformationdata["EmpImage"]??""}"
-                        ),
+                            "${GetStorage().read("APPS_IMG_BASEURL")}${selfORAdminShortInformationdata["EmpImage"] ?? ""}"),
                         fit: BoxFit.fill),
                   ),
                 ),
@@ -51,17 +52,17 @@ class SelfProfileSummaryPart extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ColorCustomText(
-                      fontSize: 12,
+                      fontSize: font12,
                       fontWeight: FontWeight.w400,
                       text: "",
                       letterSpacing: 0.3,
-                      textColor:
-                      Main_Theme_textColor.withOpacity(0.5),
+                      textColor: Main_Theme_textColor.withOpacity(0.5),
                     ),
                     CustomText(
-                        fontSize: 10,
+                        fontSize: font10,
                         fontWeight: FontWeight.w400,
-                        text: "${selfORAdminShortInformationdata["IdCardNo"]??""}",
+                        text:
+                            "${selfORAdminShortInformationdata["IdCardNo"] ?? ""}",
                         overflow: TextOverflow.ellipsis,
                         letterSpacing: 0.3),
                   ],
@@ -82,10 +83,11 @@ class SelfProfileSummaryPart extends StatelessWidget {
                 children: [
                   Spacer(),
                   CustomText(
-                    fontSize: 14,
+                    fontSize: fontSubTitle,
                     fontWeight: FontWeight.w500,
                     maxLines: 1,
-                    text: "${selfORAdminShortInformationdata["EmployeeNameEnglish"]??""}",
+                    text:
+                        "${selfORAdminShortInformationdata["EmployeeNameEnglish"] ?? ""}",
                     letterSpacing: 0.3,
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -93,27 +95,30 @@ class SelfProfileSummaryPart extends StatelessWidget {
                     height: 4,
                   ),
                   CustomText(
-                      fontSize: 12,
+                      fontSize: font12,
                       fontWeight: FontWeight.w400,
-                      text:"${selfORAdminShortInformationdata["Department"]??""}",
+                      text:
+                          "${selfORAdminShortInformationdata["Department"] ?? ""}",
                       overflow: TextOverflow.ellipsis,
                       letterSpacing: 0.3),
                   SizedBox(
                     height: 3,
                   ),
                   CustomText(
-                      fontSize: 12,
+                      fontSize: font12,
                       fontWeight: FontWeight.w400,
-                      text: "${selfORAdminShortInformationdata["Designation"]??""}",
+                      text:
+                          "${selfORAdminShortInformationdata["Designation"] ?? ""}",
                       overflow: TextOverflow.ellipsis,
                       letterSpacing: 0.3),
                   SizedBox(
                     height: 3,
                   ),
                   CustomText(
-                      fontSize: 12,
+                      fontSize: font12,
                       fontWeight: FontWeight.w400,
-                      text: "${selfORAdminShortInformationdata["JoiningDate"]??""}",
+                      text:
+                          "${selfORAdminShortInformationdata["JoiningDate"] ?? ""}",
                       letterSpacing: 0.3),
                   Spacer(),
                 ],
@@ -126,10 +131,10 @@ class SelfProfileSummaryPart extends StatelessWidget {
   }
 }
 
-
-
 class AdminProfileSummaryPart extends StatelessWidget {
-    AdminProfileSummaryPart({super.key, required this.network_image,
+  AdminProfileSummaryPart({
+    super.key,
+    required this.network_image,
     required this.IdCardNo,
     required this.EmployeeNameEnglish,
     required this.Department,
@@ -156,8 +161,8 @@ class AdminProfileSummaryPart extends StatelessWidget {
             width: 70,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(7),
-                border: Border.all(
-                    color: Main_Theme_textColor.withOpacity(0.1))),
+                border:
+                    Border.all(color: Main_Theme_textColor.withOpacity(0.1))),
             child: Column(
               children: [
                 Container(
@@ -170,8 +175,7 @@ class AdminProfileSummaryPart extends StatelessWidget {
                     ),
                     image: DecorationImage(
                         image: NetworkImage(
-                            "${GetStorage().read("APPS_IMG_BASEURL")}$network_image"
-                        ),
+                            "${GetStorage().read("APPS_IMG_BASEURL")}$network_image"),
                         fit: BoxFit.fill),
                   ),
                 ),
@@ -179,15 +183,14 @@ class AdminProfileSummaryPart extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ColorCustomText(
-                      fontSize: 12,
+                      fontSize: font12,
                       fontWeight: FontWeight.w400,
                       text: "",
                       letterSpacing: 0.3,
-                      textColor:
-                      Main_Theme_textColor.withOpacity(0.5),
+                      textColor: Main_Theme_textColor.withOpacity(0.5),
                     ),
                     CustomText(
-                        fontSize: 10,
+                        fontSize: font10,
                         fontWeight: FontWeight.w400,
                         text: "${IdCardNo}",
                         overflow: TextOverflow.ellipsis,
@@ -210,7 +213,7 @@ class AdminProfileSummaryPart extends StatelessWidget {
                 children: [
                   Spacer(),
                   CustomText(
-                    fontSize: 14,
+                    fontSize: fontSubTitle,
                     fontWeight: FontWeight.w500,
                     maxLines: 1,
                     text: "${EmployeeNameEnglish}",
@@ -221,16 +224,16 @@ class AdminProfileSummaryPart extends StatelessWidget {
                     height: 4,
                   ),
                   CustomText(
-                      fontSize: 12,
+                      fontSize: font12,
                       fontWeight: FontWeight.w400,
-                      text:"${Department}",
+                      text: "${Department}",
                       overflow: TextOverflow.ellipsis,
                       letterSpacing: 0.3),
                   SizedBox(
                     height: 3,
                   ),
                   CustomText(
-                      fontSize: 12,
+                      fontSize: font12,
                       fontWeight: FontWeight.w400,
                       text: "${Designation}",
                       overflow: TextOverflow.ellipsis,
@@ -239,7 +242,7 @@ class AdminProfileSummaryPart extends StatelessWidget {
                     height: 3,
                   ),
                   CustomText(
-                      fontSize: 12,
+                      fontSize: font12,
                       fontWeight: FontWeight.w400,
                       text: "${JoiningDate}",
                       letterSpacing: 0.3),
@@ -253,6 +256,3 @@ class AdminProfileSummaryPart extends StatelessWidget {
     );
   }
 }
-
-
-

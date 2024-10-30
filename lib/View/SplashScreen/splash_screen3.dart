@@ -8,6 +8,7 @@ import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 import 'package:jibika_plexus/Utils/constants.dart';
 import '../../../CustomWidget/TermsAndCondition/terms_and_condition_part.dart';
 import '../Auth/LoginScreen/login_screen_screen2.dart';
+
 class SplashScreen3 extends StatefulWidget {
   const SplashScreen3({super.key});
 
@@ -37,12 +38,11 @@ class _SplashScreen3State extends State<SplashScreen3> {
               children: [
                 // SizedBox(height: 69,),
                 SizedBox(
-                  height:c_h<700 ? c_h * 0.044 : c_h * 0.084,
+                  height: c_h < 700 ? c_h * 0.044 : c_h * 0.084,
                 ),
                 CustomImageSction(
-                    height: c_h<700 ?73 :  98,
-                    width:  c_h<700 ?75 : 100,
-
+                    height: c_h < 700 ? 73 : 98,
+                    width: c_h < 700 ? 75 : 100,
                     radius: 11,
                     image: "Assets/Logo/jibikalogo.png"),
                 SizedBox(
@@ -50,7 +50,7 @@ class _SplashScreen3State extends State<SplashScreen3> {
                 ),
                 // SizedBox(height: 20,),
                 CustomText(
-                    fontSize: 16,
+                    fontSize: fontTitle,
                     fontWeight: FontWeight.w400,
                     text: "Auto Attendance Process",
                     letterSpacing: 0.1),
@@ -64,8 +64,8 @@ class _SplashScreen3State extends State<SplashScreen3> {
                         // height: 400,
                         // width: 500,
                         //
-                        height: c_h*0.41,                  //  Edit for pixel perfect
-                        width: c_w*1,                  //  Edit for pixel perfect
+                        height: c_h * 0.41, //  Edit for pixel perfect
+                        width: c_w * 1, //  Edit for pixel perfect
 
                         decoration: BoxDecoration(
                             image: DecorationImage(
@@ -79,25 +79,21 @@ class _SplashScreen3State extends State<SplashScreen3> {
                             "Assets/Gif/third_splashcsreen.gif",
                             // height: 240,
                             // width: 278,
-                            height: c_h*0.26,                  //  Edit for pixel perfect
-                            width: c_w*0.3,                  //  Edit for pixel perfect
+                            height: c_h * 0.26, //  Edit for pixel perfect
+                            width: c_w * 0.3, //  Edit for pixel perfect
                             fit: BoxFit.fill,
                           ),
                         )),
-
-
-
-
                     Positioned(
                       top: -5,
                       left: 0,
                       right: 0,
                       child: Container(
-                         // width: 369,                  //  Edit for pixel perfect
-                          width: c_w*0.8,                  //  Edit for pixel perfect
+                          // width: 369,                  //  Edit for pixel perfect
+                          width: c_w * 0.8, //  Edit for pixel perfect
                           padding: EdgeInsets.only(left: 20, right: 20),
                           child: CustomText(
-                              fontSize: 14,
+                              fontSize: fontSubTitle,
                               textAlign: TextAlign.center,
                               fontWeight: FontWeight.w400,
                               text:
@@ -140,10 +136,17 @@ class _SplashScreen3State extends State<SplashScreen3> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                    Align(
-                    alignment: Alignment.center,
-                    child:    Container(height: 20,width: 25,child: Image.asset("Assets/Gif/480px-Orange_animated_left_arrow.gif",fit: BoxFit.fill,),),
-                  ),
+                      Align(
+                        alignment: Alignment.center,
+                        child: Container(
+                          height: 20,
+                          width: 25,
+                          child: Image.asset(
+                            "Assets/Gif/480px-Orange_animated_left_arrow.gif",
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                      ),
                       SizedBox(
                         width: 20,
                       ),
@@ -160,10 +163,14 @@ class _SplashScreen3State extends State<SplashScreen3> {
                         width: 110,
                         child: CustomButton(
                             onTap: () {
-                         Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreenSlide(),));
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => LoginScreenSlide(),
+                                  ));
                             },
                             text: "Get Started",
-                            button_text_fontSize: 13,
+                            button_text_fontSize: font13header,
                             fontWeight: FontWeight.w500,
                             button_height: 55,
                             custom_button_collor: th3_CustomButtonColor,

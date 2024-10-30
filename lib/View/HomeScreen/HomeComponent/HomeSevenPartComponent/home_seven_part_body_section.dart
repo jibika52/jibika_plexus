@@ -6,7 +6,13 @@ import 'package:jibika_plexus/Utils/constants.dart';
 import '../../../../CustomWidget/CustomText/custom_text.dart';
 
 class HomeSeventhPartBodySection extends StatelessWidget {
-  HomeSeventhPartBodySection({super.key,required this.image,required this.Head_text,required this.body_text,required this.footer_text, required this.color});
+  HomeSeventhPartBodySection(
+      {super.key,
+      required this.image,
+      required this.Head_text,
+      required this.body_text,
+      required this.footer_text,
+      required this.color});
   String image;
   String Head_text;
   String body_text;
@@ -20,7 +26,7 @@ class HomeSeventhPartBodySection extends StatelessWidget {
       width: 80,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(11),
-     color: color,
+        color: color,
         //   color: Colors.primaries[Random().nextInt(Colors.primaries.length)].withOpacity(0.8),
       ),
       child: Column(
@@ -31,15 +37,39 @@ class HomeSeventhPartBodySection extends StatelessWidget {
             height: 20,
             width: 20,
             decoration: BoxDecoration(
-                image: DecorationImage(image: AssetImage("$image"),fit: BoxFit.fill)
-            ),
+                image: DecorationImage(
+                    image: AssetImage("$image"), fit: BoxFit.fill)),
           ),
-          SizedBox(height: 4,),
-          ColorCustomText(text: "$Head_text", fontSize: font12header, fontWeight: FontWeight.w600,letterSpacing: 0.2,textColor: Colors.white,  ),
-          SizedBox(height:0.5,),
-          ColorCustomText(text: "$body_text", fontSize: font11, fontWeight: FontWeight.w400,letterSpacing: 0.2,textColor: Colors.white,)
-          ,SizedBox(height: 0.5,),
-          ColorCustomText(text: "$footer_text", fontSize: font11, fontWeight: FontWeight.w400,letterSpacing: 0.2,textColor: Colors.white,)
+          SizedBox(
+            height: 4,
+          ),
+          ColorCustomText(
+            text: "$Head_text",
+            fontSize: font13header,
+            fontWeight: FontWeight.w600,
+            letterSpacing: 0.2,
+            textColor: Colors.white,
+          ),
+          SizedBox(
+            height: 0.5,
+          ),
+          ColorCustomText(
+            text: "$body_text",
+            fontSize: font11,
+            fontWeight: FontWeight.w400,
+            letterSpacing: 0.2,
+            textColor: Colors.white,
+          ),
+          SizedBox(
+            height: 0.5,
+          ),
+          ColorCustomText(
+            text: "$footer_text",
+            fontSize: font11,
+            fontWeight: FontWeight.w400,
+            letterSpacing: 0.2,
+            textColor: Colors.white,
+          )
         ],
       ),
     );

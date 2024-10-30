@@ -351,7 +351,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                 return Center(
                     child: Text(text,
                         style: GoogleFonts.poppins(
-                            fontSize: 13,
+                            fontSize: font13header,
                             fontWeight: FontWeight.w400,
                             letterSpacing: 0.3,
                             color: Color.lerp(Colors.black, Colors.white,
@@ -469,7 +469,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                                         height: 5,
                                       ),
                                       CustomText(
-                                          fontSize: 12,
+                                          fontSize: font12,
                                           fontWeight: FontWeight.w400,
                                           text: "Upload photo",
                                           letterSpacing: 0.3),
@@ -582,7 +582,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                                       height: 5,
                                     ),
                                     CustomText(
-                                        fontSize: 12,
+                                        fontSize: font12,
                                         fontWeight: FontWeight.w400,
                                         text: "Scan NID For Photo & OCR",
                                         letterSpacing: 0.3),
@@ -761,7 +761,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                                 ),
                                 value: shiftplan_id,
                                 hint: CustomText(
-                                    fontSize: 13,
+                                    fontSize: font13header,
                                     fontWeight: FontWeight.w400,
                                     text: "Select Shift Plane",
                                     letterSpacing: 0.3),
@@ -770,7 +770,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                                   return DropdownMenuItem<String>(
                                     value: "${shift['Code']}",
                                     child: CustomText(
-                                        fontSize: 13,
+                                        fontSize: font13header,
                                         fontWeight: FontWeight.w400,
                                         text: "${shift['EnglishName']}",
                                         letterSpacing:
@@ -800,7 +800,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                                 ),
                                 value: relijion_id,
                                 hint: CustomText(
-                                    fontSize: 13,
+                                    fontSize: font13header,
                                     fontWeight: FontWeight.w400,
                                     text: "Select Religion",
                                     letterSpacing: 0.3),
@@ -809,7 +809,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                                   return DropdownMenuItem<String>(
                                     value: "${shift['Code']}",
                                     child: CustomText(
-                                        fontSize: 13,
+                                        fontSize: font13header,
                                         fontWeight: FontWeight.w400,
                                         text: "${shift['EnglishName']}",
                                         letterSpacing:
@@ -832,7 +832,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                           Align(
                               alignment: Alignment.centerLeft,
                               child: ColorCustomText(
-                                fontSize: 14,
+                                fontSize: fontSubTitle,
                                 fontWeight: FontWeight.w500,
                                 text: "Weekend",
                                 letterSpacing: 0.3,
@@ -990,7 +990,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                           Align(
                               alignment: Alignment.centerLeft,
                               child: ColorCustomText(
-                                fontSize: 14,
+                                fontSize: fontSubTitle,
                                 fontWeight: FontWeight.w500,
                                 text: "Gender",
                                 letterSpacing: 0.3,
@@ -1085,7 +1085,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                           Align(
                               alignment: Alignment.centerLeft,
                               child: ColorCustomText(
-                                fontSize: 14,
+                                fontSize: fontSubTitle,
                                 fontWeight: FontWeight.w500,
                                 text: "Marital Status",
                                 letterSpacing: 0.3,
@@ -1261,7 +1261,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         ColorCustomText(
-                                            fontSize: 14,
+                                            fontSize: fontSubTitle,
                                             fontWeight: FontWeight.w400,
                                             text: "Signature",
                                             letterSpacing: 0.1,
@@ -1311,7 +1311,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                                                         fit: BoxFit.fill,
                                                       ),
                                                       ColorCustomText(
-                                                          fontSize: 12,
+                                                          fontSize: font12,
                                                           fontWeight:
                                                               FontWeight.w400,
                                                           text: "Browse file",
@@ -1323,7 +1323,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                                           ),
                                         ),
                                         ColorCustomText(
-                                            fontSize: 10,
+                                            fontSize: font10,
                                             fontWeight: FontWeight.w400,
                                             text:
                                                 "Accepted File Types: .jpeg and .png",
@@ -1339,7 +1339,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                                         // child: Column(
                                         //   crossAxisAlignment: CrossAxisAlignment.start,
                                         //   children: [
-                                        //     ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "QR code", letterSpacing: 0.1, textColor: Main_Theme_textColor.withOpacity(0.8)),
+                                        //     ColorCustomText(fontSize: fontSubTitle, fontWeight: FontWeight.w400, text: "QR code", letterSpacing: 0.1, textColor: Main_Theme_textColor.withOpacity(0.8)),
                                         //     Container(
                                         //       height: 80,
                                         //       width: 146,
@@ -1354,10 +1354,10 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                                         //         crossAxisAlignment: CrossAxisAlignment.center,
                                         //         children: [
                                         //           Image.asset("Assets/PrimaryInformation/qrcode.png",height: 47,width: 48,fit: BoxFit.fill,),
-                                        //       //    ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Browse file", letterSpacing: 0.1, textColor: presentsent_color),
+                                        //       //    ColorCustomText(fontSize: font12, fontWeight: FontWeight.w400, text: "Browse file", letterSpacing: 0.1, textColor: presentsent_color),
                                         //         ],
                                         //       ), ),
-                                        //     ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: " ", letterSpacing: 0.1, textColor: Main_Theme_textColor.withOpacity(0.8)),
+                                        //     ColorCustomText(fontSize: fontSubTitle, fontWeight: FontWeight.w400, text: " ", letterSpacing: 0.1, textColor: Main_Theme_textColor.withOpacity(0.8)),
                                         //
                                         //   ],
                                         // ),
@@ -1428,7 +1428,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                                           hint: InkWell(
                                             onTap: () {},
                                             child: CustomText(
-                                                fontSize: 13,
+                                                fontSize: font13header,
                                                 fontWeight: FontWeight.w400,
                                                 text: "Select StaffCategory",
                                                 letterSpacing:
@@ -1445,7 +1445,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                                           items: staffCategory.map((shift) {
                                             return DropdownMenuItem(
                                               child: CustomText(
-                                                  fontSize: 13,
+                                                  fontSize: font13header,
                                                   fontWeight: FontWeight.w400,
                                                   text:
                                                       "${shift['EnglishName']}",
@@ -1471,7 +1471,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                                           hint: InkWell(
                                             onTap: () {},
                                             child: CustomText(
-                                                fontSize: 13,
+                                                fontSize: font13header,
                                                 fontWeight: FontWeight.w400,
                                                 text: "Select Department",
                                                 letterSpacing:
@@ -1488,7 +1488,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                                           items: departments.map((shift) {
                                             return DropdownMenuItem(
                                               child: CustomText(
-                                                  fontSize: 13,
+                                                  fontSize: font13header,
                                                   fontWeight: FontWeight.w400,
                                                   text:
                                                       "${shift['EnglishName']}",
@@ -1514,7 +1514,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                                           hint: InkWell(
                                             onTap: () {},
                                             child: CustomText(
-                                                fontSize: 13,
+                                                fontSize: font13header,
                                                 fontWeight: FontWeight.w400,
                                                 text: "Select Designation",
                                                 letterSpacing:
@@ -1531,7 +1531,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                                           items: designations.map((shift) {
                                             return DropdownMenuItem(
                                               child: CustomText(
-                                                  fontSize: 13,
+                                                  fontSize: font13header,
                                                   fontWeight: FontWeight.w400,
                                                   text:
                                                       "${shift['EnglishName']}",
@@ -1557,7 +1557,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                                           hint: InkWell(
                                             onTap: () {},
                                             child: CustomText(
-                                                fontSize: 13,
+                                                fontSize: font13header,
                                                 fontWeight: FontWeight.w400,
                                                 text: "Select Section",
                                                 letterSpacing:
@@ -1573,7 +1573,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                                           items: section.map((shift) {
                                             return DropdownMenuItem(
                                               child: CustomText(
-                                                  fontSize: 13,
+                                                  fontSize: font13header,
                                                   fontWeight: FontWeight.w400,
                                                   text:
                                                       "${shift['EnglishName']}",
@@ -1599,7 +1599,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                                           hint: InkWell(
                                             onTap: () {},
                                             child: CustomText(
-                                                fontSize: 13,
+                                                fontSize: font13header,
                                                 fontWeight: FontWeight.w400,
                                                 text: "Select Work Station",
                                                 letterSpacing:
@@ -1616,7 +1616,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                                           items: workstation.map((shift) {
                                             return DropdownMenuItem(
                                               child: CustomText(
-                                                  fontSize: 13,
+                                                  fontSize: font13header,
                                                   fontWeight: FontWeight.w400,
                                                   text:
                                                       "${shift['EnglishName']}",
@@ -1642,7 +1642,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                                           hint: InkWell(
                                             onTap: () {},
                                             child: CustomText(
-                                                fontSize: 13,
+                                                fontSize: font13header,
                                                 fontWeight: FontWeight.w400,
                                                 text: "Select Section",
                                                 letterSpacing:
@@ -1658,7 +1658,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                                           items: section.map((shift) {
                                             return DropdownMenuItem(
                                               child: CustomText(
-                                                  fontSize: 13,
+                                                  fontSize: font13header,
                                                   fontWeight: FontWeight.w400,
                                                   text:
                                                       "${shift['EnglishName']}",
@@ -1684,7 +1684,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                                           hint: InkWell(
                                             onTap: () {},
                                             child: CustomText(
-                                                fontSize: 13,
+                                                fontSize: font13header,
                                                 fontWeight: FontWeight.w400,
                                                 text: "Select Roster Type",
                                                 letterSpacing:
@@ -1701,7 +1701,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                                           items: rostertype.map((shift) {
                                             return DropdownMenuItem(
                                               child: CustomText(
-                                                  fontSize: 13,
+                                                  fontSize: font13header,
                                                   fontWeight: FontWeight.w400,
                                                   text:
                                                       "${shift['EnglishName']}",
@@ -1725,7 +1725,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                                         hint: InkWell(
                                           onTap: () {},
                                           child: CustomText(
-                                              fontSize: 13,
+                                              fontSize: font13header,
                                               fontWeight: FontWeight.w400,
                                               text: "Select Roster Group",
                                               letterSpacing:
@@ -1742,7 +1742,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                                         items: rostergroup.map((shift) {
                                           return DropdownMenuItem(
                                             child: CustomText(
-                                                fontSize: 13,
+                                                fontSize: font13header,
                                                 fontWeight: FontWeight.w400,
                                                 text: "${shift['EnglishName']}",
                                                 letterSpacing: 0.3),
@@ -2101,7 +2101,7 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
                                                     height: 5,
                                                   ),
                                                   CustomText(
-                                                      fontSize: 12,
+                                                      fontSize: font12,
                                                       fontWeight:
                                                           FontWeight.w400,
                                                       text:
@@ -2354,13 +2354,13 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
           progressIndicatorColor: absent_color,
           // position: Alignment.center,
           title: ColorCustomText(
-              fontSize: 16,
+              fontSize: fontTitle,
               fontWeight: FontWeight.w500,
               text: "Employee added successfully",
               letterSpacing: 0.3,
               textColor: Main_Theme_textColor),
           description: ColorCustomText(
-              fontSize: 14,
+              fontSize: fontSubTitle,
               fontWeight: FontWeight.w400,
               text: "Thanks for registration",
               letterSpacing: 0.3,
@@ -2391,13 +2391,13 @@ class _CreateNewEmployeeScreen2State extends State<CreateNewEmployeeScreen2> {
           progressIndicatorColor: absent_color,
           // position: Alignment.center,
           title: ColorCustomText(
-              fontSize: 16,
+              fontSize: fontTitle,
               fontWeight: FontWeight.w500,
               text: "${data["status"]}",
               letterSpacing: 0.3,
               textColor: Main_Theme_textColor),
           description: ColorCustomText(
-              fontSize: 14,
+              fontSize: fontSubTitle,
               fontWeight: FontWeight.w400,
               text: "PLease Try Again ..",
               letterSpacing: 0.3,

@@ -4,11 +4,12 @@ import '../../CustomWidget/CustomText/custom_text.dart';
 import '../../Utils/constants.dart';
 
 class MyselfCustomCalender extends StatelessWidget {
-  MyselfCustomCalender({super.key,
+  MyselfCustomCalender({
+    super.key,
     required this.datetext,
     required this.width,
     required this.height,
-     this.onTap,
+    this.onTap,
   });
   String datetext;
   double height;
@@ -33,15 +34,25 @@ class MyselfCustomCalender extends StatelessWidget {
           children: [
             Expanded(
                 child: Container(
-                  alignment: Alignment.center,
-                  child: ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "$datetext", letterSpacing: 0.2, textColor: Main_Theme_textColor.withOpacity(0.7),),
-                )),
+              alignment: Alignment.center,
+              child: ColorCustomText(
+                fontSize: font11,
+                fontWeight: FontWeight.w400,
+                text: "$datetext",
+                letterSpacing: 0.2,
+                textColor: Main_Theme_textColor.withOpacity(0.7),
+              ),
+            )),
             Container(
               height: 30,
               width: 30,
-              child: Image.asset("Assets/DashBoardIcons/clender_removebg.png",height: 25,width: 25,fit: BoxFit.fill,),
+              child: Image.asset(
+                "Assets/DashBoardIcons/clender_removebg.png",
+                height: 25,
+                width: 25,
+                fit: BoxFit.fill,
+              ),
             ),
-
           ],
         ),
       ),

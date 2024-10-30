@@ -5,20 +5,18 @@ import 'package:marquee/marquee.dart';
 import '../../Utils/constants.dart';
 
 class CustomSlideTExt extends StatelessWidget {
-  CustomSlideTExt({super.key,required this.text,required this.onTap});
-  String ? text;
+  CustomSlideTExt({super.key, required this.text, required this.onTap});
+  String? text;
   final GestureTapCallback? onTap;
   @override
   Widget build(BuildContext context) {
-    return   Container(
+    return Container(
       margin: EdgeInsets.only(
         right: 10,
         left: 10,
       ),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(
-            Radius.circular(20)
-        ),
+        borderRadius: BorderRadius.all(Radius.circular(20)),
         color: Color(0xffE6E6E6),
       ),
       height: 35,
@@ -29,14 +27,14 @@ class CustomSlideTExt extends StatelessWidget {
         children: [
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.only(top:4.0),
+              padding: const EdgeInsets.only(top: 4.0),
               child: Marquee(
                 text: '$text',
                 style: GoogleFonts.poppins(
                     fontStyle: FontStyle.italic,
-                    fontWeight: FontWeight.w400,fontSize: 17,
-                    color: Main_Theme_textColor
-                ),
+                    fontWeight: FontWeight.w400,
+                    fontSize: font17,
+                    color: Main_Theme_textColor),
                 scrollAxis: Axis.horizontal,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 blankSpace: 20.0,
@@ -52,7 +50,11 @@ class CustomSlideTExt extends StatelessWidget {
           ),
           InkWell(
               onTap: onTap,
-              child: CircleAvatar(radius: 18,backgroundColor: CustomButtonColor,backgroundImage: AssetImage("Assets/Icons/i_icon.png"),))
+              child: CircleAvatar(
+                radius: 18,
+                backgroundColor: CustomButtonColor,
+                backgroundImage: AssetImage("Assets/Icons/i_icon.png"),
+              ))
         ],
       ),
     );

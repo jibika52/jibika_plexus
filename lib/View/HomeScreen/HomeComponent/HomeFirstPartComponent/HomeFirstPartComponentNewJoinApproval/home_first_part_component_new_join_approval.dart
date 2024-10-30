@@ -88,14 +88,14 @@ class _HomeFirstPartComponentNewJoinApprovalState
                                   child: TextFormField(
                                 style: GoogleFonts.poppins(
                                   fontWeight: FontWeight.w400,
-                                  fontSize: 12,
+                                  fontSize: font12,
                                 ),
                                 decoration: InputDecoration(
                                     contentPadding: EdgeInsets.only(bottom: 10),
                                     border: InputBorder.none,
                                     hintStyle: TextStyle(
                                         fontWeight: FontWeight.w400,
-                                        fontSize: 12,
+                                        fontSize: font12,
                                         color: Main_Theme_textColor.withOpacity(
                                             0.30)),
                                     hintText: "Search Here"),

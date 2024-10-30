@@ -5,17 +5,18 @@ import '../CustomImage/custom_image.dart';
 import '../CustomText/custom_text.dart';
 
 class CustomEmployeeProfile extends StatelessWidget {
-    CustomEmployeeProfile({super.key,
-      required this.image,
-      required this.id,
-      required this.name,
-      required this.designation,
-      required this.time,
-      required this.onTap1,
-      required this.onTap2,
-      required this.onTap3,
-      required this.need_location,
-    });
+  CustomEmployeeProfile({
+    super.key,
+    required this.image,
+    required this.id,
+    required this.name,
+    required this.designation,
+    required this.time,
+    required this.onTap1,
+    required this.onTap2,
+    required this.onTap3,
+    required this.need_location,
+  });
   String image;
   String id;
   String name;
@@ -27,7 +28,7 @@ class CustomEmployeeProfile extends StatelessWidget {
   bool need_location;
   @override
   Widget build(BuildContext context) {
-    return  Container(
+    return Container(
       padding: EdgeInsets.all(10),
       height: 114,
       width: double.infinity,
@@ -39,12 +40,13 @@ class CustomEmployeeProfile extends StatelessWidget {
             Main_Theme_textColor_tir_Condition.withOpacity(0.6),
             Main_Theme_textColor_tir_Condition.withOpacity(0.8),
             Main_Theme_textColor_tir_Condition,
-          ])
-      ),
+          ])),
       child: Row(
         children: [
-          CustomImageSctionNetwork(height: 94, width: 78, radius: 7, image: "$image"),
-          Expanded(child: Container(
+          CustomImageSctionNetwork(
+              height: 94, width: 78, radius: 7, image: "$image"),
+          Expanded(
+              child: Container(
             margin: EdgeInsets.only(left: 15),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -58,13 +60,41 @@ class CustomEmployeeProfile extends StatelessWidget {
                     borderRadius: BorderRadius.circular(7),
                     color: Color(0xffACC027).withOpacity(0.6),
                   ),
-                  child: ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "$id", letterSpacing: 0.5, textColor: Main_Theme_WhiteCollor,),
+                  child: ColorCustomText(
+                    fontSize: font12,
+                    fontWeight: FontWeight.w400,
+                    text: "$id",
+                    letterSpacing: 0.5,
+                    textColor: Main_Theme_WhiteCollor,
+                  ),
                 ),
-                SizedBox(height:2,),
-                ColorCustomText(fontSize: 18, fontWeight: FontWeight.w400, text: "$name", letterSpacing: 0.5, textColor: Main_Theme_textColor,),
-                ColorCustomText(fontSize: 11, fontWeight: FontWeight.w300, text: "$designation", letterSpacing: 0.5, textColor: Main_Theme_textColor,),
-                ColorCustomText(fontSize: 11, fontWeight: FontWeight.w300, text: "$time", letterSpacing: 0.5, textColor: Main_Theme_textColor,),
-                SizedBox(height: 8,)
+                SizedBox(
+                  height: 2,
+                ),
+                ColorCustomText(
+                  fontSize: font18,
+                  fontWeight: FontWeight.w400,
+                  text: "$name",
+                  letterSpacing: 0.5,
+                  textColor: Main_Theme_textColor,
+                ),
+                ColorCustomText(
+                  fontSize: font11,
+                  fontWeight: FontWeight.w300,
+                  text: "$designation",
+                  letterSpacing: 0.5,
+                  textColor: Main_Theme_textColor,
+                ),
+                ColorCustomText(
+                  fontSize: font11,
+                  fontWeight: FontWeight.w300,
+                  text: "$time",
+                  letterSpacing: 0.5,
+                  textColor: Main_Theme_textColor,
+                ),
+                SizedBox(
+                  height: 8,
+                )
               ],
             ),
           )),
@@ -75,28 +105,40 @@ class CustomEmployeeProfile extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 InkWell(
-                    onTap:onTap1,
-                    child: CustomImageSction(height: 30, width: 30, radius: 7, image: "Assets/DashBoardIcons/callfont.png")),
+                    onTap: onTap1,
+                    child: CustomImageSction(
+                        height: 30,
+                        width: 30,
+                        radius: 7,
+                        image: "Assets/DashBoardIcons/callfont.png")),
                 InkWell(
                     onTap: onTap2,
-                    child: CustomImageSction(height: 30, width: 30, radius: 7, image: "Assets/DashBoardIcons/messagetext.png")),
+                    child: CustomImageSction(
+                        height: 30,
+                        width: 30,
+                        radius: 7,
+                        image: "Assets/DashBoardIcons/messagetext.png")),
 
-                 Container(
-              height: 30,
-              width: 30,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(2),
-                // image: DecorationImage(image: AssetImage("$image"),fit: BoxFit.fill),
-              ),
-            child: need_location==false?Container(): Image.asset("Assets/DashBoardIcons/location.png",fit: BoxFit.fill,color: Colors.white,),
-            ) ,
+                Container(
+                  height: 30,
+                  width: 30,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(2),
+                    // image: DecorationImage(image: AssetImage("$image"),fit: BoxFit.fill),
+                  ),
+                  child: need_location == false
+                      ? Container()
+                      : Image.asset(
+                          "Assets/DashBoardIcons/location.png",
+                          fit: BoxFit.fill,
+                          color: Colors.white,
+                        ),
+                ),
 
                 // InkWell(
                 //     onTap: onTap3,
                 //     child: Icon(Icons.location_on_outlined,color: Main_Theme_WhiteCollor.withOpacity(0.75),size: 30,)
                 // ),
-
-
               ],
             ),
           )

@@ -1,4 +1,3 @@
-
 import 'dart:io';
 
 import 'package:country_picker/country_picker.dart';
@@ -17,8 +16,8 @@ import 'package:jibika_plexus/View/PrivacyPolicy/privacy_policy.dart';
 import '../../../CustomWidget/CustomTExtFormField/Jibika_custom_text_from_field.dart';
 
 class CompanyRegistrationScreen extends StatefulWidget {
-  CompanyRegistrationScreen({super.key,required this.Package});
-  String  Package;
+  CompanyRegistrationScreen({super.key, required this.Package});
+  String Package;
   @override
   State<CompanyRegistrationScreen> createState() =>
       _CompanyRegistrationScreenState();
@@ -34,10 +33,11 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
   TextEditingController _companyEmailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
   TextEditingController _con_passwordController = TextEditingController();
-  final _fromKey=GlobalKey<FormState>();
-  File ? _image;
+  final _fromKey = GlobalKey<FormState>();
+  File? _image;
 
   final picker = ImagePicker();
+
   ///NID font
   Future getImageFromGallery() async {
     final pickedFile = await picker.pickImage(source: ImageSource.gallery);
@@ -47,6 +47,7 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
       }
     });
   }
+
   @override
   Widget build(BuildContext context) {
     double h = MediaQuery.of(context).size.height;
@@ -57,6 +58,7 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
       child: Scaffold(
         appBar: PreferredSize(
             preferredSize: Size.fromHeight(60),
+
             /// Custom Default App BAr
             child: CustomDefaultAppBar(
               onTap: () {
@@ -87,15 +89,19 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                             width: 110,
                             color: CompanyProfileDefaultColor,
                             padding: EdgeInsets.all(20),
-                            child:_image==null? SvgPicture.asset(
-                              'Assets/svgImage/company_image.svg',
-                              height: 67.0,
-                              width: 67.0,
-                              allowDrawingOutsideViewBox: true,
-                            ):   ClipRRect(
-                                borderRadius: BorderRadius.circular(10),
-                                child: Image.file(_image!.renameSync(_image!.path),
-                                  fit: BoxFit.fill,)),
+                            child: _image == null
+                                ? SvgPicture.asset(
+                                    'Assets/svgImage/company_image.svg',
+                                    height: 67.0,
+                                    width: 67.0,
+                                    allowDrawingOutsideViewBox: true,
+                                  )
+                                : ClipRRect(
+                                    borderRadius: BorderRadius.circular(10),
+                                    child: Image.file(
+                                      _image!.renameSync(_image!.path),
+                                      fit: BoxFit.fill,
+                                    )),
                           ),
                         ),
                       ),
@@ -109,7 +115,8 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                           child: Container(
                             decoration: BoxDecoration(
                               image: DecorationImage(
-                                  image: AssetImage("Assets/Icons/subtract.png"),
+                                  image:
+                                      AssetImage("Assets/Icons/subtract.png"),
                                   fit: BoxFit.fill),
                             ),
                             height: 40,
@@ -122,8 +129,8 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                         left: 24.5,
                         right: 24.5,
                         child: Container(
-                          margin:
-                              EdgeInsets.only(bottom: 5, left: 20.0, right: 20.0),
+                          margin: EdgeInsets.only(
+                              bottom: 5, left: 20.0, right: 20.0),
                           decoration: BoxDecoration(
                             image: DecorationImage(
                                 image: AssetImage(
@@ -170,7 +177,7 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                   //               hint: InkWell(
                   //                   onTap: () {},
                   //                   child: ColorCustomText(
-                  //                       fontSize: 16,
+                  //                       fontSize: fontTitle,
                   //                       fontWeight: FontWeight.w500,
                   //                       text: "  Business Type",
                   //                       letterSpacing: 0.2,
@@ -239,12 +246,13 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                                 hint: InkWell(
                                     onTap: () {},
                                     child: ColorCustomText(
-                                        fontSize: 16,
+                                        fontSize: fontTitle,
                                         fontWeight: FontWeight.w500,
                                         text: "  Company type",
                                         letterSpacing: 0.2,
                                         textColor:
-                                        Main_Theme_textColor.withOpacity(0.4))),
+                                            Main_Theme_textColor.withOpacity(
+                                                0.4))),
                                 // Not necessary for Option 1
                                 value: busnessid2,
                                 onChanged: (newValue) {
@@ -267,7 +275,7 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                   ),
                   SizedBox(height: h * 0.01),
                   JibikaCustomTextFromField(
-                        readOnly: false,
+                      readOnly: false,
                       controller: _companyNameController,
                       height: 50,
                       img: "Assets/Icons/crppol.png",
@@ -276,7 +284,7 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                       obscureText: false),
                   SizedBox(height: h * 0.02),
                   JibikaCustomTextFromField(
-                        readOnly: false,
+                      readOnly: false,
                       controller: _companyAddressController,
                       height: 50,
                       img: "Assets/DashBoardIcons/location.png",
@@ -284,10 +292,9 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                       keyboardType: TextInputType.text,
                       obscureText: false),
 
-
                   SizedBox(height: h * 0.02),
                   JibikaCustomTextFromField(
-                        readOnly: false,
+                      readOnly: false,
                       controller: _NumberOfEmployeeController,
                       height: 50,
                       img: "Assets/Icons/crppol.png",
@@ -304,7 +311,7 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                       obscureText: false),
                   SizedBox(height: h * 0.02),
                   JibikaCustomTextFromField(
-                        readOnly: false,
+                      readOnly: false,
                       controller: _companyEmailController,
                       height: 50,
                       img: "Assets/Icons/cr_email.png",
@@ -313,7 +320,7 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                       obscureText: false),
                   SizedBox(height: h * 0.02),
                   JibikaCustomTextFromField(
-                        readOnly: false,
+                      readOnly: false,
                       suffixIcon: IconButton(
                           onPressed: () {
                             setState(() {
@@ -356,9 +363,8 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                   SizedBox(height: h * 0.03),
                   CustomButton(
                     onTap: () {
-      
-                      if(_fromKey.currentState!.validate()){
-                        if(busnessid2==null){
+                      if (_fromKey.currentState!.validate()) {
+                        if (busnessid2 == null) {
                           ElegantNotification(
                             borderRadius: BorderRadius.circular(11),
                             width: 340,
@@ -367,39 +373,56 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                             progressIndicatorBackground: presentsent_color,
                             progressIndicatorColor: absent_color,
                             // position: Alignment.center,
-                            title:  ColorCustomText(fontSize: 16, fontWeight: FontWeight.w500, text: "Could not select company", letterSpacing: 0.3, textColor: Main_Theme_textColor),
-                            description: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "Please select & try again", letterSpacing: 0.3, textColor: Main_Theme_textColor),
+                            title: ColorCustomText(
+                                fontSize: fontTitle,
+                                fontWeight: FontWeight.w500,
+                                text: "Could not select company",
+                                letterSpacing: 0.3,
+                                textColor: Main_Theme_textColor),
+                            description: ColorCustomText(
+                                fontSize: fontSubTitle,
+                                fontWeight: FontWeight.w400,
+                                text: "Please select & try again",
+                                letterSpacing: 0.3,
+                                textColor: Main_Theme_textColor),
                             onDismiss: () {
-                              print('Message when the notification is dismissed');
-                            }, icon: Icon(Icons.info_outlined,color:Colors.black,),
+                              print(
+                                  'Message when the notification is dismissed');
+                            },
+                            icon: Icon(
+                              Icons.info_outlined,
+                              color: Colors.black,
+                            ),
                           ).show(context);
-                        }else{
-                          if(_passwordController.text==_con_passwordController.text) {
-
-                            if(_passwordController.text.length>=6){
+                        } else {
+                          if (_passwordController.text ==
+                              _con_passwordController.text) {
+                            if (_passwordController.text.length >= 6) {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) =>
-                                        PrivacyPolicyScreen(
-                                          Package: "${widget.Package}",
-                                          companytype: busnessid2,
-                                          companyname: _companyNameController.text
-                                              .toString(),
-                                          companyAddress: _companyAddressController
-                                              .text.toString(),
-                                          noOfEmployee: _NumberOfEmployeeController
-                                              .text.toString(),
-                                          mobileNumber: _phoneController.text
-                                              .toString(),
-                                          companyEmail: _companyEmailController
-                                              .text.toString(),
-                                          password: _passwordController.text
-                                              .toString(),
-                                          previous_route_name: "CompanyRegistration",
-                                        ),
+                                    builder: (context) => PrivacyPolicyScreen(
+                                      Package: "${widget.Package}",
+                                      companytype: busnessid2,
+                                      companyname: _companyNameController.text
+                                          .toString(),
+                                      companyAddress: _companyAddressController
+                                          .text
+                                          .toString(),
+                                      noOfEmployee: _NumberOfEmployeeController
+                                          .text
+                                          .toString(),
+                                      mobileNumber:
+                                          _phoneController.text.toString(),
+                                      companyEmail: _companyEmailController.text
+                                          .toString(),
+                                      password:
+                                          _passwordController.text.toString(),
+                                      previous_route_name:
+                                          "CompanyRegistration",
+                                    ),
                                   ));
-                            }else{
+                            } else {
                               ElegantNotification(
                                 borderRadius: BorderRadius.circular(11),
                                 width: 340,
@@ -408,14 +431,29 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                                 progressIndicatorBackground: presentsent_color,
                                 progressIndicatorColor: absent_color,
                                 // position: Alignment.center,
-                                title:  ColorCustomText(fontSize: 16, fontWeight: FontWeight.w500, text: "Minimum password length 6 digit", letterSpacing: 0.3, textColor: Main_Theme_textColor),
-                                description: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "Please try again", letterSpacing: 0.3, textColor: Main_Theme_textColor),
+                                title: ColorCustomText(
+                                    fontSize: fontTitle,
+                                    fontWeight: FontWeight.w500,
+                                    text: "Minimum password length 6 digit",
+                                    letterSpacing: 0.3,
+                                    textColor: Main_Theme_textColor),
+                                description: ColorCustomText(
+                                    fontSize: fontSubTitle,
+                                    fontWeight: FontWeight.w400,
+                                    text: "Please try again",
+                                    letterSpacing: 0.3,
+                                    textColor: Main_Theme_textColor),
                                 onDismiss: () {
-                                  print('Message when the notification is dismissed');
-                                }, icon: Icon(Icons.info_outlined,color:Colors.black,),
+                                  print(
+                                      'Message when the notification is dismissed');
+                                },
+                                icon: Icon(
+                                  Icons.info_outlined,
+                                  color: Colors.black,
+                                ),
                               ).show(context);
                             }
-                          }else{
+                          } else {
                             ElegantNotification(
                               borderRadius: BorderRadius.circular(11),
                               width: 340,
@@ -424,21 +462,41 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                               progressIndicatorBackground: presentsent_color,
                               progressIndicatorColor: absent_color,
                               // position: Alignment.center,
-                              title:  ColorCustomText(fontSize: 16, fontWeight: FontWeight.w500, text: "Password does not match", letterSpacing: 0.3, textColor: Main_Theme_textColor),
-                              description: ColorCustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "Please try again", letterSpacing: 0.3, textColor: Main_Theme_textColor),
+                              title: ColorCustomText(
+                                  fontSize: fontTitle,
+                                  fontWeight: FontWeight.w500,
+                                  text: "Password does not match",
+                                  letterSpacing: 0.3,
+                                  textColor: Main_Theme_textColor),
+                              description: ColorCustomText(
+                                  fontSize: fontSubTitle,
+                                  fontWeight: FontWeight.w400,
+                                  text: "Please try again",
+                                  letterSpacing: 0.3,
+                                  textColor: Main_Theme_textColor),
                               onDismiss: () {
-                                print('Message when the notification is dismissed');
-                              }, icon: Icon(Icons.info_outlined,color:Colors.black,),
+                                print(
+                                    'Message when the notification is dismissed');
+                              },
+                              icon: Icon(
+                                Icons.info_outlined,
+                                color: Colors.black,
+                              ),
                             ).show(context);
                           }
                         }
-
-                      }else{
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: ColorCustomText(fontSize: 16, textColor: Main_Theme_WhiteCollor,fontWeight: FontWeight.w500, text: "Please fill all the field", letterSpacing: 0.3)));
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            content: ColorCustomText(
+                                fontSize: fontTitle,
+                                textColor: Main_Theme_WhiteCollor,
+                                fontWeight: FontWeight.w500,
+                                text: "Please fill all the field",
+                                letterSpacing: 0.3)));
                       }
                     },
                     text: "Next",
-                    button_text_fontSize: 18,
+                    button_text_fontSize: font18,
                     button_height: 50,
                     custom_button_collor: CustomButtonColor,
                     button_text_color: Main_Theme_WhiteCollor,
@@ -458,9 +516,7 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
 //  String? busnessid;
   String? busnessid2;
   // List busnessidlist = ["SME(0-100 Employee)", "Corporate(100-500 Employee)", "Industry(501 - 5000 Employee)","Others(Contact Us)"];
-  List busnessidlist2 = ["SME", "Corporate", "Industry","Others"];
+  List busnessidlist2 = ["SME", "Corporate", "Industry", "Others"];
 
-  companyRegistration()async{
-
-  }
+  companyRegistration() async {}
 }

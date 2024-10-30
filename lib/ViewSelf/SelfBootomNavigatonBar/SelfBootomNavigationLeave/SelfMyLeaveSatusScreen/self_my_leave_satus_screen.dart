@@ -67,7 +67,7 @@ class _SelfMyLeaveSatusScreenState extends State<SelfMyLeaveSatusScreen> {
                       label: Text(
                         'Leave',
                         style: GoogleFonts.poppins(
-                          fontSize: 10,
+                          fontSize: font10,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -76,7 +76,7 @@ class _SelfMyLeaveSatusScreenState extends State<SelfMyLeaveSatusScreen> {
                       label: Text(
                         'Entitle',
                         style: GoogleFonts.poppins(
-                          fontSize: 10,
+                          fontSize: font10,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -85,7 +85,7 @@ class _SelfMyLeaveSatusScreenState extends State<SelfMyLeaveSatusScreen> {
                       label: Text(
                         'Availed',
                         style: GoogleFonts.poppins(
-                          fontSize: 10,
+                          fontSize: font10,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -94,7 +94,7 @@ class _SelfMyLeaveSatusScreenState extends State<SelfMyLeaveSatusScreen> {
                       label: Text(
                         'Encashment',
                         style: GoogleFonts.poppins(
-                          fontSize: 10,
+                          fontSize: font10,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -103,7 +103,7 @@ class _SelfMyLeaveSatusScreenState extends State<SelfMyLeaveSatusScreen> {
                       label: Text(
                         'Dues',
                         style: GoogleFonts.poppins(
-                          fontSize: 10,
+                          fontSize: font10,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -112,7 +112,7 @@ class _SelfMyLeaveSatusScreenState extends State<SelfMyLeaveSatusScreen> {
                       label: Text(
                         '    Date',
                         style: GoogleFonts.poppins(
-                          fontSize: 10,
+                          fontSize: font10,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -127,7 +127,7 @@ class _SelfMyLeaveSatusScreenState extends State<SelfMyLeaveSatusScreen> {
                             child: Text(
                               '${e["LeaveAbbre"]}',
                               style: GoogleFonts.poppins(
-                                fontSize: 9,
+                                fontSize: font9,
                                 fontWeight: FontWeight.w400,
                               ),
                             ),
@@ -137,7 +137,7 @@ class _SelfMyLeaveSatusScreenState extends State<SelfMyLeaveSatusScreen> {
                           child: Text(
                             '${e["EntitleDays"]}',
                             style: GoogleFonts.poppins(
-                              fontSize: 9,
+                              fontSize: font9,
                               fontWeight: FontWeight.w400,
                             ),
                           ),
@@ -146,7 +146,7 @@ class _SelfMyLeaveSatusScreenState extends State<SelfMyLeaveSatusScreen> {
                           child: Text(
                             '${e["AvailDays"]}',
                             style: GoogleFonts.poppins(
-                              fontSize: 9,
+                              fontSize: font9,
                               fontWeight: FontWeight.w400,
                             ),
                           ),
@@ -155,7 +155,7 @@ class _SelfMyLeaveSatusScreenState extends State<SelfMyLeaveSatusScreen> {
                           child: Text(
                             '${e["EncashmentDays"]}',
                             style: GoogleFonts.poppins(
-                              fontSize: 9,
+                              fontSize: font9,
                               fontWeight: FontWeight.w400,
                             ),
                           ),
@@ -164,7 +164,7 @@ class _SelfMyLeaveSatusScreenState extends State<SelfMyLeaveSatusScreen> {
                           child: Text(
                             '${e["BalanceDays"]}',
                             style: GoogleFonts.poppins(
-                              fontSize: 9,
+                              fontSize: font9,
                               fontWeight: FontWeight.w400,
                             ),
                           ),
@@ -174,7 +174,7 @@ class _SelfMyLeaveSatusScreenState extends State<SelfMyLeaveSatusScreen> {
                           child: Text(
                             '${DateFormat("dd MMM yyyy").format(DateFormat("yyyy-MM-dd'T'HH:mm:ss").parse("${e["CreateDate"]}"))}',
                             style: GoogleFonts.poppins(
-                              fontSize: 9,
+                              fontSize: font9,
                               fontWeight: FontWeight.w400,
                             ),
                           ),
@@ -214,7 +214,7 @@ class _SelfMyLeaveSatusScreenState extends State<SelfMyLeaveSatusScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           CustomText(
-                              fontSize: 12,
+                              fontSize: font12,
                               fontWeight: FontWeight.w400,
                               text: "Date",
                               letterSpacing: 0.3),
@@ -222,7 +222,7 @@ class _SelfMyLeaveSatusScreenState extends State<SelfMyLeaveSatusScreen> {
                             height: 2,
                           ),
                           CustomText(
-                              fontSize: 12,
+                              fontSize: font12,
                               fontWeight: FontWeight.w500,
                               text: "${selfAdminGetLeaveEarlyCountList}" ==
                                           "[]" ||
@@ -297,7 +297,7 @@ class _SelfMyLeaveSatusScreenState extends State<SelfMyLeaveSatusScreen> {
                           ),
                           child: ColorCustomText(
                               textColor: Main_Theme_WhiteCollor,
-                              fontSize: 11,
+                              fontSize: font11,
                               fontWeight: FontWeight.w400,
                               text: "${selfAdminGetLeaveEarlyCountList}" ==
                                           "[]" ||

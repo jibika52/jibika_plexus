@@ -14,8 +14,6 @@ class SplashScreen2 extends StatefulWidget {
 }
 
 class _SplashScreen2State extends State<SplashScreen2> {
-
-
   @override
   Widget build(BuildContext context) {
     double c_h = MediaQuery.of(context).size.height;
@@ -36,11 +34,11 @@ class _SplashScreen2State extends State<SplashScreen2> {
               children: [
                 // SizedBox(height: 69,),
                 SizedBox(
-                  height:c_h<700?  c_h * 0.044 : c_h * 0.084,
+                  height: c_h < 700 ? c_h * 0.044 : c_h * 0.084,
                 ),
                 CustomImageSction(
-                    height:c_h<700? 73: 98,
-                    width: c_h<700? 75: 100,
+                    height: c_h < 700 ? 73 : 98,
+                    width: c_h < 700 ? 75 : 100,
                     radius: 11,
                     image: "Assets/Logo/jibikalogo.png"),
                 SizedBox(
@@ -48,7 +46,7 @@ class _SplashScreen2State extends State<SplashScreen2> {
                 ),
                 // SizedBox(height: 20,),
                 CustomText(
-                    fontSize: 16,
+                    fontSize: fontTitle,
                     fontWeight: FontWeight.w400,
                     text: "Auto Attendance Process",
                     letterSpacing: 0.1),
@@ -59,28 +57,26 @@ class _SplashScreen2State extends State<SplashScreen2> {
                   alignment: Alignment.center,
                   children: [
                     Container(
-                        // height: 500,
-                        // width: 500,
-               //     padding: EdgeInsets.only(right: 10), //  Edit for pixel perfect
-                        height: c_h*0.54,                  //  Edit for pixel perfect
-                        width: c_w*1,                  //  Edit for pixel perfect
-                        alignment: Alignment.center,
-
+                      // height: 500,
+                      // width: 500,
+                      //     padding: EdgeInsets.only(right: 10), //  Edit for pixel perfect
+                      height: c_h * 0.54, //  Edit for pixel perfect
+                      width: c_w * 1, //  Edit for pixel perfect
+                      alignment: Alignment.center,
                     ),
                     Positioned(
                         left: -10,
                         child: Image.asset(
-                      "Assets/Gif/second_splashcsreen.gif",
-                      // "Assets/Gif/first_splashcsreen.gif",
-                      // height: 300,
-                      // width: double.infinity,
+                          "Assets/Gif/second_splashcsreen.gif",
+                          // "Assets/Gif/first_splashcsreen.gif",
+                          // height: 300,
+                          // width: double.infinity,
 
-                      height: c_h*0.30,                  //  Edit for pixel perfect
-                      width: c_w*1,                  //  Edit for pixel perfect
+                          height: c_h * 0.30, //  Edit for pixel perfect
+                          width: c_w * 1, //  Edit for pixel perfect
 
-                      fit: BoxFit.fill,
-                    )),
-
+                          fit: BoxFit.fill,
+                        )),
                     Positioned(
                       top: 0,
                       left: 0,
@@ -131,7 +127,7 @@ class _SplashScreen2State extends State<SplashScreen2> {
                                   height: 5,
                                 ),
                                 CustomText(
-                                    fontSize: 12,
+                                    fontSize: font12,
                                     fontWeight: FontWeight.w300,
                                     text: "Device",
                                     letterSpacing: 0.1)
@@ -151,7 +147,7 @@ class _SplashScreen2State extends State<SplashScreen2> {
                                   height: 5,
                                 ),
                                 CustomText(
-                                    fontSize: 12,
+                                    fontSize: font12,
                                     fontWeight: FontWeight.w300,
                                     text: "Mobile Selfie",
                                     letterSpacing: 0.1)
@@ -171,7 +167,7 @@ class _SplashScreen2State extends State<SplashScreen2> {
                                   height: 5,
                                 ),
                                 CustomText(
-                                    fontSize: 12,
+                                    fontSize: font12,
                                     fontWeight: FontWeight.w300,
                                     text: "Wifi Connect",
                                     letterSpacing: 0.1)
@@ -191,7 +187,7 @@ class _SplashScreen2State extends State<SplashScreen2> {
                                   height: 5,
                                 ),
                                 CustomText(
-                                    fontSize: 12,
+                                    fontSize: font12,
                                     fontWeight: FontWeight.w300,
                                     text: "GPS Track",
                                     letterSpacing: 0.1)
@@ -266,7 +262,14 @@ class _SplashScreen2State extends State<SplashScreen2> {
                 // ),
                 Align(
                   alignment: Alignment.center,
-                  child:    Container(height: 20,width: 25,child: Image.asset("Assets/Gif/Orange_animated_right_arrow.gif",fit: BoxFit.fill,),),
+                  child: Container(
+                    height: 20,
+                    width: 25,
+                    child: Image.asset(
+                      "Assets/Gif/Orange_animated_right_arrow.gif",
+                      fit: BoxFit.fill,
+                    ),
+                  ),
                 ),
                 SizedBox(
                   height: c_h * 0.042,

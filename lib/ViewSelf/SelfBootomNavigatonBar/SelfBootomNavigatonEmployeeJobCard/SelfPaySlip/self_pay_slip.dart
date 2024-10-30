@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:jibika_plexus/CustomWidget/CustomText/custom_text.dart';
 
+import '../../../../Utils/constants.dart';
+
 class SelfPaySlepScreen extends StatefulWidget {
   const SelfPaySlepScreen({super.key});
 
@@ -19,7 +21,11 @@ class _SelfPaySlepScreenState extends State<SelfPaySlepScreen> {
         padding: EdgeInsets.all(10),
         child: Column(
           children: [
-           CustomText(fontSize: 13, fontWeight: FontWeight.w700, text: "Geebee Garments Industries Ltd.", letterSpacing: 0.3)
+            CustomText(
+                fontSize: font13header,
+                fontWeight: FontWeight.w700,
+                text: "Geebee Garments Industries Ltd.",
+                letterSpacing: 0.3)
           ],
         ),
       ),

@@ -436,13 +436,13 @@ class _CreateConveyanceScreenState extends State<CreateConveyanceScreen> {
                                     progressIndicatorColor: absent_color,
                                     // position: Alignment.center,
                                     title: ColorCustomText(
-                                        fontSize: 16,
+                                        fontSize: fontTitle,
                                         fontWeight: FontWeight.w500,
                                         text: "Start Journey Successful",
                                         letterSpacing: 0.3,
                                         textColor: Main_Theme_textColor),
                                     description: ColorCustomText(
-                                        fontSize: 14,
+                                        fontSize: fontSubTitle,
                                         fontWeight: FontWeight.w400,
                                         text: "Thanks from JIBIKA PAYSCALE!..",
                                         letterSpacing: 0.3,
@@ -519,7 +519,7 @@ class _CreateConveyanceScreenState extends State<CreateConveyanceScreen> {
                                       //    color:CustomAppbarColor,
                                       //  ),),
                                       //  Text("Journey",textAlign: TextAlign.center,style: GoogleFonts.poppins(
-                                      //    fontWeight: FontWeight.w600,fontSize: 16,
+                                      //    fontWeight: FontWeight.w600,fontSize: fontTitle,
                                       //  ),),
                                       GetStorage().read("is_Start_Journey") ==
                                                   null ||
@@ -555,7 +555,7 @@ class _CreateConveyanceScreenState extends State<CreateConveyanceScreen> {
                                               textAlign: TextAlign.center,
                                               style: GoogleFonts.poppins(
                                                 fontWeight: FontWeight.w600,
-                                                fontSize: 16,
+                                                fontSize: fontTitle,
                                               ),
                                             )
                                           : Container(),

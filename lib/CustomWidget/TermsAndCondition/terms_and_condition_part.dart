@@ -13,7 +13,7 @@ class CustomTermsAndConditionPart extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(left: 20.0, right: 20.0),
           child: CustomText(
-              fontSize: 13,
+              fontSize: font13header,
               fontWeight: FontWeight.w400,
               text: "By proceeding further you are agreeing with",
               letterSpacing: 0.2),
@@ -23,20 +23,20 @@ class CustomTermsAndConditionPart extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ColorCustomText(
-              fontSize: 14,
+              fontSize: fontSubTitle,
               fontWeight: FontWeight.w400,
               text: "Terms & Conditions",
               letterSpacing: 0.2,
               textColor: Main_Theme_textColor_tir_Condition,
             ),
             CustomText(
-              fontSize: 14,
+              fontSize: fontSubTitle,
               fontWeight: FontWeight.w400,
               text: " and ",
               letterSpacing: 0.2,
             ),
             ColorCustomText(
-              fontSize: 14,
+              fontSize: fontSubTitle,
               fontWeight: FontWeight.w400,
               text: "Privacy Policy",
               letterSpacing: 0.2,

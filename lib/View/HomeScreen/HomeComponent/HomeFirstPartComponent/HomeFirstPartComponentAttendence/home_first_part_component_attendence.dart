@@ -93,14 +93,14 @@ class _HomeFirstPartComponentAttendanceState
                                   child: TextFormField(
                                 style: GoogleFonts.poppins(
                                   fontWeight: FontWeight.w400,
-                                  fontSize: 12,
+                                  fontSize: font12,
                                 ),
                                 decoration: InputDecoration(
                                     contentPadding: EdgeInsets.only(bottom: 10),
                                     border: InputBorder.none,
                                     hintStyle: TextStyle(
                                         fontWeight: FontWeight.w400,
-                                        fontSize: 12,
+                                        fontSize: font12,
                                         color: Main_Theme_textColor.withOpacity(
                                             0.30)),
                                     hintText: "Search Here"),
@@ -138,7 +138,7 @@ class _HomeFirstPartComponentAttendanceState
                           child: ColorCustomText(
                             text: "${selected2Datee}",
                             textColor: Main_Theme_textColor.withOpacity(0.6),
-                            fontSize: 12,
+                            fontSize: font12,
                             fontWeight: FontWeight.w400,
                             letterSpacing: 0.2,
                           ),
@@ -216,7 +216,7 @@ class _HomeFirstPartComponentAttendanceState
                   return Center(
                       child: Text(text,
                           style: GoogleFonts.poppins(
-                              fontSize: 13,
+                              fontSize: font13header,
                               fontWeight: FontWeight.w400,
                               letterSpacing: 0.3,
                               color: Color.lerp(Colors.black, Colors.white,
@@ -354,7 +354,7 @@ class _HomeFirstPartComponentAttendanceState
                                             MainAxisAlignment.center,
                                         children: [
                                           ColorCustomText(
-                                            fontSize: 12,
+                                            fontSize: font12,
                                             fontWeight: FontWeight.w400,
                                             text: "ID: 544532",
                                             letterSpacing: 0.3,
@@ -366,13 +366,13 @@ class _HomeFirstPartComponentAttendanceState
                                             "Hafijur Rahman Mizan",
                                             overflow: TextOverflow.ellipsis,
                                             style: GoogleFonts.poppins(
-                                              fontSize: 12,
+                                              fontSize: font12,
                                               fontWeight: FontWeight.w400,
                                               letterSpacing: 0.3,
                                             ),
                                           ),
                                           CustomText(
-                                            fontSize: 11,
+                                            fontSize: font11,
                                             fontWeight: FontWeight.w300,
                                             text: "HR Manager",
                                             letterSpacing: 0.3,
@@ -399,7 +399,7 @@ class _HomeFirstPartComponentAttendanceState
                                                   image:
                                                       "Assets/DrawerImage/location.png"),
                                               ColorCustomText(
-                                                fontSize: 11,
+                                                fontSize: font11,
                                                 fontWeight: FontWeight.w400,
                                                 text: "Gulshan Circle-1",
                                                 letterSpacing: 0.3,
@@ -414,7 +414,7 @@ class _HomeFirstPartComponentAttendanceState
                                           Row(
                                             children: [
                                               ColorCustomText(
-                                                fontSize: 11,
+                                                fontSize: font11,
                                                 fontWeight: FontWeight.w400,
                                                 text: isChekin == false
                                                     ? "Check Out"
@@ -427,7 +427,7 @@ class _HomeFirstPartComponentAttendanceState
                                                 width: 10,
                                               ),
                                               CustomText(
-                                                fontSize: 11,
+                                                fontSize: font11,
                                                 fontWeight: FontWeight.w400,
                                                 text: "08:25:00",
                                                 letterSpacing: 0.3,
@@ -437,7 +437,7 @@ class _HomeFirstPartComponentAttendanceState
                                           Row(
                                             children: [
                                               ColorCustomText(
-                                                fontSize: 11,
+                                                fontSize: font11,
                                                 fontWeight: FontWeight.w400,
                                                 text: isChekin == false
                                                     ? "Early"
@@ -450,7 +450,7 @@ class _HomeFirstPartComponentAttendanceState
                                                 width: 5,
                                               ),
                                               CustomText(
-                                                fontSize: 11,
+                                                fontSize: font11,
                                                 fontWeight: FontWeight.w400,
                                                 text: "25:00",
                                                 letterSpacing: 0.3,
@@ -473,7 +473,7 @@ class _HomeFirstPartComponentAttendanceState
                                                   ? Row(
                                                       children: [
                                                         ColorCustomText(
-                                                          fontSize: 11,
+                                                          fontSize: font11,
                                                           fontWeight:
                                                               FontWeight.w400,
                                                           text: "OT",
@@ -487,7 +487,7 @@ class _HomeFirstPartComponentAttendanceState
                                                           width: 5,
                                                         ),
                                                         CustomText(
-                                                          fontSize: 11,
+                                                          fontSize: font11,
                                                           fontWeight:
                                                               FontWeight.w400,
                                                           text: "25:00",
@@ -535,7 +535,7 @@ class _HomeFirstPartComponentAttendanceState
                                                     width: 10,
                                                   ),
                                                   ColorCustomText(
-                                                    fontSize: 11,
+                                                    fontSize: font11,
                                                     fontWeight: FontWeight.w400,
                                                     text: "Gulshan Circle-1",
                                                     letterSpacing: 0.3,
@@ -564,7 +564,7 @@ class _HomeFirstPartComponentAttendanceState
                                                   left: 10, right: 10),
                                               child: CustomText(
                                                 maxLines: 2,
-                                                fontSize: 12,
+                                                fontSize: font12,
                                                 fontWeight: FontWeight.w400,
                                                 text: "$Loremtext",
                                                 letterSpacing: 0.3,

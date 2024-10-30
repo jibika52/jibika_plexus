@@ -1,4 +1,3 @@
-
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
@@ -27,7 +26,8 @@ class LoginScreen extends StatefulWidget {
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStateMixin {
+class _LoginScreenState extends State<LoginScreen>
+    with SingleTickerProviderStateMixin {
   late AnimationController controller;
   late Animation<Offset> position;
   late Animation logosize;
@@ -36,62 +36,58 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
 
   @override
   void initState() {
+    super.initState();
 
-  super.initState();
+    Future.delayed(
+      Duration(seconds: 3),
+      () {
+        setState(() {
+          GetStorage().write("val", "true");
+          print("AAAAAAAAAAAAAAAAAAAAAAAAA");
+        });
+        controller = AnimationController(
+            vsync: this, duration: Duration(milliseconds: 2000));
+        position = Tween<Offset>(begin: Offset(-0.0, 4.0), end: Offset.zero)
+            .animate(
+                CurvedAnimation(parent: controller, curve: Curves.decelerate));
+        logosize = Tween(begin: 60.0, end: 700.0).animate(
+            CurvedAnimation(parent: controller, curve: Curves.decelerate));
 
-Future.delayed(Duration(
-  seconds: 3
-),() {
-  setState(() {
-    GetStorage().write("val", "true");
-    print("AAAAAAAAAAAAAAAAAAAAAAAAA");
-  });
-  controller =
-      AnimationController(vsync: this, duration: Duration(milliseconds:2000 ));
-  position = Tween<Offset>(begin: Offset(-0.0, 4.0), end: Offset.zero)
-      .animate(CurvedAnimation(parent: controller, curve: Curves.decelerate));
-  logosize = Tween(begin: 60.0, end: 700.0)
-      .animate(CurvedAnimation(parent: controller, curve: Curves.decelerate));
+        logo_text_move = Tween(begin: 10.0, end: 700.0).animate(
+            CurvedAnimation(parent: controller, curve: Curves.decelerate));
+        controller.forward();
 
-  logo_text_move = Tween(begin: 10.0, end:700.0)
-      .animate(CurvedAnimation(parent: controller, curve: Curves.decelerate));
-  controller.forward();
-
-  controller.addListener(() {
-    setState(() {
-  //    print("DDDDDDDDDDDDDDDD  ${logosize.value}");
-    });
-  });
-},);
-
+        controller.addListener(() {
+          setState(() {
+            //    print("DDDDDDDDDDDDDDDD  ${logosize.value}");
+          });
+        });
+      },
+    );
   }
-
-
-
-
 
   TextEditingController _phoneController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   String countruyCode = '+880';
-  String ? countryFlag;
-  bool is_check=true;
-  bool is_iconClick=false;
-  bool obscureText=true;
-  String phone_number_test="001758098111";
+  String? countryFlag;
+  bool is_check = true;
+  bool is_iconClick = false;
+  bool obscureText = true;
+  String phone_number_test = "001758098111";
   @override
   Widget build(BuildContext context) {
-    double h=MediaQuery.of(context).size.height;
-    double w=MediaQuery.of(context).size.width;
+    double h = MediaQuery.of(context).size.height;
+    double w = MediaQuery.of(context).size.width;
 
-    if(phone_number_test.startsWith("00")){
-  //    print("replesssssssssssss  ${phone_number_test.substring(1)}");
-    }else{
+    if (phone_number_test.startsWith("00")) {
+      //    print("replesssssssssssss  ${phone_number_test.substring(1)}");
+    } else {
       print("elseeeeeeeeeeeeeeeeee  $phone_number_test");
     }
     return WillPopScope(
       onWillPop: () {
-       return Future(() => false);
+        return Future(() => false);
       },
       child: SafeArea(
         child: Scaffold(
@@ -105,94 +101,130 @@ Future.delayed(Duration(
                 key: _formKey,
                 child: Column(
                   children: [
-                    SizedBox(  height: h*0.030),
-                  GetStorage().read("val")=="false"?Container(height: 35):  Container(
-                      width: logosize.value,
-                      height: 35,
-                      alignment: Alignment.center,
-                      margin: EdgeInsets.only(
-                        right: 10,
-                        left: 10,
-                      ),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(
-                            Radius.circular(20)
-                        ),
-                        color:is_iconClick==false? Color(0xffE6E6E6):
-                        Main_Theme_WhiteCollor
-                        ,
-                      ),
-                      //    padding: EdgeInsets.only(top: 5),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child:is_iconClick==false? Padding(
-                              padding: const EdgeInsets.only(top:4.0),
-                              child: Marquee(
-                                text: 'Revolutionize Your Workforce Management with Our Jibika payscale Mobile App',
-                                style: GoogleFonts.poppins(
-                                    fontStyle: FontStyle.italic,
-                                    fontWeight: FontWeight.w400,fontSize: 17,
-                                    color: Main_Theme_textColor
+                    SizedBox(height: h * 0.030),
+                    GetStorage().read("val") == "false"
+                        ? Container(height: 35)
+                        : Container(
+                            width: logosize.value,
+                            height: 35,
+                            alignment: Alignment.center,
+                            margin: EdgeInsets.only(
+                              right: 10,
+                              left: 10,
+                            ),
+                            decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20)),
+                              color: is_iconClick == false
+                                  ? Color(0xffE6E6E6)
+                                  : Main_Theme_WhiteCollor,
+                            ),
+                            //    padding: EdgeInsets.only(top: 5),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: is_iconClick == false
+                                      ? Padding(
+                                          padding:
+                                              const EdgeInsets.only(top: 4.0),
+                                          child: Marquee(
+                                            text:
+                                                'Revolutionize Your Workforce Management with Our Jibika payscale Mobile App',
+                                            style: GoogleFonts.poppins(
+                                                fontStyle: FontStyle.italic,
+                                                fontWeight: FontWeight.w400,
+                                                fontSize: font17,
+                                                color: Main_Theme_textColor),
+                                            scrollAxis: Axis.horizontal,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            blankSpace: 20.0,
+                                            velocity: 100.0,
+                                            pauseAfterRound:
+                                                Duration(seconds: 1),
+                                            startPadding: 10.0,
+                                            accelerationDuration:
+                                                Duration(seconds: 1),
+                                            accelerationCurve: Curves.linear,
+                                            decelerationDuration:
+                                                Duration(milliseconds: 2),
+                                            decelerationCurve: Curves.easeOut,
+                                          ),
+                                        )
+                                      : Container(
+                                          margin: EdgeInsets.symmetric(
+                                              horizontal: 7),
+                                          height: 35,
+                                          width: double.infinity,
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.end,
+                                            children: [
+                                              Container(
+                                                width: 100,
+                                                child: CustomButton(
+                                                    onTap: () {
+                                                      Navigator.push(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                            builder: (context) =>
+                                                                MainSplashPageViewScreen(),
+                                                          ));
+                                                    },
+                                                    text: "Info",
+                                                    button_text_fontSize:
+                                                        font15,
+                                                    button_height: 35,
+                                                    custom_button_collor:
+                                                        CustomButtonColor,
+                                                    button_text_color:
+                                                        Main_Theme_WhiteCollor,
+                                                    borderRadius: 50),
+                                              ),
+                                              SizedBox(
+                                                width: 7,
+                                              ),
+                                              Container(
+                                                width: 120,
+                                                child: CustomButton(
+                                                    onTap: () {},
+                                                    text: "Contact Us",
+                                                    button_text_fontSize:
+                                                        font15,
+                                                    button_height: 35,
+                                                    custom_button_collor:
+                                                        CustomButtonColor,
+                                                    button_text_color:
+                                                        Main_Theme_WhiteCollor,
+                                                    borderRadius: 50),
+                                              )
+                                            ],
+                                          ),
+                                        ),
                                 ),
-                                scrollAxis: Axis.horizontal,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                blankSpace: 20.0,
-                                velocity: 100.0,
-                                pauseAfterRound: Duration(seconds: 1),
-                                startPadding: 10.0,
-                                accelerationDuration: Duration(seconds: 1),
-                                accelerationCurve: Curves.linear,
-                                decelerationDuration: Duration(milliseconds: 2),
-                                decelerationCurve: Curves.easeOut,
-                              ),
-                            ) :
-                            Container(
-                              margin: EdgeInsets.symmetric(horizontal: 7),
-                              height: 35,
-                              width: double.infinity,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Container(
-                                    width: 100,
-                                    child: CustomButton(onTap: () {
-
-                                       Navigator.push(context, MaterialPageRoute(builder: (context) => MainSplashPageViewScreen(),));
-                                    }, text: "Info", button_text_fontSize: 15, button_height: 35, custom_button_collor: CustomButtonColor, button_text_color: Main_Theme_WhiteCollor, borderRadius: 50),
-                                  ),
-                                  SizedBox(width: 7,),
-                                  Container(
-                                    width: 120,
-                                    child: CustomButton(onTap: () {
-
-                                    }, text: "Contact Us", button_text_fontSize: 15, button_height: 35, custom_button_collor: CustomButtonColor, button_text_color: Main_Theme_WhiteCollor, borderRadius: 50),
-                                  )
-
-
-                                ],
-                              ),
-                            )
-                            ,
+                                InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        is_iconClick = !is_iconClick;
+                                      });
+                                    },
+                                    child: CircleAvatar(
+                                      radius: 18,
+                                      backgroundColor: CustomButtonColor,
+                                      backgroundImage:
+                                          AssetImage("Assets/Icons/i_icon.png"),
+                                    ))
+                              ],
+                            ),
                           ),
-                          InkWell(
-                              onTap: () {
-                                setState(() {
-                                  is_iconClick=!is_iconClick;
-                                  }
-                                );
-                              },
-                              child: CircleAvatar(radius: 18,backgroundColor: CustomButtonColor,backgroundImage: AssetImage("Assets/Icons/i_icon.png"),))
-                        ],
-                      ),
-                    ),
 
                     SizedBox(
-                      height:d_height>700? h*0.28 :h*0.2,
+                      height: d_height > 700 ? h * 0.28 : h * 0.2,
                     ),
+
                     /// Login Section
                     Container(
-                      margin: EdgeInsets.only(left: w*0.090,right: w*0.09),
+                      margin: EdgeInsets.only(left: w * 0.090, right: w * 0.09),
                       width: double.infinity,
                       child: Column(
                         children: [
@@ -202,7 +234,6 @@ Future.delayed(Duration(
                             child: Row(
                               children: [
                                 InkWell(
-
                                   onTap: () {
                                     showCountryPicker(
                                         context: context,
@@ -210,7 +241,8 @@ Future.delayed(Duration(
                                           flagSize: 25,
                                           backgroundColor: Colors.white,
                                           textStyle: TextStyle(
-                                              fontSize: 16, color: Colors.blueGrey),
+                                              fontSize: fontTitle,
+                                              color: Colors.blueGrey),
                                           bottomSheetHeight: 500,
                                           borderRadius: BorderRadius.only(
                                             topLeft: Radius.circular(20.0),
@@ -219,7 +251,8 @@ Future.delayed(Duration(
                                           inputDecoration: InputDecoration(
                                             labelText: 'Search',
                                             hintText: 'Start typing to search',
-                                            prefixIcon: const Icon(Icons.search),
+                                            prefixIcon:
+                                                const Icon(Icons.search),
                                             border: OutlineInputBorder(
                                               borderSide: BorderSide(
                                                 color: icons_green_color
@@ -228,20 +261,19 @@ Future.delayed(Duration(
                                             ),
                                           ),
                                         ),
-
                                         onSelect: (Country country) {
-
-                                          print('Select country: ${country.displayName}');
-                                          print('Select flagEmoji: ${country.flagEmoji}');
+                                          print(
+                                              'Select country: ${country.displayName}');
+                                          print(
+                                              'Select flagEmoji: ${country.flagEmoji}');
 
                                           setState(() {
                                             countruyCode =
-                                            '+${country.phoneCode}';
-                                            countryFlag=country.flagEmoji;
+                                                '+${country.phoneCode}';
+                                            countryFlag = country.flagEmoji;
                                           });
                                         });
                                   },
-
                                   child: Padding(
                                     padding: const EdgeInsets.only(top: 18),
                                     child: Container(
@@ -256,15 +288,35 @@ Future.delayed(Duration(
                                       alignment: Alignment.center,
                                       child: Row(
                                         children: [
-                                          Image.asset("Assets/Icons/call.png",height: 22,width: 27,fit: BoxFit.fill,),
-                                          SizedBox(width: 20,),
-                                          countryFlag!=null?    CustomText(
-                                              fontSize: 20, fontWeight: FontWeight.w500, text: "$countryFlag", letterSpacing: 0.2):
-                                          Image.asset("Assets/Icons/bdflaf.png",height: 16,width: 22,fit: BoxFit.fill,),
-                                          SizedBox(width: 5,),
+                                          Image.asset(
+                                            "Assets/Icons/call.png",
+                                            height: 22,
+                                            width: 27,
+                                            fit: BoxFit.fill,
+                                          ),
+                                          SizedBox(
+                                            width: 20,
+                                          ),
+                                          countryFlag != null
+                                              ? CustomText(
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.w500,
+                                                  text: "$countryFlag",
+                                                  letterSpacing: 0.2)
+                                              : Image.asset(
+                                                  "Assets/Icons/bdflaf.png",
+                                                  height: 16,
+                                                  width: 22,
+                                                  fit: BoxFit.fill,
+                                                ),
+                                          SizedBox(
+                                            width: 5,
+                                          ),
                                           CustomText(
-                                              fontSize: 16, fontWeight: FontWeight.w500, text: "$countruyCode", letterSpacing: 0.2)
-
+                                              fontSize: fontTitle,
+                                              fontWeight: FontWeight.w500,
+                                              text: "$countruyCode",
+                                              letterSpacing: 0.2)
                                         ],
                                       ),
                                     ),
@@ -272,16 +324,23 @@ Future.delayed(Duration(
                                 ),
                                 Expanded(
                                   child: JibikaCustomTextFromField(
-                        readOnly: false,
-                                      is_phone: "login",controller: _phoneController, height: 50, img: " ",
-                                      hinttext: "Mobile number", keyboardType: TextInputType.number, obscureText: false),
+                                      readOnly: false,
+                                      is_phone: "login",
+                                      controller: _phoneController,
+                                      height: 50,
+                                      img: " ",
+                                      hinttext: "Mobile number",
+                                      keyboardType: TextInputType.number,
+                                      obscureText: false),
                                 ),
                               ],
                             ),
                           ),
-                          SizedBox(height: h*0.03,),
+                          SizedBox(
+                            height: h * 0.03,
+                          ),
                           JibikaCustomTextFromField(
-                        readOnly: false,
+                              readOnly: false,
                               suffixIcon: IconButton(
                                   onPressed: () {
                                     setState(() {
@@ -292,7 +351,8 @@ Future.delayed(Duration(
                                     obscureText == true
                                         ? Icons.visibility_off
                                         : Icons.visibility,
-                                    color: Main_Theme_textColor.withOpacity(0.5),
+                                    color:
+                                        Main_Theme_textColor.withOpacity(0.5),
                                   )),
                               controller: _passwordController,
                               height: 50,
@@ -301,8 +361,10 @@ Future.delayed(Duration(
                               keyboardType: TextInputType.text,
                               obscureText: obscureText),
 
+                          SizedBox(
+                            height: h * 0.04,
+                          ),
 
-                          SizedBox(height: h*0.04,),
                           /// Save information section & Forget Password section
                           Container(
                             height: 40,
@@ -312,74 +374,114 @@ Future.delayed(Duration(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Expanded(
-                                    child: CustomSaveInfoSection(text: "Remember Me,",)),
+                                    child: CustomSaveInfoSection(
+                                  text: "Remember Me,",
+                                )),
                                 InkWell(
                                   onTap: () {
-                                    if(_phoneController.text.isEmpty){
-                                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: ColorCustomText(fontSize: 16,textColor: Main_Theme_WhiteCollor,fontWeight: FontWeight.w500, text: "Please Enter Your Phone Number", letterSpacing: 0.3)));
-                                    }else{
-
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => ForgetPasswordScreen(
-                                      phone: _phoneController.text,
-                                    ),));
-                                  }
-                                  }
-                ,
-                                  child: Text("Forgot Password",
+                                    if (_phoneController.text.isEmpty) {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(SnackBar(
+                                              content: ColorCustomText(
+                                                  fontSize: fontTitle,
+                                                  textColor:
+                                                      Main_Theme_WhiteCollor,
+                                                  fontWeight: FontWeight.w500,
+                                                  text:
+                                                      "Please Enter Your Phone Number",
+                                                  letterSpacing: 0.3)));
+                                    } else {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                ForgetPasswordScreen(
+                                              phone: _phoneController.text,
+                                            ),
+                                          ));
+                                    }
+                                  },
+                                  child: Text(
+                                    "Forgot Password",
                                     style: GoogleFonts.poppins(
-                                      decoration: TextDecoration.underline,
-                                      fontSize: 14,fontWeight: FontWeight.w500,
-                                      color: Main_Theme_textColor.withOpacity(0.8),
-                                      letterSpacing: 0.3
-                                    ),),
+                                        decoration: TextDecoration.underline,
+                                        fontSize: fontSubTitle,
+                                        fontWeight: FontWeight.w500,
+                                        color: Main_Theme_textColor.withOpacity(
+                                            0.8),
+                                        letterSpacing: 0.3),
+                                  ),
                                 )
                               ],
                             ),
                           ),
 
+                          SizedBox(
+                            height: h * 0.03,
+                          ),
 
-                          SizedBox(height: h*0.03,),
                           /// Login
 
-                          CustomButton(onTap: () {
-                            if(_formKey.currentState!.validate()){
-                              if(countruyCode=="+880"){
-                                GetStorage().write("mobile_id","${_phoneController.text}") ;
-                                CustomHttpRequestClass().loginEmployee(_phoneController.text, _passwordController.text, context);
-                              }
-                            }else{
-                              ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: ColorCustomText(fontSize: 16, textColor: Main_Theme_WhiteCollor,fontWeight: FontWeight.w500, text: "Please fill all the field", letterSpacing: 0.3)));
-                            }
-                          }, text: "Login", button_text_fontSize: 17, fontWeight: FontWeight.bold,button_height: 50, custom_button_collor: CustomButtonColor, button_text_color:Main_Theme_WhiteCollor, borderRadius: 50)
+                          CustomButton(
+                              onTap: () {
+                                if (_formKey.currentState!.validate()) {
+                                  if (countruyCode == "+880") {
+                                    GetStorage().write("mobile_id",
+                                        "${_phoneController.text}");
+                                    CustomHttpRequestClass().loginEmployee(
+                                        _phoneController.text,
+                                        _passwordController.text,
+                                        context);
+                                  }
+                                } else {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                          content: ColorCustomText(
+                                              fontSize: fontTitle,
+                                              textColor: Main_Theme_WhiteCollor,
+                                              fontWeight: FontWeight.w500,
+                                              text: "Please fill all the field",
+                                              letterSpacing: 0.3)));
+                                }
+                              },
+                              text: "Login",
+                              button_text_fontSize: font17,
+                              fontWeight: FontWeight.bold,
+                              button_height: 50,
+                              custom_button_collor: CustomButtonColor,
+                              button_text_color: Main_Theme_WhiteCollor,
+                              borderRadius: 50)
                         ],
                       ),
                     ),
-                    SizedBox(height: h*0.064,),
+                    SizedBox(
+                      height: h * 0.064,
+                    ),
+
                     /// Forget Password section
                     Center(
                       child: InkWell(
                           onTap: () {
-                           // Navigator.push(context, MaterialPageRoute(builder: (context) => CompanyRegistrationScreen(),));
+                            // Navigator.push(context, MaterialPageRoute(builder: (context) => CompanyRegistrationScreen(),));
                           },
-                      //    child: CustomText(fontSize: 17, fontWeight: FontWeight.w500, text: "Register as a Company", letterSpacing: 0.2)),
-                          child: CustomText(fontSize: 17, fontWeight: FontWeight.w500, text: "", letterSpacing: 0.2)),
-                    )   ,
+                          //    child: CustomText(fontSize: font17, fontWeight: FontWeight.w500, text: "Register as a Company", letterSpacing: 0.2)),
+                          child: CustomText(
+                              fontSize: font17,
+                              fontWeight: FontWeight.w500,
+                              text: "",
+                              letterSpacing: 0.2)),
+                    ),
 
-
-                    SizedBox(height: h*0.118,),
-
+                    SizedBox(
+                      height: h * 0.118,
+                    ),
                   ],
                 ),
               ),
             ),
-
           ),
-
         ),
       ),
     );
   }
 }
-
-
-

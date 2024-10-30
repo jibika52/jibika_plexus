@@ -88,7 +88,7 @@ class _HomeFirstPartComponentComplainBoxState
                                     height: 1,
                                   ),
                                   ColorCustomText(
-                                    fontSize: 11,
+                                    fontSize: font11,
                                     fontWeight: FontWeight.w500,
                                     text: "12-Oct-2024",
                                     letterSpacing: 0.3,
@@ -137,7 +137,7 @@ class _HomeFirstPartComponentComplainBoxState
                                             MainAxisAlignment.center,
                                         children: [
                                           ColorCustomText(
-                                              fontSize: 12,
+                                              fontSize: font12,
                                               fontWeight: FontWeight.w400,
                                               text: "ID: 544532",
                                               letterSpacing: 0.3,
@@ -147,7 +147,7 @@ class _HomeFirstPartComponentComplainBoxState
                                             "Hafijur Rahman Mizan",
                                             overflow: TextOverflow.ellipsis,
                                             style: GoogleFonts.poppins(
-                                              fontSize: 12,
+                                              fontSize: font12,
                                               color: Main_Theme_WhiteCollor,
                                               fontWeight: FontWeight.w400,
                                               letterSpacing: 0.3,
@@ -155,7 +155,7 @@ class _HomeFirstPartComponentComplainBoxState
                                           ),
                                           ColorCustomText(
                                             textColor: Main_Theme_WhiteCollor,
-                                            fontSize: 11,
+                                            fontSize: font11,
                                             fontWeight: FontWeight.w300,
                                             text: "HR Manager",
                                             letterSpacing: 0.3,
@@ -174,7 +174,7 @@ class _HomeFirstPartComponentComplainBoxState
                           textAlign: TextAlign.justify,
                           maxLines: 4,
                           overflow: TextOverflow.ellipsis,
-                          fontSize: 12,
+                          fontSize: font12,
                           fontWeight: FontWeight.w400,
                           text: "To Manager,\n$Loremtext",
                           letterSpacing: 0.4,
@@ -202,13 +202,13 @@ class _HomeFirstPartComponentComplainBoxState
                           child: Row(
                             children: [
                               CustomText(
-                                  fontSize: 12,
+                                  fontSize: font12,
                                   fontWeight: FontWeight.w400,
                                   text: " ... ",
                                   letterSpacing: 0.2),
                               ColorCustomText(
                                   textColor: presentsent_color.withOpacity(0.7),
-                                  fontSize: 14,
+                                  fontSize: fontSubTitle,
                                   fontWeight: FontWeight.w600,
                                   text: "Read More",
                                   letterSpacing: 0.2),

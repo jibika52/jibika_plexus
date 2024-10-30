@@ -158,7 +158,7 @@ class _EmployeeTrackinScreenState extends State<EmployeeTrackinScreen> {
                             ),
                             //   Image.asset("Assets/DashBoardIcons/location.png",height: 18,width: 18,fit: BoxFit.fill,color: Main_Theme_WhiteCollor,),
                             ColorCustomText(
-                              fontSize: 13,
+                              fontSize: font13header,
                               fontWeight: FontWeight.w400,
                               text: "Track Now",
                               letterSpacing: 0.2,
@@ -187,7 +187,7 @@ class _EmployeeTrackinScreenState extends State<EmployeeTrackinScreen> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       CustomText(
-                          fontSize: 12,
+                          fontSize: font12,
                           fontWeight: FontWeight.w400,
                           text: "$selected2Datee",
                           letterSpacing: 0.3),
@@ -251,7 +251,7 @@ class _EmployeeTrackinScreenState extends State<EmployeeTrackinScreen> {
                                                             .start,
                                                     children: [
                                                       ColorCustomText(
-                                                          fontSize: 12,
+                                                          fontSize: font12,
                                                           fontWeight:
                                                               FontWeight.w400,
                                                           text: value.GetMovementTrackableEmployeeByAttendanceDatelist[
@@ -279,7 +279,8 @@ class _EmployeeTrackinScreenState extends State<EmployeeTrackinScreen> {
                                                                       .ellipsis,
                                                               style: GoogleFonts
                                                                   .poppins(
-                                                                fontSize: 14,
+                                                                fontSize:
+                                                                    fontSubTitle,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w400,
@@ -302,7 +303,7 @@ class _EmployeeTrackinScreenState extends State<EmployeeTrackinScreen> {
                                                           color:
                                                               Main_Theme_textColor_tir_Condition),
                                                       CustomText(
-                                                          fontSize: 9,
+                                                          fontSize: font9,
                                                           fontWeight:
                                                               FontWeight.w300,
                                                           text: "View map",
@@ -340,7 +341,7 @@ class _EmployeeTrackinScreenState extends State<EmployeeTrackinScreen> {
                                                         "${value.GetMovementTrackableEmployeeByAttendanceDatelist[0]["ATTENDANCE_REMARK"]}",
                                                         style:
                                                             GoogleFonts.poppins(
-                                                          fontSize: 11,
+                                                          fontSize: font11,
                                                           fontWeight:
                                                               FontWeight.w400,
                                                           fontStyle:
@@ -454,7 +455,7 @@ class _EmployeeTrackinScreenState extends State<EmployeeTrackinScreen> {
                                                               .start,
                                                       children: [
                                                         ColorCustomText(
-                                                            fontSize: 12,
+                                                            fontSize: font12,
                                                             fontWeight:
                                                                 FontWeight.w400,
                                                             text:
@@ -466,16 +467,16 @@ class _EmployeeTrackinScreenState extends State<EmployeeTrackinScreen> {
                                                                         0.8)),
                                                         Text(
                                                           "${value.EmployeeLocaltionInfoList[index]["AdArea"]}, ${value.EmployeeLocaltionInfoList[index]["SubLocality"]}",
-                                                          style: GoogleFonts
-                                                              .poppins(
-                                                                  fontSize: 14,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w400,
-                                                                  letterSpacing:
-                                                                      0.2,
-                                                                  color:
-                                                                      Main_Theme_textColor),
+                                                          style: GoogleFonts.poppins(
+                                                              fontSize:
+                                                                  fontSubTitle,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400,
+                                                              letterSpacing:
+                                                                  0.2,
+                                                              color:
+                                                                  Main_Theme_textColor),
                                                         ),
                                                       ],
                                                     ),
@@ -519,7 +520,7 @@ class _EmployeeTrackinScreenState extends State<EmployeeTrackinScreen> {
                                                               Main_Theme_textColor_tir_Condition,
                                                         ),
                                                         CustomText(
-                                                            fontSize: 9,
+                                                            fontSize: font9,
                                                             fontWeight:
                                                                 FontWeight.w300,
                                                             text: "View map",
@@ -570,7 +571,7 @@ class _EmployeeTrackinScreenState extends State<EmployeeTrackinScreen> {
                                                             .start,
                                                     children: [
                                                       ColorCustomText(
-                                                          fontSize: 12,
+                                                          fontSize: font12,
                                                           fontWeight:
                                                               FontWeight.w400,
                                                           text:
@@ -586,7 +587,8 @@ class _EmployeeTrackinScreenState extends State<EmployeeTrackinScreen> {
                                                             .ellipsis,
                                                         style:
                                                             GoogleFonts.poppins(
-                                                          fontSize: 14,
+                                                          fontSize:
+                                                              fontSubTitle,
                                                           fontWeight:
                                                               FontWeight.w400,
                                                           letterSpacing: 0.2,
@@ -607,7 +609,7 @@ class _EmployeeTrackinScreenState extends State<EmployeeTrackinScreen> {
                                                           color:
                                                               Main_Theme_textColor_tir_Condition),
                                                       CustomText(
-                                                          fontSize: 9,
+                                                          fontSize: font9,
                                                           fontWeight:
                                                               FontWeight.w300,
                                                           text: "View map",
@@ -645,7 +647,7 @@ class _EmployeeTrackinScreenState extends State<EmployeeTrackinScreen> {
                                                         "${value.GetMovementTrackableEmployeeByAttendanceDatelist[0]["ATTENDANCE_REMARK"]}",
                                                         style:
                                                             GoogleFonts.poppins(
-                                                          fontSize: 11,
+                                                          fontSize: font11,
                                                           fontWeight:
                                                               FontWeight.w400,
                                                           fontStyle:
@@ -670,7 +672,7 @@ class _EmployeeTrackinScreenState extends State<EmployeeTrackinScreen> {
                                         ));
                                   },
                                   text: "View convince",
-                                  button_text_fontSize: 15,
+                                  button_text_fontSize: font15,
                                   button_height: 40,
                                   custom_button_collor:
                                       CustomButtonColor.withOpacity(0.8),

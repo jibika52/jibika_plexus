@@ -6,10 +6,10 @@ import '../../CustomText/custom_text.dart';
 class DrawerOption extends StatelessWidget {
   String Text;
   final IconData? icon;
-  DrawerOption({super.key,
+  DrawerOption({
+    super.key,
     required this.Text,
     required this.icon,
-
   });
 
   @override
@@ -17,16 +17,19 @@ class DrawerOption extends StatelessWidget {
     return Container(
       height: 45,
       width: 200,
-      padding: EdgeInsets.only(left:15),
+      padding: EdgeInsets.only(left: 15),
       child: Row(children: [
-        Icon(icon,size: 22,
-            color: Main_Theme_WhiteCollor),
-        SizedBox(width: 12,),
+        Icon(icon, size: 22, color: Main_Theme_WhiteCollor),
+        SizedBox(
+          width: 12,
+        ),
         ColorCustomText(
-          text: "$Text", fontSize: 16,
+          text: "$Text",
+          fontSize: fontTitle,
           fontWeight: FontWeight.w600,
           textColor: Main_Theme_textColor,
-          letterSpacing: 0.25,),
+          letterSpacing: 0.25,
+        ),
       ]),
     );
   }

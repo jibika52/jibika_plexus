@@ -1,4 +1,3 @@
-
 import 'dart:ui';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
@@ -22,48 +21,62 @@ import 'SelfBootomNavigatonBarHomeScreen/self_bootom_navigaton_bar_home_screen.d
 import 'SelfBootomNavigatonEmployeeDashboard/self_bootom_navigaton_employee_dashboard.dart';
 
 class SalfBootomNatchBarScreen extends StatefulWidget {
-  SalfBootomNatchBarScreen({super.key,required this.currentIndex});
-  int  currentIndex;
+  SalfBootomNatchBarScreen({super.key, required this.currentIndex});
+  int currentIndex;
   @override
-  State<SalfBootomNatchBarScreen> createState() => _SalfBootomNatchBarScreenState();
+  State<SalfBootomNatchBarScreen> createState() =>
+      _SalfBootomNatchBarScreenState();
 }
-List<BackgroundTrackingApiModelClass> GpstrackingList =[];
-class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
 
-  final _key=GlobalKey<ScaffoldState>();
-  late int   _currentIndex ;
-  double C_size=30;
-  double b_bar_h=50;
-  double b_bar_icon_size=30;
-  double b_bar_height=50;
+List<BackgroundTrackingApiModelClass> GpstrackingList = [];
+
+class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
+  final _key = GlobalKey<ScaffoldState>();
+  late int _currentIndex;
+  double C_size = 30;
+  double b_bar_h = 50;
+  double b_bar_icon_size = 30;
+  double b_bar_height = 50;
   final List<Widget> bottomBarPages = [
     SelfBootomBarJobCardScreen(),
-    SelfBootomNavigatonEmployeeDashboard(are_you_user: "user",),
+    SelfBootomNavigatonEmployeeDashboard(
+      are_you_user: "user",
+    ),
     SelfBootomNavigationLeave(),
-    GetStorage().read("is_Start_Journey")=="true" ?CreateConveyanceScreen():  SelfBootomNavigationConvienceScreen(),
+    GetStorage().read("is_Start_Journey") == "true"
+        ? CreateConveyanceScreen()
+        : SelfBootomNavigationConvienceScreen(),
     SelfBootomNavigatonBarHomeScreen(),
-
   ];
   void initState() {
-    _currentIndex=widget.currentIndex;
-    Provider.of<CounterProvider>(context,listen: false).areYouUserOrAdminFunction("user");
-    Provider.of<SelfDashboardController>(context,listen: false).selfORAdminShortDescriptionProvider(GetStorage().read("mobile_id"), GetStorage().read("IdCardNo"), context);
-    Provider.of<SelfDashboardController>(context,listen: false).selfAdminGetLeaveEarlyCountProvider("${GetStorage().read("mobile_id")}", "${GetStorage().read("Empcode")}", context);
-    Provider.of<SelfDashboardController>(context,listen: false).selfOneMonthAttendanceProvider
-      (
-        DateTime.now().year,
-        DateTime.now().month,
-        DateTime.now().day,
-        "${GetStorage().read("mobile_id")}",
-        "${DateFormat('dd-MMM-yyyy').format(DateTime.now())}",
-        "${GetStorage().read("IdCardNo")}",
-        "GENERAL", context);
+    _currentIndex = widget.currentIndex;
+    Provider.of<CounterProvider>(context, listen: false)
+        .areYouUserOrAdminFunction("user");
+    Provider.of<SelfDashboardController>(context, listen: false)
+        .selfORAdminShortDescriptionProvider(GetStorage().read("mobile_id"),
+            GetStorage().read("IdCardNo"), context);
+    Provider.of<SelfDashboardController>(context, listen: false)
+        .selfAdminGetLeaveEarlyCountProvider(
+            "${GetStorage().read("mobile_id")}",
+            "${GetStorage().read("Empcode")}",
+            context);
+    Provider.of<SelfDashboardController>(context, listen: false)
+        .selfOneMonthAttendanceProvider(
+            DateTime.now().year,
+            DateTime.now().month,
+            DateTime.now().day,
+            "${GetStorage().read("mobile_id")}",
+            "${DateFormat('dd-MMM-yyyy').format(DateTime.now())}",
+            "${GetStorage().read("IdCardNo")}",
+            "GENERAL",
+            context);
     // Future.delayed(Duration(seconds: 2),() {
     //   startService();
     // },);
     // TODO: implement initState
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -71,17 +84,19 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         key: _key,
-        appBar: PreferredSize(preferredSize: Size.fromHeight(80),
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(80),
           child: CustomMainAppBar(
-              leading_image_route: "Assets/DashBoardIcons/appbar_leadin_menu.png",
+              leading_image_route:
+                  "Assets/DashBoardIcons/appbar_leadin_menu.png",
               center_appbar_text: "${GetStorage().read("Company_name")}",
               leading_ontab: () {
                 _key.currentState!.openDrawer();
-              }, is_need_trailing: true),
+              },
+              is_need_trailing: true),
         ),
-        drawer:CustomLeftDrawer(),
+        drawer: CustomLeftDrawer(),
         body: bottomBarPages[_currentIndex],
-
         bottomNavigationBar: Container(
           height: 70,
           width: double.infinity,
@@ -99,76 +114,137 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
               InkWell(
                   onTap: () {
                     setState(() {
-                      _currentIndex=0;
-                    });
-                  },
-                  child: Container(
-                    height: b_bar_h,
-                    child: Column(
-                    children: [
-                      Icon(Icons.category_rounded,color: _currentIndex==0? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5),size: 30,),
-                      //    CustomImageSction2(height: b_bar_icon_size,width: b_bar_icon_size, img_color:_currentIndex==0? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5),  radius: 5, image: "Assets/DashBoardIcons/b_bar_home.png"),
-                      SizedBox(height: 2,),
-                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "My Menu", letterSpacing: 0.3, textColor: _currentIndex==0? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
-                    ],
-                    ),
-                  )),
-              InkWell(
-                  onTap: () {
-                    setState(() {
-                      _currentIndex=1;
-                    });
-                  },
-                  child: Container(
-                    height: b_bar_h,
-                    child: Column(
-                    children: [
-                      //     Icon(Icons.list_alt,size: 30,weight: 30,color: _currentIndex==1? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.3),),
-                      CustomImageSction2(height: b_bar_icon_size,width: b_bar_icon_size,  img_color: _currentIndex==1? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5),  radius: 5, image: "Assets/SelfIcon/test_fingerprint.png"),
-                      SizedBox(height: 2,),
-                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Attendance", letterSpacing: 0.3, textColor: _currentIndex==1? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
-                    ],
-                    ),
-                  )),
-
-
-
-              Container(
-                width: MediaQuery.of(context).size.width*0.13,
-              ),
-              InkWell(
-                  onTap: () {
-                    setState(() {
-                      _currentIndex=2;
+                      _currentIndex = 0;
                     });
                   },
                   child: Container(
                     height: b_bar_h,
                     child: Column(
                       children: [
-                      CustomImageSction2(height: b_bar_icon_size,width: b_bar_icon_size,  img_color: _currentIndex==2? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5),  radius: 5, image: "Assets/SelfIcon/leave_icon.png"),
-                      SizedBox(height: 2,),
-                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Leave", letterSpacing: 0.3, textColor: _currentIndex==2? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
-                    ],
+                        Icon(
+                          Icons.category_rounded,
+                          color: _currentIndex == 0
+                              ? Main_Theme_WhiteCollor
+                              : Main_Theme_WhiteCollor.withOpacity(0.5),
+                          size: 30,
+                        ),
+                        //    CustomImageSction2(height: b_bar_icon_size,width: b_bar_icon_size, img_color:_currentIndex==0? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5),  radius: 5, image: "Assets/DashBoardIcons/b_bar_home.png"),
+                        SizedBox(
+                          height: 2,
+                        ),
+                        ColorCustomText(
+                            fontSize: font12,
+                            fontWeight: FontWeight.w400,
+                            text: "My Menu",
+                            letterSpacing: 0.3,
+                            textColor: _currentIndex == 0
+                                ? Main_Theme_WhiteCollor
+                                : Main_Theme_WhiteCollor.withOpacity(0.5)),
+                      ],
+                    ),
+                  )),
+              InkWell(
+                  onTap: () {
+                    setState(() {
+                      _currentIndex = 1;
+                    });
+                  },
+                  child: Container(
+                    height: b_bar_h,
+                    child: Column(
+                      children: [
+                        //     Icon(Icons.list_alt,size: 30,weight: 30,color: _currentIndex==1? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.3),),
+                        CustomImageSction2(
+                            height: b_bar_icon_size,
+                            width: b_bar_icon_size,
+                            img_color: _currentIndex == 1
+                                ? Main_Theme_WhiteCollor
+                                : Main_Theme_WhiteCollor.withOpacity(0.5),
+                            radius: 5,
+                            image: "Assets/SelfIcon/test_fingerprint.png"),
+                        SizedBox(
+                          height: 2,
+                        ),
+                        ColorCustomText(
+                            fontSize: font12,
+                            fontWeight: FontWeight.w400,
+                            text: "Attendance",
+                            letterSpacing: 0.3,
+                            textColor: _currentIndex == 1
+                                ? Main_Theme_WhiteCollor
+                                : Main_Theme_WhiteCollor.withOpacity(0.5)),
+                      ],
+                    ),
+                  )),
+              Container(
+                width: MediaQuery.of(context).size.width * 0.13,
+              ),
+              InkWell(
+                  onTap: () {
+                    setState(() {
+                      _currentIndex = 2;
+                    });
+                  },
+                  child: Container(
+                    height: b_bar_h,
+                    child: Column(
+                      children: [
+                        CustomImageSction2(
+                            height: b_bar_icon_size,
+                            width: b_bar_icon_size,
+                            img_color: _currentIndex == 2
+                                ? Main_Theme_WhiteCollor
+                                : Main_Theme_WhiteCollor.withOpacity(0.5),
+                            radius: 5,
+                            image: "Assets/SelfIcon/leave_icon.png"),
+                        SizedBox(
+                          height: 2,
+                        ),
+                        ColorCustomText(
+                            fontSize: font12,
+                            fontWeight: FontWeight.w400,
+                            text: "Leave",
+                            letterSpacing: 0.3,
+                            textColor: _currentIndex == 2
+                                ? Main_Theme_WhiteCollor
+                                : Main_Theme_WhiteCollor.withOpacity(0.5)),
+                      ],
                     ),
                   )),
               InkWell(
                 onTap: () {
                   setState(() {
-                    _currentIndex=3;
-                    Provider.of<TrackingController>(context,listen: false).GetVehicleListHttpFunctionProvider("${GetStorage().read("mobile_id")}", "10/04/2024", context);
+                    _currentIndex = 3;
+                    Provider.of<TrackingController>(context, listen: false)
+                        .GetVehicleListHttpFunctionProvider(
+                            "${GetStorage().read("mobile_id")}",
+                            "10/04/2024",
+                            context);
                   });
-
-
                 },
                 child: Container(
                   height: b_bar_h,
                   child: Column(
                     children: [
-                      Icon(Icons.time_to_leave,color: _currentIndex==3? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5),size: 30,),
+                      Icon(
+                        Icons.time_to_leave,
+                        color: _currentIndex == 3
+                            ? Main_Theme_WhiteCollor
+                            : Main_Theme_WhiteCollor.withOpacity(0.5),
+                        size: 30,
+                      ),
                       //    CustomImageSction2(height: b_bar_icon_size,width: b_bar_icon_size,  img_color: _currentIndex==3? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5), radius: 5, image: "Assets/SelfIcon/Conveyance_edited1.png"),
-                      SizedBox(height: 2,),
-                      ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Conveyance", letterSpacing: 0.3, textColor: _currentIndex==3? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5)),
+                      SizedBox(
+                        height: 2,
+                      ),
+                      ColorCustomText(
+                          fontSize: font12,
+                          fontWeight: FontWeight.w400,
+                          text: "Conveyance",
+                          letterSpacing: 0.3,
+                          textColor: _currentIndex == 3
+                              ? Main_Theme_WhiteCollor
+                              : Main_Theme_WhiteCollor.withOpacity(0.5)),
                     ],
                   ),
                 ),
@@ -176,24 +252,22 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
             ],
           ),
         ),
-
-
-        floatingActionButton:keyboardOpen==true
-            ? SizedBox(): FloatingActionButton(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
-          onPressed: () {
-            setState(() {
-              _currentIndex=4;
-            });
-          },
-          child: Image.asset("Assets/Logo/leaff.png"),
-        ),
+        floatingActionButton: keyboardOpen == true
+            ? SizedBox()
+            : FloatingActionButton(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(100)),
+                onPressed: () {
+                  setState(() {
+                    _currentIndex = 4;
+                  });
+                },
+                child: Image.asset("Assets/Logo/leaff.png"),
+              ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-
-
       ),
     );
   }
-  bool keyboardOpen = false;
 
+  bool keyboardOpen = false;
 }

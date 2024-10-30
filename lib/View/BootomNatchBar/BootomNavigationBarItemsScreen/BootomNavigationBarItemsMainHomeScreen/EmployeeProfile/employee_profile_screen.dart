@@ -281,7 +281,7 @@ class _EmployeeProfileScreenState extends State<EmployeeProfileScreen> {
                                   style: GoogleFonts.poppins(
                                     // fontFamily: "Roboto",
                                     fontWeight: FontWeight.w500,
-                                    fontSize: 13,
+                                    fontSize: font13header,
                                     letterSpacing: 0.2,
                                     color: Main_Theme_textColor,
                                   ),
@@ -428,7 +428,7 @@ class _EmployeeProfileScreenState extends State<EmployeeProfileScreen> {
                       //             style: GoogleFonts.poppins(
                       //               // fontFamily: "Roboto",
                       //               fontWeight: FontWeight.w500,
-                      //               fontSize: 14,
+                      //               fontSize: fontSubTitle,
                       //               letterSpacing: 0.2,
                       //               color: FitnessAppTheme.white,
                       //             ),

@@ -63,7 +63,7 @@ class _ChoosePackageScreenState extends State<ChoosePackageScreen> {
                         children: [
                           //    Container(width: 50,height: 10,),
                           ColorCustomText(
-                              fontSize: 16,
+                              fontSize: fontTitle,
                               fontWeight: FontWeight.w600,
                               text: "Web & Mobile Application",
                               letterSpacing: 0.3,
@@ -165,7 +165,7 @@ class _ChoosePackageScreenState extends State<ChoosePackageScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           ColorCustomText(
-                              fontSize: 16,
+                              fontSize: fontTitle,
                               fontWeight: FontWeight.w600,
                               text: "Web & Mobile Application",
                               letterSpacing: 0.3,

@@ -63,7 +63,7 @@ class _SelfLoanScreenState extends State<SelfLoanScreen> {
                       height: h * 0.020,
                     ),
                     CustomText(
-                        fontSize: 13,
+                        fontSize: font13header,
                         fontWeight: FontWeight.w600,
                         text: "You haven't applied for any loan",
                         letterSpacing: 0.4),
@@ -80,7 +80,7 @@ class _SelfLoanScreenState extends State<SelfLoanScreen> {
                               borderRadius: BorderRadius.circular(50),
                               color: CustomButtonColor.withOpacity(0.2)),
                           child: ColorCustomText(
-                              fontSize: 12,
+                              fontSize: font12,
                               fontWeight: FontWeight.w500,
                               text: "Apply for loan",
                               letterSpacing: 0.3,
@@ -146,7 +146,7 @@ class _SelfLoanScreenState extends State<SelfLoanScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   CustomText(
-                                      fontSize: 12,
+                                      fontSize: font12,
                                       fontWeight: FontWeight.w400,
                                       text: "General Loan",
                                       letterSpacing: 0.3),
@@ -155,7 +155,7 @@ class _SelfLoanScreenState extends State<SelfLoanScreen> {
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       CustomText(
-                                          fontSize: 11,
+                                          fontSize: font11,
                                           fontWeight: FontWeight.w400,
                                           text: "General Loan",
                                           letterSpacing: 0.3),
@@ -215,7 +215,7 @@ class _SelfLoanScreenState extends State<SelfLoanScreen> {
                                                     width: 7,
                                                   ),
                                                   CustomText(
-                                                      fontSize: 13,
+                                                      fontSize: font13header,
                                                       fontWeight:
                                                           FontWeight.w300,
                                                       text: "Comments",
@@ -235,7 +235,7 @@ class _SelfLoanScreenState extends State<SelfLoanScreen> {
                                                   left: 10, right: 10),
                                               padding: EdgeInsets.all(10),
                                               child: ColorCustomText(
-                                                fontSize: 12,
+                                                fontSize: font12,
                                                 fontWeight: FontWeight.w400,
                                                 maxLines: 2,
                                                 text: "$Loremtext",
@@ -249,7 +249,7 @@ class _SelfLoanScreenState extends State<SelfLoanScreen> {
                                               padding: const EdgeInsets.only(
                                                   left: 10.0, top: 5),
                                               child: ColorCustomText(
-                                                  fontSize: 13,
+                                                  fontSize: font13header,
                                                   fontWeight: FontWeight.w300,
                                                   text: "Movement punch",
                                                   letterSpacing: 0.3,
@@ -275,7 +275,7 @@ class _SelfLoanScreenState extends State<SelfLoanScreen> {
                                                     NeverScrollableScrollPhysics(),
                                                 itemBuilder: (context, index) {
                                                   return ColorCustomText(
-                                                      fontSize: 11,
+                                                      fontSize: font11,
                                                       fontWeight:
                                                           FontWeight.w300,
                                                       text:

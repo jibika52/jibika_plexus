@@ -42,7 +42,7 @@ class _CreateStationaryScreenState extends State<CreateStationaryScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CustomText(
-                    fontSize: 13,
+                    fontSize: font13header,
                     fontWeight: FontWeight.w500,
                     text: "Stationery Entry",
                     letterSpacing: 0.4),
@@ -105,7 +105,7 @@ class _CreateStationaryScreenState extends State<CreateStationaryScreen> {
                                             height: height,
                                             alignment: Alignment.centerLeft,
                                             child: CustomText(
-                                                fontSize: 12,
+                                                fontSize: font12,
                                                 fontWeight: FontWeight.w400,
                                                 text: "RQ Date",
                                                 letterSpacing: 0.3)),
@@ -116,7 +116,7 @@ class _CreateStationaryScreenState extends State<CreateStationaryScreen> {
                                             height: height,
                                             alignment: Alignment.centerLeft,
                                             child: CustomText(
-                                                fontSize: 12,
+                                                fontSize: font12,
                                                 fontWeight: FontWeight.w400,
                                                 text: "Requisition item",
                                                 letterSpacing: 0.3)),
@@ -127,7 +127,7 @@ class _CreateStationaryScreenState extends State<CreateStationaryScreen> {
                                             height: height,
                                             alignment: Alignment.centerLeft,
                                             child: CustomText(
-                                                fontSize: 12,
+                                                fontSize: font12,
                                                 fontWeight: FontWeight.w400,
                                                 text: "Requisition Quantity",
                                                 letterSpacing: 0.3)),
@@ -138,7 +138,7 @@ class _CreateStationaryScreenState extends State<CreateStationaryScreen> {
                                             height: height,
                                             alignment: Alignment.centerLeft,
                                             child: CustomText(
-                                                fontSize: 12,
+                                                fontSize: font12,
                                                 fontWeight: FontWeight.w400,
                                                 text: "Configuration Details",
                                                 letterSpacing: 0.3)),
@@ -177,13 +177,13 @@ class _CreateStationaryScreenState extends State<CreateStationaryScreen> {
                                             alignment: Alignment.centerLeft,
                                             child: TextFormField(
                                               style: GoogleFonts.poppins(
-                                                  fontSize: 12,
+                                                  fontSize: font12,
                                                   fontWeight: FontWeight.w400),
                                               decoration: InputDecoration(
                                                   hintText: "Enter item",
                                                   hintStyle:
                                                       GoogleFonts.poppins(
-                                                          fontSize: 12,
+                                                          fontSize: font12,
                                                           fontWeight:
                                                               FontWeight.w400),
                                                   border: InputBorder.none,
@@ -211,7 +211,7 @@ class _CreateStationaryScreenState extends State<CreateStationaryScreen> {
                                             alignment: Alignment.centerLeft,
                                             child: TextFormField(
                                               style: GoogleFonts.poppins(
-                                                  fontSize: 12,
+                                                  fontSize: font12,
                                                   fontWeight: FontWeight.w400),
                                               keyboardType:
                                                   TextInputType.number,
@@ -219,7 +219,7 @@ class _CreateStationaryScreenState extends State<CreateStationaryScreen> {
                                                   hintText: "Enter Quantity",
                                                   hintStyle:
                                                       GoogleFonts.poppins(
-                                                          fontSize: 12,
+                                                          fontSize: font12,
                                                           fontWeight:
                                                               FontWeight.w400),
                                                   border: InputBorder.none,
@@ -247,13 +247,13 @@ class _CreateStationaryScreenState extends State<CreateStationaryScreen> {
                                             alignment: Alignment.centerLeft,
                                             child: TextFormField(
                                               style: GoogleFonts.poppins(
-                                                  fontSize: 12,
+                                                  fontSize: font12,
                                                   fontWeight: FontWeight.w400),
                                               decoration: InputDecoration(
                                                   hintText: "Enter ",
                                                   hintStyle:
                                                       GoogleFonts.poppins(
-                                                          fontSize: 12,
+                                                          fontSize: font12,
                                                           fontWeight:
                                                               FontWeight.w400),
                                                   border: InputBorder.none,
@@ -300,7 +300,7 @@ class _CreateStationaryScreenState extends State<CreateStationaryScreen> {
                             width: 7,
                           ),
                           ColorCustomText(
-                              fontSize: 12,
+                              fontSize: font12,
                               fontWeight: FontWeight.w500,
                               text: "Add more",
                               letterSpacing: 0.3,
@@ -320,7 +320,7 @@ class _CreateStationaryScreenState extends State<CreateStationaryScreen> {
                           borderRadius: BorderRadius.circular(50),
                           color: CustomButtonColor.withOpacity(0.2)),
                       child: ColorCustomText(
-                          fontSize: 12,
+                          fontSize: font12,
                           fontWeight: FontWeight.w500,
                           text: "Apply",
                           letterSpacing: 0.3,

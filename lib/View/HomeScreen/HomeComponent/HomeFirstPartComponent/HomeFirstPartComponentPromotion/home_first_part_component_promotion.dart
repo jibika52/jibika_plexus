@@ -73,7 +73,7 @@ class _HomeFirstPartComponentPromotionScreenState
                                   child: TextFormField(
                                 style: GoogleFonts.poppins(
                                   fontWeight: FontWeight.w400,
-                                  fontSize: 12,
+                                  fontSize: font12,
                                 ),
                                 decoration: InputDecoration(
                                     contentPadding:
@@ -81,7 +81,7 @@ class _HomeFirstPartComponentPromotionScreenState
                                     border: InputBorder.none,
                                     hintStyle: TextStyle(
                                         fontWeight: FontWeight.w400,
-                                        fontSize: 12,
+                                        fontSize: font12,
                                         color: Main_Theme_textColor.withOpacity(
                                             0.30)),
                                     hintText: "Search Here"),
@@ -189,7 +189,7 @@ class _HomeFirstPartComponentPromotionScreenState
                   return Center(
                       child: Text(text,
                           style: GoogleFonts.poppins(
-                              fontSize: 13,
+                              fontSize: font13header,
                               fontWeight: FontWeight.w400,
                               letterSpacing: 0.3,
                               color: Color.lerp(Colors.black, Colors.white,
@@ -316,7 +316,7 @@ class _HomeFirstPartComponentPromotionScreenState
                                                       "Assets/DrawerImage/testperson.png")),
                                         ),
                                         ColorCustomText(
-                                          fontSize: 11,
+                                          fontSize: font11,
                                           fontWeight: FontWeight.w500,
                                           text: "54453",
                                           letterSpacing: 0.3,
@@ -339,13 +339,13 @@ class _HomeFirstPartComponentPromotionScreenState
                                             "Hafijur Rahman Mizan",
                                             overflow: TextOverflow.ellipsis,
                                             style: GoogleFonts.poppins(
-                                              fontSize: 12,
+                                              fontSize: font12,
                                               fontWeight: FontWeight.w400,
                                               letterSpacing: 0.3,
                                             ),
                                           ),
                                           CustomText(
-                                            fontSize: 11,
+                                            fontSize: font11,
                                             fontWeight: FontWeight.w300,
                                             text: "HR Manager",
                                             letterSpacing: 0.3,
@@ -355,7 +355,7 @@ class _HomeFirstPartComponentPromotionScreenState
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               CustomText(
-                                                fontSize: 11,
+                                                fontSize: font11,
                                                 fontWeight: FontWeight.w300,
                                                 text: "Doj: 10-Oct-2024",
                                                 letterSpacing: 0.3,
@@ -427,7 +427,7 @@ class _HomeFirstPartComponentPromotionScreenState
                                               )
                                             ],
                                           ),
-                                          // ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "Doj: 10-Oct-2024", letterSpacing: 0.3,
+                                          // ColorCustomText(fontSize: font11, fontWeight: FontWeight.w400, text: "Doj: 10-Oct-2024", letterSpacing: 0.3,
                                           //   textColor: CustomButtonColor.withOpacity(0.7),),
                                         ],
                                       )),

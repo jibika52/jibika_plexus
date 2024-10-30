@@ -77,7 +77,8 @@ late double d_height;
 late double d_width;
 
 const font11 = 11.0;
-const font12header = 13.0;
+const font10 = 10.0;
+const font9 = 9.0;
 const font13header = 13.0;
 const font12 = 12.0;
 
@@ -85,6 +86,7 @@ const fontSubTitle = 14.0;
 const font15 = 15.0;
 const fontTitle = 16.0;
 const font18 = 18.0;
+const font17 = 17.0;
 const font19 = 19.0;
 const font20 = 20.0;
 
@@ -203,7 +205,7 @@ class FitnessAppTheme {
   static const TextStyle title = TextStyle(
     fontFamily: fontName,
     fontWeight: FontWeight.bold,
-    fontSize: 16,
+    fontSize: fontTitle,
     letterSpacing: 0.18,
     color: darkerText,
   );
@@ -211,7 +213,7 @@ class FitnessAppTheme {
   static const TextStyle subtitle = TextStyle(
     fontFamily: fontName,
     fontWeight: FontWeight.w400,
-    fontSize: 14,
+    fontSize: fontSubTitle,
     letterSpacing: -0.04,
     color: darkText,
   );
@@ -219,7 +221,7 @@ class FitnessAppTheme {
   static const TextStyle body2 = TextStyle(
     fontFamily: fontName,
     fontWeight: FontWeight.w400,
-    fontSize: 14,
+    fontSize: fontSubTitle,
     letterSpacing: 0.2,
     color: darkText,
   );
@@ -227,7 +229,7 @@ class FitnessAppTheme {
   static const TextStyle body1 = TextStyle(
     fontFamily: fontName,
     fontWeight: FontWeight.w400,
-    fontSize: 16,
+    fontSize: fontTitle,
     letterSpacing: -0.05,
     color: darkText,
   );
@@ -235,7 +237,7 @@ class FitnessAppTheme {
   static const TextStyle caption = TextStyle(
     fontFamily: fontName,
     fontWeight: FontWeight.w400,
-    fontSize: 12,
+    fontSize: font12,
     letterSpacing: 0.2,
     color: lightText, // was lightText
   );
@@ -292,13 +294,13 @@ customNotification(BuildContext context, String text1, String text2) {
     progressIndicatorColor: absent_color,
     // position: Alignment.center,
     title: ColorCustomText(
-        fontSize: 16,
+        fontSize: fontTitle,
         fontWeight: FontWeight.w500,
         text: "$text1",
         letterSpacing: 0.3,
         textColor: Main_Theme_textColor),
     description: ColorCustomText(
-        fontSize: 14,
+        fontSize: fontSubTitle,
         fontWeight: FontWeight.w400,
         text: "${text2}",
         letterSpacing: 0.3,
@@ -469,7 +471,7 @@ void onStart(ServiceInstance service) async {
           "Socket Connected ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd");
       channel.stream.listen((message) {
         print(
-            "get messsageee------h------h------------------------------->  ${message}");
+            "get messsageee------h------h--------------------- ---------->  ${message}");
 
         var notification = jsonDecode(message);
         if (notification["userid"] == GetStorage().read("mobile_id")) {

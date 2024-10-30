@@ -13,7 +13,8 @@ import 'package:jibika_plexus/View/Auth/LoginScreen/login_screen_screen2.dart';
 import 'package:provider/provider.dart';
 
 class OTPScreen extends StatefulWidget {
-  OTPScreen({super.key,
+  OTPScreen({
+    super.key,
     required this.package,
     required this.companytype,
     required this.companyname,
@@ -24,15 +25,15 @@ class OTPScreen extends StatefulWidget {
     required this.password,
     required this.previous_route_name,
   });
-  String ? previous_route_name;
-  String ? package;
-  String ? companytype;
-  String ? companyname;
-  String ? companyAddress;
-  String ?  noOfEmployee;
-  String ? mobileNumber;
-  String ? companyEmail;
-  String ? password;
+  String? previous_route_name;
+  String? package;
+  String? companytype;
+  String? companyname;
+  String? companyAddress;
+  String? noOfEmployee;
+  String? mobileNumber;
+  String? companyEmail;
+  String? password;
   @override
   State<OTPScreen> createState() => _OTPScreenState();
 }
@@ -44,249 +45,313 @@ class _OTPScreenState extends State<OTPScreen> {
   final TextEditingController _fieldThree = TextEditingController();
   final TextEditingController _fieldFour = TextEditingController();
   String? _otp;
-  void itmer(){
+  void itmer() {
     Timer.periodic(const Duration(seconds: 1), (timer) {
       print("timeeeee  eee   e eee ${timer.tick}");
-      if(timer.tick==120) {
+      if (timer.tick == 120) {
         timer.cancel();
-          count=119;
-      }else{
+        count = 119;
+      } else {
         setState(() {
           count--;
         });
       }
     });
   }
-@override
+
+  @override
   void initState() {
-  itmer();
-  // TODO: implement initState
+    itmer();
+    // TODO: implement initState
     super.initState();
   }
-  int count=119;
+
+  int count = 119;
 
   @override
   Widget build(BuildContext context) {
-    final otp= Provider.of<CounterProvider>(context).setOTP;
-    double h=MediaQuery.of(context).size.height;
-    double w=MediaQuery.of(context).size.width;
-print("1111111111111111111111111 ========== $count");
+    final otp = Provider.of<CounterProvider>(context).setOTP;
+    double h = MediaQuery.of(context).size.height;
+    double w = MediaQuery.of(context).size.width;
+    print("1111111111111111111111111 ========== $count");
     return Scaffold(
       resizeToAvoidBottomInset: false,
-         body: Container(
-           height: double.infinity,
-           width: double.infinity,
-           decoration: BoxDecoration(
-             image: DecorationImage(image: AssetImage("Assets/LoginScreenIMG/loginpage1.jpg"),fit: BoxFit.fill),
-             color: Colors.white,
-           ),
-           child: Stack(
-             children: [
-               Container(
-                 height: MediaQuery.of(context).size.height,
-                 width: MediaQuery.of(context).size.width,
-                 decoration: BoxDecoration(
-                 //  image: DecorationImage(image: AssetImage("Assets/LoginScreenIMG/loginpage1.jpg"),fit: BoxFit.fill),
-                   color: Colors.white.withOpacity(0.0),
-                 ),
-               ),
-               Positioned(
-                 top: 0,
-                 left: 0,
-                 child: Container(
-                   height: MediaQuery.of(context).size.height,
-                   width: MediaQuery.of(context).size.width,
-                   child: SingleChildScrollView(
-                     child: Column(
-                       children: [
-                         SizedBox(height: h*0.13,),
-                         /// Added Logo
-                         CustomImageSction(height: 115, width: 115, radius: 7, image: "Assets/Logo/jibikalogo.png"),
-                         SizedBox(height: h*0.12,),
-                         CustomText(fontSize: 18, fontWeight: FontWeight.w500, text: "Please Enter The 4 Digit Code Sent to", letterSpacing: 0.3),
-                         CustomText(fontSize: 18, fontWeight: FontWeight.w600, text: "your Phone : ${widget.mobileNumber}", letterSpacing: 0.4),
-                         SizedBox(height: h*0.02,),
-                        // ColorCustomText(fontSize: 22, fontWeight: FontWeight.w700, text:"$count".contains("-")?"${count}": "Expire Time: $count s", letterSpacing: 0.4,textColor: Main_Theme_textColor_tir_Condition),
-                         ColorCustomText(fontSize: 22, fontWeight: FontWeight.w700, text:"Expire Time: $count s", letterSpacing: 0.4,textColor: Main_Theme_textColor_tir_Condition),
-                         SizedBox(height: h*0.01,),
-                         ///  CustomPinPut
-                         Row(
-                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                           children: [
-                             OtpInput(_fieldOne, false), // auto focus
-                             OtpInput(_fieldTwo, false),
-                             OtpInput(_fieldThree, false),
-                             OtpInput(_fieldFour, false)
-                           ],
-                         ),
-                         SizedBox(
-                           height: h * 0.010,
-                         ),
-                         Container(
-                             height: 60,
-                             width: double.infinity,
-                             child: Row(
-                               mainAxisAlignment: MainAxisAlignment.center,
-                               children: [
-                                 CustomText(fontSize: 16, fontWeight: FontWeight.w400, text:"If you didn’t receive a code!" , letterSpacing: 0.2),
-                                 SizedBox(width: 8,),
-                                 InkWell(
-                                     onTap: () {
-                                       if(count==119) {
-                                         ElegantNotification(
-                                           borderRadius: BorderRadius.circular(
-                                               11),
-                                           width: 340,
-                                           iconSize: 25,
-                                           background: presentsent_color,
-                                           progressIndicatorBackground: presentsent_color,
-                                           progressIndicatorColor: absent_color,
-                                           // position: Alignment.center,
-                                           title: ColorCustomText(fontSize: 16,
-                                               fontWeight: FontWeight.w500,
-                                               text: "Re send OTP successfully",
-                                               letterSpacing: 0.3,
-                                               textColor: Main_Theme_textColor),
-                                           description: ColorCustomText(
-                                               fontSize: 14,
-                                               fontWeight: FontWeight.w400,
-                                               text: "Please check your mobile number",
-                                               letterSpacing: 0.3,
-                                               textColor: Main_Theme_textColor),
-                                           onDismiss: () {
-                                             print(
-                                                 'Message when the notification is dismissed');
-                                           },
-                                           icon: Icon(Icons.info_outlined,
-                                             color: Colors.black,),
-                                         ).show(context);
-                                         CustomHttpRequestClass()
-                                             .sendOtpFunction(
-                                           "${widget.package}",
-                                           context,
-                                           "${widget.mobileNumber}",
-                                           "${widget.companytype}",
-                                           "${widget.companyname}",
-                                           "${widget.companyAddress}",
-                                           "${widget.noOfEmployee}",
-                                           "${widget.companyEmail}",
-                                           "${widget.password}",
-                                           "resend",
-                                         );
-                                         itmer();
-                                       }else{
-                                         ElegantNotification(
-                                           borderRadius: BorderRadius.circular(
-                                               11),
-                                           width: 340,
-                                           iconSize: 25,
-                                           background: presentsent_color,
-                                           progressIndicatorBackground: presentsent_color,
-                                           progressIndicatorColor: absent_color,
-                                           // position: Alignment.center,
-                                           title: ColorCustomText(fontSize: 16,
-                                               fontWeight: FontWeight.w500,
-                                               text: "Re send will be after time expire",
-                                               letterSpacing: 0.3,
-                                               textColor: Main_Theme_textColor),
-                                           description: ColorCustomText(
-                                               fontSize: 14,
-                                               fontWeight: FontWeight.w400,
-                                               text: "Please check your mobile number",
-                                               letterSpacing: 0.3,
-                                               textColor: Main_Theme_textColor),
-                                           onDismiss: () {
-                                             print(
-                                                 'Message when the notification is dismissed');
-                                           },
-                                           icon: Icon(Icons.info_outlined,
-                                             color: Colors.black,),
-                                         ).show(context);
-                                       }
+      body: Container(
+        height: double.infinity,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage("Assets/LoginScreenIMG/loginpage1.jpg"),
+              fit: BoxFit.fill),
+          color: Colors.white,
+        ),
+        child: Stack(
+          children: [
+            Container(
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              decoration: BoxDecoration(
+                //  image: DecorationImage(image: AssetImage("Assets/LoginScreenIMG/loginpage1.jpg"),fit: BoxFit.fill),
+                color: Colors.white.withOpacity(0.0),
+              ),
+            ),
+            Positioned(
+              top: 0,
+              left: 0,
+              child: Container(
+                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width,
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: h * 0.13,
+                      ),
+
+                      /// Added Logo
+                      CustomImageSction(
+                          height: 115,
+                          width: 115,
+                          radius: 7,
+                          image: "Assets/Logo/jibikalogo.png"),
+                      SizedBox(
+                        height: h * 0.12,
+                      ),
+                      CustomText(
+                          fontSize: font18,
+                          fontWeight: FontWeight.w500,
+                          text: "Please Enter The 4 Digit Code Sent to",
+                          letterSpacing: 0.3),
+                      CustomText(
+                          fontSize: font18,
+                          fontWeight: FontWeight.w600,
+                          text: "your Phone : ${widget.mobileNumber}",
+                          letterSpacing: 0.4),
+                      SizedBox(
+                        height: h * 0.02,
+                      ),
+                      // ColorCustomText(fontSize: 22, fontWeight: FontWeight.w700, text:"$count".contains("-")?"${count}": "Expire Time: $count s", letterSpacing: 0.4,textColor: Main_Theme_textColor_tir_Condition),
+                      ColorCustomText(
+                          fontSize: 22,
+                          fontWeight: FontWeight.w700,
+                          text: "Expire Time: $count s",
+                          letterSpacing: 0.4,
+                          textColor: Main_Theme_textColor_tir_Condition),
+                      SizedBox(
+                        height: h * 0.01,
+                      ),
+
+                      ///  CustomPinPut
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          OtpInput(_fieldOne, false), // auto focus
+                          OtpInput(_fieldTwo, false),
+                          OtpInput(_fieldThree, false),
+                          OtpInput(_fieldFour, false)
+                        ],
+                      ),
+                      SizedBox(
+                        height: h * 0.010,
+                      ),
+                      Container(
+                          height: 60,
+                          width: double.infinity,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              CustomText(
+                                  fontSize: fontTitle,
+                                  fontWeight: FontWeight.w400,
+                                  text: "If you didn’t receive a code!",
+                                  letterSpacing: 0.2),
+                              SizedBox(
+                                width: 8,
+                              ),
+                              InkWell(
+                                  onTap: () {
+                                    if (count == 119) {
+                                      ElegantNotification(
+                                        borderRadius: BorderRadius.circular(11),
+                                        width: 340,
+                                        iconSize: 25,
+                                        background: presentsent_color,
+                                        progressIndicatorBackground:
+                                            presentsent_color,
+                                        progressIndicatorColor: absent_color,
+                                        // position: Alignment.center,
+                                        title: ColorCustomText(
+                                            fontSize: fontTitle,
+                                            fontWeight: FontWeight.w500,
+                                            text: "Re send OTP successfully",
+                                            letterSpacing: 0.3,
+                                            textColor: Main_Theme_textColor),
+                                        description: ColorCustomText(
+                                            fontSize: fontSubTitle,
+                                            fontWeight: FontWeight.w400,
+                                            text:
+                                                "Please check your mobile number",
+                                            letterSpacing: 0.3,
+                                            textColor: Main_Theme_textColor),
+                                        onDismiss: () {
+                                          print(
+                                              'Message when the notification is dismissed');
+                                        },
+                                        icon: Icon(
+                                          Icons.info_outlined,
+                                          color: Colors.black,
+                                        ),
+                                      ).show(context);
+                                      CustomHttpRequestClass().sendOtpFunction(
+                                        "${widget.package}",
+                                        context,
+                                        "${widget.mobileNumber}",
+                                        "${widget.companytype}",
+                                        "${widget.companyname}",
+                                        "${widget.companyAddress}",
+                                        "${widget.noOfEmployee}",
+                                        "${widget.companyEmail}",
+                                        "${widget.password}",
+                                        "resend",
+                                      );
+                                      itmer();
+                                    } else {
+                                      ElegantNotification(
+                                        borderRadius: BorderRadius.circular(11),
+                                        width: 340,
+                                        iconSize: 25,
+                                        background: presentsent_color,
+                                        progressIndicatorBackground:
+                                            presentsent_color,
+                                        progressIndicatorColor: absent_color,
+                                        // position: Alignment.center,
+                                        title: ColorCustomText(
+                                            fontSize: fontTitle,
+                                            fontWeight: FontWeight.w500,
+                                            text:
+                                                "Re send will be after time expire",
+                                            letterSpacing: 0.3,
+                                            textColor: Main_Theme_textColor),
+                                        description: ColorCustomText(
+                                            fontSize: fontSubTitle,
+                                            fontWeight: FontWeight.w400,
+                                            text:
+                                                "Please check your mobile number",
+                                            letterSpacing: 0.3,
+                                            textColor: Main_Theme_textColor),
+                                        onDismiss: () {
+                                          print(
+                                              'Message when the notification is dismissed');
+                                        },
+                                        icon: Icon(
+                                          Icons.info_outlined,
+                                          color: Colors.black,
+                                        ),
+                                      ).show(context);
+                                    }
+                                  },
+                                  child: ColorCustomText(
+                                      fontSize: fontTitle,
+                                      fontWeight: FontWeight.w400,
+                                      text: "Resend",
+                                      letterSpacing: 0.2,
+                                      textColor: CustomButtonColor)),
+                            ],
+                          )),
+                      SizedBox(
+                        height: h * 0.015,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 20),
+                        child: CustomButton(
+                            onTap: () {
+                              setState(() {
+                                _otp = _fieldOne.text +
+                                    _fieldTwo.text +
+                                    _fieldThree.text +
+                                    _fieldFour.text;
+                              });
+
+                              Future.delayed(
+                                Duration(milliseconds: 500),
+                                () {
+                                  if (_otp == otp) {
+                                    CustomHttpRequestClass()
+                                        .companyRegistrationFunction(
+                                      "${widget.package}",
+                                      context,
+                                      "${widget.mobileNumber}",
+                                      "${widget.companytype}",
+                                      "${widget.companyname}",
+                                      "${widget.companyAddress}",
+                                      "${widget.noOfEmployee}",
+                                      "${widget.companyEmail}",
+                                      "${widget.password}",
+                                      "$_otp",
+                                    );
+                                  } else {
+                                    ElegantNotification(
+                                      borderRadius: BorderRadius.circular(11),
+                                      width: 340,
+                                      iconSize: 25,
+                                      background: presentsent_color,
+                                      progressIndicatorBackground:
+                                          presentsent_color,
+                                      progressIndicatorColor: absent_color,
+                                      // position: Alignment.center,
+                                      title: ColorCustomText(
+                                          fontSize: fontTitle,
+                                          fontWeight: FontWeight.w500,
+                                          text: "Wrong OTP",
+                                          letterSpacing: 0.3,
+                                          textColor: Main_Theme_textColor),
+                                      description: ColorCustomText(
+                                          fontSize: fontSubTitle,
+                                          fontWeight: FontWeight.w400,
+                                          text: "Please Enter Correct OTP",
+                                          letterSpacing: 0.3,
+                                          textColor: Main_Theme_textColor),
+                                      onDismiss: () {
+                                        print(
+                                            'Message when the notification is dismissed');
                                       },
-                                     child: ColorCustomText(fontSize: 16, fontWeight: FontWeight.w400, text:"Resend", letterSpacing: 0.2,textColor:CustomButtonColor)),
-                               ],
-                             )),
-                         SizedBox(
-                           height: h * 0.015,
-                         ),
-                         Padding(padding: EdgeInsets.symmetric(horizontal: 20),
-                           child: CustomButton(onTap: () {
-                             setState(() {
-                               _otp = _fieldOne.text +
-                                   _fieldTwo.text +
-                                   _fieldThree.text +
-                                   _fieldFour.text;
-                             });
+                                      icon: Icon(
+                                        Icons.info_outlined,
+                                        color: Colors.black,
+                                      ),
+                                    ).show(context);
+                                  }
+                                },
+                              );
+                            },
+                            text: "Verify",
+                            button_text_fontSize: fontTitle,
+                            button_height: 50,
+                            custom_button_collor: CustomButtonColor,
+                            button_text_color: Main_Theme_WhiteCollor,
+                            borderRadius: 50),
+                      ),
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      // Display the entered OTP code
+                      Text(
+                        _otp ?? '',
+                        style: const TextStyle(fontSize: 30),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
 
-                             Future.delayed(Duration(milliseconds: 500),() {
-                               if(_otp==otp){
-                                 CustomHttpRequestClass().companyRegistrationFunction(
-                                   "${widget.package}",
-                                   context,
-                                   "${widget.mobileNumber}",
-                                   "${widget.companytype}",
-                                   "${widget.companyname}",
-                                   "${widget.companyAddress}",
-                                   "${widget.noOfEmployee}",
-                                   "${widget.companyEmail}",
-                                   "${widget.password}",
-                                   "$_otp",
-                                 );
-                               }else{
-                                 ElegantNotification(
-                                   borderRadius: BorderRadius.circular(
-                                       11),
-                                   width: 340,
-                                   iconSize: 25,
-                                   background: presentsent_color,
-                                   progressIndicatorBackground: presentsent_color,
-                                   progressIndicatorColor: absent_color,
-                                   // position: Alignment.center,
-                                   title: ColorCustomText(fontSize: 16,
-                                       fontWeight: FontWeight.w500,
-                                       text: "Wrong OTP",
-                                       letterSpacing: 0.3,
-                                       textColor: Main_Theme_textColor),
-                                   description: ColorCustomText(
-                                       fontSize: 14,
-                                       fontWeight: FontWeight.w400,
-                                       text: "Please Enter Correct OTP",
-                                       letterSpacing: 0.3,
-                                       textColor: Main_Theme_textColor),
-                                   onDismiss: () {
-                                     print(
-                                         'Message when the notification is dismissed');
-                                   },
-                                   icon: Icon(Icons.info_outlined,
-                                     color: Colors.black,),
-                                 ).show(context);
-                               }
-                             },);
-
-                           }, text: "Verify", button_text_fontSize: 16, button_height: 50, custom_button_collor: CustomButtonColor, button_text_color: Main_Theme_WhiteCollor, borderRadius: 50),
-                         ),
-                         const SizedBox(
-                           height: 30,
-                         ),
-                         // Display the entered OTP code
-                         Text(
-                           _otp ?? '',
-                           style: const TextStyle(fontSize: 30),
-                         )
-                       ],
-                     ),
-                   ),
-                 ),
-               ),
-             ],
-           ),
-         ),
       /// Bootom Part
       bottomNavigationBar: CustomBootomSplashBar(),
     );
   }
-
 
 //
 //   final pinController = TextEditingController();
@@ -326,8 +391,8 @@ print("1111111111111111111111111 ========== $count");
 //                            /// Added Logo
 //                            CustomImageSction(height: 100, width: 140, radius: 7, image: "Assets/Logo/jibikalogo.png"),
 //                            SizedBox(height: h*0.16,),
-//                            CustomText(fontSize: 18, fontWeight: FontWeight.w500, text: "Please Enter The 4 Digit Code Sent to", letterSpacing: 0.3),
-//                            CustomText(fontSize: 18, fontWeight: FontWeight.w700, text: "yourmail@gmail.com", letterSpacing: 0.4),
+//                            CustomText(fontSize: font18, fontWeight: FontWeight.w500, text: "Please Enter The 4 Digit Code Sent to", letterSpacing: 0.3),
+//                            CustomText(fontSize: font18, fontWeight: FontWeight.w700, text: "yourmail@gmail.com", letterSpacing: 0.4),
 //               SizedBox(height: h*0.02,),
 //
 //               Row(
@@ -388,7 +453,7 @@ print("1111111111111111111111111 ========== $count");
 //                padding: const EdgeInsets.all(28.0),
 //                child: CustomButton(onTap: () {
 //
-//                }, text: "Confirm", button_text_fontSize: 16, button_height: 50, custom_button_collor: CustomButtonColor, button_text_color: Main_Theme_WhiteCollor, borderRadius: 50),
+//                }, text: "Confirm", button_text_fontSize: fontTitle, button_height: 50, custom_button_collor: CustomButtonColor, button_text_color: Main_Theme_WhiteCollor, borderRadius: 50),
 //              )
 //             ],
 //           ),
@@ -397,11 +462,7 @@ print("1111111111111111111111111 ========== $count");
 //     );
 //   }
 //
-
- }
-
-
-
+}
 
 // Create an input widget that takes only one digit
 class OtpInput extends StatelessWidget {
@@ -412,25 +473,25 @@ class OtpInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-     padding: EdgeInsets.all(5),
+      padding: EdgeInsets.all(5),
       height: 70,
       width: 70,
       child: TextField(
         style: GoogleFonts.poppins(
-          fontSize: 20,
-          color: Main_Theme_textColor,
-          fontWeight: FontWeight.w600
-        ),
-         autofocus: autoFocus,
+            fontSize: 20,
+            color: Main_Theme_textColor,
+            fontWeight: FontWeight.w600),
+        autofocus: autoFocus,
         textAlign: TextAlign.center,
         keyboardType: TextInputType.number,
         controller: controller,
         maxLength: 1,
         cursorColor: Theme.of(context).primaryColor,
         decoration: InputDecoration(
-          //  border: OutlineInputBorder(),
+            //  border: OutlineInputBorder(),
             counterText: '',
-            hintStyle: GoogleFonts.poppins(color: Main_Theme_textColor, fontSize: 20.0)),
+            hintStyle: GoogleFonts.poppins(
+                color: Main_Theme_textColor, fontSize: 20.0)),
         onChanged: (value) {
           if (value.length == 1) {
             FocusScope.of(context).nextFocus();
@@ -439,5 +500,4 @@ class OtpInput extends StatelessWidget {
       ),
     );
   }
-
 }

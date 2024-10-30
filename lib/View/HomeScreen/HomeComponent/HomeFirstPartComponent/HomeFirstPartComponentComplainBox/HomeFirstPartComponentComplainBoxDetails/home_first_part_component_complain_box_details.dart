@@ -199,7 +199,7 @@ class _HomeFirstPartComponentComplainBoxDetailsState
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             ColorCustomText(
-                                fontSize: 12,
+                                fontSize: font12,
                                 fontWeight: FontWeight.w400,
                                 text: "ID: 544532",
                                 letterSpacing: 0.3,
@@ -208,7 +208,7 @@ class _HomeFirstPartComponentComplainBoxDetailsState
                               "Hafijur Rahman Mizan",
                               overflow: TextOverflow.ellipsis,
                               style: GoogleFonts.poppins(
-                                fontSize: 12,
+                                fontSize: font12,
                                 color: Main_Theme_WhiteCollor,
                                 fontWeight: FontWeight.w400,
                                 letterSpacing: 0.3,
@@ -216,7 +216,7 @@ class _HomeFirstPartComponentComplainBoxDetailsState
                             ),
                             ColorCustomText(
                               textColor: Main_Theme_WhiteCollor,
-                              fontSize: 11,
+                              fontSize: font11,
                               fontWeight: FontWeight.w300,
                               text: "HR Manager",
                               letterSpacing: 0.3,
@@ -253,7 +253,7 @@ class _HomeFirstPartComponentComplainBoxDetailsState
                           width: 5,
                         ),
                         CustomText(
-                            fontSize: 15,
+                            fontSize: font15,
                             fontWeight: FontWeight.w500,
                             text: "Share",
                             letterSpacing: 0.3),
@@ -274,7 +274,7 @@ class _HomeFirstPartComponentComplainBoxDetailsState
                           width: 7,
                         ),
                         CustomText(
-                            fontSize: 15,
+                            fontSize: font15,
                             fontWeight: FontWeight.w500,
                             text: "Delete",
                             letterSpacing: 0.3),

@@ -73,7 +73,7 @@ class _HomeFirstPartComponentConveyanceState
                                   child: TextFormField(
                                 style: GoogleFonts.poppins(
                                   fontWeight: FontWeight.w400,
-                                  fontSize: 12,
+                                  fontSize: font12,
                                 ),
                                 decoration: InputDecoration(
                                     contentPadding:
@@ -81,7 +81,7 @@ class _HomeFirstPartComponentConveyanceState
                                     border: InputBorder.none,
                                     hintStyle: TextStyle(
                                         fontWeight: FontWeight.w400,
-                                        fontSize: 12,
+                                        fontSize: font12,
                                         color: Main_Theme_textColor.withOpacity(
                                             0.30)),
                                     hintText: "Search Here"),
@@ -189,7 +189,7 @@ class _HomeFirstPartComponentConveyanceState
                   return Center(
                       child: Text(text,
                           style: GoogleFonts.poppins(
-                              fontSize: 13,
+                              fontSize: font13header,
                               fontWeight: FontWeight.w400,
                               letterSpacing: 0.3,
                               color: Color.lerp(Colors.black, Colors.white,
@@ -320,7 +320,7 @@ class _HomeFirstPartComponentConveyanceState
                                                         "Assets/DrawerImage/testperson.png")),
                                           ),
                                           ColorCustomText(
-                                            fontSize: 11,
+                                            fontSize: font11,
                                             fontWeight: FontWeight.w500,
                                             text: "54453",
                                             letterSpacing: 0.3,
@@ -343,13 +343,13 @@ class _HomeFirstPartComponentConveyanceState
                                               "Hafijur Rahman Mizan",
                                               overflow: TextOverflow.ellipsis,
                                               style: GoogleFonts.poppins(
-                                                fontSize: 12,
+                                                fontSize: font12,
                                                 fontWeight: FontWeight.w400,
                                                 letterSpacing: 0.3,
                                               ),
                                             ),
                                             CustomText(
-                                              fontSize: 11,
+                                              fontSize: font11,
                                               fontWeight: FontWeight.w300,
                                               text: "HR Manager",
                                               letterSpacing: 0.3,
@@ -360,14 +360,14 @@ class _HomeFirstPartComponentConveyanceState
                                                       .spaceBetween,
                                               children: [
                                                 CustomText(
-                                                  fontSize: 11,
+                                                  fontSize: font11,
                                                   fontWeight: FontWeight.w300,
                                                   text: "Commercial",
                                                   letterSpacing: 0.3,
                                                 ),
                                               ],
                                             ),
-                                            // ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "Doj: 10-Oct-2024", letterSpacing: 0.3,
+                                            // ColorCustomText(fontSize: font11, fontWeight: FontWeight.w400, text: "Doj: 10-Oct-2024", letterSpacing: 0.3,
                                             //   textColor: CustomButtonColor.withOpacity(0.7),),
                                           ],
                                         )),
@@ -412,10 +412,10 @@ class _HomeFirstPartComponentConveyanceState
                                             SizedBox(
                                               height: 3,
                                             ),
-                                            //  ColorCustomText(fontSize: 10, fontWeight: FontWeight.w400, text: "${value.showConveyancelist[index]["dailyConveyancels"][dailyConveyancels]["Location"]??"${value.showConveyancelist[index]["dailyConveyancels"][dailyConveyancels]["StreetName"]}"}", letterSpacing: 0.2,
+                                            //  ColorCustomText(fontSize: font10, fontWeight: FontWeight.w400, text: "${value.showConveyancelist[index]["dailyConveyancels"][dailyConveyancels]["Location"]??"${value.showConveyancelist[index]["dailyConveyancels"][dailyConveyancels]["StreetName"]}"}", letterSpacing: 0.2,
                                             //  textColor: Main_Theme_textColor.withOpacity(0.7),),
                                             CustomText(
-                                                fontSize: 10,
+                                                fontSize: font10,
                                                 fontWeight: FontWeight.w400,
                                                 text: "banani",
                                                 letterSpacing: 0.2),
@@ -477,10 +477,10 @@ class _HomeFirstPartComponentConveyanceState
                                             SizedBox(
                                               height: 3,
                                             ),
-                                            // ColorCustomText(fontSize: 10, fontWeight: FontWeight.w400, text: "${value.showConveyancelist[index]["dailyConveyancels"][dailyConveyancels]["Location"]??"${value.showConveyancelist[index]["dailyConveyancels"][dailyConveyancels]["tStreetName"]}"}", letterSpacing: 0.2,
+                                            // ColorCustomText(fontSize: font10, fontWeight: FontWeight.w400, text: "${value.showConveyancelist[index]["dailyConveyancels"][dailyConveyancels]["Location"]??"${value.showConveyancelist[index]["dailyConveyancels"][dailyConveyancels]["tStreetName"]}"}", letterSpacing: 0.2,
                                             //   textColor: Main_Theme_textColor.withOpacity(0.7),),
                                             CustomText(
-                                                fontSize: 10,
+                                                fontSize: font10,
                                                 fontWeight: FontWeight.w400,
                                                 text: "Gulshan",
                                                 letterSpacing: 0.2),
@@ -505,7 +505,7 @@ class _HomeFirstPartComponentConveyanceState
                                             fit: BoxFit.fill,
                                             color: Main_Theme_textColor),
                                         ColorCustomText(
-                                          fontSize: 10,
+                                          fontSize: font10,
                                           fontWeight: FontWeight.w500,
                                           text: "",
                                           letterSpacing: 0.2,
@@ -529,8 +529,8 @@ class _HomeFirstPartComponentConveyanceState
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    // ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "${value.showConveyancelist[index]["dailyConveyancels"][dailyConveyancels]["Distance"]??"coming soon"}", letterSpacing: 0.2, textColor: Main_Theme_textColor),
-                                    // ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "Total Amount : ${value.showConveyancelist[index]["dailyConveyancels"][dailyConveyancels]["Amount"]??"0"}", letterSpacing: 0.2, textColor: Main_Theme_textColor),
+                                    // ColorCustomText(fontSize: font11, fontWeight: FontWeight.w400, text: "${value.showConveyancelist[index]["dailyConveyancels"][dailyConveyancels]["Distance"]??"coming soon"}", letterSpacing: 0.2, textColor: Main_Theme_textColor),
+                                    // ColorCustomText(fontSize: font12, fontWeight: FontWeight.w400, text: "Total Amount : ${value.showConveyancelist[index]["dailyConveyancels"][dailyConveyancels]["Amount"]??"0"}", letterSpacing: 0.2, textColor: Main_Theme_textColor),
                                     //
                                     CustomText(
                                         fontSize: font12,
@@ -564,23 +564,23 @@ class _HomeFirstPartComponentConveyanceState
                                                         MainAxisAlignment
                                                             .spaceBetween,
                                                     children: [
-                                                      //   ColorCustomText(fontSize: 11, fontWeight: FontWeight.w400, text: "Duration : ${value.showConveyancelist[index]["dailyConveyancels"][dailyConveyancels]["Hour"]??"0"} ${value.showConveyancelist[index]["dailyConveyancels"][dailyConveyancels]["Minute"]??"0"}", letterSpacing: 0.2, textColor: Main_Theme_textColor),
+                                                      //   ColorCustomText(fontSize: font11, fontWeight: FontWeight.w400, text: "Duration : ${value.showConveyancelist[index]["dailyConveyancels"][dailyConveyancels]["Hour"]??"0"} ${value.showConveyancelist[index]["dailyConveyancels"][dailyConveyancels]["Minute"]??"0"}", letterSpacing: 0.2, textColor: Main_Theme_textColor),
                                                       CustomText(
-                                                          fontSize: 11,
+                                                          fontSize: font11,
                                                           fontWeight:
                                                               FontWeight.w400,
                                                           text:
                                                               "Start : 10:10:30",
                                                           letterSpacing: 0.2),
                                                       CustomText(
-                                                          fontSize: 11,
+                                                          fontSize: font11,
                                                           fontWeight:
                                                               FontWeight.w400,
                                                           text:
                                                               "End : 11:10:30",
                                                           letterSpacing: 0.2),
                                                       CustomText(
-                                                          fontSize: 11,
+                                                          fontSize: font11,
                                                           fontWeight:
                                                               FontWeight.w400,
                                                           text:
@@ -615,7 +615,7 @@ class _HomeFirstPartComponentConveyanceState
                                                                         0.2),
                                                             width: 1.5)),
                                                     child: CustomText(
-                                                        fontSize: 12,
+                                                        fontSize: font12,
                                                         fontWeight:
                                                             FontWeight.w400,
                                                         text:
@@ -649,7 +649,7 @@ class _HomeFirstPartComponentConveyanceState
                                                     child: SingleChildScrollView(
                                                         child: CustomText(
                                                             maxLines: 3,
-                                                            fontSize: 12,
+                                                            fontSize: font12,
                                                             fontWeight:
                                                                 FontWeight.w400,
                                                             text:

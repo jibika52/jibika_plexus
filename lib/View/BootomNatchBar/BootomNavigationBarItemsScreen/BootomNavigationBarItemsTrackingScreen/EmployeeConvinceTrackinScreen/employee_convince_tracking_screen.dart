@@ -80,7 +80,7 @@ class _EmployeeConvinceTrackinScreenState
                           ),
                           //   Image.asset("Assets/DashBoardIcons/location.png",height: 18,width: 18,fit: BoxFit.fill,color: Main_Theme_WhiteCollor,),
                           ColorCustomText(
-                            fontSize: 12,
+                            fontSize: font12,
                             fontWeight: FontWeight.w400,
                             text: "Track Now",
                             letterSpacing: 0.2,
@@ -111,7 +111,7 @@ class _EmployeeConvinceTrackinScreenState
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       CustomText(
-                          fontSize: 12,
+                          fontSize: font12,
                           fontWeight: FontWeight.w400,
                           text: "$selected2Datee",
                           letterSpacing: 0.3),
@@ -170,7 +170,7 @@ class _EmployeeConvinceTrackinScreenState
                                               height: 4,
                                             ),
                                             ColorCustomText(
-                                              fontSize: 10,
+                                              fontSize: font10,
                                               fontWeight: FontWeight.w400,
                                               text: "Gulshan",
                                               letterSpacing: 0.2,
@@ -213,7 +213,7 @@ class _EmployeeConvinceTrackinScreenState
                                                 fit: BoxFit.fill,
                                                 color: Main_Theme_textColor),
                                             ColorCustomText(
-                                              fontSize: 10,
+                                              fontSize: font10,
                                               fontWeight: FontWeight.w400,
                                               text: "By Car",
                                               letterSpacing: 0.2,
@@ -259,7 +259,7 @@ class _EmployeeConvinceTrackinScreenState
                                               height: 4,
                                             ),
                                             ColorCustomText(
-                                              fontSize: 10,
+                                              fontSize: font10,
                                               fontWeight: FontWeight.w400,
                                               text: "Gulshan",
                                               letterSpacing: 0.2,
@@ -287,13 +287,13 @@ class _EmployeeConvinceTrackinScreenState
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         ColorCustomText(
-                                            fontSize: 11,
+                                            fontSize: font11,
                                             fontWeight: FontWeight.w400,
                                             text: "24-Apr-2023",
                                             letterSpacing: 0.2,
                                             textColor: Main_Theme_textColor),
                                         ColorCustomText(
-                                            fontSize: 12,
+                                            fontSize: font12,
                                             fontWeight: FontWeight.w400,
                                             text: "Total Amount : 48496",
                                             letterSpacing: 0.2,
@@ -304,7 +304,7 @@ class _EmployeeConvinceTrackinScreenState
                                   Container(
                                     width: double.infinity,
                                     child: ColorCustomText(
-                                        fontSize: 11,
+                                        fontSize: font11,
                                         fontWeight: FontWeight.w400,
                                         text: "Purpose: Meeting with Client.",
                                         letterSpacing: 0.2,
@@ -325,13 +325,13 @@ class _EmployeeConvinceTrackinScreenState
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           ColorCustomText(
-                              fontSize: 14,
+                              fontSize: fontSubTitle,
                               fontWeight: FontWeight.w400,
                               text: "Total Conveyance",
                               letterSpacing: 0.2,
                               textColor: Main_Theme_textColor),
                           ColorCustomText(
-                              fontSize: 14,
+                              fontSize: fontSubTitle,
                               fontWeight: FontWeight.w600,
                               text: "0 BDT",
                               letterSpacing: 0.2,

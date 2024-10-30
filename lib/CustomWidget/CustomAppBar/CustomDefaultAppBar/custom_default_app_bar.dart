@@ -29,7 +29,7 @@ class CustomDefaultAppBar extends StatelessWidget {
           ),
         ),
         title: ColorCustomText(
-          fontSize: 18,
+          fontSize: font18,
           fontWeight: FontWeight.w500,
           text: "$text",
           letterSpacing: 0.5,

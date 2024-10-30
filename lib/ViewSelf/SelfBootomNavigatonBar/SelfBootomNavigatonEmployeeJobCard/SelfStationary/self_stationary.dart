@@ -76,7 +76,7 @@ class _SelfStationaryState extends State<SelfStationary> {
                     return Center(
                         child: Text(text,
                             style: GoogleFonts.poppins(
-                                fontSize: 13,
+                                fontSize: font13header,
                                 fontWeight: FontWeight.w400,
                                 letterSpacing: 0.3,
                                 color: Color.lerp(Colors.black, Colors.white,
@@ -169,27 +169,27 @@ class _SelfStationaryState extends State<SelfStationary> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           CustomText(
-                                              fontSize: 12,
+                                              fontSize: font12,
                                               fontWeight: FontWeight.w400,
                                               text: "Item Name",
                                               letterSpacing: 0.3),
                                           CustomText(
-                                              fontSize: 12,
+                                              fontSize: font12,
                                               fontWeight: FontWeight.w400,
                                               text: "Quantity",
                                               letterSpacing: 0.3),
                                           CustomText(
-                                              fontSize: 12,
+                                              fontSize: font12,
                                               fontWeight: FontWeight.w400,
                                               text: "Is Returnable",
                                               letterSpacing: 0.3),
                                           CustomText(
-                                              fontSize: 12,
+                                              fontSize: font12,
                                               fontWeight: FontWeight.w400,
                                               text: "Brand Name",
                                               letterSpacing: 0.3),
                                           CustomText(
-                                              fontSize: 12,
+                                              fontSize: font12,
                                               fontWeight: FontWeight.w400,
                                               text: "Configuration",
                                               letterSpacing: 0.3),
@@ -202,27 +202,27 @@ class _SelfStationaryState extends State<SelfStationary> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           CustomText(
-                                              fontSize: 12,
+                                              fontSize: font12,
                                               fontWeight: FontWeight.w400,
                                               text: ":  Item Name",
                                               letterSpacing: 0.3),
                                           CustomText(
-                                              fontSize: 12,
+                                              fontSize: font12,
                                               fontWeight: FontWeight.w400,
                                               text: ":  Quantity",
                                               letterSpacing: 0.3),
                                           CustomText(
-                                              fontSize: 12,
+                                              fontSize: font12,
                                               fontWeight: FontWeight.w400,
                                               text: ":  Is Returnable",
                                               letterSpacing: 0.3),
                                           CustomText(
-                                              fontSize: 12,
+                                              fontSize: font12,
                                               fontWeight: FontWeight.w400,
                                               text: ":  Brand Name",
                                               letterSpacing: 0.3),
                                           CustomText(
-                                              fontSize: 12,
+                                              fontSize: font12,
                                               fontWeight: FontWeight.w400,
                                               text: ":  Configuration",
                                               letterSpacing: 0.3),
@@ -241,7 +241,7 @@ class _SelfStationaryState extends State<SelfStationary> {
                               child: Row(
                                 children: [
                                   CustomText(
-                                      fontSize: 12,
+                                      fontSize: font12,
                                       fontWeight: FontWeight.w400,
                                       text: "Remarks: ",
                                       letterSpacing: 0.3),

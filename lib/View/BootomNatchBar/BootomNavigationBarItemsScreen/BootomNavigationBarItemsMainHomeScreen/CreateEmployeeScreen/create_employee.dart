@@ -217,7 +217,7 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
                             height: 5,
                           ),
                           CustomText(
-                              fontSize: 12,
+                              fontSize: font12,
                               fontWeight: FontWeight.w400,
                               text: "Upload photo",
                               letterSpacing: 0.3),
@@ -319,7 +319,7 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
                           height: 5,
                         ),
                         CustomText(
-                            fontSize: 12,
+                            fontSize: font12,
                             fontWeight: FontWeight.w400,
                             text: "Scan NID For Photo & OCR",
                             letterSpacing: 0.3),
@@ -545,7 +545,7 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
                     autofocus: false,
                     isExpanded: true,
                     hint: CustomText(
-                        fontSize: 13,
+                        fontSize: font13header,
                         fontWeight: FontWeight.w400,
                         text: "Shift Plane",
                         letterSpacing: 0.3),
@@ -559,7 +559,7 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
                     items: abc.map((shift) {
                       return DropdownMenuItem(
                         child: CustomText(
-                            fontSize: 13,
+                            fontSize: font13header,
                             fontWeight: FontWeight.w400,
                             text: "${shift['EnglishName']}",
                             letterSpacing: 0.3),
@@ -575,7 +575,7 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
               Align(
                   alignment: Alignment.centerLeft,
                   child: ColorCustomText(
-                    fontSize: 14,
+                    fontSize: fontSubTitle,
                     fontWeight: FontWeight.w500,
                     text: "Gender",
                     letterSpacing: 0.3,
@@ -666,7 +666,7 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
               Align(
                   alignment: Alignment.centerLeft,
                   child: ColorCustomText(
-                    fontSize: 14,
+                    fontSize: fontSubTitle,
                     fontWeight: FontWeight.w500,
                     text: "Weekend",
                     letterSpacing: 0.3,
@@ -869,7 +869,7 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
                           ));
                     },
                     child: ColorCustomText(
-                        fontSize: 13,
+                        fontSize: font13header,
                         fontWeight: FontWeight.w500,
                         text: "More info...",
                         letterSpacing: 0.3,
@@ -1058,13 +1058,13 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
           progressIndicatorColor: absent_color,
           // position: Alignment.center,
           title: ColorCustomText(
-              fontSize: 16,
+              fontSize: fontTitle,
               fontWeight: FontWeight.w500,
               text: "Employee added successfully",
               letterSpacing: 0.3,
               textColor: Main_Theme_textColor),
           description: ColorCustomText(
-              fontSize: 14,
+              fontSize: fontSubTitle,
               fontWeight: FontWeight.w400,
               text: "Thanks for registration",
               letterSpacing: 0.3,
@@ -1095,13 +1095,13 @@ class _CreateNewEmployeeScreenState extends State<CreateNewEmployeeScreen> {
           progressIndicatorColor: absent_color,
           // position: Alignment.center,
           title: ColorCustomText(
-              fontSize: 16,
+              fontSize: fontTitle,
               fontWeight: FontWeight.w500,
               text: "${data["status"]}",
               letterSpacing: 0.3,
               textColor: Main_Theme_textColor),
           description: ColorCustomText(
-              fontSize: 14,
+              fontSize: fontSubTitle,
               fontWeight: FontWeight.w400,
               text: "PLease Try Again ..",
               letterSpacing: 0.3,

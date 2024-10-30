@@ -132,7 +132,7 @@ class _BootomNavigationBarItemsPayrollScreenState
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             ColorCustomText(
-                              fontSize: font12header,
+                              fontSize: font13header,
                               fontWeight: FontWeight.w500,
                               text: "Salary Comparison Chart",
                               letterSpacing: 0.3,
@@ -155,7 +155,7 @@ class _BootomNavigationBarItemsPayrollScreenState
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     ColorCustomText(
-                                      fontSize: font12header,
+                                      fontSize: font13header,
                                       fontWeight: FontWeight.w500,
                                       text: _selected_pick_month == null
                                           ? "${DateFormat("MMM-yyyy").format(DateTime.now())}"
@@ -347,14 +347,14 @@ class _BootomNavigationBarItemsPayrollScreenState
                                     child: Column(
                                       children: [
                                         ColorCustomText(
-                                            fontSize: 14,
+                                            fontSize: fontSubTitle,
                                             fontWeight: FontWeight.w500,
                                             text:
                                                 "${value.dashboardSalaryComparisanChartList[index]["PayrollMonth"].split("-").elementAt(0)}",
                                             letterSpacing: 0.2,
                                             textColor: presentsent_color),
                                         ColorCustomText(
-                                            fontSize: 12,
+                                            fontSize: font12,
                                             fontWeight: FontWeight.w400,
                                             text: "${DateTime.now().year}",
                                             letterSpacing: 0.2,
@@ -366,14 +366,14 @@ class _BootomNavigationBarItemsPayrollScreenState
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       ColorCustomText(
-                                          fontSize: 14,
+                                          fontSize: fontSubTitle,
                                           fontWeight: FontWeight.w500,
                                           text:
                                               "${value.dashboardSalaryComparisanChartList[index]["TotalEmp"]}",
                                           letterSpacing: 0.2,
                                           textColor: Main_Theme_textColor),
                                       ColorCustomText(
-                                          fontSize: 12,
+                                          fontSize: font12,
                                           fontWeight: FontWeight.w300,
                                           text: "Total Employee",
                                           letterSpacing: 0.2,
@@ -399,14 +399,14 @@ class _BootomNavigationBarItemsPayrollScreenState
                                     crossAxisAlignment: CrossAxisAlignment.end,
                                     children: [
                                       ColorCustomText(
-                                          fontSize: 14,
+                                          fontSize: fontSubTitle,
                                           fontWeight: FontWeight.w500,
                                           text:
                                               "${value.dashboardSalaryComparisanChartList[index]["TotalNetPay"]}",
                                           letterSpacing: 0.2,
                                           textColor: Main_Theme_textColor),
                                       ColorCustomText(
-                                          fontSize: 12,
+                                          fontSize: font12,
                                           fontWeight: FontWeight.w300,
                                           text: "Net P. Amount",
                                           letterSpacing: 0.2,
