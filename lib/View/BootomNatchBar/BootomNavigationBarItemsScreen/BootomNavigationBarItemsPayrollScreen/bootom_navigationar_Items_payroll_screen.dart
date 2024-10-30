@@ -7,7 +7,6 @@ import 'package:jibika_plexus/CustomWidget/CustomAppBar/CustomDefaultAppBar/cust
 import 'package:jibika_plexus/CustomWidget/CustomCalender/custom_calender.dart';
 import 'package:jibika_plexus/View/BootomNatchBar/BootomNavigationBarItemsScreen/BootomNavigationBarItemsPayrollScreen/PayrollPrecess/payroll_process.dart';
 import 'package:month_year_picker/month_year_picker.dart';
-import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 

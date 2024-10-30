@@ -179,7 +179,8 @@ Future.delayed(Duration(
                               onTap: () {
                                 setState(() {
                                   is_iconClick=!is_iconClick;
-                                });
+                                  }
+                                );
                               },
                               child: CircleAvatar(radius: 18,backgroundColor: CustomButtonColor,backgroundImage: AssetImage("Assets/Icons/i_icon.png"),))
                         ],
