@@ -467,6 +467,9 @@ void onStart(ServiceInstance service) async {
       print(
           "Socket Connected ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd");
       channel.stream.listen((message) {
+        print(
+            "get messsageee------------------------------------------->  ${message}");
+
         var notification = jsonDecode(message);
         if (notification["userid"] == GetStorage().read("mobile_id")) {
           showNotification(
