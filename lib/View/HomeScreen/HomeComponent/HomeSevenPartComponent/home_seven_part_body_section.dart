@@ -22,19 +22,19 @@ class HomeSeventhPartBodySection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(right: 10),
-      width: 80,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(11),
         color: color,
         //   color: Colors.primaries[Random().nextInt(Colors.primaries.length)].withOpacity(0.8),
       ),
+      padding: EdgeInsets.all(5),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
-            height: 20,
-            width: 20,
+            height: 24,
+            width: 24,
             decoration: BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage("$image"), fit: BoxFit.fill)),

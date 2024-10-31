@@ -41,7 +41,7 @@ class customMainEmployeeProfile extends StatelessWidget {
       alignment: Alignment.center,
       children: [
         Container(
-          height: 250 - 30,
+          //   height: 250 - 30,
           width: double.infinity,
           margin: EdgeInsets.all(10),
           decoration: BoxDecoration(
@@ -53,7 +53,7 @@ class customMainEmployeeProfile extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                height: 220,
+                //   height: 220,
                 width: double.infinity,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(
@@ -255,7 +255,7 @@ class customMainEmployeeProfile extends StatelessWidget {
                     Stack(
                       children: [
                         Container(
-                          height: 84,
+                          //   height: 84,
                           margin: EdgeInsets.all(10),
                           padding: EdgeInsets.symmetric(
                               horizontal: 20, vertical: 10),
@@ -285,7 +285,6 @@ class customMainEmployeeProfile extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              Spacer(),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
@@ -304,7 +303,6 @@ class customMainEmployeeProfile extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              Spacer(),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [

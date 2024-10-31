@@ -213,7 +213,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                   ///---------------- Third Part --------------------///
                   Container(
-                    height: 180,
+                    height: 187,
                     width: double.infinity,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(11),
@@ -405,7 +405,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                     Expanded(
                                       child: Container(
                                         height: 200,
-                                        width: 320,
+                                        //  width: 320,
+                                        //  color: Colors.amber,
                                         child: SfCartesianChart(
                                             plotAreaBorderColor:
                                                 Main_Theme_WhiteCollor,
@@ -425,7 +426,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             series: <CartesianSeries<_ChartData,
                                                 String>>[
                                               ColumnSeries<_ChartData, String>(
-                                                width: 0.5,
+                                                width: 0.7,
                                                 dataSource:
                                                     data == null ? [] : data,
                                                 xValueMapper:
@@ -464,7 +465,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       height: 42,
                                       width: 400,
                                       padding:
-                                          EdgeInsets.only(left: 7, bottom: 8),
+                                          EdgeInsets.only(left: 4, bottom: 8),
                                       child: ListView.builder(
                                         physics: NeverScrollableScrollPhysics(),
                                         itemCount:
@@ -477,13 +478,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                         itemBuilder: (context, index) {
                                           return Container(
                                             height: 27,
-                                            padding: EdgeInsets.only(right: 0),
+                                            width: 19.5,
                                             alignment: Alignment.center,
-                                            margin:
-                                                EdgeInsets.only(right: 10.5),
+                                            margin: EdgeInsets.only(right: 8),
                                             child: RotatedBox(
                                                 quarterTurns: 1,
                                                 child: ColorCustomText(
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
                                                   fontSize: font11,
                                                   fontWeight: FontWeight.w400,
                                                   text:

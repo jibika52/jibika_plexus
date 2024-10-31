@@ -75,19 +75,19 @@ Color pending_color = Color(0xffE48E29);
 
 late double d_height;
 late double d_width;
-
-const font11 = 11.0;
-const font10 = 10.0;
-const font9 = 9.0;
-const font13header = 13.0;
-const font12 = 12.0;
-const fontSubTitle = 14.0;
-const font15 = 15.0;
-const fontTitle = 16.0;
-const font18 = 18.0;
-const font17 = 17.0;
-const font19 = 19.0;
-const font20 = 20.0;
+const double ex_add_size = 0;
+const font11 = 11.0 + ex_add_size;
+const font10 = 10.0 + ex_add_size;
+const font9 = 9.0 + ex_add_size;
+const font13header = 13.0 + ex_add_size;
+const font12 = 12.0 + ex_add_size;
+const fontSubTitle = 14.0 + ex_add_size;
+const font15 = 15.0 + ex_add_size;
+const fontTitle = 16.0 + ex_add_size;
+const font18 = 18.0 + ex_add_size;
+const font17 = 17.0 + ex_add_size;
+const font19 = 19.0 + ex_add_size;
+const font20 = 20.0 + ex_add_size;
 
 ///---------------- Tab height --------------------- ///
 const apps_div_margin = 10.0;

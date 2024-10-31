@@ -45,6 +45,7 @@ class _CustomSaveInfoSectionState extends State<CustomSaveInfoSection> {
           ),
           Expanded(
               child: ColorCustomText(
+            overflow: TextOverflow.ellipsis,
             text: "${widget.text}",
             fontSize: fontSubTitle,
             fontWeight: FontWeight.w400,

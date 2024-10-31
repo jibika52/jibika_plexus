@@ -19,14 +19,14 @@ class SelfProfileSummaryPart extends StatelessWidget {
     print(
         "ddddddddddddddddddddddddddddd -------------------- ${selfORAdminShortInformationdata}");
     return Container(
-      height: 110,
+      // height: 110,
       width: double.infinity,
       padding: EdgeInsets.only(left: 10, top: 10, bottom: 10),
       color: Main_Theme_WhiteCollor,
       child: Row(
         children: [
           Container(
-            height: 110,
+            //   height: 110,
             width: 70,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(7),
@@ -73,15 +73,14 @@ class SelfProfileSummaryPart extends StatelessWidget {
           SizedBox(
             width: 10,
           ),
-          Expanded(
-            child: Container(
-              height: 170,
-              width: MediaQuery.of(context).size.width * 0.3,
+          Container(
+            //  height: 170,
+            //  width: MediaQuery.of(context).size.width * 0.3,
+            child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Spacer(),
                   CustomText(
                     fontSize: fontSubTitle,
                     fontWeight: FontWeight.w500,
@@ -120,7 +119,6 @@ class SelfProfileSummaryPart extends StatelessWidget {
                       text:
                           "${selfORAdminShortInformationdata["JoiningDate"] ?? ""}",
                       letterSpacing: 0.3),
-                  Spacer(),
                 ],
               ),
             ),
@@ -207,47 +205,47 @@ class AdminProfileSummaryPart extends StatelessWidget {
             child: Container(
               height: 170,
               width: MediaQuery.of(context).size.width * 0.3,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Spacer(),
-                  CustomText(
-                    fontSize: fontSubTitle,
-                    fontWeight: FontWeight.w500,
-                    maxLines: 1,
-                    text: "${EmployeeNameEnglish}",
-                    letterSpacing: 0.3,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  SizedBox(
-                    height: 4,
-                  ),
-                  CustomText(
-                      fontSize: font12,
-                      fontWeight: FontWeight.w400,
-                      text: "${Department}",
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CustomText(
+                      fontSize: fontSubTitle,
+                      fontWeight: FontWeight.w500,
+                      maxLines: 1,
+                      text: "${EmployeeNameEnglish}",
+                      letterSpacing: 0.3,
                       overflow: TextOverflow.ellipsis,
-                      letterSpacing: 0.3),
-                  SizedBox(
-                    height: 3,
-                  ),
-                  CustomText(
-                      fontSize: font12,
-                      fontWeight: FontWeight.w400,
-                      text: "${Designation}",
-                      overflow: TextOverflow.ellipsis,
-                      letterSpacing: 0.3),
-                  SizedBox(
-                    height: 3,
-                  ),
-                  CustomText(
-                      fontSize: font12,
-                      fontWeight: FontWeight.w400,
-                      text: "${JoiningDate}",
-                      letterSpacing: 0.3),
-                  Spacer(),
-                ],
+                    ),
+                    SizedBox(
+                      height: 4,
+                    ),
+                    CustomText(
+                        fontSize: font12,
+                        fontWeight: FontWeight.w400,
+                        text: "${Department}",
+                        overflow: TextOverflow.ellipsis,
+                        letterSpacing: 0.3),
+                    SizedBox(
+                      height: 3,
+                    ),
+                    CustomText(
+                        fontSize: font12,
+                        fontWeight: FontWeight.w400,
+                        text: "${Designation}",
+                        overflow: TextOverflow.ellipsis,
+                        letterSpacing: 0.3),
+                    SizedBox(
+                      height: 3,
+                    ),
+                    CustomText(
+                        fontSize: font12,
+                        fontWeight: FontWeight.w400,
+                        text: "${JoiningDate}",
+                        letterSpacing: 0.3),
+                  ],
+                ),
               ),
             ),
           ),

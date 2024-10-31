@@ -384,121 +384,142 @@ class _HomeFirstPartComponentAttendanceState
                                   ),
                                   Expanded(
                                       flex: 4,
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Row(
-                                            children: [
-                                              CustomImageSction(
-                                                  height: 12,
-                                                  width: 15,
-                                                  radius: 1,
-                                                  image:
-                                                      "Assets/DrawerImage/location.png"),
-                                              ColorCustomText(
-                                                fontSize: font11,
-                                                fontWeight: FontWeight.w400,
-                                                text: "Gulshan Circle-1",
-                                                letterSpacing: 0.3,
-                                                textColor: Main_Theme_textColor
-                                                    .withOpacity(0.6),
-                                              ),
-                                            ],
-                                          ),
-                                          Divider(
-                                            height: 10,
-                                          ),
-                                          Row(
-                                            children: [
-                                              ColorCustomText(
-                                                fontSize: font11,
-                                                fontWeight: FontWeight.w400,
-                                                text: isChekin == false
-                                                    ? "Check Out"
-                                                    : "Check In",
-                                                letterSpacing: 0.3,
-                                                textColor: Main_Theme_textColor
-                                                    .withOpacity(0.6),
-                                              ),
-                                              SizedBox(
-                                                width: 10,
-                                              ),
-                                              CustomText(
-                                                fontSize: font11,
-                                                fontWeight: FontWeight.w400,
-                                                text: "08:25:00",
-                                                letterSpacing: 0.3,
-                                              ),
-                                            ],
-                                          ),
-                                          Row(
-                                            children: [
-                                              ColorCustomText(
-                                                fontSize: font11,
-                                                fontWeight: FontWeight.w400,
-                                                text: isChekin == false
-                                                    ? "Early"
-                                                    : "Late",
-                                                letterSpacing: 0.3,
-                                                textColor: Main_Theme_textColor
-                                                    .withOpacity(0.6),
-                                              ),
-                                              SizedBox(
-                                                width: 5,
-                                              ),
-                                              CustomText(
-                                                fontSize: font11,
-                                                fontWeight: FontWeight.w400,
-                                                text: "25:00",
-                                                letterSpacing: 0.3,
-                                              ),
-                                              SizedBox(
-                                                width: 4,
-                                              ),
-                                              isChekin == false
-                                                  ? Container(
-                                                      height: 10,
-                                                      width: 1,
-                                                      color:
-                                                          Main_Theme_textColor,
-                                                    )
-                                                  : Container(),
-                                              SizedBox(
-                                                width: 4,
-                                              ),
-                                              isChekin == false
-                                                  ? Row(
-                                                      children: [
-                                                        ColorCustomText(
-                                                          fontSize: font11,
-                                                          fontWeight:
-                                                              FontWeight.w400,
-                                                          text: "OT",
-                                                          letterSpacing: 0.3,
-                                                          textColor:
-                                                              Main_Theme_textColor
-                                                                  .withOpacity(
-                                                                      0.6),
-                                                        ),
-                                                        SizedBox(
-                                                          width: 5,
-                                                        ),
-                                                        CustomText(
-                                                          fontSize: font11,
-                                                          fontWeight:
-                                                              FontWeight.w400,
-                                                          text: "25:00",
-                                                          letterSpacing: 0.3,
-                                                        ),
-                                                      ],
-                                                    )
-                                                  : Container(),
-                                            ],
-                                          ),
-                                        ],
+                                      child: SingleChildScrollView(
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Row(
+                                              children: [
+                                                CustomImageSction(
+                                                    height: 12,
+                                                    width: 15,
+                                                    radius: 1,
+                                                    image:
+                                                        "Assets/DrawerImage/location.png"),
+                                                ColorCustomText(
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  fontSize: font11,
+                                                  fontWeight: FontWeight.w400,
+                                                  text: "Gulshan Circle-1",
+                                                  letterSpacing: 0.3,
+                                                  textColor:
+                                                      Main_Theme_textColor
+                                                          .withOpacity(0.6),
+                                                ),
+                                              ],
+                                            ),
+                                            Divider(
+                                              height: 10,
+                                            ),
+                                            Row(
+                                              children: [
+                                                ColorCustomText(
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  fontSize: font11,
+                                                  fontWeight: FontWeight.w400,
+                                                  text: isChekin == false
+                                                      ? "Check Out"
+                                                      : "Check In",
+                                                  letterSpacing: 0.3,
+                                                  textColor:
+                                                      Main_Theme_textColor
+                                                          .withOpacity(0.6),
+                                                ),
+                                                SizedBox(
+                                                  width: 10,
+                                                ),
+                                                CustomText(
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  fontSize: font11,
+                                                  fontWeight: FontWeight.w400,
+                                                  text: "08:25:00",
+                                                  letterSpacing: 0.3,
+                                                ),
+                                              ],
+                                            ),
+                                            Row(
+                                              children: [
+                                                ColorCustomText(
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  fontSize: font11,
+                                                  fontWeight: FontWeight.w400,
+                                                  text: isChekin == false
+                                                      ? "Early"
+                                                      : "Late",
+                                                  letterSpacing: 0.3,
+                                                  textColor:
+                                                      Main_Theme_textColor
+                                                          .withOpacity(0.6),
+                                                ),
+                                                SizedBox(
+                                                  width: 5,
+                                                ),
+                                                CustomText(
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  fontSize: font11,
+                                                  fontWeight: FontWeight.w400,
+                                                  text: "25:00",
+                                                  letterSpacing: 0.3,
+                                                ),
+                                                SizedBox(
+                                                  width: 4,
+                                                ),
+                                                isChekin == false
+                                                    ? Container(
+                                                        height: 10,
+                                                        width: 1,
+                                                        color:
+                                                            Main_Theme_textColor,
+                                                      )
+                                                    : Container(),
+                                                SizedBox(
+                                                  width: 4,
+                                                ),
+                                                isChekin == false
+                                                    ? Row(
+                                                        children: [
+                                                          ColorCustomText(
+                                                            overflow:
+                                                                TextOverflow
+                                                                    .ellipsis,
+                                                            fontSize: font11,
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                            text: "OT",
+                                                            letterSpacing: 0.3,
+                                                            textColor:
+                                                                Main_Theme_textColor
+                                                                    .withOpacity(
+                                                                        0.6),
+                                                          ),
+                                                          SizedBox(
+                                                            width: 5,
+                                                          ),
+                                                          CustomText(
+                                                            overflow:
+                                                                TextOverflow
+                                                                    .ellipsis,
+                                                            fontSize: font11,
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                            text: "25:00",
+                                                            letterSpacing: 0.3,
+                                                          ),
+                                                        ],
+                                                      )
+                                                    : Container(),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
                                       )),
 
                                   ///----------------- Third Part ------------------------------///

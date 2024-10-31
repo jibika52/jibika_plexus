@@ -71,7 +71,7 @@ class _SelfBootomNavigationLeaveState extends State<SelfBootomNavigationLeave> {
             children: [
               /// Short Summary Of Profile----------------------------------------------------
               Container(
-                  height: 115,
+                  //     height: 115,
                   width: double.infinity,
                   padding: EdgeInsets.only(left: 0, top: 0, bottom: 0),
                   color: Main_Theme_WhiteCollor,
@@ -508,7 +508,7 @@ class _SelfBootomNavigationLeaveState extends State<SelfBootomNavigationLeave> {
                             height: apps_div_margin + 5,
                           ),
                           Container(
-                            height: 139,
+                            //  height: 139,
                             width: 139,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,

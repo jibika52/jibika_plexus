@@ -171,6 +171,7 @@ class _HomeHederPartState extends State<HomeHederPart> {
                           ),
                         )),
                         ColorCustomText(
+                            overflow: TextOverflow.ellipsis,
                             text: "${countList[index]}",
                             fontSize: font12,
                             fontWeight: FontWeight.w600,

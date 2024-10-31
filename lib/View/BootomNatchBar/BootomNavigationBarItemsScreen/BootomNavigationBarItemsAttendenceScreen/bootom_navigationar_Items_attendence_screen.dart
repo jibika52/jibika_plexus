@@ -65,106 +65,94 @@ class _BootomNavigationBarItemsAttendenceScreenState
                   borderRadius: BorderRadius.circular(11), color: Colors.white),
               margin: EdgeInsets.symmetric(
                   horizontal: 11, vertical: apps_div_margin),
-              child: Column(
+              child: Row(
                 children: [
+                  /// Home Third Part  Body Left Side
+                  HomeThirdPartBodyLeftSide(
+                    top1: "100%",
+                    top2: "70%",
+                    top3: "30%",
+                    top4: "0%",
+                    color: Main_Theme_textColor.withOpacity(0.6),
+                  ),
+
+                  /// Home Third Part  Body Right Side
                   Expanded(
                       child: Container(
-                    child: Row(
-                      children: [
-                        /// Home Third Part  Body Left Side
-                        HomeThirdPartBodyLeftSide(
-                          top1: "100%",
-                          top2: "70%",
-                          top3: "30%",
-                          top4: "0%",
-                          color: Main_Theme_textColor.withOpacity(0.6),
-                        ),
-
-                        /// Home Third Part  Body Right Side
-                        Expanded(
-                            child: Container(
-                          width: double.infinity,
-                          height: double.infinity,
-                          color: Colors.greenAccent.shade100.withOpacity(0.1),
-                          child: Container(
-                              padding: EdgeInsets.only(top: 10),
+                    width: double.infinity,
+                    height: double.infinity,
+                    color: Colors.greenAccent.shade100.withOpacity(0.1),
+                    child: Container(
+                        padding: EdgeInsets.only(top: 10),
+                        height: 90,
+                        width: 500,
+                        child: ListView.builder(
+                          itemCount: dashboardBarChartData == null
+                              ? 0
+                              : "${dashboardBarChartData["tpls"]}" == "[]"
+                                  ? 0
+                                  : dashboardBarChartData["tpls"].length,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) {
+                            //  print("fffffffff ${index + 1} -------- tpls ---- ${ dashboardBarChartData["tpls"][index]}  -------- tabls ---- ${ dashboardBarChartData["tabls"][index]}");
+                            return Container(
                               height: 90,
-                              width: 500,
-                              child: ListView.builder(
-                                itemCount: dashboardBarChartData == null
-                                    ? 0
-                                    : "${dashboardBarChartData["tpls"]}" == "[]"
+                              margin: EdgeInsets.only(right: 10),
+                              child: Column(
+                                children: [
+                                  Expanded(
+                                      child: ThirdPartProgressBar(
+                                    absenttheight: dashboardBarChartData == null
                                         ? 0
-                                        : dashboardBarChartData["tpls"].length,
-                                scrollDirection: Axis.horizontal,
-                                itemBuilder: (context, index) {
-                                  //  print("fffffffff ${index + 1} -------- tpls ---- ${ dashboardBarChartData["tpls"][index]}  -------- tabls ---- ${ dashboardBarChartData["tabls"][index]}");
-                                  return Container(
-                                    height: 90,
-                                    margin: EdgeInsets.only(right: 10),
-                                    child: Column(
-                                      children: [
-                                        Expanded(
-                                            child: ThirdPartProgressBar(
-                                          absenttheight:
-                                              dashboardBarChartData == null
-                                                  ? 0
-                                                  : double.parse(
-                                                      dashboardBarChartData[
-                                                                      "tabls"]
-                                                                  [index] ==
-                                                              0
-                                                          ? dashboardBarChartData[
-                                                              "tabls"][index]
-                                                          : "${int.parse("${dashboardBarChartData["tabls"][index]}") * 100 / int.parse("${dashboardEmployeeInfo["TotalEmployee"]}")}",
-                                                    ),
-                                          presentheight:
-                                              dashboardBarChartData == null
-                                                  ? 0
-                                                  : double.parse(
-                                                      dashboardBarChartData[
-                                                                      "tpls"]
-                                                                  [index] ==
-                                                              0
-                                                          ? dashboardBarChartData[
-                                                              "tpls"][index]
-                                                          : "${int.parse("${dashboardBarChartData["tpls"][index]}") * 100 / int.parse("${dashboardEmployeeInfo["TotalEmployee"]}")}",
-                                                    ),
-                                          present_width: 10,
-                                          Absent_width: 10,
-                                          total_width: 21,
-                                        )),
-                                        SizedBox(
-                                          height: 5,
-                                        ),
-                                        Container(
-                                            height: 20,
-                                            width: 22,
-                                            decoration: BoxDecoration(
-                                                color: PASummary_select ==
-                                                        index + 1
-                                                    ? presentsent_color
-                                                    : Main_Theme_textColor
-                                                        .withOpacity(0.05),
-                                                borderRadius:
-                                                    BorderRadius.circular(2)),
-                                            alignment: Alignment.center,
-                                            child: CustomText(
-                                                fontSize: font10,
-                                                fontWeight: FontWeight.w400,
-                                                text: "${index + 1}",
-                                                letterSpacing: 0.2)),
-                                        SizedBox(
-                                          height: 10,
-                                        ),
-                                      ],
-                                    ),
-                                  );
-                                },
-                              )),
+                                        : double.parse(
+                                            dashboardBarChartData["tabls"]
+                                                        [index] ==
+                                                    0
+                                                ? dashboardBarChartData["tabls"]
+                                                    [index]
+                                                : "${int.parse("${dashboardBarChartData["tabls"][index]}") * 100 / int.parse("${dashboardEmployeeInfo["TotalEmployee"]}")}",
+                                          ),
+                                    presentheight: dashboardBarChartData == null
+                                        ? 0
+                                        : double.parse(
+                                            dashboardBarChartData["tpls"]
+                                                        [index] ==
+                                                    0
+                                                ? dashboardBarChartData["tpls"]
+                                                    [index]
+                                                : "${int.parse("${dashboardBarChartData["tpls"][index]}") * 100 / int.parse("${dashboardEmployeeInfo["TotalEmployee"]}")}",
+                                          ),
+                                    present_width: 10,
+                                    Absent_width: 10,
+                                    total_width: 21,
+                                  )),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Container(
+                                      height: 20,
+                                      width: 22,
+                                      decoration: BoxDecoration(
+                                          color: PASummary_select == index + 1
+                                              ? presentsent_color
+                                              : Main_Theme_textColor
+                                                  .withOpacity(0.05),
+                                          borderRadius:
+                                              BorderRadius.circular(2)),
+                                      alignment: Alignment.center,
+                                      child: CustomText(
+                                          fontSize: font10,
+                                          fontWeight: FontWeight.w400,
+                                          text: "${index + 1}",
+                                          letterSpacing: 0.2)),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
                         )),
-                      ],
-                    ),
                   )),
                 ],
               ),
@@ -290,7 +278,7 @@ class _BootomNavigationBarItemsAttendenceScreenState
                         itemBuilder: (context, index) => Card(
                           color: Color(0xfff2f2ff),
                           child: Container(
-                            height: 75,
+                            //   height: 75,
                             width: double.infinity,
                             //  color: Colors.green,
                             decoration: BoxDecoration(
@@ -301,121 +289,119 @@ class _BootomNavigationBarItemsAttendenceScreenState
                               children: [
                                 Expanded(
                                   flex: 2,
-                                  child: Stack(
-                                    alignment: Alignment.center,
-                                    children: [
-                                      Positioned(
-                                        child: Container(
-                                          padding: const EdgeInsets.all(0),
-                                          height: 75,
-                                          width: 75,
-                                          child: LayoutBuilder(
-                                            builder: (_, constraints) {
-                                              return PieChart(
-                                                key: ValueKey(key),
-                                                chartValuesOptions:
-                                                    ChartValuesOptions(
-                                                        showChartValueBackground:
-                                                            false,
-                                                        showChartValues: false),
+                                  child: Container(
+                                    padding: const EdgeInsets.all(0),
+                                    //   height: 75,
+                                    //   width: 80,
+                                    child: LayoutBuilder(
+                                      builder: (_, constraints) {
+                                        return PieChart(
+                                          key: ValueKey(key),
+                                          chartValuesOptions:
+                                              ChartValuesOptions(
+                                                  showChartValueBackground:
+                                                      false,
+                                                  showChartValues: false),
 
-                                                /// Customize Right Side Option ----------------------------------P L H A----------.
-                                                legendOptions: LegendOptions(
-                                                    showLegends: false,
-                                                    legendTextStyle: TextStyle(
-                                                      fontSize: font10,
-                                                      fontWeight:
-                                                          FontWeight.w400,
-                                                    )),
-                                                dataMap: {
-                                                  "P(${double.parse("${value.GetDailyAttendanceCounter[index]["total_p"]}")}) ":
-                                                      double.parse(
-                                                          "${value.GetDailyAttendanceCounter[index]["total_p"]}"),
-                                                  "A(${double.parse("${value.GetDailyAttendanceCounter[index]["total_ab"]}")})":
-                                                      double.parse(
-                                                          "${value.GetDailyAttendanceCounter[index]["total_ab"]}"),
-                                                  "L(${double.parse("${value.GetDailyAttendanceCounter[index]["total_l"]}")})":
-                                                      double.parse(
-                                                          "${value.GetDailyAttendanceCounter[index]["total_l"]}"),
-                                                  "H (${double.parse("${value.GetDailyAttendanceCounter[index]["total_wh"]}") + double.parse("${value.GetDailyAttendanceCounter[index]["total_awh"]}")})":
-                                                      double.parse(
-                                                              "${value.GetDailyAttendanceCounter[index]["total_wh"]}") +
-                                                          double.parse(
-                                                              "${value.GetDailyAttendanceCounter[index]["total_awh"]}"),
-                                                },
-                                                animationDuration:
-                                                    const Duration(
-                                                        milliseconds: 800),
-                                                chartLegendSpacing: 10,
-                                                chartRadius: math.min(
-                                                    MediaQuery.of(context)
-                                                            .size
-                                                            .width /
-                                                        3.2,
-                                                    300),
-                                                // radius komay baray
-                                                colorList: [
-                                                  presentsent_color
-                                                      .withOpacity(0.75),
-                                                  absent_color
-                                                      .withOpacity(0.75),
-                                                  leave_color.withOpacity(0.75),
-                                                  holiday_color
-                                                      .withOpacity(0.75)
-                                                ],
-                                                initialAngleInDegree: 0,
-                                                ringStrokeWidth: -4,
-                                                baseChartColor:
-                                                    Colors.transparent,
-                                                centerWidget: CircleAvatar(
-                                                  radius: 21,
-                                                  backgroundColor:
-                                                      Main_Theme_WhiteCollor,
-                                                  child: CircleAvatar(
-                                                    radius: 19.5,
-                                                    backgroundColor:
-                                                        Main_Theme_textColor
-                                                            .withOpacity(0.6),
-                                                    child: CircleAvatar(
-                                                      radius: 18,
-                                                      backgroundColor:
-                                                          Main_Theme_WhiteCollor,
-                                                      child: Column(
-                                                        children: [
-                                                          ColorCustomText(
-                                                              fontSize:
-                                                                  font13header,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w500,
-                                                              text:
-                                                                  "${value.GetDailyAttendanceCounter[index]["duty_date"].toString().substring(0, 2)}",
-                                                              letterSpacing:
-                                                                  0.1,
-                                                              textColor:
-                                                                  Main_Theme_textColor),
-                                                          ColorCustomText(
-                                                              fontSize: font10,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w400,
-                                                              text:
-                                                                  "${DateFormat("E").format(DateFormat("dd-MMM-yyyy").parse("${value.GetDailyAttendanceCounter[index]["duty_date"]}"))}",
-                                                              letterSpacing:
-                                                                  0.1,
-                                                              textColor:
-                                                                  Main_Theme_textColor),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                              );
-                                            },
+                                          /// Customize Right Side Option ----------------------------------P L H A----------.
+                                          legendOptions: LegendOptions(
+                                              showLegends: false,
+                                              legendTextStyle: TextStyle(
+                                                fontSize: font10,
+                                                fontWeight: FontWeight.w400,
+                                              )),
+                                          dataMap: {
+                                            "P(${double.parse("${value.GetDailyAttendanceCounter[index]["total_p"]}")}) ":
+                                                double.parse(
+                                                    "${value.GetDailyAttendanceCounter[index]["total_p"]}"),
+                                            "A(${double.parse("${value.GetDailyAttendanceCounter[index]["total_ab"]}")})":
+                                                double.parse(
+                                                    "${value.GetDailyAttendanceCounter[index]["total_ab"]}"),
+                                            "L(${double.parse("${value.GetDailyAttendanceCounter[index]["total_l"]}")})":
+                                                double.parse(
+                                                    "${value.GetDailyAttendanceCounter[index]["total_l"]}"),
+                                            "H (${double.parse("${value.GetDailyAttendanceCounter[index]["total_wh"]}") + double.parse("${value.GetDailyAttendanceCounter[index]["total_awh"]}")})":
+                                                double.parse(
+                                                        "${value.GetDailyAttendanceCounter[index]["total_wh"]}") +
+                                                    double.parse(
+                                                        "${value.GetDailyAttendanceCounter[index]["total_awh"]}"),
+                                          },
+                                          animationDuration:
+                                              const Duration(milliseconds: 800),
+                                          chartLegendSpacing: 10,
+                                          chartRadius: math.min(
+                                              MediaQuery.of(context)
+                                                      .size
+                                                      .width /
+                                                  3.2,
+                                              300),
+                                          // radius komay baray
+                                          colorList: [
+                                            presentsent_color.withOpacity(0.75),
+                                            absent_color.withOpacity(0.75),
+                                            leave_color.withOpacity(0.75),
+                                            holiday_color.withOpacity(0.75)
+                                          ],
+                                          initialAngleInDegree: 0,
+                                          ringStrokeWidth: -4,
+                                          baseChartColor: Colors.transparent,
+                                          centerWidget: CircleAvatar(
+                                            // radius: 21,
+                                            radius: 23,
+                                            backgroundColor:
+                                                Main_Theme_WhiteCollor,
+                                            child: CircleAvatar(
+                                              //    radius: 19.5,
+                                              radius: 21.5,
+                                              backgroundColor:
+                                                  Main_Theme_textColor
+                                                      .withOpacity(0.6),
+                                              child: CircleAvatar(
+                                                //    radius: 18,
+                                                radius: 20,
+                                                backgroundColor:
+                                                    Main_Theme_WhiteCollor,
+                                                child: ColorCustomText(
+                                                    textAlign: TextAlign.center,
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    fontSize: font11,
+                                                    fontWeight: FontWeight.w500,
+                                                    text:
+                                                        "${value.GetDailyAttendanceCounter[index]["duty_date"].toString().substring(0, 2)}\n${DateFormat("E").format(DateFormat("dd-MMM-yyyy").parse("${value.GetDailyAttendanceCounter[index]["duty_date"]}"))}",
+                                                    letterSpacing: 0.1,
+                                                    textColor:
+                                                        Main_Theme_textColor),
+                                                // child: Column(
+                                                //   children: [
+                                                // ColorCustomText(
+                                                //     overflow: TextOverflow
+                                                //         .ellipsis,
+                                                //     fontSize: font13header,
+                                                //     fontWeight:
+                                                //         FontWeight.w500,
+                                                //     text:
+                                                //         "${value.GetDailyAttendanceCounter[index]["duty_date"].toString().substring(0, 2)}",
+                                                //     letterSpacing: 0.1,
+                                                //     textColor:
+                                                //         Main_Theme_textColor),
+                                                // ColorCustomText(
+                                                //     fontSize: font10,
+                                                //     fontWeight:
+                                                //         FontWeight.w400,
+                                                //     text:
+                                                //         "${DateFormat("E").format(DateFormat("dd-MMM-yyyy").parse("${value.GetDailyAttendanceCounter[index]["duty_date"]}"))}",
+                                                //     letterSpacing: 0.1,
+                                                //     textColor:
+                                                //         Main_Theme_textColor),
+                                                //   ],
+                                                // ),
+                                              ),
+                                            ),
                                           ),
-                                        ),
-                                      ),
-                                    ],
+                                        );
+                                      },
+                                    ),
                                   ),
                                 ),
                                 Container(

@@ -34,7 +34,7 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
   final _key = GlobalKey<ScaffoldState>();
   late int _currentIndex;
   double C_size = 30;
-  double b_bar_h = 50;
+  double b_bar_h = 56;
   double b_bar_icon_size = 30;
   double b_bar_height = 50;
   final List<Widget> bottomBarPages = [
@@ -99,7 +99,7 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
         body: bottomBarPages[_currentIndex],
         bottomNavigationBar: Container(
           height: 70,
-          width: double.infinity,
+          width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(11),
@@ -107,7 +107,7 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
             ),
             color: CustomButtonColor,
           ),
-          padding: EdgeInsets.symmetric(horizontal: 15),
+          padding: EdgeInsets.symmetric(horizontal: 10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -119,28 +119,33 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
                   },
                   child: Container(
                     height: b_bar_h,
-                    child: Column(
-                      children: [
-                        Icon(
-                          Icons.category_rounded,
-                          color: _currentIndex == 0
-                              ? Main_Theme_WhiteCollor
-                              : Main_Theme_WhiteCollor.withOpacity(0.5),
-                          size: 30,
-                        ),
-                        //    CustomImageSction2(height: b_bar_icon_size,width: b_bar_icon_size, img_color:_currentIndex==0? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5),  radius: 5, image: "Assets/DashBoardIcons/b_bar_home.png"),
-                        SizedBox(
-                          height: 2,
-                        ),
-                        ColorCustomText(
-                            fontSize: font12,
-                            fontWeight: FontWeight.w400,
-                            text: "My Menu",
-                            letterSpacing: 0.3,
-                            textColor: _currentIndex == 0
+                    width: MediaQuery.of(context).size.width / 5,
+                    child: SingleChildScrollView(
+                      physics: NeverScrollableScrollPhysics(),
+                      child: Column(
+                        children: [
+                          Icon(
+                            Icons.category_rounded,
+                            color: _currentIndex == 0
                                 ? Main_Theme_WhiteCollor
-                                : Main_Theme_WhiteCollor.withOpacity(0.5)),
-                      ],
+                                : Main_Theme_WhiteCollor.withOpacity(0.5),
+                            size: 30,
+                          ),
+                          //    CustomImageSction2(height: b_bar_icon_size,width: b_bar_icon_size, img_color:_currentIndex==0? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5),  radius: 5, image: "Assets/DashBoardIcons/b_bar_home.png"),
+                          SizedBox(
+                            height: 2,
+                          ),
+                          ColorCustomText(
+                              overflow: TextOverflow.ellipsis,
+                              fontSize: font12,
+                              fontWeight: FontWeight.w400,
+                              text: "My Menu",
+                              letterSpacing: 0.3,
+                              textColor: _currentIndex == 0
+                                  ? Main_Theme_WhiteCollor
+                                  : Main_Theme_WhiteCollor.withOpacity(0.5)),
+                        ],
+                      ),
                     ),
                   )),
               InkWell(
@@ -151,29 +156,34 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
                   },
                   child: Container(
                     height: b_bar_h,
-                    child: Column(
-                      children: [
-                        //     Icon(Icons.list_alt,size: 30,weight: 30,color: _currentIndex==1? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.3),),
-                        CustomImageSction2(
-                            height: b_bar_icon_size,
-                            width: b_bar_icon_size,
-                            img_color: _currentIndex == 1
-                                ? Main_Theme_WhiteCollor
-                                : Main_Theme_WhiteCollor.withOpacity(0.5),
-                            radius: 5,
-                            image: "Assets/SelfIcon/test_fingerprint.png"),
-                        SizedBox(
-                          height: 2,
-                        ),
-                        ColorCustomText(
-                            fontSize: font12,
-                            fontWeight: FontWeight.w400,
-                            text: "Attendance",
-                            letterSpacing: 0.3,
-                            textColor: _currentIndex == 1
-                                ? Main_Theme_WhiteCollor
-                                : Main_Theme_WhiteCollor.withOpacity(0.5)),
-                      ],
+                    width: MediaQuery.of(context).size.width / 5,
+                    child: SingleChildScrollView(
+                      physics: NeverScrollableScrollPhysics(),
+                      child: Column(
+                        children: [
+                          //     Icon(Icons.list_alt,size: 30,weight: 30,color: _currentIndex==1? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.3),),
+                          CustomImageSction2(
+                              height: b_bar_icon_size,
+                              width: b_bar_icon_size,
+                              img_color: _currentIndex == 1
+                                  ? Main_Theme_WhiteCollor
+                                  : Main_Theme_WhiteCollor.withOpacity(0.5),
+                              radius: 5,
+                              image: "Assets/SelfIcon/test_fingerprint.png"),
+                          SizedBox(
+                            height: 2,
+                          ),
+                          ColorCustomText(
+                              overflow: TextOverflow.ellipsis,
+                              fontSize: font12,
+                              fontWeight: FontWeight.w400,
+                              text: "Attendance",
+                              letterSpacing: 0.3,
+                              textColor: _currentIndex == 1
+                                  ? Main_Theme_WhiteCollor
+                                  : Main_Theme_WhiteCollor.withOpacity(0.5)),
+                        ],
+                      ),
                     ),
                   )),
               Container(
@@ -186,29 +196,34 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
                     });
                   },
                   child: Container(
+                    width: MediaQuery.of(context).size.width / 5,
                     height: b_bar_h,
-                    child: Column(
-                      children: [
-                        CustomImageSction2(
-                            height: b_bar_icon_size,
-                            width: b_bar_icon_size,
-                            img_color: _currentIndex == 2
-                                ? Main_Theme_WhiteCollor
-                                : Main_Theme_WhiteCollor.withOpacity(0.5),
-                            radius: 5,
-                            image: "Assets/SelfIcon/leave_icon.png"),
-                        SizedBox(
-                          height: 2,
-                        ),
-                        ColorCustomText(
-                            fontSize: font12,
-                            fontWeight: FontWeight.w400,
-                            text: "Leave",
-                            letterSpacing: 0.3,
-                            textColor: _currentIndex == 2
-                                ? Main_Theme_WhiteCollor
-                                : Main_Theme_WhiteCollor.withOpacity(0.5)),
-                      ],
+                    child: SingleChildScrollView(
+                      physics: NeverScrollableScrollPhysics(),
+                      child: Column(
+                        children: [
+                          CustomImageSction2(
+                              height: b_bar_icon_size,
+                              width: b_bar_icon_size,
+                              img_color: _currentIndex == 2
+                                  ? Main_Theme_WhiteCollor
+                                  : Main_Theme_WhiteCollor.withOpacity(0.5),
+                              radius: 5,
+                              image: "Assets/SelfIcon/leave_icon.png"),
+                          SizedBox(
+                            height: 2,
+                          ),
+                          ColorCustomText(
+                              overflow: TextOverflow.ellipsis,
+                              fontSize: font12,
+                              fontWeight: FontWeight.w400,
+                              text: "Leave",
+                              letterSpacing: 0.3,
+                              textColor: _currentIndex == 2
+                                  ? Main_Theme_WhiteCollor
+                                  : Main_Theme_WhiteCollor.withOpacity(0.5)),
+                        ],
+                      ),
                     ),
                   )),
               InkWell(
@@ -224,28 +239,33 @@ class _SalfBootomNatchBarScreenState extends State<SalfBootomNatchBarScreen> {
                 },
                 child: Container(
                   height: b_bar_h,
-                  child: Column(
-                    children: [
-                      Icon(
-                        Icons.time_to_leave,
-                        color: _currentIndex == 3
-                            ? Main_Theme_WhiteCollor
-                            : Main_Theme_WhiteCollor.withOpacity(0.5),
-                        size: 30,
-                      ),
-                      //    CustomImageSction2(height: b_bar_icon_size,width: b_bar_icon_size,  img_color: _currentIndex==3? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5), radius: 5, image: "Assets/SelfIcon/Conveyance_edited1.png"),
-                      SizedBox(
-                        height: 2,
-                      ),
-                      ColorCustomText(
-                          fontSize: font12,
-                          fontWeight: FontWeight.w400,
-                          text: "Conveyance",
-                          letterSpacing: 0.3,
-                          textColor: _currentIndex == 3
+                  width: MediaQuery.of(context).size.width / 5,
+                  child: SingleChildScrollView(
+                    physics: NeverScrollableScrollPhysics(),
+                    child: Column(
+                      children: [
+                        Icon(
+                          Icons.time_to_leave,
+                          color: _currentIndex == 3
                               ? Main_Theme_WhiteCollor
-                              : Main_Theme_WhiteCollor.withOpacity(0.5)),
-                    ],
+                              : Main_Theme_WhiteCollor.withOpacity(0.5),
+                          size: 30,
+                        ),
+                        //    CustomImageSction2(height: b_bar_icon_size,width: b_bar_icon_size,  img_color: _currentIndex==3? Main_Theme_WhiteCollor:Main_Theme_WhiteCollor.withOpacity(0.5), radius: 5, image: "Assets/SelfIcon/Conveyance_edited1.png"),
+                        SizedBox(
+                          height: 2,
+                        ),
+                        ColorCustomText(
+                            overflow: TextOverflow.ellipsis,
+                            fontSize: font12,
+                            fontWeight: FontWeight.w400,
+                            text: "Conveyance",
+                            letterSpacing: 0.3,
+                            textColor: _currentIndex == 3
+                                ? Main_Theme_WhiteCollor
+                                : Main_Theme_WhiteCollor.withOpacity(0.5)),
+                      ],
+                    ),
                   ),
                 ),
               ),

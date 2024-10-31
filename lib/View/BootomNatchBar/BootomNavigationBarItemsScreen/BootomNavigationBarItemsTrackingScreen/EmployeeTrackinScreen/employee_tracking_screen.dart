@@ -135,7 +135,8 @@ class _EmployeeTrackinScreenState extends State<EmployeeTrackinScreen> {
                       },
                       child: Container(
                         height: 35,
-                        width: 110,
+                        // width: 110,
+                        padding: EdgeInsets.symmetric(horizontal: 5),
                         decoration: BoxDecoration(
                             // gradient: LinearGradient(colors: [
                             //   Main_Theme_textColor_tir_Condition.withOpacity(0.5),

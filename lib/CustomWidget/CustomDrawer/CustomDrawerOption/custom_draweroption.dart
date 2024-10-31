@@ -20,7 +20,6 @@ class CustomDrawerOption extends StatelessWidget {
       padding: EdgeInsets.only(left: 15),
       height: 44,
       width: double.infinity,
-      //   color: Colors.red,
       child: Row(
         children: [
           CustomImageSction(
@@ -28,11 +27,15 @@ class CustomDrawerOption extends StatelessWidget {
           SizedBox(
             width: MediaQuery.of(context).size.width * 0.024,
           ),
-          CustomText(
-              fontSize: fontTitle,
-              fontWeight: FontWeight.w400,
-              text: "$name",
-              letterSpacing: 0.3),
+          Container(
+            width: 220 - size2 + MediaQuery.of(context).size.width * 0.024,
+            child: CustomText(
+                overflow: TextOverflow.ellipsis,
+                fontSize: fontTitle,
+                fontWeight: FontWeight.w400,
+                text: "$name",
+                letterSpacing: 0.3),
+          ),
         ],
       ),
     );
