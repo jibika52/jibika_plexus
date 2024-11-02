@@ -376,7 +376,6 @@ class _SelfBootomNavigatonBarHomeScreenState
                                     ),
                                   ),
                                 ),
-                                Spacer(),
 
                                 /// Attendance Part Right side -------------------------------------------------------------
                                 GestureDetector(
@@ -756,7 +755,6 @@ class _SelfBootomNavigatonBarHomeScreenState
                               children: [
                                 Container(
                                   height: 24,
-                                  width: 28,
                                   decoration: BoxDecoration(
                                     border: Border(
                                         bottom: BorderSide(
@@ -790,7 +788,6 @@ class _SelfBootomNavigatonBarHomeScreenState
                                 Spacer(),
                                 Container(
                                   height: 24,
-                                  width: 28,
                                   decoration: BoxDecoration(
                                     border: Border(
                                         bottom: BorderSide(
@@ -823,7 +820,6 @@ class _SelfBootomNavigatonBarHomeScreenState
                                 Spacer(),
                                 Container(
                                   height: 24,
-                                  width: 28,
                                   decoration: BoxDecoration(
                                     border: Border(
                                         bottom: BorderSide(
@@ -856,7 +852,6 @@ class _SelfBootomNavigatonBarHomeScreenState
                                 Spacer(),
                                 Container(
                                   height: 24,
-                                  width: 28,
                                   decoration: BoxDecoration(
                                     border: Border(
                                         bottom: BorderSide(
@@ -889,7 +884,7 @@ class _SelfBootomNavigatonBarHomeScreenState
                                 Spacer(),
                                 Container(
                                   height: 24,
-                                  width: 48,
+                                  width: 60,
                                   decoration: BoxDecoration(
                                     border: Border(
                                         bottom: BorderSide(

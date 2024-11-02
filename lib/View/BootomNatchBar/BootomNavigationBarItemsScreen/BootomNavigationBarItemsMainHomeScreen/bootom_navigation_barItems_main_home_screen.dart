@@ -284,8 +284,7 @@ class _BootomNavBarItemsEmployeeHomeScreenState
                                             "${GetStorage().read("mobile_id")}",
                                             context);
                                   },
-                                  child: AnimatedContainer(
-                                    duration: Duration(milliseconds: 400),
+                                  child: Container(
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(7)),
@@ -300,177 +299,142 @@ class _BootomNavBarItemsEmployeeHomeScreenState
                                               : absent_color,
                                         ))),
                                     margin: EdgeInsets.only(bottom: 7),
-                                    child: Column(
+                                    padding: EdgeInsets.only(
+                                        left: 10, right: 0, top: 5, bottom: 5),
+                                    width: double.infinity,
+                                    child: Row(
                                       children: [
-                                        Container(
-                                          padding: EdgeInsets.only(
-                                              left: 10,
-                                              right: 0,
-                                              top: 5,
-                                              bottom: 5),
-                                          height: 80,
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(7),
-
-                                            color:
-                                                leave_color.withOpacity(0.05),
-                                            //  border: Border(bottom: BorderSide(color:_selectedindex==index?CustomButtonColor.withOpacity(0.05): CustomButtonColor))
-                                          ),
-                                          width: double.infinity,
-                                          child: Row(
-                                            children: [
-                                              Column(
-                                                children: [
-                                                  CircleAvatar(
-                                                    radius: 27,
-                                                    backgroundImage: value
-                                                                        .Admin_GetEmployeeListByStatus[
-                                                                    index][
-                                                                "EmpPhotoPath"] !=
-                                                            ""
-                                                        ? NetworkImage(
-                                                            "${GetStorage().read("APPS_IMG_BASEURL")}${value.Admin_GetEmployeeListByStatus[index]["EmpPhotoPath"]}")
-                                                        : NetworkImage(
-                                                            "${custom_Avater}"),
-                                                  ),
-                                                  CustomText(
-                                                      fontSize: font11,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      text:
-                                                          "${value.Admin_GetEmployeeListByStatus[index]["EmpCode"]}",
-                                                      letterSpacing: 0.1),
-                                                ],
-                                              ),
-                                              // Container(
-                                              //   height: 55,
-                                              //   width: 55,
-                                              //   decoration: BoxDecoration(
-                                              //     borderRadius: BorderRadius.all(Radius.circular(7)),
-                                              //   ),
-                                              //   margin: EdgeInsets.only(right: 5),
-                                              //   child:value.Admin_GetEmployeeListByStatus[index]["EmpPhotoPath"]!=""? CustomImageSctionNetwork(height: 55, width: 45, radius: 7, image: "${value.Admin_GetEmployeeListByStatus[index]["EmpPhotoPath"]}"):Image(image: NetworkImage("https://greenmartbd.net/images/default.jpg"),height: 70,width: 50,fit: BoxFit.fill,),
-                                              // ),
-
-                                              SizedBox(
-                                                width: 10,
-                                              ),
-                                              Expanded(
-                                                flex: 4,
-                                                child: SingleChildScrollView(
-                                                  child: Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      Text(
-                                                        value.Admin_GetEmployeeListByStatus[
-                                                                    index][
-                                                                "EmployeeNameEnglish"] ??
-                                                            "",
-                                                        overflow: TextOverflow
-                                                            .ellipsis,
-                                                        style:
-                                                            GoogleFonts.poppins(
-                                                          fontSize:
-                                                              font13header,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                          letterSpacing: 0.3,
-                                                        ),
-                                                      ),
-                                                      SizedBox(
-                                                        height: 1,
-                                                      ),
-                                                      CustomText(
-                                                        maxLines: 1,
-                                                        fontSize: font12,
-                                                        fontWeight:
-                                                            FontWeight.w300,
-                                                        overflow: TextOverflow
-                                                            .ellipsis,
-                                                        text: value.Admin_GetEmployeeListByStatus[
-                                                                    index][
-                                                                "Designation"] ??
-                                                            "",
-                                                        letterSpacing: 0.3,
-                                                      ),
-                                                      SizedBox(
-                                                        height: 1,
-                                                      ),
-                                                      CustomText(
-                                                        fontSize: font12,
-                                                        fontWeight:
-                                                            FontWeight.w300,
-                                                        text: value.Admin_GetEmployeeListByStatus[
-                                                                    index][
-                                                                "Department"] ??
-                                                            "",
-                                                        letterSpacing: 0.3,
-                                                      ),
-                                                    ],
+                                        Column(
+                                          children: [
+                                            CircleAvatar(
+                                              radius: 27,
+                                              backgroundImage:
+                                                  value.Admin_GetEmployeeListByStatus[
+                                                                  index][
+                                                              "EmpPhotoPath"] !=
+                                                          ""
+                                                      ? NetworkImage(
+                                                          "${GetStorage().read("APPS_IMG_BASEURL")}${value.Admin_GetEmployeeListByStatus[index]["EmpPhotoPath"]}")
+                                                      : NetworkImage(
+                                                          "${custom_Avater}"),
+                                            ),
+                                            CustomText(
+                                                fontSize: font11,
+                                                fontWeight: FontWeight.w500,
+                                                text:
+                                                    "${value.Admin_GetEmployeeListByStatus[index]["EmpCode"]}",
+                                                letterSpacing: 0.1),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Expanded(
+                                          flex: 4,
+                                          child: SingleChildScrollView(
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Text(
+                                                  value.Admin_GetEmployeeListByStatus[
+                                                              index][
+                                                          "EmployeeNameEnglish"] ??
+                                                      "",
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  style: GoogleFonts.poppins(
+                                                    fontSize: font13header,
+                                                    fontWeight: FontWeight.w500,
+                                                    letterSpacing: 0.3,
                                                   ),
                                                 ),
-                                              ),
+                                                SizedBox(
+                                                  height: 1,
+                                                ),
+                                                CustomText(
+                                                  maxLines: 1,
+                                                  fontSize: font12,
+                                                  fontWeight: FontWeight.w300,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  text:
+                                                      value.Admin_GetEmployeeListByStatus[
+                                                                  index]
+                                                              ["Designation"] ??
+                                                          "",
+                                                  letterSpacing: 0.3,
+                                                ),
+                                                SizedBox(
+                                                  height: 1,
+                                                ),
+                                                CustomText(
+                                                  fontSize: font12,
+                                                  fontWeight: FontWeight.w300,
+                                                  text:
+                                                      value.Admin_GetEmployeeListByStatus[
+                                                                  index]
+                                                              ["Department"] ??
+                                                          "",
+                                                  letterSpacing: 0.3,
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 5,
+                                        ),
+                                        Container(
+                                          width: 100,
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: [
+                                              CustomImageSction(
+                                                  height: 15,
+                                                  width: 15,
+                                                  radius: 1,
+                                                  image:
+                                                      "Assets/DashBoardIcons/rating.png"),
                                               SizedBox(
                                                 width: 5,
                                               ),
-
-                                              Container(
-                                                width: 100,
-                                                child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.center,
-                                                  children: [
-                                                    CustomImageSction(
-                                                        height: 15,
-                                                        width: 15,
-                                                        radius: 1,
-                                                        image:
-                                                            "Assets/DashBoardIcons/rating.png"),
-                                                    SizedBox(
-                                                      width: 5,
-                                                    ),
-                                                    CustomImageSction(
-                                                        height: 15,
-                                                        width: 15,
-                                                        radius: 1,
-                                                        image:
-                                                            "Assets/DashBoardIcons/rating.png"),
-                                                    SizedBox(
-                                                      width: 5,
-                                                    ),
-                                                    CustomImageSction(
-                                                        height: 15,
-                                                        width: 15,
-                                                        radius: 1,
-                                                        image:
-                                                            "Assets/DashBoardIcons/rating.png"),
-                                                    SizedBox(
-                                                      width: 5,
-                                                    ),
-                                                    CustomImageSction(
-                                                        height: 15,
-                                                        width: 15,
-                                                        radius: 1,
-                                                        image:
-                                                            "Assets/DashBoardIcons/rating.png"),
-                                                    SizedBox(
-                                                      width: 5,
-                                                    ),
-                                                    //    Icon(Icons.arrow_forward_ios_rounded,size: 22,color: Main_Theme_textColor,)
-                                                  ],
-                                                ),
-                                              )
+                                              CustomImageSction(
+                                                  height: 15,
+                                                  width: 15,
+                                                  radius: 1,
+                                                  image:
+                                                      "Assets/DashBoardIcons/rating.png"),
+                                              SizedBox(
+                                                width: 5,
+                                              ),
+                                              CustomImageSction(
+                                                  height: 15,
+                                                  width: 15,
+                                                  radius: 1,
+                                                  image:
+                                                      "Assets/DashBoardIcons/rating.png"),
+                                              SizedBox(
+                                                width: 5,
+                                              ),
+                                              CustomImageSction(
+                                                  height: 15,
+                                                  width: 15,
+                                                  radius: 1,
+                                                  image:
+                                                      "Assets/DashBoardIcons/rating.png"),
+                                              SizedBox(
+                                                width: 5,
+                                              ),
+                                              //    Icon(Icons.arrow_forward_ios_rounded,size: 22,color: Main_Theme_textColor,)
                                             ],
                                           ),
-                                        ),
+                                        )
                                       ],
                                     ),
                                   ),

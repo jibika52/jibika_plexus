@@ -133,7 +133,7 @@ class _HomeFirstPartComponentLeaveState
                               color: Main_Theme_textColor.withOpacity(0.1),
                               width: 1.5)),
                       height: 40,
-                      width: 110,
+                      width: 120,
                       child: Row(
                         children: [
                           Spacer(),

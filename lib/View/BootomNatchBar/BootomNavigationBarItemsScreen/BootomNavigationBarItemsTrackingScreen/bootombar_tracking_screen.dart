@@ -201,7 +201,7 @@ class _BootomNavigationBarItemsTrackingScreenState
                                   Container(
                                     padding: EdgeInsets.only(
                                         left: 10, right: 10, top: 5, bottom: 5),
-                                    height: 80,
+                                    //  height: 80,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.only(
                                         topLeft: Radius.circular(7),

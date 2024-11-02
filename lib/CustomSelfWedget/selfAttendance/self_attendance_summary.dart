@@ -42,6 +42,7 @@ class SelfAttendanceSummarySecondPart extends StatelessWidget {
             height: 3,
           ),
           ColorCustomText(
+            overflow: TextOverflow.ellipsis,
             fontSize: font10,
             fontWeight: FontWeight.w600,
             text: "$text1",

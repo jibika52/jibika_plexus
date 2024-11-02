@@ -195,7 +195,7 @@ class _SelfBootomNavigationConvienceScreenState
                                                                               color: Main_Theme_textColor.withOpacity(0.7)),
                                                                           SizedBox(
                                                                             height:
-                                                                                3,
+                                                                                2,
                                                                           ),
                                                                           ColorCustomText(
                                                                             fontSize:
@@ -211,7 +211,7 @@ class _SelfBootomNavigationConvienceScreenState
                                                                           ),
                                                                           SizedBox(
                                                                             height:
-                                                                                6,
+                                                                                4,
                                                                           ),
                                                                         ],
                                                                       ),
@@ -271,7 +271,7 @@ class _SelfBootomNavigationConvienceScreenState
                                                                               color: Main_Theme_textColor.withOpacity(0.7)),
                                                                           SizedBox(
                                                                             height:
-                                                                                3,
+                                                                                2,
                                                                           ),
                                                                           ColorCustomText(
                                                                             fontSize:
@@ -287,7 +287,7 @@ class _SelfBootomNavigationConvienceScreenState
                                                                           ),
                                                                           SizedBox(
                                                                             height:
-                                                                                6,
+                                                                                4,
                                                                           ),
                                                                         ],
                                                                       ),

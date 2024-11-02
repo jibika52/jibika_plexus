@@ -54,6 +54,7 @@ class _BootomNatchBarScreenState extends State<BootomNatchBarScreen> {
   late int _currentIndex;
   double C_size = 30;
   double b_bar_h = 50;
+  double divide_by_width_bootom_bar_widget = 4.3;
   @override
   Widget build(BuildContext context) {
     final selfORAdminShortInformationdata =
@@ -80,7 +81,7 @@ class _BootomNatchBarScreenState extends State<BootomNatchBarScreen> {
         body: bottomBarPages[_currentIndex],
         bottomNavigationBar: Container(
           height: 70,
-          width: double.infinity,
+          width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(11),
@@ -88,167 +89,178 @@ class _BootomNatchBarScreenState extends State<BootomNatchBarScreen> {
             ),
             color: CustomButtonColor,
           ),
-          padding: EdgeInsets.symmetric(horizontal: 15),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              InkWell(
-                  onTap: () {
-                    Provider.of<EmployeeAdminProvider>(context, listen: false)
-                        .GetDailyAttendanceCounterListProvider(
-                            "${GetStorage().read("mobile_id")}",
-                            "Active",
-                            1,
-                            context);
-                    setState(() {
-                      _currentIndex = 0;
-                    });
-                  },
-                  child: Container(
-                    height: b_bar_h,
-                    child: SingleChildScrollView(
-                      physics: NeverScrollableScrollPhysics(),
-                      child: Column(
-                        children: [
-                          CustomImageSction2(
-                              height: C_size,
-                              img_color: _currentIndex == 0
-                                  ? Main_Theme_WhiteCollor
-                                  : Main_Theme_WhiteCollor.withOpacity(0.5),
-                              width: C_size,
-                              radius: 5,
-                              image: "Assets/DashBoardIcons/b_bar_home.png"),
-                          SizedBox(
-                            height: 3,
-                          ),
-                          ColorCustomText(
-                              fontSize: font12,
-                              fontWeight: FontWeight.w500,
-                              text: "Employee",
-                              letterSpacing: 0.9,
-                              textColor: _currentIndex == 0
-                                  ? Main_Theme_WhiteCollor
-                                  : Main_Theme_WhiteCollor.withOpacity(0.5)),
-                        ],
-                      ),
-                    ),
-                  )),
-              InkWell(
-                  onTap: () {
-                    setState(() {
-                      _currentIndex = 2;
-                    });
-                  },
-                  child: Container(
-                    height: b_bar_h,
-                    child: SingleChildScrollView(
-                      physics: NeverScrollableScrollPhysics(),
-                      child: Column(
-                        children: [
-                          CustomImageSction2(
-                              height: C_size,
-                              img_color: _currentIndex == 2
-                                  ? Main_Theme_WhiteCollor
-                                  : Main_Theme_WhiteCollor.withOpacity(0.5),
-                              width: C_size,
-                              radius: 5,
-                              image: "Assets/DashBoardIcons/b_bar_payroll.png"),
-                          SizedBox(
-                            height: 3,
-                          ),
-                          ColorCustomText(
-                              fontSize: font12,
-                              fontWeight: FontWeight.w500,
-                              text: "Payroll",
-                              letterSpacing: 0.9,
-                              textColor: _currentIndex == 2
-                                  ? Main_Theme_WhiteCollor
-                                  : Main_Theme_WhiteCollor.withOpacity(0.5)),
-                        ],
-                      ),
-                    ),
-                  )),
-              Container(
-                width: MediaQuery.of(context).size.width * 0.13,
-              ),
-              InkWell(
-                  onTap: () {
-                    Provider.of<AttendanceProvder>(context, listen: false)
-                        .GetDailyAttendanceCounterListProvider(
-                            "${GetStorage().read("mobile_id")}",
-                            "${DateFormat("dd-MMM-yyyy").format(DateTime.now())}",
-                            context);
-                    setState(() {
-                      _currentIndex = 1;
-                    });
-                  },
-                  child: Container(
-                    height: b_bar_h,
-                    child: SingleChildScrollView(
-                      physics: NeverScrollableScrollPhysics(),
-                      child: Column(
-                        children: [
-                          CustomImageSction2(
-                              height: C_size,
-                              img_color: _currentIndex == 1
-                                  ? Main_Theme_WhiteCollor
-                                  : Main_Theme_WhiteCollor.withOpacity(0.5),
-                              width: C_size,
-                              radius: 5,
-                              image:
-                                  "Assets/DashBoardIcons/b_bar_attendence.png"),
-                          SizedBox(
-                            height: 3,
-                          ),
-                          ColorCustomText(
-                              fontSize: font12,
-                              fontWeight: FontWeight.w500,
-                              text: "Attendance",
-                              letterSpacing: 0.9,
-                              textColor: _currentIndex == 1
-                                  ? Main_Theme_WhiteCollor
-                                  : Main_Theme_WhiteCollor.withOpacity(0.5)),
-                        ],
-                      ),
-                    ),
-                  )),
-              InkWell(
-                onTap: () {
-                  setState(() {
-                    _currentIndex = 3;
-                  });
-                },
-                child: Container(
-                  height: b_bar_h,
-                  child: SingleChildScrollView(
-                    physics: NeverScrollableScrollPhysics(),
-                    child: Column(
-                      children: [
-                        CustomImageSction2(
-                            height: C_size,
-                            img_color: _currentIndex == 3
-                                ? Main_Theme_WhiteCollor
-                                : Main_Theme_WhiteCollor.withOpacity(0.5),
-                            width: C_size,
-                            radius: 5,
-                            image: "Assets/DashBoardIcons/b_bar_tricker.png"),
-                        SizedBox(
-                          height: 3,
+          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+          child: SingleChildScrollView(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                InkWell(
+                    onTap: () {
+                      Provider.of<EmployeeAdminProvider>(context, listen: false)
+                          .GetDailyAttendanceCounterListProvider(
+                              "${GetStorage().read("mobile_id")}",
+                              "Active",
+                              1,
+                              context);
+                      setState(() {
+                        _currentIndex = 0;
+                      });
+                    },
+                    child: Container(
+                      height: b_bar_h,
+                      width: MediaQuery.of(context).size.width /
+                          divide_by_width_bootom_bar_widget,
+                      child: SingleChildScrollView(
+                        physics: NeverScrollableScrollPhysics(),
+                        child: Column(
+                          children: [
+                            CustomImageSction2(
+                                height: C_size,
+                                img_color: _currentIndex == 0
+                                    ? Main_Theme_WhiteCollor
+                                    : Main_Theme_WhiteCollor.withOpacity(0.5),
+                                width: C_size,
+                                radius: 5,
+                                image: "Assets/DashBoardIcons/b_bar_home.png"),
+                            SizedBox(
+                              height: 3,
+                            ),
+                            ColorCustomText(
+                                overflow: TextOverflow.ellipsis,
+                                fontSize: font12,
+                                fontWeight: FontWeight.w500,
+                                text: "Employee",
+                                letterSpacing: 0.9,
+                                textColor: _currentIndex == 0
+                                    ? Main_Theme_WhiteCollor
+                                    : Main_Theme_WhiteCollor.withOpacity(0.5)),
+                          ],
                         ),
-                        ColorCustomText(
-                            fontSize: font12,
-                            fontWeight: FontWeight.w500,
-                            text: "Tracker",
-                            letterSpacing: 0.9,
-                            textColor: _currentIndex == 3
-                                ? Main_Theme_WhiteCollor
-                                : Main_Theme_WhiteCollor.withOpacity(0.5)),
-                      ],
+                      ),
+                    )),
+                InkWell(
+                    onTap: () {
+                      setState(() {
+                        _currentIndex = 2;
+                      });
+                    },
+                    child: Container(
+                      height: b_bar_h,
+                      child: SingleChildScrollView(
+                        physics: NeverScrollableScrollPhysics(),
+                        child: Column(
+                          children: [
+                            CustomImageSction2(
+                                height: C_size,
+                                img_color: _currentIndex == 2
+                                    ? Main_Theme_WhiteCollor
+                                    : Main_Theme_WhiteCollor.withOpacity(0.5),
+                                width: C_size,
+                                radius: 5,
+                                image:
+                                    "Assets/DashBoardIcons/b_bar_payroll.png"),
+                            SizedBox(
+                              height: 3,
+                            ),
+                            ColorCustomText(
+                                overflow: TextOverflow.ellipsis,
+                                fontSize: font12,
+                                fontWeight: FontWeight.w500,
+                                text: "Payroll",
+                                letterSpacing: 0.9,
+                                textColor: _currentIndex == 2
+                                    ? Main_Theme_WhiteCollor
+                                    : Main_Theme_WhiteCollor.withOpacity(0.5)),
+                          ],
+                        ),
+                      ),
+                    )),
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.13,
+                ),
+                InkWell(
+                    onTap: () {
+                      Provider.of<AttendanceProvder>(context, listen: false)
+                          .GetDailyAttendanceCounterListProvider(
+                              "${GetStorage().read("mobile_id")}",
+                              "${DateFormat("dd-MMM-yyyy").format(DateTime.now())}",
+                              context);
+                      setState(() {
+                        _currentIndex = 1;
+                      });
+                    },
+                    child: Container(
+                      height: b_bar_h,
+                      width: MediaQuery.of(context).size.width /
+                          divide_by_width_bootom_bar_widget,
+                      child: SingleChildScrollView(
+                        physics: NeverScrollableScrollPhysics(),
+                        child: Column(
+                          children: [
+                            CustomImageSction2(
+                                height: C_size,
+                                img_color: _currentIndex == 1
+                                    ? Main_Theme_WhiteCollor
+                                    : Main_Theme_WhiteCollor.withOpacity(0.5),
+                                width: C_size,
+                                radius: 5,
+                                image:
+                                    "Assets/DashBoardIcons/b_bar_attendence.png"),
+                            SizedBox(
+                              height: 3,
+                            ),
+                            ColorCustomText(
+                                overflow: TextOverflow.ellipsis,
+                                fontSize: font12,
+                                fontWeight: FontWeight.w500,
+                                text: "Attendance",
+                                letterSpacing: 0.9,
+                                textColor: _currentIndex == 1
+                                    ? Main_Theme_WhiteCollor
+                                    : Main_Theme_WhiteCollor.withOpacity(0.5)),
+                          ],
+                        ),
+                      ),
+                    )),
+                InkWell(
+                  onTap: () {
+                    setState(() {
+                      _currentIndex = 3;
+                    });
+                  },
+                  child: Container(
+                    height: b_bar_h,
+                    child: SingleChildScrollView(
+                      physics: NeverScrollableScrollPhysics(),
+                      child: Column(
+                        children: [
+                          CustomImageSction2(
+                              height: C_size,
+                              img_color: _currentIndex == 3
+                                  ? Main_Theme_WhiteCollor
+                                  : Main_Theme_WhiteCollor.withOpacity(0.5),
+                              width: C_size,
+                              radius: 5,
+                              image: "Assets/DashBoardIcons/b_bar_tricker.png"),
+                          SizedBox(
+                            height: 3,
+                          ),
+                          ColorCustomText(
+                              overflow: TextOverflow.ellipsis,
+                              fontSize: font12,
+                              fontWeight: FontWeight.w500,
+                              text: "Tracker",
+                              letterSpacing: 0.9,
+                              textColor: _currentIndex == 3
+                                  ? Main_Theme_WhiteCollor
+                                  : Main_Theme_WhiteCollor.withOpacity(0.5)),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
         floatingActionButton: keyboardOpen == true

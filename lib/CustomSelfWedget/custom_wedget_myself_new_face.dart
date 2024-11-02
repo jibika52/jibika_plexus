@@ -50,7 +50,7 @@ class _MyselfNewFaceScreenState extends State<MyselfNewFaceScreen> {
             value.selfAdminAdmin_Get_Emp_New_FaceList == null
                 ? Container()
                 : Container(
-                    height: 175,
+                    height: 190,
                     width: double.infinity,
                     padding: EdgeInsets.only(bottom: 8),
                     child: ListView.builder(
@@ -61,7 +61,7 @@ class _MyselfNewFaceScreenState extends State<MyselfNewFaceScreen> {
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
                         return Container(
-                          height: 170,
+                          // height: 170,
                           width: 130,
                           margin: EdgeInsets.only(left: 10),
                           padding: EdgeInsets.only(top: 10, left: 5, right: 5),
@@ -113,8 +113,7 @@ class _MyselfNewFaceScreenState extends State<MyselfNewFaceScreen> {
                                   ),
                                 ],
                               ),
-                              Expanded(
-                                  child: Container(
+                              Container(
                                 padding: EdgeInsets.only(left: 3, right: 3),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -174,7 +173,7 @@ class _MyselfNewFaceScreenState extends State<MyselfNewFaceScreen> {
                                                 0.75))
                                   ],
                                 ),
-                              ))
+                              )
                             ],
                           ),
                         );

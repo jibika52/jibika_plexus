@@ -859,7 +859,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       builder: (context, value, child) {
                       return Consumer<CounterProvider>(
                         builder: (context, selected, child) => Container(
-                          height: 140,
+                          height: 145,
                           width: MediaQuery.of(context).size.width,
                           padding: EdgeInsets.only(
                               left: 10, right: 10, top: 5, bottom: 5),

@@ -116,27 +116,33 @@ class _BootomNavigationBarItemsPayrollScreenState
 
                 /// Second part Calender ----------------------
                 Container(
-                  height: 180,
+                  height: 200,
                   width: double.infinity,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(11),
                       color: Colors.white),
-                  margin: EdgeInsets.only(left: 10, right: 10),
+                  margin: EdgeInsets.symmetric(horizontal: 11),
                   child: Column(
                     children: [
                       ///----------- Bar chat Header Part -------///
-                      Padding(
+                      Container(
+                        width: MediaQuery.of(context).size.width,
                         padding: const EdgeInsets.only(
                             left: 10.0, right: 10, top: 10, bottom: 10),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            ColorCustomText(
-                              fontSize: font13header,
-                              fontWeight: FontWeight.w500,
-                              text: "Salary Comparison Chart",
-                              letterSpacing: 0.3,
-                              textColor: Main_Theme_textColor.withOpacity(0.9),
+                            Container(
+                              width: MediaQuery.of(context).size.width - 180,
+                              child: ColorCustomText(
+                                overflow: TextOverflow.ellipsis,
+                                fontSize: font13header,
+                                fontWeight: FontWeight.w500,
+                                text: "Salary Comparison Chart",
+                                letterSpacing: 0.3,
+                                textColor:
+                                    Main_Theme_textColor.withOpacity(0.9),
+                              ),
                             ),
                             InkWell(
                               onTap: () {
@@ -155,6 +161,7 @@ class _BootomNavigationBarItemsPayrollScreenState
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     ColorCustomText(
+                                      overflow: TextOverflow.ellipsis,
                                       fontSize: font13header,
                                       fontWeight: FontWeight.w500,
                                       text: _selected_pick_month == null
@@ -203,7 +210,8 @@ class _BootomNavigationBarItemsPayrollScreenState
                                   Expanded(
                                     child: Container(
                                       height: 200,
-                                      width: 320,
+                                      //  width: 320,
+                                      //  color: Colors.amber,
                                       child: SfCartesianChart(
                                           plotAreaBorderColor:
                                               Main_Theme_WhiteCollor,
@@ -223,7 +231,7 @@ class _BootomNavigationBarItemsPayrollScreenState
                                           series: <CartesianSeries<_ChartData,
                                               String>>[
                                             ColumnSeries<_ChartData, String>(
-                                              width: 0.5,
+                                              width: 0.7,
                                               dataSource:
                                                   data == null ? [] : data,
                                               xValueMapper:
@@ -234,21 +242,25 @@ class _BootomNavigationBarItemsPayrollScreenState
                                                       data.y,
                                               color: Color(0xff4475a7),
                                             ),
-                                            // LineSeries<_ChartData, String>(
-                                            //     dataSource:  data,
-                                            //     width: 2.5,
-                                            //     // enableTooltip: true,
-                                            //     // initialIsVisible: true,
-                                            //     // isVisibleInLegend: true,
-                                            //     // markerSettings: MarkerSettings(
-                                            //     //     isVisible: true,
-                                            //     //     width: 5.0,
-                                            //     //     height: 5.0,
-                                            //     //     color: Color(0xff000080)
-                                            //     // ),
-                                            //     xValueMapper: (_ChartData data, _) => data.x,
-                                            //     yValueMapper: (_ChartData data, _) => data.y1,
-                                            //     color: Color(0xff62c1e7))
+                                            LineSeries<_ChartData, String>(
+                                                dataSource:
+                                                    data == null ? [] : data,
+                                                width: 2.5,
+                                                enableTooltip: true,
+                                                initialIsVisible: true,
+                                                isVisibleInLegend: true,
+                                                markerSettings: MarkerSettings(
+                                                    isVisible: true,
+                                                    width: 5.0,
+                                                    height: 5.0,
+                                                    color: Color(0xff000080)),
+                                                xValueMapper:
+                                                    (_ChartData data, _) =>
+                                                        data.x,
+                                                yValueMapper:
+                                                    (_ChartData data, _) =>
+                                                        data.y1,
+                                                color: Color(0xff62c1e7))
                                           ]),
                                     ),
                                   ),
@@ -256,7 +268,7 @@ class _BootomNavigationBarItemsPayrollScreenState
                                     height: 42,
                                     width: 400,
                                     padding:
-                                        EdgeInsets.only(left: 7, bottom: 8),
+                                        EdgeInsets.only(left: 4, bottom: 8),
                                     child: ListView.builder(
                                       physics: NeverScrollableScrollPhysics(),
                                       itemCount:
@@ -269,12 +281,13 @@ class _BootomNavigationBarItemsPayrollScreenState
                                       itemBuilder: (context, index) {
                                         return Container(
                                           height: 27,
-                                          padding: EdgeInsets.only(right: 0),
+                                          width: 19.5,
                                           alignment: Alignment.center,
-                                          margin: EdgeInsets.only(right: 10.5),
+                                          margin: EdgeInsets.only(right: 8),
                                           child: RotatedBox(
                                               quarterTurns: 1,
                                               child: ColorCustomText(
+                                                overflow: TextOverflow.ellipsis,
                                                 fontSize: font11,
                                                 fontWeight: FontWeight.w400,
                                                 text:
@@ -320,7 +333,7 @@ class _BootomNavigationBarItemsPayrollScreenState
                             itemCount:
                                 value.dashboardSalaryComparisanChartList.length,
                             itemBuilder: (context, index) => Container(
-                              height: 74,
+                              //  height: 74,
                               width: double.infinity,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
@@ -335,7 +348,7 @@ class _BootomNavigationBarItemsPayrollScreenState
                               child: Row(
                                 children: [
                                   Container(
-                                    height: 54,
+                                    //  height: 54,
                                     width: 53,
                                     margin: EdgeInsets.all(10),
                                     padding: EdgeInsets.all(4),

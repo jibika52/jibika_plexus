@@ -123,7 +123,7 @@ class _HomeFirstPartComponentPromotionScreenState
                               color: Main_Theme_textColor.withOpacity(0.1),
                               width: 1.5)),
                       height: 40,
-                      width: 110,
+                      width: 120,
                       child: Row(
                         children: [
                           Spacer(),
@@ -271,8 +271,9 @@ class _HomeFirstPartComponentPromotionScreenState
                         child: Column(
                           children: [
                             Container(
-                              padding: EdgeInsets.only(left: 6, right: 10),
-                              height: 70,
+                              padding: EdgeInsets.only(
+                                  left: 6, right: 10, bottom: 3, top: 3),
+                              //   height: 70,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.only(
                                   topLeft: Radius.circular(7),
@@ -290,7 +291,7 @@ class _HomeFirstPartComponentPromotionScreenState
                               child: Row(
                                 children: [
                                   Container(
-                                    height: 68,
+                                    //   height: 68,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.only(
                                       topLeft: Radius.circular(7),

@@ -91,7 +91,7 @@ class CustomLeftDrawer extends StatelessWidget {
                       // )
                     ],
                   ),
-                  Padding(
+                  Container(
                     padding: EdgeInsets.only(left: 13, right: 13),
                     child: Column(
                       children: [

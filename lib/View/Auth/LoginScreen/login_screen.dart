@@ -278,7 +278,7 @@ class _LoginScreenState extends State<LoginScreen>
                                     padding: const EdgeInsets.only(top: 18),
                                     child: Container(
                                       height: 60,
-                                      width: 124,
+                                      // width: 124,
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.only(
                                           topLeft: Radius.circular(11),
@@ -377,6 +377,9 @@ class _LoginScreenState extends State<LoginScreen>
                                     child: CustomSaveInfoSection(
                                   text: "Remember Me,",
                                 )),
+                                SizedBox(
+                                  width: 15,
+                                ),
                                 InkWell(
                                   onTap: () {
                                     if (_phoneController.text.isEmpty) {
